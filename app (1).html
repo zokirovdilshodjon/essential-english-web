@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Essential English PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;--s1:#161b27;--s2:#1c2438;--s3:#232d42;
+  --border:#2a3550;--text:#e8f0fe;--muted:#7a8fad;
+  --accent:#7c5af6;--al:#a07cf8;
+  --blue:#4f9cf9;--green:#4fdf8a;--purple:#c084fc;
+  --orange:#f97b4f;--gold:#f5c542;--red:#f85149;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(ellipse 60% 40% at 0% 0%,rgba(124,90,246,.07) 0,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 100%,rgba(192,132,252,.06) 0,transparent 60%);}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(124,90,246,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,90,246,.03) 1px,transparent 1px);background-size:32px 32px;}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+/* LAYOUT */
+#app{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh;max-width:480px;margin:0 auto;position:relative;z-index:1}
+
+/* TOPBAR */
+.topbar{background:rgba(13,17,23,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);
+  padding:10px 16px 8px;position:sticky;top:0;z-index:100;}
+.tb-row{display:flex;align-items:center;gap:10px}
+.tb-av{width:40px;height:40px;border-radius:50%;background:var(--s2);border:2px solid var(--accent);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.tb-av img{width:80%;height:80%;object-fit:contain}
+.tb-info{flex:1;min-width:0}
+.tb-name{font-weight:800;font-size:14px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-sub{font-size:11px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:6px}
+.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800}
+.badge.beginner{background:rgba(79,223,138,.15);color:var(--green)}
+.badge.intermediate{background:rgba(79,156,249,.15);color:var(--blue)}
+.badge.advanced{background:rgba(192,132,252,.15);color:var(--purple)}
+.tb-right{display:flex;align-items:center;gap:7px}
+.streak{display:flex;align-items:center;gap:4px;background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.2);
+  padding:4px 9px;border-radius:20px;font-size:12px;font-weight:800;color:var(--gold);}
+.xp-chip{background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.2);
+  padding:4px 9px;border-radius:20px;font-size:12px;font-weight:800;color:var(--al);}
+.prog-bar-wrap{padding:7px 16px 5px}
+.prog-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:4px}
+.prog-track{height:4px;background:var(--s2);border-radius:10px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:10px;transition:width .8s cubic-bezier(.34,1.56,.64,1)}
+
+/* SCROLL */
+.scroll-area{overflow-y:auto;padding:14px 16px 4px}
+
+/* SECTION */
+.sec{margin-bottom:20px}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sec-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
+.sec-link{font-size:12px;color:var(--blue);cursor:pointer;font-weight:700}
+
+/* UNIT PILLS */
+.unit-row{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px}
+.unit-row::-webkit-scrollbar{display:none}
+.unit-pill{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;
+  background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.unit-pill.active{background:rgba(124,90,246,.12);border-color:var(--accent);color:var(--al)}
+.unit-pill.done{background:rgba(79,223,138,.08);border-color:var(--green);color:var(--green)}
+
+/* FLASHCARD */
+.fc-outer{perspective:1200px;margin-bottom:10px}
+.fc{width:100%;height:168px;cursor:pointer;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.34,1.56,.64,1);position:relative;}
+.fc.flipped{transform:rotateY(180deg)}
+.fc-face{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border);border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.fc-back{transform:rotateY(180deg)}
+.fc-pos{position:absolute;top:12px;left:14px;font-size:10px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.08em;padding:2px 8px;border-radius:20px;background:rgba(124,90,246,.12);color:var(--al);}
+.fc-utag{position:absolute;top:12px;right:14px;font-size:10px;color:var(--muted);font-weight:700}
+.fc-word{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;color:var(--blue);margin-bottom:4px;letter-spacing:-.01em}
+.fc-hint{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.fc-trans{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--purple);margin-bottom:4px}
+.fc-def{font-size:12px;color:var(--muted);text-align:center;line-height:1.5;margin-bottom:4px}
+.fc-eg{font-size:11px;color:rgba(192,132,252,.7);font-style:italic;text-align:center;line-height:1.4}
+.fc-ctrl{display:flex;align-items:center;justify-content:space-between}
+.fc-nav{display:flex;align-items:center;gap:8px}
+.fc-btn{width:36px;height:36px;border-radius:50%;background:var(--s2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;font-size:16px;}
+.fc-btn:hover{border-color:var(--blue);background:rgba(79,156,249,.1)}
+.fc-count{font-size:12px;color:var(--muted);font-weight:700;min-width:44px;text-align:center}
+.audio-btn{display:flex;align-items:center;gap:5px;padding:8px 13px;
+  background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);
+  border-radius:20px;font-size:12px;font-weight:700;color:var(--green);cursor:pointer;transition:all .2s;}
+.audio-btn:hover{background:rgba(79,223,138,.15)}
+
+/* GAMES */
+.games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.game-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:14px;
+  padding:14px 10px;text-align:center;cursor:pointer;transition:all .25s;
+  position:relative;overflow:hidden;}
+.game-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.game-card:nth-child(1)::after{background:radial-gradient(circle at 50% 110%,rgba(249,123,79,.18),transparent 65%)}
+.game-card:nth-child(2)::after{background:radial-gradient(circle at 50% 110%,rgba(79,156,249,.18),transparent 65%)}
+.game-card:nth-child(3)::after{background:radial-gradient(circle at 50% 110%,rgba(79,223,138,.18),transparent 65%)}
+.game-card:hover{transform:translateY(-3px)}
+.game-card:hover::after{opacity:1}
+.g-icon{font-size:26px;margin-bottom:5px}
+.g-name{font-size:11px;font-weight:800;line-height:1.2}
+.g-desc{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* GRAMMAR */
+.gr-list{display:flex;flex-direction:column;gap:7px}
+.gr-item{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:12px 14px;
+  display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;}
+.gr-item:hover{border-color:var(--purple);background:rgba(192,132,252,.04)}
+.gr-ico{width:36px;height:36px;border-radius:9px;background:rgba(192,132,252,.1);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.gr-txt{flex:1}
+.gr-title{font-size:13px;font-weight:700}
+.gr-sub{font-size:11px;color:var(--muted);margin-top:1px}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.stat{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:13px 10px;text-align:center}
+.stat-n{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px}
+.stat-l{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+/* LEADERBOARD */
+.lb-list{display:flex;flex-direction:column;gap:5px}
+.lb-row{display:flex;align-items:center;gap:9px;background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:9px 13px}
+.lb-row.me{border-color:var(--accent);background:rgba(124,90,246,.06)}
+.lb-rank{width:22px;text-align:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:800;flex-shrink:0}
+.lb-av{width:32px;height:32px;border-radius:50%;background:var(--s2);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.lb-av img{width:80%;height:80%;object-fit:contain}
+.lb-name{flex:1;font-size:13px;font-weight:700}
+.lb-xp{font-size:13px;font-weight:800;color:var(--gold)}
+
+/* WORD LIST */
+.wl-item{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border-radius:10px;padding:10px 12px;margin-bottom:5px}
+.wl-w{font-size:14px;font-weight:700;color:var(--blue)}
+.wl-t{font-size:12px;color:var(--muted);margin-top:1px}
+.wl-p{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(192,132,252,.1);color:var(--purple);font-weight:700}
+
+/* BATTLE */
+.battle-hero{background:linear-gradient(135deg,rgba(249,123,79,.08),rgba(192,132,252,.06));
+  border:1px solid rgba(249,123,79,.2);border-radius:18px;padding:18px;text-align:center;margin-bottom:14px;}
+.bh-vs{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;
+  background:linear-gradient(90deg,var(--orange),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.bh-players{display:flex;align-items:center;justify-content:center;gap:16px}
+.bh-player{text-align:center}
+.bh-av{width:48px;height:48px;border-radius:50%;background:var(--s2);border:2px solid var(--border);
+  margin:0 auto 4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.bh-av img{width:80%;height:80%;object-fit:contain}
+.bh-pname{font-size:11px;font-weight:700;color:var(--muted)}
+.bh-score{font-size:22px;font-weight:800;color:var(--orange)}
+
+/* BUTTONS */
+.btn-p{width:100%;padding:13px;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--orange),#c75a2f);color:white;
+  font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;margin-bottom:7px;transition:transform .2s;
+  box-shadow:0 6px 20px rgba(249,123,79,.25);}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-s{width:100%;padding:12px;background:var(--s2);border:1.5px solid var(--border);
+  border-radius:12px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;
+  color:var(--text);cursor:pointer;transition:all .2s;margin-bottom:7px;}
+.btn-s:hover{border-color:var(--blue)}
+
+/* BOTTOM NAV */
+.bottomnav{background:rgba(13,17,23,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);
+  display:flex;padding:6px 4px;padding-bottom:max(6px,env(safe-area-inset-bottom));
+  position:sticky;bottom:0;z-index:100;}
+.nav-b{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:5px 2px;border-radius:10px;border:none;background:transparent;
+  color:var(--muted);font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;}
+.nav-b.active{color:var(--accent)}
+.nav-b-icon{font-size:19px;line-height:1}
+.nav-b-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+
+/* TAB PAGES */
+.tab-pages>div{display:none}
+.tab-pages>div.active{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* MODALS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
+  z-index:200;display:none;align-items:flex-end;justify-content:center;}
+.overlay.open{display:flex;animation:fadeIn .2s ease}
+.sheet{width:100%;max-width:480px;max-height:90vh;background:var(--s1);
+  border:1px solid var(--border);border-radius:22px 22px 0 0;overflow-y:auto;position:relative;
+  animation:sheetUp .3s cubic-bezier(.34,1.56,.64,1);}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.sh{width:36px;height:3px;background:var(--border);border-radius:3px;margin:10px auto 14px}
+.sb{padding:0 20px 28px}
+.st{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:14px}
+.sc{position:absolute;top:13px;right:16px;width:30px;height:30px;border-radius:50%;
+  background:var(--s2);border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:center;cursor:pointer;font-size:14px;color:var(--muted);transition:all .2s;}
+.sc:hover{color:var(--text)}
+
+/* GAME UI */
+.gsbar{display:flex;justify-content:space-between;background:var(--s2);border-radius:11px;padding:10px 14px;margin-bottom:14px;font-size:12px;font-weight:700}
+.gword{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--blue);
+  text-align:center;padding:18px;background:var(--s2);border-radius:14px;margin-bottom:14px;}
+.gopts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.gopt{padding:12px;background:var(--s2);border:1.5px solid var(--border);
+  border-radius:11px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;
+  transition:all .2s;font-family:'Nunito',sans-serif;color:var(--text);}
+.gopt:hover{border-color:var(--blue)}
+.gopt.correct{border-color:var(--green);background:rgba(79,223,138,.12);color:var(--green)}
+.gopt.wrong{border-color:var(--red);background:rgba(248,81,73,.12);color:var(--red)}
+
+/* MATCH */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.mw{padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;transition:all .2s}
+.mw.selected{border-color:var(--blue);background:rgba(79,156,249,.1)}
+.mw.matched{border-color:var(--green);background:rgba(79,223,138,.1);color:var(--green);pointer-events:none}
+.mw.bad{border-color:var(--red);background:rgba(248,81,73,.1);color:var(--red)}
+
+/* ANAGRAM */
+.a-hint{font-size:16px;font-weight:800;color:var(--purple);text-align:center;margin-bottom:8px}
+.a-slots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:52px;padding:8px;background:var(--s2);border-radius:12px;margin-bottom:10px}
+.a-slot{width:40px;height:44px;background:var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;cursor:pointer;transition:all .2s}
+.a-slot:hover{background:rgba(248,81,73,.2)}
+.a-letters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:12px}
+.a-tile{width:40px;height:44px;background:var(--s2);border:1.5px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;cursor:pointer;transition:all .2s;user-select:none}
+.a-tile:hover{border-color:var(--blue);transform:translateY(-2px)}
+.a-tile.used{opacity:.25;pointer-events:none}
+
+/* GRAMMAR MODAL */
+.gr-rule{background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;margin-bottom:12px}
+.gr-eg{background:var(--s2);border-left:3px solid var(--purple);border-radius:0 9px 9px 0;padding:9px 13px;font-size:12px;font-style:italic;color:var(--purple);margin-bottom:7px}
+.qopt{padding:10px 13px;background:var(--s2);border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;font-family:'Nunito',sans-serif;color:var(--text);text-align:left;margin-bottom:6px;width:100%}
+.qopt:hover{border-color:var(--purple)}
+.qopt.correct{border-color:var(--green);background:rgba(79,223,138,.1);color:var(--green)}
+.qopt.wrong{border-color:var(--red);background:rgba(248,81,73,.1);color:var(--red)}
+
+/* SEARCH */
+.sinp{width:100%;padding:10px 13px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;font-size:13px;font-family:'Nunito',sans-serif;color:var(--text);outline:none;margin-bottom:10px}
+.sinp:focus{border-color:var(--blue)}
+.sinp::placeholder{color:var(--muted)}
+
+/* TOAST & XP */
+.toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:12px;font-weight:700;z-index:500;white-space:nowrap;animation:tIn .3s ease,tOut .3s 2.2s forwards;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes tOut{to{opacity:0}}
+.xp-pop{position:fixed;top:70px;right:14px;z-index:400;background:var(--gold);color:#080d14;padding:7px 14px;border-radius:20px;font-weight:800;font-size:13px;animation:xpIn .6s cubic-bezier(.34,1.56,.64,1) both,tOut .4s 1.6s forwards;pointer-events:none;}
+@keyframes xpIn{from{opacity:0;transform:translateY(16px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
+</style>
+</head>
+<body>
+
+<!-- WORDS DATABASE — JSON dan to'ldiring -->
+<script>
+// ============================================================
+// SO'ZLAR BAZASI
+// Har bir daraja uchun unit_1, unit_2, ... qo'shing
+// Format: {word, translation, definition, example, part_of_speech}
+// ============================================================
+const WORDS_DB = {
+  beginner: {
+    unit_1: [
+      {word:"afraid",translation:"qo'rqqan",definition:"feeling fear or anxiety",example:"The woman was afraid of what she saw.",part_of_speech:"adjective"},
+      {word:"angry",translation:"g'azablangan",definition:"feeling strong annoyance",example:"He was angry about the delay.",part_of_speech:"adjective"},
+      {word:"beautiful",translation:"go'zal",definition:"pleasing to the senses",example:"She wore a beautiful dress.",part_of_speech:"adjective"},
+      {word:"calm",translation:"tinch",definition:"not showing nervousness",example:"He remained calm in the crisis.",part_of_speech:"adjective"},
+      {word:"happy",translation:"xursand",definition:"feeling pleasure",example:"I am happy to help you.",part_of_speech:"adjective"},
+      {word:"kind",translation:"mehribon",definition:"having a friendly nature",example:"He was kind to strangers.",part_of_speech:"adjective"},
+      {word:"strong",translation:"kuchli",definition:"having great physical power",example:"She is very strong.",part_of_speech:"adjective"},
+      {word:"quiet",translation:"jim, sokin",definition:"making little or no noise",example:"Please be quiet in the library.",part_of_speech:"adjective"},
+    ],
+    unit_2: [
+      {word:"achieve",translation:"erishmoq",definition:"successfully bring about",example:"You can achieve your goals.",part_of_speech:"verb"},
+      {word:"believe",translation:"ishonmoq",definition:"accept as true",example:"I believe in your abilities.",part_of_speech:"verb"},
+      {word:"create",translation:"yaratmoq",definition:"bring into existence",example:"She loves to create art.",part_of_speech:"verb"},
+      {word:"decide",translation:"qaror qilmoq",definition:"come to a resolution",example:"He decided to leave early.",part_of_speech:"verb"},
+      {word:"explore",translation:"kashf etmoq",definition:"investigate and discover",example:"Let's explore the city.",part_of_speech:"verb"},
+      {word:"forget",translation:"unutmoq",definition:"fail to remember",example:"Don't forget to call me.",part_of_speech:"verb"},
+      {word:"help",translation:"yordam bermoq",definition:"make it easier for someone",example:"Can you help me please?",part_of_speech:"verb"},
+      {word:"imagine",translation:"tasavvur qilmoq",definition:"form a mental image",example:"Imagine a perfect world.",part_of_speech:"verb"},
+    ],
+    unit_3: [
+      {word:"freedom",translation:"ozodlik",definition:"the power to act as one wants",example:"Freedom is very important.",part_of_speech:"noun"},
+      {word:"knowledge",translation:"bilim",definition:"facts and skills acquired",example:"Knowledge is power.",part_of_speech:"noun"},
+      {word:"success",translation:"muvaffaqiyat",definition:"achievement of aim",example:"Hard work leads to success.",part_of_speech:"noun"},
+      {word:"challenge",translation:"qiyinchilik",definition:"a difficult task",example:"Every challenge makes us stronger.",part_of_speech:"noun"},
+      {word:"family",translation:"oila",definition:"a group of related people",example:"My family is very supportive.",part_of_speech:"noun"},
+      {word:"friend",translation:"do'st",definition:"a person you like and trust",example:"She is my best friend.",part_of_speech:"noun"},
+      {word:"journey",translation:"sayohat",definition:"an act of traveling",example:"Life is a journey.",part_of_speech:"noun"},
+      {word:"music",translation:"musiqa",definition:"vocal or instrumental sound",example:"I love listening to music.",part_of_speech:"noun"},
+    ],
+  },
+  intermediate: {
+    unit_1: [
+      {word:"ambiguous",translation:"noaniq, ikki ma'noli",definition:"open to more than one interpretation",example:"The instructions were ambiguous.",part_of_speech:"adjective"},
+      {word:"competent",translation:"malakali",definition:"having the necessary ability",example:"She is a competent engineer.",part_of_speech:"adjective"},
+      {word:"diligent",translation:"mehnatsevar",definition:"having care in one's work",example:"He is a diligent student.",part_of_speech:"adjective"},
+      {word:"eloquent",translation:"notiq, chechan",definition:"fluent or persuasive in speaking",example:"She gave an eloquent speech.",part_of_speech:"adjective"},
+      {word:"flexible",translation:"moslashuvchan",definition:"able to change easily",example:"We need a flexible approach.",part_of_speech:"adjective"},
+      {word:"genuine",translation:"haqiqiy",definition:"truly what something is said to be",example:"This is a genuine concern.",part_of_speech:"adjective"},
+      {word:"innovative",translation:"yangilikchi",definition:"featuring new ideas",example:"They used an innovative method.",part_of_speech:"adjective"},
+      {word:"persistent",translation:"qat'iyatli",definition:"continuing firmly despite difficulty",example:"Be persistent in your efforts.",part_of_speech:"adjective"},
+    ],
+    unit_2: [
+      {word:"accomplish",translation:"amalga oshirmoq",definition:"achieve or complete successfully",example:"She accomplished her mission.",part_of_speech:"verb"},
+      {word:"analyze",translation:"tahlil qilmoq",definition:"examine in detail",example:"Let's analyze the data.",part_of_speech:"verb"},
+      {word:"collaborate",translation:"hamkorlik qilmoq",definition:"work jointly with others",example:"We need to collaborate on this.",part_of_speech:"verb"},
+      {word:"demonstrate",translation:"ko'rsatmoq",definition:"show or prove clearly",example:"He demonstrated the technique.",part_of_speech:"verb"},
+      {word:"evaluate",translation:"baholamoq",definition:"form an idea of the amount or quality",example:"We need to evaluate the results.",part_of_speech:"verb"},
+      {word:"negotiate",translation:"muzokaralar olib bormoq",definition:"try to reach an agreement",example:"They negotiated a better deal.",part_of_speech:"verb"},
+      {word:"prioritize",translation:"ustuvorlik bermoq",definition:"designate as most important",example:"Learn to prioritize your tasks.",part_of_speech:"verb"},
+      {word:"summarize",translation:"xulosa qilmoq",definition:"give a brief statement of main points",example:"Please summarize the article.",part_of_speech:"verb"},
+    ],
+  },
+  advanced: {
+    unit_1: [
+      {word:"ubiquitous",translation:"hamma joyda mavjud",definition:"present everywhere at the same time",example:"Smartphones have become ubiquitous.",part_of_speech:"adjective"},
+      {word:"pragmatic",translation:"amaliy, pragmatik",definition:"dealing with things sensibly and realistically",example:"Take a pragmatic approach.",part_of_speech:"adjective"},
+      {word:"meticulous",translation:"juda e'tiborli, puxta",definition:"showing great attention to detail",example:"She is meticulous in her work.",part_of_speech:"adjective"},
+      {word:"resilient",translation:"bardoshli, mustahkam",definition:"able to recover quickly from difficulties",example:"Children are incredibly resilient.",part_of_speech:"adjective"},
+      {word:"eloquence",translation:"notiqlik",definition:"fluent or persuasive speaking",example:"His eloquence impressed everyone.",part_of_speech:"noun"},
+      {word:"paradigm",translation:"namuna, paradigma",definition:"a typical example or pattern of something",example:"This is a new paradigm shift.",part_of_speech:"noun"},
+      {word:"phenomenon",translation:"hodisa, fenomen",definition:"a fact or situation that is observed to exist",example:"It was a natural phenomenon.",part_of_speech:"noun"},
+      {word:"scrutinize",translation:"sinchkovlik bilan tekshirmoq",definition:"examine or inspect closely",example:"They scrutinized every detail.",part_of_speech:"verb"},
+    ],
+    unit_2: [
+      {word:"amalgamate",translation:"birlashmoq, qo'shmoq",definition:"combine into a single unit",example:"The two companies amalgamated.",part_of_speech:"verb"},
+      {word:"corroborate",translation:"tasdiqlash",definition:"confirm or give support to",example:"Evidence corroborated his story.",part_of_speech:"verb"},
+      {word:"exacerbate",translation:"og'irlashtirmoq",definition:"make a problem worse",example:"Stress can exacerbate the condition.",part_of_speech:"verb"},
+      {word:"impeccable",translation:"nuqsonsiz, benuqson",definition:"in accordance with the highest standards",example:"Her work is impeccable.",part_of_speech:"adjective"},
+      {word:"juxtapose",translation:"yonma-yon qo'ymoq",definition:"place close together for contrast",example:"The author juxtaposes joy and sorrow.",part_of_speech:"verb"},
+      {word:"mitigate",translation:"yengillashtirmoq",definition:"make less severe or painful",example:"Steps taken to mitigate risk.",part_of_speech:"verb"},
+      {word:"perpetuate",translation:"davom ettirmoq",definition:"make something continue indefinitely",example:"Don't perpetuate stereotypes.",part_of_speech:"verb"},
+      {word:"verbose",translation:"so'zami, ko'p so'zli",definition:"using more words than needed",example:"His writing style is verbose.",part_of_speech:"adjective"},
+    ],
+  },
+};
+
+const GRAMMAR_DATA = [
+  {icon:"📌",title:"Present Simple",sub:"Odatiy harakatlar",
+    rule:"Odatiy yoki takrorlanuvchan harakatlar uchun.\n<b>Formula:</b> Subject + V1 (s/es)\n<b>Signal words:</b> always, usually, often, every day",
+    examples:["I <b>work</b> every day.","She <b>reads</b> books at night.","They <b>don't like</b> coffee."],
+    quiz:{q:"She ___ to school every day.",opts:["go","goes","going","gone"],ans:1}},
+  {icon:"⏳",title:"Present Continuous",sub:"Hozir bo'layotgan harakatlar",
+    rule:"Hozir yoki vaqtincha bo'layotgan harakatlar.\n<b>Formula:</b> am/is/are + V-ing\n<b>Signal words:</b> now, at the moment, currently",
+    examples:["I <b>am studying</b> English now.","She <b>is working</b> from home today."],
+    quiz:{q:"They ___ football at the moment.",opts:["play","plays","are playing","played"],ans:2}},
+  {icon:"📚",title:"Past Simple",sub:"Tugagan o'tgan zamon",
+    rule:"O'tmishda tugagan harakatlar.\n<b>Formula:</b> Subject + V2\n<b>Signal words:</b> yesterday, last week, ago",
+    examples:["She <b>visited</b> London last year.","He <b>didn't come</b> to the party."],
+    quiz:{q:"He ___ the book last night.",opts:["read","reads","reading","readed"],ans:0}},
+  {icon:"🔮",title:"Future Simple",sub:"Kelajak harakatlar",
+    rule:"Kelajakdagi qarorlar va bashoratlar.\n<b>Formula:</b> will + V1\n<b>Signal words:</b> tomorrow, next week, soon",
+    examples:["I <b>will call</b> you tomorrow.","She <b>won't forget</b> your birthday."],
+    quiz:{q:"I ___ visit you next week.",opts:["am","was","will","do"],ans:2}},
+  {icon:"🔄",title:"Present Perfect",sub:"Tajriba va natija",
+    rule:"O'tmishda bo'lgan, hozirga aloqasi bor harakatlar.\n<b>Formula:</b> have/has + V3\n<b>Signal words:</b> already, yet, ever, never, just",
+    examples:["I <b>have seen</b> that movie.","She <b>has finished</b> her homework."],
+    quiz:{q:"I ___ never been to Japan.",opts:["am","have","was","had"],ans:1}},
+  {icon:"📝",title:"Modal Verbs",sub:"Can, Must, Should",
+    rule:"Imkoniyat, majburiyat va maslahat bildiruvchi fe'llar.\n<b>can</b> = qila olmoq | <b>must</b> = majbur | <b>should</b> = kerak",
+    examples:["You <b>can</b> do it!","You <b>must</b> study harder.","You <b>should</b> sleep early."],
+    quiz:{q:"You ___ wear a seatbelt. It's the law.",opts:["should","can","must","might"],ans:2}},
+];
+
+// ===== USER STATE =====
+let U = JSON.parse(sessionStorage.getItem('ep_user') || 'null');
+if(!U){ window.location.href='register.html'; }
+
+let cardIdx=0, cardFlipped=false;
+let currentUnitWords=[];
+
+// ===== LEADERBOARD DATA =====
+const FAKE_LB=[
+  {name:"Nodira",xp:3420,av:"😺"},
+  {name:"Jasur",xp:2980,av:"🦊"},
+  {name:"Malika",xp:2450,av:"🐸"},
+  {name:"Akbar",xp:1890,av:"🤖"},
+  {name:"Zulfiya",xp:1420,av:"🐱"},
+];
+</script>
+
+<!-- APP HTML -->
+<div id="app">
+
+  <!-- TOPBAR -->
+  <div>
+    <div class="topbar">
+      <div class="tb-row">
+        <div class="tb-av" id="tb-av">🤖</div>
+        <div class="tb-info">
+          <div class="tb-name" id="tb-name">—</div>
+          <div class="tb-sub">
+            <span class="badge" id="tb-badge">—</span>
+            <span id="tb-xp">0 XP</span>
+          </div>
+        </div>
+        <div class="tb-right">
+          <div class="streak">🔥 <span id="tb-streak">1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="prog-bar-wrap">
+      <div class="prog-labels">
+        <span>O'rganilgan so'zlar</span>
+        <span id="prog-val">0 / 0</span>
+      </div>
+      <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- PAGES -->
+  <div class="tab-pages scroll-area">
+
+    <!-- HOME -->
+    <div id="tab-home" class="active">
+
+      <!-- UNIT SELECTOR -->
+      <div class="sec">
+        <div class="sec-hd">
+          <div class="sec-title">📚 Kunlik so'zlar</div>
+          <div class="sec-link" onclick="openModal('modal-words')">Barchasi →</div>
+        </div>
+        <div class="unit-row" id="unit-row"></div>
+
+        <!-- FLASHCARD -->
+        <div class="fc-outer">
+          <div class="fc" id="fc" onclick="flipCard()">
+            <div class="fc-face">
+              <div class="fc-pos" id="fc-pos">—</div>
+              <div class="fc-utag" id="fc-utag">—</div>
+              <div class="fc-word" id="fc-word">—</div>
+              <div class="fc-hint">👆 Bosib tarjimani ko'ring</div>
+            </div>
+            <div class="fc-face fc-back">
+              <div class="fc-pos" id="fc-pos2">—</div>
+              <div class="fc-trans" id="fc-trans">—</div>
+              <div class="fc-def" id="fc-def">—</div>
+              <div class="fc-eg" id="fc-eg">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-ctrl">
+          <div class="fc-nav">
+            <div class="fc-btn" onclick="prevCard()">‹</div>
+            <span class="fc-count" id="fc-count">1 / 8</span>
+            <div class="fc-btn" onclick="nextCard()">›</div>
+          </div>
+          <div class="audio-btn" onclick="speakWord()">🔊 Eshitish</div>
+        </div>
+      </div>
+
+      <!-- GAMES -->
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-title">🎮 O'yinlar</div></div>
+        <div class="games-grid">
+          <div class="game-card" onclick="openModal('modal-match')">
+            <div class="g-icon">🔗</div>
+            <div class="g-name">Word Match</div>
+            <div class="g-desc">Juftlashtir</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-anagram')">
+            <div class="g-icon">🔤</div>
+            <div class="g-name">Hidden Word</div>
+            <div class="g-desc">Harflarni joylashtir</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-quiz')">
+            <div class="g-icon">❓</div>
+            <div class="g-name">Quiz</div>
+            <div class="g-desc">To'g'risini tanlang</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRAMMAR -->
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-title">📖 Grammatika</div></div>
+        <div class="gr-list" id="gr-list"></div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div id="tab-progress">
+      <div class="sec">
+        <div class="sec-title" style="margin-bottom:12px">📊 Statistika</div>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-n" style="color:var(--blue)" id="st-words">0</div><div class="stat-l">So'zlar</div></div>
+          <div class="stat"><div class="stat-n" style="color:var(--gold)" id="st-streak">1</div><div class="stat-l">Streak🔥</div></div>
+          <div class="stat"><div class="stat-n" style="color:var(--al)" id="st-xp">0</div><div class="stat-l">XP ball</div></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-title">🏆 Reyting</div></div>
+        <div class="lb-list" id="lb-main"></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd">
+          <div class="sec-title">📝 O'rganilgan so'zlar</div>
+          <div class="sec-link" onclick="openModal('modal-words')">Barchasi</div>
+        </div>
+        <div id="recent-wl"></div>
+      </div>
+    </div>
+
+    <!-- BATTLE -->
+    <div id="tab-battle">
+      <div class="sec">
+        <div class="battle-hero">
+          <div class="bh-vs">1 vs 1</div>
+          <div class="bh-players">
+            <div class="bh-player">
+              <div class="bh-av" id="bh-me-av">🤖</div>
+              <div class="bh-pname" id="bh-me-name">Siz</div>
+              <div class="bh-score" id="bh-me-s">0</div>
+            </div>
+            <div style="font-size:28px">⚔️</div>
+            <div class="bh-player">
+              <div class="bh-av">🤖</div>
+              <div class="bh-pname">Raqib</div>
+              <div class="bh-score" id="bh-opp-s">0</div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-p" onclick="startBattle()">🎯 Jang boshlash</button>
+        <button class="btn-s" onclick="openModal('modal-lb')">🏆 Global reyting</button>
+        <div class="sec-title" style="margin:14px 0 10px">🏅 Natijalarim</div>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-n" style="color:var(--green)" id="bw">0</div><div class="stat-l">G'alaba</div></div>
+          <div class="stat"><div class="stat-n" style="color:var(--red)" id="bl">0</div><div class="stat-l">Mag'lubiyat</div></div>
+          <div class="stat"><div class="stat-n" style="color:var(--gold)" id="bxp">0</div><div class="stat-l">XP</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottomnav">
+    <button class="nav-b active" onclick="switchTab('home',this)"><span class="nav-b-icon">🏠</span><span class="nav-b-label">Bosh</span></button>
+    <button class="nav-b" onclick="switchTab('progress',this)"><span class="nav-b-icon">📊</span><span class="nav-b-label">Progress</span></button>
+    <button class="nav-b" onclick="switchTab('battle',this)"><span class="nav-b-icon">⚔️</span><span class="nav-b-label">1vs1</span></button>
+  </div>
+</div>
+
+<!-- MODALS -->
+<!-- WORDS LIST -->
+<div class="overlay" id="modal-words" onclick="closeModal(event,'modal-words')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-words')">✕</div>
+    <div class="sb">
+      <div class="st">📚 So'zlar ro'yxati</div>
+      <input type="text" class="sinp" placeholder="Qidirish..." oninput="filterWords(this.value)">
+      <div id="wl-items"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MATCH -->
+<div class="overlay" id="modal-match" onclick="closeModal(event,'modal-match')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-match')">✕</div>
+    <div class="sb">
+      <div class="st">🔗 Word Match</div>
+      <div class="gsbar">
+        <span>✅ <span id="ms-score">0</span></span>
+        <span>⏱ <span id="ms-time">30</span>s</span>
+        <span>🔄 <span id="ms-round">1</span>/5</span>
+      </div>
+      <div class="match-grid" id="mg"></div>
+      <div id="mr" style="text-align:center;margin-top:12px;font-size:13px;color:var(--muted);min-height:18px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ANAGRAM -->
+<div class="overlay" id="modal-anagram" onclick="closeModal(event,'modal-anagram')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-anagram')">✕</div>
+    <div class="sb">
+      <div class="st">🔤 Hidden Word</div>
+      <div class="gsbar">
+        <span>🎯 <span id="as-score">0</span></span>
+        <span>⏱ <span id="as-time">60</span>s</span>
+      </div>
+      <div class="a-hint" id="a-hint">—</div>
+      <div class="a-slots" id="a-slots"></div>
+      <div class="a-letters" id="a-letters"></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-s" style="flex:1;margin:0" onclick="angClear()">🔄 Tozalash</button>
+        <button class="btn-p" style="flex:1;margin:0" onclick="angCheck()">✓ Tekshirish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="overlay" id="modal-quiz" onclick="closeModal(event,'modal-quiz')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-quiz')">✕</div>
+    <div class="sb">
+      <div class="st">❓ Quiz</div>
+      <div class="gsbar">
+        <span>✅ <span id="qs-score">0</span></span>
+        <span>❌ <span id="qs-wrong">0</span></span>
+        <span>📝 <span id="qs-num">1</span>/10</span>
+      </div>
+      <div class="gword" id="qs-word">—</div>
+      <div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px">TARJIMANI TANLANG</div>
+      <div class="gopts" id="qs-opts"></div>
+      <div id="qs-res" style="margin-top:10px;text-align:center;font-size:13px;min-height:18px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- GRAMMAR -->
+<div class="overlay" id="modal-grammar" onclick="closeModal(event,'modal-grammar')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-grammar')">✕</div>
+    <div class="sb" id="gr-modal-body"></div>
+  </div>
+</div>
+
+<!-- BATTLE GAME -->
+<div class="overlay" id="modal-bg">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sb">
+      <div class="st" style="text-align:center">⚔️ 1vs1 Jang</div>
+      <div class="gsbar">
+        <span>Siz: <b id="bg-my" style="color:var(--blue)">0</b></span>
+        <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800" id="bg-time">30</span>
+        <span>Raqib: <b id="bg-opp" style="color:var(--red)">0</b></span>
+      </div>
+      <div class="gword" id="bg-word">—</div>
+      <div class="gopts" id="bg-opts"></div>
+      <div id="bg-res" style="margin-top:10px;text-align:center;font-size:14px;min-height:20px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD MODAL -->
+<div class="overlay" id="modal-lb" onclick="closeModal(event,'modal-lb')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-lb')">✕</div>
+    <div class="sb">
+      <div class="st">🏆 Global Reyting</div>
+      <div class="lb-list" id="lb-modal"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', ()=>{
+  if(!U){ window.location.href='register.html'; return; }
+  loadTopbar();
+  buildUnitPills();
+  loadUnit(U.currentUnit[U.level] || 1);
+  buildGrammarList();
+  buildLeaderboard();
+  buildBattleUI();
+  updateStats();
+});
+
+function loadTopbar(){
+  document.getElementById('tb-name').textContent = U.name;
+  const badge = document.getElementById('tb-badge');
+  badge.textContent = {beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'}[U.level];
+  badge.className = 'badge '+U.level;
+  document.getElementById('tb-xp').textContent = U.xp+' XP';
+  document.getElementById('tb-streak').textContent = U.streak;
+  if(U.avatarUrl){
+    const av = document.getElementById('tb-av');
+    av.innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+  }
+}
+
+// ===== UNIT SYSTEM =====
+function getUnits(level){
+  return Object.keys(WORDS_DB[level]||{}).map(k=>parseInt(k.replace('unit_',''))).sort((a,b)=>a-b);
+}
+function getUnitWords(level, unitNum){
+  return WORDS_DB[level]?.['unit_'+unitNum] || [];
+}
+function getAllWords(level){
+  const db = WORDS_DB[level]||{};
+  return Object.values(db).flat();
+}
+
+function buildUnitPills(){
+  const row = document.getElementById('unit-row');
+  row.innerHTML = '';
+  const units = getUnits(U.level);
+  const cur = U.currentUnit[U.level]||1;
+  units.forEach(n=>{
+    const el = document.createElement('div');
+    const done = n < cur;
+    el.className = 'unit-pill'+(n===cur?' active':done?' done':'');
+    el.textContent = (done?'✓ ':'')+`Unit ${n}`;
+    el.onclick = ()=>{
+      document.querySelectorAll('.unit-pill').forEach(p=>p.classList.remove('active'));
+      el.classList.add('active'); el.classList.remove('done');
+      loadUnit(n);
+    };
+    row.appendChild(el);
+  });
+}
+
+function loadUnit(n){
+  currentUnitWords = getUnitWords(U.level, n);
+  if(!currentUnitWords.length){ showToast('Bu unit hali bo\'sh'); return; }
+  cardIdx = 0; cardFlipped = false;
+  updateCard();
+}
+
+// ===== FLASHCARD =====
+function updateCard(){
+  if(!currentUnitWords.length) return;
+  const w = currentUnitWords[cardIdx];
+  const unitNum = U.currentUnit[U.level]||1;
+  document.getElementById('fc').classList.remove('flipped');
+  cardFlipped = false;
+  document.getElementById('fc-pos').textContent = w.part_of_speech;
+  document.getElementById('fc-pos2').textContent = w.part_of_speech;
+  document.getElementById('fc-utag').textContent = `Unit ${unitNum}`;
+  document.getElementById('fc-word').textContent = w.word;
+  document.getElementById('fc-trans').textContent = w.translation;
+  document.getElementById('fc-def').textContent = w.definition;
+  document.getElementById('fc-eg').textContent = `"${w.example}"`;
+  document.getElementById('fc-count').textContent = `${cardIdx+1} / ${currentUnitWords.length}`;
+  updateProgress();
+}
+function flipCard(){
+  cardFlipped = !cardFlipped;
+  document.getElementById('fc').classList.toggle('flipped', cardFlipped);
+  if(cardFlipped) learnWord(currentUnitWords[cardIdx]);
+}
+function nextCard(){
+  cardIdx = (cardIdx+1) % currentUnitWords.length;
+  updateCard();
+}
+function prevCard(){
+  cardIdx = (cardIdx-1+currentUnitWords.length) % currentUnitWords.length;
+  updateCard();
+}
+function speakWord(){
+  const w = currentUnitWords[cardIdx];
+  if(!w) return;
+  if('speechSynthesis' in window){
+    const u = new SpeechSynthesisUtterance(w.word);
+    u.lang='en-US'; speechSynthesis.speak(u);
+  }
+}
+function learnWord(w){
+  if(!U.learnedWords.find(x=>x.word===w.word)){
+    U.learnedWords.push(w);
+    addXP(5);
+    saveUser();
+    updateStats();
+  }
+}
+
+// ===== PROGRESS =====
+function updateProgress(){
+  const all = getAllWords(U.level);
+  const n = U.learnedWords.filter(w=> all.find(x=>x.word===w.word)).length;
+  const total = all.length;
+  document.getElementById('prog-val').textContent = `${n} / ${total}`;
+  document.getElementById('prog-fill').style.width = total ? (n/total*100)+'%' : '0%';
+}
+function updateStats(){
+  document.getElementById('st-words').textContent = U.learnedWords.length;
+  document.getElementById('st-streak').textContent = U.streak;
+  document.getElementById('st-xp').textContent = U.xp;
+  document.getElementById('tb-xp').textContent = U.xp+' XP';
+  buildRecentWords();
+  buildLeaderboard();
+  updateProgress();
+}
+function addXP(n){
+  U.xp += n;
+  showXP('+'+n+' XP');
+  saveUser();
+}
+function saveUser(){ sessionStorage.setItem('ep_user', JSON.stringify(U)); }
+function showXP(txt){
+  const el=document.createElement('div');el.className='xp-pop';el.textContent=txt;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),2100);
+}
+function showToast(msg){
+  const t=document.createElement('div');t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);setTimeout(()=>t.remove(),2600);
+}
+
+// ===== GRAMMAR =====
+function buildGrammarList(){
+  const list = document.getElementById('gr-list');
+  list.innerHTML='';
+  GRAMMAR_DATA.forEach((g,i)=>{
+    const el = document.createElement('div');
+    el.className='gr-item';
+    el.innerHTML=`<div class="gr-ico">${g.icon}</div>
+      <div class="gr-txt"><div class="gr-title">${g.title}</div><div class="gr-sub">${g.sub}</div></div>
+      <span style="color:var(--muted)">›</span>`;
+    el.onclick = ()=>openGrammar(i);
+    list.appendChild(el);
+  });
+}
+function openGrammar(i){
+  const g = GRAMMAR_DATA[i];
+  document.getElementById('gr-modal-body').innerHTML=`
+    <div class="st">${g.icon} ${g.title}</div>
+    <div class="gr-rule">${g.rule.replace(/\n/g,'<br>')}</div>
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">MISOLLAR</div>
+    ${g.examples.map(e=>`<div class="gr-eg">${e}</div>`).join('')}
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:12px 0 8px">MINI TEST</div>
+    <div style="background:var(--s2);border-radius:12px;padding:12px 14px;font-size:14px;font-weight:700;margin-bottom:10px">${g.quiz.q}</div>
+    <div id="gr-opts">
+      ${g.quiz.opts.map((o,idx)=>`<button class="qopt" onclick="answerGr(${idx},${g.quiz.ans},this)">${o}</button>`).join('')}
+    </div>
+  `;
+  openModal('modal-grammar');
+}
+function answerGr(idx,ans,el){
+  document.querySelectorAll('#gr-opts .qopt').forEach(o=>o.onclick=null);
+  if(idx===ans){el.classList.add('correct');addXP(10);showToast('✅ To\'g\'ri! +10 XP');}
+  else{el.classList.add('wrong');document.querySelectorAll('#gr-opts .qopt')[ans].classList.add('correct');showToast('❌ Noto\'g\'ri');}
+}
+
+// ===== LEADERBOARD =====
+function buildLeaderboard(){
+  const myEntry = {name:U.name, xp:U.xp, isMe:true, av:U.avatarUrl||'🤖'};
+  let lb = [...FAKE_LB.map(x=>({...x,isMe:false})), myEntry].sort((a,b)=>b.xp-a.xp);
+  ['lb-main','lb-modal'].forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.innerHTML='';
+    lb.slice(0,8).forEach((p,i)=>{
+      const rankColors=['#f5c542','#8b949e','#b08040'];
+      const medals=['🥇','🥈','🥉'];
+      const av = typeof p.av==='string'&&p.av.startsWith('http')||p.av?.startsWith('data')
+        ? `<img src="${p.av}" style="width:80%;height:80%;object-fit:contain">`
+        : (p.av||'🤖');
+      const div=document.createElement('div');
+      div.className='lb-row'+(p.isMe?' me':'');
+      div.innerHTML=`
+        <div class="lb-rank" style="color:${rankColors[i]||'var(--muted)'}">${i<3?medals[i]:i+1}</div>
+        <div class="lb-av">${av}</div>
+        <div class="lb-name">${p.name}${p.isMe?' (Siz)':''}</div>
+        <div class="lb-xp">${p.xp} XP</div>
+      `;
+      el.appendChild(div);
+    });
+  });
+}
+
+function buildRecentWords(){
+  const el=document.getElementById('recent-wl'); if(!el) return;
+  if(!U.learnedWords.length){el.innerHTML='<div style="color:var(--muted);font-size:13px">Hali so\'z o\'rganilmagan.</div>';return;}
+  el.innerHTML='';
+  U.learnedWords.slice(-5).reverse().forEach(w=>{
+    el.innerHTML+=`<div class="wl-item"><div><div class="wl-w">${w.word}</div><div class="wl-t">${w.translation}</div></div><div class="wl-p">${w.part_of_speech}</div></div>`;
+  });
+}
+
+// ===== WORD LIST MODAL =====
+function filterWords(q){
+  const all = getAllWords(U.level);
+  const items=document.getElementById('wl-items'); items.innerHTML='';
+  const filtered = q ? all.filter(w=>w.word.includes(q.toLowerCase())||w.translation.includes(q)) : all;
+  filtered.forEach(w=>{
+    items.innerHTML+=`<div class="wl-item"><div><div class="wl-w">${w.word}</div><div class="wl-t">${w.translation}</div></div><div class="wl-p">${w.part_of_speech}</div></div>`;
+  });
+}
+
+// ===== MATCH GAME =====
+let MS={sel:null,matched:0,score:0,round:1,timer:null,tval:30};
+function initMatch(){
+  MS={sel:null,matched:0,score:0,round:1,timer:null,tval:30};
+  document.getElementById('ms-score').textContent=0;
+  document.getElementById('ms-round').textContent=1;
+  buildMatchRound(); startMatchTimer();
+}
+function buildMatchRound(){
+  MS.sel=null;MS.matched=0;
+  const pool=shuffle([...getAllWords(U.level)]).slice(0,4);
+  const grid=document.getElementById('mg'); grid.innerHTML='';
+  const items=shuffle([
+    ...pool.map(w=>({text:w.word,match:w.word})),
+    ...pool.map(w=>({text:w.translation,match:w.word}))
+  ]);
+  items.forEach(item=>{
+    const el=document.createElement('div');
+    el.className='mw';el.textContent=item.text;el.dataset.match=item.match;
+    el.onclick=()=>selectMatch(el,item.match);
+    grid.appendChild(el);
+  });
+  document.getElementById('mr').textContent='So\'zlarni tarjimasi bilan juftlashtiring';
+}
+function selectMatch(el,match){
+  if(el.classList.contains('matched')) return;
+  if(!MS.sel){MS.sel={el,match};el.classList.add('selected');}
+  else{
+    if(MS.sel.el===el){MS.sel.el.classList.remove('selected');MS.sel=null;return;}
+    if(MS.sel.match===match){
+      el.classList.add('matched');MS.sel.el.classList.remove('selected');MS.sel.el.classList.add('matched');
+      MS.matched++;MS.score+=10;MS.sel=null;
+      document.getElementById('ms-score').textContent=MS.score;
+      if(MS.matched===4){
+        if(MS.round<5){MS.round++;document.getElementById('ms-round').textContent=MS.round;setTimeout(buildMatchRound,600);}
+        else{clearInterval(MS.timer);addXP(MS.score);document.getElementById('mr').textContent=`🎉 ${MS.score} ball! +${MS.score} XP`;}
+      }
+    } else {
+      el.classList.add('bad');MS.sel.el.classList.add('bad');
+      setTimeout(()=>{el.classList.remove('bad','selected');MS.sel.el.classList.remove('bad','selected');MS.sel=null;},700);
+    }
+  }
+}
+function startMatchTimer(){
+  MS.tval=30;clearInterval(MS.timer);
+  MS.timer=setInterval(()=>{
+    MS.tval--;document.getElementById('ms-time').textContent=MS.tval;
+    if(MS.tval<=0){clearInterval(MS.timer);document.getElementById('mr').textContent='⏱ Vaqt tugadi! '+MS.score+' ball';}
+  },1000);
+}
+
+// ===== ANAGRAM =====
+let AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null};
+function initAnagram(){
+  AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null};
+  document.getElementById('as-score').textContent=0;
+  buildAnagramRound();startAngTimer();
+}
+function buildAnagramRound(){
+  const pool = getAllWords(U.level).filter(w=>w.word.length>=3&&w.word.length<=8);
+  const w=pool[Math.floor(Math.random()*pool.length)];
+  AS.word=w.word;AS.answer=[];AS.usedIdx=[];
+  AS.letters=shuffle(w.word.split(''));
+  document.getElementById('a-hint').textContent=w.translation;
+  renderAngLetters();renderAngSlots();
+}
+function renderAngLetters(){
+  const c=document.getElementById('a-letters');c.innerHTML='';
+  AS.letters.forEach((l,i)=>{
+    const el=document.createElement('div');
+    el.className='a-tile'+(AS.usedIdx.includes(i)?' used':'');
+    el.textContent=l;
+    el.onclick=()=>{
+      if(AS.usedIdx.includes(i))return;
+      AS.usedIdx.push(i);AS.answer.push({char:l,idx:i});
+      renderAngLetters();renderAngSlots();
+    };
+    c.appendChild(el);
+  });
+}
+function renderAngSlots(){
+  const c=document.getElementById('a-slots');c.innerHTML='';
+  AS.word.split('').forEach((_,i)=>{
+    const el=document.createElement('div');el.className='a-slot';
+    if(AS.answer[i]){
+      el.textContent=AS.answer[i].char;
+      el.onclick=()=>{
+        const rem=AS.answer.splice(i,1)[0];
+        AS.usedIdx=AS.usedIdx.filter(x=>x!==rem.idx);
+        renderAngLetters();renderAngSlots();
+      };
+    }
+    c.appendChild(el);
+  });
+}
+function angClear(){AS.answer=[];AS.usedIdx=[];renderAngLetters();renderAngSlots();}
+function angCheck(){
+  const ans=AS.answer.map(x=>x.char).join('');
+  if(ans===AS.word){
+    AS.score+=20;document.getElementById('as-score').textContent=AS.score;
+    addXP(20);showToast('✅ To\'g\'ri! +20 XP');
+    setTimeout(buildAnagramRound,800);
+  } else {showToast('❌ Noto\'g\'ri, qaytadan!');angClear();}
+}
+function startAngTimer(){
+  let t=60;clearInterval(AS.timer);
+  AS.timer=setInterval(()=>{
+    t--;document.getElementById('as-time').textContent=t;
+    if(t<=0){clearInterval(AS.timer);showToast('⏱ Vaqt tugadi!');}
+  },1000);
+}
+
+// ===== QUIZ =====
+let QS={idx:0,score:0,wrong:0,answered:false};
+function initQuiz(){
+  QS={idx:0,score:0,wrong:0,answered:false};
+  document.getElementById('qs-score').textContent=0;
+  document.getElementById('qs-wrong').textContent=0;
+  buildQuizQ();
+}
+function buildQuizQ(){
+  if(QS.idx>=10){
+    addXP(QS.score*5);
+    document.getElementById('qs-word').textContent='🎉 Tugadi!';
+    document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/10 · +${QS.score*5} XP</div>`;
+    return;
+  }
+  QS.answered=false;
+  const pool=shuffle([...getAllWords(U.level)]);
+  const correct=pool[0];
+  const opts=shuffle([correct,...pool.slice(1,4)]);
+  document.getElementById('qs-word').textContent=correct.word;
+  document.getElementById('qs-num').textContent=`${QS.idx+1}/10`;
+  document.getElementById('qs-res').textContent='';
+  const c=document.getElementById('qs-opts');c.innerHTML='';
+  opts.forEach(o=>{
+    const el=document.createElement('div');el.className='gopt';el.textContent=o.translation;
+    el.onclick=()=>{
+      if(QS.answered)return;QS.answered=true;
+      if(o.word===correct.word){
+        el.classList.add('correct');QS.score++;
+        document.getElementById('qs-score').textContent=QS.score;
+        document.getElementById('qs-res').textContent='✅ To\'g\'ri!';
+      } else {
+        el.classList.add('wrong');QS.wrong++;
+        document.getElementById('qs-wrong').textContent=QS.wrong;
+        document.getElementById('qs-res').textContent='❌ Noto\'g\'ri';
+        c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
+      }
+      setTimeout(()=>{QS.idx++;buildQuizQ();},900);
+    };
+    c.appendChild(el);
+  });
+}
+
+// ===== BATTLE =====
+let BT={timer:null,myScore:0,oppScore:0,time:30,answered:false};
+function buildBattleUI(){
+  document.getElementById('bh-me-name').textContent = U.name;
+  if(U.avatarUrl){
+    document.getElementById('bh-me-av').innerHTML=`<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+  }
+  document.getElementById('bw').textContent=U.battleWins||0;
+  document.getElementById('bl').textContent=U.battleLosses||0;
+  document.getElementById('bxp').textContent=U.battleXP||0;
+}
+function startBattle(){
+  BT={timer:null,myScore:0,oppScore:0,time:30,answered:false};
+  document.getElementById('bg-my').textContent=0;
+  document.getElementById('bg-opp').textContent=0;
+  buildBattleQ();
+  openModal('modal-bg');
+  clearInterval(BT.timer);
+  BT.timer=setInterval(()=>{
+    BT.time--;document.getElementById('bg-time').textContent=BT.time;
+    if(Math.random()<0.13){BT.oppScore+=10;document.getElementById('bg-opp').textContent=BT.oppScore;}
+    if(BT.time<=0){clearInterval(BT.timer);endBattle();}
+  },1000);
+}
+function buildBattleQ(){
+  BT.answered=false;
+  const pool=shuffle([...getAllWords(U.level)]);
+  const correct=pool[0];
+  const opts=shuffle([correct,...pool.slice(1,3)]);
+  document.getElementById('bg-word').textContent=correct.word;
+  document.getElementById('bg-res').textContent='';
+  const c=document.getElementById('bg-opts');c.innerHTML='';
+  opts.forEach(o=>{
+    const el=document.createElement('div');el.className='gopt';el.textContent=o.translation;
+    el.onclick=()=>{
+      if(BT.answered)return;BT.answered=true;
+      if(o.word===correct.word){
+        el.classList.add('correct');BT.myScore+=10;
+        document.getElementById('bg-my').textContent=BT.myScore;
+        document.getElementById('bg-res').textContent='✅';
+      } else {
+        el.classList.add('wrong');
+        c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
+        document.getElementById('bg-res').textContent='❌';
+      }
+      setTimeout(()=>{if(BT.time>0)buildBattleQ();},700);
+    };
+    c.appendChild(el);
+  });
+}
+function endBattle(){
+  const won=BT.myScore>BT.oppScore;
+  if(won){U.battleWins=(U.battleWins||0)+1;addXP(50);showToast('🏆 G\'alaba! +50 XP');}
+  else{U.battleLosses=(U.battleLosses||0)+1;addXP(10);showToast('💪 Keyingisida yaxshiroq!');}
+  U.battleXP=(U.battleXP||0)+(won?50:10);
+  saveUser();
+  document.getElementById('bg-res').textContent=won?`🏆 G'ALABA! ${BT.myScore}:${BT.oppScore}`:`😞 ${BT.myScore}:${BT.oppScore}`;
+  document.getElementById('bg-opts').innerHTML=`<button class="btn-p" style="grid-column:1/-1" onclick="closeModal(null,'modal-bg');buildBattleUI();buildLeaderboard()">← Qaytish</button>`;
+  document.getElementById('bh-me-s').textContent=BT.myScore;
+  document.getElementById('bh-opp-s').textContent=BT.oppScore;
+}
+
+// ===== TABS =====
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-pages>div').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.nav-b').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='progress'){buildLeaderboard();buildRecentWords();updateStats();}
+}
+
+// ===== MODALS =====
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  if(id==='modal-match') initMatch();
+  if(id==='modal-anagram') initAnagram();
+  if(id==='modal-quiz') initQuiz();
+  if(id==='modal-words') filterWords('');
+  if(id==='modal-lb') buildLeaderboard();
+}
+function closeModal(e,id){
+  if(e && e.target!==document.getElementById(id)) return;
+  document.getElementById(id).classList.remove('open');
+  if(id==='modal-match') clearInterval(MS.timer);
+  if(id==='modal-anagram') clearInterval(AS.timer);
+  if(id==='modal-bg') clearInterval(BT.timer);
+}
+
+// ===== UTILS =====
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+</script>
+</body>
+</html>

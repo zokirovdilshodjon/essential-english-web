@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Essential English PRO — Ro'yxatdan o'tish</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;--s1:#161b27;--s2:#1c2438;--s3:#232d42;
+  --border:#2a3550;--text:#e8f0fe;--muted:#7a8fad;
+  --accent:#7c5af6;--al:#a07cf8;
+  --g:#4fdf8a;--b:#4f9cf9;--p:#c084fc;--gold:#f5c542;
+}
+html,body{height:100%;min-height:100%}
+body{
+  background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:16px;
+  background-image:
+    radial-gradient(ellipse 70% 60% at 15% 10%,rgba(124,90,246,.15) 0,transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 90%,rgba(79,156,249,.1) 0,transparent 60%);
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(124,90,246,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
+  background-size:36px 36px;
+}
+.outer{
+  width:100%;max-width:960px;background:var(--s1);
+  border:1px solid var(--border);border-radius:28px;
+  box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,90,246,.08) inset;
+  display:grid;grid-template-columns:280px 1fr;
+  min-height:560px;overflow:hidden;
+  animation:rise .65s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* LEFT */
+.left{
+  background:rgba(10,14,24,.6);border-right:1px solid var(--border);
+  padding:32px 24px;display:flex;flex-direction:column;align-items:center;
+}
+.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:32px}
+.logo-icon{
+  width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),#5b3fd4);
+  display:flex;align-items:center;justify-content:center;font-size:19px;
+  box-shadow:0 4px 14px rgba(124,90,246,.4);
+}
+.logo-txt{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.av-ring-wrap{position:relative;width:160px;height:160px;margin-bottom:18px}
+.av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.av-circle{
+  width:160px;height:160px;border-radius:50%;
+  background:var(--s2);border:2px solid var(--border);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  font-size:70px;position:relative;z-index:1;
+}
+.av-circle img{width:80%;height:80%;object-fit:contain;display:none}
+.av-upload-badge{
+  position:absolute;bottom:6px;right:6px;z-index:2;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--s1);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
+}
+.av-upload-badge:hover{transform:scale(1.1)}
+.prev-name{
+  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;
+  text-align:center;margin-bottom:8px;min-height:28px;
+}
+.prev-tag{
+  font-size:12px;color:var(--al);
+  background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.25);
+  padding:4px 14px;border-radius:20px;margin-bottom:20px;
+}
+.divider{width:100%;height:1px;background:var(--border);margin-bottom:16px}
+.left-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+
+/* RIGHT */
+.right{padding:36px 36px 32px;display:flex;flex-direction:column}
+.right h1{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:8px}
+.right>p{font-size:14px;color:var(--muted);margin-bottom:26px}
+.lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:block}
+.inp-wrap{position:relative;margin-bottom:6px}
+.inp-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px;pointer-events:none}
+.inp{
+  width:100%;padding:14px 14px 14px 44px;
+  background:var(--s2);border:1.5px solid var(--border);
+  border-radius:14px;font-size:15px;font-family:'Nunito',sans-serif;
+  color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.inp::placeholder{color:rgba(122,143,173,.5)}
+.inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.15)}
+.inp.err{border-color:#f85149}
+.err-txt{font-size:12px;color:#f85149;margin-bottom:16px;padding-left:4px;display:none}
+.err-txt.show{display:block}
+.av-sec{margin-bottom:22px;margin-top:4px}
+.tabs{display:flex;gap:7px;margin-bottom:11px}
+.tab{
+  padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;
+  background:var(--s2);border:1.5px solid var(--border);color:var(--muted);
+  cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;
+}
+.tab:hover{border-color:var(--al)}
+.tab.active{background:rgba(124,90,246,.15);border-color:var(--accent);color:white}
+.av-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;
+  max-height:220px;overflow-y:auto;padding:2px;
+}
+.av-grid::-webkit-scrollbar{width:4px}
+.av-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.av-item{
+  aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;overflow:hidden;
+}
+.av-item:hover{border-color:var(--al);transform:scale(1.06)}
+.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.25);background:rgba(124,90,246,.1)}
+.av-item img{width:36px;height:36px}
+.level-row{display:flex;gap:9px;margin-bottom:26px;margin-top:4px}
+.lv{flex:1;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .2s;text-align:center}
+.lv-em{font-size:24px;display:block;margin-bottom:5px}
+.lv-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
+.lv-hint{font-size:10px;color:var(--muted);line-height:1.3}
+.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}
+.lv.sel-b .lv-name{color:var(--g)}
+.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}
+.lv.sel-i .lv-name{color:var(--b)}
+.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}
+.lv.sel-a .lv-name{color:var(--p)}
+.submit{
+  width:100%;padding:16px;border:none;border-radius:14px;margin-top:auto;
+  background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
+  color:white;font-size:17px;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;
+  box-shadow:0 8px 28px rgba(124,90,246,.35);position:relative;overflow:hidden;
+}
+.submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent)}
+.submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
+.submit:active{transform:scale(.98)}
+
+@media(max-width:660px){
+  body{padding:0;align-items:flex-end}
+  .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
+  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:16px 20px;gap:14px}
+  .logo-row,.divider,.left-hint{display:none}
+  .av-ring-wrap{width:76px;height:76px;margin-bottom:0;flex-shrink:0}
+  .av-circle{width:76px;height:76px;font-size:34px}
+  .av-ring-svg{inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px)}
+  .av-upload-badge{width:24px;height:24px;font-size:11px;bottom:1px;right:1px;border-width:2px}
+  .prev-name{font-size:16px;text-align:left;margin-bottom:3px;min-height:auto}
+  .prev-tag{font-size:10px;margin-bottom:0}
+  .right{padding:20px 16px 24px}
+  .right h1{font-size:24px}
+  .av-grid{grid-template-columns:repeat(5,1fr);max-height:160px}
+  .tabs .tab{padding:7px 11px;font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="outer">
+
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <div class="logo-row">
+      <div class="logo-icon">🧠</div>
+      <span class="logo-txt">Essential English</span>
+    </div>
+    <div class="av-ring-wrap">
+      <svg class="av-ring-svg" viewBox="0 0 176 176">
+        <defs>
+          <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7c5af6"/>
+            <stop offset="50%" stop-color="#c084fc"/>
+            <stop offset="100%" stop-color="#4f9cf9"/>
+          </linearGradient>
+        </defs>
+        <circle cx="88" cy="88" r="84" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="340 180"/>
+      </svg>
+      <div class="av-circle" id="av-circle">
+        <img id="av-img" src="" alt="">
+        <span id="av-emoji">🤖</span>
+      </div>
+      <label class="av-upload-badge" for="file-up">📷</label>
+      <input type="file" id="file-up" accept="image/*" style="display:none">
+    </div>
+    <div class="prev-name" id="prev-name">Sizning ismingiz</div>
+    <div class="prev-tag">Essential English PRO</div>
+    <div class="divider"></div>
+    <div class="left-hint">Profilingizni yarating va<br>o'rganishni boshlang 🚀</div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right">
+    <h1>Profil yaratish</h1>
+    <p>Nickname kiriting va avatarni tanlang yoki yuklang</p>
+
+    <span class="lbl">Nickname</span>
+    <div class="inp-wrap">
+      <span class="inp-ico">👤</span>
+      <input type="text" id="inp-name" class="inp" placeholder="Ismingizni kiriting..." autocomplete="off" maxlength="20">
+    </div>
+    <div class="err-txt" id="err-name">Iltimos, ismingizni kiriting!</div>
+
+    <div class="av-sec">
+      <span class="lbl">Avatar tanlash</span>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
+        <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
+        <button class="tab" onclick="switchTab('animals',this)">🐱 Hayvonlar</button>
+      </div>
+      <div class="av-grid" id="av-grid"></div>
+    </div>
+
+    <span class="lbl">Darajangiz</span>
+    <div class="level-row">
+      <div class="lv sel-b" data-lv="beginner" onclick="pickLevel(this)">
+        <span class="lv-em">🌱</span>
+        <span class="lv-name">Beginner</span>
+        <span class="lv-hint">1–2 kitob</span>
+      </div>
+      <div class="lv" data-lv="intermediate" onclick="pickLevel(this)">
+        <span class="lv-em">🔥</span>
+        <span class="lv-name">Intermediate</span>
+        <span class="lv-hint">3–4 kitob</span>
+      </div>
+      <div class="lv" data-lv="advanced" onclick="pickLevel(this)">
+        <span class="lv-em">⚡</span>
+        <span class="lv-name">Advanced</span>
+        <span class="lv-hint">5–6 kitob</span>
+      </div>
+    </div>
+
+    <button class="submit" onclick="goToApp()">Profilni yaratish →</button>
+  </div>
+</div>
+
+<script>
+const SEEDS={
+  bots:['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
+  avatars:['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
+  animals:['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
+};
+const STYLES={bots:'bottts-neutral',avatars:'adventurer-neutral',animals:'thumbs'};
+let state={avatarUrl:'',level:'beginner'};
+let selItem=null;
+
+function buildGrid(tab){
+  const grid=document.getElementById('av-grid');
+  grid.innerHTML='';selItem=null;
+  SEEDS[tab].forEach(seed=>{
+    const url=`https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
+    const el=document.createElement('div');
+    el.className='av-item';
+    el.innerHTML=`<img src="${url}" loading="lazy">`;
+    el.onclick=()=>{
+      if(selItem)selItem.classList.remove('sel');
+      el.classList.add('sel');selItem=el;
+      state.avatarUrl=url;
+      showPreview(url);
+    };
+    grid.appendChild(el);
+  });
+}
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');buildGrid(tab);
+}
+function showPreview(url){
+  const img=document.getElementById('av-img');
+  img.src=url;img.style.display='block';
+  document.getElementById('av-emoji').style.display='none';
+}
+document.getElementById('file-up').addEventListener('change',e=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    state.avatarUrl=ev.target.result;
+    showPreview(ev.target.result);
+    if(selItem){selItem.classList.remove('sel');selItem=null;}
+  };
+  r.readAsDataURL(f);
+});
+document.getElementById('inp-name').addEventListener('input',e=>{
+  const v=e.target.value.trim();
+  document.getElementById('prev-name').textContent=v||'Sizning ismingiz';
+});
+function pickLevel(el){
+  document.querySelectorAll('.lv').forEach(b=>b.className='lv');
+  const lv=el.dataset.lv;state.level=lv;
+  el.classList.add(lv==='beginner'?'sel-b':lv==='intermediate'?'sel-i':'sel-a');
+}
+function goToApp(){
+  const name=document.getElementById('inp-name').value.trim();
+  if(!name){
+    document.getElementById('inp-name').classList.add('err');
+    document.getElementById('err-name').classList.add('show');
+    document.getElementById('inp-name').focus();return;
+  }
+  document.getElementById('inp-name').classList.remove('err');
+  document.getElementById('err-name').classList.remove('show');
+  sessionStorage.setItem('ep_user',JSON.stringify({
+    name,level:state.level,avatarUrl:state.avatarUrl,
+    xp:0,streak:1,learnedWords:[],
+    unitProgress:{beginner:0,intermediate:0,advanced:0},
+    currentUnit:{beginner:1,intermediate:1,advanced:1},
+    battleWins:0,battleLosses:0,
+    lastLogin:new Date().toDateString(),
+  }));
+  window.location.href='app.html';
+}
+buildGrid('bots');
+</script>
+</body>
+</html>
