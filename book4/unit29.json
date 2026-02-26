@@ -1,0 +1,146 @@
+{
+  "unit": "29",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "automobile",
+      "translation": "avtomobil",
+      "definition": "An automobile is another word for a car.",
+      "example": "The first automobiles were very slow compared to modern cars.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "candidate",
+      "translation": "nomzod",
+      "definition": "A candidate is a person who is competing for a job or position.",
+      "example": "There are three candidates running for mayor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "confidential",
+      "translation": "maxfiy",
+      "definition": "If something is confidential, it is meant to be kept secret.",
+      "example": "The company’s financial records are confidential.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "corporate",
+      "translation": "korporativ",
+      "definition": "Corporate relates to a large business or corporation.",
+      "example": "He works in the corporate headquarters of the bank.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "enhance",
+      "translation": "yaxshilamoq, oshirmoq",
+      "definition": "To enhance something is to improve its quality or value.",
+      "example": "The new lights will enhance the beauty of the garden.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "era",
+      "translation": "era, davr",
+      "definition": "An era is a long period of history with a particular feature.",
+      "example": "The Victorian era was a time of great change in Britain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "guideline",
+      "translation": "qo'llanma, ko'rsatma",
+      "definition": "A guideline is a rule or instruction about how to do something.",
+      "example": "The teacher gave us some guidelines for the essay.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "incorporate",
+      "translation": "o'z ichiga olmoq",
+      "definition": "To incorporate is to include something as part of a whole.",
+      "example": "The plan incorporates all of the students' suggestions.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "interact",
+      "translation": "o'zaro muloqot qilmoq",
+      "definition": "To interact is to communicate or work with someone else.",
+      "example": "The children enjoyed interacting with the animals at the zoo.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "interval",
+      "translation": "interval, tanaffus",
+      "definition": "An interval is a period of time between two events.",
+      "example": "There was a short interval between the two acts of the play.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mobile",
+      "translation": "mobil, harakatchan",
+      "definition": "If something is mobile, it can be moved easily.",
+      "example": "Mobile homes can be moved from one place to another.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "modify",
+      "translation": "o'zgartirmoq",
+      "definition": "To modify something is to change it slightly.",
+      "example": "He modified his car to make it go faster.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "parallel",
+      "translation": "parallel",
+      "definition": "Parallel lines are the same distance apart at every point.",
+      "example": "The two roads run parallel to each other.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "phenomenon",
+      "translation": "fenomen, hodisa",
+      "definition": "A phenomenon is something that happens and is unusual.",
+      "example": "The Northern Lights are a natural phenomenon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pollute",
+      "translation": "ifloslantirmoq",
+      "definition": "To pollute is to make air, water, or land dirty.",
+      "example": "Factories can pollute the air with smoke.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ridicule",
+      "translation": "masxara qilmoq",
+      "definition": "To ridicule is to make fun of someone in a mean way.",
+      "example": "The other children ridiculed him for his old shoes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "solar",
+      "translation": "quyoshga oid",
+      "definition": "Solar relates to the sun.",
+      "example": "Solar energy is a clean way to produce electricity.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "territory",
+      "translation": "hudud",
+      "definition": "A territory is an area of land that belongs to a country.",
+      "example": "The island is a territory of the United States.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tournament",
+      "translation": "turnir",
+      "definition": "A tournament is a competition involving many players.",
+      "example": "He won the local tennis tournament.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "transportation",
+      "translation": "transport",
+      "definition": "Transportation is the activity of moving people or goods.",
+      "example": "Public transportation is very efficient in this city.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

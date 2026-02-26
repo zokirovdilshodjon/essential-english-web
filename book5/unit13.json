@@ -1,0 +1,146 @@
+{
+  "unit": "13",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "brook",
+      "translation": "ariqcha",
+      "definition": "A brook is a small stream.",
+      "example": "Water flows down several brooks on the mountain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cater",
+      "translation": "xizmat ko'rsatmoq",
+      "definition": "To cater to someone means to provide them with all the things needed or wanted.",
+      "example": "The nurse catered to the sick man's needs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "considerate",
+      "translation": "e'tiborli",
+      "definition": "When someone is considerate, they pay attention to the needs of others.",
+      "example": "The considerate boy gave a present to his girlfriend.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "consumption",
+      "translation": "iste'mol",
+      "definition": "The consumption of food or drink is the act of eating or drinking it.",
+      "example": "These apples are too rotten for consumption.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "criteria",
+      "translation": "mezonlar",
+      "definition": "Criteria are the standards used to judge or decide something.",
+      "example": "The school has high criteria for accepting new students.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crust",
+      "translation": "nonning cheti/po'stlog'i",
+      "definition": "A crust is the hard outer part of something, such as bread.",
+      "example": "He always cuts the crust off his sandwiches.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "degrade",
+      "translation": "darajasini tushirmoq",
+      "definition": "To degrade someone means to cause people to feel they are no longer worthy of respect.",
+      "example": "The boss degraded his employees by shouting at them in public.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "entitle",
+      "translation": "huquq bermoq",
+      "definition": "To entitle someone to something means to give them the right to have or do it.",
+      "example": "His good performance entitled him to a promotion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "escort",
+      "translation": "hamrohlik qilmoq",
+      "definition": "To escort someone means to go with them as a guard or companion.",
+      "example": "The police escorted the president to the airport.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "external",
+      "translation": "tashqi",
+      "definition": "When something is external, it is on the outside or comes from the outside.",
+      "example": "The external walls of the house were painted white.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "facility",
+      "translation": "muassasa/qulaylik",
+      "definition": "A facility is a building or service that is provided for a particular purpose.",
+      "example": "The new sports facility has a swimming pool and a gym.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "faculty",
+      "translation": "fakultet/qobiliyat",
+      "definition": "A faculty is a mental or physical ability; it also refers to a group of university teachers.",
+      "example": "She has a great faculty for learning languages.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "heap",
+      "translation": "uyum",
+      "definition": "A heap is a large pile of things.",
+      "example": "There was a heap of clothes on the floor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hemisphere",
+      "translation": "yarim shar",
+      "definition": "A hemisphere is one half of the Earth or a solid sphere.",
+      "example": "The Northern Hemisphere is warmer in the summer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hound",
+      "translation": "ov iti",
+      "definition": "A hound is a type of dog that is used for hunting.",
+      "example": "The hounds chased the fox through the woods.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "impersonal",
+      "translation": "shaxssiz",
+      "definition": "When something is impersonal, it lacks human feelings or warmth.",
+      "example": "The hotel room was clean but very impersonal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ornament",
+      "translation": "bezak",
+      "definition": "An ornament is an object used for decoration.",
+      "example": "She put some Christmas ornaments on the tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pedestrian",
+      "translation": "piyoda",
+      "definition": "A pedestrian is a person who is walking in a street or road.",
+      "example": "The car stopped to let the pedestrians cross the road.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sanctuary",
+      "translation": "qo'riqxona/boshpana",
+      "definition": "A sanctuary is a place where people or animals are safe.",
+      "example": "The bird sanctuary protects many rare species of birds.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spectator",
+      "translation": "tomoshabin",
+      "definition": "A spectator is a person who watches a sports event.",
+      "example": "Thousands of spectators came to watch the football match.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

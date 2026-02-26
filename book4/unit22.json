@@ -1,0 +1,146 @@
+{
+  "unit": "22",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "charity",
+      "translation": "xayriya",
+      "definition": "Charity is an act of giving help, usually money, to those who need it.",
+      "example": "Thanks to his friends’ charity, he had enough money to pay the rent.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "commerce",
+      "translation": "tijorat",
+      "definition": "Commerce is the activity of buying and selling things.",
+      "example": "The new shopping mall increased the commerce in that section of town.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "condemn",
+      "translation": "hukm qilmoq, ayblamoq",
+      "definition": "To condemn someone means to give them a specific punishment.",
+      "example": "The judge condemned the criminal to five years in prison.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cozy",
+      "translation": "shinam, qulay",
+      "definition": "If something is cozy, then it is comfortable, warm, and relaxing.",
+      "example": "The thick blanket made the bed very cozy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "deplete",
+      "translation": "kamaytirmoq, tugatmoq",
+      "definition": "To deplete an amount of something means to use up a lot of it.",
+      "example": "The big harvest depleted the soil of its nutrients.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "economy",
+      "translation": "iqtisodiyot",
+      "definition": "An economy is the system by which a country’s money and goods are produced and used.",
+      "example": "The country’s economy is growing very slowly.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "empire",
+      "translation": "imperiya",
+      "definition": "An empire is a large group of countries or states ruled by a single leader.",
+      "example": "The Roman Empire was one of the largest in history.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "goods",
+      "translation": "tovar, mol",
+      "definition": "Goods are items that are bought and sold.",
+      "example": "The store sells many different types of goods.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "heed",
+      "translation": "diqqat qilmoq, amal qilmoq",
+      "definition": "To heed something means to pay attention to it and follow it.",
+      "example": "Heed my advice and don’t go out in the storm.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hitchhike",
+      "translation": "yo'lovchi mashinada tekinga yurmoq",
+      "definition": "To hitchhike is to travel by asking for rides from passing vehicles.",
+      "example": "He decided to hitchhike across the country.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mock",
+      "translation": "masxara qilmoq",
+      "definition": "To mock someone is to tease them or make fun of them.",
+      "example": "The other children mocked him because of his glasses.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "neutral",
+      "translation": "neytral, xolis",
+      "definition": "When someone is neutral, they do not support either side in an argument.",
+      "example": "The judge must remain neutral during the trial.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "persecute",
+      "translation": "tazyiq o'tkazmoq",
+      "definition": "To persecute someone is to treat them badly because of their race or beliefs.",
+      "example": "The group was persecuted for their religious beliefs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pity",
+      "translation": "achinish, rahm",
+      "definition": "Pity is a feeling of sadness for someone who is in trouble.",
+      "example": "I felt a lot of pity for the homeless man.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reduce",
+      "translation": "kamaytirmoq",
+      "definition": "To reduce something means to make it smaller in size or amount.",
+      "example": "The company wants to reduce its expenses.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "scribe",
+      "translation": "kotib, xattot",
+      "definition": "A scribe is a person whose job was to copy documents in the past.",
+      "example": "The scribe carefully wrote the king’s decree on the scroll.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "temper",
+      "translation": "fe'l-atvor, jahl",
+      "definition": "Temper is the way you feel or behave, especially when you are angry.",
+      "example": "He has a very short temper and gets angry easily.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "throne",
+      "translation": "taxt",
+      "definition": "A throne is a special chair used by a king or queen.",
+      "example": "The king sat on his throne and addressed his people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "unity",
+      "translation": "birlik, birdamlik",
+      "definition": "Unity is the state of being joined together as a whole.",
+      "example": "The people showed unity in their fight against the invaders.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "victor",
+      "translation": "g'olib",
+      "definition": "A victor is the person who wins a competition or battle.",
+      "example": "The victor of the race received a gold medal.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

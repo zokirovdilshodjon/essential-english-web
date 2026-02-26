@@ -1,0 +1,146 @@
+{
+  "unit": "17",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "civilization",
+      "translation": "sivilizatsiya",
+      "definition": "An organized group of humans that have culture and government.",
+      "example": "Most early civilizations in Central America didn’t use metal weapons.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convenient",
+      "translation": "qulay",
+      "definition": "When something is easy to do and does not take a lot of work.",
+      "example": "The bus is a convenient way to get to school.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "den",
+      "translation": "uya, ini",
+      "definition": "A living space for some types of animals, such as lions.",
+      "example": "The mother lion left her babies in the den.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dew",
+      "translation": "shabnam",
+      "definition": "The drops of water that form on the ground in the morning.",
+      "example": "The grass was wet with dew.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "drastic",
+      "translation": "keskin, jiddiy",
+      "definition": "When something is extreme or very strong.",
+      "example": "The company made a drastic change to its policy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "exit",
+      "translation": "chiqish",
+      "definition": "A way to leave a place.",
+      "example": "The emergency exit is at the back of the building.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flock",
+      "translation": "poda, galla",
+      "definition": "A group of animals, such as birds or sheep.",
+      "example": "A large flock of birds flew over the field.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fold",
+      "translation": "taxlamoq, bukmoq",
+      "definition": "To bend something so that one part covers another.",
+      "example": "I folded the letter and put it in an envelope.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lid",
+      "translation": "qopqoq",
+      "definition": "A cover for a container.",
+      "example": "He put the lid on the jar.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "loom",
+      "translation": "dahshatli bo'lib ko'rinmoq",
+      "definition": "To seem large and scary.",
+      "example": "The dark clouds loomed over the city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mighty",
+      "translation": "qudratli, ulkan",
+      "definition": "When something is very strong or large.",
+      "example": "The mighty oak tree stood in the middle of the field.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mushroom",
+      "translation": "qo'ziqorin",
+      "definition": "A type of fungus that is shaped like an umbrella.",
+      "example": "I found some mushrooms growing in the woods.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "native",
+      "translation": "mahalliy",
+      "definition": "When someone was born in a particular place.",
+      "example": "She is a native of New York City.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "poison",
+      "translation": "zahar",
+      "definition": "A substance that can cause sickness or death.",
+      "example": "The berries were filled with poison.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reed",
+      "translation": "qamish",
+      "definition": "A tall, thin plant that grows near water.",
+      "example": "The reeds swayed in the wind.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shield",
+      "translation": "qalqon",
+      "definition": "A piece of armor used for protection.",
+      "example": "The soldier used a shield to protect himself.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stormy",
+      "translation": "bo'ronli",
+      "definition": "When there is a lot of rain and wind.",
+      "example": "The stormy weather made it difficult to drive.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sway",
+      "translation": "tebranmoq",
+      "definition": "To move slowly from side to side.",
+      "example": "The trees swayed in the breeze.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "urban",
+      "translation": "shaharli",
+      "definition": "Related to a city.",
+      "example": "Living in an urban area can be very loud.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "wade",
+      "translation": "suv kechib o'tmoq",
+      "definition": "To walk through water.",
+      "example": "We waded across the shallow stream.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

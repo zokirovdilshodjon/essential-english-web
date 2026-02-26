@@ -1,0 +1,146 @@
+{
+  "unit": "23",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accurate",
+      "translation": "aniq, to'g'ri",
+      "definition": "If something is accurate, it is completely correct.",
+      "example": "The story in the newspaper wasn’t very accurate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "analyze",
+      "translation": "tahlil qilmoq",
+      "definition": "To analyze something is to study it carefully.",
+      "example": "The scientist will analyze the blood sample.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "asteroid",
+      "translation": "asteroid",
+      "definition": "An asteroid is a giant rock from outer space.",
+      "example": "In 1908, a giant asteroid hit Siberia.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "controversy",
+      "translation": "munozara, bahs",
+      "definition": "A controversy is a dispute about something that affects many people.",
+      "example": "There has been a lot of controversy over the judge’s decision.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "evolve",
+      "translation": "rivojlanmoq, evolyutsiya",
+      "definition": "To evolve is to change and develop over a long period of time.",
+      "example": "Birds evolved from a certain type of dinosaur.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "factor",
+      "translation": "omil",
+      "definition": "A factor is something that affects a situation or result.",
+      "example": "Weather is a major factor in our decision to go on a picnic.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "genetic",
+      "translation": "genetik",
+      "definition": "If something is genetic, it is related to genes or heredity.",
+      "example": "The disease is genetic and can be passed to children.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "genome",
+      "translation": "genom",
+      "definition": "A genome is the complete set of genetic material in a living thing.",
+      "example": "Scientists have mapped the entire human genome.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "identical",
+      "translation": "bir xil, o'xshash",
+      "definition": "To be identical is to be exactly the same.",
+      "example": "The twin sisters are identical in every way.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intellectual",
+      "translation": "intellektual, aqlli",
+      "definition": "Related to the ability to think and understand things.",
+      "example": "She is an intellectual who enjoys discussing philosophy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "majority",
+      "translation": "ko'pchilik",
+      "definition": "A majority is more than half of a total number.",
+      "example": "The majority of the people voted for the new law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mammal",
+      "translation": "sut emizuvchi",
+      "definition": "A mammal is an animal that feeds its babies with milk.",
+      "example": "Whales and dolphins are mammals that live in the ocean.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "multiply",
+      "translation": "ko'paytirmoq",
+      "definition": "To multiply is to increase in number by a large amount.",
+      "example": "Bacteria can multiply very quickly in warm conditions.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "offspring",
+      "translation": "farzand, nasl",
+      "definition": "Offspring are the young of a person, animal, or plant.",
+      "example": "The lioness protected her offspring from danger.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pesticide",
+      "translation": "pesticid (hasharotlarga qarshi)",
+      "definition": "A pesticide is a chemical used to kill insects that damage crops.",
+      "example": "The farmer used a pesticide to protect his corn.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "regulate",
+      "translation": "tartibga solmoq",
+      "definition": "To regulate means to control something with rules or laws.",
+      "example": "The government regulates the amount of pollution from factories.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reinforce",
+      "translation": "mustahkamlamoq",
+      "definition": "To reinforce something is to make it stronger.",
+      "example": "The soldiers reinforced the walls of the fort.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stricken",
+      "translation": "aziyat chekkan",
+      "definition": "If someone is stricken by something, they are badly affected by it.",
+      "example": "The area was stricken by a severe drought.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vast",
+      "translation": "ulkan, keng",
+      "definition": "If something is vast, it is very large or huge.",
+      "example": "The desert is a vast area of sand and rocks.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vegetarian",
+      "translation": "vegetarian",
+      "definition": "A person who does not eat meat.",
+      "example": "She became a vegetarian because she loves animals.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

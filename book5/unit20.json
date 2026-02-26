@@ -1,0 +1,146 @@
+{
+  "unit": "20",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aggregate",
+      "translation": "yig'indi, umumiy",
+      "definition": "Aggregate is the total number or amount for a group of things.",
+      "example": "The aggregate of all the scores was quite high.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "antibiotic",
+      "translation": "antibiotik",
+      "definition": "An antibiotic is a drug used to kill bacteria and cure infections.",
+      "example": "The doctor prescribed an antibiotic for her ear infection.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "circuit",
+      "translation": "zanjir, sxema",
+      "definition": "A circuit is a path for an electrical current to flow around.",
+      "example": "The technician fixed the broken circuit in the television.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "complement",
+      "translation": "to'ldiruvchi",
+      "definition": "To complement something means to make it better or more complete.",
+      "example": "The red tie complements your blue suit perfectly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compress",
+      "translation": "siqmoq",
+      "definition": "To compress something means to press it together so that it takes up less space.",
+      "example": "He compressed the trash into a small bale.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "database",
+      "translation": "ma'lumotlar bazasi",
+      "definition": "A database is a collection of information that is stored in a computer.",
+      "example": "The company has a database of all its customers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "equivalent",
+      "translation": "teng, muqobil",
+      "definition": "If one thing is the equivalent of another, it is the same in value or amount.",
+      "example": "Ten dollars is the equivalent of about eight euros.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "immune",
+      "translation": "immunitetli",
+      "definition": "When you are immune to a disease, your body can protect itself from it.",
+      "example": "After getting the vaccine, she was immune to the virus.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "input",
+      "translation": "kiritish",
+      "definition": "Input is information that is put into a computer or a discussion.",
+      "example": "The system needs some user input to start the process.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "intimate",
+      "translation": "yaqin, shaxsiy",
+      "definition": "When two people are intimate, they are very close friends or relatives.",
+      "example": "They shared an intimate conversation over dinner.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "magnet",
+      "translation": "magnit",
+      "definition": "A magnet is an object that can attract iron and steel.",
+      "example": "He used a magnet to pick up the paperclips.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "metabolism",
+      "translation": "metabolizm",
+      "definition": "Metabolism is the process by which a living thing changes food into energy.",
+      "example": "Exercise can help speed up your metabolism.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "microchip",
+      "translation": "mikrochip",
+      "definition": "A microchip is a very small part of a computer that stores information.",
+      "example": "The microchip allows the computer to process data quickly.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "phase",
+      "translation": "bosqich",
+      "definition": "A phase is a stage in a process or development.",
+      "example": "The construction project is in its final phase.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pinch",
+      "translation": "chimdimlamoq",
+      "definition": "To pinch someone means to press their skin between your thumb and finger.",
+      "example": "She pinched her arm to make sure she wasn't dreaming.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "prevalent",
+      "translation": "keng tarqalgan",
+      "definition": "When something is prevalent, it is common in a particular place or time.",
+      "example": "Flu is very prevalent during the winter months.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "quantum",
+      "translation": "kvant",
+      "definition": "Quantum relates to the very small parts that make up all matter and energy.",
+      "example": "Quantum physics is a difficult subject for many students.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ratio",
+      "translation": "nisbat",
+      "definition": "A ratio is a relationship between two amounts that shows how much bigger one is.",
+      "example": "The ratio of students to teachers in the school is twenty to one.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spiral",
+      "translation": "spiral",
+      "definition": "A spiral is a shape that goes around a central point and gets further away.",
+      "example": "The stairs went up in a spiral to the top of the tower.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "viral",
+      "translation": "virusli",
+      "definition": "When something is viral, it is caused by or relates to a virus.",
+      "example": "The doctor said her sore throat was a viral infection.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

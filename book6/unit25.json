@@ -1,0 +1,146 @@
+{
+  "unit": "25",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "acrobat",
+      "translation": "akrobat",
+      "definition": "An acrobat is a person who performs difficult physical acts, like jumping or balancing.",
+      "example": "The acrobat performed amazing tricks high above the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "advocacy",
+      "translation": "himoya, targ'ibot",
+      "definition": "Advocacy is the act of supporting a particular cause or policy.",
+      "example": "The group is known for its advocacy of environmental protection.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "communal",
+      "translation": "umumiy, jamoat",
+      "definition": "If something is communal, it is shared by a group of people.",
+      "example": "The apartment building has a communal garden for all the residents.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fluid",
+      "translation": "suyuq; o'zgaruvchan",
+      "definition": "A fluid is a substance, like a liquid or gas, that can flow easily.",
+      "example": "Water is a common type of fluid.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harmonize",
+      "translation": "uyg'unlashmoq",
+      "definition": "To harmonize means to be in agreement or to match well.",
+      "example": "The colors of the room harmonize perfectly with the furniture.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "industrious",
+      "translation": "mehnatsevar",
+      "definition": "If someone is industrious, they work very hard.",
+      "example": "The industrious student spent all weekend studying for the exam.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "inventive",
+      "translation": "topqir, ixtirochi",
+      "definition": "If someone is inventive, they are good at thinking of new ideas.",
+      "example": "She is a very inventive cook who creates her own recipes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "judicial",
+      "translation": "sudga oid",
+      "definition": "If something is judicial, it relates to a court or a judge.",
+      "example": "The judicial system is responsible for interpreting the law.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "Mandarin",
+      "translation": "mandarin (xitoy tili)",
+      "definition": "Mandarin is the official form of the Chinese language.",
+      "example": "He is learning to speak Mandarin so he can work in China.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "metropolitan",
+      "translation": "metropoliten, katta shaharga oid",
+      "definition": "If something is metropolitan, it relates to a large city.",
+      "example": "The metropolitan area includes the city and its surrounding suburbs.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mimic",
+      "translation": "taqlid qilmoq",
+      "definition": "To mimic someone means to copy the way they speak or act.",
+      "example": "The parrot can mimic many different sounds.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "misguided",
+      "translation": "noto'g'ri yo'lga boshlangan",
+      "definition": "If something is misguided, it is based on bad judgment or wrong information.",
+      "example": "His decision to quit his job was misguided.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rehearse",
+      "translation": "repetitsiya qilmoq",
+      "definition": "To rehearse means to practice something before a performance.",
+      "example": "The band spent hours rehearsing for the concert.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "scorn",
+      "translation": "nafratlanmoq, mensimaslik",
+      "definition": "Scorn is a strong feeling that someone or something is not worth respect.",
+      "example": "He spoke with scorn about the company's new policies.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sensory",
+      "translation": "hissiy, sezgi",
+      "definition": "If something is sensory, it relates to the physical senses.",
+      "example": "The museum has many sensory exhibits that you can touch and smell.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "staple",
+      "translation": "asosiy mahsulot",
+      "definition": "A staple is a basic food that is eaten regularly by a group of people.",
+      "example": "Rice is a staple in many Asian diets.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "statute",
+      "translation": "nizom, qonun",
+      "definition": "A statute is a formal law that is passed by a government.",
+      "example": "The new statute aims to reduce pollution in the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "veteran",
+      "translation": "faxriy, tajribali shaxs",
+      "definition": "A veteran is a person who has a lot of experience in a particular area.",
+      "example": "The team was led by a veteran player with many years of experience.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "villain",
+      "translation": "yovuz personaj",
+      "definition": "A villain is a bad person in a story or movie.",
+      "example": "The hero defeated the villain and saved the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vine",
+      "translation": "tok, pechakgul",
+      "definition": "A vine is a plant that grows up walls or around other plants.",
+      "example": "The grapes grow on a vine in the garden.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

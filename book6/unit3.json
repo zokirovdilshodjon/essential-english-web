@@ -1,0 +1,146 @@
+{
+  "unit": "3",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "absurd",
+      "translation": "ma'nisiz, bema'ni",
+      "definition": "If something is absurd, it is ridiculous or does not make sense.",
+      "example": "The idea that the Earth is flat is absurd.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "anemia",
+      "translation": "anemiya, kamqonlik",
+      "definition": "Anemia is a condition in which there is a lack of red cells in the blood.",
+      "example": "The doctor told her that she had anemia.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "aristocracy",
+      "translation": "aristokratiya",
+      "definition": "The aristocracy is the highest class of people in certain societies.",
+      "example": "The aristocracy lived in large mansions and had many servants.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "aristocrat",
+      "translation": "aristokrat",
+      "definition": "An aristocrat is a person who is a member of the aristocracy.",
+      "example": "The aristocrat was very wealthy and powerful.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "attire",
+      "translation": "kiyim-kechak",
+      "definition": "Attire is nice or special clothing.",
+      "example": "The guests wore formal attire to the wedding.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "craze",
+      "translation": "ommaviy qiziqish",
+      "definition": "A craze is something that is very popular for a short time.",
+      "example": "The new dance was a craze among teenagers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enlarge",
+      "translation": "kattalashtirmoq",
+      "definition": "To enlarge something means to make it bigger.",
+      "example": "The company decided to enlarge its office.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "excess",
+      "translation": "ortiqcha",
+      "definition": "An excess is an amount of something that is more than needed.",
+      "example": "The excess food was given to the poor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "feminine",
+      "translation": "ayollarga xos",
+      "definition": "If something is feminine, it is related to women or girls.",
+      "example": "The dress had a very feminine design.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hallmark",
+      "translation": "o'ziga xos belgi",
+      "definition": "A hallmark is a typical feature of something.",
+      "example": "The hallmark of his writing is his sense of humor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pad",
+      "translation": "yumshoq qatlam, yostiqcha",
+      "definition": "A pad is a thick piece of soft material used to protect or clean things.",
+      "example": "Football players wear shoulder pads to keep them safe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "predominant",
+      "translation": "ustun, asosiy",
+      "definition": "If something is predominant, then it is the most important, common or strongest.",
+      "example": "Before cars were invented, horses were the predominant method of travel.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "reputable",
+      "translation": "obro'li",
+      "definition": "If someone or something is reputable, then they have a good reputation.",
+      "example": "The service from the less than reputable company made her angry.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rouge",
+      "translation": "upa-elik (qizil)",
+      "definition": "Rouge is a red powder or cream used as makeup on the cheeks or lips.",
+      "example": "Even when she didn’t wear rouge, her cheeks appeared red.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "signify",
+      "translation": "anglatmoq, bildirmoq",
+      "definition": "To signify means to be a symbol of something.",
+      "example": "A red octagon is used to signify to stop.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "strap",
+      "translation": "tasma, bog'ich",
+      "definition": "A strap is a thin long piece of fabric used to fasten or carry something.",
+      "example": "She pulled the strap of her bag over her shoulder.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tangle",
+      "translation": "chalkashlik",
+      "definition": "A tangle is something that is all twisted together.",
+      "example": "The wires were in a tangle behind the computer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vanity",
+      "translation": "kekkayish, manmanlik",
+      "definition": "Vanity is excessive pride in one's own appearance or achievements.",
+      "example": "His vanity made him look at himself in the mirror all the time.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vie",
+      "translation": "raqobatlashmoq",
+      "definition": "To vie for something means to compete with others for it.",
+      "example": "The two teams vied for the championship title.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vulgar",
+      "translation": "odobsiz, qo'pol",
+      "definition": "If something is vulgar, it is rude or lacking in style.",
+      "example": "The comedian's vulgar jokes offended some people.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

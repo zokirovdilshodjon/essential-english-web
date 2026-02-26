@@ -1,0 +1,146 @@
+{
+  "unit": "26",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "assumption",
+      "translation": "taxmin",
+      "definition": "An assumption is something that you believe is true but cannot prove.",
+      "example": "I went to the cafeteria on the assumption that everyone would be there.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "barley",
+      "translation": "arpa",
+      "definition": "Barley is a grain that is used for animal feed, health food and beer.",
+      "example": "The farmer grew barley to feed his cows in the winter.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "beast",
+      "translation": "yirtqich hayvon",
+      "definition": "A beast is a large, dangerous animal.",
+      "example": "A lion is one of the fiercest beasts on Earth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "colonel",
+      "translation": "polkovnik",
+      "definition": "A colonel is a military officer.",
+      "example": "James has been given a promotion in the army. He is now a colonel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contagious",
+      "translation": "yuqumli",
+      "definition": "If a disease is contagious, it is easily carried from one person to another.",
+      "example": "You must wear protective clothing because the patient’s illness is contagious.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "corpse",
+      "translation": "murda",
+      "definition": "A corpse is a dead body of a human.",
+      "example": "After the accident, the corpse was taken to the hospital.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crisis",
+      "translation": "inqiroz, tanazzul",
+      "definition": "A crisis is a situation that is extremely stressful or dangerous.",
+      "example": "The bank’s crisis caused many people to lose their money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cure",
+      "translation": "davolamoq, tuzatmoq",
+      "definition": "To cure means to cause an illness or injury to end or disappear.",
+      "example": "The wizard cured the king’s illness with a magic potion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "deformed",
+      "translation": "shakli buzilgan",
+      "definition": "If something is deformed, it is not shaped the way it should be.",
+      "example": "The tree was deformed because it grew in a very windy area.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "discriminate",
+      "translation": "ajratmoq, kamsitmoq",
+      "definition": "To discriminate means to judge people based on their race, religion, or sex.",
+      "example": "It is wrong to discriminate against people because of their looks.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "embassy",
+      "translation": "elchixona",
+      "definition": "An embassy is where government officials work in a foreign country.",
+      "example": "We went to the embassy to get a visa for our trip.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "extinguish",
+      "translation": "o'chirmoq (olovni)",
+      "definition": "To extinguish a fire means to make it stop burning.",
+      "example": "The firefighters worked hard to extinguish the blaze.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "flint",
+      "translation": "chaqmoqtosh",
+      "definition": "Flint is a hard stone that people used to make sparks for a fire.",
+      "example": "In ancient times, people used flint to start fires.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harass",
+      "translation": "bezovta qilmoq, tegajog'lik qilmoq",
+      "definition": "To harass someone is to bother or annoy them repeatedly.",
+      "example": "The bully harassed the smaller boy during every recess.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "integrate",
+      "translation": "birlashtirmoq, integratsiya",
+      "definition": "To integrate means to join or combine things to form a whole.",
+      "example": "The goal was to integrate the new students into the class.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "miniature",
+      "translation": "mitti, miniatyura",
+      "definition": "If something is miniature, it is very small.",
+      "example": "The boy has a collection of miniature cars.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nutrition",
+      "translation": "oziqlanish",
+      "definition": "Nutrition is the process by which people or animals take in food.",
+      "example": "Good nutrition is essential for a healthy body.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "promptly",
+      "translation": "darhol, tezda",
+      "definition": "If something happens promptly, it happens right away or quickly.",
+      "example": "The waiter arrived promptly with our drinks.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "technician",
+      "translation": "texnik, mutaxassis",
+      "definition": "A technician is someone who is skilled in a particular technical area.",
+      "example": "The technician fixed my computer in less than an hour.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tropics",
+      "translation": "tropik o'lkalar",
+      "definition": "The tropics are the areas around the Earth's equator.",
+      "example": "Many colorful birds live in the tropics.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

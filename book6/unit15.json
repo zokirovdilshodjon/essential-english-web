@@ -1,0 +1,146 @@
+{
+  "unit": "15",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adhere",
+      "translation": "amal qilmoq, rioya qilmoq",
+      "definition": "To adhere means to act in the way that a rule or agreement says is right.",
+      "example": "If the new employees wish to succeed, they must adhere to the boss’s rules.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "administer",
+      "translation": "boshqarmoq, o'tkazmoq",
+      "definition": "To administer means to take responsibility for organizing something.",
+      "example": "The teacher’s assistant will administer the test.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compassionate",
+      "translation": "rahmdil, shafqatli",
+      "definition": "When people are compassionate, they feel pity and sympathy for others.",
+      "example": "The compassionate nurse tried to make the sick man feel comfortable.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "contaminate",
+      "translation": "bulg'amoq, ifloslantirmoq",
+      "definition": "To contaminate something means to put dirty or harmful chemicals into it.",
+      "example": "The lake was contaminated when pollutants entered into the water.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "deficiency",
+      "translation": "yetishmovchilik, tanqislik",
+      "definition": "A deficiency is a lack of something that is needed or required.",
+      "example": "A vitamin deficiency can lead to serious health problems.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "epidemic",
+      "translation": "epidemiya",
+      "definition": "An epidemic is a large number of cases of a disease that happen at the same time.",
+      "example": "The flu epidemic spread quickly through the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hazard",
+      "translation": "xavf-xatar",
+      "definition": "A hazard is something that is dangerous and likely to cause damage.",
+      "example": "Smoking is a major health hazard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "imperative",
+      "translation": "o'ta muhim, zarur",
+      "definition": "If something is imperative, it is extremely important and must be done.",
+      "example": "It is imperative that you finish the project on time.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intestines",
+      "translation": "ichaklar",
+      "definition": "Intestines are the tubes in your body through which food passes.",
+      "example": "The food is digested in the stomach and intestines.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "manifest",
+      "translation": "namoyon qilmoq",
+      "definition": "To manifest means to make something clear or show it by your behavior.",
+      "example": "The symptoms of the disease manifested after a few days.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "metabolic",
+      "translation": "metabolik, moddalar almashinuvi",
+      "definition": "Metabolic relates to the chemical processes in a living thing that change food into energy.",
+      "example": "Exercise can help increase your metabolic rate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "overcrowded",
+      "translation": "g'ij-g'ij, haddan tashqari to'la",
+      "definition": "When a place is overcrowded, it is full of too many people.",
+      "example": "The bus was so overcrowded that I had to stand.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "paramount",
+      "translation": "eng asosiysi, oliy darajadagi",
+      "definition": "If something is paramount, it is more important than anything else.",
+      "example": "The safety of the passengers is paramount.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "practitioner",
+      "translation": "amaliyotchi shifokor",
+      "definition": "A practitioner is someone who works as a doctor or lawyer.",
+      "example": "She is a medical practitioner with many years of experience.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "provision",
+      "translation": "ta'minot, zaxira",
+      "definition": "A provision is the act of providing something or the thing provided.",
+      "example": "The government made provision for the victims of the flood.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "replenish",
+      "translation": "to'ldirmoq, zaxirani tiklamoq",
+      "definition": "To replenish something means to fill it up again.",
+      "example": "We need to replenish our water supply before we continue.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sterile",
+      "translation": "steril, o'ta toza",
+      "definition": "When something is sterile, it is completely clean and free from bacteria.",
+      "example": "The surgery was performed in a sterile environment.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "upgrade",
+      "translation": "yaxshilamoq, darajasini oshirmoq",
+      "definition": "To upgrade something means to improve its quality or importance.",
+      "example": "I decided to upgrade my computer to a faster model.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "viable",
+      "translation": "yashovchan, istiqbolli",
+      "definition": "If something is viable, it is capable of working successfully.",
+      "example": "The company’s plan was not considered viable by the investors.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "voluntary",
+      "translation": "ixtiyoriy",
+      "definition": "If something is voluntary, it is done because you want to do it, not because you have to.",
+      "example": "The students did voluntary work at the hospital.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

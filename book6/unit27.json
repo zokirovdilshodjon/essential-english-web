@@ -1,0 +1,146 @@
+{
+  "unit": "27",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "analogy",
+      "translation": "o'xshatish, qiyoslash",
+      "definition": "An analogy is a comparison between two things that shows how they are similar.",
+      "example": "The doctor made an analogy between the heart and a pump.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ancestry",
+      "translation": "nasl-nasab, ajdodlar",
+      "definition": "Your ancestry is the group of people from whom you are descended.",
+      "example": "She is proud of her Scottish ancestry.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "archer",
+      "translation": "kamonchi",
+      "definition": "An archer is a person who shoots arrows with a bow.",
+      "example": "The archer aimed carefully at the target.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conspiracy",
+      "translation": "fitna, til biriktirish",
+      "definition": "A conspiracy is a secret plan by a group of people to do something illegal.",
+      "example": "The police discovered a conspiracy to overthrow the government.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deputy",
+      "translation": "muovin, o'rinbosar",
+      "definition": "A deputy is a person who is second in command to a leader.",
+      "example": "The deputy took over while the manager was on vacation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "earl",
+      "translation": "graf",
+      "definition": "An earl is a man of high social rank in the UK.",
+      "example": "The earl lived in a large castle in the countryside.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fragrant",
+      "translation": "xushbo'y",
+      "definition": "If something is fragrant, it has a pleasant smell.",
+      "example": "The garden was filled with fragrant flowers.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "funnel",
+      "translation": "voronka",
+      "definition": "A funnel is a tube with a wide top that is used for pouring liquid into a narrow opening.",
+      "example": "He used a funnel to pour the oil into the engine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hereditary",
+      "translation": "irsiy",
+      "definition": "A hereditary condition or quality is passed from a parent to a child.",
+      "example": "The disease is hereditary and runs in his family.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hymn",
+      "translation": "madhiya (diniy)",
+      "definition": "A hymn is a religious song of praise.",
+      "example": "The congregation sang a hymn at the beginning of the service.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "invert",
+      "translation": "teskari qilmoq",
+      "definition": "To invert something means to turn it upside down or inside out.",
+      "example": "He inverted the glass to let the water drain out.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "prey",
+      "translation": "o'lja",
+      "definition": "Prey is an animal that is hunted and killed for food by another animal.",
+      "example": "The lion stalked its prey through the tall grass.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "procession",
+      "translation": "namoyish, yurish",
+      "definition": "A procession is a line of people or vehicles moving forward in a formal way.",
+      "example": "The wedding procession moved slowly down the street.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prophet",
+      "translation": "payg'ambar",
+      "definition": "A prophet is a person who is believed to be chosen by a god to give messages.",
+      "example": "The prophet's words inspired many people to change their lives.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sarcastic",
+      "translation": "pichingli, kinoyali",
+      "definition": "If someone is sarcastic, they say things that are the opposite of what they mean to mock someone.",
+      "example": "She made a sarcastic comment about his new haircut.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "seasoning",
+      "translation": "ziravorlar",
+      "definition": "Seasoning is something, such as salt or pepper, that is added to food to improve its flavor.",
+      "example": "The chef added a bit of seasoning to the soup.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sodium",
+      "translation": "natriy",
+      "definition": "Sodium is a chemical element that is found in salt.",
+      "example": "The doctor told him to reduce the amount of sodium in his diet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tyranny",
+      "translation": "zulm, mustabidlik",
+      "definition": "Tyranny is a cruel and unfair government by a person with absolute power.",
+      "example": "The people fought to end the tyranny of the dictator.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tyrant",
+      "translation": "zolim, mustabid",
+      "definition": "A tyrant is a person who rules a country in a cruel and unfair way.",
+      "example": "The tyrant was eventually overthrown by the citizens.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vinegar",
+      "translation": "sirka",
+      "definition": "Vinegar is a sour liquid used in cooking and for cleaning.",
+      "example": "She mixed vinegar and oil to make a salad dressing.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

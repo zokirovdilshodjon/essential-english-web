@@ -1,0 +1,146 @@
+{
+  "unit": "18",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accent",
+      "translation": "urg'u, sheva",
+      "definition": "A way of pronouncing words typical of a certain area.",
+      "example": "He has a strong British accent.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "barber",
+      "translation": "sartarosh",
+      "definition": "A person whose job is to cut men’s hair.",
+      "example": "I went to the barber to get a haircut.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "basement",
+      "translation": "erto'la",
+      "definition": "The part of a building that is below the ground.",
+      "example": "We keep our old clothes in the basement.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blank",
+      "translation": "bo'sh",
+      "definition": "When something has nothing on it.",
+      "example": "I need a blank piece of paper.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "blink",
+      "translation": "pirpiratmoq",
+      "definition": "To close and open your eyes quickly.",
+      "example": "The bright light made me blink.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "choir",
+      "translation": "xor",
+      "definition": "A group of people who sing together.",
+      "example": "She sings in the church choir.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "comic",
+      "translation": "komik, qiziqarli",
+      "definition": "When something is funny.",
+      "example": "The movie was very comic and made me laugh.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "complicate",
+      "translation": "murakkablashtirmoq",
+      "definition": "To make it more difficult.",
+      "example": "I don’t want to complicate the situation.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "decline",
+      "translation": "rad etmoq, pasaymoq",
+      "definition": "To say no or to decrease.",
+      "example": "She declined the offer to go to dinner.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "errand",
+      "translation": "yumush",
+      "definition": "A short trip to do something.",
+      "example": "I have to run some errands this afternoon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "glove",
+      "translation": "qo'lqop",
+      "definition": "Clothing that covers your hand.",
+      "example": "He wore gloves to keep his hands warm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hermit",
+      "translation": "darvesh, tanho yashovchi",
+      "definition": "A person who lives alone and far away from others.",
+      "example": "The hermit lived in a small cabin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "justly",
+      "translation": "haqqoniy",
+      "definition": "When something is done in a fair way.",
+      "example": "The judge treated the prisoner justly.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "leather",
+      "translation": "teri",
+      "definition": "Material made from the skin of an animal.",
+      "example": "He wore a leather jacket.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ponder",
+      "translation": "mulohaza qilmoq",
+      "definition": "To think carefully about something.",
+      "example": "I pondered the question for a long time.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reserve",
+      "translation": "band qilmoq",
+      "definition": "To keep it for a particular person.",
+      "example": "I reserved a table at the restaurant.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "script",
+      "translation": "stsenariy",
+      "definition": "The written words of a play or movie.",
+      "example": "The actors studied their scripts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "search",
+      "translation": "qidirmoq",
+      "definition": "To look carefully for something.",
+      "example": "I searched for my keys everywhere.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "slam",
+      "translation": "qarsillatib yopmoq",
+      "definition": "To close it with a lot of force.",
+      "example": "He slammed the door when he left.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "staircase",
+      "translation": "zinapoya",
+      "definition": "A set of stairs inside a building.",
+      "example": "The staircase led to the second floor.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

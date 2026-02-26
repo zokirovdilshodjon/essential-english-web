@@ -1,0 +1,146 @@
+{
+  "unit": "12",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adorn",
+      "translation": "bezatmoq",
+      "definition": "To adorn something means to make it more beautiful by decorating it.",
+      "example": "Small glass beads adorned the vase.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bliss",
+      "translation": "baxtiyorlik, huzur",
+      "definition": "Bliss is a state of complete happiness.",
+      "example": "Every time he sees his girlfriend, he feels a sense of bliss.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "butler",
+      "translation": "bosh xizmatkor",
+      "definition": "A butler is the most important male servant in a wealthy house.",
+      "example": "Whenever he needed something, he rang a bell, and the butler appeared.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cramp",
+      "translation": "tomir tortishishi",
+      "definition": "A cramp is a strong pain caused by a muscle after a lot of physical use.",
+      "example": "After the marathon, Jenny got a terrible cramp in her calf muscle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dilapidated",
+      "translation": "eskirgan, xarob bo'lgan",
+      "definition": "When a building is dilapidated, it is old and in bad condition.",
+      "example": "Paint peeled off of the old dilapidated apartment building.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "evoke",
+      "translation": "uygotmoq (hissiyotni)",
+      "definition": "To evoke a memory or emotion means to make it occur.",
+      "example": "The picture evoked memories of when grandmother was a girl.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "farewell",
+      "translation": "xayrlashuv",
+      "definition": "A farewell is an instance of saying goodbye or a way to say it.",
+      "example": "She got on the plane after we said our farewells.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "faucet",
+      "translation": "jo'mrak, kran",
+      "definition": "A faucet is a device that controls the flow of a liquid or gas.",
+      "example": "Turn off the faucet so you don’t waste water.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "filth",
+      "translation": "ifloslik, kir",
+      "definition": "Filth is dirt or a dirty condition that is disgusting.",
+      "example": "The old house was filled with filth and dust.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flaw",
+      "translation": "nuqson, ayb",
+      "definition": "A flaw is a mistake or problem that makes something less than perfect.",
+      "example": "The diamond had a small flaw that only an expert could see.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grin",
+      "translation": "ishjaymoq, tirjaymoq",
+      "definition": "To grin means to smile widely.",
+      "example": "He had a big grin on his face when he won the race.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "housekeeping",
+      "translation": "uy xo'jaligi",
+      "definition": "Housekeeping is the job of cleaning and taking care of a house or hotel.",
+      "example": "Good housekeeping is important to keep a hotel successful.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mound",
+      "translation": "do'nglik, uyum",
+      "definition": "A mound is a pile of earth, stones, or other material.",
+      "example": "There was a small mound of dirt in the backyard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "numb",
+      "translation": "uyushgan, hissiz",
+      "definition": "When a part of your body is numb, you cannot feel anything in it.",
+      "example": "My fingers were numb from the cold.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "reckless",
+      "translation": "mulohazasiz, ehtiyotsiz",
+      "definition": "When someone is reckless, they do not think about the dangers of their actions.",
+      "example": "The reckless driver caused a serious accident.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "slate",
+      "translation": "shifer, tosh taxtacha",
+      "definition": "Slate is a dark grey rock that can be easily split into thin layers.",
+      "example": "The roof of the old house was made of slate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stool",
+      "translation": "kursi",
+      "definition": "A stool is a seat with legs but no back or arms.",
+      "example": "He sat on a tall stool at the kitchen counter.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "testament",
+      "translation": "dalil, isbot",
+      "definition": "A testament to something is proof that it exists or is true.",
+      "example": "The success of the project is a testament to her hard work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "timber",
+      "translation": "yog'och-taxta",
+      "definition": "Timber is wood that is used for building houses and making furniture.",
+      "example": "The truck was carrying a heavy load of timber.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "valve",
+      "translation": "klapan, klapan",
+      "definition": "A valve is a device that controls the flow of a liquid or gas through a pipe.",
+      "example": "The plumber replaced the broken valve in the sink.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "5",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "awhile",
+      "translation": "bir oz",
+      "definition": "If you do something awhile, you do it for a short time.",
+      "example": "Wait here awhile.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "cyberspace",
+      "translation": "kibermakon",
+      "definition": "Cyberspace is the world of information on the Internet.",
+      "example": "He spends a lot of time in cyberspace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "edit",
+      "translation": "tahrirlamoq",
+      "definition": "To edit means to prepare text for publication by correcting errors.",
+      "example": "I need to edit my essay before I turn it in.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "essay",
+      "translation": "insho",
+      "definition": "An essay is a short piece of writing on a particular subject.",
+      "example": "She wrote an essay about her summer vacation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "evaluate",
+      "translation": "baholamoq",
+      "definition": "To evaluate means to judge the value or quality of something.",
+      "example": "The teacher will evaluate our presentations.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "faint",
+      "translation": "hushdan ketmoq",
+      "definition": "To faint means to lose consciousness for a short time.",
+      "example": "She fainted from the heat.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "global",
+      "translation": "global, umumjahon",
+      "definition": "If something is global, it relates to the whole world.",
+      "example": "Pollution is a global problem.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gymnasium",
+      "translation": "sport zal",
+      "definition": "A gymnasium is a building or room for physical exercise.",
+      "example": "We played basketball in the gymnasium.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "highlight",
+      "translation": "ajratib ko'rsatmoq",
+      "definition": "To highlight means to draw attention to something important.",
+      "example": "The speaker highlighted the main points of his speech.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ignorant",
+      "translation": "bilimsiz, xabarsiz",
+      "definition": "If someone is ignorant, they lack knowledge or information about something.",
+      "example": "He was ignorant of the new rules.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "index",
+      "translation": "ko'rsatkich, mundarija",
+      "definition": "An index is an alphabetical list of topics in a book.",
+      "example": "I looked up the word in the index.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lecture",
+      "translation": "ma'ruza",
+      "definition": "A lecture is a formal talk on a serious subject.",
+      "example": "The professor gave a lecture on history.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "moral",
+      "translation": "axloqiy",
+      "definition": "If something is moral, it relates to what is right and wrong.",
+      "example": "He is a man of high moral standards.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "operate",
+      "translation": "boshqarmoq",
+      "definition": "To operate means to control the functioning of a machine.",
+      "example": "He knows how to operate the tractor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "private",
+      "translation": "shaxsiy",
+      "definition": "If something is private, it is only for one person or group.",
+      "example": "This is a private conversation.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "recent",
+      "translation": "yaqindagi",
+      "definition": "If something is recent, it happened or started a short time ago.",
+      "example": "Have you seen any good movies recently?",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "resolution",
+      "translation": "qaror",
+      "definition": "A resolution is a formal decision to do something.",
+      "example": "My New Year's resolution is to exercise more.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "semester",
+      "translation": "semestr",
+      "definition": "A semester is one of the two periods into which a school year is divided.",
+      "example": "I am taking five classes this semester.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "typewritten",
+      "translation": "mashinkada yozilgan",
+      "definition": "If something is typewritten, it is written using a typewriter or computer.",
+      "example": "The report was typewritten and professional.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "weird",
+      "translation": "g'alati",
+      "definition": "If something is weird, it is very strange or unusual.",
+      "example": "I had a weird dream last night.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

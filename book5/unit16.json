@@ -1,0 +1,146 @@
+{
+  "unit": "16",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "addict",
+      "translation": "bog'lanib qolgan (o'rganib qolgan)",
+      "definition": "An addict is a person who cannot stop doing or having something.",
+      "example": "She was a coffee addict. She had more than three cups each day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "archeological",
+      "translation": "arxeologik",
+      "definition": "When something is archeological, it relates to archeology.",
+      "example": "They found archeological evidence that proved an ancient species of man.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "archeology",
+      "translation": "arxeologiya",
+      "definition": "Archeology is the study of ancient people through their artifacts.",
+      "example": "He studied archeology to learn more about ancient Egyptian culture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brainstorm",
+      "translation": "aqliy hujum qilmoq",
+      "definition": "To brainstorm is to have a lot of ideas about a certain topic.",
+      "example": "The students met after school to brainstorm ideas for their project.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "budget",
+      "translation": "budjet",
+      "definition": "A budget is the amount of money available to be spent for a particular purpose.",
+      "example": "The family has a strict budget for their vacation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chaotic",
+      "translation": "tartibsiz, xaosli",
+      "definition": "When something is chaotic, it is in a state of total confusion and lack of order.",
+      "example": "The city streets were chaotic after the power went out.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cite",
+      "translation": "iqtibos keltirmoq",
+      "definition": "To cite something means to mention it as an example or proof of something else.",
+      "example": "The lawyer cited a previous case to support his argument.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "correspond",
+      "translation": "mos kelmoq, xatlashmoq",
+      "definition": "To correspond is to match or be similar to something else; or to communicate by mail.",
+      "example": "The numbers on the map correspond to the locations listed below.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "courtyard",
+      "translation": "hovli",
+      "definition": "A courtyard is an open area that is surrounded by buildings or walls.",
+      "example": "We sat in the courtyard and enjoyed the afternoon sun.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "estate",
+      "translation": "mulk, yer-mulk",
+      "definition": "An estate is a large area of land owned by one person or family.",
+      "example": "He inherited a large estate from his grandfather.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fraud",
+      "translation": "firibgarlik",
+      "definition": "Fraud is the crime of getting money by deceiving people.",
+      "example": "The man was arrested for committing credit card fraud.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hydrogen",
+      "translation": "vodorod",
+      "definition": "Hydrogen is a gas that has no color or smell and is the lightest of all elements.",
+      "example": "Water is made of oxygen and hydrogen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "integrity",
+      "translation": "halollik, vijdonlilik",
+      "definition": "Integrity is the quality of being honest and having strong moral principles.",
+      "example": "The principal is a man of great integrity.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "knit",
+      "translation": "to'qimoq",
+      "definition": "To knit is to make clothes from wool or cotton by using long needles.",
+      "example": "My grandmother taught me how to knit a scarf.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "outlook",
+      "translation": "dunyoqarash, istiqbol",
+      "definition": "An outlook is a person’s way of thinking about the world; or a future situation.",
+      "example": "He has a positive outlook on life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "parachute",
+      "translation": "parashyut",
+      "definition": "A parachute is a piece of equipment that allows someone to fall slowly from an aircraft.",
+      "example": "The pilot used a parachute to escape the falling plane.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prehistoric",
+      "translation": "tarixdan oldingi",
+      "definition": "When something is prehistoric, it relates to the time before written history.",
+      "example": "Dinosaurs were prehistoric animals.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "proponent",
+      "translation": "tarafdor",
+      "definition": "A proponent is a person who supports an idea or a plan.",
+      "example": "He is a strong proponent of using solar energy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "refine",
+      "translation": "takomillashtirmoq, tozalamoq",
+      "definition": "To refine something means to make it better or pure by making small changes.",
+      "example": "The scientist refined his theory after more research.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "restrict",
+      "translation": "cheklamoq",
+      "definition": "To restrict something means to limit it and keep it within a certain size or amount.",
+      "example": "The new law restricts smoking in public places.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

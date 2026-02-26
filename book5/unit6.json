@@ -1,0 +1,146 @@
+{
+  "unit": "6",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "altitude",
+      "translation": "balandlik",
+      "definition": "The altitude of a place is its height above sea level.",
+      "example": "The air was thin at such a high altitude on the mountain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coastline",
+      "translation": "qirg'oq chizig'i",
+      "definition": "A coastline is the outline of a country’s coast.",
+      "example": "He noticed that most of the cities in Australia are on the coastline.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deter",
+      "translation": "to'xtatmoq, qaytarmoq",
+      "definition": "To deter means to prevent or discourage someone from doing something.",
+      "example": "Icy roads deter people from driving their cars.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "devise",
+      "translation": "o'ylab topmoq",
+      "definition": "To devise something means to have an idea or plan about it in the mind.",
+      "example": "The kids devised a plan to get their parents to buy them a puppy.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "expertise",
+      "translation": "tajriba, mahorat",
+      "definition": "Expertise is the knowledge and skills to do something well.",
+      "example": "John has a lot of expertise in fixing cars.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fracture",
+      "translation": "sinish",
+      "definition": "A fracture is a crack or break in something, especially a bone.",
+      "example": "The fracture in his arm took several weeks to heal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "impair",
+      "translation": "shikastlamoq, yomonlashtirmoq",
+      "definition": "To impair something means to damage it or make it worse.",
+      "example": "Drinking coffee can impair your ability to go to sleep.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "implement",
+      "translation": "amalga oshirmoq",
+      "definition": "To implement something means to ensure that what has been planned is done.",
+      "example": "The government implemented a new law about driving safety.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "indigenous",
+      "translation": "mahalliy, tub",
+      "definition": "Indigenous means that something or someone exists naturally in a specific place.",
+      "example": "Cacti are indigenous to the American southwest.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "insight",
+      "translation": "idrok, tushuncha",
+      "definition": "Insight is a deep and accurate understanding of something.",
+      "example": "The book gave me a lot of insight into the lives of ancient people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "limb",
+      "translation": "qo'l-oyoq",
+      "definition": "A limb is a large arm or leg of a person or animal.",
+      "example": "The monkey used its limbs to climb up the tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "migraine",
+      "translation": "migren",
+      "definition": "A migraine is a very bad headache that can make one feel sick.",
+      "example": "My mother gets a migraine every time she has a lot of stress.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "optimism",
+      "translation": "optimizm",
+      "definition": "Optimism is the feeling of being hopeful about the future or success of something.",
+      "example": "The man’s optimism helped him get through the hard times.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "peculiar",
+      "translation": "g'alati, o'ziga xos",
+      "definition": "When something is peculiar, it is strange, sometimes in a bad way.",
+      "example": "That cake has a peculiar taste—are you sure it’s fresh?",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "proficient",
+      "translation": "mahoratli",
+      "definition": "When a person is proficient at something, they are very good at it.",
+      "example": "The proficient pianist played the song perfectly.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "quest",
+      "translation": "qidiruv, izlanish",
+      "definition": "A quest is a long and difficult search for something.",
+      "example": "The knights went on a quest to find the lost treasure.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ridge",
+      "translation": "tizmasi, qirra",
+      "definition": "A ridge is a long, narrow piece of raised land.",
+      "example": "The campers hiked along the ridge of the mountain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spouse",
+      "translation": "turmush o'rtoq",
+      "definition": "A spouse is the person to whom someone is married.",
+      "example": "Jane and her spouse went on a vacation to Mexico.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thrust",
+      "translation": "kuch bilan itarmoq",
+      "definition": "To thrust means to push or move something quickly with a lot of force.",
+      "example": "The man thrust the money into his pocket.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tolerate",
+      "translation": "chidamoq, bardosh bermoq",
+      "definition": "To tolerate something means to be able to accept it even if it is unpleasant.",
+      "example": "When you live in a city, you must learn to tolerate a lot of noise.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

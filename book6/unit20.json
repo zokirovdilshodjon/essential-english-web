@@ -1,0 +1,146 @@
+{
+  "unit": "20",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adhesive",
+      "translation": "yopishqoq (modda)",
+      "definition": "An adhesive is a substance used for sticking things together.",
+      "example": "The carpenter used an adhesive to hold the two pieces of wood together.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "adverse",
+      "translation": "nojo'ya, zararli",
+      "definition": "If something is adverse, then it is harmful.",
+      "example": "Not eating healthy foods can have an adverse effect on your health.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dependency",
+      "translation": "qaramlik",
+      "definition": "A dependency is a strong need for someone or something.",
+      "example": "The child still has a dependency on her mother.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dump",
+      "translation": "tashlab yubormoq",
+      "definition": "To dump something means to throw it away or get rid of it.",
+      "example": "She dumped the garbage into the trash can.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "eternal",
+      "translation": "abadiy",
+      "definition": "If something is eternal, then it lasts forever.",
+      "example": "She said that her love for him was eternal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fluctuate",
+      "translation": "o'zgarib turmoq",
+      "definition": "To fluctuate means to rise and fall in number or amount.",
+      "example": "Prices for gasoline have been fluctuating all month.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fro",
+      "translation": "u yoqdan-bu yoqqa",
+      "definition": "If something moves to and fro, it moves backward and forward.",
+      "example": "The branch moved to and fro in the wind.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "inclusion",
+      "translation": "qo'shish, kiritish",
+      "definition": "Inclusion is the act of including someone or something in a group.",
+      "example": "The inclusion of her name on the list made her happy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "intermediate",
+      "translation": "o'rta, oraliq",
+      "definition": "If something is intermediate, it is in the middle of two levels.",
+      "example": "She is in an intermediate English class this year.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intermittent",
+      "translation": "vaqti-vaqti bilan bo'ladigan",
+      "definition": "If something is intermittent, it happens sometimes but not regularly.",
+      "example": "The rain was intermittent throughout the afternoon.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mentor",
+      "translation": "ustoz, murabbiy",
+      "definition": "A mentor is a person who gives advice and help to someone.",
+      "example": "The experienced lawyer acted as a mentor to the new student.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "phoenix",
+      "translation": "feniks (afsonaviy qush)",
+      "definition": "A phoenix is a magical bird that dies and is born again from ashes.",
+      "example": "The story tells of a phoenix that lived for five hundred years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "photosynthesis",
+      "translation": "fotosintez",
+      "definition": "Photosynthesis is the process by which plants use sunlight to make food.",
+      "example": "Sunlight is essential for the process of photosynthesis.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pollen",
+      "translation": "gul changi",
+      "definition": "Pollen is a fine powder produced by flowers.",
+      "example": "Bees carry pollen from one flower to another.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "regain",
+      "translation": "qayta tiklamoq, yana qo'lga kiritmoq",
+      "definition": "To regain something means to get it back again.",
+      "example": "He regained his health after a long rest.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reverse",
+      "translation": "teskari qilmoq",
+      "definition": "To reverse something means to change it to the opposite way.",
+      "example": "He reversed the car out of the garage.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "swarm",
+      "translation": "gala, to'da",
+      "definition": "A swarm is a large group of insects moving together.",
+      "example": "A swarm of bees was flying around the hive.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "texture",
+      "translation": "tekstura, sirt tuzilishi",
+      "definition": "Texture is the way that something feels when you touch it.",
+      "example": "The fabric has a soft and smooth texture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tickle",
+      "translation": "qitiqlamoq",
+      "definition": "To tickle someone means to touch them in a way that makes them laugh.",
+      "example": "The father tickled his daughter's feet.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vibrant",
+      "translation": "jonli, yorqin",
+      "definition": "If something is vibrant, it is full of energy and color.",
+      "example": "The city has a vibrant and exciting nightlife.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

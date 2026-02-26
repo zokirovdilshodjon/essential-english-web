@@ -1,0 +1,146 @@
+{
+  "unit": "3",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "admonish",
+      "translation": "ogohlantirmoq, koyimoq",
+      "definition": "To admonish someone is to tell them you disapprove of their behavior.",
+      "example": "The teacher admonished Mark because he was chewing gum in class.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "audible",
+      "translation": "eshitsa bo'ladigan",
+      "definition": "If something is audible, then it is able to be heard.",
+      "example": "The sound of the drums was audible from miles away.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "awesome",
+      "translation": "hayratlanarli",
+      "definition": "If something or someone is awesome, they are impressive or frightening.",
+      "example": "The huge military plane was an awesome sight.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "beware",
+      "translation": "ehtiyot bo'lmoq",
+      "definition": "To beware means to be careful of something or someone that is dangerous.",
+      "example": "You should beware of the dog.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "brag",
+      "translation": "maqtunmoq",
+      "definition": "To brag means to talk of one's abilities or achievements in a proud way.",
+      "example": "He had to brag about his new car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "conscious",
+      "translation": "hushyor, xabardor",
+      "definition": "If someone is conscious of something, they are aware of it.",
+      "example": "The boy was conscious of his appearance.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "disagree",
+      "translation": "qo'shilmaslik",
+      "definition": "To disagree with someone means to have a different opinion from them.",
+      "example": "The two friends disagreed about where to eat.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "echo",
+      "translation": "aks-sado bermoq",
+      "definition": "To echo means that a sound repeats itself because it bounced off an object.",
+      "example": "The sound of his voice echoed in the cave.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "eventual",
+      "translation": "yakuniy",
+      "definition": "Eventual means happening at the end of a series of events.",
+      "example": "His eventual goal was to become a doctor.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hint",
+      "translation": "shama, ishora",
+      "definition": "A hint is information that suggests something without saying it directly.",
+      "example": "He gave me a hint about my birthday present.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "idiot",
+      "translation": "ahmoq",
+      "definition": "An idiot is a person who is not very smart.",
+      "example": "Only an idiot would believe that story.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "immense",
+      "translation": "ulkan",
+      "definition": "If something is immense, it is very large.",
+      "example": "The castle was immense.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "indirect",
+      "translation": "bilvosita",
+      "definition": "If something is indirect, it is not the shortest or easiest way.",
+      "example": "He took an indirect route to the store.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "option",
+      "translation": "tanlov",
+      "definition": "An option is a choice between two or more things.",
+      "example": "I had the option of going to the party or staying home.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pastime",
+      "translation": "sevimli mashg'ulot",
+      "definition": "A pastime is an activity that you do in your free time.",
+      "example": "His favorite pastime is playing chess.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "perfect",
+      "translation": "mukammal",
+      "definition": "If something is perfect, it is as good as it can possibly be.",
+      "example": "The weather was perfect for a picnic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pinpoint",
+      "translation": "aniq ko'rsatmoq",
+      "definition": "To pinpoint something means to find exactly where it is.",
+      "example": "The pilot was able to pinpoint the location of the crash.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "switch",
+      "translation": "almashtirmoq",
+      "definition": "To switch means to change something to something else.",
+      "example": "I switched my major from history to English.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "thorough",
+      "translation": "batafsil, to'liq",
+      "definition": "If something is thorough, it is complete in every way.",
+      "example": "The police did a thorough search of the house.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "torment",
+      "translation": "azoblamoq",
+      "definition": "To torment someone means to cause them severe mental or physical suffering.",
+      "example": "The bully tormented the younger boy.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "22",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "coward",
+      "translation": "qo'rqoq",
+      "definition": "A coward is a person who lacks courage to do risky or dangerous things.",
+      "example": "A firefighter cannot be a coward. They have to be able to act quickly.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "delete",
+      "translation": "o'chirmoq",
+      "definition": "To delete something means to remove or erase written material.",
+      "example": "Several lines had been deleted from her speech.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "firsthand",
+      "translation": "bevosita, o'z ko'zi bilan",
+      "definition": "If something is firsthand, then it is from an original source.",
+      "example": "If you want firsthand knowledge, ask someone who saw it.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "earnest",
+      "translation": "jiddiy, samimiy",
+      "definition": "If someone is earnest, then they are honest and serious.",
+      "example": "The child was very earnest when she told her mother how she broke the dish.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ethnic",
+      "translation": "etnik",
+      "definition": "If something is ethnic, then it is related to a group with a similar culture.",
+      "example": "Many sections of the city are home to different ethnic communities.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "exclude",
+      "translation": "chetlashtirmoq, kiritmaslik",
+      "definition": "To exclude someone means to not accept them into a group.",
+      "example": "Carol was excluded from the contest because her friend was a judge.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fluent",
+      "translation": "ravon (tilda)",
+      "definition": "If someone is fluent in a language, then they are able to speak it very well.",
+      "example": "She was so fluent in German that you’d have thought she was from Germany.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "imperial",
+      "translation": "imperiyaga oid",
+      "definition": "If something is imperial, then it is of, or related to an empire.",
+      "example": "These old imperial coins were once used in the Roman Empire.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "inclusive",
+      "translation": "qamrab oluvchi",
+      "definition": "If something is inclusive, then it is open to all groups and people in society.",
+      "example": "A more inclusive event would have allowed children to attend.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "legislature",
+      "translation": "qonun chiqaruvchi hokimiyat",
+      "definition": "A legislature is the section of a government that makes laws.",
+      "example": "The senator had served ten years in the national legislature.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "linguistic",
+      "translation": "lingvistik, tilshunoslikka oid",
+      "definition": "If something is linguistic, then it is concerned with language.",
+      "example": "A linguistic way of studying culture focuses on words within that culture.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "monolingual",
+      "translation": "bir tilda gaplashuvchi",
+      "definition": "If someone is monolingual, then they speak only one language.",
+      "example": "In today’s global economy, being monolingual limits your opportunities.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nationality",
+      "translation": "millat, fuqarolik",
+      "definition": "Nationality is the state of belonging to a particular country.",
+      "example": "She has American nationality but was born in Japan.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "patriot",
+      "translation": "vatanparvar",
+      "definition": "A patriot is a person who loves and supports their country.",
+      "example": "The monument was built to honor the patriots who died in the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prosecute",
+      "translation": "sudga bermoq",
+      "definition": "To prosecute someone means to take legal action against them in court.",
+      "example": "The company decided to prosecute the person who stole its secrets.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "racial",
+      "translation": "irqiy",
+      "definition": "If something is racial, it relates to a person's race.",
+      "example": "The government is working to end racial discrimination.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "solemn",
+      "translation": "tantanali, jiddiy",
+      "definition": "If something is solemn, it is very serious and formal.",
+      "example": "The judge spoke in a solemn voice when he gave the verdict.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "solidarity",
+      "translation": "birdamlik",
+      "definition": "Solidarity is support by one person or group for another because they share feelings or aims.",
+      "example": "The workers showed solidarity by going on strike together.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tact",
+      "translation": "nazokat, xushmuomalalik",
+      "definition": "Tact is the ability to do or say things without offending people.",
+      "example": "She used a lot of tact when she told him that he didn't get the job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "undermine",
+      "translation": "zaiflashtirmoq, putur yetkazmoq",
+      "definition": "To undermine something means to make it weaker or less effective.",
+      "example": "His constant criticism undermined her confidence.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

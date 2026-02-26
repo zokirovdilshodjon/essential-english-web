@@ -1,0 +1,146 @@
+{
+  "unit": "12",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alternative",
+      "translation": "muqobil",
+      "definition": "An alternative is something that you can choose instead of your first choice.",
+      "example": "Her first plan seemed weak, so she chose an alternative.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "avenue",
+      "translation": "shohko'cha",
+      "definition": "An avenue is a road, often a large one with buildings on each side.",
+      "example": "Drive down this avenue and then turn left to go to the park.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "belly",
+      "translation": "qorin",
+      "definition": "The belly is the stomach of a person or animal.",
+      "example": "His belly was full because he ate a lot of food.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bid",
+      "translation": "urinish",
+      "definition": "A bid to do something is an attempt to do it.",
+      "example": "He made a bid to become the university’s next president.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blow",
+      "translation": "esmoq",
+      "definition": "To blow means to move air, like the wind does.",
+      "example": "The wind blew the leaves across the yard.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "conflict",
+      "translation": "nizo",
+      "definition": "A conflict is a fight or a disagreement.",
+      "example": "The two countries were in a conflict over land.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "continent",
+      "translation": "qit'a",
+      "definition": "A continent is one of the seven large areas of land on Earth.",
+      "example": "Asia is the largest continent in the world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "current",
+      "translation": "oqim",
+      "definition": "A current is the steady movement of water or air in one direction.",
+      "example": "The river's current was very strong.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disrespect",
+      "translation": "hurmatsizlik",
+      "definition": "Disrespect is a lack of respect for someone.",
+      "example": "He showed disrespect by not listening to his teacher.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enthusiasm",
+      "translation": "ishtiyoq",
+      "definition": "Enthusiasm is a feeling of great excitement and interest.",
+      "example": "The kids showed a lot of enthusiasm for the trip.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harsh",
+      "translation": "qattiq, shafqatsiz",
+      "definition": "If something is harsh, it is very unpleasant or difficult.",
+      "example": "The winter weather was very harsh this year.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lean",
+      "translation": "suyanmoq",
+      "definition": "To lean means to bend your body in a particular direction.",
+      "example": "She leaned forward to hear what he was saying.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "meantime",
+      "translation": "o'sha vaqt oralig'ida",
+      "definition": "The meantime is the time between two events.",
+      "example": "The bus will be here soon. In the meantime, let's wait inside.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mischief",
+      "translation": "sho'xlik",
+      "definition": "Mischief is behavior that is playful but can cause trouble.",
+      "example": "The little boy was always getting into mischief.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "muscle",
+      "translation": "mushak",
+      "definition": "A muscle is a part of the body that helps you move.",
+      "example": "He has very strong muscles because he exercises.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rescue",
+      "translation": "qutqarmoq",
+      "definition": "To rescue someone means to save them from danger.",
+      "example": "The firemen rescued the family from the burning house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "succession",
+      "translation": "ketma-ketlik",
+      "definition": "A succession is a number of things that happen one after another.",
+      "example": "There was a succession of loud noises from the street.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "terrain",
+      "translation": "yer maydoni",
+      "definition": "Terrain is the physical features of an area of land.",
+      "example": "The rocky terrain made it difficult to hike.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "timid",
+      "translation": "uyatchan, qo'rqoq",
+      "definition": "If someone is timid, they are shy or easily frightened.",
+      "example": "The timid kitten hid under the sofa.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "violence",
+      "translation": "zo'ravonlik",
+      "definition": "Violence is physical force that is used to hurt someone.",
+      "example": "There was a lot of violence in the movie.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

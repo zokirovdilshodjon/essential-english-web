@@ -1,0 +1,146 @@
+{
+  "unit": "13",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "affect",
+      "translation": "ta'sir qilmoq",
+      "definition": "To affect someone or something is to have an influence over them.",
+      "example": "The student’s poor attitude affected the other students.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "autograph",
+      "translation": "dastxat",
+      "definition": "An autograph is the written name of a famous person.",
+      "example": "Everybody wanted the movie star’s autograph.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bead",
+      "translation": "tomchi, marjon",
+      "definition": "A bead is a drop of liquid.",
+      "example": "Beads of water collected outside the glass.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brew",
+      "translation": "damlamoq",
+      "definition": "To brew coffee or tea means to pour hot water over it.",
+      "example": "Please brew a fresh pot of coffee.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "charm",
+      "translation": "maftun qilmoq",
+      "definition": "To charm someone is to please them with your personality.",
+      "example": "Gail charmed everyone with her humorous stories.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "destiny",
+      "translation": "taqdir",
+      "definition": "A destiny is all the things that happen or will happen to a person.",
+      "example": "It was his destiny to become a great singer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "horn",
+      "translation": "signal, mug'uz",
+      "definition": "A horn is a device that makes a loud noise.",
+      "example": "The boy honked his horn while he rode his bicycle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "irritable",
+      "translation": "tez achchiqlanadigan",
+      "definition": "When someone is irritable, they become annoyed or angry easily.",
+      "example": "She is irritable when she doesn’t get enough sleep.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lag",
+      "translation": "ortda qolmoq",
+      "definition": "To lag means to move more slowly than others.",
+      "example": "The little girl lagged behind her parents on the walk.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "maximize",
+      "translation": "maksimal darajaga yetkazmoq",
+      "definition": "To maximize means to make something as big as possible.",
+      "example": "Businesses try to maximize their profits.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nightmare",
+      "translation": "dahshatli tush",
+      "definition": "A nightmare is a very scary dream.",
+      "example": "I had a nightmare about being chased by a monster.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nutritious",
+      "translation": "to'yumli, foydali",
+      "definition": "If food is nutritious, it helps your body grow and stay healthy.",
+      "example": "Vegetables are a very nutritious food.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "protein",
+      "translation": "oqsillar",
+      "definition": "Protein is a substance in food that helps the body grow.",
+      "example": "Meat and beans are good sources of protein.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "signature",
+      "translation": "imzo",
+      "definition": "A signature is your name written in your own way.",
+      "example": "I need your signature on this document.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stuff",
+      "translation": "narsalar",
+      "definition": "Stuff is a word for things when you don't know their name.",
+      "example": "There is a lot of stuff in the garage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "subconscious",
+      "translation": "ong osti",
+      "definition": "The subconscious is the part of your mind that you are not aware of.",
+      "example": "I have a subconscious fear of spiders.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "van",
+      "translation": "furgon",
+      "definition": "A van is a vehicle that is larger than a car.",
+      "example": "We rented a van to move our furniture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "warn",
+      "translation": "ogohlantirmoq",
+      "definition": "To warn someone means to tell them of a possible danger.",
+      "example": "The sign warned people about the thin ice.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "workout",
+      "translation": "mashg'ulot",
+      "definition": "A workout is a period of physical exercise.",
+      "example": "I go to the gym for a workout three times a week.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "zoom",
+      "translation": "tez harakatlanmoq",
+      "definition": "To zoom means to move very quickly.",
+      "example": "The race car zoomed past the other cars.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

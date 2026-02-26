@@ -1,0 +1,146 @@
+{
+  "unit": "29",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "analogous",
+      "translation": "o'xshash, qiyosiy",
+      "definition": "If something is analogous to something else, it is similar in some way.",
+      "example": "The wings of a bird are analogous to the arms of a human.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "binoculars",
+      "translation": "durbin",
+      "definition": "Binoculars are a device used for seeing things that are far away.",
+      "example": "He used his binoculars to watch the birds in the trees.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bulk",
+      "translation": "yiriklik, asosiy qism",
+      "definition": "The bulk of something is its large size or the main part of it.",
+      "example": "The bulk of the work has already been completed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "comprise",
+      "translation": "tashkil topmoq",
+      "definition": "To comprise something means to consist of or be made up of it.",
+      "example": "The team comprises players from many different countries.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "depict",
+      "translation": "tasvirlamoq",
+      "definition": "To depict something means to show it in a drawing or painting.",
+      "example": "The painting depicts a scene from a famous battle.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dual",
+      "translation": "ikki tomonlama, qo'sh",
+      "definition": "If something is dual, it has two parts or functions.",
+      "example": "The car has a dual exhaust system.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "Fahrenheit",
+      "translation": "Farengeyt",
+      "definition": "Fahrenheit is a scale for measuring temperature.",
+      "example": "Water freezes at 32 degrees Fahrenheit.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fulfill",
+      "translation": "bajarmoq, amalga oshirmoq",
+      "definition": "To fulfill something means to achieve or complete it.",
+      "example": "He finally fulfilled his dream of becoming a pilot.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grove",
+      "translation": "to'qay, daraxtzor",
+      "definition": "A grove is a small group of trees.",
+      "example": "The picnic was held in a quiet orange grove.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ore",
+      "translation": "ruda",
+      "definition": "Ore is rock from which metal can be extracted.",
+      "example": "The miners extracted iron ore from the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outback",
+      "translation": "cho'l (Avstraliya)",
+      "definition": "The outback is the remote and dry area in the middle of Australia.",
+      "example": "Many unique animals live in the Australian outback.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outweigh",
+      "translation": "og'irroq kelmoq, ustun kelmoq",
+      "definition": "To outweigh something means to be more important or significant than it.",
+      "example": "The benefits of the new plan outweigh the costs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "paradox",
+      "translation": "paradoks, ziddiyat",
+      "definition": "A paradox is a situation that seems impossible because it has opposite qualities.",
+      "example": "It is a paradox that such a wealthy country has so many poor people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pier",
+      "translation": "pristan, kema to'xtash joyi",
+      "definition": "A pier is a structure that goes out into the water for people to walk on or for boats to tie to.",
+      "example": "We walked along the pier to watch the sunset.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shortcut",
+      "translation": "qisqa yo'l",
+      "definition": "A shortcut is a quicker way to get somewhere.",
+      "example": "We took a shortcut through the park to get home faster.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tariff",
+      "translation": "tarif, boj to'lovi",
+      "definition": "A tariff is a tax that is paid on goods coming into a country.",
+      "example": "The government imposed a new tariff on imported electronics.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thermometer",
+      "translation": "termometr",
+      "definition": "A thermometer is a device used for measuring temperature.",
+      "example": "The thermometer showed that the temperature was 25 degrees.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tilt",
+      "translation": "egmoq, qiyshaytirmoq",
+      "definition": "To tilt something means to move it so that one side is higher than the other.",
+      "example": "He tilted his head to the side as he listened to the music.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vice versa",
+      "translation": "aksinchasi, teskarisi",
+      "definition": "Vice versa means that the opposite of what has been said is also true.",
+      "example": "She dislikes him, and vice versa.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "whereabouts",
+      "translation": "turar joyi, qayerdaligi",
+      "definition": "A person's whereabouts is the place where they are.",
+      "example": "The police are still trying to determine the suspect's whereabouts.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

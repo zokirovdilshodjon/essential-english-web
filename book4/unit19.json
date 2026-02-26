@@ -1,0 +1,146 @@
+{
+  "unit": "19",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "afflicted",
+      "translation": "azob chekkan",
+      "definition": "To suffer from a sickness or problem.",
+      "example": "He was afflicted with a rare disease.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "aisle",
+      "translation": "yo'lak",
+      "definition": "A passage between rows of seats.",
+      "example": "She walked down the aisle to find her seat.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "atmosphere",
+      "translation": "atmosfera",
+      "definition": "The air around the Earth.",
+      "example": "The Earth’s atmosphere protects us.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "author",
+      "translation": "muallif",
+      "definition": "A person who writes books.",
+      "example": "She is the author of many novels.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "breakdown",
+      "translation": "buzilish, to'xtash",
+      "definition": "A failure of a machine or system.",
+      "example": "The car had a breakdown on the highway.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cargo",
+      "translation": "yuk",
+      "definition": "The goods carried by a ship or plane.",
+      "example": "The ship was carrying a large cargo of oil.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chapter",
+      "translation": "bob",
+      "definition": "A part of a book.",
+      "example": "I read the first chapter of the book.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "connect",
+      "translation": "bog'lamoq",
+      "definition": "To join things together.",
+      "example": "I connected the two wires together.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "etc.",
+      "translation": "va hokazo",
+      "definition": "Short way of saying 'and so on'.",
+      "example": "I need to buy milk, bread, etc.",
+      "part_of_speech": "abbreviation"
+    },
+    {
+      "word": "flip",
+      "translation": "ag'darmoq",
+      "definition": "To turn something over quickly.",
+      "example": "He flipped the coin.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "idle",
+      "translation": "ishsiz, bekorchi",
+      "definition": "When someone is not doing anything.",
+      "example": "He spent the afternoon being idle.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "notify",
+      "translation": "xabar bermoq",
+      "definition": "To tell someone about something.",
+      "example": "I will notify you when it arrives.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pea",
+      "translation": "no'xat",
+      "definition": "A small, round, green vegetable.",
+      "example": "I like to eat peas with my dinner.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "raisin",
+      "translation": "mayiz",
+      "definition": "A dried grape.",
+      "example": "I like to put raisins in my oatmeal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "retain",
+      "translation": "saqlab qolmoq",
+      "definition": "To keep something.",
+      "example": "She retained her title as the champion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "state",
+      "translation": "bayon qilmoq",
+      "definition": "To say it in a formal way.",
+      "example": "He stated his opinion on the matter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tray",
+      "translation": "patnis",
+      "definition": "A flat piece for carrying things.",
+      "example": "The waiter carried the drinks on a tray.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "unfortunate",
+      "translation": "baxtsiz, omadsiz",
+      "definition": "When something is unlucky.",
+      "example": "It was an unfortunate accident.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vivid",
+      "translation": "yorqin",
+      "definition": "When something is very bright or clear.",
+      "example": "She had a vivid dream last night.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vomit",
+      "translation": "qusish",
+      "definition": "To bring up food from your stomach.",
+      "example": "The bad food made him vomit.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

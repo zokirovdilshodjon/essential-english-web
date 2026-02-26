@@ -1,0 +1,146 @@
+{
+  "unit": "9",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "archaic",
+      "translation": "eskirgan, qadimiy",
+      "definition": "If something is archaic, it is very old or outdated.",
+      "example": "To many people, the typewriter is an archaic machine.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "benevolent",
+      "translation": "saxovatli, mehribon",
+      "definition": "If someone is benevolent, they are kind and generous.",
+      "example": "The benevolent man gave a lot of money to the hospital.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "brass",
+      "translation": "latun",
+      "definition": "Brass is a yellowish metal made by mixing copper and zinc.",
+      "example": "The door handle was made of shiny brass.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "capitalism",
+      "translation": "kapitalizm",
+      "definition": "Capitalism is an economic system where industries are owned by individuals.",
+      "example": "Many countries in the world have a system of capitalism.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "component",
+      "translation": "komponent, tarkibiy qism",
+      "definition": "A component is a part that makes up a larger machine or system.",
+      "example": "The computer has many different components.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dependence",
+      "translation": "qaramlik, bog'liqlik",
+      "definition": "Dependence is the state of needing someone or something for help.",
+      "example": "The baby’s dependence on its mother is very high.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "diminish",
+      "translation": "kamaytirmoq, pasaytirmoq",
+      "definition": "To diminish something means to make it smaller or less important.",
+      "example": "The sound of the music diminished as we walked away.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "drawback",
+      "translation": "kamchilik",
+      "definition": "A drawback is a disadvantage or a negative feature.",
+      "example": "The only drawback of the new car is that it is very expensive.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fad",
+      "translation": "vaqtinchalik urf",
+      "definition": "A fad is something that is popular for a short time.",
+      "example": "The new hairstyle was a fad that only lasted for a few months.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "impose",
+      "translation": "majburan joriy qilmoq",
+      "definition": "To impose something means to force it on other people.",
+      "example": "The government imposed a new tax on cigarettes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "managerial",
+      "translation": "boshqaruvga oid",
+      "definition": "Managerial describes something related to a manager or management.",
+      "example": "She has a managerial position at the bank.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "medieval",
+      "translation": "o'rta asrlarga oid",
+      "definition": "If something is medieval, it relates to the Middle Ages.",
+      "example": "The castle was a beautiful piece of medieval architecture.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "obsolete",
+      "translation": "eskirgan, foydalanishdan chiqqan",
+      "definition": "If something is obsolete, it is no longer needed because something better exists.",
+      "example": "Cassette tapes became obsolete after CDs were invented.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "peninsula",
+      "translation": "yarim orol",
+      "definition": "A peninsula is a piece of land that is surrounded by water on three sides.",
+      "example": "The country of Italy is a peninsula.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prestige",
+      "translation": "obro', nufuz",
+      "definition": "Prestige is the honor or respect that someone gets from others.",
+      "example": "The doctor had a lot of prestige in the community.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "proportion",
+      "translation": "proportsiya, qism",
+      "definition": "A proportion is a part of a larger whole.",
+      "example": "A large proportion of the students passed the test.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "radical",
+      "translation": "tubdan, radikal",
+      "definition": "If something is radical, it is very new and different from what is traditional.",
+      "example": "The company made some radical changes to its business plan.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "refute",
+      "translation": "rad etmoq",
+      "definition": "To refute something means to prove that it is wrong or false.",
+      "example": "The scientist refuted the theory with new evidence.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spectacular",
+      "translation": "ajoyib, daxshatli",
+      "definition": "If something is spectacular, it is very impressive to look at.",
+      "example": "The fireworks display was absolutely spectacular.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "weave",
+      "translation": "to'qimoq",
+      "definition": "To weave means to make cloth or other objects by crossing threads over and under each other.",
+      "example": "The woman wove a beautiful basket from dried grass.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

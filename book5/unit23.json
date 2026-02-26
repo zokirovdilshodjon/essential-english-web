@@ -1,0 +1,146 @@
+{
+  "unit": "23",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "astronomical",
+      "translation": "astronomik (juda katta)",
+      "definition": "If something is astronomical, then it is extremely large.",
+      "example": "The cost of the new building was astronomical.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "atom",
+      "translation": "atom",
+      "definition": "An atom is the smallest unit of a substance.",
+      "example": "Water is made of two hydrogen atoms and one oxygen atom.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "breadth",
+      "translation": "kenglik",
+      "definition": "Breadth is the distance from one side to the other side of something.",
+      "example": "The breadth of the river was about fifty meters.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "circumference",
+      "translation": "aylana uzunligi",
+      "definition": "A circumference is the distance completely around a circular object.",
+      "example": "The circumference of the wheel was two meters.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "comet",
+      "translation": "kometa",
+      "definition": "A comet is an object in space that looks like a bright star with a tail.",
+      "example": "We saw a comet in the sky last night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crater",
+      "translation": "krater",
+      "definition": "A crater is a large hole in the ground caused by an explosion or impact.",
+      "example": "The meteor created a large crater in the desert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crescent",
+      "translation": "yarim oy",
+      "definition": "A crescent is a shape that is curved and pointed at both ends.",
+      "example": "The moon was a thin crescent in the sky.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "debris",
+      "translation": "qoldiqlar",
+      "definition": "Debris is the pieces that are left after something has been destroyed.",
+      "example": "The street was covered in debris after the storm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "despair",
+      "translation": "umidsizlik",
+      "definition": "Despair is the feeling of having no hope.",
+      "example": "He was in despair after losing his job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "embed",
+      "translation": "o'rnatmoq, botirmoq",
+      "definition": "To embed something means to fix it firmly in a surrounding mass.",
+      "example": "The thorn was embedded in her finger.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fragment",
+      "translation": "parcha",
+      "definition": "A fragment is a small piece that has broken off something larger.",
+      "example": "He found a fragment of glass on the floor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "galaxy",
+      "translation": "galaktika",
+      "definition": "A galaxy is an extremely large group of stars and planets.",
+      "example": "Our solar system is part of the Milky Way galaxy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gigantic",
+      "translation": "ulkan",
+      "definition": "If something is gigantic, it is extremely large.",
+      "example": "The whale is a gigantic animal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gloom",
+      "translation": "zulmat, xafalik",
+      "definition": "Gloom is a state of near darkness or a feeling of sadness.",
+      "example": "The room was filled with gloom after the lights went out.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "radiate",
+      "translation": "nur sochmoq",
+      "definition": "To radiate means to send out heat or light.",
+      "example": "The sun radiates heat and light to the Earth.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "roam",
+      "translation": "darbadar yurmoq",
+      "definition": "To roam means to move around without a particular purpose.",
+      "example": "The cattle roamed freely across the field.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "solitary",
+      "translation": "yolg'iz",
+      "definition": "If someone is solitary, they spend a lot of time alone.",
+      "example": "He leads a solitary life in a small cabin in the woods.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "spectrum",
+      "translation": "spektr",
+      "definition": "A spectrum is a range of different colors or ideas.",
+      "example": "A rainbow shows the full spectrum of colors.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sphere",
+      "translation": "sharsimon",
+      "definition": "A sphere is an object that is shaped like a ball.",
+      "example": "The Earth is a sphere.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "status",
+      "translation": "status, mavqe",
+      "definition": "Status is the position or rank of someone in a society.",
+      "example": "He has a high status in the company.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

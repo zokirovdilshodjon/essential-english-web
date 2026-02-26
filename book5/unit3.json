@@ -1,0 +1,146 @@
+{
+  "unit": "3",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "analytic",
+      "translation": "tahliliy",
+      "definition": "If something is analytic, it is related to logic and reasoning.",
+      "example": "The analytic article criticized the new plan and presented one of its own.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "assert",
+      "translation": "tasdiqlamoq",
+      "definition": "To assert a fact or belief means to state it with confidence.",
+      "example": "He asserted that his mother’s cooking was better than his best friend’s.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bachelor",
+      "translation": "bo'ydoq",
+      "definition": "A bachelor is an unmarried man.",
+      "example": "Since he was a bachelor, Jason did his shopping by himself.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "calculus",
+      "translation": "kalkulus (oliy matematika)",
+      "definition": "Calculus is an advanced type of mathematics.",
+      "example": "By using calculus, scientists determined the planet’s orbit.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "celestial",
+      "translation": "osmoniy",
+      "definition": "If something is celestial, it is related to the sky or to outer space.",
+      "example": "Comets are celestial objects that are rarely seen.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cognitive",
+      "translation": "kognitiv (aqliy)",
+      "definition": "If something is cognitive, it is related to learning and knowing things.",
+      "example": "After her accident, her cognitive abilities were still very strong.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "collision",
+      "translation": "to'qnashuv",
+      "definition": "A collision is the act of two things hitting each other.",
+      "example": "The collision between the two cars created a loud noise.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "competent",
+      "translation": "layoqatli, bilimli",
+      "definition": "If someone is competent, they are able to do something well.",
+      "example": "The competent employee was quickly promoted to manager.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "diploma",
+      "translation": "diplom",
+      "definition": "A diploma is a certificate proving that someone has completed a course of study.",
+      "example": "After four years of college, Mary finally received her diploma.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "excel",
+      "translation": "ustun bo'lmoq, juda yaxshi qilmoq",
+      "definition": "To excel at something means to be very good at it.",
+      "example": "The boy excelled at play the piano.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "geology",
+      "translation": "geologiya",
+      "definition": "Geology is the study of the Earth’s structure and rocks.",
+      "example": "Because he studied geology, he knew how the mountains were formed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harness",
+      "translation": "jilovlamoq, foydalanmoq",
+      "definition": "To harness something means to control and use it, usually to make energy.",
+      "example": "The solar panels harness the sun’s energy to make electricity.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "intellect",
+      "translation": "intellekt, aql-zakovat",
+      "definition": "An intellect is a person’s ability to understand things and think intelligently.",
+      "example": "She was known for her quick intellect and humor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "keen",
+      "translation": "o'tkir, kuchli",
+      "definition": "If someone is keen, they are intelligent, sharp, or focused.",
+      "example": "The dog has a keen sense of smell.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mythology",
+      "translation": "mifologiya",
+      "definition": "Mythology is a group of stories from a particular culture or religion.",
+      "example": "Egyptian mythology is full of many different gods and goddesses.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "physiology",
+      "translation": "fiziologiya",
+      "definition": "Physiology is the study of the way that the parts of living things work.",
+      "example": "His expert knowledge of physiology helped him understand how the heart works.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "radioactive",
+      "translation": "radioaktiv",
+      "definition": "If something is radioactive, then it lets out radiation.",
+      "example": "Radioactive materials can be very dangerous to people.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "relativity",
+      "translation": "nisbiylik",
+      "definition": "Relativity is a theory about the way that objects move through time and space.",
+      "example": "Einstein’s theory of relativity changed the way people thought about the universe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sociology",
+      "translation": "sotsiologiya",
+      "definition": "Sociology is the study of people, societies, and their behavior.",
+      "example": "Sociology teaches us about the different cultures around the world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "theoretical",
+      "translation": "nazariy",
+      "definition": "If something is theoretical, it is based on theory rather than experience or practice.",
+      "example": "His idea was purely theoretical and had never been tested.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

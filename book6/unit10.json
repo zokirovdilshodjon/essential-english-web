@@ -1,0 +1,146 @@
+{
+  "unit": "10",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accumulate",
+      "translation": "to'planmoq, yig'ilmoq",
+      "definition": "To accumulate something is to collect a lot of it over time.",
+      "example": "The mail accumulated in their mailbox while they were on vacation.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "aerial",
+      "translation": "havodagi",
+      "definition": "When something is aerial, it relates to being in the air or flying.",
+      "example": "The aerial photographer took pictures from the air balloon.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "apparatus",
+      "translation": "uskuna, moslama",
+      "definition": "An apparatus is a device used for a particular purpose.",
+      "example": "The campers had an apparatus that showed them their exact location.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "avalanche",
+      "translation": "qor ko'chkisi",
+      "definition": "An avalanche is a large amount of snow, ice, and rock falling off a mountain.",
+      "example": "The avalanche destroyed the mountain village.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "consistency",
+      "translation": "izchillik, bir xillik",
+      "definition": "Consistency is the state of always behaving in the same way.",
+      "example": "Her consistency in archery meant that our team had a chance to win.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convection",
+      "translation": "konveksiya (issiqlik uzatish)",
+      "definition": "Convection is the flow of hot air through gas or liquid.",
+      "example": "The weather changed because of convection in the atmosphere.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "discharge",
+      "translation": "ruxsat bermoq (ketishga)",
+      "definition": "To discharge someone is to allow them to leave from a place, usually a hospital.",
+      "example": "I was discharged from the hospital after three days.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "intact",
+      "translation": "zararlanmagan, butun",
+      "definition": "When something is intact, it is complete and not damaged.",
+      "example": "Despite being over ten years old, my father’s model ship is still intact.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mortal",
+      "translation": "foniy, o'limga mahkum",
+      "definition": "When a person is mortal, they cannot live forever.",
+      "example": "All people are mortal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "omen",
+      "translation": "bashorat, alomat",
+      "definition": "An omen is a sign of what will happen in the future.",
+      "example": "He thought that seeing a black cat in the street was an omen of bad luck.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "overcast",
+      "translation": "bulutli",
+      "definition": "When the sky is overcast, it is full of clouds and is not sunny.",
+      "example": "The sky was overcast in the morning, but by noon it was sunny.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "poignant",
+      "translation": "ta'sirli, achinarli",
+      "definition": "When something is poignant, it causes a feeling of sadness.",
+      "example": "The movie’s ending was very poignant.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ranger",
+      "translation": "o'rmonchi, nazoratchi",
+      "definition": "A ranger is a person who protects a forest or park.",
+      "example": "The park ranger gave us directions to the waterfall.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rubble",
+      "translation": "xaroba, vayrona",
+      "definition": "Rubble is the piles of broken stone and brick from a destroyed building.",
+      "example": "The rescue team searched through the rubble for survivors.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "seclude",
+      "translation": "ajratib qo'ymoq",
+      "definition": "To seclude someone means to keep them away from other people.",
+      "example": "He secluded himself in his study to work on his book.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sideways",
+      "translation": "yonboshlab",
+      "definition": "If something moves sideways, it moves to or from the side.",
+      "example": "The car slid sideways on the icy road.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "sob",
+      "translation": "ho'ng-ho'ng yig'lamoq",
+      "definition": "To sob means to cry loudly with short breaths.",
+      "example": "She sobbed when she heard the sad news.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sober",
+      "translation": "hushyor, jiddiy",
+      "definition": "When someone is sober, they are not drunk.",
+      "example": "The driver was sober and alert.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "speck",
+      "translation": "zarra, nuqta",
+      "definition": "A speck is a very small mark or piece of something.",
+      "example": "There was a speck of dust on his coat.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "upbringing",
+      "translation": "tarbiya",
+      "definition": "Upbringing is the way a child is raised.",
+      "example": "His strict upbringing made him a very disciplined person.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

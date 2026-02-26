@@ -1,0 +1,146 @@
+{
+  "unit": "14",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "brick",
+      "translation": "g'isht",
+      "definition": "A brick is a hard block used for building.",
+      "example": "The house was made of red bricks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crumble",
+      "translation": "ushalanmoq",
+      "definition": "To crumble means to break into small pieces.",
+      "example": "The old wall was starting to crumble.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dough",
+      "translation": "xamir",
+      "definition": "Dough is a mixture of flour and water used for baking.",
+      "example": "I used the dough to make some bread.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "express",
+      "translation": "ifodalamoq",
+      "definition": "To express means to show what you think or feel.",
+      "example": "She expressed her happiness with a big smile.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fist",
+      "translation": "musht",
+      "definition": "A fist is a hand with the fingers closed tightly.",
+      "example": "He held the money tightly in his fist.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flexible",
+      "translation": "egiluvchan",
+      "definition": "If something is flexible, it can bend easily.",
+      "example": "Rubber is a very flexible material.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "flush",
+      "translation": "qizarib ketmoq",
+      "definition": "To flush means to become red in the face.",
+      "example": "She flushed with embarrassment.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "injure",
+      "translation": "jarohatlamoq",
+      "definition": "To injure someone means to hurt them.",
+      "example": "He injured his leg while playing soccer.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lump",
+      "translation": "bo'lak, shish",
+      "definition": "A lump is a small piece of something with no definite shape.",
+      "example": "There was a lump of sugar in my tea.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mixture",
+      "translation": "aralashma",
+      "definition": "A mixture is a combination of different things.",
+      "example": "The cake mixture was very sweet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reconcile",
+      "translation": "yarashmoq",
+      "definition": "To reconcile means to become friends again after an argument.",
+      "example": "The two friends reconciled after their fight.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ruin",
+      "translation": "vayron qilmoq",
+      "definition": "To ruin something means to spoil or destroy it.",
+      "example": "The rain ruined our picnic.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shatter",
+      "translation": "chil-chil bo'lmoq",
+      "definition": "To shatter means to break into many small pieces.",
+      "example": "The glass shattered when it hit the floor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shutter",
+      "translation": "deraza tavaqalari",
+      "definition": "Shutters are wooden covers on the outside of a window.",
+      "example": "We closed the shutters when the storm began.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sift",
+      "translation": "elamoq",
+      "definition": "To sift means to put a substance through a sieve.",
+      "example": "Sift the flour before you add it to the bowl.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "slight",
+      "translation": "kichik, arzimas",
+      "definition": "If something is slight, it is small in amount or degree.",
+      "example": "There was a slight change in the schedule.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sparkle",
+      "translation": "yarqiramoq",
+      "definition": "To sparkle means to shine with small flashes of light.",
+      "example": "The diamond sparkled in the light.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sprinkle",
+      "translation": "sepmoq",
+      "definition": "To sprinkle means to scatter small drops or pieces over something.",
+      "example": "Sprinkle some salt on the popcorn.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stale",
+      "translation": "ayniy boshlagan, eskirgan",
+      "definition": "If food is stale, it is no longer fresh.",
+      "example": "The bread was stale, so I threw it away.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "utter",
+      "translation": "gapirmoq, demoq",
+      "definition": "To utter means to say something.",
+      "example": "He didn't utter a word during the meeting.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

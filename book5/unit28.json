@@ -1,0 +1,146 @@
+{
+  "unit": "28",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aquarium",
+      "translation": "akvarium",
+      "definition": "An aquarium is a building where fish and underwater animals are kept.",
+      "example": "We saw a scary shark at the aquarium.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "arbitrary",
+      "translation": "ixtiyoriy, tasodifiy",
+      "definition": "If something is arbitrary, it is not based on any plan or system.",
+      "example": "The rules seemed arbitrary and made no sense.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "autobiography",
+      "translation": "avtobiografiya",
+      "definition": "An autobiography is a story of a person's life written by that person.",
+      "example": "I read an autobiography about my favorite musician.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convention",
+      "translation": "an'ana, odat",
+      "definition": "A convention is behavior that is considered to be common or polite.",
+      "example": "It is a convention to shake hands when you meet someone.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gracious",
+      "translation": "muloyim, xushmuomala",
+      "definition": "If someone is gracious, they are kind and polite.",
+      "example": "She was a gracious host and made us feel welcome.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "improve",
+      "translation": "yaxshilamoq",
+      "definition": "To improve something means to make it better.",
+      "example": "I want to improve my English speaking skills.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "insulate",
+      "translation": "izolyatsiya qilmoq",
+      "definition": "To insulate something means to protect it from heat, cold, or noise.",
+      "example": "The house was well-insulated to keep it warm in the winter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "intrigue",
+      "translation": "qiziqtirib qo'ymoq",
+      "definition": "To intrigue someone means to make them very interested.",
+      "example": "The mystery story intrigued me from the beginning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "longevity",
+      "translation": "uzoq umr ko'rish",
+      "definition": "Longevity is a long life.",
+      "example": "Healthy eating and exercise can increase your longevity.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "misplace",
+      "translation": "yo'qotib qo'ymoq",
+      "definition": "To misplace something means to lose it for a short time.",
+      "example": "I misplaced my keys and couldn't find them anywhere.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "naughty",
+      "translation": "sho'x, quloqsiz",
+      "definition": "When a child is naughty, they behave badly.",
+      "example": "The naughty boy broke the window with a ball.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "norm",
+      "translation": "me'yor",
+      "definition": "A norm is a standard or way of behaving that is typical.",
+      "example": "It is the norm to wear a suit to a job interview.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "orangutan",
+      "translation": "orangutan",
+      "definition": "An orangutan is a large ape with long orange hair.",
+      "example": "We saw an orangutan climbing a tree at the zoo.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "overload",
+      "translation": "haddan ortiq yuklamoq",
+      "definition": "To overload something means to put too much on it.",
+      "example": "Don't overload the washing machine with too many clothes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "philanthropy",
+      "translation": "filantropiya (saxovat)",
+      "definition": "Philanthropy is the practice of giving money to help people.",
+      "example": "The billionaire was known for his philanthropy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "probe",
+      "translation": "tekshirmoq, tadqiq qilmoq",
+      "definition": "To probe something means to explore or examine it closely.",
+      "example": "The scientist used a tool to probe the soil.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "recipient",
+      "translation": "qabul qiluvchi",
+      "definition": "A recipient is a person who receives something.",
+      "example": "She was the recipient of a prestigious award.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reptile",
+      "translation": "sudralib yuruvchi",
+      "definition": "A reptile is a cold-blooded animal such as a snake or lizard.",
+      "example": "Lizards and crocodiles are examples of reptiles.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thrive",
+      "translation": "gurkirab rivojlanmoq",
+      "definition": "To thrive means to grow or develop very well.",
+      "example": "The plants thrived in the sunny garden.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ultimate",
+      "translation": "yakuniy, asosiy",
+      "definition": "If something is ultimate, it is final or most important.",
+      "example": "The ultimate goal of the game is to win.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

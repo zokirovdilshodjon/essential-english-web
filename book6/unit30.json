@@ -1,0 +1,146 @@
+{
+  "unit": "30",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "amber",
+      "translation": "qahrabo, sarg'ish rang",
+      "definition": "Amber is a hard, yellowish-brown substance used for making jewelry.",
+      "example": "She wore a necklace made of beautiful amber beads.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "charcoal",
+      "translation": "yog'och ko'miri",
+      "definition": "Charcoal is a black substance made by burning wood and used as fuel.",
+      "example": "We used charcoal to cook the meat on the grill.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "columnist",
+      "translation": "kolumnist, maqola yozuvchi",
+      "definition": "A columnist is a writer for a newspaper or magazine.",
+      "example": "He is a famous columnist who writes about political issues.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "courteous",
+      "translation": "xushmuomala",
+      "definition": "If someone is courteous, they are polite and respectful.",
+      "example": "The staff at the hotel were very courteous and helpful.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "credentials",
+      "translation": "malaka, hujjatlar",
+      "definition": "Credentials are qualities or experiences that make a person suitable for a job.",
+      "example": "She has impressive credentials for the position of manager.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crickets",
+      "translation": "chigirtkalar",
+      "definition": "Crickets are small insects that make a loud chirping sound.",
+      "example": "The sound of crickets filled the night air.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "delta",
+      "translation": "delta (daryo quyilishi)",
+      "definition": "A delta is an area of land where a river separates into several smaller rivers.",
+      "example": "The Nile Delta is a very fertile area of land.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "detergent",
+      "translation": "yuvish vositasi",
+      "definition": "A detergent is a chemical substance used for cleaning clothes or dishes.",
+      "example": "She used a strong detergent to get the stain out of the shirt.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "euphemism",
+      "translation": "evfemizm, yumshoqroq so'z",
+      "definition": "A euphemism is a mild word used instead of one that is considered harsh.",
+      "example": "'Passing away' is a euphemism for 'dying.'",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "expire",
+      "translation": "muddati tugamoq",
+      "definition": "To expire means to come to an end or to no longer be valid.",
+      "example": "My passport will expire next month.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "granite",
+      "translation": "granit",
+      "definition": "Granite is a very hard, grey rock used for building.",
+      "example": "The kitchen counters were made of solid granite.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gravel",
+      "translation": "shag'al",
+      "definition": "Gravel is small stones used for making paths or roads.",
+      "example": "The driveway was covered with a layer of grey gravel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "haunt",
+      "translation": "vahm solmoq; tez-tez borib turmoq",
+      "definition": "To haunt means to visit a place frequently (often said of ghosts).",
+      "example": "The memory of the accident continued to haunt him for years.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "liberal",
+      "translation": "liberal, erkin fikrli",
+      "definition": "If someone is liberal, they are open to new ideas and social change.",
+      "example": "He has very liberal views on education and politics.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "maze",
+      "translation": "labirint",
+      "definition": "A maze is a complicated system of paths that is difficult to find your way through.",
+      "example": "The children got lost in the garden maze.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "moss",
+      "translation": "mox",
+      "definition": "Moss is a small green plant that grows in damp places.",
+      "example": "The rocks were covered in a layer of soft green moss.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "peck",
+      "translation": "cho'qimoq",
+      "definition": "To peck means to bite or hit something with a beak.",
+      "example": "The bird pecked at the breadcrumbs on the ground.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pebble",
+      "translation": "mayda tosh",
+      "definition": "A pebble is a small, smooth stone.",
+      "example": "The beach was covered with small white pebbles.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reservoir",
+      "translation": "suv ombori",
+      "definition": "A reservoir is a large lake used for storing water.",
+      "example": "The city gets its water from a large reservoir in the mountains.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "streak",
+      "translation": "chiziq, yo'l",
+      "definition": "A streak is a long, thin mark of a different color.",
+      "example": "There was a streak of lightning across the dark sky.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

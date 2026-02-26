@@ -1,0 +1,146 @@
+{
+  "unit": "7",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aquatic",
+      "translation": "suvdagi",
+      "definition": "If a plant or animal is aquatic, it lives or grows in water.",
+      "example": "The dolphin is an aquatic mammal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "biosphere",
+      "translation": "biosfera",
+      "definition": "The biosphere is the earth’s surface and atmosphere where there are living things.",
+      "example": "Birds, trees, and worms all thrive in the biosphere.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bizarre",
+      "translation": "g'alati, g'ayritabiiy",
+      "definition": "When something is bizarre, it is very strange.",
+      "example": "My bizarre dreams make no sense to me when I am awake.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "Celsius",
+      "translation": "Selsiy",
+      "definition": "Celsius is a scale for measuring temperature.",
+      "example": "Water freezes at zero degrees Celsius.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coarse",
+      "translation": "dag'al",
+      "definition": "If something is coarse, that means it has a rough texture.",
+      "example": "The coarse sweater made my skin itch.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "companion",
+      "translation": "hamroh",
+      "definition": "A companion is a person that someone spends a lot of time with.",
+      "example": "I always walk to school with my companion Frank.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "digest",
+      "translation": "hazm qilmoq",
+      "definition": "To digest means to swallow food and pass it through the body.",
+      "example": "Allow some time for food to be digested before going swimming.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "duration",
+      "translation": "davomiylik",
+      "definition": "The duration of an event is the time during which it happens.",
+      "example": "The girls watched television for the duration of the evening.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ecology",
+      "translation": "ekologiya",
+      "definition": "Ecology is the study of the environment and living things.",
+      "example": "We study ecology to learn how to help improve the Earth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "feat",
+      "translation": "jasorat, yutuq",
+      "definition": "A feat is an impressive or difficult achievement or action.",
+      "example": "The elephant’s standing up on one leg was a feat.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "infinite",
+      "translation": "cheksiz",
+      "definition": "If something is infinite, it has no limit or end.",
+      "example": "Many people think that space is infinite.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nucleus",
+      "translation": "yadro",
+      "definition": "The nucleus is the central part of something.",
+      "example": "The nucleus of an atom is made up of protons and neutrons.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "parasite",
+      "translation": "parazit",
+      "definition": "A parasite is a tiny animal or plant that lives on or inside another animal or plant.",
+      "example": "The sick dog has a parasite.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prominent",
+      "translation": "taniqli, ko'zga ko'ringan",
+      "definition": "When something is prominent, it is important and well known.",
+      "example": "The prominent man was invited to give a speech at the graduation.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "repetitive",
+      "translation": "takrorlanuvchi",
+      "definition": "When something is repetitive, it is repeated many times and becomes boring.",
+      "example": "Working in a factory can be a very repetitive job.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "reproductive",
+      "translation": "ko'payishga oid",
+      "definition": "If something is reproductive, it has to do with a living thing producing another thing like itself.",
+      "example": "The reproductive system of a plant is very different from that of an animal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "temperate",
+      "translation": "mo'tadil",
+      "definition": "When a place is temperate, it never gets too hot or too cold.",
+      "example": "In a temperate climate, you can find a lot of different kinds of trees.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tolerance",
+      "translation": "bardosh, toqat",
+      "definition": "Tolerance is the ability to accept something untasty or difficult.",
+      "example": "The boy has a high tolerance for spicy food.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "undergo",
+      "translation": "boshidan o'tkazmoq",
+      "definition": "To undergo means to experience a process or change.",
+      "example": "The building must undergo some repairs before it is safe to use.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vulnerable",
+      "translation": "zaif, himoyasiz",
+      "definition": "When someone is vulnerable, they are weak and without protection.",
+      "example": "Small children are very vulnerable and need the care of their parents.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "9",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alongside",
+      "translation": "yonma-yon",
+      "definition": "If something is alongside another thing, then it is next to it.",
+      "example": "We work alongside each other in the office.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "appetite",
+      "translation": "ishtaha",
+      "definition": "Your appetite is your hunger for food.",
+      "example": "Tom has a big appetite. He eats all the time.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "assist",
+      "translation": "yordam bermoq",
+      "definition": "To assist someone is to help them.",
+      "example": "Andrew assisted me with my homework.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "breeze",
+      "translation": "shabada",
+      "definition": "A breeze is a soft wind.",
+      "example": "The breeze caused the leaves to fall off the tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "defy",
+      "translation": "bo'ysunmaslik",
+      "definition": "To defy someone is to work against them or refuse to do what they say.",
+      "example": "The child defied his parents and stayed out late.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "display",
+      "translation": "namoyish qilmoq",
+      "definition": "To display something means to show it to people.",
+      "example": "The museum displays many ancient artifacts.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "efficient",
+      "translation": "samarali",
+      "definition": "If something is efficient, it works well without wasting time or energy.",
+      "example": "This new car is very fuel-efficient.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "feeble",
+      "translation": "nimjon, kuchsiz",
+      "definition": "If someone is feeble, they are very weak.",
+      "example": "The old man was too feeble to walk alone.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "forgive",
+      "translation": "kechirmoq",
+      "definition": "To forgive someone means to stop being angry with them.",
+      "example": "I forgave him for what he said.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lively",
+      "translation": "bardam, quvnoq",
+      "definition": "If someone is lively, they have a lot of energy.",
+      "example": "She is a very lively person.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "majestic",
+      "translation": "ulug'vor",
+      "definition": "If something is majestic, it is very beautiful and impressive.",
+      "example": "The mountain was a majestic sight.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nor",
+      "translation": "na ... va na",
+      "definition": "You use nor to connect two negative ideas.",
+      "example": "He neither ate nor slept.",
+      "part_of_speech": "conjunction"
+    },
+    {
+      "word": "outraged",
+      "translation": "g'azablangan",
+      "definition": "If you are outraged, you are very angry.",
+      "example": "The public was outraged by the new tax laws.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pessimistic",
+      "translation": "pessimistik, tushkun",
+      "definition": "If you are pessimistic, you think bad things will happen.",
+      "example": "He is very pessimistic about the future.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rumor",
+      "translation": "mish-mish",
+      "definition": "A rumor is a story that may or may not be true.",
+      "example": "I heard a rumor that he is leaving the company.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "slap",
+      "translation": "tarsaki tushirmoq",
+      "definition": "To slap someone means to hit them with the open hand.",
+      "example": "She slapped him in the face.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "smash",
+      "translation": "parchalab yubormoq",
+      "definition": "To smash something means to break it into many pieces.",
+      "example": "The window smashed when the ball hit it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "subject",
+      "translation": "tobora bo'lmoq",
+      "definition": "To subject someone to something means to make them experience it.",
+      "example": "They were subjected to many hardships.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wage",
+      "translation": "ish haqi",
+      "definition": "A wage is the money that a person is paid for their work.",
+      "example": "He earns a good wage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "whereas",
+      "translation": "... bo'lsa, ... holatda",
+      "definition": "You use whereas to show a contrast between two things.",
+      "example": "He likes sports, whereas I prefer reading.",
+      "part_of_speech": "conjunction"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "28",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "avail",
+      "translation": "foyda, yordam",
+      "definition": "Avail is help. It is often used in the achievement of a goal.",
+      "example": "His studying was to no avail because he failed the test.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "expand",
+      "translation": "kengaymoq",
+      "definition": "To expand is to become bigger in size.",
+      "example": "A balloon will expand as you blow air into it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "define",
+      "translation": "ta'riflamoq",
+      "definition": "To define means to clearly state, show, or explain what something is.",
+      "example": "People define success in many different ways.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dread",
+      "translation": "qo'rqmoq, daxshatga tushmoq",
+      "definition": "To dread is to be afraid of something that could, or is going to, happen.",
+      "example": "I dread the idea that I will not get into college.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fundamental",
+      "translation": "asosiy, tub",
+      "definition": "If something is fundamental, it is a basic part of something.",
+      "example": "The fundamental rules of the game are quite simple.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "horrifying",
+      "translation": "daxshatli",
+      "definition": "If something is horrifying, it is extremely scary or shocking.",
+      "example": "The news of the accident was horrifying.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "incredulous",
+      "translation": "ishonmaydigan",
+      "definition": "If you are incredulous, you do not believe something.",
+      "example": "He was incredulous when he heard he had won the lottery.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "linger",
+      "translation": "uzoq qolib ketmoq",
+      "definition": "To linger is to stay somewhere longer than necessary.",
+      "example": "The smell of fresh bread lingered in the kitchen.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "organism",
+      "translation": "organizm",
+      "definition": "An organism is a living thing, such as a plant or animal.",
+      "example": "The scientist studied the tiny organism under a microscope.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "paraphrase",
+      "translation": "o'z so'zlari bilan aytib bermoq",
+      "definition": "To paraphrase is to express something in different words.",
+      "example": "The student paraphrased the teacher's explanation.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "plague",
+      "translation": "o'lat, kulfat",
+      "definition": "A plague is a serious disease that spreads quickly.",
+      "example": "The plague killed many people in the Middle Ages.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "presently",
+      "translation": "hozirda, tez orada",
+      "definition": "Presently means happening now or in a short time.",
+      "example": "He is presently working on a new book.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "random",
+      "translation": "tasodifiy",
+      "definition": "If something is random, it happens without a specific plan.",
+      "example": "The numbers were chosen in a random order.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "riot",
+      "translation": "tartibsizlik, g'alayon",
+      "definition": "A riot is a violent protest by a group of people.",
+      "example": "A riot broke out in the city after the football match.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scribble",
+      "translation": "shoshilib yozmoq",
+      "definition": "To scribble is to write something quickly and messily.",
+      "example": "He scribbled a note and left it on the table.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shrine",
+      "translation": "ziyoratgoh",
+      "definition": "A shrine is a holy place where people go to pray.",
+      "example": "Many people visit the shrine to show their respect.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "solitude",
+      "translation": "tanholik",
+      "definition": "Solitude is the state of being alone.",
+      "example": "He enjoys the solitude of the mountains.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stark",
+      "translation": "yaqqol, mutlaq",
+      "definition": "If something is stark, it is very plain or distinct.",
+      "example": "The white house stood in stark contrast to the black trees.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "summon",
+      "translation": "chaqirmoq",
+      "definition": "To summon is to officially ask someone to come.",
+      "example": "The king summoned his advisors to the palace.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "worsen",
+      "translation": "yomonlashmoq",
+      "definition": "To worsen is to become worse or more serious.",
+      "example": "The weather began to worsen as the sun went down.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

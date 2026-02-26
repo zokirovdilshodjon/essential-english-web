@@ -1,0 +1,146 @@
+{
+  "unit": "8",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adept",
+      "translation": "mohir",
+      "definition": "If someone is adept at something, they are very good at doing it.",
+      "example": "The carpenter is very adept at building houses.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "barren",
+      "translation": "unumsiz, qaqragan",
+      "definition": "If land is barren, it has no plants growing on it.",
+      "example": "People cannot farm in barren lands.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ceramic",
+      "translation": "keramik",
+      "definition": "If something is ceramic, it is made of baked clay.",
+      "example": "The house’s roof was made of ceramic tiles.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "culinary",
+      "translation": "pazandachilikka oid",
+      "definition": "If something is culinary, it is related to cooking.",
+      "example": "I gained culinary skills after working in a restaurant for many years.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dense",
+      "translation": "zich",
+      "definition": "If something is dense, it has a lot of things close together.",
+      "example": "The forest was so dense that it was hard to see through the trees.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dignity",
+      "translation": "qadr-qimmat",
+      "definition": "Dignity is the ability to be calm and serious and to be worthy of respect.",
+      "example": "When the man lost his job, he maintained his dignity.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dominate",
+      "translation": "hukmronlik qilmoq",
+      "definition": "To dominate means to control them or to be more important than them.",
+      "example": "The loud man always dominates the conversation.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "edible",
+      "translation": "iste'molga yaroqli",
+      "definition": "If something is edible, you can eat it.",
+      "example": "Not all berries are edible. Some are poisonous.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hostile",
+      "translation": "adovatli, dushmanlarcha",
+      "definition": "If someone is hostile, they are angry and unfriendly.",
+      "example": "The dog was very hostile and would bark at anyone who walked by.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intake",
+      "translation": "iste'mol qilish",
+      "definition": "Your intake of food is the amount of food you take into your body.",
+      "example": "To be healthy, you should decrease your intake of sugar.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "likewise",
+      "translation": "shuningdek",
+      "definition": "Likewise means in the same way or also.",
+      "example": "I like the new teacher, and my classmates do likewise.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "malnutrition",
+      "translation": "to'yib ovqatlanmaslik",
+      "definition": "Malnutrition is the state of not having enough of the right food to eat.",
+      "example": "The children in the poor country suffered from malnutrition.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "medication",
+      "translation": "dorilar",
+      "definition": "Medication is medicine or drugs given to people who are sick.",
+      "example": "The doctor gave me some medication for my cough.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "misconception",
+      "translation": "noto'g'ri tushuncha",
+      "definition": "A misconception is a wrong idea about something.",
+      "example": "It’s a common misconception that all snakes are dangerous.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "obscure",
+      "translation": "noma'lum, qorong'u",
+      "definition": "If something is obscure, it is not well known or is hard to see.",
+      "example": "The meaning of the poem was obscure and difficult to understand.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "oppress",
+      "translation": "zulm o'tkazmoq",
+      "definition": "To oppress someone means to rule over them in a cruel and unfair way.",
+      "example": "The king oppressed his people and took all of their money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "peel",
+      "translation": "po'stini archmoq",
+      "definition": "To peel something means to remove its skin.",
+      "example": "She peeled the apple before eating it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "prescription",
+      "translation": "retsept (dori uchun)",
+      "definition": "A prescription is a piece of paper on which a doctor writes the medicine you need.",
+      "example": "The pharmacist gave me the medicine after I showed him my prescription.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "respirator",
+      "translation": "respirator",
+      "definition": "A respirator is a machine that helps a person breathe.",
+      "example": "The patient was on a respirator to help him get enough oxygen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "strive",
+      "translation": "intilmoq, tirishmoq",
+      "definition": "To strive means to make a great effort to do something.",
+      "example": "She strives to be the best student in her class.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

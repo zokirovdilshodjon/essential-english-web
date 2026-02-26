@@ -1,0 +1,146 @@
+{
+  "unit": "10",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "animate",
+      "translation": "jonli",
+      "definition": "When something is animate, it has life.",
+      "example": "Rocks and machines are not animate things.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "classify",
+      "translation": "tasniflamoq",
+      "definition": "To classify things is to put them into groups based on their type.",
+      "example": "The biologist classified the plant as a completely new species.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "concede",
+      "translation": "tan olmoq",
+      "definition": "To concede is to admit that something is true against your wish.",
+      "example": "The student conceded that he had cheated on the test.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "concept",
+      "translation": "tushuncha",
+      "definition": "A concept is an idea about something.",
+      "example": "I learned some concepts of molecules before working in the science lab.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "construct",
+      "translation": "qurmoq",
+      "definition": "To construct something means to build it.",
+      "example": "They are constructing a new bridge.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "decade",
+      "translation": "o'n yillik",
+      "definition": "A decade is a period of ten years.",
+      "example": "The company has grown a lot over the last decade.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "diagram",
+      "translation": "diagramma, chizma",
+      "definition": "A diagram is a simple drawing that explains something.",
+      "example": "The teacher drew a diagram of the heart on the board.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ferry",
+      "translation": "parom",
+      "definition": "A ferry is a boat that carries people and cars across a river.",
+      "example": "We took the ferry across the lake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "handy",
+      "translation": "qulay",
+      "definition": "If something is handy, it is useful or easy to use.",
+      "example": "This tool is very handy for fixing things.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "isolate",
+      "translation": "ajratmoq",
+      "definition": "To isolate something means to keep it separate from other things.",
+      "example": "The patient was isolated to prevent the spread of the virus.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "longing",
+      "translation": "kuchli xohish",
+      "definition": "A longing is a strong feeling of wanting something.",
+      "example": "He felt a longing for his home.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "numerous",
+      "translation": "juda ko'p",
+      "definition": "If things are numerous, there are many of them.",
+      "example": "There are numerous stars in the sky.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "particle",
+      "translation": "zarracha",
+      "definition": "A particle is a very small piece of something.",
+      "example": "Dust particles were floating in the air.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plea",
+      "translation": "iltijo",
+      "definition": "A plea is an urgent and emotional request.",
+      "example": "She made a plea for help.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "refrain",
+      "translation": "tiyilmoq",
+      "definition": "To refrain from something means to not do it.",
+      "example": "Please refrain from smoking in this area.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "review",
+      "translation": "ko'rib chiqish",
+      "definition": "A review is a formal assessment of something.",
+      "example": "The committee will conduct a review of the project.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sophisticated",
+      "translation": "murakkab, zamonaviy",
+      "definition": "If something is sophisticated, it is very advanced or complex.",
+      "example": "The new security system is very sophisticated.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "surrender",
+      "translation": "taslim bo'lmoq",
+      "definition": "To surrender means to stop fighting and admit defeat.",
+      "example": "The army was forced to surrender.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "upright",
+      "translation": "tikka",
+      "definition": "If something is upright, it is standing straight up.",
+      "example": "He sat in an upright position.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "worthwhile",
+      "translation": "arzirli",
+      "definition": "If something is worthwhile, it is important or useful enough to be worth the effort.",
+      "example": "It was a worthwhile experience.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

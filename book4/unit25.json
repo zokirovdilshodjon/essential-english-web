@@ -1,0 +1,146 @@
+{
+  "unit": "25",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aircraft",
+      "translation": "uchish apparati",
+      "definition": "An aircraft is a vehicle that flies in the sky.",
+      "example": "At the museum in the airport, you can see a lot of old aircraft.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "celebrity",
+      "translation": "mashhur shaxs",
+      "definition": "A celebrity is someone who is famous.",
+      "example": "It was the highlight of the evening when the celebrities arrived.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "concrete",
+      "translation": "beton",
+      "definition": "Concrete is a hard substance made from stones and cement.",
+      "example": "The man covered the ground with concrete.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "decisive",
+      "translation": "qat'iyatli",
+      "definition": "If someone is decisive, they make decisions quickly.",
+      "example": "Our boss is very decisive, so it did not take long to organize the project.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "esteemed",
+      "translation": "hurmatli",
+      "definition": "If someone is esteemed, many people like or respect them.",
+      "example": "The esteemed scientist won a Nobel Prize for his work.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ethical",
+      "translation": "axloqiy",
+      "definition": "If something is ethical, it is related to what is right and wrong.",
+      "example": "The company was praised for its ethical business practices.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "extinct",
+      "translation": "qirilib ketgan",
+      "definition": "If a type of animal is extinct, it no longer exists.",
+      "example": "Dinosaurs have been extinct for millions of years.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hardy",
+      "translation": "baquvvat, chidamli",
+      "definition": "If someone or something is hardy, they are strong and can survive cold or difficult conditions.",
+      "example": "The hardy plants survived the cold winter.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "institute",
+      "translation": "institut, muassasa",
+      "definition": "An institute is an organization for a specific purpose.",
+      "example": "He works at a research institute that studies cancer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "jealousy",
+      "translation": "hasad, rashk",
+      "definition": "Jealousy is a feeling of wanting something that someone else has.",
+      "example": "Her jealousy of her sister's success caused many problems.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "migrate",
+      "translation": "ko'chib o'tmoq",
+      "definition": "To migrate is to move from one place to another to live.",
+      "example": "Many birds migrate south for the winter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nurture",
+      "translation": "tarbiyalamoq, g'amxo'rlik",
+      "definition": "To nurture something is to help it grow and develop.",
+      "example": "A mother nurtures her child with love and care.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overhead",
+      "translation": "bosh tepasida",
+      "definition": "If something is overhead, it is located above you.",
+      "example": "The plane flew overhead as we walked in the park.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "principle",
+      "translation": "tamoyil, qoida",
+      "definition": "A principle is a belief about what is right or a rule of behavior.",
+      "example": "He is a man of high principles and would never lie.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rural",
+      "translation": "qishloqqa oid",
+      "definition": "Related to the countryside rather than the city.",
+      "example": "They moved from the city to a small rural town.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "secluded",
+      "translation": "xilvat, tanho",
+      "definition": "If a place is secluded, it is quiet and far away from other people.",
+      "example": "They went on a picnic to a secluded spot in the woods.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "species",
+      "translation": "tur, nav",
+      "definition": "A species is a group of living things that are similar.",
+      "example": "There are many different species of birds in the forest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "swamp",
+      "translation": "botqoqlik",
+      "definition": "A swamp is a very wet area of land.",
+      "example": "The swamp was filled with alligators and snakes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "traverse",
+      "translation": "kesib o'tmoq",
+      "definition": "To traverse an area is to move across or through it.",
+      "example": "The explorers traversed the mountains on foot.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "zoology",
+      "translation": "zoologiya",
+      "definition": "Zoology is the scientific study of animals.",
+      "example": "She decided to study zoology because of her love for animals.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

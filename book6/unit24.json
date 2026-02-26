@@ -1,0 +1,146 @@
+{
+  "unit": "24",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abide",
+      "translation": "rioya qilmoq (qoidaga)",
+      "definition": "To abide by something, like a rule, means to obey it.",
+      "example": "If you want to play the game with us, you must be willing to abide by our rules.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "conversion",
+      "translation": "aylantirish, o'zgartirish",
+      "definition": "Conversion is the act of changing something into a different state or form.",
+      "example": "The city discussed the conversion of the parking lot into a skateboard park.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cram",
+      "translation": "tiqmoq, to'ldirmoq",
+      "definition": "To cram things means to put them into a place that can barely contain them.",
+      "example": "He crammed all of his shirts into the top drawer of the dresser.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "defer",
+      "translation": "keyinga qoldirmoq",
+      "definition": "To defer means to arrange for an action to happen at a later time.",
+      "example": "The girl was very sleepy, so she chose to defer her homework until morning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "export",
+      "translation": "eksport qilmoq",
+      "definition": "To export something means to send it to another country for sale.",
+      "example": "The country exports a lot of oil to other nations.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fume",
+      "translation": "tutun, gaz",
+      "definition": "Fumes are strong-smelling gas or smoke that is often dangerous.",
+      "example": "The exhaust fumes from the cars made it hard to breathe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "habitual",
+      "translation": "odatiy",
+      "definition": "If something is habitual, it is done as a habit.",
+      "example": "His habitual lateness was starting to annoy his boss.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "justify",
+      "translation": "oqlamoq, asoslab bermoq",
+      "definition": "To justify something means to show that it is right or reasonable.",
+      "example": "He tried to justify his behavior by saying he was tired.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "output",
+      "translation": "mahsulot, natija",
+      "definition": "Output is the amount of something that a person or machine produces.",
+      "example": "The factory's output has increased by ten percent this year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "overpopulation",
+      "translation": "aholi haddan tashqari ko'pligi",
+      "definition": "Overpopulation is the state of having too many people in a place.",
+      "example": "Many cities are struggling with the problem of overpopulation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "patent",
+      "translation": "patent, ixtiroga bo'lgan huquq",
+      "definition": "A patent is an official right to be the only person to make or sell an invention.",
+      "example": "He applied for a patent for his new invention.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "penalize",
+      "translation": "jazolamoq",
+      "definition": "To penalize someone means to punish them for breaking a rule.",
+      "example": "The player was penalized for hitting another player.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "petroleum",
+      "translation": "neft",
+      "definition": "Petroleum is a liquid that is found under the ground and used to make gas.",
+      "example": "The country has large reserves of petroleum.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prototype",
+      "translation": "prototip, nusxa",
+      "definition": "A prototype is a first or early model of something.",
+      "example": "The company is testing a prototype of its new electric car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scrap",
+      "translation": "parcha, bo'lak",
+      "definition": "A scrap is a small piece of something, like paper or metal.",
+      "example": "She wrote the phone number on a scrap of paper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sector",
+      "translation": "sektor, soha",
+      "definition": "A sector is a part of a country's economy or society.",
+      "example": "The agricultural sector is very important to the country's economy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "subscribe",
+      "translation": "obuna bo'lmoq",
+      "definition": "To subscribe to something means to pay money to receive it regularly.",
+      "example": "I decided to subscribe to the local newspaper.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "subsist",
+      "translation": "kun ko'rmoq, yashamoq",
+      "definition": "To subsist means to stay alive when you only have a small amount of food or money.",
+      "example": "The family had to subsist on a very small amount of food.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "suspend",
+      "translation": "to'xtatib qo'ymoq; osib qo'ymoq",
+      "definition": "To suspend something means to stop it from happening for a period of time.",
+      "example": "The school suspended the student for three days.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "synthesis",
+      "translation": "sintez, birlashuv",
+      "definition": "A synthesis is the combination of different things to form something new.",
+      "example": "The book is a synthesis of many different ideas.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

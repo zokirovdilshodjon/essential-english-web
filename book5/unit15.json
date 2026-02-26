@@ -1,0 +1,146 @@
+{
+  "unit": "15",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accessory",
+      "translation": "aksessuar",
+      "definition": "An accessory is a thing that is added to another thing to make it look better.",
+      "example": "The store sold colorful accessories like bags and sunglasses.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "acquisition",
+      "translation": "qo'lga kiritish",
+      "definition": "An acquisition is something that a person buys or gets in some way.",
+      "example": "Marty was happy with his new acquisition: a very fast bicycle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "adequate",
+      "translation": "yetarli",
+      "definition": "When something is adequate, it is good enough for something else.",
+      "example": "Without adequate notice, they will have to turn around.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cardboard",
+      "translation": "karton",
+      "definition": "Cardboard is a material made out of thick paper.",
+      "example": "The heavy boxes were made of cardboard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dilemma",
+      "translation": "qiyin tanlov",
+      "definition": "A dilemma is a situation in which you have to make a difficult choice.",
+      "example": "The girl had a dilemma: should she stay home or go to the party?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "elaborate",
+      "translation": "mukammal",
+      "definition": "When something is elaborate, it has a lot of details and parts.",
+      "example": "The cook made an elaborate meal for the guests.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "facilitate",
+      "translation": "yengillashtirmoq",
+      "definition": "To facilitate something means to make it easier for it to happen.",
+      "example": "The new law will facilitate more trade between the two countries.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fleet",
+      "translation": "flot",
+      "definition": "A fleet is a group of ships or vehicles that are controlled by one person or organization.",
+      "example": "The company has a fleet of delivery trucks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grid",
+      "translation": "panjara",
+      "definition": "A grid is a pattern of straight lines that cross each other.",
+      "example": "The streets of the city were laid out in a grid pattern.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "import",
+      "translation": "import qilmoq",
+      "definition": "To import something means to bring it into a country from another country.",
+      "example": "The country imports a lot of oil from its neighbors.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "infer",
+      "translation": "xulosa qilmoq",
+      "definition": "To infer something means to decide that it is true based on information that you have.",
+      "example": "From the evidence, the police inferred that the man was guilty.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inflate",
+      "translation": "shishirmoq",
+      "definition": "To inflate something means to fill it with air or gas.",
+      "example": "The boy used a pump to inflate his bicycle tires.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "innate",
+      "translation": "tug'ma",
+      "definition": "When something is innate, it is a quality that you are born with.",
+      "example": "He has an innate ability to play the piano.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "marble",
+      "translation": "marmar",
+      "definition": "Marble is a hard type of rock that is used for making statues and buildings.",
+      "example": "The floor of the palace was made of white marble.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mast",
+      "translation": "macht",
+      "definition": "A mast is a tall pole on a boat that holds the sails.",
+      "example": "The ship’s mast was broken in the storm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nausea",
+      "translation": "ko'ngil aynishi",
+      "definition": "Nausea is the feeling that you are going to vomit.",
+      "example": "The smell of the food gave her a feeling of nausea.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "naval",
+      "translation": "harbiy dengiz flotiga oid",
+      "definition": "When something is naval, it relates to a country’s navy.",
+      "example": "The country has a strong naval force to protect its coast.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pouch",
+      "translation": "xaltacha",
+      "definition": "A pouch is a small bag or pocket.",
+      "example": "The kangaroo carries its baby in its pouch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "saturated",
+      "translation": "to'yingan",
+      "definition": "When something is saturated, it is completely wet or filled with something.",
+      "example": "The ground was saturated with water after the heavy rain.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "updated",
+      "translation": "yangilangan",
+      "definition": "When something is updated, it is made more modern.",
+      "example": "The computer program has been updated with new features.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "18",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "beforehand",
+      "translation": "oldindan",
+      "definition": "If something is done beforehand, then it is done in advance.",
+      "example": "He packed his luggage beforehand, so he was able to leave right away.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "centigrade",
+      "translation": "selsiy bo'yicha",
+      "definition": "If a temperature is centigrade, it is scaled, so water freezes at 0° and boils at 100°.",
+      "example": "The temperature gets as warm as 26 degrees centigrade.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chatter",
+      "translation": "valdiramoq, bidillamoq",
+      "definition": "To chatter means to talk quickly about unimportant things.",
+      "example": "The children chattered in the back of the classroom.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "concerto",
+      "translation": "konsert (musiqiy asar)",
+      "definition": "A concerto is music for a solo instrument and played with an orchestra.",
+      "example": "The piano concerto has a section in which only the piano plays.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "condense",
+      "translation": "quyultirmoq; ixchamlashtirmoq",
+      "definition": "To condense means to make a liquid thicker or a text shorter.",
+      "example": "The reporter condensed the long story into a few sentences.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cove",
+      "translation": "ko'rfazcha",
+      "definition": "A cove is a part of the coast where the land curves inward.",
+      "example": "They took the boat to a quiet cove for the afternoon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deteriorate",
+      "translation": "yomonlashmoq",
+      "definition": "To deteriorate means to become worse.",
+      "example": "The weather conditions deteriorated as the day went on.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "exterior",
+      "translation": "tashqi tomon",
+      "definition": "The exterior is the outside of something.",
+      "example": "The exterior of the house was painted white.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "freeway",
+      "translation": "katta yo'l, trassa",
+      "definition": "A freeway is a fast road where people can travel long distances.",
+      "example": "We took the freeway to get to the city faster.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hearty",
+      "translation": "samimiy; to'yimli",
+      "definition": "If something is hearty, it is large and satisfying.",
+      "example": "They ate a hearty meal before starting their journey.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hospitable",
+      "translation": "mehmondo'st",
+      "definition": "If someone is hospitable, they are friendly and welcoming to guests.",
+      "example": "The villagers were very hospitable to the travelers.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "manor",
+      "translation": "saroy, katta uy",
+      "definition": "A manor is a large, old house with land around it.",
+      "example": "The king lived in a beautiful manor in the countryside.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "monastery",
+      "translation": "monastir",
+      "definition": "A monastery is a building where monks live and work.",
+      "example": "The monks spend most of their time praying in the monastery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nursery",
+      "translation": "bolalar xonasi; ko'chatzor",
+      "definition": "A nursery is a room for babies or young children.",
+      "example": "The baby was sleeping in the nursery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outstretched",
+      "translation": "cho'zilgan",
+      "definition": "If something is outstretched, it is stretched out as far as possible.",
+      "example": "He held out his outstretched arms to catch the ball.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "parcel",
+      "translation": "posilka, tugun",
+      "definition": "A parcel is something wrapped in paper so it can be sent by mail.",
+      "example": "The mailman delivered a large parcel to the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "profile",
+      "translation": "profil, yon ko'rinish",
+      "definition": "A profile is an outline of something, especially a face, from the side.",
+      "example": "The artist drew a profile of the young woman.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vivacious",
+      "translation": "quvnoq, sho'x",
+      "definition": "If someone is vivacious, they are lively and full of energy.",
+      "example": "Everyone liked the vivacious girl at the party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "winding",
+      "translation": "egri-bugri",
+      "definition": "If something is winding, it follows a curving or twisting path.",
+      "example": "The car drove along the winding mountain road.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "zip",
+      "translation": "yopmoq (zamokni)",
+      "definition": "To zip something means to close it with a zipper.",
+      "example": "She zipped up her jacket because it was cold.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

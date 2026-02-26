@@ -1,0 +1,146 @@
+{
+  "unit": "14",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "asset",
+      "translation": "boylik/mahorat",
+      "definition": "An asset is a skill or quality that is useful or valuable.",
+      "example": "The coach realized the boy’s speed was an asset to the team.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "aspect",
+      "translation": "jihat",
+      "definition": "An aspect is one part or feature of something.",
+      "example": "I thought about the different aspects of owning two dogs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "Braille",
+      "translation": "Brayl yozuvi",
+      "definition": "Braille is a system of raised patterns on paper that allows the blind to read.",
+      "example": "The boy enjoyed reading his favorite books written in Braille.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bud",
+      "translation": "g'uncha",
+      "definition": "A bud is a part of a plant that turns into a flower or a leaf.",
+      "example": "Two weeks after planting the seed, a small bud appeared.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coordinate",
+      "translation": "muvofiqlashtirmoq",
+      "definition": "To coordinate things is to make different parts work together.",
+      "example": "Each skating team had to coordinate their movements for the show.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disprove",
+      "translation": "noto'g'riligini isbotlamoq",
+      "definition": "To disprove something means to show that it is not true.",
+      "example": "The scientist disproved the theory that the sun moved around the Earth.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "humanitarian",
+      "translation": "insonparvarlikka oid",
+      "definition": "If something is humanitarian, it is connected to helping people’s lives.",
+      "example": "After the flood, several humanitarian organizations offered help.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hypothesis",
+      "translation": "faraz",
+      "definition": "A hypothesis is an idea that is suggested as an explanation but has not yet been proven.",
+      "example": "The scientist has a hypothesis about why the birds migrate south.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "imprint",
+      "translation": "iz qoldirmoq",
+      "definition": "An imprint is a mark made by pressing something onto a surface.",
+      "example": "The boot left an imprint in the soft mud.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "informative",
+      "translation": "ma'lumot beruvchi",
+      "definition": "When something is informative, it provides a lot of useful information.",
+      "example": "The documentary was very informative about the history of Egypt.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "optic",
+      "translation": "ko'rishga oid",
+      "definition": "When something is optic, it relates to the eyes or sight.",
+      "example": "Fiber optic cables use light to carry information.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "premise",
+      "translation": "taxmin",
+      "definition": "A premise is an idea that you accept as true and use as a base for developing other ideas.",
+      "example": "The movie is based on the premise that aliens live among us.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rack",
+      "translation": "tokcha/javon",
+      "definition": "A rack is an object with bars that is used to hold things.",
+      "example": "I put my bike on the bike rack outside the library.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "Renaissance",
+      "translation": "Renessans",
+      "definition": "The Renaissance was a period in European history when there was a new interest in art and literature.",
+      "example": "Leonardo da Vinci was a famous artist during the Renaissance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "revere",
+      "translation": "hurmat qilmoq",
+      "definition": "To revere someone means to respect and admire them very much.",
+      "example": "Many people revere Mother Teresa for her work with the poor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "simultaneous",
+      "translation": "bir vaqtning o'zida",
+      "definition": "When things are simultaneous, they happen at exactly the same time.",
+      "example": "The two explosions were simultaneous.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "skeptic",
+      "translation": "shubha bilan qarovchi",
+      "definition": "A skeptic is a person who doubts things that other people believe.",
+      "example": "He is a skeptic and doesn't believe in ghosts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spatial",
+      "translation": "fazoviy",
+      "definition": "Spatial relates to the amount of space that something occupies.",
+      "example": "The architect had to think about the spatial layout of the building.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "specify",
+      "translation": "aniqlamoq",
+      "definition": "To specify something means to state it clearly and exactly.",
+      "example": "Please specify which color you want the walls to be.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wax",
+      "translation": "mum",
+      "definition": "Wax is a solid substance used for making candles.",
+      "example": "The candle was made of yellow wax.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

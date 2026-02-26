@@ -1,0 +1,146 @@
+{
+  "unit": "21",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "background",
+      "translation": "kelib chiqish, o'tmish",
+      "definition": "A person’s background is their past education, experience, and family history.",
+      "example": "The director helped the actors understand their characters' backgrounds.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bait",
+      "translation": "xo'rak, o'lja",
+      "definition": "Bait is something used to trick or entice an animal or person.",
+      "example": "He put a piece of cheese on the trap as bait for the mouse.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chronicle",
+      "translation": "solnoma, xronika",
+      "definition": "To chronicle something means to record an event or series of events.",
+      "example": "The book chronicles the events of the Civil War.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "copper",
+      "translation": "mis",
+      "definition": "Copper is a reddish-brown metal.",
+      "example": "The old pipes in the house were made of copper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disease",
+      "translation": "kasallik",
+      "definition": "A disease is an illness that affects people, animals, or plants.",
+      "example": "The doctor is looking for a cure for the disease.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "folklore",
+      "translation": "folklor, xalq og'zaki ijodi",
+      "definition": "Folklore is the traditional beliefs and stories of a community.",
+      "example": "The children loved listening to stories from African folklore.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "infect",
+      "translation": "yuqtirmoq, zararlamoq",
+      "definition": "To infect means to give someone a disease.",
+      "example": "The virus can infect many people in a short time.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "itch",
+      "translation": "qichishish",
+      "definition": "An itch is an unpleasant feeling on your skin that makes you want to scratch.",
+      "example": "The mosquito bite caused a terrible itch on my arm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "literature",
+      "translation": "adabiyot",
+      "definition": "Literature is written works, such as books, plays, and poems.",
+      "example": "He is a professor of English literature.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "millennium",
+      "translation": "ming yillik",
+      "definition": "A millennium is a period of one thousand years.",
+      "example": "The world celebrated the beginning of a new millennium in the year 2000.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "myth",
+      "translation": "mif, afsona",
+      "definition": "A myth is a traditional story that explains the history of a people.",
+      "example": "Greek myths often feature gods and heroes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "promote",
+      "translation": "qo'llab-quvvatlamoq, ko'tarmoq",
+      "definition": "To promote something is to help it grow or succeed.",
+      "example": "The company is using advertisements to promote its new product.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "relate",
+      "translation": "hikoya qilmoq, bog'lamoq",
+      "definition": "To relate something is to tell a story or describe an event.",
+      "example": "She related the details of her trip to her friends.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "religion",
+      "translation": "din",
+      "definition": "Religion is a system of beliefs and worship.",
+      "example": "The constitution protects the freedom of religion.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sum",
+      "translation": "miqdor, summa",
+      "definition": "A sum is a specific amount of money.",
+      "example": "He spent a large sum of money on a new car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "teller",
+      "translation": "hikoyachi, g'aznachi",
+      "definition": "A teller is a person who tells stories or a person who works in a bank.",
+      "example": "The storyteller fascinated the children with his tales.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trustworthy",
+      "translation": "ishonchli",
+      "definition": "If someone is trustworthy, they are honest and can be trusted.",
+      "example": "She is a very trustworthy person, so I told her my secret.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "update",
+      "translation": "yangilamoq",
+      "definition": "To update something is to make it more modern or current.",
+      "example": "I need to update my computer’s software.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vein",
+      "translation": "vena, qon tomiri",
+      "definition": "A vein is a tube that carries blood to the heart.",
+      "example": "The nurse found a vein in my arm to take a blood sample.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "venom",
+      "translation": "zahar (hayvonlarniki)",
+      "definition": "Venom is a poisonous liquid that some snakes and insects produce.",
+      "example": "The snake’s venom can be fatal if not treated quickly.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

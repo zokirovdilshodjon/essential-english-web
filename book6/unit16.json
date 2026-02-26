@@ -1,0 +1,146 @@
+{
+  "unit": "16",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "amid",
+      "translation": "orasida, o'rtasida",
+      "definition": "If something is amid something else, then it is in the middle of it.",
+      "example": "The tower stood tall amid the surrounding hills.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "backstage",
+      "translation": "sahna ortida",
+      "definition": "Backstage is the area behind the stage in a theater.",
+      "example": "After the play, the actors went backstage to change their clothes.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "billionaire",
+      "translation": "milliarder",
+      "definition": "A billionaire is a person who has at least one billion dollars.",
+      "example": "The billionaire donated a lot of money to the hospital.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brute",
+      "translation": "vaxshiy, zo'ravon",
+      "definition": "A brute is a person who is mean and sometimes violent.",
+      "example": "The bully was a brute who always picked on smaller kids.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "clumsy",
+      "translation": "no'noq, epaqasiz",
+      "definition": "If someone is clumsy, then they move in an awkward way.",
+      "example": "The clumsy boy tripped and fell on his way to school.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "collide",
+      "translation": "to'qnashmoq",
+      "definition": "To collide with something means to hit it while moving.",
+      "example": "The two cars collided at the intersection.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "culprit",
+      "translation": "aybdor",
+      "definition": "A culprit is a person who has done something wrong or illegal.",
+      "example": "The police finally caught the culprit who stole the money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "evacuate",
+      "translation": "evakuatsiya qilmoq",
+      "definition": "To evacuate means to leave a place of danger and go to a safer place.",
+      "example": "The people were told to evacuate their homes before the storm.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "flammable",
+      "translation": "tez yonuvchan",
+      "definition": "If something is flammable, it can catch fire easily.",
+      "example": "Be careful with those matches; the curtains are flammable.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mob",
+      "translation": "to'da, olomon",
+      "definition": "A mob is a large, often angry, group of people.",
+      "example": "An angry mob gathered outside the government building.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "premature",
+      "translation": "vaqtidan oldingi",
+      "definition": "If something is premature, it happens before it is supposed to.",
+      "example": "The baby's birth was premature, so he stayed in the hospital.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "resent",
+      "translation": "g'ashlik qilmoq, xafa bo'lmoq",
+      "definition": "To resent something means to feel angry about it.",
+      "example": "She resented the fact that she had to work on the weekend.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "satire",
+      "translation": "satira, hajviya",
+      "definition": "A satire is a way of criticizing something using humor.",
+      "example": "The movie was a satire about the world of fashion.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scrutiny",
+      "translation": "sinchiklab o'rganish",
+      "definition": "Scrutiny is the careful examination of something.",
+      "example": "The plan was under close scrutiny by the committee.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "segregate",
+      "translation": "ajratmoq (guruhlarga)",
+      "definition": "To segregate means to keep one group of people apart from another.",
+      "example": "The school was segregated, so the boys and girls were in different classes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "subject",
+      "translation": "bo'ysundirmoq; mavzu",
+      "definition": "To subject means to make someone experience something unpleasant.",
+      "example": "The prisoners were subjected to harsh conditions.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "testify",
+      "translation": "guvohlik bermoq",
+      "definition": "To testify means to give evidence as a witness in a court of law.",
+      "example": "The witness was asked to testify in the trial.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tumult",
+      "translation": "g'alayon, to'polon",
+      "definition": "A tumult is a state of noisy confusion or excitement.",
+      "example": "There was a tumult in the streets after the team won.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "underestimate",
+      "translation": "past baholamoq",
+      "definition": "To underestimate means to think something is smaller or less important than it is.",
+      "example": "Don't underestimate the power of the wind.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "uproar",
+      "translation": "baqir-chaqir, shovqin",
+      "definition": "An uproar is a lot of noise or excitement caused by people.",
+      "example": "The announcement caused an uproar among the crowd.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

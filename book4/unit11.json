@@ -1,0 +1,146 @@
+{
+  "unit": "11",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alliance",
+      "translation": "ittifoq",
+      "definition": "An alliance is a group of people who work together.",
+      "example": "The junior executives formed an alliance with each other.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "applause",
+      "translation": "qarsaklar",
+      "definition": "Applause is the noise made when people clap hands to show approval.",
+      "example": "At the end of his speech, everyone gave applause.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "armed",
+      "translation": "qurollangan",
+      "definition": "If you are armed, you are carrying a weapon.",
+      "example": "The robber was armed with a gun.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "authoritative",
+      "translation": "nufuzli, ishonchli",
+      "definition": "If something is authoritative, it uses the best information available.",
+      "example": "This book is an authoritative source on Ancient Egypt.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ceremony",
+      "translation": "marosim",
+      "definition": "A ceremony is an event that happens on special occasions.",
+      "example": "Tom and Amy’s marriage ceremony is in June.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "culture",
+      "translation": "madaniyat",
+      "definition": "Culture is the music, art, and writings of a certain place or group of people.",
+      "example": "Ancient Mexican culture is renowned for its architecture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "defense",
+      "translation": "himoya",
+      "definition": "A defense is something that is done to protect another thing.",
+      "example": "The air force works in defense of its country.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "detail",
+      "translation": "tafsilot",
+      "definition": "A detail is a small piece of information.",
+      "example": "Jane told Ben all the details of her trip to China.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "diverse",
+      "translation": "turli-tuman",
+      "definition": "When a group of things is diverse, it is made up of a wide variety of things.",
+      "example": "Big cities have diverse populations with people of different races and ages.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "enchant",
+      "translation": "maftun qilmoq",
+      "definition": "To enchant someone is to make them feel very interested or happy.",
+      "example": "The beautiful woman enchanted everybody in the room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "equip",
+      "translation": "jihozlamoq",
+      "definition": "To equip someone is to give them the things they need.",
+      "example": "The company will equip its workers with new laptops.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "exception",
+      "translation": "istisno",
+      "definition": "An exception is someone or something that does not fit into a general rule.",
+      "example": "Most students passed the test, but there were a few exceptions.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "genre",
+      "translation": "janr",
+      "definition": "A genre is a particular type of writing, art, or music.",
+      "example": "Science fiction is my favorite genre of books.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "impact",
+      "translation": "ta'sir",
+      "definition": "An impact is the effect that something has on another person or thing.",
+      "example": "The new law had a huge impact on the economy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lure",
+      "translation": "o'ziga jalb qilmoq",
+      "definition": "To lure someone is to trick them into going somewhere or doing something.",
+      "example": "The smell of food lured the dog into the kitchen.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "obstacle",
+      "translation": "to'siq",
+      "definition": "An obstacle is something that stops you from doing something.",
+      "example": "The mountain was a major obstacle to the explorers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shelter",
+      "translation": "boshpana",
+      "definition": "A shelter is a place to be safe from bad weather or danger.",
+      "example": "They found shelter from the rain under a large tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sort",
+      "translation": "tur, xil",
+      "definition": "To sort means to separate things into different groups.",
+      "example": "I sorted the laundry into white and colored clothes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "supply",
+      "translation": "ta'minlamoq",
+      "definition": "To supply means to give someone something they need or want.",
+      "example": "The farm supplies the local market with fresh vegetables.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vain",
+      "translation": "behuda",
+      "definition": "If something is in vain, it is done without success.",
+      "example": "He tried in vain to fix the broken computer.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

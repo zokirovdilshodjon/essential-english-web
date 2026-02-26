@@ -1,0 +1,146 @@
+{
+  "unit": "1",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alleviate",
+      "translation": "yengillashtirmoq, kuchsizlantirmoq",
+      "definition": "To alleviate pain or suffering means to make it less intense or severe.",
+      "example": "She needed something to alleviate the pain in her back.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "astrology",
+      "translation": "astrologiya",
+      "definition": "Astrology is the study of the stars in the belief that they influence people's lives.",
+      "example": "Jack, who studies astrology, believes that the stars can predict the future.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "differentiate",
+      "translation": "farqlamoq, farqiga bormoq",
+      "definition": "To differentiate things or people is to show the difference between them.",
+      "example": "It was hard to differentiate between the identical twins.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disrupt",
+      "translation": "putur yetkazmoq, buzmoq",
+      "definition": "To disrupt something or someone is to prevent them from working.",
+      "example": "The loud crash disrupted the class lecture.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "equation",
+      "translation": "tenglama",
+      "definition": "An equation is a math operation to determine the value of something.",
+      "example": "I used the Pythagorean theorem to solve the equation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "err",
+      "translation": "xato qilmoq, adashmoq",
+      "definition": "To err means to make a mistake.",
+      "example": "The pilot erred in his estimate of the time it would take to make the trip.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "erroneous",
+      "translation": "xato, yanglish",
+      "definition": "When something is erroneous, it is incorrect or only partly correct.",
+      "example": "The child held the erroneous belief that time machines were real.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "frantic",
+      "translation": "darg'azab, jazavaga tushgan",
+      "definition": "If people or things are frantic, they behave in a wild way because they are frightened.",
+      "example": "The cat became frantic when I tried to give it a bath.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hull",
+      "translation": "kema korpusi",
+      "definition": "The hull of a boat or tank is the main body of it.",
+      "example": "After the wreck at sea, the ship's hull was the last part to sink.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inadvertent",
+      "translation": "beparvo, e'tiborsiz",
+      "definition": "When an action is inadvertent, it is done without realizing what you are doing.",
+      "example": "She made an inadvertent error when she knocked over the nail polish.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "improvise",
+      "translation": "improvizatsiya qilmoq",
+      "definition": "To improvise something is to do it with whatever is available or without planning.",
+      "example": "There was no meat for the pizza, so we improvised with what was in the fridge.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "latitude",
+      "translation": "kenglik",
+      "definition": "The latitude of a place is its distance from the equator.",
+      "example": "The device was able to tell the traveler his exact latitude.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mariner",
+      "translation": "dengizchi",
+      "definition": "A mariner is a sailor.",
+      "example": "The old mariner used his telescope to find the shore.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "multitude",
+      "translation": "ko'p, juda ko'p",
+      "definition": "A multitude of things or people is a very large number of them.",
+      "example": "A multitude of people were waiting at the airport.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nuisance",
+      "translation": "ko'ngilsizlik, muammo",
+      "definition": "A nuisance is a person or thing that is annoying or causes a lot of problems.",
+      "example": "The teenager considered her noisy little brothers to be quite a nuisance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "permanence",
+      "translation": "doimiylik",
+      "definition": "The permanence of something is its ability to last forever.",
+      "example": "Poor results will threaten the permanence of the new teaching system.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "revolve",
+      "translation": "atrofida aylanmoq",
+      "definition": "To revolve around something is to keep it as the main feature or focus.",
+      "example": "My life revolves around sports.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "soothe",
+      "translation": "tinchlantirmoq",
+      "definition": "To soothe means to calm someone who is angry or upset.",
+      "example": "The mother soothed her crying baby by rocking him in her arms.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stranded",
+      "translation": "qolib ketgan (tashqarida)",
+      "definition": "If someone is stranded, they are prevented from leaving a place.",
+      "example": "When the plane left, my sister and I were stranded in China.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "volatile",
+      "translation": "beqaror, o'zgaruvchan",
+      "definition": "When something is volatile, it is likely to change suddenly and unexpectedly.",
+      "example": "The volatile volcano might explode at any moment.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

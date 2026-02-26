@@ -1,0 +1,146 @@
+{
+  "unit": "24",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "cherish",
+      "translation": "ardoqlamoq, qadrlamoq",
+      "definition": "To cherish something means to hold it as very important.",
+      "example": "I cherish this trophy I won.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compassion",
+      "translation": "shafqat, rahm-shafqat",
+      "definition": "Compassion is a feeling of understanding for someone who is hurt.",
+      "example": "The veterinarian had compassion for the sick little puppy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "consent",
+      "translation": "rozilik",
+      "definition": "Consent is permission to do something.",
+      "example": "Their mother gave the children consent to go outside and play.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "core",
+      "translation": "mag'iz, o'zak",
+      "definition": "The core is the center of something.",
+      "example": "The rings of a tree start forming at its core.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cunning",
+      "translation": "ayyor",
+      "definition": "If someone is cunning, they are good at tricking people.",
+      "example": "The cunning fox found a way to steal the chicken.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dizzy",
+      "translation": "bosh aylanishi",
+      "definition": "If you feel dizzy, you feel as if you are going to fall down.",
+      "example": "The heat made him feel dizzy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "equilibrium",
+      "translation": "muvozanat",
+      "definition": "Equilibrium is a state in which different things are balanced.",
+      "example": "The gymnast maintained her equilibrium on the balance beam.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "foster",
+      "translation": "rag'batlantirmoq, tarbiyalamoq",
+      "definition": "To foster something is to help it develop or grow.",
+      "example": "The teacher helped foster a love of reading in her students.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grind",
+      "translation": "maydalamoq",
+      "definition": "To grind something is to break it into very small pieces.",
+      "example": "We use a coffee grinder to grind our own beans.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "growl",
+      "translation": "irillamoq",
+      "definition": "To growl is to make a deep, angry sound like an animal.",
+      "example": "The dog began to growl at the stranger.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "moderation",
+      "translation": "me'yor",
+      "definition": "Moderation is the state of not being extreme.",
+      "example": "It is important to eat sweets in moderation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "predator",
+      "translation": "yirtqich",
+      "definition": "A predator is an animal that kills and eats other animals.",
+      "example": "The shark is a dangerous predator of the ocean.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sane",
+      "translation": "aqli raso",
+      "definition": "If someone is sane, they are mentally healthy.",
+      "example": "The doctor determined that the man was sane.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "saucer",
+      "translation": "likopcha",
+      "definition": "A saucer is a small, round plate used for holding a cup.",
+      "example": "She placed the teacup on the saucer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "snatch",
+      "translation": "yulib olmoq",
+      "definition": "To snatch something is to take it away quickly.",
+      "example": "The bird snatched the piece of bread and flew away.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stagger",
+      "translation": "gandiraklamoq",
+      "definition": "To stagger is to walk unsteadily as if you are about to fall.",
+      "example": "He staggered across the room after being hit in the head.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stumble",
+      "translation": "qoqilmoq",
+      "definition": "To stumble is to hit your foot on something and almost fall.",
+      "example": "I stumbled over a rock while I was running.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tense",
+      "translation": "tovushli, asabiy",
+      "definition": "If you are tense, you are worried or nervous.",
+      "example": "She felt very tense before her big presentation.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tumble",
+      "translation": "yiqilmoq, dumalamoq",
+      "definition": "To tumble is to fall down suddenly and quickly.",
+      "example": "The vase tumbled off the table and broke into pieces.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "withhold",
+      "translation": "bermaslik, ushlab qolmoq",
+      "definition": "To withhold something is to refuse to give it.",
+      "example": "The company withheld the information from the public.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

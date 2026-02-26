@@ -1,0 +1,146 @@
+{
+  "unit": "2",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accident",
+      "translation": "baxtsiz hodisa",
+      "definition": "An accident is an unexpected undesirable event.",
+      "example": "She had a minor car accident.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "admiral",
+      "translation": "admiral",
+      "definition": "An admiral is someone who controls many military ships.",
+      "example": "The admiral was in charge of the entire fleet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "arc",
+      "translation": "yoy, kavis",
+      "definition": "An arc is a curved shape.",
+      "example": "A rainbow is a colorful arc in the sky.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "character",
+      "translation": "xarakter, xususiyat",
+      "definition": "A character is the combination of qualities that make a person unique.",
+      "example": "He has a strong and honest character.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conscience",
+      "definition": "vijdon",
+      "translation": "A conscience is the part of your mind that tells you if what you are doing is right or wrong.",
+      "example": "He had a guilty conscience after he lied.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fiery",
+      "translation": "olovli",
+      "definition": "If something is fiery, it is burning or looks like fire.",
+      "example": "The sunset was a fiery orange.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "flesh",
+      "translation": "et, tana",
+      "definition": "Flesh is the muscle and fat on your body.",
+      "example": "The spear pierced the animal's flesh.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grapefruit",
+      "translation": "greypfrut",
+      "definition": "A grapefruit is a large fruit similar to an orange.",
+      "example": "I had a grapefruit for breakfast.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hay",
+      "translation": "pichan",
+      "definition": "Hay is dry grass used to feed animals.",
+      "example": "The horses eat hay in the winter.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "horrified",
+      "translation": "dahshatga tushgan",
+      "definition": "If you are horrified, you are very shocked or frightened.",
+      "example": "I was horrified by the news.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "kerosene",
+      "translation": "kerosin",
+      "definition": "Kerosene is a type of oil used for heat or light.",
+      "example": "We used a kerosene lamp when the power went out.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "loop",
+      "translation": "halqa",
+      "definition": "A loop is a shape like a circle.",
+      "example": "He made a loop in the rope.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "paddle",
+      "translation": "eshkak",
+      "definition": "A paddle is a tool used to move a boat through water.",
+      "example": "We used paddles to move the canoe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "raft",
+      "translation": "sal",
+      "definition": "A raft is a flat boat made of wood or plastic.",
+      "example": "We floated down the river on a raft.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sour",
+      "translation": "nordon",
+      "definition": "When something is sour, it has a sharp taste like a lemon.",
+      "example": "Lemons are very sour.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stake",
+      "translation": "ustun, qoziq",
+      "definition": "A stake is a sharp wooden or metal stick.",
+      "example": "We pushed the stake into the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "steward",
+      "translation": "styuard",
+      "definition": "A steward is a person like a waiter on a ship or plane.",
+      "example": "The steward brought us some water.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "string",
+      "translation": "ip",
+      "definition": "String is a thin piece of fabric used for tying things.",
+      "example": "He tied the box with a piece of string.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thorn",
+      "translation": "tikan",
+      "definition": "A thorn is a sharp point on a plant.",
+      "example": "The rose had many thorns.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wreck",
+      "translation": "vaysona",
+      "definition": "To wreck something means to destroy or ruin it.",
+      "example": "The car was a total wreck after the accident.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

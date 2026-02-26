@@ -1,0 +1,146 @@
+{
+  "unit": "30",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "burden",
+      "translation": "yuk, tashvish",
+      "definition": "A burden is a serious or difficult responsibility.",
+      "example": "The cost of college can be a heavy financial burden.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "compromise",
+      "translation": " murosaga kelmoq",
+      "definition": "To compromise is to agree by giving up some of what you want.",
+      "example": "They reached a compromise after a long discussion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "craft",
+      "translation": "yasamoq, mahorat",
+      "definition": "To craft something means to make it with skill.",
+      "example": "She crafted a beautiful necklace out of beads.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "crook",
+      "translation": "firibgar, o'g'ri",
+      "definition": "A crook is a person who is dishonest or a criminal.",
+      "example": "The police caught the crook who stole the car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "currency",
+      "translation": "valyuta",
+      "definition": "Currency is the system of money used in a country.",
+      "example": "The dollar is the currency of the United States.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enigma",
+      "translation": "sir, jumboq",
+      "definition": "An enigma is a person or thing that is mysterious.",
+      "example": "His disappearance remains an enigma to this day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fragile",
+      "translation": "nozik, sinuvchan",
+      "definition": "When something is fragile, it is easily broken or damaged.",
+      "example": "The glass vase is very fragile.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hybrid",
+      "translation": "duragay",
+      "definition": "A hybrid is a mixture of two different things.",
+      "example": "The car is a hybrid that runs on gas and electricity.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "innocence",
+      "translation": "aybsizlik",
+      "definition": "Innocence is the state of not being guilty of a crime.",
+      "example": "The lawyer worked to prove his client's innocence.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "merge",
+      "translation": "birlashmoq",
+      "definition": "To merge means to join together to form one thing.",
+      "example": "The two companies decided to merge.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "moderate",
+      "translation": "o'rtacha",
+      "definition": "When something is moderate, it is not extreme in amount.",
+      "example": "The price of the hotel was moderate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "overwhelm",
+      "translation": "hayratda qoldirmoq, bosib ketmoq",
+      "definition": "To overwhelm someone means to cause them to feel a strong emotion.",
+      "example": "The beauty of the sunset overwhelmed her.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "perception",
+      "translation": "idrok, tushuncha",
+      "definition": "Perception is a way of seeing or understanding something.",
+      "example": "His perception of the problem was different from mine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reunion",
+      "translation": "qaytadan uchrashuv",
+      "definition": "A reunion is a meeting of people who have been apart.",
+      "example": "We had a family reunion last summer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rig",
+      "translation": "qurilma, moslama",
+      "definition": "A rig is a large piece of equipment for a specific task.",
+      "example": "The oil rig was located far out in the ocean.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shiver",
+      "translation": "titramoq",
+      "definition": "To shiver means to shake because you are cold or scared.",
+      "example": "She shivered in the cold winter wind.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sociable",
+      "translation": "kirishimli, xushchaqchaq",
+      "definition": "If someone is sociable, they like to be with other people.",
+      "example": "He is a very sociable person and has many friends.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "talkative",
+      "translation": "sergap",
+      "definition": "If someone is talkative, they like to talk a lot.",
+      "example": "The talkative student was asked to be quiet.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tow",
+      "translation": "sudramoq, shatakka olmoq",
+      "definition": "To tow something means to pull it behind a vehicle.",
+      "example": "The truck towed the broken car to the garage.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tramp",
+      "translation": "darbadar, daydi",
+      "definition": "A tramp is a person who has no home and travels from place to place.",
+      "example": "The old tramp walked along the dusty road.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

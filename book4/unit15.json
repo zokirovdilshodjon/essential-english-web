@@ -1,0 +1,146 @@
+{
+  "unit": "15",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "although",
+      "translation": "garchi, ...ga qaramay",
+      "definition": "You use although to say that one thing is contrasted by another.",
+      "example": "Although she was late, her friends gave her a warm welcome.",
+      "part_of_speech": "conjunction"
+    },
+    {
+      "word": "apply",
+      "translation": "surmoq, qo'llamoq",
+      "definition": "To apply something means to put it on.",
+      "example": "She always applies makeup to her face before going outside.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "await",
+      "translation": "kutmoq",
+      "definition": "To await something means to wait for it.",
+      "example": "The players awaited the judge’s decision.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "beloved",
+      "translation": "sevimli",
+      "definition": "When something is beloved, it is very special and you like it very much.",
+      "example": "The boy took a nap next to his beloved cat.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bury",
+      "translation": "ko'mmoq",
+      "definition": "To bury means to put something in the ground and cover it with earth.",
+      "example": "The dog buried his bone in the yard.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "climate",
+      "translation": "iqlim",
+      "definition": "Climate is the usual weather conditions of a place.",
+      "example": "Mexico has a warm climate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "complain",
+      "translation": "shikoyat qilmoq",
+      "definition": "To complain means to say that you are not happy about something.",
+      "example": "The customers complained about the slow service.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "confuse",
+      "translation": "chalkashtirmoq",
+      "definition": "To confuse someone means to make them unable to think clearly.",
+      "example": "The complicated directions confused me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "due",
+      "translation": "kutilayotgan",
+      "definition": "If something is due, it is expected to happen at a certain time.",
+      "example": "The baby is due in October.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "entire",
+      "translation": "butun, barcha",
+      "definition": "Entire means the whole of something.",
+      "example": "He ate the entire pizza by himself.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "establish",
+      "translation": "tashkil qilmoq",
+      "definition": "To establish something means to create it.",
+      "example": "The company was established in 1990.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "furnace",
+      "translation": "pech",
+      "definition": "A furnace is a large heater for a whole building.",
+      "example": "The furnace keeps the house warm in the winter.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "leash",
+      "translation": "bog'ich (it uchun)",
+      "definition": "A leash is a rope or chain used to lead a dog.",
+      "example": "Keep your dog on a leash when you go for a walk.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mature",
+      "translation": "voyaga yetgan",
+      "definition": "To mature means to become fully grown.",
+      "example": "Children mature at different rates.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "measure",
+      "translation": "o'lchamoq",
+      "definition": "To measure means to find the size or amount of something.",
+      "example": "We measured the room before buying a new rug.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "midst",
+      "translation": "o'rtasida",
+      "definition": "The midst of something is the middle part of it.",
+      "example": "We were in the midst of dinner when the phone rang.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "misery",
+      "translation": "baxtsizlik",
+      "definition": "Misery is a feeling of great sadness.",
+      "example": "The loss of his job caused him great misery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prior",
+      "translation": "oldingi",
+      "definition": "Prior means happening before something else.",
+      "example": "I had a prior engagement, so I couldn't go to the party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "research",
+      "translation": "tadqiqot",
+      "definition": "Research is the study of something to find out new information.",
+      "example": "The scientist is doing research on a new medicine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "variety",
+      "translation": "turli-tumanlik",
+      "definition": "A variety is a number of different kinds of things.",
+      "example": "There is a wide variety of flowers in the garden.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

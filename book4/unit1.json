@@ -1,0 +1,146 @@
+{
+  "unit": "1",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aroma",
+      "translation": "xushbo'y hid",
+      "definition": "An aroma is a scent or smell.",
+      "example": "I love the aroma of coffee in the morning.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "beverage",
+      "translation": "ichimlik",
+      "definition": "A beverage is a drink.",
+      "example": "The waiter brought our beverages first. Then he brought our food.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cluster",
+      "translation": "bog', shingil",
+      "definition": "A cluster of things is a small group of them placed close together.",
+      "example": "She held a large cluster of grapes in her hand.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "combine",
+      "translation": "birlashtirmoq",
+      "definition": "To combine is to join together to make a single thing or group.",
+      "example": "Mina combined peanut butter and jelly to make a sandwich.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "condensed",
+      "translation": "quyuq",
+      "definition": "When a liquid is condensed, it is made thicker.",
+      "example": "One way to make a dessert thick and sweet is to use condensed milk.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "contemporary",
+      "translation": "zamonaviy, hozirgi",
+      "definition": "When something is contemporary, it is related to the present time.",
+      "example": "Contemporary scientists have learned quite a bit about DNA.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cultivate",
+      "translation": "o'stirmoq, yetishtirmoq",
+      "definition": "To cultivate plants is to care for them and help them grow.",
+      "example": "A research company is cultivating new kinds of rice to aid poor countries.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "divine",
+      "translation": "ilohiy",
+      "definition": "When something is divine, it is related to gods.",
+      "example": "Legends say that music was given to men as a divine gift from the gods.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "humid",
+      "translation": "nam",
+      "definition": "When it is humid, there is a lot of water in the air.",
+      "example": "It is very humid inside of a sauna.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "odor",
+      "translation": "hid, bo'y, is",
+      "definition": "An odor is a very distinct smell.",
+      "example": "He knew there was a leak when he noticed the strong odor of natural gas.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "palate",
+      "translation": "tanglay",
+      "definition": "The palate is the top part of the mouth.",
+      "example": "You can touch your palate with your tongue.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "paradise",
+      "translation": "jannat, makon",
+      "definition": "Paradise is the place or condition of happiness where things are perfect.",
+      "example": "My vacation in Hawaii was like being in paradise.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plantation",
+      "translation": "plantatsiya",
+      "definition": "A plantation is a big farm that only grows certain kinds of crops.",
+      "example": "In the 1800s, there were many cotton plantations in the southern US.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rapid",
+      "translation": "tezkor",
+      "definition": "When something is rapid, it moves or changes very quickly.",
+      "example": "His mother was surprised by her son’s rapid growth.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rate",
+      "translation": "tezlik, daraja",
+      "definition": "A rate is the speed at which something happens.",
+      "example": "Grass tends to grow at a very slow rate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "soothing",
+      "translation": "tinchlantiruvchi",
+      "definition": "When something is soothing, it makes you calm or relaxed.",
+      "example": "The soothing music helped the baby fall asleep.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "subtle",
+      "translation": "nozik, oson sezilmaydigan",
+      "definition": "When something is subtle, it is not easy to see or notice.",
+      "example": "The handsome man has a subtle smile.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "texture",
+      "translation": "tekstura, sirt tuzilishi",
+      "definition": "The texture of something is the way its surface looks and feels.",
+      "example": "The texture of a rock found in the water is typically very smooth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "toxic",
+      "translation": "zaharli",
+      "definition": "When something is toxic, it is poisonous. Toxic things are very dangerous.",
+      "example": "Please check the label to see if the product is toxic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vary",
+      "translation": "farq qilmoq, o'zgarmoq",
+      "definition": "To vary means to be different from another thing in size or amount.",
+      "example": "The heights of the people in my class vary by a large amount.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "4",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "attic",
+      "translation": "chordoq",
+      "definition": "An attic is a room just below a house’s roof.",
+      "example": "There were two windows in their attic.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chunk",
+      "translation": "bo'lak, parcha",
+      "definition": "A chunk is a thick, solid piece of something.",
+      "example": "When they broke open the rock, they saw it was filled with chunks of gold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "civic",
+      "translation": "fuqarolik, shaharga oid",
+      "definition": "If something is civic, then it is related to a town or city, especially its government.",
+      "example": "Most of the important civic buildings are located downtown.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "descent",
+      "translation": "pastga tushish",
+      "definition": "A descent is a movement downwards.",
+      "example": "During the space shuttle’s descent, the astronauts felt a lot of pressure.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "din",
+      "translation": "shovqin-suron",
+      "definition": "A din is a loud, unpleasant, and extended noise.",
+      "example": "The din from the construction site made it hard to sleep.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dissatisfy",
+      "translation": "qoniqtirmaslik",
+      "definition": "To dissatisfy someone means to fail to please them.",
+      "example": "The poor service at the restaurant dissatisfied the customers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fuss",
+      "translation": "vahima, janjal",
+      "definition": "A fuss is excited or anxious behavior about something unimportant.",
+      "example": "She made a big fuss when she couldn't find her keys.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gourmet",
+      "translation": "gurman, nafis taomlar ustasi",
+      "definition": "A gourmet is a person who enjoys and knows a lot about food and drink.",
+      "example": "The gourmet chef prepared a delicious meal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hence",
+      "translation": "shuning uchun, shu sababli",
+      "definition": "Hence means from this time or for this reason.",
+      "example": "The road was closed; hence, we had to take a different route.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "intrinsic",
+      "translation": "ichki, o'ziga xos",
+      "definition": "If something is intrinsic, it is a natural part of something and cannot be separated from it.",
+      "example": "Diamonds have an intrinsic beauty.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "kettle",
+      "translation": "choynak",
+      "definition": "A kettle is a container with a lid, handle, and spout used for boiling water.",
+      "example": "The kettle began to whistle when the water boiled.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ministry",
+      "translation": "vazirlik",
+      "definition": "A ministry is a government department.",
+      "example": "The Ministry of Education is responsible for schools.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ordeal",
+      "translation": "og'ir sinov",
+      "definition": "An ordeal is a very difficult or painful experience.",
+      "example": "Being lost in the desert was a terrible ordeal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outspoken",
+      "translation": "ochiqchasiga gapiradigan",
+      "definition": "If someone is outspoken, they say what they think even if it offends others.",
+      "example": "He is an outspoken critic of the government.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "overwork",
+      "translation": "haddan tashqari ko'p ishlamoq",
+      "definition": "To overwork means to work too much or too hard.",
+      "example": "She felt exhausted because she had been overworking.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "particular",
+      "translation": "o'ziga xos, maxsus",
+      "definition": "If something is particular, it is related to one person or thing.",
+      "example": "She has a particular interest in ancient history.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pungent",
+      "translation": "o'tkir, achchiq (hid)",
+      "definition": "If something is pungent, it has a strong, sharp smell or taste.",
+      "example": "The smell of the onions was very pungent.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "snore",
+      "translation": "xurrak otmoq",
+      "definition": "To snore means to breathe loudly through the nose and mouth while sleeping.",
+      "example": "He snores so loudly that he wakes himself up.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "soundly",
+      "translation": "chuqur, qattiq (uxlash haqida)",
+      "definition": "If you do something soundly, you do it completely or deeply.",
+      "example": "The baby was sleeping soundly in the crib.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "superintendent",
+      "translation": "boshqaruvchi, nazoratchi",
+      "definition": "A superintendent is a person who is in charge of a place or organization.",
+      "example": "The school superintendent visited the classroom.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

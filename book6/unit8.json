@@ -1,0 +1,146 @@
+{
+  "unit": "8",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "congested",
+      "translation": "tirband, to'lib ketgan",
+      "definition": "If something is congested, it is full or blocked.",
+      "example": "Tom didn’t get home until after dark because the road was so congested.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "courier",
+      "translation": "kuryer, xabarchi",
+      "definition": "A courier is someone who takes and delivers mail or packages.",
+      "example": "Before trains, most couriers used horses to travel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deform",
+      "translation": "shaklini buzmoq",
+      "definition": "To deform something means to change it from its correct or original shape.",
+      "example": "The computer program deformed the building’s picture into an unreal sight.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "etiquette",
+      "translation": "odob-axloq qoidalari",
+      "definition": "Etiquette is the group of rules about how to be polite.",
+      "example": "When in Asian countries, bowing is a form of etiquette.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exclusive",
+      "translation": "eksklyuziv, maxsus",
+      "definition": "If something is exclusive, it is expensive and only for rich people.",
+      "example": "The golf course was so exclusive that most people hadn’t even heard of it.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "freight",
+      "translation": "yuk (poezd, kema orqali)",
+      "definition": "Freight is a set of items carried on a train, boat, or airplane.",
+      "example": "Trade ships only carried valuable freight like silk and spices.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "garment",
+      "translation": "kiyim-kechak bo'lagi",
+      "definition": "A garment is a piece of clothing.",
+      "example": "The business man had all of his garments cleaned before the important meeting.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "insomnia",
+      "translation": "uyqusizlik",
+      "definition": "Insomnia is a condition in which a person has difficulty sleeping.",
+      "example": "Nate’s insomnia prevented him from getting enough rest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "intuitive",
+      "translation": "ichki sezgi bilan bog'liq",
+      "definition": "Intuitive is knowing about something without naturally having support or proof.",
+      "example": "Rhonda had an intuitive feeling that something was wrong.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "liable",
+      "translation": "javobgar, moyil",
+      "definition": "If you are liable for something, you are legally responsible for it.",
+      "example": "The company is liable for any damage caused by its products.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "obsess",
+      "translation": "hadya darajada o'ylamoq",
+      "definition": "To obsess about something means to think about it all the time.",
+      "example": "He obsesses about his health.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overboard",
+      "translation": "kema bortidan tashqariga",
+      "definition": "If something goes overboard, it falls off a boat into the water.",
+      "example": "The sailor fell overboard during the storm.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "premium",
+      "translation": "yuqori sifatli, to'lov",
+      "definition": "A premium is an amount of money you pay for something like insurance.",
+      "example": "She pays a high premium for her health insurance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "privilege",
+      "translation": "imtiyoz",
+      "definition": "A privilege is a special right given to a person or group.",
+      "example": "It was a privilege to meet the president.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "propel",
+      "translation": "harakatga keltirmoq",
+      "definition": "To propel means to push something forward.",
+      "example": "The wind propelled the boat across the lake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "socialize",
+      "translation": "muloqotda bo'lmoq",
+      "definition": "To socialize means to spend time with other people for fun.",
+      "example": "She likes to socialize with her friends after work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "suppress",
+      "translation": "bosmoq, to'xtatmoq",
+      "definition": "To suppress something means to stop it by force.",
+      "example": "The government suppressed the rebellion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tram",
+      "translation": "tramvay",
+      "definition": "A tram is a vehicle like a bus that runs on rails in a city.",
+      "example": "I took the tram to get to the city center.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "unsettle",
+      "translation": "bezovta qilmoq",
+      "definition": "To unsettle someone means to make them feel anxious or worried.",
+      "example": "The news of the accident unsettled her.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "warp",
+      "translation": "qiyshaymoq, bukmoq",
+      "definition": "To warp means to bend out of shape.",
+      "example": "The wood warped because of the heat.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "5",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "assess",
+      "translation": "baholamoq",
+      "definition": "To assess something means to judge the structure, purpose, or quality of it.",
+      "example": "She assessed the condition of the toy car before buying it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "astonish",
+      "translation": "hayratda qoldirmoq",
+      "definition": "To astonish someone means to greatly surprise them.",
+      "example": "The amount of people that came to her party astonished her.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "commence",
+      "translation": "boshlamoq",
+      "definition": "To commence something means to begin it.",
+      "example": "His speech commenced with a “thank you” to all who had helped him succeed.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "essence",
+      "translation": "mohiyat",
+      "definition": "The essence of something is its important qualities or basic characteristics.",
+      "example": "The essence of the argument was that we needed more time.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "extract",
+      "translation": "sug'urib olmoq, ajratib olmoq",
+      "definition": "To extract something means to remove it from something else.",
+      "example": "The dentist had to extract one of my teeth.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fabulous",
+      "translation": "ajoyib, daxshatli yaxshi",
+      "definition": "When something is fabulous, it is extremely good.",
+      "example": "The food at the party was fabulous.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "haste",
+      "translation": "shoshilish",
+      "definition": "Haste is speed in movement or action.",
+      "example": "In order to get to the meeting on time, he left in haste.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "impulse",
+      "translation": "impuls, turtki",
+      "definition": "An impulse is a sudden desire to do something.",
+      "example": "She had an impulse to buy the expensive dress.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "latter",
+      "translation": "ikkinchi (aytilgan narsadan keyingisi)",
+      "definition": "Latter describes something last in a series or the second of two things.",
+      "example": "Of the two choices, the latter is the better one.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "molecule",
+      "translation": "molekula",
+      "definition": "A molecule is the smallest unit of a chemical substance.",
+      "example": "A molecule of water is made up of hydrogen and oxygen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ongoing",
+      "translation": "davom etayotgan",
+      "definition": "If something is ongoing, then it is still happening or developing.",
+      "example": "The investigation is ongoing and could take several months.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pharmaceutical",
+      "translation": "farmatsevtik (dorilarga oid)",
+      "definition": "If something is pharmaceutical, it is related to the development and sale of drugs.",
+      "example": "He works for a large pharmaceutical company.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "precise",
+      "translation": "aniq",
+      "definition": "If something is precise, it is exact and correct.",
+      "example": "The scientist gave a precise measurement of the substance.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "proximity",
+      "translation": "yaqinlik",
+      "definition": "Proximity is the state of being near to something or someone.",
+      "example": "The proximity of the two buildings made it easy to walk between them.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "publicity",
+      "translation": "ommaviylik, reklama",
+      "definition": "Publicity is public notice or attention given to someone or something.",
+      "example": "The movie received a lot of publicity before it was released.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "remedy",
+      "translation": "dori, chora",
+      "definition": "A remedy is a cure for an illness, a problem, or an unfair situation.",
+      "example": "A glass of warm milk is a good remedy for insomnia.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "significance",
+      "translation": "ahamiyat",
+      "definition": "Significance is the quality of being important.",
+      "example": "The significance of the discovery was not understood for many years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "subsequent",
+      "translation": "keyingi",
+      "definition": "If something is subsequent, it comes after something else in time.",
+      "example": "The first meeting was successful, and subsequent meetings were even better.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "synthetic",
+      "translation": "sun'iy",
+      "definition": "If something is synthetic, it is made by humans and not found in nature.",
+      "example": "The shirt is made from synthetic material.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "terminal",
+      "translation": "terminal, oxirgi bekat",
+      "definition": "If something is terminal, it is at the end of something else.",
+      "example": "The bus arrived at the terminal and everyone got off.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

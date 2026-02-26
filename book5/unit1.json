@@ -1,0 +1,146 @@
+{
+  "unit": "1",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "allot",
+      "translation": "bermoq, ajratmoq",
+      "definition": "To allot something means to give it to someone.",
+      "example": "The coach allotted each team five minutes to prepare a strategy.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "appall",
+      "translation": "qo'rqitmoq, daxshatga solmoq",
+      "definition": "To appall means to horrify, shock, or disgust someone.",
+      "example": "The boy was appalled when he saw the accident.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cache",
+      "translation": "maxfiy joy, kesh",
+      "definition": "A cache is a hiding place for valuable things.",
+      "example": "The pirates kept their jewelry in a cache hidden in a cave.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convenience",
+      "translation": "qulaylik",
+      "definition": "Convenience is a state of being able to do something with little effort.",
+      "example": "The Internet allows consumers to shop at their own convenience.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dearth",
+      "translation": "tanqislik, yetishmovchilik",
+      "definition": "A dearth is an amount or supply which is not large enough.",
+      "example": "There is a dearth of money in my bank account.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deliberate",
+      "translation": "rejalashtirilgan, qasddan qilingan",
+      "definition": "If a thing you do is deliberate, you intend to do it.",
+      "example": "She made a deliberate effort to save money each month.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dire",
+      "translation": "daxshatli, jiddiy",
+      "definition": "When something is dire, it is terrible and very serious.",
+      "example": "The tornado created a dire situation for the small town.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "elapse",
+      "translation": "o'tmoq (vaqt haqida)",
+      "definition": "To elapse means to pass, as in seconds, minutes, or hours.",
+      "example": "A few seconds must elapse before you can take another picture.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "empathy",
+      "translation": "hamdardlik",
+      "definition": "Empathy is sharing or understanding another person's feelings.",
+      "example": "The caring nurse had empathy for her patients.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fanciful",
+      "translation": "g'alati, hayoliy",
+      "definition": "When something is fanciful, it is unusual or unrealistic.",
+      "example": "The girl had fanciful ideas about doing well in school without studying.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gripe",
+      "translation": "nolimoq, shikoyat qilmoq",
+      "definition": "To gripe means to complain constantly.",
+      "example": "Lawrence always gripes when he has to do chores.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grueling",
+      "translation": "juda og'ir, charchatadigan",
+      "definition": "When something is grueling, it is very hard to do.",
+      "example": "The climber faced the grueling task of reaching the top of the mountain.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mundane",
+      "translation": "oddiy, zerikarli",
+      "definition": "When something is mundane, it is boring, common, or ordinary.",
+      "example": "The man had the mundane chore of raking thousands of leaves.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "opt",
+      "translation": "tanlamoq",
+      "definition": "To opt is to make a choice, especially when deciding in favor of something.",
+      "example": "My brother likes chocolate ice cream, but I always opt for vanilla.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "outrage",
+      "translation": "g'azab, qattiq xafa bo'lish",
+      "definition": "Outrage is a very strong emotion of anger or shock.",
+      "example": "Tommy was feeling outrage when his parents said he couldn’t go to the dance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "paltry",
+      "translation": "juda kichik, arzimas",
+      "definition": "When an amount of something is paltry, it is very small.",
+      "example": "The poor man had a paltry sum of money.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rectify",
+      "translation": "to'g'irlamoq, xatosini tuzatmoq",
+      "definition": "To rectify something means to correct it.",
+      "example": "I quickly rectified the spelling mistakes that I had on my essay.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "resourceful",
+      "translation": "topqir, epchil",
+      "definition": "When someone is resourceful, they are good at dealing with hard situations.",
+      "example": "Matt was resourceful enough to build a raft after his boat sunk.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sustenance",
+      "translation": "oziq-ovqat, tirikchilik",
+      "definition": "Sustenance is food and water needed to keep a person, animal, or plant alive.",
+      "example": "Without the proper sustenance, the man will starve.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tedious",
+      "translation": "zerikarli, zeriktiradigan",
+      "definition": "When something is tedious, it is long, frustrating, and boring.",
+      "example": "His job involved a lot of tedious typing and filing.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "11",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "advocate",
+      "translation": "yoqlamoq, qo'llab-quvvatlamoq",
+      "definition": "To advocate a plan or idea is to support or suggest it in public.",
+      "example": "The group advocated increased spending on education and schools.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "authorize",
+      "translation": "ruxsat bermoq, vakolat bermoq",
+      "definition": "To authorize something means to give permission for it.",
+      "example": "The mayor authorized the construction of a new statue in the park.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "civilian",
+      "translation": "fuqaro (harbiy bo'lmagan shaxs)",
+      "definition": "A civilian is someone who is not in the military.",
+      "example": "It was Todd’s job to keep civilians from entering the army facility.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "commodity",
+      "translation": "tovar, mahsulot",
+      "definition": "A commodity is something that can be bought or sold.",
+      "example": "Fran’s uncle made most of his money trading commodities.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conquest",
+      "translation": "zabt etish, g'alaba",
+      "definition": "A conquest is an event by which one country takes over another.",
+      "example": "The conquest of the Aztecs by the Spanish changed history.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disclose",
+      "translation": "oshkor qilmoq, ma'lum qilmoq",
+      "definition": "To disclose something means to make it known to others.",
+      "example": "The company disclosed the details of the new project.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dynamics",
+      "translation": "dinamika, harakatlantiruvchi kuchlar",
+      "definition": "Dynamics are the ways in which things or people behave and react to each other.",
+      "example": "The dynamics of the group changed when a new member joined.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enroll",
+      "translation": "ro'yxatdan o'tmoq, a'zo bo'lmoq",
+      "definition": "To enroll means to officially join a school, group, or class.",
+      "example": "I decided to enroll in a Spanish class this semester.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "envious",
+      "translation": "hasadgo'y, rishki keladigan",
+      "definition": "When someone is envious, they want something that someone else has.",
+      "example": "She was envious of her friend’s new car.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "euphoria",
+      "translation": "eyforiya, ko'tarinki kayfiyat",
+      "definition": "Euphoria is a feeling of extreme happiness.",
+      "example": "The winning team was in a state of euphoria after the game.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "festive",
+      "translation": "bayramona",
+      "definition": "If something is festive, it is bright and cheerful for a celebration.",
+      "example": "The house looked very festive with all the decorations.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "jolly",
+      "translation": "shodon, quvnoq",
+      "definition": "When someone is jolly, they are cheerful and happy.",
+      "example": "The jolly old man told funny stories to the children.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lentil",
+      "translation": "yasmiq (loviyasimon o'simlik)",
+      "definition": "A lentil is a small, round seed like a bean used for food.",
+      "example": "She made a delicious soup with lentils and vegetables.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "marshal",
+      "translation": "marshall, yuqori lavozimli ofitser",
+      "definition": "A marshal is a high-ranking officer in the military or police.",
+      "example": "The marshal led the parade through the city streets.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "morale",
+      "translation": "ruhiy holat, kayfiyat",
+      "definition": "Morale is the amount of confidence and enthusiasm a person or group has.",
+      "example": "The team’s morale was high after their victory.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prophecy",
+      "translation": "bashorat",
+      "definition": "A prophecy is a prediction about what will happen in the future.",
+      "example": "The old woman’s prophecy came true many years later.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sage",
+      "translation": "dono, bilimdon",
+      "definition": "A sage is someone who is very wise.",
+      "example": "The young man sought advice from the village sage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "senate",
+      "translation": "senat",
+      "definition": "A senate is a part of the government that makes laws.",
+      "example": "The new law was passed by the senate after a long debate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sentiment",
+      "translation": "hissiyot, fikr-mulohaza",
+      "definition": "A sentiment is an opinion or feeling about something.",
+      "example": "The speaker expressed a sentiment of hope for the future.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "unrest",
+      "translation": "g'alayon, tartibsizlik",
+      "definition": "Unrest is a state of anger or dissatisfaction among a group of people.",
+      "example": "The high taxes caused civil unrest in the country.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

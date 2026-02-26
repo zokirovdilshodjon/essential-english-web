@@ -1,0 +1,146 @@
+{
+  "unit": "2",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "arduous",
+      "translation": "mashaqqatli, qiyin",
+      "definition": "When something is arduous, it demands great effort or labor.",
+      "example": "The explorers began their arduous hike up the steep mountain.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "attain",
+      "translation": "erishmoq",
+      "definition": "To attain something means to gain or achieve it, often after a lot of effort.",
+      "example": "In two more years, I will attain my high school diploma.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "coexist",
+      "translation": "birga mavjud bo'lmoq",
+      "definition": "To coexist with something means to exist with it in the same time and place.",
+      "example": "Our pets coexist at our home with little or no problems.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "conceive",
+      "translation": "tasavvur qilmoq, o'ylab topmoq",
+      "definition": "To conceive something means to be able to imagine or create it.",
+      "example": "The scientist conceived a new theory about the universe.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dubious",
+      "translation": "shubhali",
+      "definition": "When something is dubious, it is not considered honest or safe.",
+      "example": "I was dubious about the business proposal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ego",
+      "translation": "o'z-o'ziga bino qo'yish",
+      "definition": "An ego is a person's sense of their own worth.",
+      "example": "His large ego made it difficult for him to accept criticism.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "elastic",
+      "translation": "elastik, cho'ziluvchan",
+      "definition": "If something is elastic, it can stretch and then return to its original shape.",
+      "example": "The rubber band was very elastic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "endeavor",
+      "translation": "harakat qilmoq",
+      "definition": "To endeavor means to try hard to do something.",
+      "example": "We should endeavor to help those in need.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "engrave",
+      "translation": "o'yib yozmoq",
+      "definition": "To engrave means to cut designs or words into a surface.",
+      "example": "The jeweler engraved their names inside the rings.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "excavate",
+      "translation": "qazib olmoq",
+      "definition": "To excavate means to dig on land to find things from the past.",
+      "example": "Archeologists excavated the ancient city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "jagged",
+      "translation": "notekis, g'adir-budur",
+      "definition": "When something is jagged, it has a tough, uneven surface or edge.",
+      "example": "The jagged rocks made it hard to walk on the beach.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "locale",
+      "translation": "joy, makon",
+      "definition": "A locale is a small area where something happens or is set.",
+      "example": "The locale of the movie was a small village in France.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mold",
+      "translation": "qolip",
+      "definition": "A mold is a hollow container used to shape something.",
+      "example": "She poured the melted chocolate into a heart-shaped mold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outright",
+      "translation": "ochiqchasiga, mutlaqo",
+      "definition": "When something is outright, it is open and direct.",
+      "example": "The winner of the race was outright and clear.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "periphery",
+      "translation": "chet, atrofi",
+      "definition": "The periphery of something is its edge or boundary.",
+      "example": "The trees were planted along the periphery of the park.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plaster",
+      "translation": "gips, suvash",
+      "definition": "Plaster is a smooth paste that gets hard when it dries.",
+      "example": "He used plaster to fix the hole in the wall.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shovel",
+      "translation": "belkurak",
+      "definition": "A shovel is a tool with a long handle and a flat blade for digging.",
+      "example": "He used a shovel to clear the snow from the driveway.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "skeletal",
+      "translation": "skeletga oid",
+      "definition": "When something is skeletal, it relates to bones.",
+      "example": "The skeletal remains were found in the cave.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "terrestrial",
+      "translation": "yerga oid",
+      "definition": "If something is terrestrial, it relates to Earth.",
+      "example": "There are many terrestrial animals in the forest.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vicious",
+      "translation": "vaxshiy, yovuz",
+      "definition": "When something or someone is vicious, they are violent and cruel.",
+      "example": "The vicious dog barked at the stranger.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

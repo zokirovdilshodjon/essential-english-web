@@ -1,0 +1,146 @@
+{
+  "unit": "20",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "betray",
+      "translation": "sotqinlik qilmoq",
+      "definition": "To treat someone in a dishonest way.",
+      "example": "The man betrayed his country.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "blast",
+      "translation": "portlash",
+      "definition": "A loud noise made by an explosion.",
+      "example": "There was a loud blast when the bomb went off.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bracelet",
+      "translation": "bilakuzuk",
+      "definition": "Jewelry worn around your wrist.",
+      "example": "He gave her a gold bracelet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cease",
+      "translation": "to'xtatmoq",
+      "definition": "To stop.",
+      "example": "After an hour, the rain ceased.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "choke",
+      "translation": "bo'g'ilmoq",
+      "definition": "To be unable to breathe.",
+      "example": "He choked on a piece of bread.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "civil",
+      "translation": "fuqarolik",
+      "definition": "Related to the people of a country.",
+      "example": "The country was in a state of civil war.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "comment",
+      "translation": "fikr bildirmoq",
+      "definition": "To say something about something.",
+      "example": "He commented on her new dress.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cross",
+      "translation": "jahldor",
+      "definition": "When someone is angry.",
+      "example": "The teacher was cross with the students.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dent",
+      "translation": "pachoqlangan joy",
+      "definition": "A small area pushed in on a hard surface.",
+      "example": "There was a dent in the car door.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "distrust",
+      "translation": "ishonmaslik",
+      "definition": "To not trust someone.",
+      "example": "I distrust anyone who lies to me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fort",
+      "translation": "qal'a",
+      "definition": "A strong building used for defense.",
+      "example": "The soldiers built a fort to protect the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "found",
+      "translation": "asos solmoq",
+      "definition": "To start something.",
+      "example": "The company was founded in 1950.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lining",
+      "translation": "astar",
+      "definition": "Cloth that covers the inside of something.",
+      "example": "The jacket has a warm lining.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mass",
+      "translation": "massa, omasa",
+      "definition": "A large amount of something.",
+      "example": "There was a mass of people at the concert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pray",
+      "translation": "ibodat qilmoq",
+      "definition": "To speak to God.",
+      "example": "She prays every morning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rife",
+      "translation": "keng tarqalgan",
+      "definition": "When something is very common.",
+      "example": "The city was rife with crime.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sole",
+      "translation": "yagona",
+      "definition": "When something is the only one.",
+      "example": "He was the sole survivor of the crash.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sweep",
+      "translation": "supurmoq",
+      "definition": "To clean the floor with a broom.",
+      "example": "I swept the kitchen floor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "treachery",
+      "translation": "xiyonat",
+      "definition": "Being dishonest to someone who trusts you.",
+      "example": "The king was shocked by the treachery of his advisor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tuck",
+      "translation": "tiqib qo'ymoq",
+      "definition": "To put it into a small space.",
+      "example": "He tucked the letter into his pocket.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

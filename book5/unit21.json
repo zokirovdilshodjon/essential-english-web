@@ -1,0 +1,146 @@
+{
+  "unit": "21",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "astounded",
+      "translation": "hayratda qolgan",
+      "definition": "If you are astounded, you are very surprised.",
+      "example": "I was astounded by the beautiful view from the top of the mountain.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "attribute",
+      "translation": "xislat, xususiyat",
+      "definition": "An attribute is a characteristic of a person or thing.",
+      "example": "He isn’t very clever, but he does have some other positive attributes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bilingual",
+      "translation": "ikki tilda so'zlashuvchi",
+      "definition": "If someone is bilingual, then they can speak two languages.",
+      "example": "Since you already know English, after learning French you’ll be bilingual.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "clone",
+      "translation": "klon (nusxa)",
+      "definition": "A clone is an identical copy of a living creature.",
+      "example": "Scientists recently made a clone of a sheep.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "colloquial",
+      "translation": "so'zlashuv tiliga xos",
+      "definition": "Colloquial describes informal words that are more suitable for speech than writing.",
+      "example": "I find it difficult to understand people if they use colloquial language.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cosmetics",
+      "translation": "kosmetika",
+      "definition": "Cosmetics are substances that women put on their faces to look more beautiful.",
+      "example": "She spent a lot of money on cosmetics at the beauty store.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dash",
+      "translation": "tez yugurish",
+      "definition": "To dash means to run or move quickly.",
+      "example": "He made a dash for the bus before it pulled away.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disgust",
+      "translation": "nafrat, jirkanish",
+      "definition": "Disgust is a feeling of very strong dislike or disapproval.",
+      "example": "He looked at the messy room with a look of disgust.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fluorescent",
+      "translation": "lyuminessent (yorqin)",
+      "definition": "Fluorescent lights are very bright and produce little heat.",
+      "example": "The fluorescent lights in the office were too bright for me.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "furious",
+      "translation": "g'azablangan",
+      "definition": "If you are furious, you are extremely angry.",
+      "example": "My father was furious when he saw the broken window.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gulf",
+      "translation": "ko'rfaz, tafovut",
+      "definition": "A gulf is a gap between people or a large area of ocean.",
+      "example": "There is a wide gulf between the rich and the poor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "humanities",
+      "translation": "gumanitar fanlar",
+      "definition": "Humanities are subjects which involve the study of culture and ideas.",
+      "example": "She decided to study humanities like history and literature.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "knot",
+      "translation": "tugun",
+      "definition": "A knot is a place where two ends of something are tied together.",
+      "example": "He tied a knot in the rope to keep it from slipping.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "linguist",
+      "translation": "tilshunos",
+      "definition": "A linguist is a person who studies languages.",
+      "example": "The linguist was able to speak several different languages fluently.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "participant",
+      "translation": "qatnashchi",
+      "definition": "A participant is someone who takes part in something.",
+      "example": "There were many participants in the local marathon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plausible",
+      "translation": "ishonarli",
+      "definition": "If something is plausible, it is reasonable or possible.",
+      "example": "It is a plausible explanation for why the car won't start.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ritual",
+      "translation": "marosim",
+      "definition": "A ritual is a formal custom that people do regularly.",
+      "example": "Brushing my teeth is part of my morning ritual.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sibling",
+      "translation": "aka-uka, opa-singil",
+      "definition": "A sibling is a brother or a sister.",
+      "example": "How many siblings do you have?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "skinny",
+      "translation": "oriq",
+      "definition": "If someone is skinny, they are very thin.",
+      "example": "He was so skinny that his clothes didn't fit him properly.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vague",
+      "translation": "noaniq",
+      "definition": "If something is vague, it is not clear or distinct.",
+      "example": "I have only a vague memory of my first day of school.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

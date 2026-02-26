@@ -1,0 +1,146 @@
+{
+  "unit": "19",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accordingly",
+      "translation": "shunga muvofiq",
+      "definition": "If someone acts accordingly, they act in a way that is suitable.",
+      "example": "He feels like he did a good job, and his boss should pay him accordingly.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "anchor",
+      "translation": "langar",
+      "definition": "An anchor is a heavy object dropped from a boat to make it stay in one place.",
+      "example": "When the ship reached its destination, the crew dropped the anchor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "buoy",
+      "translation": "buy (suv ustidagi belgi)",
+      "definition": "A buoy is a floating sign that warns boats of dangerous areas.",
+      "example": "Don't steer the boat near those buoys.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "catastrophe",
+      "translation": "falokat",
+      "definition": "A catastrophe is an unexpected event that causes great suffering or damage.",
+      "example": "The earthquake was a terrible catastrophe for the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "context",
+      "translation": "kontekst",
+      "definition": "Context is the situation that forms the setting for an event.",
+      "example": "You need to understand the context of the story to grasp its meaning.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "designate",
+      "translation": "belgilamoq",
+      "definition": "To designate something means to give it a particular name or title.",
+      "example": "The area was designated as a national park.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "distort",
+      "translation": "buzib ko'rsatmoq",
+      "definition": "To distort something means to change it so that it is no longer true.",
+      "example": "The media distorted the truth about the event.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dock",
+      "translation": "pristan, dok",
+      "definition": "A dock is a place where ships stop and people get on or off.",
+      "example": "The ship was tied to the dock.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fore",
+      "translation": "old qismi",
+      "definition": "The fore of something is the front part of it.",
+      "example": "The fore of the ship was damaged in the storm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "frequent",
+      "translation": "tez-tez sodir bo'ladigan",
+      "definition": "If something is frequent, it happens often.",
+      "example": "We make frequent trips to the city to visit our friends.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "genuine",
+      "translation": "haqiqiy",
+      "definition": "When something is genuine, it is real and not a copy.",
+      "example": "She has a genuine interest in helping others.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "grease",
+      "translation": "moy",
+      "definition": "Grease is a thick substance used on machines to make them move smoothly.",
+      "example": "The mechanic put some grease on the engine parts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "intricate",
+      "translation": "murakkab",
+      "definition": "When something is intricate, it has many small parts or details.",
+      "example": "The watch has an intricate mechanism.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "offset",
+      "translation": "qoplanmoq, muvozanatlamoq",
+      "definition": "To offset something means to use one thing to cancel out the effect of another thing.",
+      "example": "The high cost of the hotel was offset by the low cost of the flight.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overlap",
+      "translation": "ustma-ust tushmoq",
+      "definition": "To overlap means to cover part of the same area as something else.",
+      "example": "The two maps overlap each other.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "precipitate",
+      "translation": "tezlashtirmoq",
+      "definition": "To precipitate something means to cause it to happen suddenly or sooner than expected.",
+      "example": "The crisis precipitated the collapse of the government.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "secondhand",
+      "translation": "ishlatilgan",
+      "definition": "When something is secondhand, it has been owned by someone else before.",
+      "example": "I bought a secondhand car to save money.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "slot",
+      "translation": "tirqish",
+      "definition": "A slot is a narrow opening in a machine or container.",
+      "example": "He put a coin in the slot of the vending machine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "submerge",
+      "translation": "suvga botirmoq",
+      "definition": "To submerge something means to put it completely underwater.",
+      "example": "The submarine submerged into the deep ocean.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tactic",
+      "translation": "taktika",
+      "definition": "A tactic is a plan or method used to achieve a particular goal.",
+      "example": "The team used a clever tactic to win the game.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

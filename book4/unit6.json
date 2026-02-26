@@ -1,0 +1,146 @@
+{
+  "unit": "6",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "absolute",
+      "translation": "mutloq, to'liq",
+      "definition": "If something is absolute, it is total or complete.",
+      "example": "My presentation was an absolute disaster! It was terrible!",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "alas",
+      "translation": "afsuski",
+      "definition": "Alas is a word that people say when something bad happens.",
+      "example": "I looked everywhere for my purse, but alas, I couldn’t find it.",
+      "part_of_speech": "interjection"
+    },
+    {
+      "word": "attentive",
+      "translation": "e'tiborli",
+      "definition": "If you are attentive, you are careful and you pay attention.",
+      "example": "He is a good student because he is attentive to every detail on his work.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cape",
+      "translation": "yoping'ich",
+      "definition": "A cape is a large cloth that covers one’s back and is tied around the neck.",
+      "example": "The superhero wore a bright red cape.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "envision",
+      "translation": "tasavvur qilmoq",
+      "definition": "To envision something means to imagine that it may happen in the future.",
+      "example": "I can envision my family living in a big house by the ocean.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "evenly",
+      "translation": "tekis",
+      "definition": "When something is done evenly, it is done in the same way everywhere.",
+      "example": "The snow was spread evenly across the ground.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "folk",
+      "translation": "odamlar, xalq",
+      "definition": "Folk are ordinary people who are from a certain place or group.",
+      "example": "I grew up with some very nice folk in my hometown.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "melt",
+      "translation": "erimoq",
+      "definition": "To melt means to change from a solid to a liquid.",
+      "example": "The butter melted in the hot pan.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "patch",
+      "translation": "bo'lak, yamoq",
+      "definition": "A patch is a small area of something that is different from the rest.",
+      "example": "There was a small patch of green grass in the middle of the desert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pleasure",
+      "translation": "zavq, rohat",
+      "definition": "Pleasure is a feeling of happiness or enjoyment.",
+      "example": "It was a pleasure to meet you.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pop",
+      "translation": "qarsillamoq",
+      "definition": "To pop means to make a short, sharp noise.",
+      "example": "The balloon popped when the needle touched it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pudding",
+      "translation": "pudding (shirinlik)",
+      "definition": "A pudding is a sweet food that is eaten after a meal.",
+      "example": "We had chocolate pudding for dessert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rail",
+      "translation": "panjara, rels",
+      "definition": "A rail is a horizontal bar of metal or wood.",
+      "example": "He held onto the rail while walking down the stairs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "recipe",
+      "translation": "retsept",
+      "definition": "A recipe is a set of instructions for cooking a certain food.",
+      "example": "I followed a recipe to make this cake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "role",
+      "translation": "rol",
+      "definition": "A role is the part that someone or something plays in a situation.",
+      "example": "The teacher’s role is to help students learn.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shrink",
+      "translation": "kichraymoq",
+      "definition": "To shrink means to become smaller in size.",
+      "example": "My shirt shrank in the wash.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "soak",
+      "translation": "ivimoq",
+      "definition": "To soak something means to put it in a liquid for a long time.",
+      "example": "I let the dishes soak in the sink.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spark",
+      "translation": "uchqun",
+      "definition": "A spark is a small flash of light or fire.",
+      "example": "The campfire gave off several sparks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spirit",
+      "translation": "ruh",
+      "definition": "A spirit is the part of a person that is not their body.",
+      "example": "She has a very positive spirit.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "suit",
+      "translation": "kostyum-shim",
+      "definition": "A suit is a set of clothes that are made of the same fabric.",
+      "example": "He wore a black suit to the wedding.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

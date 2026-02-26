@@ -1,0 +1,146 @@
+{
+  "unit": "26",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "behalf",
+      "translation": "nomidan",
+      "definition": "If something is done on one's behalf, it is done for that person by another.",
+      "example": "The lawyer spoke on behalf of his client.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flap",
+      "translation": "silkimoq, pirpiratmoq",
+      "definition": "To flap means to move quickly up and down or from side to side.",
+      "example": "The bird flapped its wings and flew away.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "glacier",
+      "translation": "muzlik",
+      "definition": "A glacier is a large move of ice that moves very slowly.",
+      "example": "The glacier is slowly melting due to global warming.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "globe",
+      "translation": "yer shari, globus",
+      "definition": "The globe is the Earth.",
+      "example": "Water covers most of the globe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "horizontal",
+      "translation": "gorizontal",
+      "definition": "When something is horizontal, it is flat and level with the ground.",
+      "example": "The teacher drew a horizontal line on the board.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hum",
+      "translation": "g'o'ng'illamoq",
+      "definition": "To hum means to make a low continuous sound.",
+      "example": "The refrigerator began to hum loudly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inventory",
+      "translation": "inventar, ro'yxat",
+      "definition": "An inventory is a detailed list of all the things in a place.",
+      "example": "The store owner kept an inventory of all the items he sold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inward",
+      "translation": "ichkariga",
+      "definition": "If something is inward, it is directed toward the inside.",
+      "example": "She took an inward breath to calm herself down.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "loaf",
+      "translation": "buxanka (non)",
+      "definition": "A loaf is bread shaped and baked as a single piece.",
+      "example": "He bought a loaf of fresh bread from the bakery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "oracle",
+      "translation": "folbin, bashoratchi",
+      "definition": "An oracle is a person who speaks for a god and can see the future.",
+      "example": "The king went to the oracle to ask about the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "orbit",
+      "translation": "orbita bo'ylab aylanmoq",
+      "definition": "To orbit something means to move around it in a continuous curve.",
+      "example": "The moon orbits the Earth.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overview",
+      "translation": "umumiy ko'rinish",
+      "definition": "An overview is a general description or summary of something.",
+      "example": "The professor gave us an overview of the course syllabus.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "preview",
+      "translation": "oldindan ko'rish",
+      "definition": "A preview is an opportunity to see something before it is shown to the public.",
+      "example": "We saw a preview of the new movie.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "previous",
+      "translation": "oldingi",
+      "definition": "If something is previous, it happened before a certain time or event.",
+      "example": "I had met him on a previous occasion.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "provide",
+      "translation": "ta'minlamoq",
+      "definition": "To provide something means to supply it.",
+      "example": "The company provides health insurance for its employees.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "recur",
+      "translation": "takrorlanmoq",
+      "definition": "To recur means to happen or appear again.",
+      "example": "The problem has recurred several times this month.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "relevant",
+      "translation": "muhim, aloqador",
+      "definition": "If something is relevant, it is important to what is being discussed.",
+      "example": "His comments were relevant to the topic of the meeting.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rite",
+      "translation": "marosim",
+      "definition": "A rite is a traditional ceremony for a particular group.",
+      "example": "The graduation ceremony is a rite of passage for students.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stall",
+      "translation": "to'xtab qolmoq",
+      "definition": "To stall means to stop making progress or to stop moving.",
+      "example": "The car stalled in the middle of the road.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "supernatural",
+      "translation": "g'ayritabiiy",
+      "definition": "If something is supernatural, it is not explained by the laws of nature.",
+      "example": "Ghosts are considered supernatural beings.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

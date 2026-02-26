@@ -1,0 +1,146 @@
+{
+  "unit": "27",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "beneficial",
+      "translation": "foydali",
+      "definition": "If something is beneficial, it is good for you.",
+      "example": "Drinking milk everyday is beneficial to your bones.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "birthplace",
+      "translation": "tug'ilgan joy",
+      "definition": "A birthplace is a place where a person is born or where something started.",
+      "example": "China is the birthplace of chopsticks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "capacity",
+      "translation": "sig'im, imkoniyat",
+      "definition": "The capacity of something is the amount of things that can be put in it.",
+      "example": "The parking lot has reached its full capacity.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "comparative",
+      "translation": "qiyosiy",
+      "definition": "If something is comparative, it is being judged based on something else.",
+      "example": "The money that John has is comparative to most other adults.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "comprehensive",
+      "translation": "keng qamrovli",
+      "definition": "If something is comprehensive, it includes all the necessary facts or details.",
+      "example": "The book provides a comprehensive guide to history.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "conserve",
+      "translation": "tejamoq, saqlamoq",
+      "definition": "To conserve something is to protect it or use it carefully.",
+      "example": "We should all try to conserve water.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "crucial",
+      "translation": "muhim, hal qiluvchi",
+      "definition": "If something is crucial, it is extremely important.",
+      "example": "It is crucial that you finish your homework tonight.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cumulative",
+      "translation": "to'planib boradigan",
+      "definition": "Cumulative describes an increase by successive additions.",
+      "example": "The cumulative effect of the rain caused the flood.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "deposit",
+      "translation": "qo'ymoq, omonat",
+      "definition": "To deposit something is to put it into a place or keep it there.",
+      "example": "He deposited his money into his bank account.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "distribute",
+      "translation": "tarqatmoq",
+      "definition": "To distribute something is to give it to a number of people.",
+      "example": "The charity distributed food to the poor families.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "equator",
+      "translation": "ekvator",
+      "definition": "The equator is an imaginary line around the middle of the Earth.",
+      "example": "The equator divides the Earth into northern and southern halves.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exotic",
+      "translation": "ekzotik, g'ayritabiiy",
+      "definition": "Something exotic is unusual because it comes from a distant country.",
+      "example": "The garden was filled with exotic plants from around the world.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "federal",
+      "translation": "federal",
+      "definition": "Federal relates to a central government of a country.",
+      "example": "The federal government passed a new law about taxes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "formation",
+      "translation": "shakllanish",
+      "definition": "Formation is the way that something is made or shaped.",
+      "example": "The cloud formation in the sky looked like a dragon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "frequency",
+      "translation": "takroriylik, chastota",
+      "definition": "Frequency is the number of times that something happens.",
+      "example": "The frequency of trains on this line is every ten minutes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "objective",
+      "translation": "maqsad",
+      "definition": "An objective is a goal that you are working toward.",
+      "example": "Our objective is to finish the project by Friday.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "oxygen",
+      "translation": "kislorod",
+      "definition": "Oxygen is a gas that all living things need to breathe.",
+      "example": "Plants produce oxygen for humans and animals.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rainforest",
+      "translation": "tropik o'rmon",
+      "definition": "A rainforest is a forest that gets a lot of rain.",
+      "example": "The Amazon is the largest rainforest in the world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "strategy",
+      "translation": "strategiya",
+      "definition": "A strategy is a plan for how to reach a goal.",
+      "example": "The team came up with a new strategy to win the game.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wooded",
+      "translation": "o'rmonli, daraxtzor",
+      "definition": "If an area is wooded, it is covered with trees.",
+      "example": "They went for a walk in a wooded area near their home.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

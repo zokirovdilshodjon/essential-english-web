@@ -1,0 +1,146 @@
+{
+  "unit": "9",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "artery",
+      "translation": "arteriya, qon tomir",
+      "definition": "An artery is a tube that carries blood from the heart.",
+      "example": "Eating too much fat can block your arteries.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deterioration",
+      "translation": "yomonlashuv",
+      "definition": "Deterioration is the process of becoming worse.",
+      "example": "The deterioration of the building was clear to see.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "elusive",
+      "translation": "topilmas, tutqich bermas",
+      "definition": "If something or someone is elusive, they are hard to find or catch.",
+      "example": "The elusive cat was nowhere to be found.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "forage",
+      "translation": "oziq qidirmoq",
+      "definition": "To forage means to search for food.",
+      "example": "The animals foraged for food in the forest.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "impede",
+      "translation": "to'sqinlik qilmoq",
+      "definition": "To impede means to slow down or prevent the progress of something.",
+      "example": "The snow impeded our progress.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "induce",
+      "translation": "sabab bo'lmoq, keltirib chiqarmoq",
+      "definition": "To induce means to cause something to happen.",
+      "example": "The medicine induced sleep.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inseparable",
+      "translation": "ajralmas",
+      "definition": "If things are inseparable, they cannot be separated.",
+      "example": "The two friends were inseparable.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "invalid",
+      "translation": "haqiqiy emas, yaroqsiz",
+      "definition": "If something is invalid, it is not legally or officially acceptable.",
+      "example": "The contract was declared invalid.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "magnify",
+      "translation": "kattalashtirib ko'rsatmoq",
+      "definition": "To magnify something means to make it look bigger than it is.",
+      "example": "A microscope magnifies very small things.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mainstream",
+      "translation": "asosiy oqim, ommabop",
+      "definition": "Mainstream is what is considered normal or common.",
+      "example": "His ideas were once considered radical, but they are now mainstream.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "microbe",
+      "translation": "mikrob",
+      "definition": "A microbe is a very small living thing that can only be seen with a microscope.",
+      "example": "Some microbes cause diseases.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "negligible",
+      "translation": "arzimas, e'tiborga loyiq bo'lmagan",
+      "definition": "If something is negligible, it is so small that it is not important.",
+      "example": "The cost of the repairs was negligible.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "paralysis",
+      "translation": "falajlik",
+      "definition": "Paralysis is the loss of the ability to move all or part of the body.",
+      "example": "The accident left him with permanent paralysis.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pest",
+      "translation": "zararkunanda",
+      "definition": "A pest is an animal or insect that causes damage or is annoying.",
+      "example": "Rats are common pests in many cities.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prevail",
+      "translation": "g'alaba qozonmoq",
+      "definition": "To prevail means to win or be successful.",
+      "example": "Good will always prevail over evil.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "respiration",
+      "translation": "nafas olish",
+      "definition": "Respiration is the act of breathing.",
+      "example": "The doctor checked his respiration.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rupture",
+      "translation": "yorilish",
+      "definition": "To rupture means to burst or break suddenly.",
+      "example": "The pipe ruptured, causing a flood.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "savage",
+      "translation": "vaxshiy",
+      "definition": "If something is savage, it is very violent and cruel.",
+      "example": "The wolf was a savage animal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stun",
+      "translation": "hayratda qoldirmoq, esankiratib qo'ymoq",
+      "definition": "To stun someone means to shock or surprise them very much.",
+      "example": "The news stunned everyone.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "susceptible",
+      "translation": "ta'sirchan, moyil",
+      "definition": "If you are susceptible to something, you are easily affected by it.",
+      "example": "She is susceptible to colds in the winter.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "7",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "altar",
+      "translation": "mehrob",
+      "definition": "An altar is a table used in churches.",
+      "example": "The altar had many lit candles on it.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "arthritis",
+      "translation": "artrit, bo'g'im og'rig'i",
+      "definition": "Arthritis is an illness causing pain and swelling in a person’s joints.",
+      "example": "Agatha couldn’t play the piano anymore because of her arthritis.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "botany",
+      "translation": "botanika",
+      "definition": "Botany is the study of plants.",
+      "example": "Gardens are the best places for botany.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "credible",
+      "translation": "ishonarli",
+      "definition": "If something or someone is credible, they can be believed or trusted.",
+      "example": "Dick gave a credible reason for being late and didn’t get in any trouble.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "deceased",
+      "translation": "vafot etgan",
+      "definition": "If someone is deceased, they are dead.",
+      "example": "The property was left to him by a deceased relative.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "deception",
+      "translation": "aldov, firib",
+      "definition": "Deception is the act of lying or tricking someone.",
+      "example": "The magician’s trick was a clever deception.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "decipher",
+      "translation": "kodini yechmoq, tushunmoq",
+      "definition": "To decipher means to figure out the meaning of something difficult to read.",
+      "example": "The archeologist deciphered the ancient writing.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dung",
+      "translation": "go'ng, tezak",
+      "definition": "Dung is the waste of animals.",
+      "example": "Farmers use dung to help their plants grow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dusk",
+      "translation": "oqshom, g'ira-shira vaqt",
+      "definition": "Dusk is the time of day when it is becoming dark.",
+      "example": "The children went home at dusk.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gratify",
+      "translation": "mamnun qilmoq",
+      "definition": "To gratify means to please someone.",
+      "example": "It gratified her to see her students succeed.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hone",
+      "translation": "charxlamoq, mahoratni oshirmoq",
+      "definition": "To hone something is to make it better or sharper.",
+      "example": "He honed his skills by practicing every day.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mash",
+      "translation": "ezmoq, bo'tqa qilmoq",
+      "definition": "To mash something is to crush it into a soft mass.",
+      "example": "She mashed the potatoes with a fork.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ornate",
+      "translation": "hashamatli, bezatilgan",
+      "definition": "If something is ornate, it is decorated with a lot of detail.",
+      "example": "The mirror had an ornate silver frame.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pneumonia",
+      "translation": "zotiljam, pnevmoniya",
+      "definition": "Pneumonia is a serious illness of the lungs.",
+      "example": "The old man was hospitalized with pneumonia.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "psychic",
+      "translation": "ekstrasens, g'ayritabiiy",
+      "definition": "If someone is psychic, they can see the future or read minds.",
+      "example": "The psychic predicted that he would win the lottery.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "psychotic",
+      "translation": "ruhiy xasta",
+      "definition": "If someone is psychotic, they have a serious mental illness.",
+      "example": "The murderer was found to be psychotic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "scope",
+      "translation": "ko'lam, miqyos",
+      "definition": "The scope of something is the area it covers.",
+      "example": "The scope of the investigation was very wide.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sinister",
+      "translation": "mash'um, xavfli",
+      "definition": "If something is sinister, it seems evil or dangerous.",
+      "example": "The dark house looked very sinister.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "strife",
+      "translation": "nizo, janjal",
+      "definition": "Strife is disagreement or fighting between people or groups.",
+      "example": "The country was torn by internal strife.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "therapeutic",
+      "translation": "shifobaxsh",
+      "definition": "If something is therapeutic, it helps to cure an illness or relax.",
+      "example": "A hot bath can be very therapeutic.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

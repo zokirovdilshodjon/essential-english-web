@@ -1,0 +1,146 @@
+{
+  "unit": "2",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abbey",
+      "translation": "monastir",
+      "definition": "An abbey is a house or group of houses where monks or nuns live.",
+      "example": "When the monks returned to the abbey, they went straight to prayers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "abundant",
+      "translation": "mo'l-ko'l",
+      "definition": "If something is abundant, then it is available in large quantities.",
+      "example": "Cakes, cookies, and candy were abundant at the birthday party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "adjoin",
+      "translation": "yonma-yon bo'lmoq",
+      "definition": "To adjoin something means to be next to or attached to something else.",
+      "example": "She can listen to her brother's conversations because her room adjoins his.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ample",
+      "translation": "yetarli, keng",
+      "definition": "If something is ample, then it is more than enough or large.",
+      "example": "There was ample room in the back of the car for our bags.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "arid",
+      "translation": "quruq, qaqragan",
+      "definition": "If a place is arid, then it is hot and dry and gets very little rain.",
+      "example": "Not many plants can grow in the arid desert.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cathedral",
+      "translation": "bosh cherkov",
+      "definition": "A cathedral is an important and often large Christian church.",
+      "example": "The cathedral is famous for its beautiful stained glass windows.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deprive",
+      "translation": "mahrum qilmoq",
+      "definition": "To deprive someone of something means to not let them have it.",
+      "example": "Because the child was bad, she was deprived of her favorite toy.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "drought",
+      "translation": "qurg'oqchilik",
+      "definition": "A drought is a long period of time in which little or no rain falls.",
+      "example": "After three months of drought, the farmers and animals were very thirsty.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "eligible",
+      "translation": "loyiq, munosib",
+      "definition": "If someone is eligible, then they are permitted to do or have something.",
+      "example": "Only people who are over 18 are eligible to vote.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fast",
+      "translation": "ro'za tutmoq",
+      "definition": "To fast means to go without food or drink for a period of time.",
+      "example": "In many religions, people fast at certain times of the year.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grumble",
+      "translation": "g'uldiramoq, norozi bo'lmoq",
+      "definition": "To grumble means to complain in a low voice.",
+      "example": "The students grumbled about having to do extra homework.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inland",
+      "translation": "ichkari (dengizdan uzoqda)",
+      "definition": "If something is inland, it is in the interior of a country.",
+      "example": "The bird can fly far inland, away from the ocean.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "moisture",
+      "translation": "namlik",
+      "definition": "Moisture is a small amount of water in the air or on a surface.",
+      "example": "If you do not dry your feet, any moisture will make your socks wet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nonetheless",
+      "translation": "shunga qaramay",
+      "definition": "Nonetheless is used when something happens despite what was said.",
+      "example": "It was raining; nonetheless, they went for a walk.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "oath",
+      "translation": "qasamyod",
+      "definition": "An oath is a formal, often legal, promise to do something.",
+      "example": "The witness took an oath to tell the truth in court.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prairie",
+      "translation": "prairiya (o'tloq)",
+      "definition": "A prairie is a large area of flat, grassy land.",
+      "example": "In the 1800s, millions of buffalo lived on the prairies of North America.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ragged",
+      "translation": "eskirgan, yirtiq-yamoq",
+      "definition": "If something is ragged, then it is old, torn, and in bad condition.",
+      "example": "The homeless man had ragged clothes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rugged",
+      "translation": "notekis, g'adir-budur",
+      "definition": "If an area of land is rugged, then it is rocky and uneven.",
+      "example": "The rugged mountains were difficult to climb.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "scarce",
+      "translation": "kamchil, tanqis",
+      "definition": "If something is scarce, then there is not enough of it.",
+      "example": "Food was scarce because of the drought.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "speculate",
+      "translation": "taxmin qilmoq",
+      "definition": "To speculate means to guess about something or its causes.",
+      "example": "Scientists speculate that life may exist on other planets.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

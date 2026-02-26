@@ -1,0 +1,146 @@
+{
+  "unit": "4",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "beak",
+      "translation": "tumsug'",
+      "definition": "A beak is the hard curved part of a bird’s mouth.",
+      "example": "The bird used her beak to dig a small hole in the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "damp",
+      "translation": "nam",
+      "definition": "If something is damp, it is somewhat wet.",
+      "example": "My hair is still damp from my shower.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "disapprove",
+      "translation": "ma'qullamaslik",
+      "definition": "To disapprove of something is to think that it is wrong.",
+      "example": "Alex disapproved of his son’s behavior.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "except",
+      "translation": "mustasno",
+      "definition": "You use except to talk about the only person or thing that a statement does not apply to.",
+      "example": "Everyone went to the party except for John.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "flight",
+      "translation": "parvoz",
+      "definition": "A flight is a trip on an airplane.",
+      "example": "My flight was delayed for two hours.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fond",
+      "translation": "yaxshi ko'radigan",
+      "definition": "If you are fond of something, you like it very much.",
+      "example": "I am very fond of chocolate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "immoral",
+      "translation": "axloqsiz",
+      "definition": "If something is immoral, it is wrong and not acceptable by most people.",
+      "example": "Stealing is an immoral act.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ivy",
+      "translation": "pechak",
+      "definition": "Ivy is a plant that grows up walls or trees.",
+      "example": "The walls of the old house were covered in ivy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "moan",
+      "translation": "ingramoq",
+      "definition": "To moan means to make a low sound of pain or unhappiness.",
+      "example": "The sick man moaned in his sleep.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "oblivious",
+      "translation": "bexabar, parvosiz",
+      "definition": "If you are oblivious to something, you do not notice it.",
+      "example": "She was oblivious to the noise outside.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "perish",
+      "translation": "halok bo'lmoq",
+      "definition": "To perish means to die, usually in a sudden or violent way.",
+      "example": "Many people perished in the earthquake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pit",
+      "translation": "chuqurcha",
+      "definition": "A pit is a big hole in the ground.",
+      "example": "The workers dug a pit for the new building.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rim",
+      "translation": "chekka",
+      "definition": "The rim is the outside edge of a round thing.",
+      "example": "He put his glass on the rim of the table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "roost",
+      "translation": "tunamoq",
+      "definition": "To roost means to rest or sleep in a high place.",
+      "example": "The birds roosted in the tall trees.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "slippery",
+      "translation": "sirpanchiq",
+      "definition": "If something is slippery, it is wet or smooth and causes people to slip.",
+      "example": "The floor was slippery after it was mopped.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "soar",
+      "translation": "baland uchmoq",
+      "definition": "To soar means to fly high in the air.",
+      "example": "The eagle soared above the mountains.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "trivial",
+      "translation": "ahamiyatsiz",
+      "definition": "If something is trivial, it is not important or serious.",
+      "example": "Don't worry about trivial things.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "typical",
+      "translation": "odatiy",
+      "definition": "If something is typical, it is normal or usual for a person or thing.",
+      "example": "It was a typical Monday morning.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "utterly",
+      "translation": "butunlay",
+      "definition": "If something is utterly a certain way, it is completely that way.",
+      "example": "The room was utterly silent.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "weep",
+      "translation": "yig'lamoq",
+      "definition": "To weep means to cry.",
+      "example": "She wept when she heard the sad news.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

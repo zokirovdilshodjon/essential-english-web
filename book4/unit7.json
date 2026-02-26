@@ -1,0 +1,146 @@
+{
+  "unit": "7",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "account",
+      "translation": "hisobot, hikoya",
+      "definition": "An account is a description of an event.",
+      "example": "The witness gave an account of the accident.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "architect",
+      "translation": "me'mor",
+      "definition": "An architect is a person who designs buildings.",
+      "example": "The architect designed a new school for the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conceal",
+      "translation": "yashirmoq",
+      "definition": "To conceal something means to hide it.",
+      "example": "The man tried to conceal his identity.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "crime",
+      "translation": "jinoyat",
+      "definition": "A crime is an act that is against the law.",
+      "example": "Stealing is a crime.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deed",
+      "translation": "ish, amal",
+      "definition": "A deed is an action that someone does.",
+      "example": "The boy did a good deed by helping the old woman.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gratitude",
+      "translation": "minnatdorchilik",
+      "definition": "Gratitude is a feeling of being thankful.",
+      "example": "She expressed her gratitude for the gift.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "habitat",
+      "translation": "yashash joyi",
+      "definition": "A habitat is the natural home of a plant or animal.",
+      "example": "The ocean is the habitat of the whale.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "intervene",
+      "translation": "aralashmoq",
+      "definition": "To intervene means to become involved in a situation.",
+      "example": "The teacher intervened in the argument between the students.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "landmark",
+      "translation": "diqqatga sazovor joy",
+      "definition": "A landmark is a recognizable object or building.",
+      "example": "The Statue of Liberty is a famous landmark in New York.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "legal",
+      "translation": "qonuniy",
+      "definition": "If something is legal, it is allowed by the law.",
+      "example": "It is legal to drive at the age of 18 in most countries.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "memorable",
+      "translation": "esda qolarli",
+      "definition": "If something is memorable, it is worth remembering.",
+      "example": "Our vacation was a memorable experience.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "oblige",
+      "translation": "majbur qilmoq",
+      "definition": "To oblige someone means to force them to do something.",
+      "example": "The law obliges people to pay taxes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "offence",
+      "translation": "qonunbuzarlik",
+      "definition": "An offence is an act that breaks the law.",
+      "example": "Speeding is a common driving offence.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "proclaim",
+      "translation": "e'lon qilmoq",
+      "definition": "To proclaim something means to announce it officially.",
+      "example": "The king proclaimed that the war was over.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rally",
+      "translation": "miting, namoyish",
+      "definition": "A rally is a large public meeting.",
+      "example": "People held a rally to support the new law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "resolve",
+      "translation": "hal qilmoq",
+      "definition": "To resolve something means to find a solution to a problem.",
+      "example": "The two sides resolved their dispute.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "resource",
+      "translation": "manba, resurs",
+      "definition": "A resource is something that can be used to help you.",
+      "example": "The library is a great resource for information.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sentence",
+      "translation": "hukm",
+      "definition": "A sentence is a punishment given by a judge.",
+      "example": "The judge gave him a three-year sentence.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "volunteer",
+      "translation": "ko'ngilli",
+      "definition": "A volunteer is someone who does work without being paid.",
+      "example": "She works as a volunteer at the hospital.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "witness",
+      "translation": "guvoh",
+      "definition": "A witness is someone who sees an event happen.",
+      "example": "The witness told the police what he had seen.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

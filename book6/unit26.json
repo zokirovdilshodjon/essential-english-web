@@ -1,0 +1,146 @@
+{
+  "unit": "26",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "constrain",
+      "translation": "cheklamoq, majburlamoq",
+      "definition": "To constrain something or someone is to limit its development or force it to behave in a particular way.",
+      "example": "The country's progress was constrained by its lack of natural resources.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "depot",
+      "translation": "ombor, vokzal",
+      "definition": "A depot is a place where buses or trains stop, or where goods are stored.",
+      "example": "The bus pulled into the depot to let the passengers off.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "emulate",
+      "translation": "taqlid qilmoq (yaxshi ma'noda)",
+      "definition": "To emulate someone means to try to be like them because you admire them.",
+      "example": "He tried to emulate his older brother's success in business.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "forefinger",
+      "translation": "ko'rsatkich barmoq",
+      "definition": "The forefinger is the finger next to the thumb.",
+      "example": "He pointed his forefinger at the map to show where they were.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "guts",
+      "translation": "jasorat, matonat",
+      "definition": "Guts is the courage or determination needed to do something difficult.",
+      "example": "It takes a lot of guts to stand up for what you believe in.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inherent",
+      "translation": "ajralmas, xos bo'lgan",
+      "definition": "An inherent quality is a natural part of something and cannot be separated from it.",
+      "example": "There are inherent risks in any kind of investment.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intimidate",
+      "translation": "qo'rqitmoq, daxshatga solmoq",
+      "definition": "To intimidate someone means to make them feel afraid or nervous.",
+      "example": "The big dog intimidated the children with its loud bark.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "janitor",
+      "translation": "farrosh, qorovul",
+      "definition": "A janitor is a person whose job is to take care of a large building, such as a school.",
+      "example": "The janitor cleaned the hallways every evening.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "moist",
+      "translation": "nam, xushbo'y",
+      "definition": "If something is moist, it is slightly wet.",
+      "example": "The cake was delicious and moist.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nope",
+      "translation": "yo'q",
+      "definition": "Nope is an informal way of saying no.",
+      "example": "When I asked if he was ready, he just said, 'Nope.'",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "prod",
+      "translation": "turtmoq, qistamoq",
+      "definition": "To prod someone means to push them with a finger or a pointed object.",
+      "example": "She prodded him in the back to get his attention.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ransom",
+      "translation": "tovon puli",
+      "definition": "A ransom is a sum of money that is paid to free a person who is being held captive.",
+      "example": "The kidnappers demanded a large ransom for the return of the businessman.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "restrain",
+      "translation": "ushlab qolmoq, cheklamoq",
+      "definition": "To restrain someone or something means to prevent them from moving or doing something.",
+      "example": "The police had to restrain the angry crowd.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "saliva",
+      "translation": "so'lak",
+      "definition": "Saliva is the liquid that is produced in your mouth.",
+      "example": "The smell of food caused saliva to fill his mouth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spit",
+      "translation": "tupurmoq",
+      "definition": "To spit means to force liquid or food out of your mouth.",
+      "example": "He spit the sour grape out of his mouth.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sprint",
+      "translation": "tez yugurmoq",
+      "definition": "To sprint means to run very fast for a short distance.",
+      "example": "He had to sprint to catch the bus before it left.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stunt",
+      "translation": "tryuk, kaskadyorlik",
+      "definition": "A stunt is a dangerous or difficult action that is done to entertain people.",
+      "example": "The movie featured many amazing car stunts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tolerant",
+      "translation": "bag'rikeng, chidamli",
+      "definition": "If you are tolerant, you are willing to accept things that you do not agree with.",
+      "example": "She is very tolerant of other people's opinions.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vampire",
+      "translation": "vampir",
+      "definition": "A vampire is a mythical creature that drinks the blood of living people.",
+      "example": "In the movie, the vampire only came out at night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "yawn",
+      "translation": "eshnamoq",
+      "definition": "To yawn means to open your mouth wide and breathe in deeply because you are tired or bored.",
+      "example": "He couldn't help but yawn during the long meeting.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

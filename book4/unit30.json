@@ -1,0 +1,146 @@
+{
+  "unit": "30",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bill",
+      "translation": "hisob-kitob",
+      "definition": "A bill is a statement of money owed for goods or a service.",
+      "example": "I have so many bills that I do not know how to pay for them all.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "boundary",
+      "translation": "chegara",
+      "definition": "A boundary is the line where one area of land stops and another begins.",
+      "example": "This fence shows the boundary between our yard and yours.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chaos",
+      "translation": "tartibsizlik, xaos",
+      "definition": "Chaos is a situation that is confusing and not ordered.",
+      "example": "His presentation was in chaos. I couldn’t understand what he meant.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "consistent",
+      "translation": "barqaror, izchil",
+      "definition": "If a person is consistent, they keep the same behavior or attitude.",
+      "example": "Sara comes in every day and is our most consistent worker.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cyclone",
+      "translation": "siklon",
+      "definition": "A cyclone is a large storm with very strong winds.",
+      "example": "The cyclone caused a lot of damage to the coastal towns.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "doomed",
+      "translation": "halokatga mahkum",
+      "definition": "If someone or something is doomed, it is certain to fail or be destroyed.",
+      "example": "The project was doomed from the beginning because of a lack of money.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "heir",
+      "translation": "merosxo'r",
+      "definition": "An heir is a person who will receive money or a title when someone dies.",
+      "example": "The prince is the heir to the throne.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "martial",
+      "translation": "harbiy",
+      "definition": "Martial relates to war or the military.",
+      "example": "Karate is a well-known martial art.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "organic",
+      "translation": "organik",
+      "definition": "Organic describes things that come from living things.",
+      "example": "The farmer uses only organic fertilizers for his crops.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "poultry",
+      "translation": "parranda",
+      "definition": "Poultry are birds such as chickens and ducks that are kept for their meat or eggs.",
+      "example": "The farm raises poultry for local restaurants.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scramble",
+      "translation": "tirmashib chiqmoq, tez harakat qilmoq",
+      "definition": "To scramble is to move quickly using your hands and feet.",
+      "example": "The children scrambled up the hill to see the view.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sergeant",
+      "translation": "serjant",
+      "definition": "A sergeant is a rank of officer in the army or police.",
+      "example": "The sergeant gave orders to the soldiers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sheer",
+      "translation": "mutlaq, sof",
+      "definition": "Sheer is used to emphasize the size or degree of something.",
+      "example": "The sheer size of the mountain was impressive.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stance",
+      "translation": "pozitsiya, qarash",
+      "definition": "A stance is an attitude or opinion about something.",
+      "example": "The politician’s stance on the new law was very clear.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "telegraph",
+      "translation": "telegraf",
+      "definition": "A telegraph is an old system for sending messages over long distances.",
+      "example": "In the past, people used the telegraph to send urgent news.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "textile",
+      "translation": "to'qimachilik, mato",
+      "definition": "A textile is a type of cloth or woven fabric.",
+      "example": "The country is famous for its beautiful textiles.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tornado",
+      "translation": "tornado",
+      "definition": "A tornado is a very strong wind that moves in a circle.",
+      "example": "The tornado destroyed several houses in its path.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "typhoon",
+      "translation": "tayfun",
+      "definition": "A typhoon is a violent tropical storm with very strong winds.",
+      "example": "The typhoon caused flooding throughout the island.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wail",
+      "translation": "uvvos solmoq",
+      "definition": "To wail is to make a long, high cry of sadness or pain.",
+      "example": "The baby began to wail when it was hungry.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wardrobe",
+      "translation": "garderob",
+      "definition": "A wardrobe is a large cupboard for keeping clothes in.",
+      "example": "She has a very large wardrobe full of expensive clothes.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

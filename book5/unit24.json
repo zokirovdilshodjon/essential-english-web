@@ -1,0 +1,146 @@
+{
+  "unit": "24",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bankrupt",
+      "translation": "bankrot",
+      "definition": "If someone is bankrupt, they do not have enough money to pay their debts.",
+      "example": "The company went bankrupt and had to close.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "conform",
+      "translation": "moslashmoq",
+      "definition": "To conform means to follow the rules or customs of a group.",
+      "example": "Students are expected to conform to the school's rules.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "employ",
+      "translation": "ishga olmoq",
+      "definition": "To employ someone means to pay them to work for you.",
+      "example": "The factory employs over five hundred workers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "expel",
+      "translation": "haydamoq",
+      "definition": "To expel someone means to force them to leave a place or organization.",
+      "example": "He was expelled from school for fighting.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "extension",
+      "translation": "kengaytirish",
+      "definition": "An extension is an extra part added to something to make it longer.",
+      "example": "They are building an extension to their house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "forthcoming",
+      "translation": "kutilayotgan",
+      "definition": "If something is forthcoming, it is about to happen in the near future.",
+      "example": "We are looking forward to the forthcoming holiday.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "furnish",
+      "translation": "jihozlamoq",
+      "definition": "To furnish a room means to put furniture in it.",
+      "example": "They furnished the living room with a new sofa and chairs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hygiene",
+      "translation": "gigiyena",
+      "definition": "Hygiene is the practice of keeping yourself and your surroundings clean.",
+      "example": "Good personal hygiene is important for staying healthy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hygienic",
+      "translation": "gigiyenik",
+      "definition": "When something is hygienic, it is clean and unlikely to cause disease.",
+      "example": "It is important to keep the kitchen in a hygienic condition.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "landlord",
+      "translation": "uy egasi",
+      "definition": "A landlord is a person who owns a building and rents it to others.",
+      "example": "The landlord collected the rent at the beginning of the month.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lease",
+      "translation": "ijaraga olmoq",
+      "definition": "To lease something means to use it for a period of time in exchange for money.",
+      "example": "They decided to lease a car instead of buying one.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mandatory",
+      "translation": "majburiy",
+      "definition": "If something is mandatory, it is required by law or a rule.",
+      "example": "It is mandatory to wear a seatbelt in the car.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mend",
+      "translation": "tuzatmoq",
+      "definition": "To mend something means to fix it when it is broken or damaged.",
+      "example": "He mended the hole in his socks.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mortgage",
+      "translation": "ipoteka",
+      "definition": "A mortgage is a loan from a bank to buy a house.",
+      "example": "They took out a mortgage to buy their first home.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "personnel",
+      "translation": "xodimlar",
+      "definition": "Personnel are the people who work for an organization.",
+      "example": "The company's personnel department handles all hiring.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plumbing",
+      "translation": "santexnika",
+      "definition": "Plumbing is the system of pipes and fixtures in a building.",
+      "example": "The plumbing in the old house needs to be replaced.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tenant",
+      "translation": "ijarachi",
+      "definition": "A tenant is a person who rents a building or land from a landlord.",
+      "example": "The tenant paid the rent on time every month.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trendy",
+      "translation": "zamonaviy",
+      "definition": "If something is trendy, it is fashionable and popular.",
+      "example": "She likes to wear trendy clothes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "utility",
+      "translation": "foydalilik",
+      "definition": "Utility is the quality of being useful.",
+      "example": "The utility of the new tool was immediately apparent.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "whereby",
+      "translation": "orqali, yordamida",
+      "definition": "Whereby means by which or through which.",
+      "example": "They developed a system whereby customers can order online.",
+      "part_of_speech": "conjunction"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "25",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aesthetic",
+      "translation": "estetik",
+      "definition": "Aesthetic relates to the enjoyment or study of beauty.",
+      "example": "The building was designed for aesthetic reasons, not just for function.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "arrogant",
+      "translation": "takabbur",
+      "definition": "If someone is arrogant, they think they are better than others.",
+      "example": "He was so arrogant that he never listened to anyone else's advice.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bias",
+      "translation": "moyillik, tarafkashlik",
+      "definition": "Bias is a tendency to favor one person or thing over another.",
+      "example": "The reporter's bias was clear in his article.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "canyon",
+      "translation": "kanon (chuqur dara)",
+      "definition": "A canyon is a deep valley with steep rock sides.",
+      "example": "The Grand Canyon is one of the most famous sights in the world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "creek",
+      "translation": "kichik daryo",
+      "definition": "A creek is a small stream or river.",
+      "example": "We went fishing in the creek behind our house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "drill",
+      "translation": "parmalash",
+      "definition": "To drill means to make a hole in something with a tool.",
+      "example": "He used a drill to make a hole in the wall.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "executive",
+      "translation": "rahbar xodim",
+      "definition": "An executive is a person with a high position in a company.",
+      "example": "The executive made an important decision about the company's future.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fatigue",
+      "translation": "charchoq",
+      "definition": "Fatigue is a feeling of extreme tiredness.",
+      "example": "He was suffering from fatigue after working all night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "incline",
+      "translation": "qiyalik",
+      "definition": "An incline is a slope or a surface that is tilted.",
+      "example": "The road had a steep incline that was difficult to climb.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nasty",
+      "translation": "jirkanch, yomon",
+      "definition": "When something is nasty, it is very unpleasant or unkind.",
+      "example": "He had a nasty habit of biting his nails.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "perceive",
+      "translation": "idrok etmoq",
+      "definition": "To perceive something means to notice or understand it.",
+      "example": "She perceived a change in his attitude toward her.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "primate",
+      "translation": "primat (maymunsimon)",
+      "definition": "A primate is a member of the group of animals that includes monkeys and humans.",
+      "example": "Chimpanzees and gorillas are both primates.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "primitive",
+      "translation": "ibtidoiy",
+      "definition": "When something is primitive, it relates to a very early stage of development.",
+      "example": "The cavemen used primitive tools made of stone.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stereotype",
+      "translation": "stertotip",
+      "definition": "A stereotype is a fixed idea that people have about a group of people.",
+      "example": "It is a stereotype that all librarians are quiet and serious.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sticky",
+      "translation": "yopishqoq",
+      "definition": "If something is sticky, it adheres easily to other things.",
+      "example": "The honey was very sticky and got all over her hands.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "termite",
+      "translation": "termit",
+      "definition": "A termite is an insect that eats wood and can damage buildings.",
+      "example": "The old wooden house was infested with termites.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thereby",
+      "translation": "shu tariqa",
+      "definition": "Thereby means as a result of that.",
+      "example": "He worked hard and thereby earned a promotion.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "trail",
+      "translation": "so'qmoq",
+      "definition": "A trail is a path through a forest or field.",
+      "example": "We followed the trail to the top of the hill.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "twig",
+      "translation": "shoxcha",
+      "definition": "A twig is a small, thin branch from a tree or bush.",
+      "example": "The bird used twigs and grass to build its nest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "welfare",
+      "translation": "farovonlik",
+      "definition": "Welfare is the health, happiness, and fortunes of a person or group.",
+      "example": "The government is responsible for the welfare of its citizens.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

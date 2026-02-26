@@ -1,0 +1,146 @@
+{
+  "unit": "16",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "altogether",
+      "translation": "umuman, butunlay",
+      "definition": "If something happens altogether, it happens completely.",
+      "example": "The company stopped using sugar altogether in its food.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "bind",
+      "translation": "bog'lamoq, birlashtirmoq",
+      "definition": "To bind is to bring people together.",
+      "example": "The victims of the flood were bound by their need to help each other.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bruise",
+      "translation": "ko'karish, g'urra",
+      "definition": "A bruise is a dark mark caused by being hit by something.",
+      "example": "She got a bruise on her knee from falling down.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "custom",
+      "translation": "urf-odat",
+      "definition": "A custom is a way of doing things that has been the same for a long time.",
+      "example": "It is a custom that the bride and groom sleep in separate places.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disobedient",
+      "translation": "itoatsiz",
+      "definition": "When someone is disobedient, they do not follow the rules.",
+      "example": "The disobedient child would not listen to his parents.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "foresee",
+      "translation": "oldindan ko'rmoq",
+      "definition": "To foresee something is to know about it before it happens.",
+      "example": "The teacher did not foresee any problems with the new schedule.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "glimpse",
+      "translation": "ko'zi tushmoq",
+      "definition": "To glimpse something is to see it for a very short time.",
+      "example": "I glimpsed a strange animal in the woods.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hoop",
+      "translation": "halqa, chambarak",
+      "definition": "A hoop is a ring that is made of plastic, metal, or wood.",
+      "example": "The basketball player threw the ball through the hoop.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "misfortune",
+      "translation": "baxtsizlik, omadsizlik",
+      "definition": "Misfortune is bad luck or an unlucky event.",
+      "example": "He had the misfortune of breaking his arm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "negative",
+      "translation": "salbiy",
+      "definition": "When something is negative, it is unpleasant or bad.",
+      "example": "She has a negative attitude about the project.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "per",
+      "translation": "har biriga",
+      "definition": "Per is used to mean 'for each' or 'for every'.",
+      "example": "The car can travel 30 miles per gallon of gas.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "plead",
+      "translation": "yolvormoq",
+      "definition": "To plead is to ask for something in an emotional way.",
+      "example": "He pleaded with his parents to let him go to the party.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rip",
+      "translation": "yirtmoq",
+      "definition": "To rip something means to pull it apart quickly.",
+      "example": "He ripped the paper into small pieces.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sake",
+      "translation": "uchun, hatiri",
+      "definition": "Sake is the reason for doing something.",
+      "example": "He moved to the city for the sake of his job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scrape",
+      "translation": "shilmoq, qirmoq",
+      "definition": "To scrape something is to rub it against a hard surface.",
+      "example": "I scraped my knee when I fell.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "source",
+      "translation": "manba",
+      "definition": "A source is a place where something comes from.",
+      "example": "The river is the main source of water for the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stern",
+      "translation": "qattiqqo'l, jiddiy",
+      "definition": "When someone is stern, they are very serious and strict.",
+      "example": "The teacher gave the students a stern warning.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stitch",
+      "translation": "chok, tikish",
+      "definition": "To stitch is to use a needle and thread to join pieces of cloth.",
+      "example": "My mother stitched the hole in my shirt.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "thump",
+      "translation": "gursillagan ovoz",
+      "definition": "A thump is the sound of a heavy object hitting something else.",
+      "example": "I heard a loud thump coming from upstairs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vehement",
+      "translation": "kuchli, shiddatli",
+      "definition": "When someone is vehement, they are very passionate or intense.",
+      "example": "He was vehement in his opposition to the new law.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

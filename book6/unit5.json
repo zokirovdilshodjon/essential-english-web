@@ -1,0 +1,146 @@
+{
+  "unit": "5",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alternate",
+      "translation": "almashmoq, navbatlashmoq",
+      "definition": "To alternate means to switch back and forth between two things.",
+      "example": "The best exercise alternates muscle and heart strengthening.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "apologetic",
+      "translation": "uzr so'raydigan",
+      "definition": "If someone is apologetic, they are sorry about something.",
+      "example": "The boy felt apologetic after losing his sister’s favorite toy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "benign",
+      "translation": "zararsiz, xavfsiz",
+      "definition": "If something or someone is benign, they do not hurt anyone.",
+      "example": "Many spiders look scary, but most are actually benign.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "char",
+      "translation": "kuydirmoq, ko'mirdaka qora qilmoq",
+      "definition": "To char means to burn something so that it becomes black.",
+      "example": "The chef charred the meat on the grill.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "clarify",
+      "translation": "aniqlashtirmoq",
+      "definition": "To clarify means to make something easier to understand.",
+      "example": "The teacher clarified the instructions for the assignment.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "distress",
+      "translation": "tashvish, qayg'u",
+      "definition": "Distress is a feeling of great pain, worry, or sadness.",
+      "example": "The news caused her a lot of distress.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dogged",
+      "translation": "qat'iyatli, bo'sh kelmaydigan",
+      "definition": "If someone is dogged, they are determined and do not give up easily.",
+      "example": "He has a dogged determination to succeed.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ensue",
+      "translation": "kelib chiqmoq, natijada yuz bermoq",
+      "definition": "To ensue means to happen after something else, often as a result.",
+      "example": "A fight ensued after the argument.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "gasp",
+      "translation": "harsillab qolmoq, nafas yetmay qolishi",
+      "definition": "To gasp means to breathe in suddenly because of shock or pain.",
+      "example": "She gasped in surprise when she saw the gift.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "negotiate",
+      "translation": "muzokara olib bormoq",
+      "definition": "To negotiate means to try to reach an agreement through discussion.",
+      "example": "The two countries are negotiating a peace treaty.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overdose",
+      "translation": "dozani oshirib yuborish",
+      "definition": "An overdose is a dose of medicine or drug that is too large.",
+      "example": "The singer died of a drug overdose.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "persuasion",
+      "translation": "ishontirish",
+      "definition": "Persuasion is the act of convincing someone to do or believe something.",
+      "example": "She used her powers of persuasion to get what she wanted.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "relay",
+      "translation": "yetkazmoq, o'tkazmoq",
+      "definition": "To relay means to pass a message or information to someone else.",
+      "example": "He relayed the news to his family.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reluctance",
+      "translation": "istamaslik",
+      "definition": "Reluctance is a feeling of not wanting to do something.",
+      "example": "She showed a lot of reluctance to join the club.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "restate",
+      "translation": "boshqacha qilib aytmoq",
+      "definition": "To restate means to say something again in a different way.",
+      "example": "The teacher restated the main points of the lesson.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sesame",
+      "translation": "kunjut",
+      "definition": "Sesame is a plant with seeds that are used in cooking.",
+      "example": "The bread was covered in sesame seeds.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sip",
+      "translation": "ho'plamoq",
+      "definition": "To sip means to drink something in small amounts.",
+      "example": "She sipped her tea while reading a book.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "verge",
+      "translation": "yoqa, bo'sag'a",
+      "definition": "The verge of something is the point where it is about to happen.",
+      "example": "The company was on the verge of bankruptcy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wary",
+      "translation": "ehtiyotkor",
+      "definition": "If you are wary, you are careful because you think there is danger.",
+      "example": "The cat was wary of the stranger.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "waver",
+      "translation": "ikkilanmoq",
+      "definition": "To waver means to be uncertain or to change your mind.",
+      "example": "She did not waver in her decision.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

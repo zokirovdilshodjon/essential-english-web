@@ -1,0 +1,146 @@
+{
+  "unit": "29",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "antique",
+      "translation": "antikvar",
+      "definition": "If something is antique, it is very old and valuable.",
+      "example": "She collects antique furniture.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "applicant",
+      "translation": "ariza beruvchi",
+      "definition": "An applicant is someone who applies for a job or position.",
+      "example": "There were over fifty applicants for the job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "artifact",
+      "translation": "osori-atiqa",
+      "definition": "An artifact is an old object made by humans that is historical.",
+      "example": "The museum has a collection of ancient artifacts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "authentic",
+      "translation": "haqiqiy",
+      "definition": "When something is authentic, it is real and not a copy.",
+      "example": "The restaurant serves authentic Italian food.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chronology",
+      "translation": "xronologiya",
+      "definition": "Chronology is the order in which events happened.",
+      "example": "The historian studied the chronology of the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "diplomat",
+      "translation": "diplomat",
+      "definition": "A diplomat is a person who represents their country.",
+      "example": "The diplomat worked to improve relations between the countries.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "epic",
+      "translation": "epos, doston",
+      "definition": "An epic is a long poem or story about legendary heroes.",
+      "example": "The Iliad is a famous epic poem.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "excerpt",
+      "translation": "parcha, uzindi",
+      "definition": "An excerpt is a short piece of writing taken from a larger work.",
+      "example": "I read an excerpt from the novel in the magazine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fossil",
+      "translation": "toshqotgan qoldiq",
+      "definition": "A fossil is the remains of a plant or animal from long ago.",
+      "example": "The scientist found a dinosaur fossil in the desert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "humiliate",
+      "translation": "pastga urmoq, kamsitmoq",
+      "definition": "To humiliate someone means to make them feel ashamed.",
+      "example": "He didn't want to humiliate her in front of her friends.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lyric",
+      "translation": "qo'shiq matni",
+      "definition": "A lyric is the words of a song.",
+      "example": "I can't remember the lyrics to that song.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "majesty",
+      "translation": "ulug'vorlik",
+      "definition": "Majesty is the quality of being impressive or grand.",
+      "example": "The mountain range was a sight of great majesty.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "monarch",
+      "translation": "monarx (qirol)",
+      "definition": "A monarch is a king or queen.",
+      "example": "The monarch ruled the country for many years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "precede",
+      "translation": "oldin kelmoq",
+      "definition": "To precede something means to happen before it.",
+      "example": "The lightning preceded the thunder.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "punctual",
+      "translation": "vaqtiga rioya qiladigan",
+      "definition": "If someone is punctual, they are on time.",
+      "example": "It is important to be punctual for a job interview.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "recruit",
+      "translation": "yangi a'zo yollamoq",
+      "definition": "To recruit someone means to select them for a job or task.",
+      "example": "The army is looking to recruit new soldiers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "refund",
+      "translation": "pulini qaytarish",
+      "definition": "A refund is money that is given back to you.",
+      "example": "I asked for a refund when the product didn't work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "register",
+      "translation": "ro'yxatdan o'tmoq",
+      "definition": "To register means to put your name on an official list.",
+      "example": "You need to register for the class before it starts.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "renown",
+      "translation": "shon-shuhrat",
+      "definition": "Renown is the state of being famous.",
+      "example": "The artist achieved great renown for his paintings.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tusk",
+      "translation": "fil tishi (shox)",
+      "definition": "A tusk is a long pointed tooth of an animal like an elephant.",
+      "example": "Elephants use their tusks to dig for food.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

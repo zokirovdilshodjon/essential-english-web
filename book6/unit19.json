@@ -1,0 +1,146 @@
+{
+  "unit": "19",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "airway",
+      "translation": "havo yo'li",
+      "definition": "An airway is a passage by which air reaches a person's lungs.",
+      "example": "The doctor made sure the patient's airway was clear.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "Almighty",
+      "translation": "Qodir (Xudo)",
+      "definition": "The Almighty is a name for God.",
+      "example": "He prayed to the Almighty for help in his time of need.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "advent",
+      "translation": "kelishi, paydo bo'lishi",
+      "definition": "The advent of something is the arrival or beginning of it.",
+      "example": "The advent of the internet changed how we communicate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "constellation",
+      "translation": "yulduzlar turkumi",
+      "definition": "A constellation is a group of stars that forms a pattern.",
+      "example": "The Big Dipper is a well-known constellation in the sky.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "definitive",
+      "translation": "yakuniy, aniq",
+      "definition": "If something is definitive, it is a final and complete answer.",
+      "example": "The judge gave a definitive ruling on the case.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "equate",
+      "translation": "tenglashtirmoq",
+      "definition": "To equate something means to consider it to be the same as something else.",
+      "example": "You cannot equate money with happiness.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inhale",
+      "translation": "nafas olmoq",
+      "definition": "To inhale means to breathe in.",
+      "example": "He inhaled the fresh air of the forest.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "invoke",
+      "translation": "iltojo qilmoq, murojaat qilmoq",
+      "definition": "To invoke something means to call upon it for help or support.",
+      "example": "The speaker invoked the memory of the great leader.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lunar",
+      "translation": "oyga oid",
+      "definition": "If something is lunar, it relates to the moon.",
+      "example": "The scientists studied the lunar surface from the spacecraft.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "novelty",
+      "translation": "yangilik, g'ayritabiiylik",
+      "definition": "A novelty is something that is new and unusual.",
+      "example": "The new toy was a novelty for the children.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outmoded",
+      "translation": "eskirgan, urfdan qolgan",
+      "definition": "If something is outmoded, it is no longer useful or popular.",
+      "example": "The old typewriter is outmoded in the age of computers.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "personalize",
+      "translation": "shaxsiylashtirmoq",
+      "definition": "To personalize something means to make it belong to a particular person.",
+      "example": "She personalized her notebook by putting her name on it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pertain",
+      "translation": "tegishli bo'lmoq",
+      "definition": "To pertain to something means to relate to it or be a part of it.",
+      "example": "This rule pertains to everyone in the classroom.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "primal",
+      "translation": "ibtidoyiy, asosiy",
+      "definition": "If something is primal, it is very basic or important.",
+      "example": "The need for food is a primal instinct for all animals.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "psychiatric",
+      "translation": "psixiatrik",
+      "definition": "If something is psychiatric, it relates to the study of mental illness.",
+      "example": "The hospital has a psychiatric department for patients.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "psychiatry",
+      "translation": "psixiatriya",
+      "definition": "Psychiatry is the branch of medicine that deals with mental illness.",
+      "example": "He decided to specialize in psychiatry after medical school.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reflex",
+      "translation": "refleks",
+      "definition": "A reflex is an action that your body does automatically.",
+      "example": "The doctor checked the boy's reflexes by tapping his knee.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "seizure",
+      "translation": "tutqanoq",
+      "definition": "A seizure is a sudden attack of illness, especially in the brain.",
+      "example": "The man had a seizure and was rushed to the hospital.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "session",
+      "translation": "sessiya, majlis",
+      "definition": "A session is a meeting of a group of people.",
+      "example": "The senate held a long session to discuss the new law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "utensil",
+      "translation": "idish-tovoq, anjom",
+      "definition": "A utensil is a tool used in the house, especially in the kitchen.",
+      "example": "Spoons and forks are common kitchen utensils.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

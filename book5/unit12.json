@@ -1,0 +1,146 @@
+{
+  "unit": "12",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "anthropology",
+      "translation": "antropologiya",
+      "definition": "Anthropology is the study of people, society, and culture.",
+      "example": "In anthropology class, I learned about simple tools used by ancient cultures.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "applaud",
+      "translation": "qarsak chalmoq",
+      "definition": "To applaud means to clap in order to show approval.",
+      "example": "Everyone cheered and applauded Manny’s efforts.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "appoint",
+      "translation": "tayinlamoq",
+      "definition": "To appoint someone to a job means to give the job to them.",
+      "example": "Two students were appointed to help the scientists with their research.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compatible",
+      "translation": "mos keladigan",
+      "definition": "When things are compatible, they work well or exist together successfully.",
+      "example": "Jan and Fred are too different. They will never be compatible.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "competence",
+      "translation": "kompetentlik, qobiliyat",
+      "definition": "Competence is the ability to do something well or effectively.",
+      "example": "The job requires a high level of competence in English.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "confer",
+      "translation": "maslahatlashmoq",
+      "definition": "To confer with someone means to discuss something with them to make a decision.",
+      "example": "I will confer with my advisors before I choose a university.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "consecutive",
+      "translation": "ketma-ket",
+      "definition": "When things are consecutive, they happen one after another without interruption.",
+      "example": "It rained for three consecutive days.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "crude",
+      "translation": "xom, oddiy",
+      "definition": "When something is crude, it is not exact or skilled; it can also mean natural.",
+      "example": "The boy made a crude house out of cardboard boxes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cube",
+      "translation": "kub",
+      "definition": "A cube is a solid object with six equal square sides.",
+      "example": "Please put a cube of ice in my glass of water.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "feedback",
+      "translation": "fikr-mulohaza",
+      "definition": "Feedback is comments or information about how well someone is doing something.",
+      "example": "I got some positive feedback from my teacher on my science project.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ignorance",
+      "translation": "jaholat, bilimsizlik",
+      "definition": "Ignorance is lack of knowledge about something.",
+      "example": "His ignorance about the law caused him many problems.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "masculine",
+      "translation": "erkakchasiga",
+      "definition": "When something is masculine, it is typical of or suitable for men.",
+      "example": "He has a very masculine voice.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "monument",
+      "translation": "yodgorlik",
+      "definition": "A monument is a structure built to remind people of an important event or person.",
+      "example": "A large monument was built in the park to honor the war heroes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "muscular",
+      "translation": "baquvvat",
+      "definition": "When someone is muscular, they are very strong and have big muscles.",
+      "example": "He is very muscular because he exercises every day.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "posture",
+      "translation": "qomati",
+      "definition": "Your posture is the way in which you stand or sit.",
+      "example": "Good posture is important for a healthy back.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "situate",
+      "translation": "joylashtirmoq",
+      "definition": "To situate something means to put it in a particular place.",
+      "example": "The house is situated on a hill overlooking the sea.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "supervise",
+      "translation": "nazorat qilmoq",
+      "definition": "To supervise means to be in charge of something and make sure it is done correctly.",
+      "example": "My job is to supervise the construction of the new building.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "symmetry",
+      "translation": "simmetriya",
+      "definition": "Symmetry is the quality of having two parts that are the same on both sides.",
+      "example": "The wings of a butterfly have perfect symmetry.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tattoo",
+      "translation": "tatuirovka",
+      "definition": "A tattoo is a design drawn on someone’s skin with needles and ink.",
+      "example": "The man has a large tattoo of a dragon on his arm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "undergraduate",
+      "translation": "bakalavr talabasi",
+      "definition": "An undergraduate is a student at a university who is studying for their first degree.",
+      "example": "She is an undergraduate student at Harvard University.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

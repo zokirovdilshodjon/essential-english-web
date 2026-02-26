@@ -1,0 +1,146 @@
+{
+  "unit": "17",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "attorney",
+      "translation": "advokat",
+      "definition": "An attorney is one who gives others advice about the law.",
+      "example": "The attorney appeared in front of the judge for me.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chronic",
+      "translation": "surunkali",
+      "definition": "When something is chronic, it happens over and over again over time.",
+      "example": "He had chronic pain in his chest and needed to see a doctor.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "discipline",
+      "translation": "intizom",
+      "definition": "Discipline is training that helps people follow the rules.",
+      "example": "One of the teacher’s jobs is to teach her students discipline.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "donor",
+      "translation": "donor (hadya qiluvchi)",
+      "definition": "A donor is somebody who gives something to an organization.",
+      "example": "He was proud to be a blood donor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fellow",
+      "translation": "sherik, hamrox",
+      "definition": "A fellow is a person who has something in common with you.",
+      "example": "All of my fellow students worked hard on the project.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gossip",
+      "translation": "g'iybat",
+      "definition": "Gossip is information that might be untrue but is still talked about.",
+      "example": "The coworkers spent their lunch break sharing office gossip.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "graduate",
+      "translation": "bitiruvchi",
+      "definition": "To graduate means to complete a course of study at a school or university.",
+      "example": "After he graduated from high school, he went to college.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "graffiti",
+      "translation": "grafiti (devordagi yozuv)",
+      "definition": "Graffiti is drawings or writing on a wall in a public place.",
+      "example": "The side of the building was covered in colorful graffiti.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "guardian",
+      "translation": "vasiy, himoyachi",
+      "definition": "A guardian is someone who is legally responsible for another person.",
+      "example": "Since both of his parents died, his aunt became his guardian.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "implicate",
+      "translation": "aralashtirmoq (yomon ishga)",
+      "definition": "To implicate someone is to show that they are involved in a crime.",
+      "example": "The evidence implicated the man in the robbery.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "kin",
+      "translation": "qarindoshlar",
+      "definition": "Kin is a person's family and relatives.",
+      "example": "He invited all of his kin to the family reunion.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "referee",
+      "translation": "hakam",
+      "definition": "A referee is a person who makes sure that players follow the rules in a sport.",
+      "example": "The referee blew his whistle to stop the game.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sever",
+      "translation": "uzmoq, kesmoq",
+      "definition": "To sever something means to cut it off or separate it completely.",
+      "example": "He severed the rope with a sharp knife.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shaft",
+      "translation": "dasta, shaxta",
+      "definition": "A shaft is a long, narrow handle or part of a tool or weapon.",
+      "example": "The arrow had a wooden shaft and a metal tip.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stab",
+      "translation": "pichoq urmoq",
+      "definition": "To stab means to push a sharp object into something or someone.",
+      "example": "He stabbed the meat with a fork.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stimulus",
+      "translation": "turtki, stimul",
+      "definition": "A stimulus is something that causes growth or activity.",
+      "example": "The tax cut was intended to be a stimulus for the economy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "suspicion",
+      "translation": "shubha",
+      "definition": "Suspicion is a feeling that someone has done something wrong or illegal.",
+      "example": "The police had a suspicion that the man was lying.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "terminate",
+      "translation": "tugatmoq",
+      "definition": "To terminate something means to end it.",
+      "example": "The contract was terminated after three years.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "theme",
+      "translation": "mavzu",
+      "definition": "A theme is the main subject of a book, movie, or talk.",
+      "example": "The theme of the story was that honesty is always the best policy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tuition",
+      "translation": "o'qish haqi",
+      "definition": "Tuition is the money paid to a school for instruction.",
+      "example": "College tuition has increased significantly over the years.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

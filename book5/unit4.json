@@ -1,0 +1,146 @@
+{
+  "unit": "4",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "administrator",
+      "translation": "administrator, boshqaruvchi",
+      "definition": "An administrator is a person who controls a business, company, or organization.",
+      "example": "Everyone in the store did whatever the administrator asked them to do.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "affluent",
+      "translation": "boy, badavlat",
+      "definition": "If someone is affluent, they are wealthy.",
+      "example": "People in the city are usually more affluent than people in the country.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "audit",
+      "translation": "taftish qilmoq",
+      "definition": "To audit means to inspect financial records from a person or business.",
+      "example": "The government usually audits companies that report lower than usual incomes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "automate",
+      "translation": "avtomatlashtirmoq",
+      "definition": "To automate a company means to install machines or computers to do the work.",
+      "example": "The factory was automated to increase production.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bribe",
+      "translation": "pora bermoq",
+      "definition": "To bribe someone means to give them money to do something for you.",
+      "example": "The judge was bribed to let the criminal go free.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "corrupt",
+      "translation": "buzilgan, poraxo'r",
+      "definition": "If someone is corrupt, they use their power for their own benefit.",
+      "example": "The corrupt policeman was eventually sent to jail.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dispose",
+      "translation": "utilizatsiya qilmoq, qutilmoq",
+      "definition": "To dispose of something means to get rid of it.",
+      "example": "He disposed of the old newspapers by recycling them.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "headquarters",
+      "translation": "shtab-kvartira",
+      "definition": "A headquarters is the main office of a company or organization.",
+      "example": "The company’s headquarters is located in New York.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "incentive",
+      "translation": "rag'bat, turtki",
+      "definition": "An incentive is something that encourages a person to work harder.",
+      "example": "The chance of a bonus was a great incentive for the employees.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "infrastructure",
+      "translation": "infratuzilma",
+      "definition": "Infrastructure is the basic system of a country or city, such as roads and bridges.",
+      "example": "The country’s infrastructure was damaged by the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "legislate",
+      "translation": "qonun chiqarmoq",
+      "definition": "To legislate means to make laws.",
+      "example": "The government decided to legislate against smoking in public places.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "legitimate",
+      "translation": "qonuniy",
+      "definition": "If something is legitimate, it is permitted by law.",
+      "example": "She had a legitimate reason for being late for work.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "manipulate",
+      "translation": "manipulyatsiya qilmoq",
+      "definition": "To manipulate something means to control or influence it in a clever way.",
+      "example": "The politician manipulated the news to make himself look good.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "merchandise",
+      "translation": "tovar",
+      "definition": "Merchandise is goods that are bought and sold in business.",
+      "example": "The store sells a wide variety of merchandise.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "retail",
+      "translation": "chakana savdo",
+      "definition": "Retail is the sale of goods to the public for their own use.",
+      "example": "He works in retail, selling clothes to customers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "revenue",
+      "translation": "daromad",
+      "definition": "Revenue is the money that a company or government receives.",
+      "example": "The company’s revenue increased by 10% this year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rubbish",
+      "translation": "axlat",
+      "definition": "Rubbish is garbage or waste that is thrown away.",
+      "example": "Please put your rubbish in the trash can.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "subsidy",
+      "translation": "subsidiya (moliyaviy yordam)",
+      "definition": "A subsidy is money given by a government to help a business or industry.",
+      "example": "The government provided a subsidy to the farmers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "transaction",
+      "translation": "tranzaksiya (kelishuv)",
+      "definition": "A transaction is a business deal or the act of buying and selling.",
+      "example": "The transaction was completed once the money was paid.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "violate",
+      "translation": "buzmoq (qonunni)",
+      "definition": "To violate a law or rule means to break it.",
+      "example": "He violated the law when he drove through a red light.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

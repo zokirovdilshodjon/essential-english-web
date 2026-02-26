@@ -1,0 +1,146 @@
+{
+  "unit": "17",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accelerate",
+      "translation": "tezlashmoq",
+      "definition": "To accelerate means to increase in speed.",
+      "example": "When he stepped on the gas pedal, the motorcycle accelerated.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "anew",
+      "translation": "qaytadan, yangitdan",
+      "definition": "If you do something anew, you do it again and in a different way.",
+      "example": "Though he had failed his driving test, he decided to try it anew.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "defect",
+      "translation": "nuqson, kamchilik",
+      "definition": "A defect is a part of something that is wrong or missing.",
+      "example": "All these bottles have a defect and must be sent back to the warehouse.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dreary",
+      "translation": "ma'yus, zerikarli",
+      "definition": "If something is dreary, then it is dull, dark, and lifeless.",
+      "example": "After the fire, this section of forest is rather dreary.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "duplicate",
+      "translation": "nusxa ko'chirmoq",
+      "definition": "To duplicate something means to copy it exactly.",
+      "example": "She duplicated the key so her brother could have one.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "electromagnetic",
+      "translation": "elektromagnitli",
+      "definition": "If something is electromagnetic, it relates to electricity and magnetism.",
+      "example": "The scientist studied the electromagnetic field of the Earth.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "electron",
+      "translation": "elektron",
+      "definition": "An electron is a tiny particle in an atom with a negative charge.",
+      "example": "Electrons move around the nucleus of an atom.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "glide",
+      "translation": "sirpanmoq, uchmoq",
+      "definition": "To glide means to move smoothly and easily.",
+      "example": "The eagle glided over the mountain peaks.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ingenious",
+      "translation": "zukko, topqir",
+      "definition": "If someone is ingenious, they are very clever at inventing things.",
+      "example": "He came up with an ingenious plan to solve the problem.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "innovation",
+      "translation": "innovatsiya, yangilik",
+      "definition": "An innovation is a new idea, method, or invention.",
+      "example": "The new phone is a great innovation in technology.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "innovative",
+      "translation": "yangilik kirituvchi",
+      "definition": "If something is innovative, it uses new ideas or methods.",
+      "example": "The company is known for its innovative approach to design.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "launch",
+      "translation": "uchirmoq, yo'lga qo'ymoq",
+      "definition": "To launch means to send something into the air or into space.",
+      "example": "The rocket was launched from the space center.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "meteorological",
+      "translation": "meteorologik",
+      "definition": "If something is meteorological, it relates to the study of weather.",
+      "example": "The meteorological station tracks the movement of storms.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "meteorology",
+      "translation": "meteorologiya",
+      "definition": "Meteorology is the scientific study of the weather.",
+      "example": "She decided to study meteorology at the university.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "penetrate",
+      "translation": "yurib bormoq, suqilib kirmoq",
+      "definition": "To penetrate something means to enter or go through it.",
+      "example": "The bullet penetrated the wooden board.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "propulsion",
+      "translation": "harakatlantirish (kuchi)",
+      "definition": "Propulsion is the force that moves something forward.",
+      "example": "The jet engine provides the propulsion for the plane.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "simulate",
+      "translation": "taqlid qilmoq, simulyatsiya qilmoq",
+      "definition": "To simulate something means to copy the way it looks or acts.",
+      "example": "The computer program simulates a flight on a plane.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spur",
+      "translation": "turtki bermoq, rag'batlantirmoq",
+      "definition": "To spur someone means to encourage them to do something.",
+      "example": "The award spurred him to work even harder.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stimulate",
+      "translation": "rag'batlantirmoq, jonlantirmoq",
+      "definition": "To stimulate something means to make it more active.",
+      "example": "The teacher used games to stimulate the students' interest.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tenacious",
+      "translation": "chidab, sabotli",
+      "definition": "If someone is tenacious, they do not give up easily.",
+      "example": "She was tenacious in her efforts to find a job.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

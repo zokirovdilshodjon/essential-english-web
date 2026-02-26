@@ -1,0 +1,146 @@
+{
+  "unit": "11",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "acute",
+      "translation": "o'tkir, kuchli",
+      "definition": "When a bad thing is acute, it is very severe and intense.",
+      "example": "When she fell out of the tree, the girl felt an acute pain in her arm.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "aggression",
+      "translation": "tajovuzkorlik",
+      "definition": "Aggression is behavior that is mean or violent to others.",
+      "example": "The problem was only made worse by Mark’s aggression.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "banquet",
+      "translation": "ziyofat",
+      "definition": "A banquet is a grand formal dinner.",
+      "example": "Both families brought a lot of food for the wedding banquet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "biography",
+      "translation": "biografiya",
+      "definition": "A biography is an account of someone’s life that is written by someone else.",
+      "example": "We read a biography about Charles Darwin in science class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "boost",
+      "translation": "oshirmoq",
+      "definition": "To boost something means to increase or improve it.",
+      "example": "Lowering prices boosts customers’ interest in shopping.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "clap",
+      "translation": "qarsak chalmoq",
+      "definition": "To clap means to hit one’s hands together to express pleasure or get attention.",
+      "example": "After the speech, everyone in the crowd clapped their hands for the speaker.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compel",
+      "translation": "majbur qilmoq",
+      "definition": "To compel someone to do something means to force them to do it.",
+      "example": "Traffic signs compel drivers to drive safely.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dominance",
+      "translation": "hukmronlik",
+      "definition": "The dominance of a person is their state of being more powerful than others.",
+      "example": "Large gorillas hit their chests to express their dominance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gorgeous",
+      "translation": "juda chiroyli",
+      "definition": "When something is gorgeous, it is very pleasing and attractive.",
+      "example": "The girl felt like a princess in her gorgeous new dress.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "inevitable",
+      "translation": "muqarrar",
+      "definition": "When something is inevitable, it is certain to happen or cannot be avoided.",
+      "example": "It is inevitable that the sun will rise tomorrow.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "legacy",
+      "translation": "meros",
+      "definition": "A legacy is something that someone has achieved in their life or that will continue to exist after they die.",
+      "example": "The king left a legacy of peace and happiness for his people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "masterpiece",
+      "translation": "shohasar",
+      "definition": "A masterpiece is a very good painting, novel, movie, or other work of art.",
+      "example": "The 'Mona Lisa' is a world-famous masterpiece.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "multiple",
+      "translation": "ko'p",
+      "definition": "If there are multiple things, there are many of them.",
+      "example": "The student had multiple reasons for being late to class.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "narrate",
+      "translation": "so'zlab bermoq",
+      "definition": "To narrate a story means to write or say it.",
+      "example": "The teacher narrated a story about a dragon to the class.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "notorious",
+      "translation": "nomi chiqqan (yomon ma'noda)",
+      "definition": "When something is notorious, it is well-known because of something bad.",
+      "example": "The pirate was notorious for stealing from every ship he saw.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "outdated",
+      "translation": "eskirgan",
+      "definition": "When something is outdated, it is old and no longer useful in modern times.",
+      "example": "The computer was so outdated that it couldn't run any new programs.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "overall",
+      "translation": "umumiy",
+      "definition": "Overall means when everything is considered.",
+      "example": "Overall, the party was a success even though it rained.",
+      "part_of_speech": "adjective/adverb"
+    },
+    {
+      "word": "partiality",
+      "translation": "yon bosish",
+      "definition": "A partiality is a tendency to prefer one person or thing over another.",
+      "example": "The teacher showed partiality towards the students who studied hard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spontaneous",
+      "translation": "o'z-o'zidan sodir bo'ladigan",
+      "definition": "When something is spontaneous, it happens suddenly and without planning.",
+      "example": "The crowd gave a spontaneous cheer when the goal was scored.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "virtue",
+      "translation": "fazilat",
+      "definition": "A virtue is a good quality or way of behaving.",
+      "example": "Patience is a virtue that helps people through hard times.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

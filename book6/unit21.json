@@ -1,0 +1,146 @@
+{
+  "unit": "21",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abolish",
+      "translation": "bekor qilmoq, tugatmoq",
+      "definition": "To abolish something means to put an end to it, such as a system or law.",
+      "example": "The government decided to abolish the old tax law.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "amend",
+      "translation": "o'zgartirish kiritmoq, tuzatmoq",
+      "definition": "To amend something means to change it to improve it.",
+      "example": "The constitution was amended to include new rights for citizens.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "aspire",
+      "translation": "intilmoq, orzu qilmoq",
+      "definition": "To aspire means to have a strong desire to achieve or do something.",
+      "example": "Many young people aspire to be successful doctors.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "censor",
+      "translation": "tsenzura qilmoq",
+      "definition": "To censor something means to remove parts of it that are considered offensive or harmful.",
+      "example": "The government censored the movie to remove violent scenes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "charter",
+      "translation": "nizom, ustav",
+      "definition": "A charter is a formal document that describes the rights and duties of a group.",
+      "example": "The school's charter outlines its goals and rules.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "constitution",
+      "translation": "konstitutsiya",
+      "definition": "A constitution is a set of rules by which a country is governed.",
+      "example": "The country's new constitution was signed by the president.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cosmopolitan",
+      "translation": "kosmopolit, dunyoviy",
+      "definition": "If a place is cosmopolitan, it is full of people from many different countries.",
+      "example": "New York is a very cosmopolitan city with people from all over the world.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "disseminate",
+      "translation": "tarqatmoq, yoymoq",
+      "definition": "To disseminate information means to spread it to many people.",
+      "example": "The organization works to disseminate information about health.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "flatter",
+      "translation": "lappa-lappa qilmoq, xushomad qilmoq",
+      "definition": "To flatter someone means to praise them in order to please them.",
+      "example": "He tried to flatter his boss to get a promotion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "infamous",
+      "translation": "badnom, nomi chiqqan",
+      "definition": "If someone is infamous, they are well known for something bad.",
+      "example": "The pirate was infamous for his many crimes at sea.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lame",
+      "translation": "cho'loq, oqsoq",
+      "definition": "If an animal or person is lame, they cannot walk properly because of an injury.",
+      "example": "The horse became lame after it tripped on a rock.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "limp",
+      "translation": "oqsoqlanib yurmoq",
+      "definition": "To limp means to walk with difficulty because one leg is hurt.",
+      "example": "He had to limp back to the house after he hurt his ankle.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "outburst",
+      "translation": "portlash (hissiyot)",
+      "definition": "An outburst is a sudden strong expression of an emotion.",
+      "example": "Her sudden outburst of anger surprised everyone in the room.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pathological",
+      "translation": "patologik, kasallikka oid",
+      "definition": "If something is pathological, it is related to a disease or is not normal.",
+      "example": "The doctor studied the pathological effects of the virus.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "phenomenal",
+      "translation": "favqulodda, ajoyib",
+      "definition": "If something is phenomenal, it is very great or impressive.",
+      "example": "The young musician's performance was truly phenomenal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "poll",
+      "translation": "so'rovnoma",
+      "definition": "A poll is a survey of people's opinions.",
+      "example": "The recent poll shows that most people support the new law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "remorse",
+      "translation": "pushaymonlik, vijdon azobi",
+      "definition": "Remorse is a feeling of being sorry for something bad you have done.",
+      "example": "He felt great remorse for the way he had treated his friend.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "secrecy",
+      "translation": "maxfiylik",
+      "definition": "Secrecy is the state of being kept hidden from others.",
+      "example": "The details of the mission were kept in strict secrecy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tackle",
+      "translation": "hal qilmoq, kirishmoq",
+      "definition": "To tackle a problem means to deal with it in a determined way.",
+      "example": "The government is trying to tackle the issue of unemployment.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "trance",
+      "translation": "trans holati",
+      "definition": "A trance is a state in which someone is not aware of what is happening around them.",
+      "example": "The magician put the woman into a deep trance.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

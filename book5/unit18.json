@@ -1,0 +1,146 @@
+{
+  "unit": "18",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aggressive",
+      "translation": "tajovuzkor",
+      "definition": "If someone is aggressive, then they constantly want to fight.",
+      "example": "Nobody liked to play games with him because he was always too aggressive.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "amnesty",
+      "translation": "afv etish",
+      "definition": "Amnesty is a pardon given to prisoners of war.",
+      "example": "She was denied amnesty for her involvement in the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "arena",
+      "translation": "arena",
+      "definition": "An arena is a building where people can watch sports and concerts.",
+      "example": "The new arena was all set to hold the championship match.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "auditorium",
+      "translation": "tomoshagoh, zal",
+      "definition": "An auditorium is a large building used for public events.",
+      "example": "The auditorium was even more packed than the previous week.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "captive",
+      "translation": "asir",
+      "definition": "A captive is a prisoner.",
+      "example": "The guards kept an eye on the captive at all times.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "combat",
+      "translation": "jang",
+      "definition": "Combat is fighting between two people or groups.",
+      "example": "The soldiers were trained in hand-to-hand combat.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "commonplace",
+      "translation": "oddiy, keng tarqalgan",
+      "definition": "If something is commonplace, it is ordinary or happens often.",
+      "example": "There is nothing commonplace about the way he dresses.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "compound",
+      "translation": "birikma, hovli",
+      "definition": "A compound is an enclosed area such as a prison or factory.",
+      "example": "The workers lived in a compound near the factory.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "corps",
+      "translation": "korpus, jamoa",
+      "definition": "A corps is a division of a military or a group of people involved in a specific task.",
+      "example": "The army corps was in charge of building the bridge.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "distract",
+      "translation": "chalg'itmoq",
+      "definition": "To distract someone is to stop them from paying attention to something.",
+      "example": "The loud noise distracted her from her studies.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dumb",
+      "translation": "soqov, tushunmaydigan",
+      "definition": "If someone is dumb, they are unable to speak.",
+      "example": "She was born dumb and used sign language to communicate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "foe",
+      "translation": "dushman",
+      "definition": "A foe is an enemy or opponent.",
+      "example": "The two countries have been foes for a long time.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hack",
+      "translation": "chopmoq, boltalash",
+      "definition": "To hack something means to cut it into uneven pieces.",
+      "example": "The man used an axe to hack the wood for the fire.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "meditate",
+      "translation": "mulohaza yuritmoq",
+      "definition": "To meditate is to focus or think deeply in silence.",
+      "example": "She likes to meditate for twenty minutes every morning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nick",
+      "translation": "kertik, tilish",
+      "definition": "To nick someone means to cut them slightly.",
+      "example": "While shaving, he accidentally nicked his chin.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "provoke",
+      "translation": "qo'zg'atmoq, g'azabini keltirmoq",
+      "definition": "To provoke someone is to make them angry on purpose.",
+      "example": "Don't provoke the dog; it might bite you.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "realm",
+      "translation": "qirollik, soha",
+      "definition": "A realm is any area of activity or interest.",
+      "example": "He was an expert in the realm of history.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reign",
+      "translation": "hukmronlik",
+      "definition": "A reign is the period of time during which a king or queen rules.",
+      "example": "The king's reign lasted for over fifty years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rust",
+      "translation": "zang",
+      "definition": "Rust is a reddish-brown coating that forms on iron or steel.",
+      "example": "The old bicycle was covered in rust.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sacred",
+      "translation": "muqaddas",
+      "definition": "If something is sacred, it is very important and should be treated with respect.",
+      "example": "The temple is a sacred place for many people.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "10",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accountant",
+      "translation": "bugalter",
+      "definition": "An accountant is a person whose job is to keep financial accounts.",
+      "example": "The accountant helped me keep track of my money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "capitalist",
+      "translation": "kapitalist",
+      "definition": "A capitalist is a business person who invests in trade and industry for profit.",
+      "example": "The capitalist invested in a factory that made wheat into cereal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contempt",
+      "translation": "hurmatsizlik, past nazar bilan qarash",
+      "definition": "Contempt is the feeling of having no respect for something.",
+      "example": "The judge had contempt for the wicked criminal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dedicate",
+      "translation": "bag'ishlamoq",
+      "definition": "To dedicate oneself to something means to put a lot of time and effort into it.",
+      "example": "The nun dedicated herself to helping people in need.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ditch",
+      "translation": "ariq, xandaq",
+      "definition": "A ditch is a narrow hole dug into the ground, usually at the side of a road or field.",
+      "example": "The car slid off the road and into a ditch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enterprise",
+      "translation": "korxona, tadbirkorlik",
+      "definition": "An enterprise is a company or business.",
+      "example": "The new enterprise was very successful in its first year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exquisite",
+      "translation": "nafis, o'ta chiroyli",
+      "definition": "When something is exquisite, it is very beautiful and delicate.",
+      "example": "The bride wore an exquisite dress made of silk.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "finance",
+      "translation": "moliyalashtirmoq",
+      "definition": "To finance something means to provide the money needed for it.",
+      "example": "The bank agreed to finance the man’s new business.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "indifferent",
+      "translation": "befarq",
+      "definition": "When someone is indifferent, they have no interest in something.",
+      "example": "He was indifferent to the news and didn't even look up from his book.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "irrigate",
+      "translation": "sug'ormoq",
+      "definition": "To irrigate means to supply water to land or crops.",
+      "example": "The farmer used a system of pipes to irrigate his fields.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "maximize",
+      "translation": "maksimal darajaga yetkazmoq",
+      "definition": "To maximize something means to make it as large as possible.",
+      "example": "The company wants to maximize its profits this year.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "monetary",
+      "translation": "pulga oid, moliyaviy",
+      "definition": "When something is monetary, it relates to money.",
+      "example": "The house has a high monetary value.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "precaution",
+      "translation": "ehtiyot chorasi",
+      "definition": "A precaution is an action that is meant to stop something bad from happening.",
+      "example": "As a precaution, you should wear a helmet when you ride a bike.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "preliminary",
+      "translation": "dastlabki",
+      "definition": "Preliminary describes something that happens before a main event.",
+      "example": "The runners had a preliminary race to see who would be in the final.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "saturate",
+      "translation": "to'yintirmoq, bo'ktirmoq",
+      "definition": "To saturate something means to soak it completely.",
+      "example": "The rain saturated the ground after the heavy storm.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "simplicity",
+      "translation": "oddiylik",
+      "definition": "Simplicity is the state or quality of being simple.",
+      "example": "The simplicity of the design made the machine very easy to use.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sow",
+      "translation": "urug' sepmoq",
+      "definition": "To sow means to plant seeds in the ground.",
+      "example": "In the spring, the farmer sowed seeds in his fields.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "soy",
+      "translation": "soya",
+      "definition": "Soy is a kind of bean that is used to make food.",
+      "example": "Many people use soy milk as a replacement for cow's milk.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spade",
+      "translation": "belkurak",
+      "definition": "A spade is a tool used for digging.",
+      "example": "The boy used his spade to build a sandcastle at the beach.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "upcoming",
+      "translation": "yaqinlashib kelayotgan",
+      "definition": "When something is upcoming, it is happening soon.",
+      "example": "She is very excited about her upcoming vacation.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

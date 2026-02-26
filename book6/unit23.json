@@ -1,0 +1,146 @@
+{
+  "unit": "23",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "allocate",
+      "translation": "ajratmoq (mablag', vaqt)",
+      "definition": "To allocate something means to give it to someone for a particular purpose.",
+      "example": "The government allocated money for the building of new schools.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "appetizing",
+      "translation": "ishtahani ochadigan",
+      "definition": "If food is appetizing, it looks and smells like it will taste good.",
+      "example": "The freshly baked bread smelled very appetizing.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "blizzard",
+      "translation": "bo'ron, qor bo'roni",
+      "definition": "A blizzard is a severe snowstorm with strong winds.",
+      "example": "The city was shut down because of the heavy blizzard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cavity",
+      "translation": "bo'shliq, teshik (tishda)",
+      "definition": "A cavity is a hole or space inside something.",
+      "example": "The dentist found a small cavity in one of my teeth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "clockwise",
+      "translation": "soat mili bo'ylab",
+      "definition": "If something moves clockwise, it moves in the same direction as the hands of a clock.",
+      "example": "Turn the key clockwise to lock the door.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "concentric",
+      "translation": "konsentrik, markazdosht",
+      "definition": "Concentric circles or shapes have the same center.",
+      "example": "The target had several concentric circles on it.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "courtesy",
+      "translation": "muloyimlik, xushmuomalalik",
+      "definition": "Courtesy is polite behavior that shows respect for other people.",
+      "example": "He treated everyone with great courtesy and respect.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crisp",
+      "translation": "qarsildoq; tiniq",
+      "definition": "If food is crisp, it is hard and breaks easily.",
+      "example": "The lettuce in the salad was very fresh and crisp.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "discord",
+      "translation": "kelishmovchilik, nizo",
+      "definition": "Discord is a lack of agreement or harmony between people.",
+      "example": "The new law caused a lot of discord among the citizens.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "frigid",
+      "translation": "juda sovuq",
+      "definition": "If something is frigid, it is extremely cold.",
+      "example": "The water in the lake was frigid, even in the summer.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "generate",
+      "translation": "ishlab chiqarmoq, yaratmoq",
+      "definition": "To generate something means to produce or create it.",
+      "example": "The solar panels generate electricity for the house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "glacial",
+      "translation": "muzlikka oid, juda sovuq",
+      "definition": "If something is glacial, it relates to glaciers or is extremely cold.",
+      "example": "The hikers were amazed by the beauty of the glacial valley.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "interchange",
+      "translation": "almashinuv",
+      "definition": "An interchange is an exchange of things or ideas between people.",
+      "example": "The conference allowed for an interchange of ideas among scientists.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "locker",
+      "translation": "shkafcha, qulflanadigan quti",
+      "definition": "A locker is a small metal cupboard with a lock.",
+      "example": "I put my gym clothes in my locker before going to class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "multicultural",
+      "translation": "ko'p madaniyatli",
+      "definition": "If a place is multicultural, it includes people from many different cultures.",
+      "example": "The city is known for its vibrant multicultural community.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "omission",
+      "translation": "tushirib qoldirish",
+      "definition": "An omission is something that has been left out or not done.",
+      "example": "The omission of his name from the list was a mistake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "oversee",
+      "translation": "nazorat qilmoq",
+      "definition": "To oversee something means to be in charge of it and make sure it is done correctly.",
+      "example": "It was her job to oversee the entire project.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pierce",
+      "translation": "teshmoq, sanchmoq",
+      "definition": "To pierce something means to make a hole in it with a sharp object.",
+      "example": "She decided to get her ears pierced.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "replicate",
+      "translation": "takrorlamoq, nusxa ko'chirmoq",
+      "definition": "To replicate something means to do it again or copy it exactly.",
+      "example": "The scientists tried to replicate the results of the experiment.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wavy",
+      "translation": "to'lqinsimon",
+      "definition": "If something is wavy, it has many curves or waves.",
+      "example": "She has beautiful wavy hair.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

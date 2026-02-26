@@ -1,0 +1,146 @@
+{
+  "unit": "27",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adapt",
+      "translation": "moslashmoq",
+      "definition": "To adapt means to change to fit a new situation.",
+      "example": "It took him a while to adapt to the new school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "biological",
+      "translation": "biologik",
+      "definition": "Biological relates to living things.",
+      "example": "The scientist studied the biological processes of plants.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cellular",
+      "translation": "hujayrali",
+      "definition": "Cellular relates to the cells of a living thing.",
+      "example": "Cancer is a disease caused by abnormal cellular growth.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dynamic",
+      "translation": "dinamik, jo'shqin",
+      "definition": "When something is dynamic, it is full of energy and change.",
+      "example": "The city has a dynamic nightlife.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fantasy",
+      "translation": "fantaziya",
+      "definition": "Fantasy is a pleasant situation that is not real.",
+      "example": "The child lived in a world of fantasy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "heredity",
+      "translation": "irsiyat",
+      "definition": "Heredity is the passing of traits from parents to children.",
+      "example": "Heredity determines the color of your eyes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "internal",
+      "translation": "ichki",
+      "definition": "If something is internal, it is on the inside.",
+      "example": "The medicine is for internal use only.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "minimal",
+      "translation": "minimal",
+      "definition": "When something is minimal, it is very small in amount or degree.",
+      "example": "The damage to the car was minimal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pioneer",
+      "translation": "kashfiyotchi, kashshof",
+      "definition": "A pioneer is a person who is among the first to do something.",
+      "example": "He was a pioneer in the field of heart surgery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prescribe",
+      "translation": "buyurmoq (dori)",
+      "definition": "To prescribe medicine means to tell someone to take it.",
+      "example": "The doctor prescribed an antibiotic for my infection.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "respective",
+      "translation": "tegishli",
+      "definition": "Respective relates separately to each of the people or things mentioned.",
+      "example": "The students went to their respective classrooms.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "revive",
+      "translation": "jonlantirmoq",
+      "definition": "To revive something means to bring it back to life or health.",
+      "example": "The cool water revived the tired plants.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rigid",
+      "translation": "qattiq, egilmas",
+      "definition": "If something is rigid, it is stiff and does not bend easily.",
+      "example": "The rules were rigid and could not be changed.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sequence",
+      "translation": "ketma-ketlik",
+      "definition": "A sequence is a series of events or things that happen in order.",
+      "example": "The sequence of events led to a happy ending.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "substitute",
+      "translation": "o'rnini bosuvchi",
+      "definition": "To substitute something means to use it instead of something else.",
+      "example": "We used honey as a substitute for sugar.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "surgeon",
+      "translation": "jarroh",
+      "definition": "A surgeon is a doctor who performs operations.",
+      "example": "The surgeon was very skillful during the operation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "therapy",
+      "translation": "terapiya",
+      "definition": "Therapy is a treatment for a physical or mental illness.",
+      "example": "The physical therapy helped him walk again.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "transfer",
+      "translation": "o'tkazmoq",
+      "definition": "To transfer something means to move it from one place to another.",
+      "example": "He transferred the money to his bank account.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "transition",
+      "translation": "o'tish",
+      "definition": "A transition is a change from one condition to another.",
+      "example": "The country is in a state of transition.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "transplant",
+      "translation": "transplantatsiya",
+      "definition": "A transplant is an operation in which an organ is moved from one body to another.",
+      "example": "He needed a kidney transplant to survive.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

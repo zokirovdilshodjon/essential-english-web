@@ -1,0 +1,146 @@
+{
+  "unit": "8",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "access",
+      "translation": "foydalanish imkoniyati",
+      "definition": "Access is the right to enter or use something.",
+      "example": "The manager was the only person with access to the password.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conduct",
+      "translation": "xulq-atvor",
+      "definition": "Conduct is the way that someone acts.",
+      "example": "She was punished for her bad conduct.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "constant",
+      "translation": "doimiy",
+      "definition": "When an event or action is constant, it happens a lot or all the time.",
+      "example": "The television at home is in constant use.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "crack",
+      "translation": "yoriq",
+      "definition": "A crack is a narrow space between the parts of something broken.",
+      "example": "The old window was covered with cracks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "device",
+      "translation": "uskuna, moslama",
+      "definition": "A device is an object or machine that has a special purpose.",
+      "example": "A smartphone is a very useful device.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enclose",
+      "translation": "o'rab olmoq",
+      "definition": "To enclose something means to put it inside something else.",
+      "example": "He enclosed a photo with the letter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grip",
+      "translation": "mahkum ushlamoq",
+      "definition": "To grip something means to hold it very tightly.",
+      "example": "He gripped the steering wheel firmly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "halt",
+      "translation": "to'xtash",
+      "definition": "A halt is a stop for a short period of time.",
+      "example": "The train came to a halt at the station.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "impending",
+      "translation": "yaqinlashayotgan",
+      "definition": "If something is impending, it is going to happen soon.",
+      "example": "They were worried about the impending storm.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "influence",
+      "translation": "ta'sir",
+      "definition": "Influence is the power to have an effect on someone or something.",
+      "example": "His parents had a great influence on his life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "law",
+      "translation": "qonun",
+      "definition": "A law is a rule made by the government.",
+      "example": "You must follow the law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mode",
+      "translation": "usul, holat",
+      "definition": "A mode is a particular way of doing something.",
+      "example": "The computer has several different modes of operation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "perspire",
+      "translation": "terlamoq",
+      "definition": "To perspire means to sweat.",
+      "example": "He began to perspire from the heat.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "replace",
+      "translation": "almashtirmoq",
+      "definition": "To replace something means to put something new in its place.",
+      "example": "We need to replace the old batteries.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "snap",
+      "translation": "qarsillab sinmoq",
+      "definition": "To snap means to break something suddenly with a sharp noise.",
+      "example": "The dry branch snapped under his feet.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sly",
+      "translation": "ayyor",
+      "definition": "If someone is sly, they are clever and deceptive.",
+      "example": "The sly fox stole the chicken.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tend",
+      "translation": "moyillik ko'rsatmoq",
+      "definition": "To tend to do something means to usually do it.",
+      "example": "I tend to wake up early on weekends.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "valid",
+      "translation": "haqiqiy, yaroqli",
+      "definition": "If something is valid, it is acceptable or correct.",
+      "example": "Your passport is no longer valid.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "version",
+      "translation": "versiya, nusxa",
+      "definition": "A version is a particular form of something.",
+      "example": "I have the latest version of this software.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "whatsoever",
+      "translation": "umuman",
+      "definition": "You use whatsoever to emphasize a negative statement.",
+      "example": "He had no reason whatsoever to be angry.",
+      "part_of_speech": "adverb"
+    }
+  ]
+}

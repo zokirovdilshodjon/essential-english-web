@@ -1,0 +1,146 @@
+{
+  "unit": "22",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "acid",
+      "translation": "kislota",
+      "definition": "Acid is a chemical that can burn or dissolve other substances.",
+      "example": "The acid burned a hole in the piece of cloth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "administration",
+      "translation": "ma'muriyat",
+      "definition": "Administration is the group of people who manage an organization.",
+      "example": "The school administration decided to change the dress code.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "administrative",
+      "translation": "ma'muriy",
+      "definition": "Administrative relates to the management of an organization.",
+      "example": "She has many administrative duties in her office.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "biotechnology",
+      "translation": "biotexnologiya",
+      "definition": "Biotechnology is the use of living things to make products.",
+      "example": "Biotechnology is used to create new medicines and crops.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cholesterol",
+      "translation": "xolesterin",
+      "definition": "Cholesterol is a substance in the blood that can cause heart disease.",
+      "example": "Eating too much fat can increase your cholesterol levels.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coalition",
+      "translation": "koalitsiya",
+      "definition": "A coalition is a group of people or organizations working together.",
+      "example": "The two parties formed a coalition to win the election.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deceptive",
+      "translation": "aldamchi",
+      "definition": "When something is deceptive, it makes you believe something that is not true.",
+      "example": "The advertisement was deceptive and promised too much.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "diabetes",
+      "translation": "diabet",
+      "definition": "Diabetes is a disease in which the body cannot control sugar levels.",
+      "example": "He has to take insulin every day to manage his diabetes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "eliminate",
+      "translation": "yo'q qilmoq",
+      "definition": "To eliminate something means to get rid of it completely.",
+      "example": "We should eliminate unnecessary waste from our homes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "erosion",
+      "translation": "eroziya",
+      "definition": "Erosion is the process by which soil or rock is destroyed by water or wind.",
+      "example": "The erosion of the coastline is a serious problem.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ethics",
+      "translation": "etika",
+      "definition": "Ethics are moral principles that control a person's behavior.",
+      "example": "The doctor's ethics would not allow him to lie to his patients.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "explicit",
+      "translation": "ochiq-oydin",
+      "definition": "If something is explicit, it is stated clearly and in detail.",
+      "example": "He gave me explicit instructions on how to finish the task.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "framework",
+      "translation": "tuzilma, doira",
+      "definition": "A framework is a set of rules or ideas used to deal with a problem.",
+      "example": "The new law provides a framework for protecting the environment.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "manufacture",
+      "translation": "ishlab chiqarmoq",
+      "definition": "To manufacture something means to make it in a factory.",
+      "example": "The company manufactures cars and trucks.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mechanism",
+      "translation": "mexanizm",
+      "definition": "A mechanism is a part of a machine or a way of doing something.",
+      "example": "The locking mechanism on the door was broken.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "minimize",
+      "translation": "kamaytirmoq",
+      "definition": "To minimize something means to reduce it to the smallest possible amount.",
+      "example": "We need to minimize our expenses this month.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nectar",
+      "translation": "nektar",
+      "definition": "Nectar is a sweet liquid produced by flowers.",
+      "example": "Bees collect nectar from flowers to make honey.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "notion",
+      "translation": "tushuncha",
+      "definition": "A notion is an idea or a belief about something.",
+      "example": "I had a vague notion that I had met him before.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prone",
+      "translation": "moyil",
+      "definition": "If you are prone to something, you are likely to experience it.",
+      "example": "He is prone to headaches when he is stressed.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "straightforward",
+      "translation": "oddiy, tushunarli",
+      "definition": "When something is straightforward, it is easy to understand or do.",
+      "example": "The instructions were very straightforward and easy to follow.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

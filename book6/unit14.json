@@ -1,0 +1,146 @@
+{
+  "unit": "14",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "camouflage",
+      "translation": "kamuflyaj, niqob",
+      "definition": "Camouflage is something used to hide people and things.",
+      "example": "The green and brown camouflage was best used for hiding in forests.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contemplate",
+      "translation": "chuqur o'ylamoq",
+      "definition": "To contemplate something means to think about it.",
+      "example": "Mark took a moment to contemplate the math problem before solving it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "contend",
+      "translation": "kurashmoq, yengishga urinmoq",
+      "definition": "To contend with something means to struggle to overcome it.",
+      "example": "Stacy had to contend with a learning disability throughout high school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cot",
+      "translation": "yig'ma karavot",
+      "definition": "A cot is a small portable bed.",
+      "example": "At the camp, the boys’ cabin was lined with cots.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enlist",
+      "translation": "xizmatga kirmoq (harbiy)",
+      "definition": "To enlist means to join the military.",
+      "example": "In their final year at school, the students were asked to enlist in the military.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "frontier",
+      "translation": "chegara",
+      "definition": "A frontier is a border between two regions or countries.",
+      "example": "A fence was built along the frontier where the river curved.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "handbook",
+      "translation": "qo'llanma",
+      "definition": "A handbook is an item that gives specific information or instructions.",
+      "example": "If you look at the handbook, it will tell you which wires to connect.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hesitant",
+      "translation": "ikkilanuvchi",
+      "definition": "If someone is hesitant, then they are not sure or slow in acting.",
+      "example": "Though he knew the answer, he was hesitant to say it.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lush",
+      "translation": "yam-yashil, qalin",
+      "definition": "If something is lush, it is full of healthy, green plants.",
+      "example": "The jungle was filled with lush vegetation.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "marrow",
+      "translation": "ilik",
+      "definition": "Marrow is the soft substance inside the bones of animals.",
+      "example": "The soup was made with beef marrow for extra flavor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outfit",
+      "translation": "kiyim-bosh",
+      "definition": "An outfit is a set of clothes worn together.",
+      "example": "She bought a new outfit for the party.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "paw",
+      "translation": "panja",
+      "definition": "A paw is an animal's foot that has claws or pads.",
+      "example": "The bear left large paw prints in the snow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "quiver",
+      "translation": "titramoq, qaltiramoq",
+      "definition": "To quiver means to shake with small, quick movements.",
+      "example": "Her voice quivered with fear.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "splendid",
+      "translation": "ajoyib, dabdabali",
+      "definition": "If something is splendid, it is very good or beautiful.",
+      "example": "The view from the top of the mountain was splendid.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stray",
+      "translation": "adashgan, egasiz",
+      "definition": "To stray means to go away from the correct place or path.",
+      "example": "The sheep strayed from the flock and got lost.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "substantial",
+      "translation": "sezilarli, anchagina",
+      "definition": "If something is substantial, it is of great importance, size, or value.",
+      "example": "The company made a substantial profit this year.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "torch",
+      "translation": "mash'ala, fonus",
+      "definition": "A torch is a light that is held in the hand and has a flame or bulb.",
+      "example": "He used a torch to see in the dark cave.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tract",
+      "translation": "maydon, hudud",
+      "definition": "A tract is a large area of land.",
+      "example": "The farmer owned a large tract of land in the valley.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vigil",
+      "translation": "bedorlik, navbatchilik",
+      "definition": "A vigil is a period of staying awake to keep watch or pray.",
+      "example": "The soldiers kept a vigil throughout the night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "weary",
+      "translation": "charchagan, toliqqan",
+      "definition": "If someone is weary, they are very tired.",
+      "example": "The weary travelers finally reached their destination.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

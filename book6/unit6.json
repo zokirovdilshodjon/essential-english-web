@@ -1,0 +1,146 @@
+{
+  "unit": "6",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "ashore",
+      "translation": "qirg'oqqa, quruqlikka",
+      "definition": "If something goes ashore, it goes from water to the land.",
+      "example": "After a long day of fishing, Glen pulled his boat ashore, so it wouldn’t float away.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "contradict",
+      "translation": "zid bo'lmoq, qarshi chiqmoq",
+      "definition": "To contradict means to state the opposite of what someone else has.",
+      "example": "Ken was always fighting with his little sister because she kept contradicting him.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "counterpart",
+      "translation": "o'xshash, nusxa",
+      "definition": "A counterpart is something that is very similar to something else in what it does.",
+      "example": "Our manager will meet our rival company’s counterpart later today.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "devoid",
+      "translation": "mahrum, xoli",
+      "definition": "When something or someone is devoid of a thing, they are missing it.",
+      "example": "The movie was devoid of any entertaining moments.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "diverge",
+      "translation": "tarqalmoq, boshqa tarafga ketmoq",
+      "definition": "To diverge means to go in a different direction from a common point.",
+      "example": "The path diverged into two different roads.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "elude",
+      "translation": "chap bermoq, qochib qutulmoq",
+      "definition": "To elude means to avoid being caught by something.",
+      "example": "The mouse eluded the cat by hiding in the tiny hole.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "embryo",
+      "translation": "embrion, murtak",
+      "definition": "An embryo is a human or animal that is still growing inside its mother.",
+      "example": "The ultrasound showed that the embryo was developing normally.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fend",
+      "translation": "o'zini himoya qilmoq",
+      "definition": "To fend off something means to push it away and avoid it.",
+      "example": "The city had to fend off the invaders.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fictitious",
+      "translation": "uydirma, to'qima",
+      "definition": "When something is fictitious, it is made up and not real.",
+      "example": "The characters in the book are all fictitious.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gazette",
+      "translation": "gazeta",
+      "definition": "A gazette is a newspaper.",
+      "example": "The news about the new school was published in the local gazette.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "homogeneous",
+      "translation": "bir jinsli, o'xshash",
+      "definition": "If something is homogeneous, it is made up of things which are all the same.",
+      "example": "The population of the town was very homogeneous.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "obstruct",
+      "translation": "to'smoq, xalaqit bermoq",
+      "definition": "To obstruct something means to get in its way.",
+      "example": "The fallen tree obstructed the road.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "plunge",
+      "translation": "sho'ng'imoq, tushib ketmoq",
+      "definition": "To plunge means to move or make something move suddenly forwards and downwards.",
+      "example": "The car plunged into the river.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "prolong",
+      "translation": "uzaytirmoq",
+      "definition": "To prolong something means to make it last longer.",
+      "example": "The meeting was prolonged by several long questions.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "publicize",
+      "translation": "ommaga e'lon qilmoq",
+      "definition": "To publicize is to make something known to a lot of people.",
+      "example": "The company publicized its new product on TV.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sparse",
+      "translation": "siyrak, kam",
+      "definition": "If something is sparse, there is only a small amount of it spread over a large area.",
+      "example": "Vegetation is sparse in the desert.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "surplus",
+      "translation": "ortiqcha, qoldiq",
+      "definition": "A surplus is an extra amount of something.",
+      "example": "The government had a budget surplus this year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "theorize",
+      "translation": "nazariya yaratmoq",
+      "definition": "To theorize means to develop an idea about how something works.",
+      "example": "Scientists theorized that the universe is expanding.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "verify",
+      "translation": "tasdiqlamoq, tekshirib ko'rmoq",
+      "definition": "To verify means to find out if something is true.",
+      "example": "She verified the information before she reported it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vigorous",
+      "translation": "baquvvat, shijoatli",
+      "definition": "If something is vigorous, it is full of energy.",
+      "example": "He gave a vigorous speech to the crowd.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "28",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adjoining",
+      "translation": "qo'shni, tutash",
+      "definition": "If a room or building is adjoining, it is next to or joined to another one.",
+      "example": "We stayed in adjoining rooms at the hotel.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "allege",
+      "translation": "tasdiqlamoq (isbotsiz)",
+      "definition": "To allege something means to say that it is true without having proof.",
+      "example": "The police allege that he was at the scene of the crime.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "arch",
+      "translation": "arka, ravoq",
+      "definition": "An arch is a curved structure that supports the weight of something above it.",
+      "example": "The bridge has a beautiful stone arch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "assemble",
+      "translation": "yig'ilmoq; yig'moq",
+      "definition": "To assemble means to come together in one place or to put parts together.",
+      "example": "A large crowd assembled in the square to hear the speech.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "casualty",
+      "translation": "talofat, qurbon",
+      "definition": "A casualty is a person who is killed or injured in a war or accident.",
+      "example": "There were many casualties in the earthquake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "erect",
+      "translation": "tiklamoq, qurmoq",
+      "definition": "To erect something means to build or put up a structure.",
+      "example": "The workers erected a new fence around the garden.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "foul",
+      "translation": "iflos, yoqimsiz",
+      "definition": "If something is foul, it has a very unpleasant smell or taste.",
+      "example": "There was a foul smell coming from the garbage can.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hectare",
+      "translation": "gektar",
+      "definition": "A hectare is a unit of measurement for land equal to 10,000 square meters.",
+      "example": "The farm covers ten hectares of land.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "heighten",
+      "translation": "kuchaytirmoq, oshirmoq",
+      "definition": "To heighten something means to increase its intensity or level.",
+      "example": "The music helped to heighten the tension in the movie.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hospitality",
+      "translation": "mehmonnavozlik",
+      "definition": "Hospitality is the friendly and generous treatment of guests.",
+      "example": "We were very grateful for the hospitality shown by our hosts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mansion",
+      "translation": "shaxmat uyi, qasr",
+      "definition": "A mansion is a very large and expensive house.",
+      "example": "The movie star lives in a huge mansion in Hollywood.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outnumber",
+      "translation": "sonda ustun bo'lmoq",
+      "definition": "To outnumber something means to be greater in number than it.",
+      "example": "The students outnumber the teachers in the classroom.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overjoyed",
+      "translation": "juda shod",
+      "definition": "If you are overjoyed, you are extremely happy about something.",
+      "example": "She was overjoyed to hear that she had won the contest.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pasture",
+      "translation": "yaylov",
+      "definition": "A pasture is a field covered with grass that is suitable for animals to eat.",
+      "example": "The cows were grazing in the green pasture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "petition",
+      "translation": "ariza, iltimosnoma",
+      "definition": "A petition is a formal document signed by many people asking for change.",
+      "example": "The citizens signed a petition to stop the building of the new road.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "renovate",
+      "translation": "ta'mirlamoq, yangilamoq",
+      "definition": "To renovate something means to repair and improve an old building.",
+      "example": "They decided to renovate their kitchen and add new appliances.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "revise",
+      "translation": "qayta ko'rib chiqmoq",
+      "definition": "To revise something means to change it in order to improve it.",
+      "example": "The author had to revise the book before it could be published.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "slab",
+      "translation": "plita, qalin bo'lak",
+      "definition": "A slab is a thick, flat piece of a hard material such as stone or wood.",
+      "example": "The table was made from a single slab of marble.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "terrace",
+      "translation": "terrasa, ayvon",
+      "definition": "A terrace is a flat area outside a building where people can sit.",
+      "example": "We had dinner on the terrace overlooking the sea.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "turf",
+      "translation": "chim",
+      "definition": "Turf is a layer of grass and the soil beneath it.",
+      "example": "The workers laid new turf on the football field.",
+      "part_of_speech": "noun"
+    }
+  ]
+}
