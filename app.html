@@ -1659,7 +1659,7 @@ function initQuiz(){
   // Barcha so'zlarni shuffle qilib pool ga yozamiz — takrorlash yo'q
   const shuffled = shuffle([...words]);
   const total = shuffled.length;
-  const timeTotal = total * 8; // har so'z uchun 8 sekund
+  const timeTotal = total * 3; // har so'z uchun 8 sekund
   QS={idx:0,score:0,wrong:0,answered:false,pool:shuffled,timer:null,tval:timeTotal};
   document.getElementById('qs-score').textContent=0;
   document.getElementById('qs-wrong').textContent=0;
@@ -1811,7 +1811,7 @@ function startBattleWith(opp, isBot){
     // Bot: har 5 sekundda to'g'ri javob topadi
     if(isBot){
       BT.botTick = (BT.botTick||0) + 1;
-      if(BT.botTick % 5 === 0){
+      if(BT.botTick % 3 === 0){
         BT.oppScore+=10;
         document.getElementById('bg-opp').textContent=BT.oppScore;
         // Bot javob berganini ko'rsatamiz
