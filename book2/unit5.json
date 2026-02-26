@@ -1,0 +1,146 @@
+{
+  "unit": 5,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "ancestor",
+      "translation": "ajdod",
+      "definition": "An ancestor is a family member from the past.",
+      "example": "My ancestors came from Germany.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "angle",
+      "translation": "burchak",
+      "definition": "An angle is the direction from which you look at something.",
+      "example": "The giraffe turned its head to see from another angle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "boot",
+      "translation": "etik",
+      "definition": "A boot is a heavy shoe that goes over your ankle.",
+      "example": "He wore boots so that his feet wouldn’t get wet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "border",
+      "translation": "chegara",
+      "definition": "A border is the edge of an area.",
+      "example": "The postcard had a pretty green border of pine needles.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "congratulate",
+      "translation": "tabriklamoq",
+      "definition": "To congratulate someone is to tell them that you are happy for them.",
+      "example": "Bill and Angela congratulated each other on a job well done.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "frame",
+      "translation": "ramka",
+      "definition": "A frame is a border for a picture or mirror.",
+      "example": "I have to get a frame for my friend’s picture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "heaven",
+      "translation": "osmon, jannat",
+      "definition": "Heaven is the place that some people believe people go when they die.",
+      "example": "When I die, I hope that I go to heaven.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "incredible",
+      "translation": "ishonib bo'lmas",
+      "definition": "If someone or something is incredible, it is hard to believe they are true.",
+      "example": "I have an incredible story to tell you about my vacation.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "legend",
+      "translation": "afsona",
+      "definition": "A legend is a story from the past.",
+      "example": "There are many legends about how the world was made.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "praise",
+      "translation": "maqtamoq",
+      "definition": "To praise is to show that you like someone or something.",
+      "example": "The teacher praised the boy for his good work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "proceed",
+      "translation": "davom etmoq",
+      "definition": "To proceed is to go on or to move forward.",
+      "example": "The road was blocked, so we could not proceed.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pure",
+      "translation": "toza",
+      "definition": "If something is pure, it is not mixed with anything else.",
+      "example": "The water in the lake was very pure.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "relative",
+      "translation": "qarindosh",
+      "definition": "A relative is a family member.",
+      "example": "I have many relatives living in this town.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "senior",
+      "translation": "katta (yosh yoki martabada)",
+      "definition": "If someone is senior, they are older or higher in status than someone else.",
+      "example": "He is a senior member of the club.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "silent",
+      "translation": "jim, sokin",
+      "definition": "If someone or something is silent, they make no sound.",
+      "example": "The house was silent after the children went to sleep.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sink",
+      "translation": "cho'kmoq",
+      "definition": "To sink is to go down into water or another liquid.",
+      "example": "The boat began to sink after it hit a rock.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "superior",
+      "translation": "ustun",
+      "definition": "If something is superior, it is better than something else.",
+      "example": "This computer is superior to my old one.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "surround",
+      "translation": "o'rab olmoq",
+      "definition": "To surround something is to be all around it.",
+      "example": "The trees surround the house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "thick",
+      "translation": "qalin",
+      "definition": "If something is thick, it is not thin.",
+      "example": "The book was very thick.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "wrap",
+      "translation": "o'ramoq",
+      "definition": "To wrap something is to cover it with something else.",
+      "example": "I wrapped the gift in pretty paper.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

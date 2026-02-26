@@ -1,0 +1,146 @@
+{
+  "unit": "4",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bloom",
+      "translation": "gullamoq",
+      "definition": "When a plant blooms, it makes flowers.",
+      "example": "Roses look so pretty when they bloom.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compact",
+      "translation": "zich, kichik",
+      "definition": "If something is compact, it is smaller than normal.",
+      "example": "A laptop computer is much more compact than a desktop model.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "curl",
+      "translation": "jingalak, halqa",
+      "definition": "A curl is a small piece of something with a round shape.",
+      "example": "The colorful ribbons were bent into curls.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "decay",
+      "translation": "chirimoq, yemirmoq",
+      "definition": "To decay is to be destroyed naturally.",
+      "example": "The old wooden house was slowly decaying.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dessert",
+      "translation": "shirinlik (ovqatdan keyingi)",
+      "definition": "Dessert is a sweet food that you eat after a meal.",
+      "example": "Kayla wants ice cream for dessert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dip",
+      "translation": "botirmoq",
+      "definition": "To dip something is to put part of it into a liquid for a short time.",
+      "example": "Laurel dipped her strawberry into the chocolate.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "distant",
+      "translation": "olis, uzoq",
+      "definition": "If something is distant, it is far away.",
+      "example": "Michael could barely see the distant island.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "eclipse",
+      "translation": "tutilish (quyosh/oy)",
+      "definition": "An eclipse is an occasion when the moon moves in front of the sun.",
+      "example": "A complete eclipse of the sun is a very rare occurrence.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fairy",
+      "translation": "pari",
+      "definition": "A fairy is a small, magic creature with wings.",
+      "example": "There are usually fairies in fantasy stories.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grace",
+      "translation": "nazokat, nafosat",
+      "definition": "Grace is a quality of moving in a smooth, relaxed and attractive way.",
+      "example": "The ballerina danced with grace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "leisure",
+      "translation": "bo'sh vaqt",
+      "definition": "Leisure is time when you do not have to do work.",
+      "example": "Eve likes to listen to music in her leisure time.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mankind",
+      "translation": "insoniyat",
+      "definition": "Mankind is all of the world’s people.",
+      "example": "All of mankind has to work to make this a better world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "passion",
+      "translation": "ehtiros, ishtiyoq",
+      "definition": "Passion is a very strong feeling of wanting to do something.",
+      "example": "She had a passion for dancing.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pillow",
+      "translation": "yostiq",
+      "definition": "A pillow is something that you put your head on when you sleep.",
+      "example": "When I travel, I usually take my own pillow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pulse",
+      "translation": "puls, tomir urishi",
+      "definition": "A pulse is the beat of the heart.",
+      "example": "The doctor checked the patient’s pulse.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "refresh",
+      "translation": "tetiklashtirmoq",
+      "definition": "To refresh someone is to make them feel less hot or tired.",
+      "example": "The cool water refreshed us after we had been in the sun.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sneeze",
+      "translation": "aksirmoq",
+      "definition": "To sneeze is to suddenly blow air out of your nose and mouth.",
+      "example": "He sneezed after he inhaled the dust.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spice",
+      "translation": "ziravor",
+      "definition": "A spice is a flavor for food and drink.",
+      "example": "Two common spices are salt and pepper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "whistle",
+      "translation": "hushtak chalmoq",
+      "definition": "To whistle is to make a sound by putting your lips together.",
+      "example": "As he was working, he whistled a happy song.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wool",
+      "translation": "jun",
+      "definition": "Wool is the hair that a sheep has.",
+      "example": "Grandma made me a sweater from wool.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

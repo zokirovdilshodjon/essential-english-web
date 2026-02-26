@@ -1,0 +1,146 @@
+{
+  "unit": "18",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "armor",
+      "translation": "sovut",
+      "definition": "Armor is metal worn by soldiers to protect the body.",
+      "example": "The soldier wore armor to protect his body.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blaze",
+      "translation": "lovullab yonmoq",
+      "definition": "To blaze means to burn brightly or powerfully.",
+      "example": "The small fire soon blazed into a large dangerous one.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "boom",
+      "translation": "gumburlamoq",
+      "definition": "To boom means to make a loud, deep sound.",
+      "example": "The firecrackers made a loud boom when they exploded.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cliff",
+      "translation": "tik qoya",
+      "definition": "A cliff is a high and often flat wall of rock.",
+      "example": "The wolf stood at the cliff and howled.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flame",
+      "translation": "alangli, olov",
+      "definition": "A flame is part of fire.",
+      "example": "The torch had a bright flame.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "independence",
+      "translation": "mustaqillik",
+      "definition": "Independence is the state of being free from the control of others.",
+      "example": "The country gained its independence after a long war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "invasion",
+      "translation": "bosqin, hujum",
+      "definition": "An invasion is an attack by a group from another country.",
+      "example": "The invasion of the enemy was stopped by the army.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "knight",
+      "translation": "ritsar",
+      "definition": "A knight is a soldier of high rank and honor in the past.",
+      "example": "The knight rode his horse into battle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lightning",
+      "translation": "chaqmoq",
+      "definition": "Lightning is the bright light in the sky during a rainstorm.",
+      "example": "The lightning lit up the dark sky.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rebel",
+      "translation": "ismonchi",
+      "definition": "A rebel is a person who fights against the government.",
+      "example": "The rebels tried to overthrow the king.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "retreat",
+      "translation": "chekinmoq",
+      "definition": "To retreat is to run away from a battle or dangerous situation.",
+      "example": "The army was forced to retreat after losing many men.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "revolution",
+      "translation": "inqilob",
+      "definition": "A revolution is a sudden and complete change in a government.",
+      "example": "The revolution led to the creation of a new government.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spear",
+      "translation": "nayza",
+      "definition": "A spear is a long stick with a sharp point used as a weapon.",
+      "example": "The hunter used a spear to catch fish.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "steep",
+      "translation": "tik (qiyalik)",
+      "definition": "If a slope is steep, it goes up or down very quickly.",
+      "example": "The mountain was very steep and difficult to climb.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "summit",
+      "translation": "cho'qqi",
+      "definition": "The summit is the highest part of a mountain.",
+      "example": "It took them two days to reach the summit.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thunder",
+      "translation": "momaqaldiroq",
+      "definition": "Thunder is the loud noise in the sky during a rainstorm.",
+      "example": "The sound of thunder scared the child.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "troops",
+      "translation": "qo'shinlar",
+      "definition": "Troops are soldiers that fight in an army.",
+      "example": "The troops marched into the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "warrior",
+      "translation": "jangchi",
+      "definition": "A warrior is a person who fights in a war.",
+      "example": "The ancient warriors were very brave.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "withdraw",
+      "translation": "chiqib ketmoq, chekinmoq",
+      "definition": "To withdraw is to leave a place or situation.",
+      "example": "The army withdrew from the city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "yield",
+      "translation": "bo'yin egmoq, taslim bo'lmoq",
+      "definition": "To yield is to stop fighting and agree to what someone wants.",
+      "example": "The army finally yielded to the enemy.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

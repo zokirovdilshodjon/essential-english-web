@@ -1,0 +1,146 @@
+{
+  "unit": 28,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "band",
+      "translation": "guruh, orkestr",
+      "definition": "A band is a group of people who play music.",
+      "example": "My brother is in a rock band.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "barely",
+      "translation": "arang, zo'rg'a",
+      "definition": "Barely means by the smallest amount, almost not.",
+      "example": "I barely had enough money to pay for my bus ticket.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "boring",
+      "translation": "zerikarli",
+      "definition": "If something is boring, it is not fun.",
+      "example": "I think the Internet is boring.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cancel",
+      "translation": "bekor qilmoq",
+      "definition": "To cancel means to decide that an event or a request will not happen.",
+      "example": "She cancelled the rest of her plans because of the rain.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "driveway",
+      "translation": "uy oldidagi yo'l",
+      "definition": "A driveway is a short private road that leads to a person’s home.",
+      "example": "The long driveway led us to their new house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "garbage",
+      "translation": "axlat, chiqindi",
+      "definition": "Garbage is waste material like unwanted or spoiled food, bottles, paper, etc.",
+      "example": "The boy cleaned up the garbage around his house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "instrument",
+      "translation": "asbob, uskuna",
+      "definition": "An instrument is something designed to do a certain task like music.",
+      "example": "My favorite musical instrument is the piano.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "list",
+      "translation": "ro'yxat",
+      "definition": "A list is a record of information printed with an item on each line.",
+      "example": "My mom makes a list of groceries to buy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "magic",
+      "translation": "Sehr, jodugarlik",
+      "definition": "Magic is the power to do impossible things.",
+      "example": "The magician used magic to pull a rabbit out of his hat.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "message",
+      "translation": "xabar, xat",
+      "definition": "A message is a set of words that you send to someone.",
+      "example": "I left a message for you in the envelope.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "notice",
+      "translation": "payqamoq, sezmoq",
+      "definition": "To notice something is to see it for the first time.",
+      "example": "Did you notice the view?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "own",
+      "translation": "egalik qilmoq",
+      "definition": "To own something means to have it. That thing belongs to you.",
+      "example": "My grandfather owns that house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "predict",
+      "translation": "bashorat qilmoq",
+      "definition": "To predict something is to say that it will happen.",
+      "example": "She predicted that I would get married next year.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "professor",
+      "translation": "professor, o'qituvchi",
+      "definition": "A professor is a person who teaches in college.",
+      "example": "Mike’s science professor knows a lot about physics.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rush",
+      "translation": "shoshilmoq",
+      "definition": "To rush is to go somewhere or do something very quickly.",
+      "example": "Nancy rushed to finish her homework.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "schedule",
+      "translation": "jadval, reja",
+      "definition": "A schedule is a plan that tells you when to do things.",
+      "example": "What is your class schedule for today?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "share",
+      "translation": "ulashmoq, baham ko'rmoq",
+      "definition": "To share something is to give some of it to another person.",
+      "example": "Jimmy shared his apple with me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stage",
+      "translation": "sahna",
+      "definition": "A stage is a place where actors or musicians act or sing.",
+      "example": "A large screen was on the stage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "storm",
+      "translation": "bo'ron, kuchli yog'ingarchilik",
+      "definition": "A storm is very bad weather. There is a lot of rain or snow.",
+      "example": "Did that storm wake you up last night?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "within",
+      "translation": "ichida, ichida",
+      "definition": "You use within to say that something is inside another thing.",
+      "example": "Within the box, there was a pizza.",
+      "part_of_speech": "preposition"
+    }
+  ]
+}

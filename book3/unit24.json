@@ -1,0 +1,152 @@
+{
+  "unit": "24",
+  "total_words": 21,
+  "words": [
+    {
+      "word": "baggage",
+      "translation": "yuk, bagaj",
+      "definition": "Baggage is the set of bags that people take with them when they travel.",
+      "example": "I'm taking several pieces of baggage with me on vacation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bulb",
+      "translation": "lampochka",
+      "definition": "A bulb is the glass part of an electric light.",
+      "example": "I had to change the light bulb in my bedroom.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bundle",
+      "translation": "bog'lam, tugun",
+      "definition": "A bundle is a number of things that are tied together.",
+      "example": "I was shocked when he showed me a bundle of money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cattle",
+      "translation": "chorva (qoramol)",
+      "definition": "Cattle are cows and bulls, especially on a farm.",
+      "example": "The rancher's cattle were eating the grass in the field.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flee",
+      "translation": "qochib ketmoq",
+      "definition": "To flee means to run away from trouble or danger.",
+      "example": "The crowd of men tried to flee from the danger.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "graze",
+      "translation": "o'tlamoq",
+      "definition": "To graze means to eat grass.",
+      "example": "The cows grazed in the field.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "greed",
+      "translation": "ochko'zlik",
+      "definition": "Greed is a desire to have more than the things that you need.",
+      "example": "She ate all the cookies out of her greed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "herd",
+      "translation": "poda",
+      "definition": "A herd is a large group of the same type of animals that live together.",
+      "example": "The herd of cows moved slowly across the ranch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "initiate",
+      "translation": "boshlamoq",
+      "definition": "To initiate something is to start it.",
+      "example": "The company will initiate a new plan next week.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lane",
+      "translation": "tor ko'cha, yo'lak",
+      "definition": "A lane is a small road or path.",
+      "example": "The car drove down the narrow lane.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "luggage",
+      "translation": "yuk, bagaj",
+      "definition": "Luggage is the bags and suitcases that you carry when you travel.",
+      "example": "He carried his luggage to the taxi.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nerve",
+      "definition": "Nerve is the courage to do something difficult or dangerous.",
+      "example": "It took a lot of nerve to jump off the high board.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "optimist",
+      "translation": "optimist (yaxshi niyat qiluvchi)",
+      "definition": "An optimist is a person who always thinks that good things will happen.",
+      "example": "He is an optimist who always sees the bright side of things.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "parade",
+      "translation": "parad, namoyish",
+      "definition": "A parade is a celebration where people walk or drive through the streets.",
+      "example": "There was a grand parade for the holiday.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pave",
+      "translation": "yo'l yotqizmoq, asfalt qilmoq",
+      "definition": "To pave a road is to cover it with a hard surface like stone or asphalt.",
+      "example": "They are going to pave the road with stones.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "phantom",
+      "translation": "sharpa, arvoh",
+      "definition": "A phantom is a ghost or a spirit.",
+      "example": "He thought he saw a phantom in the old house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "portable",
+      "translation": "ko'chma, portativ",
+      "definition": "If something is portable, it is easy to carry or move.",
+      "example": "A laptop is a portable computer.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "poster",
+      "translation": "plakat, afisha",
+      "definition": "A poster is a large piece of paper with a picture and information on it.",
+      "example": "He put a poster of his favorite band on the wall.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scratch",
+      "translation": "tirnamoq, qashimoq",
+      "definition": "To scratch something is to rub it with your fingernails or a sharp object.",
+      "example": "The cat scratched the chair.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "symphony",
+      "translation": "simfoniya",
+      "definition": "A symphony is a long piece of music played by an orchestra.",
+      "example": "We went to the concert to hear the symphony.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "widow",
+      "translation": "beva (ayol)",
+      "definition": "A widow is a woman whose husband is dead.",
+      "example": "The widow lived alone in the house.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

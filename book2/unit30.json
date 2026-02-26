@@ -1,0 +1,146 @@
+{
+  "unit": 30,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "appeal",
+      "translation": "yoqmoq / murojaat qilmoq",
+      "definition": "To appeal to someone is to be interesting or enjoyable.",
+      "example": "The idea of a vacation appeals to me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "assume",
+      "translation": "taxmin qilmoq",
+      "definition": "To assume is to think that something is true.",
+      "example": "I assumed you were tired, so I left you alone.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "borrow",
+      "translation": "qarzga olmoq",
+      "definition": "To borrow is to take something for a short time.",
+      "example": "Can I borrow your pen for a minute?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "client",
+      "translation": "mijoz",
+      "definition": "A client is a person who pays for a service.",
+      "example": "The lawyer has many clients.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "downtown",
+      "translation": "shahar markazi",
+      "definition": "Downtown is the center of a city.",
+      "example": "We went downtown to do some shopping.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dull",
+      "translation": "zerikarli",
+      "definition": "If something is dull, it is not interesting.",
+      "example": "The movie was so dull that I fell asleep.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "embarrass",
+      "translation": "uyaltirmoq",
+      "definition": "To embarrass someone is to make them feel silly or shy.",
+      "example": "He embarrassed me in front of my friends.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fare",
+      "translation": "yo'l kira",
+      "definition": "A fare is the money you pay to travel.",
+      "example": "How much is the bus fare to the city?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "former",
+      "translation": "sobiq / oldingi",
+      "definition": "Former means happening in the past.",
+      "example": "He is a former president of the company.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "formula",
+      "translation": "formula",
+      "definition": "A formula is a set of instructions to get a result.",
+      "example": "I followed the formula to solve the math problem.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "found",
+      "translation": "asos solmoq",
+      "definition": "To found something is to start it.",
+      "example": "They founded the school many years ago.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "invest",
+      "translation": "investitsiya kiritmoq",
+      "definition": "To invest is to put money into something for a profit.",
+      "example": "He invested his money in a new business.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "loan",
+      "translation": "qarz / ssuda",
+      "definition": "A loan is the money that you borrow.",
+      "example": "I got a loan from the bank to buy a car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "practical",
+      "translation": "amaliy / foydali",
+      "definition": "If something is practical, it is useful.",
+      "example": "He gave me some practical advice.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "quarter",
+      "translation": "chorak",
+      "definition": "A quarter is one of four equal parts.",
+      "example": "It's a quarter past four.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "salary",
+      "translation": "maosh / oylik",
+      "definition": "A salary is the money you get for your job.",
+      "example": "He gets a good salary at his new job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scholarship",
+      "translation": "grant / stipendiya",
+      "definition": "A scholarship is money for school given to a student.",
+      "example": "She won a scholarship to a top university.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "temporary",
+      "translation": "vaqtinchalik",
+      "definition": "If something is temporary, it lasts for a short time.",
+      "example": "I have a temporary job for the summer.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "treasure",
+      "translation": "xazina",
+      "definition": "Treasure is a collection of valuable things.",
+      "example": "They found a box of buried treasure.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "urge",
+      "translation": "undamoq / qistamoq",
+      "definition": "To urge is to try to make someone do something.",
+      "example": "He urged me to study harder.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

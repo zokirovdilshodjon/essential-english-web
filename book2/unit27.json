@@ -1,0 +1,146 @@
+{
+  "unit": 27,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "apology",
+      "translation": "uzr / kechirim",
+      "definition": "An apology is something someone says to show that they are sorry.",
+      "example": "After arguing, the girl wrote an apology.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bold",
+      "translation": "qo'rqmas / dadil",
+      "definition": "If someone is bold, they are not afraid of doing something.",
+      "example": "The bold man climbed the high mountain.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "capture",
+      "translation": "tutib olmoq / asir olmoq",
+      "definition": "To capture someone or something is to catch them.",
+      "example": "James tried to capture the bubbles in his hands.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cardinal",
+      "translation": "eng muhim / asosiy",
+      "definition": "If a rule or quality is cardinal, then it is the most important one.",
+      "example": "Raising your hand is a cardinal rule.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "duke",
+      "translation": "gersog (unvon)",
+      "definition": "A duke is a man of high social rank.",
+      "example": "The duke ruled over the land.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "expose",
+      "translation": "fosh qilmoq / ochib qo'ymoq",
+      "definition": "To expose is to make known something that is hidden.",
+      "example": "He took off his shirt exposing his costume.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "guilty",
+      "translation": "aybdor",
+      "definition": "If people feel guilty, they feel bad for what they did.",
+      "example": "I felt guilty for taking my sister's cookies.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hire",
+      "translation": "yollamoq / ishga olmoq",
+      "definition": "To hire someone is to pay them money to work for you.",
+      "example": "We hired a new person to help in the office.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "innocent",
+      "translation": "aybsiz / begunoh",
+      "definition": "If someone is innocent, they did not do a crime.",
+      "example": "The man was innocent of the crime.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "jail",
+      "translation": "qamoqxona",
+      "definition": "A jail is a place where criminals are kept.",
+      "example": "He was sent to jail for stealing.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "minister",
+      "translation": "vazir / ruhoniy",
+      "definition": "A minister is an important person in government or church.",
+      "example": "The minister made a speech about new laws.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ordinary",
+      "translation": "oddiy",
+      "definition": "If something is ordinary, it is not special or different.",
+      "example": "It was just an ordinary day.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "permanent",
+      "translation": "doimiy",
+      "definition": "If something is permanent, it lasts for a long time or forever.",
+      "example": "I am looking for a permanent job.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "preserve",
+      "translation": "asramoq / saqlamoq",
+      "definition": "To preserve is to keep something from being destroyed.",
+      "example": "They work hard to preserve the old building.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pronounce",
+      "translation": "talaffuz qilmoq",
+      "definition": "To pronounce is to say the sounds of a word.",
+      "example": "How do you pronounce this word?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "resemble",
+      "translation": "o'xshamoq",
+      "definition": "To resemble is to look like someone or something else.",
+      "example": "The boy resembles his father.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "symptom",
+      "translation": "simptom / belgi",
+      "definition": "A symptom is a sign that someone is sick.",
+      "example": "A cough is a symptom of a cold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tobacco",
+      "translation": "tamaki",
+      "definition": "Tobacco is what is used in cigarettes.",
+      "example": "The farmer grew tobacco on his land.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "twin",
+      "translation": "egizak",
+      "definition": "Twins are two children born at the same time to the same mother.",
+      "example": "The twins look exactly alike.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "witch",
+      "translation": "yaxmoli / jodugar",
+      "definition": "A witch is a person who uses magic.",
+      "example": "The witch flew on a broomstick.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

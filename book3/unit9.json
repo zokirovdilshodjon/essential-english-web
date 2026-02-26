@@ -1,0 +1,146 @@
+{
+  "unit": "9",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "ail",
+      "translation": "og'rimoq, bezovta qilmoq",
+      "definition": "To ail a person or group is to cause them problems or make them sick.",
+      "example": "My GS brother went to the doctor to see what was ailing him.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ally",
+      "translation": "ittifoqchi",
+      "definition": "An ally is someone who agrees to help or support you.",
+      "example": "The GS two countries were allies in the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "boast",
+      "translation": "maqtanmoq",
+      "definition": "To boast is to talk about how good you are.",
+      "example": "The GS he boasted about his high grades.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bounce",
+      "translation": "sakratmoq",
+      "definition": "To bounce is to move something up and away after it hits a surface.",
+      "example": "The boy bounced the ball on the ground.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bully",
+      "translation": "zo'ravon, bezori",
+      "definition": "A bully is a person who is mean to others.",
+      "example": "The GS the bully teased the smaller boy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "carbohydrate",
+      "translation": "uglevod",
+      "definition": "Carbohydrates are substances in food like bread that give you energy.",
+      "example": "The GS you should eat carbohydrates before a race.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crawl",
+      "translation": "emaklamoq",
+      "definition": "To crawl is to move slowly on your hands and knees.",
+      "example": "The GS the baby crawled across the floor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "defeat",
+      "translation": "mag'lub etmoq",
+      "definition": "To defeat someone is to beat them in a game or battle.",
+      "example": "The GS the team defeated their rivals.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dial",
+      "translation": "raqam termoq",
+      "definition": "To dial is to push the buttons on a phone to call someone.",
+      "example": "The GS I dialed her number, but she didn't answer.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dominant",
+      "translation": "ustun, hukmron",
+      "definition": "When someone or something is dominant, they are stronger than others.",
+      "example": "The GS the king was the dominant figure in the country.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mercy",
+      "translation": "shafqat, marhamat",
+      "definition": "If you show mercy, you choose not to punish or harm someone.",
+      "example": "The GS the king showed mercy to the prisoner.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nod",
+      "translation": "bosh irg'atmoq",
+      "definition": "To nod is to move your head up and down.",
+      "example": "The GS she nodded to show that she understood.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "opponent",
+      "translation": "raqib",
+      "definition": "An opponent is someone who fights or competes against you.",
+      "example": "The GS his opponent in the game was very strong.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "quarrel",
+      "translation": "janjal, bahs",
+      "definition": "To quarrel is to argue or fight.",
+      "example": "The GS the couple quarreled about money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rival",
+      "translation": "raqib, raqobatchi",
+      "definition": "A rival is someone that is trying to keep you from getting what you want.",
+      "example": "The GS the two businesses were rivals.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sore",
+      "translation": "og'riyotgan",
+      "definition": "When a part of your body is sore, it hurts.",
+      "example": "My GS legs were sore after the long walk.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sting",
+      "translation": "chaqmoq (hasharot)",
+      "definition": "To sting is to cause a sharp pain by pushing a small part into the skin.",
+      "example": "The GS the bee stung him on the arm.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "strain",
+      "translation": "zo'riqtirmoq",
+      "definition": "To strain is to try very hard.",
+      "example": "The GS he strained to lift the heavy box.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "torture",
+      "translation": "qiynoq, azob",
+      "definition": "Torture is something that causes you great physical or mental pain.",
+      "example": "The GS the long wait was torture for him.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wrestle",
+      "translation": "kurashmoq",
+      "definition": "To wrestle is to play a game where you try to push someone to the ground.",
+      "example": "The GS the two boys liked to wrestle.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "25",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "circulate",
+      "translation": "aylanib yurmoq, tarqalmoq",
+      "definition": "To circulate something is to spread it quickly.",
+      "example": "The fan helped to circulate cool air through the room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "consequent",
+      "translation": "natijada kelib chiqadigan",
+      "definition": "Consequent means happening because of a different situation.",
+      "example": "Her consequent rash came after she touched the poison ivy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "derive",
+      "translation": "kelib chiqmoq, olmoq",
+      "definition": "To derive something from another source means to get it from that thing.",
+      "example": "Red's nickname was derived from the color of her hair.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "drown",
+      "translation": "cho'kib o'lmoq",
+      "definition": "To drown is to die from not being able to breathe underwater.",
+      "example": "He would have drowned if the sailors would not have rescued him.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dynasty",
+      "translation": "sulola",
+      "definition": "A dynasty is a series of rulers who are all from the same family.",
+      "example": "The Ming dynasty ruled China for many years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fraction",
+      "translation": "qism, ulush",
+      "definition": "A fraction is a small part of something.",
+      "example": "Only a fraction of the students passed the test.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "frost",
+      "translation": "qirov",
+      "definition": "Frost is a thin layer of ice that forms on surfaces when it is cold.",
+      "example": "The grass was covered with frost in the morning.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "illusion",
+      "translation": "illyuziya, sarob",
+      "definition": "An illusion is something that looks real but is not.",
+      "example": "The magician created an illusion of a floating person.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "invade",
+      "translation": "bostirib kirmoq",
+      "definition": "To invade a country is to enter it with an army to take control.",
+      "example": "The army was planning to invade the neighboring country.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lieutenant",
+      "translation": "leytenant",
+      "definition": "A lieutenant is an officer in the army or navy.",
+      "example": "The lieutenant led the soldiers into battle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "marine",
+      "translation": "dengizga oid",
+      "definition": "If something is marine, it is related to the sea.",
+      "example": "He is studying marine biology.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "merit",
+      "translation": "xizmat, yutuq",
+      "definition": "A merit is a quality or achievement that deserves praise.",
+      "example": "He was given a reward for his merit.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "navy",
+      "translation": "harbiy dengiz floti",
+      "definition": "A navy is the part of a country's military that fights at sea.",
+      "example": "He joined the navy after high school.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "polar",
+      "translation": "qutbiy",
+      "definition": "If something is polar, it is related to the North or South Pole.",
+      "example": "Polar bears live in the Arctic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ray",
+      "translation": "nur",
+      "definition": "A ray is a line of light or energy.",
+      "example": "A ray of sunlight came through the window.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "resign",
+      "translation": "iste'foga chiqmoq",
+      "definition": "To resign is to leave your job.",
+      "example": "He resigned from his job after five years.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "suicide",
+      "translation": "o'z joniga qasd qilish",
+      "definition": "Suicide is the act of killing yourself.",
+      "example": "He was very sad and committed suicide.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tremble",
+      "translation": "titramoq, qaltiramoq",
+      "definition": "To tremble is to shake, especially because you are cold or scared.",
+      "example": "She was trembling with fear.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "underlying",
+      "translation": "asosiy, negizidagi",
+      "definition": "If something is underlying, it is the main cause or reason for something else.",
+      "example": "Stress was the underlying cause of his illness.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "via",
+      "translation": "orqali",
+      "definition": "Via means through or by way of.",
+      "example": "We traveled to Paris via London.",
+      "part_of_speech": "preposition"
+    }
+  ]
+}

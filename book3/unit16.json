@@ -1,0 +1,146 @@
+{
+  "unit": "16",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adolescent",
+      "translation": "o'smir, o'spirin",
+      "definition": "An adolescent is a young person or a teenager.",
+      "example": "The adolescent was excited about getting a skateboard for his birthday.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "aptitude",
+      "translation": "qobiliyat, iqtidor",
+      "definition": "Aptitude is a natural ability or skill.",
+      "example": "He has a natural aptitude for water skiing.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "compliment",
+      "translation": "maqtov aytmoq",
+      "definition": "To compliment is to say a nice thing about someone or something.",
+      "example": "Her co-worker complimented her for doing a good job.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hinder",
+      "translation": "to'sqinlik qilmoq, xalaqit bermoq",
+      "definition": "To hinder is to keep someone or something from doing something.",
+      "example": "All the traffic hindered me from getting to work on time.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "journalism",
+      "translation": "jurnalistika",
+      "definition": "Journalism is the work of collecting the news to put in newspapers or on TV.",
+      "example": "Before becoming a teacher, she worked in journalism.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "jury",
+      "translation": "hakamlar hay'ati",
+      "definition": "A jury is a group of people that listen to a trial and say if someone is guilty.",
+      "example": "The jury listened closely to the attorney before they made their decision.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "justice",
+      "translation": "adolat",
+      "definition": "Justice is fairness in the way that you treat other people.",
+      "example": "People turn to the court system when they are seeking justice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "liberty",
+      "translation": "erkinlik, ozodlik",
+      "definition": "Liberty is freedom to do what you want.",
+      "example": "To many people, the Statue of Liberty is a symbol of freedom.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "literary",
+      "translation": "adabiy",
+      "definition": "If someone or something is literary, it is involved with literature in some way.",
+      "example": "He worked hard to create a successful literary career.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pharmacy",
+      "translation": "dorixona",
+      "definition": "A pharmacy is a place where medicine is sold.",
+      "example": "My mother sells medicine to people at the pharmacy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pill",
+      "translation": "tabletka, dori",
+      "definition": "A pill is a small object that has medicine inside.",
+      "example": "She took a pill for her headache.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "presume",
+      "translation": "taxmin qilmoq, deb o'ylamoq",
+      "definition": "To presume is to believe something is true without being certain.",
+      "example": "Since he raised his hand, the teacher presumed he knew the answer.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "privacy",
+      "translation": "shaxsiy hayot daxlsizligi, xoslik",
+      "definition": "To have privacy is to be away from other people.",
+      "example": "Please hang the sign on the door so we can have some privacy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "punishment",
+      "translation": "jazo",
+      "definition": "A punishment is something that one must endure for any wrongdoing.",
+      "example": "He was given a punishment for being rude to the teacher.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sensible",
+      "translation": "oqilona, aqlli",
+      "definition": "If someone is sensible, they make good decisions.",
+      "example": "It was sensible for him to bring an umbrella.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "slice",
+      "translation": "bo'lak, tilim",
+      "definition": "A slice is a piece from something larger, such as a cake.",
+      "example": "The man ate a slice of pizza.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sorrow",
+      "translation": "g'am, qayg'u",
+      "definition": "Sorrow is a very sad feeling.",
+      "example": "The loss of her car created much sorrow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "straw",
+      "translation": "somon, qamish",
+      "definition": "A straw is a thin tube used for drinking.",
+      "example": "I drank the orange juice through a straw.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "swell",
+      "translation": "shishmoq, kattalashmoq",
+      "definition": "To swell is to become larger and rounder.",
+      "example": "After he got hit in the eye, it began to swell.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tidy",
+      "translation": "ozoda, saranjom",
+      "definition": "When something is tidy, it is clean and in order.",
+      "example": "Leon has always been a very tidy boy.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

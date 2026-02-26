@@ -1,0 +1,146 @@
+{
+  "unit": "6",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alert",
+      "translation": "ogohlantirmoq",
+      "definition": "To alert someone is to tell or warn them about something.",
+      "example": "The fire alarm alerted us that there was a problem.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "broadcast",
+      "translation": "eshittirish, ko'rsatuv",
+      "definition": "A broadcast is a television or radio show.",
+      "example": "We watched the broadcast of the local news on TV.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bulletin",
+      "translation": "axborotnomа, xabar",
+      "definition": "A bulletin is a news report that talks about very recent and important events.",
+      "example": "There was a live bulletin reporting on the economy of the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bump",
+      "translation": "urilib ketmoq",
+      "definition": "To bump is to hit something, for example, with your hand or leg, by accident.",
+      "example": "I bumped my knee on the corner of the table.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "chop",
+      "translation": "chopmoq, maydalamoq",
+      "definition": "To chop is to cut something into pieces with a tool.",
+      "example": "Mom chopped some vegetables for the stew.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "closet",
+      "translation": "shkaf, javon",
+      "definition": "A closet is a small room or part of a room used for storing things.",
+      "example": "I put my coat in the closet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "console",
+      "translation": "yupatmoq, taskin bermoq",
+      "definition": "To console someone who is sad means to make them comforted.",
+      "example": "When my dog ran away, my dad consoled me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "district",
+      "translation": "tuman, hudud",
+      "definition": "A district is a small part of a city or country.",
+      "example": "I live in a busy district of the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "drawer",
+      "translation": "tortma",
+      "definition": "A drawer is a part of a piece of furniture that slides in and out.",
+      "example": "I put my socks in the bottom drawer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "endure",
+      "translation": "bardosh bermoq, chidamoq",
+      "definition": "To endure is to experience and deal with something difficult or painful.",
+      "example": "She had to endure a lot of pain after her accident.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "execute",
+      "translation": "amalga oshirmoq, bajarmoq",
+      "definition": "To execute is to do something that has been planned or agreed.",
+      "example": "The team executed their plan perfectly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grasp",
+      "translation": "mahkam ushlamoq",
+      "definition": "To grasp something is to hold it firmly with your hands.",
+      "example": "He grasped the handle of the door and pulled it open.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rear",
+      "translation": "orqa tomon",
+      "definition": "The rear of something is the back part of it.",
+      "example": "The door at the rear of the building was locked.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "senator",
+      "translation": "senator",
+      "definition": "A senator is a person who is part of a government group that makes laws.",
+      "example": "The senator spoke to the people about the new law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "skull",
+      "translation": "bosh suyagi, kalla suyagi",
+      "definition": "A skull is the hard part of the head which protects the brain.",
+      "example": "The doctor showed me a picture of a human skull.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stir",
+      "translation": "aralashtirmoq",
+      "definition": "To stir is to mix something by moving a tool around in it.",
+      "example": "He stirred the sugar into his coffee.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tap",
+      "translation": "asta urmoq",
+      "definition": "To tap is to hit something lightly and quickly.",
+      "example": "He tapped on the window to get her attention.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tremendous",
+      "translation": "juda katta, ulkan",
+      "definition": "If something is tremendous, it is very large or very good.",
+      "example": "The fireworks display was tremendous.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "underneath",
+      "translation": "tagida, ostida",
+      "definition": "Underneath means below or under something else.",
+      "example": "The cat was hiding underneath the bed.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "worm",
+      "translation": "chuvalchang",
+      "definition": "A worm is a small, long, thin animal that lives in the ground.",
+      "example": "The bird ate the worm that it found in the garden.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

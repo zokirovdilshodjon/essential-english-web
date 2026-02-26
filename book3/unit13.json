@@ -1,0 +1,146 @@
+{
+  "unit": "13",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aboard",
+      "translation": "ichida (kema, samolyot)",
+      "definition": "When someone is aboard a ship or plane, they are on or in it.",
+      "example": "They climbed aboard the kayak and paddled through the river.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "bitter",
+      "translation": "achchiqlangan, xafa",
+      "definition": "When a person is bitter, they are upset with someone or a situation.",
+      "example": "He was bitter because he didn't get the job.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bullet",
+      "translation": "o'q",
+      "definition": "A bullet is a small metal object shot from a gun.",
+      "example": "The GS bullet hit the target.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "devil",
+      "translation": "iblis, shayton",
+      "definition": "The devil is an evil spirit.",
+      "example": "The GS story was about a man who met the devil.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "drift",
+      "translation": "oqib ketmoq",
+      "definition": "To drift is to be carried away by water or air.",
+      "example": "The GS boat drifted out to sea.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "enforce",
+      "translation": "majburlab joriy qilmoq",
+      "definition": "To enforce is to make sure that a rule or law is followed.",
+      "example": "The GS police enforce the laws.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fountain",
+      "translation": "favvora",
+      "definition": "A fountain is a structure that shoots water into the air.",
+      "example": "The GS fountain in the park was beautiful.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harbor",
+      "translation": "bandargoh",
+      "definition": "A harbor is an area of water next to the land where ships stay.",
+      "example": "The GS ships were in the harbor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inhabit",
+      "translation": "yashamoq",
+      "definition": "To inhabit a place is to live in it.",
+      "example": "The GS many animals inhabit the forest.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "march",
+      "translation": "marshi qilish",
+      "definition": "To march is to walk with regular steps like a soldier.",
+      "example": "The GS soldiers marched in the parade.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "millionaire",
+      "translation": "millioner",
+      "definition": "A millionaire is a person who has at least a million dollars.",
+      "example": "The GS man became a millionaire after winning the lottery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "port",
+      "translation": "port",
+      "definition": "A port is a town or city where ships stop.",
+      "example": "The GS ship arrived at the port.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sheriff",
+      "translation": "sherif",
+      "definition": "A sheriff is a person who is in charge of the law in a county.",
+      "example": "The GS sheriff arrested the criminal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "startle",
+      "translation": "cho'chitmoq",
+      "definition": "To startle someone is to scare them suddenly.",
+      "example": "The GS loud noise startled me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sweat",
+      "translation": "terlamoq",
+      "definition": "To sweat is to have liquid come out of your skin because you are hot.",
+      "example": "I GS sweat when I exercise.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "trigger",
+      "translation": "tepki (qurol), sabab bo'lmoq",
+      "definition": "To trigger something is to make it happen.",
+      "example": "The GS smoke triggered the fire alarm.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "unify",
+      "translation": "birlashtirmoq",
+      "definition": "To unify is to bring people or things together.",
+      "example": "The GS goal was to unify the country.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vessel",
+      "translation": "kema",
+      "definition": "A vessel is a large ship or boat.",
+      "example": "The GS vessel was carrying cargo across the ocean.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "voyage",
+      "translation": "sayohat (dengiz orqali)",
+      "definition": "A voyage is a long journey, usually by sea.",
+      "example": "The GS voyage took several months.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "worship",
+      "translation": "sig'inmoq, topinmoq",
+      "definition": "To worship is to show love and respect for a god.",
+      "example": "The GS people gathered to worship at the temple.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

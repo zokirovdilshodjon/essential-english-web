@@ -1,0 +1,146 @@
+{
+  "unit": 8,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accept",
+      "translation": "qabul qilmoq",
+      "definition": "to tell commonly that something is true or allow it",
+      "example": "I accepted the girl's very nice gift.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "arrange",
+      "translation": "tartibga solmoq, joylashtirmoq",
+      "definition": "to put things in the right place",
+      "example": "Please arrange the bowling pins in order so we can play.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "attend",
+      "translation": "qatnashmoq, bormoq",
+      "definition": "to go to an event such as a meeting or a class",
+      "example": "My sister and I attend the same school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "balance",
+      "translation": "muvozanatni saqlamoq",
+      "definition": "to be in a position where you do not fall to either side",
+      "example": "We saw an elephant balance itself on a ball.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "contrast",
+      "translation": "farq, kontrast",
+      "definition": "the sharp difference between two things",
+      "example": "The contrast between my parents' hair colors is very noticeable.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "encourage",
+      "translation": "ruhlantirmoq, dalda bermoq",
+      "definition": "to make someone want to do something",
+      "example": "My football coach will encourage us when we are losing.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "familiar",
+      "translation": "tanish, qadrdon",
+      "definition": "well known because you have seen or heard it before",
+      "example": "The world map is familiar to most people.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "grab",
+      "translation": "changallamoq, ushlab olmoq",
+      "definition": "to take a hold of something suddenly or rudely",
+      "example": "I grabbed a pear from the tree.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hang",
+      "translation": "osmoq, osilib turmoq",
+      "definition": "to keep something above the ground",
+      "example": "I drew a picture of my family, and my mother hung it on the wall.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "huge",
+      "translation": "juda katta, ulkan",
+      "definition": "very big",
+      "example": "At work, my father drives a huge truck.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "necessary",
+      "translation": "zarur, kerakli",
+      "definition": "needed to complete something",
+      "example": "It is necessary to have a passport when you travel to another country.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pattern",
+      "translation": "nusxa, naqsh, tartib",
+      "definition": "a way in which something is done or organized",
+      "example": "My nephew's birthday cake had a pattern of stars on it.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "propose",
+      "translation": "taklif qilmoq",
+      "definition": "to suggest a plan or an action",
+      "example": "Santa Claus proposed that we help him with the gifts.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "purpose",
+      "translation": "maqsad",
+      "definition": "the reason that you do something",
+      "example": "The purpose of exercising is to get into shape.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "release",
+      "translation": "qo'yib yubormoq",
+      "definition": "to stop holding someone or something",
+      "example": "She released the bird from her hands.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "require",
+      "translation": "talab qilmoq",
+      "definition": "to say that something is necessary",
+      "example": "We require teachers to have a university degree.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "single",
+      "translation": "yagona, bitta",
+      "definition": "only one",
+      "example": "I have a single key in my hand.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "success",
+      "translation": "muvaffaqiyat",
+      "definition": "the achievement of a goal or purpose",
+      "example": "My stained glass project was a huge success.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tear",
+      "translation": "yirtmoq",
+      "definition": "to pull something apart",
+      "example": "It is easy to tear paper.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "theory",
+      "translation": "nazariya",
+      "definition": "an idea about how something works",
+      "example": "We talked about Einstein's theory of relativity in class.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

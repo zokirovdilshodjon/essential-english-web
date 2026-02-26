@@ -1,0 +1,146 @@
+{
+  "unit": 12,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alone",
+      "translation": "yolg'iz",
+      "definition": "If someone is alone, they are not with another person.",
+      "example": "The boy wanted to be alone to think.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "apartment",
+      "translation": "kvartira",
+      "definition": "An apartment is a set of rooms in a building where people live.",
+      "example": "She has a nice apartment in the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "article",
+      "translation": "maqola",
+      "definition": "An article is a story in a newspaper or magazine.",
+      "example": "Did you read the article in the newspaper about the soccer game?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "artist",
+      "translation": "rassom",
+      "definition": "An artist is a person who paints, draws, or makes sculptures.",
+      "example": "He went to Paris to become an artist.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "attitude",
+      "translation": "munosabat",
+      "definition": "Someone's attitude is the way they feel and think.",
+      "example": "John has a bad attitude. He's always angry.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "compare",
+      "translation": "solishtirmoq",
+      "definition": "To compare is to say how two things are the same and different.",
+      "example": "If you compare the two cats, they look the same.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "judge",
+      "translation": "baholamoq, hukm qilmoq",
+      "definition": "To judge is to form an opinion about something.",
+      "example": "The boy was judged by how well he played.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "magazine",
+      "translation": "jurnal",
+      "definition": "A magazine is a regular book with many stories and pictures.",
+      "example": "She reads magazines every morning.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "material",
+      "translation": "ashyo, material",
+      "definition": "A material is what is used to make something.",
+      "example": "The material used to make the shirt was very soft.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "meal",
+      "translation": "ovqat, taom",
+      "definition": "A meal is a time when food is eaten.",
+      "example": "Breakfast is my favorite meal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "method",
+      "translation": "usul, metod",
+      "definition": "A method is the way to do something.",
+      "example": "One method to stay healthy is to exercise.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "neighbor",
+      "translation": "qo'shni",
+      "definition": "A neighbor is a person who lives near you.",
+      "example": "I like my neighbor because he is very friendly.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "professional",
+      "translation": "professional",
+      "definition": "If something is professional, it is done well and for money.",
+      "example": "The man's work was very professional.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "profit",
+      "translation": "foyda, daromad",
+      "definition": "A profit is money you make from selling something.",
+      "example": "I made a small profit from selling my car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "quality",
+      "translation": "sifat",
+      "definition": "The quality of something is how good it is.",
+      "example": "The quality of his work was very high.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shape",
+      "translation": "shakl",
+      "definition": "A shape is a form of something.",
+      "example": "The shape of the table was a circle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "space",
+      "translation": "bo'shliq, joy",
+      "definition": "Space is an empty area.",
+      "example": "I found a good space for my bike.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stair",
+      "translation": "zina",
+      "definition": "Stairs are the things you use to go up and down in a building.",
+      "example": "I walked up the stairs to get to the second floor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "symbol",
+      "translation": "belgi, ramz",
+      "definition": "A symbol is an image that means something.",
+      "example": "The dove is a symbol of peace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thin",
+      "translation": "oriq, yupqa",
+      "definition": "If someone is thin, they are not fat.",
+      "example": "The boy was very thin because he didn't eat much.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

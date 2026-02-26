@@ -1,0 +1,146 @@
+{
+  "unit": 25,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "admit",
+      "translation": "tan olmoq",
+      "definition": "To admit is to say that something is true.",
+      "example": "I had to admit that I was wrong.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bin",
+      "translation": "idish (axlat uchun)",
+      "definition": "A bin is a container used for putting things in.",
+      "example": "He put the empty bottle in the bin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bowl",
+      "translation": "kosa / idish",
+      "definition": "A bowl is a deep, round dish used for food.",
+      "example": "I ate a bowl of cereal for breakfast.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cabin",
+      "translation": "kulba / kabina",
+      "definition": "A cabin is a small house made of wood.",
+      "example": "We stayed in a cabin in the mountains.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cash",
+      "translation": "naqd pul",
+      "definition": "Cash is money in the form of notes and coins.",
+      "example": "I don't have any cash, can I pay by card?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "criminal",
+      "translation": "jinoyatchi",
+      "definition": "A criminal is a person who breaks the law.",
+      "example": "The criminal was sent to jail.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dozen",
+      "translation": "o'n ikkita",
+      "definition": "A dozen is a group of twelve things.",
+      "example": "I bought a dozen eggs at the store.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "elder",
+      "translation": "yoshi kattaroq",
+      "definition": "Elder means being older than someone else.",
+      "example": "My elder brother is a doctor.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "facial",
+      "translation": "yuzga oid",
+      "definition": "Facial means related to a person's face.",
+      "example": "He had a facial expression of surprise.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fence",
+      "translation": "panjara",
+      "definition": "A fence is a structure that goes around an area of land.",
+      "example": "The white fence went around the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inspire",
+      "translation": "ilhomlantirmoq",
+      "definition": "To inspire is to make someone want to do something.",
+      "example": "The teacher inspired the students to study hard.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mere",
+      "translation": "shunchaki / bor-yo'g'i",
+      "definition": "Mere is used to emphasize how small or unimportant something is.",
+      "example": "It was a mere scratch on the car.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "neat",
+      "translation": "ozoda / tartibli",
+      "definition": "If something is neat, it is clean and organized.",
+      "example": "His desk is always very neat.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "occasion",
+      "translation": "voqea / marosim",
+      "definition": "An occasion is a special event.",
+      "example": "Her birthday was a happy occasion.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "penalty",
+      "translation": "jazo / jarima",
+      "definition": "A penalty is a punishment for doing something wrong.",
+      "example": "The penalty for speeding is a fine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rude",
+      "translation": "qo'pol",
+      "definition": "If someone is rude, they are mean and not polite.",
+      "example": "It is rude to talk with food in your mouth.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "settle",
+      "translation": "hal qilmoq / joylashmoq",
+      "definition": "To settle is to finish an argument or a problem.",
+      "example": "They settled their fight by talking.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vehicle",
+      "translation": "transport vositasi",
+      "definition": "A vehicle is something used for carrying people or things.",
+      "example": "A car is a type of vehicle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wallet",
+      "translation": "hamyon",
+      "definition": "A wallet is a small case for carrying money.",
+      "example": "I keep my money in my wallet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "yell",
+      "translation": "baqirmoq",
+      "definition": "To yell is to shout loudly.",
+      "example": "The coach yelled at the players.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

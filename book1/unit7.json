@@ -1,0 +1,146 @@
+{
+  "unit": 7,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "allow",
+      "translation": "ruxsat bermoq: imkoniyat bermoq",
+      "definition": "to let something happen",
+      "example": "Having a ticket will allow you to enter the show.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "announce",
+      "translation": "e'lon qilmoq, ma'lumo qilmoq",
+      "definition": "to make something known",
+      "example": "He announced to everyone his new idea for the company.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "beside",
+      "translation": "yonma-yon, yonida",
+      "definition": "next to someone or something",
+      "example": "The two brothers stood beside each other.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "challenge",
+      "translation": "qiyinchilik, mushkul ish",
+      "definition": "something difficult to complete",
+      "example": "It was a challenge to climb to the top of the mountain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "claim",
+      "translation": "tasdiqlamoq, ma'qullamoq",
+      "definition": "to say that something is true",
+      "example": "He claimed to know why the country's laws were weak.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "condition",
+      "translation": "ahvol, holat",
+      "definition": "the state that someone or something is in",
+      "example": "The patient's condition was very good.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contribute",
+      "translation": "xayr qilmoq: hissa qo'shmoq",
+      "definition": "to do something to make it successful",
+      "example": "We decided to contribute money to the new hospital.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "difference",
+      "translation": "farq, tafovut",
+      "definition": "a way something is not like other things",
+      "example": "The biggest difference between the birds is the color of their feathers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "divide",
+      "translation": "taqsimlamoq, bo'lmoq",
+      "definition": "to make something into smaller parts",
+      "example": "We divided the pizza.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "expert",
+      "translation": "ekspert, mutaxassis, usta",
+      "definition": "someone who is very good at doing something",
+      "example": "The wizard was an expert at magic.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "famous",
+      "translation": "mashhur, taniqli",
+      "definition": "known to many people",
+      "example": "The Eiffel Tower in Paris is very famous.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "force",
+      "translation": "kuch, qudrat",
+      "definition": "strength or power",
+      "example": "He used all his force to try and open the door.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harm",
+      "translation": "jabr, jarohat",
+      "definition": "hurt or problems caused",
+      "example": "A hot iron can cause great harm if you are not careful.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lay",
+      "translation": "qo'ymoq",
+      "definition": "to put in a horizontal or flat position",
+      "example": "Don't lay your socks on the floor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "peace",
+      "translation": "tinchlik",
+      "definition": "a time without war",
+      "example": "A white dove is a symbol for peace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prince",
+      "translation": "shahzoda",
+      "definition": "the son of a king",
+      "example": "The prince and the princess were married.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "protect",
+      "translation": "himoya qilmoq, asramoq",
+      "definition": "to stop someone from getting hurt",
+      "example": "Firemen protect us from fires.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sense",
+      "translation": "sezmoq: his qilmoq",
+      "definition": "to know about something without being told",
+      "example": "I could sense that he was watching me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sudden",
+      "translation": "kutilmagan, tasodifiy",
+      "definition": "happening very quickly",
+      "example": "He felt a sudden pain in his chest.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "therefore",
+      "translation": "shu sababli, shuning uchun",
+      "definition": "for this reason",
+      "example": "He is fat. Therefore, he will go on a diet.",
+      "part_of_speech": "adverb"
+    }
+  ]
+}

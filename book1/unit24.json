@@ -1,0 +1,146 @@
+{
+  "unit": 24,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "block",
+      "translation": "blok, katta bo'lak",
+      "definition": "A block is a solid piece of wood, stone or ice.",
+      "example": "I saw a block of ice on the street.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cheer",
+      "translation": "xursandchilik bilan baqirmoq",
+      "definition": "To cheer is to give a loud shout of approval or encouragement.",
+      "example": "The crowd all cheered when the home team won.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "complex",
+      "translation": "murakkab",
+      "definition": "If something is complex, it has many small parts. It is hard to understand.",
+      "example": "A car engine is complex because it has many parts.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "critic",
+      "translation": "tanqidchi",
+      "definition": "A critic is someone who gives their opinions about movies, books, etc.",
+      "example": "The wine critic tasted the wine so he could give his opinion.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "event",
+      "translation": "voqea, hodisa",
+      "definition": "An event is something that happens, especially something important.",
+      "example": "Finishing high school was a major event in his life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exercise",
+      "translation": "mashq qilmoq",
+      "definition": "To exercise is to run or play sports so that you can be healthy.",
+      "example": "You should exercise every day.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fit",
+      "translation": "loyiq bo'lmoq, mos kelmoq",
+      "definition": "If something fits, it is the small size or the right shape to go in a particular place.",
+      "example": "The key fits the lock.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "friendship",
+      "translation": "do'stlik",
+      "definition": "Friendship is the relationship between people who are friends.",
+      "example": "Michael and Peter have a very strong friendship.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "guide",
+      "translation": "yo'lboshchi, gid",
+      "definition": "A guide is someone who shows you where to go.",
+      "example": "We hired a guide to help us explore the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lack",
+      "translation": "kamchilik, yetishmovchilik",
+      "definition": "If there is a lack of something, there is not enough of it.",
+      "example": "His only problem is a lack of money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "perform",
+      "translation": "ijro etmoq, namoyish qilmoq",
+      "definition": "To perform is to do something in front of people who watch.",
+      "example": "He will perform a song tonight.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pressure",
+      "translation": "bosim",
+      "definition": "Pressure is what you feel when you are worried about something.",
+      "example": "They are under a lot of pressure to finish the work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "probable",
+      "translation": "ehtimoliy",
+      "definition": "If something is probable, it is likely to happen.",
+      "example": "It is probable that it will rain today.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "public",
+      "translation": "ommaviy, umumiy",
+      "definition": "If something is public, it is meant for everyone to use.",
+      "example": "I go to the public park to play with my friends.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "smart",
+      "translation": "aqlli",
+      "definition": "Smart means intelligent.",
+      "example": "Mary is a smart girl.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "strike",
+      "translation": "urmoq",
+      "definition": "To strike someone or something is to hit them.",
+      "example": "She struck the ball with her bat.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "support",
+      "translation": "qo'llab-quvvatlamoq",
+      "definition": "To support something is to help it be successful.",
+      "example": "Everyone at work supports the new plan.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "task",
+      "translation": "vazifa, topshiriq",
+      "definition": "A task is a piece of work to be done.",
+      "example": "Who had the task of cleaning the room?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "term",
+      "translation": "atama, termin",
+      "definition": "A term is a word or expression used in a particular language or subject.",
+      "example": "I often hear the term “global warming.”",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "unite",
+      "translation": "birlashmoq",
+      "definition": "To unite is to get together to do something.",
+      "example": "If we unite, we can finish our project faster.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 11,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "admission",
+      "translation": "kirish (joyga yoki a'zolikka)",
+      "definition": "Admission is the act of allowing to enter a place.",
+      "example": "The admission ticket to the movie was $5.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "astronomy",
+      "translation": "astronomiya",
+      "definition": "Astronomy is the study of the stars and planets.",
+      "example": "Harold decided to study astronomy because he loved watching the stars.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blame",
+      "translation": "ayblamoq",
+      "definition": "To blame someone for something bad is to say they did it.",
+      "example": "My mom blamed me for something I didn’t do.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "chemistry",
+      "translation": "kimyo",
+      "definition": "Chemistry is the study of and reaction to substances.",
+      "example": "In chemistry class, we learned about chemical reactions.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "despite",
+      "translation": "...ga qaramay",
+      "definition": "If something happens despite what you do, it happens anyway.",
+      "example": "We still played the game despite the cold weather.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "dinosaur",
+      "translation": "dinozavr",
+      "definition": "A dinosaur is a very big animal that lived millions of years ago.",
+      "example": "I like to see the dinosaur bones at the museum.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exhibit",
+      "translation": "eksponat, ko'rgazma",
+      "definition": "An exhibit is a display of interesting things.",
+      "example": "There was an animal exhibit at the fair.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fame",
+      "translation": "shuhrat, nom",
+      "definition": "Fame is reputation one has gained among the public.",
+      "example": "He had fame and fortune, but he was not happy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "forecast",
+      "translation": "ob-havo ma'lumoti, bashorat",
+      "definition": "A forecast is a idea of what the weather will be like in the future.",
+      "example": "The forecast says that it will rain all day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "genius",
+      "translation": "daholik, daho",
+      "definition": "A genius is a very smart person.",
+      "example": "Edith is a genius of math.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gentle",
+      "translation": "muloyim, yuvosh",
+      "definition": "Someone who is gentle is kind and patient.",
+      "example": "He is very gentle with the baby.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "geography",
+      "translation": "geografiya",
+      "definition": "Geography is the study of where things are on Earth.",
+      "example": "I had to learn the names of all the states in geography class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "interfere",
+      "translation": "halaqit bermoq, aralashmoq",
+      "definition": "To interfere is to get in the way of something that is happening.",
+      "example": "I wish my mother would not interfere in my life.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lightly",
+      "translation": "asta, yengilgina",
+      "definition": "To do something lightly is to not use much force.",
+      "example": "She touched his shoulder lightly.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "principal",
+      "translation": "maktab direktori",
+      "definition": "A principal is a person who is in charge of a school.",
+      "example": "My school’s principal is very strict.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "row",
+      "translation": "qator",
+      "definition": "A row is a line of things.",
+      "example": "James sit in the first row of the class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shelf",
+      "translation": "javon",
+      "definition": "A shelf is a place on a wall where you put things.",
+      "example": "I keep my books on a shelf.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spite",
+      "translation": "qasddan",
+      "definition": "If you do something out of spite, you want to be mean.",
+      "example": "He broke my toy out of spite.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "super",
+      "translation": "ajoyib, juda yaxshi",
+      "definition": "Super means very good.",
+      "example": "I had a super time at the party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "wet",
+      "translation": "nam, ho'l",
+      "definition": "If something is wet, it has water on it.",
+      "example": "Since my shirt was wet, I had to change it.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

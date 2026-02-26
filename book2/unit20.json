@@ -1,0 +1,146 @@
+{
+  "unit": 20,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accomplish",
+      "translation": "erishmoq",
+      "definition": "To accomplish something is to finish it successfully.",
+      "example": "I was able to accomplish all my goals.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "approve",
+      "translation": "ma'qullamoq",
+      "definition": "To approve of something is to think that it is good.",
+      "example": "My parents don't approve of my new friend.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "approximate",
+      "translation": "taxminiy",
+      "definition": "Approximate means to be close to an exact amount or number.",
+      "example": "The approximate time of the flight is three hours.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "barrier",
+      "translation": "to'siq",
+      "definition": "A barrier is something that is in your way.",
+      "example": "The wall was a barrier that kept us out.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "detect",
+      "translation": "sezmoq/aniqlamoq",
+      "definition": "To detect something is to notice or find something.",
+      "example": "The dog was able to detect the smell of smoke.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "duty",
+      "translation": "burch",
+      "definition": "A duty is something that a person has to do.",
+      "example": "It is my duty to help my family.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "elementary",
+      "translation": "boshlang'ich",
+      "definition": "If something is elementary, it is simple and basic.",
+      "example": "He is taking an elementary English class.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "failure",
+      "translation": "muvaffaqiyatsizlik",
+      "definition": "A failure is a situation when something does not work.",
+      "example": "The project was a failure.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gradual",
+      "translation": "asta-sekin",
+      "definition": "When something is gradual, it happens slowly.",
+      "example": "The change in the weather was gradual.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "immigrant",
+      "translation": "immigrant",
+      "definition": "An immigrant is a person who moves to a new country.",
+      "example": "Many immigrants live in this city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "insert",
+      "translation": "joylamoq/tiqmoq",
+      "definition": "To insert something is to put it in something else.",
+      "example": "He inserted the key into the lock.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "instant",
+      "translation": "tezkor/lahzalik",
+      "definition": "An instant is a very short amount of time.",
+      "example": "The food was ready in an instant.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "poverty",
+      "translation": "qashshoqlik",
+      "definition": "Poverty is the state of being poor.",
+      "example": "Many people live in poverty in that country.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pretend",
+      "translation": "o'zini ko'rsatmoq",
+      "definition": "To pretend is to act in a way that is not true.",
+      "example": "The children pretended to be soldiers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rank",
+      "translation": "unvon/daraja",
+      "definition": "A rank is a person’s level in a group.",
+      "example": "He has a high rank in the army.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "recognition",
+      "translation": "tan olish",
+      "definition": "Recognition is getting praise from other people.",
+      "example": "He got recognition for his hard work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "refrigerate",
+      "translation": "muzlatmoq/sovutmoq",
+      "definition": "To refrigerate is to make something cold.",
+      "example": "You should refrigerate the milk so it doesn't go bad.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rent",
+      "translation": "ijaraga olmoq",
+      "definition": "To rent is to pay money to use something.",
+      "example": "We rent an apartment in the city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "retire",
+      "translation": "nafaqaga chiqmoq",
+      "definition": "To retire is to leave your job usually because of age.",
+      "example": "My father is going to retire next year.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "statistic",
+      "translation": "statistika",
+      "definition": "A statistic is a number that shows a fact.",
+      "example": "The statistics show that the economy is growing.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 23,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "advance",
+      "translation": "oldinga yurmoq, rivojlanmoq",
+      "definition": "To advance is to go forward.",
+      "example": "He advanced up the ladder slowly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "athlete",
+      "translation": "atlet, sportchi",
+      "definition": "An athlete is a person who plays sports.",
+      "example": "Some athletes can run very fast.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "average",
+      "translation": "o'rtacha",
+      "definition": "If something is average, it is at a normal level.",
+      "example": "I'm not rich or poor; I'm average.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "behavior",
+      "translation": "xulq-atvor, muomala",
+      "definition": "Your behavior is the way you act.",
+      "example": "Their behavior was very good; they were the best children in the world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "behind",
+      "translation": "ortida, orqasida",
+      "definition": "Behind means to be at the back of something.",
+      "example": "The little girl was hiding behind the door.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "course",
+      "translation": "kurs, o'quv yo'nalishi",
+      "definition": "A course is a class in school.",
+      "example": "I took a P.E. course in school this year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lower",
+      "translation": "pasaytirmoq, tushirmoq",
+      "definition": "To lower something is to make it go down.",
+      "example": "The chart shows how his grades have lowered.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "match",
+      "translation": "mos kelmoq",
+      "definition": "To match is to be the same or similar.",
+      "example": "The two shoes matched. They looked the same.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "member",
+      "translation": "a'zo",
+      "definition": "A member is a person who is part of a group.",
+      "example": "Only members can use the pool.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mental",
+      "translation": "aqliy, ruhiy",
+      "definition": "If something is mental, it has to do with your mind.",
+      "example": "I made a mental picture of the room.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "passenger",
+      "translation": "yo'lovchi",
+      "definition": "A passenger is a person who rides in a car, train, or airplane.",
+      "example": "One passenger waited for the train.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "personality",
+      "translation": "shaxsiyat, xarakter",
+      "definition": "Your personality is what you are like and how you behave.",
+      "example": "John has a bad personality.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "poem",
+      "translation": "she'r",
+      "definition": "A poem is a short kind of writing.",
+      "example": "William Shakespeare wrote many poems.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pole",
+      "translation": "ustun, tirgak",
+      "definition": "A pole is a long stick made of wood or metal that stands in the ground.",
+      "example": "The flag was hanging from the flag pole.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "remove",
+      "translation": "olib tashlamoq, ko'chirmoq",
+      "definition": "To remove something is to take it away.",
+      "example": "I removed the nail from the board.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "safety",
+      "translation": "xavfsizlik",
+      "definition": "Safety means to be the condition of being safe and free from danger.",
+      "example": "For safety, please help me find my zip-line belt.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shoot",
+      "translation": "otmoq (o'q)",
+      "definition": "To shoot is to fire something like a bullet at someone or something.",
+      "example": "The hunter raised his gun to shoot at the target.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sound",
+      "translation": "ovoz, tovush",
+      "definition": "To sound means to make a noise.",
+      "example": "The alarm clock sounded and woke me up.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "swim",
+      "translation": "suzmoq",
+      "definition": "To swim is to move through water.",
+      "example": "I love to swim in the ocean.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "web",
+      "translation": "o'rgimchak to'ri",
+      "definition": "A web is a home made by a spider.",
+      "example": "Mom cleaned the spider webs out of the garage.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

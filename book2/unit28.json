@@ -1,0 +1,146 @@
+{
+  "unit": 28,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accompany",
+      "translation": "hamrohlik qilmoq",
+      "definition": "To accompany other people means to join them.",
+      "example": "My brothers accompanied me to the movie.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bare",
+      "translation": "yalang'och / bo'sh",
+      "definition": "When something is bare, it is plain and has no covering.",
+      "example": "He likes to walk around in his bare feet.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "branch",
+      "translation": "shox (daraxt)",
+      "definition": "A branch is the part of a tree with leaves.",
+      "example": "The monkey was hanging from a branch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "breath",
+      "translation": "nafas",
+      "definition": "A breath is the air that goes into and out of one's lungs.",
+      "example": "He took a deep breath before he started to run.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bridge",
+      "translation": "ko'prik",
+      "definition": "A bridge is something built over a river or road.",
+      "example": "We drove across the bridge to get to the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cast",
+      "translation": "tashlamoq / otmoq",
+      "definition": "To cast is to throw something.",
+      "example": "The fisherman cast his line into the water.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dare",
+      "translation": "jur'at qilmoq / botinmoq",
+      "definition": "To dare is to be brave enough to do something.",
+      "example": "He dared to jump off the high diving board.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "electronic",
+      "translation": "elektron",
+      "definition": "When something is electronic, it uses electricity.",
+      "example": "I like to play electronic games.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "inn",
+      "translation": "kichik mehmonxona",
+      "definition": "An inn is a small place where people can stay.",
+      "example": "We stayed at a cozy inn for the night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "net",
+      "translation": "to'r",
+      "definition": "A net is used to catch fish or birds.",
+      "example": "He used a net to catch a butterfly.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "philosophy",
+      "translation": "falsafa",
+      "definition": "Philosophy is a way of thinking about life.",
+      "example": "My philosophy is to always be kind.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pot",
+      "translation": "qozon / tuvak",
+      "definition": "A pot is a deep container used for cooking.",
+      "example": "She put the soup in a large pot.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "seed",
+      "translation": "urug'",
+      "definition": "A seed is the part of a plant from which a new plant grows.",
+      "example": "I planted a sunflower seed in the garden.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sharp",
+      "translation": "o'tkir",
+      "definition": "When something is sharp, it has a thin edge that cuts.",
+      "example": "The knife is very sharp, so be careful.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sort",
+      "translation": "tur / xil",
+      "definition": "A sort is a type of something.",
+      "example": "What sort of music do you like?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "subtract",
+      "translation": "ayirmoq (matematika)",
+      "definition": "To subtract is to take something away from a number.",
+      "example": "If you subtract two from five, you get three.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tight",
+      "translation": "tor / mahkam",
+      "definition": "When something is tight, it is firm or close.",
+      "example": "My shoes are too tight for my feet.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "virtual",
+      "translation": "virtual",
+      "definition": "If something is virtual, it is made by a computer.",
+      "example": "The game has a virtual world you can explore.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "weigh",
+      "translation": "vaznga ega bo'lmoq",
+      "definition": "To weigh is to see how heavy something is.",
+      "example": "The cat weighs five kilograms.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "whisper",
+      "translation": "pichirlamoq",
+      "definition": "To whisper is to speak very quietly.",
+      "example": "She whispered a secret in my ear.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

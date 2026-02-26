@@ -1,0 +1,146 @@
+{
+  "unit": 3,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "arrow",
+      "translation": "o'q (kamonniki)",
+      "definition": "An arrow is a thin, straight stick shot from a bow.",
+      "example": "The arrow flew through the air and hit the target.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "battle",
+      "translation": "jang",
+      "definition": "A battle is a fight between two armies in a war.",
+      "example": "The soldiers fought a long battle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bow",
+      "translation": "kamondan o'q otish moslamasi",
+      "definition": "A bow is a weapon made of curved wood and string that shoots arrows.",
+      "example": "He used a bow to shoot the arrow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brave",
+      "translation": "botir, jasur",
+      "definition": "When people are brave, they are not afraid to face pain or danger.",
+      "example": "The brave firefighter saved the girl from the burning building.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chief",
+      "translation": "boshliq, yetakchi",
+      "definition": "A chief is the leader of a group of people.",
+      "example": "The village chief made the important decision.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disadvantage",
+      "translation": "kamchilik, noqulaylik",
+      "definition": "A disadvantage is a situation where someone is likely to lose.",
+      "example": "Mike had a disadvantage in the race because he hurt his knee.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enemy",
+      "translation": "dushman",
+      "definition": "An enemy is a person who hates or wants to harm you.",
+      "example": "The two countries were enemies for many years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "entrance",
+      "translation": "kirish joyi",
+      "definition": "An entrance is a place where you go into something.",
+      "example": "The entrance to the park was through a big gate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hardly",
+      "translation": "arang, deyarli ... emas",
+      "definition": "If you hardly do something, you almost do not do it at all.",
+      "example": "It was so dark that I could hardly see my hand in front of my face.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "intend",
+      "translation": "niyat qilmoq",
+      "definition": "To intend to do something is to plan to do it.",
+      "example": "I intend to go to college next year.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "laughter",
+      "translation": "kulgi",
+      "definition": "Laughter is the sound of people laughing.",
+      "example": "The sound of their laughter filled the room.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "log",
+      "translation": "g'o'la",
+      "definition": "A log is a thick piece of wood that has fallen or been cut from a tree.",
+      "example": "The fire was made of several big logs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "military",
+      "translation": "harbiy",
+      "definition": "The military is the armed forces of a country.",
+      "example": "I want to join the military after I finish school.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "obey",
+      "translation": "bo'ysunmoq",
+      "definition": "To obey is to do what you are told to do.",
+      "example": "The children always obey their parents.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "secure",
+      "translation": "qo'lga kiritmoq, mahkamlamoq",
+      "definition": "To secure something means to get it after a lot of effort.",
+      "example": "He was able to secure a good job.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "steady",
+      "translation": "barqaror, bir maromda",
+      "definition": "When someone or something is steady, they are under control.",
+      "example": "The painter used a steady hand to paint the picture.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "trust",
+      "translation": "ishonmoq",
+      "definition": "To trust is to believe that someone is honest and will do what they say.",
+      "example": "I trust my friends to keep my secrets.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "twist",
+      "translation": "buramoq, aylantirmoq",
+      "definition": "To twist is to turn something around and around.",
+      "example": "She twisted the cap off the bottle.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "unless",
+      "translation": "magar, ...masa",
+      "definition": "Unless is used to mean 'if... not'.",
+      "example": "You cannot go out unless you finish your homework.",
+      "part_of_speech": "conjunction"
+    },
+    {
+      "word": "weapon",
+      "translation": "qurol",
+      "definition": "A weapon is an object used to hurt people, like a gun or a knife.",
+      "example": "The sword was a very old weapon.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

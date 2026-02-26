@@ -1,0 +1,146 @@
+{
+  "unit": 16,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "academy",
+      "translation": "akademiya, maxsus maktab",
+      "definition": "An academy is a special type of school.",
+      "example": "There are many courses taught at the academy that I go to.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ancient",
+      "translation": "qadimiy",
+      "definition": "If something is ancient, it is very old.",
+      "example": "I want to see the ancient buildings in Rome.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "board",
+      "translation": "taxta",
+      "definition": "A board is a flat piece of wood.",
+      "example": "The sign was made of a few wooden boards.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "century",
+      "translation": "asr, yuz yillik",
+      "definition": "A century is one hundred years.",
+      "example": "Our company is celebrating a century of business in London.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "clue",
+      "translation": "ashyo, dalil, kalit (topishmoqqa)",
+      "definition": "A clue is a fact or object that helps solve a mystery or crime.",
+      "example": "The detective found a clue that helped him solve the case.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "concert",
+      "translation": "konsert",
+      "definition": "A concert is an event where you listen to people play music.",
+      "example": "I enjoyed the concert last night. The band was very good.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "county",
+      "translation": "okrug, tuman",
+      "definition": "A county is the largest political division of a state in the US.",
+      "example": "He lives in the largest county in the state.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dictionary",
+      "translation": "lug'at",
+      "definition": "A dictionary is a book that tells you what words mean.",
+      "example": "I use my dictionary to look up words I don't know.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exist",
+      "translation": "mavjud bo'lmoq",
+      "definition": "To exist is to be real.",
+      "example": "Do you think giants ever really existed?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "flat",
+      "translation": "tekis, silliq",
+      "definition": "Flat describes something that is level and smooth with no curved parts.",
+      "example": "My parents bought a new flat screen TV.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gentleman",
+      "translation": "janob",
+      "definition": "A gentleman is a nice man.",
+      "example": "The gentleman helped the old lady across the street.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hidden",
+      "translation": "yashirin, maxfiy",
+      "definition": "Hidden means to be out of sight.",
+      "example": "The kids at the party found the hidden candy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "maybe",
+      "translation": "ehtimol, balki",
+      "definition": "Maybe is used to show that something is possible or may be true.",
+      "example": "If I focus on my school work, maybe I will get an A.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "officer",
+      "translation": "ofitser, xodim",
+      "definition": "An officer is a leader in the army.",
+      "example": "The soldiers followed the orders of the officer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "original",
+      "translation": "asl, birinchi",
+      "definition": "If something is original, it is the first one of that kind.",
+      "example": "This is the original painting of the Mona Lisa.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pound",
+      "translation": "zarba bilan urmoq",
+      "definition": "To pound is to hit something many times with a lot of force.",
+      "example": "He pounded the nail with the hammer.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "process",
+      "translation": "jarayon",
+      "definition": "A process is the steps to take to do something.",
+      "example": "Making a cake is a long process.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "publish",
+      "translation": "nashr qilmoq",
+      "definition": "To publish a book is to get it printed and ready to sell.",
+      "example": "That company publishes many books.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "theater",
+      "translation": "teatr",
+      "definition": "A theater is a building where you watch plays or movies.",
+      "example": "We went to the theater to see a play.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wealth",
+      "translation": "boylik",
+      "definition": "Wealth is a large amount of money and possessions.",
+      "example": "One of the most important things is health, not wealth.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 25,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "associate",
+      "translation": "bog'lamoq, bog'lab tasavvur qilmoq",
+      "definition": "To associate means to connect something with a person or thing.",
+      "example": "Most people associate birthday parties with having fun.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "environment",
+      "translation": "atrof-muhit",
+      "definition": "The environment is the place where people, animals, and plants live.",
+      "example": "Keep our environment clean by not littering.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "factory",
+      "translation": "zavod, fabrika",
+      "definition": "A factory is a building where things are made or put together.",
+      "example": "This factory produces many cars every day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "feature",
+      "translation": "xususiyat, jihat",
+      "definition": "A feature is an important part of something.",
+      "example": "The cell phone has many cool features.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "instance",
+      "translation": "namuna, misol",
+      "definition": "An instance is an example of something.",
+      "example": "I have never seen another instance of such a large bird.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "involve",
+      "translation": "jalb qilmoq, o'z ichiga olmoq",
+      "definition": "To involve means to include as a necessary part.",
+      "example": "The job involves a lot of traveling.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "medicine",
+      "translation": "dori-darmon",
+      "definition": "Medicine is something you take to feel better or treat an illness.",
+      "example": "The doctor gave me medicine for my cold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mix",
+      "translation": "aralashtirmoq",
+      "definition": "To mix is to combine two or more things together.",
+      "example": "The baker mixed the flour and water together.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "organize",
+      "translation": "tashkillashtirmoq, tartibga solmoq",
+      "definition": "To organize is to plan or arrange something in a systematic way.",
+      "example": "She organized her books by color.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "period",
+      "translation": "davr, muddat",
+      "definition": "A period is an amount of time.",
+      "example": "This period of history was very peaceful.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "populate",
+      "translation": "yashamoq, istiqomat qilmoq",
+      "definition": "If people populate an area, they live there.",
+      "example": "Millions of people populate this city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "produce",
+      "translation": "ishlab chiqarmoq",
+      "definition": "To produce is to make or grow something.",
+      "example": "Trees produce oxygen for us to breathe.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "range",
+      "translation": "qator, diapazon",
+      "definition": "A range is a number or a set of different things of the same general type.",
+      "example": "I offered her a range of choices from one to ten.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "recognize",
+      "translation": "tanimoq",
+      "definition": "To recognize is to know because you have seen it before.",
+      "example": "I recognized an old friend from high school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "regular",
+      "translation": "doimiy, muntazam",
+      "definition": "If something is regular, it happens over and over and at the same time.",
+      "example": "Our regular meeting is on Fridays.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sign",
+      "translation": "belgi, ishora",
+      "definition": "A sign is an indication that something is happening or exists.",
+      "example": "The dark clouds are a sign of rain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tip",
+      "translation": "uch, qirra",
+      "definition": "A tip is a pointed end of something long.",
+      "example": "The tip of the pencil was very sharp.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tradition",
+      "translation": "an'ana",
+      "definition": "A tradition is a custom or belief that has existed for a long time.",
+      "example": "Eating turkey on Thanksgiving is a tradition.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trash",
+      "translation": "axlat, chiqindi",
+      "definition": "Trash is waste material or things that are no longer wanted.",
+      "example": "Please put your trash in the bin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wide",
+      "translation": "keng",
+      "definition": "If something is wide, it is large from side to side.",
+      "example": "The river was very wide.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

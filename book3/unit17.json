@@ -1,0 +1,146 @@
+{
+  "unit": "17",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "affection",
+      "translation": "mehr, muhabbat",
+      "definition": "Affection is a feeling of liking someone or something.",
+      "example": "Amanda has a lot of affection for her little sister Sarah.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "agency",
+      "translation": "agentlik, muassasa",
+      "definition": "An agency is a business or service set up to act for others.",
+      "example": "I went to a travel agency to help me arrange a flight home.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ash",
+      "translation": "kul",
+      "definition": "Ash is the grey or black powder created when something is burned.",
+      "example": "The end of his cigar was full of ashes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "confine",
+      "translation": "chegaralamoq, qamab qo'ymoq",
+      "definition": "To confine something is to keep it in one place.",
+      "example": "The elephant is confined to a cage in the zoo.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dismiss",
+      "translation": "bo'shatmoq, rad etmoq",
+      "definition": "To dismiss something is to say it is not important.",
+      "example": "He dismissed my idea about the new project.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "erupt",
+      "translation": "otilib chiqmoq (vulqon)",
+      "definition": "To erupt is for a volcano or something to shoot hot rock and dust high into the air.",
+      "example": "The volcano erupted for the first time in ten years.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fate",
+      "translation": "taqdir, qismat",
+      "definition": "Fate is a power that is believed to control what happens in the future.",
+      "example": "Some people believe that a person's fate is decided at birth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lava",
+      "translation": "lava",
+      "definition": "Lava is the hot, liquid rock that comes out of a volcano.",
+      "example": "The lava from the volcano flowed down the mountain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "miserable",
+      "translation": "baxtsiz, g'amgin",
+      "definition": "If someone is miserable, they are very unhappy.",
+      "example": "He was miserable after his dog ran away.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "navigate",
+      "translation": "yo'nalishni aniqlamoq",
+      "definition": "To navigate is to find the way to get to a place.",
+      "example": "She used a map to navigate her way through the city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "originate",
+      "translation": "kelib chiqmoq, boshlanmoq",
+      "definition": "To originate is to begin to exist or start from a place.",
+      "example": "The practice of yoga originated in India.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "remainder",
+      "translation": "qoldiq",
+      "definition": "The remainder of something is the part of it that is left over.",
+      "example": "He ate the remainder of the pizza for lunch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "retrieve",
+      "translation": "qaytarib olmoq, topib kelmoq",
+      "definition": "To retrieve something is to find it and bring it back.",
+      "example": "She retrieved her keys from the table.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shallow",
+      "translation": "sayoz",
+      "definition": "If something is shallow, it is not deep.",
+      "example": "The water in the pool was very shallow.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "slope",
+      "translation": "qiyalik, yonbag'ir",
+      "definition": "A slope is a surface that is higher at one end than the other.",
+      "example": "The children slid down the snowy slope.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "span",
+      "translation": "davomiylik, oraliq",
+      "definition": "A span is a length of time that something lasts.",
+      "example": "The span of the project was three months.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "superstition",
+      "translation": "irim-sirim, xurofot",
+      "definition": "A superstition is a belief that certain events bring good or bad luck.",
+      "example": "One common superstition is that a black cat brings bad luck.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sympathy",
+      "translation": "hamdardlik",
+      "definition": "Sympathy is a feeling of being sorry for someone who is in a bad situation.",
+      "example": "She felt sympathy for the homeless man.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vibrate",
+      "translation": "titramoq, pirpiramoq",
+      "definition": "To vibrate is to shake with many small, quick movements.",
+      "example": "The phone began to vibrate on the table.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wander",
+      "translation": "daydimoq, aylanib yurmoq",
+      "definition": "To wander is to walk without a definite direction or purpose.",
+      "example": "He wandered around the park for an hour.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

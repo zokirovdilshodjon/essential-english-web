@@ -1,0 +1,146 @@
+{
+  "unit": 2,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bring",
+      "translation": "olib kelmoq",
+      "definition": "To bring means to take someone or something to a person or place.",
+      "example": "Oscar will bring in all the boxes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "castle",
+      "translation": "qasr, qal'a",
+      "definition": "A castle is a building with strong walls where royalty usually lives.",
+      "example": "The castle was built many years ago.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "command",
+      "translation": "buyurmoq",
+      "definition": "To command someone is to tell them to do something.",
+      "example": "The general commanded his army to attack.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "counsel",
+      "translation": "maslahat bermoq",
+      "definition": "To counsel someone is to listen and give advice about a problem.",
+      "example": "The teacher counseled the girl about her troubles.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ensure",
+      "translation": "ta'minlamoq, ishonch hosil qilmoq",
+      "definition": "To ensure is to make certain that something happens.",
+      "example": "Eating good food helps ensure good health.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "explosion",
+      "translation": "portlash",
+      "definition": "An explosion is a violent burst, usually with a loud sound.",
+      "example": "A nuclear explosion can cause great damage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "jewelry",
+      "translation": "taqinchoqlar",
+      "definition": "Jewelry is something that people wear like earrings or necklaces.",
+      "example": "The woman looked beautiful with her nice jewelry.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "land",
+      "translation": "qo'nmoq",
+      "definition": "To land means to come to the ground usually from a ship or aircraft.",
+      "example": "The airplane will land in Tokyo at six in the morning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "meteor",
+      "translation": "meteor",
+      "definition": "A meteor is a rock from outer space that falls to Earth.",
+      "example": "We saw a meteor in the sky last night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "monster",
+      "translation": "maxluq",
+      "definition": "A monster is any imaginary frightening creature.",
+      "example": "The monster scared everyone in the village.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "northern",
+      "translation": "shimoliy",
+      "definition": "If something is northern, it is in the direction of north.",
+      "example": "It is much colder in northern countries than it is here.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "remote",
+      "translation": "olis, olisdagi",
+      "definition": "If something is remote, it is very far away and difficult to get to.",
+      "example": "It took many days to get to the remote village.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "southern",
+      "translation": "janubiy",
+      "definition": "If something is southern, it is in the direction of south.",
+      "example": "Taegu is in the southern part of Korea.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "statue",
+      "translation": "haykal",
+      "definition": "A statue is an image of a person or animal made of stone or metal.",
+      "example": "I saw a beautiful statue of a lion today.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "steam",
+      "translation": "bug'",
+      "definition": "Steam is water that has become hot and has turned into a misty gas.",
+      "example": "We could see the steam rising from the boiling water.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "submit",
+      "translation": "bo'ysunmoq, taslim bo'lmoq",
+      "definition": "To submit of a person is to agree to do what they tell you to do.",
+      "example": "She submitted to her mother’s wishes for her to stay home.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "temple",
+      "translation": "ibodatxona",
+      "definition": "A temple is a building that is used for religious purposes.",
+      "example": "The people visited the temple to pray.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "upper",
+      "translation": "yuqori, tepadagi",
+      "definition": "Upper means higher in position or status.",
+      "example": "A home’s upper floor is usually where the bedrooms are.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "weed",
+      "translation": "begona o't",
+      "definition": "A weed is a plant that is not useful and grows where it is not wanted.",
+      "example": "The garden of the house was full of weeds.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wing",
+      "translation": "qanot",
+      "definition": "A wing is the part of an animal that lets it fly.",
+      "example": "The bird used its wings to fly high in the sky.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

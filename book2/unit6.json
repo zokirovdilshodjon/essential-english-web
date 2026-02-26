@@ -1,0 +1,146 @@
+{
+  "unit": 6,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abroad",
+      "translation": "chet elda",
+      "definition": "If someone goes abroad, they go to another country.",
+      "example": "My lady went abroad for a vacation.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "anger",
+      "translation": "g'azab, jahl",
+      "definition": "Anger is the shape of feeling that makes you want to hurt someone.",
+      "example": "It didn't take much to create anger in him.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bride",
+      "translation": "kelin",
+      "definition": "A bride is a woman who is getting married or has just married.",
+      "example": "The bride looked beautiful in her white dress.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brief",
+      "translation": "qisqa",
+      "definition": "If something is brief, it only lasts for a short time.",
+      "example": "The meeting was very brief.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chase",
+      "translation": "quvmoq",
+      "definition": "To chase someone or something is to follow them quickly in order to catch them.",
+      "example": "I was chased by a dog.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disappoint",
+      "translation": "hafsalasini pir qilmoq",
+      "definition": "To disappoint is to make someone feel sad because something they expected did not happen.",
+      "example": "I do not want to disappoint my family.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dive",
+      "translation": "sho'ng'imoq",
+      "definition": "To dive is to jump into water.",
+      "example": "She will dive into the pool now.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "exchange",
+      "translation": "ayirboshlamoq",
+      "definition": "To exchange means to give something and get something else in return.",
+      "example": "The men exchanged business cards.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "favor",
+      "translation": "yaxshilik",
+      "definition": "A favor is something you do to help someone.",
+      "example": "Can you do me a favor?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fee",
+      "translation": "to'lov (xizmatlar uchun)",
+      "definition": "A fee is the money you pay for a service.",
+      "example": "I had to pay an entrance fee.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "forever",
+      "translation": "abadiy",
+      "definition": "Forever means for all time.",
+      "example": "We will be friends forever.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "guy",
+      "translation": "erkak kishi, yigit",
+      "definition": "A guy is a man.",
+      "example": "He's a nice guy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lovely",
+      "translation": "yoqimli, go'zal",
+      "definition": "When something is lovely, it is good-looking or beautiful.",
+      "example": "The flowers are lovely.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mood",
+      "translation": "kayfiyat",
+      "definition": "A mood is the way someone is feeling.",
+      "example": "I am in a good mood.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "palace",
+      "translation": "saroy",
+      "definition": "A palace is a very large house, typically where a king or queen lives.",
+      "example": "The king and queen live in a beautiful palace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "permit",
+      "translation": "ruxsat bermoq",
+      "definition": "To permit something is to let it happen.",
+      "example": "I was permitted to go home early.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "protest",
+      "translation": "norozilik bildirmoq",
+      "definition": "To protest is to show that you do not agree with something.",
+      "example": "The people protested about the new law.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sculpture",
+      "translation": "haykal, haykaltaroshlik",
+      "definition": "A sculpture is a piece of art that is made out of stone, wood, or metal.",
+      "example": "We saw an ancient sculpture at the museum.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tribe",
+      "translation": "qabila",
+      "definition": "A tribe is a group of people who live in the same area and share the same culture.",
+      "example": "The tribe lived in the jungle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "youth",
+      "translation": "yoshlik",
+      "definition": "Youth is the time in people’s lives when they are young.",
+      "example": "He played a lot of sports in his youth.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

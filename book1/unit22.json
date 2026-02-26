@@ -1,0 +1,146 @@
+{
+  "unit": 22,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "actual",
+      "translation": "haqiqiy, amaldagi",
+      "definition": "Actual means that something is real or true.",
+      "example": "This is the actual sword that the king used, not a copy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "amaze",
+      "translation": "hayratda qoldirmoq",
+      "definition": "To amaze someone is to surprise them very much.",
+      "example": "The magician amazed the audience with his tricks.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "charge",
+      "translation": "narx, haq (to'lov)",
+      "definition": "A charge is the price to pay for something.",
+      "example": "The charge for the service was ten dollars.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "comfort",
+      "translation": "tasallı bermoq, yupatmoq",
+      "definition": "To comfort someone means to make them feel better.",
+      "example": "I wanted to comfort my friend after her dog died.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "contact",
+      "translation": "aloqa qilmoq, bog'lanmoq",
+      "definition": "To contact someone is to speak or write to them.",
+      "example": "I contacted my teacher by email.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "customer",
+      "translation": "mijoz, xaridor",
+      "definition": "A customer is a person who buys something at a store.",
+      "example": "The customer put a few items in her basket.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deliver",
+      "translation": "yetkazib bermoq",
+      "definition": "To deliver something is to take it from one place to another.",
+      "example": "The man delivered some food to my house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "earn",
+      "translation": "ishlab topmoq (pul)",
+      "definition": "To earn means to get money for the work you do.",
+      "example": "He earns a lot of money by working around the house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "gate",
+      "translation": "darvoza",
+      "definition": "A gate is a type of door. It is often made of metal or wood.",
+      "example": "We want to put a high gate around our house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "include",
+      "translation": "o'z ichiga olmoq",
+      "definition": "To include something means to have it as part of a group.",
+      "example": "Does this meal include a drink?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "manage",
+      "translation": "eplamoq, uddalamoq",
+      "definition": "To manage something is to control or be in charge of it.",
+      "example": "I had to manage the shop while my boss was away.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mystery",
+      "translation": "sir, jumboq",
+      "definition": "A mystery is something that is difficult to understand or explain.",
+      "example": "The identity of the killer is still a mystery.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "occur",
+      "translation": "sodir bo'lmoq",
+      "definition": "To occur is to happen.",
+      "example": "When did the accident occur?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "opposite",
+      "translation": "qarama-qarshi",
+      "definition": "If something is opposite, it is completely different.",
+      "example": "The opposite of white is black.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "plate",
+      "translation": "likopcha",
+      "definition": "A plate is a flat dish used for eating or serving food.",
+      "example": "I put my dinner on a large plate.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "receive",
+      "translation": "qabul qilmoq, olmoq",
+      "definition": "To receive something is to get it.",
+      "example": "I received a present on my birthday.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reward",
+      "translation": "mukofot",
+      "definition": "A reward is something given in exchange for good behavior or work.",
+      "example": "He was given a reward for his hard work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "set",
+      "translation": "qo'ymoq, o'rnatmoq",
+      "definition": "To set something is to put it in a certain place.",
+      "example": "Please set the book on the table.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "steal",
+      "translation": "o'g'irlamoq",
+      "definition": "To steal is to take something that is not yours.",
+      "example": "The man tried to steal money from the bank.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "thief",
+      "translation": "o'g'ri",
+      "definition": "A thief is a person who steals.",
+      "example": "A thief broke into our house while we were away.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

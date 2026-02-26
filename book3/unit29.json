@@ -1,0 +1,146 @@
+{
+  "unit": "29",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bomb",
+      "translation": "bomba",
+      "definition": "An object that explodes.",
+      "example": "The bomb destroyed the old house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "certificate",
+      "translation": "sertifikat",
+      "definition": "A document that says something is true.",
+      "example": "He got a certificate for finishing the course.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "circumstance",
+      "translation": "vaziyat, holat",
+      "definition": "An event that affects a situation.",
+      "example": "We succeeded under difficult circumstances.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coffin",
+      "translation": "tobut",
+      "definition": "A box used to bury dead people.",
+      "example": "The body was placed in a wooden coffin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cope",
+      "translation": "uddalamoq, dosh bermoq",
+      "definition": "To deal with a difficult situation.",
+      "example": "She is coping well with her new job.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "criticism",
+      "translation": "tanqid",
+      "definition": "Saying what is bad about something.",
+      "example": "The movie received a lot of criticism.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "devastate",
+      "translation": "vayron qilmoq",
+      "definition": "To destroy something completely.",
+      "example": "The flood devastated the town.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "frown",
+      "translation": "xo'mraymoq",
+      "definition": "To look unhappy with your face.",
+      "example": "He frowned when I told him the news.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "gaze",
+      "translation": "tikilib qolmoq",
+      "definition": "To look at something for a long time.",
+      "example": "She gazed at the stars all night.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "glance",
+      "translation": "ko'z qirini tashlamoq",
+      "definition": "To look at something quickly.",
+      "example": "He glanced at his watch.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grief",
+      "translation": "qayg'u, alam",
+      "definition": "Very deep sadness.",
+      "example": "She felt great grief after her dog died.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "groom",
+      "translation": "kuyov",
+      "definition": "A man who is getting married.",
+      "example": "The groom looked very happy at the wedding.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "license",
+      "translation": "litsenziya, ruxsatnoma",
+      "definition": "A document giving permission.",
+      "example": "You need a license to drive a car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "microscope",
+      "translation": "mikroskop",
+      "definition": "A tool used to see very small things.",
+      "example": "Scientists use microscopes to see germs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nuclear",
+      "translation": "yadroni",
+      "definition": "Related to the energy of atoms.",
+      "example": "The city uses nuclear power for electricity.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "portray",
+      "translation": "tasvirlamoq",
+      "definition": "To describe or show in a picture.",
+      "example": "The book portrays him as a hero.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rotate",
+      "translation": "aylanmoq",
+      "definition": "To turn around in a circle.",
+      "example": "The Earth rotates once every 24 hours.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "souvenir",
+      "translation": "esdalik, suvenir",
+      "definition": "Something you keep to remember a place.",
+      "example": "I bought a souvenir in Paris.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "submarine",
+      "translation": "suv osti kemasi",
+      "definition": "A boat that can go underwater.",
+      "example": "The submarine traveled deep in the sea.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trace",
+      "translation": "izini topmoq, izlamoq",
+      "definition": "To find or follow something.",
+      "example": "The police traced the phone call.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

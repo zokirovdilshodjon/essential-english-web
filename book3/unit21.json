@@ -1,0 +1,146 @@
+{
+  "unit": "21",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accustomed",
+      "translation": "o'rgangan, odatlangan",
+      "definition": "When you become accustomed to something, you are in the habit of it.",
+      "example": "Grandfather is accustomed to reading the newspaper every morning.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "affirm",
+      "translation": "tasdiqlamoq",
+      "definition": "To affirm is to say that something is true.",
+      "example": "Using a graph, Malcolm affirmed the success of the company.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "astonished",
+      "translation": "hayratda qolgan",
+      "definition": "If someone is astonished, they are very surprised or shocked.",
+      "example": "I was astonished when he pulled the live rabbit out of his hat.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bang",
+      "translation": "qarsillatib urmoq",
+      "definition": "To bang is to hit something to make a noise.",
+      "example": "The drummer banged on his drum as he marched in the parade.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "clan",
+      "translation": "urug', qabila",
+      "definition": "A clan is a group of relatives or friends.",
+      "example": "The Reed clan gathers for a family reunion every summer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dim",
+      "translation": "xira, nimqorong'u",
+      "definition": "When something is dim, it does not give out much light.",
+      "example": "Working in a dim room is bad for your eyes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "emphasis",
+      "translation": "urg'u, alohida e'tibor",
+      "definition": "Emphasis is special importance or attention given to something.",
+      "example": "The teacher placed emphasis on the importance of homework.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fable",
+      "translation": "masal",
+      "definition": "A fable is a short story that teaches a lesson.",
+      "example": "The Aesop's fables are famous around the world.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "feast",
+      "translation": "ziyofat, bazm",
+      "definition": "A feast is a large meal for many people.",
+      "example": "The king invited everyone to a grand feast.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "glow",
+      "translation": "nur sochmoq, tovlanmoq",
+      "definition": "To glow is to make a soft light.",
+      "example": "The fireflies glowed in the dark night.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hollow",
+      "translation": "ichi bo'sh",
+      "definition": "When something is hollow, it has an empty space inside.",
+      "example": "The owl lived in a hollow tree.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "instinct",
+      "translation": "instinkt, ichki sezgi",
+      "definition": "Instinct is the way that people and animals naturally act or feel.",
+      "example": "Cats have a natural instinct to hunt mice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "joint",
+      "translation": "bo'g'in",
+      "definition": "A joint is a place of the body where the bones meet, such as the knee.",
+      "example": "Two bones come together at a joint.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "leak",
+      "translation": "teshik, tirqish; sizib chiqmoq",
+      "definition": "A leak is a hole that lets a liquid or gas pass through.",
+      "example": "The pipe had a leak, so the floor was wet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "physician",
+      "translation": "shifokor, terapevt",
+      "definition": "A physician is a doctor.",
+      "example": "The physician told me to rest for a few days.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sacrifice",
+      "translation": "qurbon qilmoq",
+      "definition": "To sacrifice something is to give it up to get something else.",
+      "example": "She sacrificed her free time to study for the exam.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stiff",
+      "translation": "qattiq, qayishqoq emas",
+      "definition": "When something is stiff, it is hard to move or bend.",
+      "example": "The new shoes were very stiff.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stroke",
+      "translation": "silamoq",
+      "definition": "To stroke is to move your hand gently over something.",
+      "example": "She stroked the cat's soft fur.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tragic",
+      "translation": "fajiali, ayanchli",
+      "definition": "If something is tragic, it is very sad and involves death or suffering.",
+      "example": "The news of the accident was tragic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tune",
+      "translation": "kuy, ohang",
+      "definition": "A tune is a song or melody.",
+      "example": "He whistled a happy tune.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

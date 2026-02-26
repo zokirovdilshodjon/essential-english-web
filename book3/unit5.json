@@ -1,0 +1,146 @@
+{
+  "unit": "5",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "acquaint",
+      "translation": "tanishmoq",
+      "definition": "To acquaint is to get to know something or someone.",
+      "example": "Nancy acquainted herself with the new computer.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cemetery",
+      "translation": "qabriston",
+      "definition": "A cemetery is where people are buried when they die.",
+      "example": "Some people are scared of cemeteries.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "curse",
+      "translation": "la'natlamoq",
+      "definition": "To curse someone or something is to hope that bad things happen to them.",
+      "example": "The witch cursed the village.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disguise",
+      "translation": "niqob, qiyofasini o'zgartirish",
+      "definition": "A disguise is something you wear so people cannot tell who you are.",
+      "example": "He wore a disguise so that no one would know who he was.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fancy",
+      "translation": "hashamatli",
+      "definition": "If something is fancy, it is nice and expensive.",
+      "example": "Their house was very fancy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "flashlight",
+      "translation": "fonar",
+      "definition": "A flashlight is a small electric light that you carry in your hand.",
+      "example": "We used a flashlight to see in the dark cave.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hood",
+      "translation": "kapishon",
+      "definition": "A hood is part of a coat that goes over your head.",
+      "example": "Put on your hood because it is raining.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inhabitant",
+      "translation": "aholi, yashovchi",
+      "definition": "An inhabitant is a person who lives in a certain place.",
+      "example": "The GS most of the inhabitants in our city are friendly.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nourish",
+      "translation": "oziqlantirmoq",
+      "definition": "To nourish something is to give it food that it needs to live.",
+      "example": "A good diet will nourish your body.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pirate",
+      "translation": "qaroqchi",
+      "definition": "A pirate is a sailor who steals from other ships.",
+      "example": "The GS the pirates were looking for treasure.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "publication",
+      "translation": "nashr",
+      "definition": "A publication is a book, magazine, or newspaper that is printed.",
+      "example": "She was happy to see her story in a publication.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "riddle",
+      "translation": "topishmoq",
+      "definition": "A riddle is a question that is difficult and has a funny answer.",
+      "example": "I could not solve the riddle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rot",
+      "translation": "chirimoq",
+      "definition": "To rot is to be destroyed naturally.",
+      "example": "The GS the apple was starting to rot.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "scare",
+      "translation": "qo'rqitmoq",
+      "definition": "To scare someone is to make them afraid.",
+      "example": "The loud noise scared the baby.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shortly",
+      "translation": "tez orada",
+      "definition": "If something happens shortly, it happens in a short time.",
+      "example": "The bus will be here shortly.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "skeleton",
+      "translation": "skelet",
+      "definition": "A skeleton is all of the bones of a person or animal.",
+      "example": "There was a skeleton in the science classroom.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spoil",
+      "translation": "aynitmoq, buzmoq",
+      "definition": "To spoil something is to make it bad or not useful.",
+      "example": "The GS the rain spoiled our picnic.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "starve",
+      "translation": "och qolmoq",
+      "definition": "To starve is to go without food for a long time.",
+      "example": "The GS the people were starving because there was no food.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "thrill",
+      "translation": "hayajon, zavq",
+      "definition": "A thrill is an exciting feeling.",
+      "example": "The GS the roller coaster was a great thrill.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wicked",
+      "translation": "yovuz",
+      "definition": "If something is wicked, it is very bad or evil.",
+      "example": "The GS the wicked witch cast a spell on the prince.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

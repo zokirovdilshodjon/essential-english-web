@@ -1,0 +1,146 @@
+{
+  "unit": 14,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "apparent",
+      "translation": "aniq, yaqqol",
+      "definition": "If something is apparent, it is easy to see.",
+      "example": "It was apparent that the girl was sad.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "blind",
+      "translation": "ko'r, ojiz",
+      "definition": "When people are blind, they cannot see.",
+      "example": "The blind man used a stick to walk.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "calculate",
+      "translation": "hisoblamoq",
+      "definition": "To calculate is to find an answer using math.",
+      "example": "I had to calculate the cost of the trip.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "chat",
+      "translation": "suhbatlashmoq",
+      "definition": "To chat is to talk with someone.",
+      "example": "We chatted about our weekend plans.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "commit",
+      "translation": "sodir etmoq (jinoyat, xato)",
+      "definition": "To commit is to do something bad or a crime.",
+      "example": "He committed a crime and was sent to jail.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compose",
+      "translation": "yaratmoq, bastalamoq",
+      "definition": "To compose is to make something.",
+      "example": "He composed a beautiful song.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dormitory",
+      "translation": "yotoqxona",
+      "definition": "A dormitory is a school building where students live.",
+      "example": "I live in a dormitory with many other students.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exhaust",
+      "translation": "charchatmoq, holdan toydirmoq",
+      "definition": "To exhaust someone is to make them very tired.",
+      "example": "The long walk exhausted the children.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "greenhouse",
+      "translation": "issiqxona",
+      "definition": "A greenhouse is a building used to grow plants.",
+      "example": "We grew tomatoes in the greenhouse.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ignore",
+      "translation": "e'tiborsiz qoldirmoq",
+      "definition": "To ignore someone or something is to not look at or listen to them.",
+      "example": "I ignored the phone when it rang.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "obvious",
+      "translation": "aniq, ravshan",
+      "definition": "If something is obvious, it is easy to see or understand.",
+      "example": "It was obvious that he was lying.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "physics",
+      "translation": "fizika",
+      "definition": "Physics is a kind of science that studies energy and matter.",
+      "example": "I learned about gravity in physics class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "portion",
+      "translation": "qism, ulush",
+      "definition": "A portion is a part of something.",
+      "example": "I only ate a portion of the cake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "remind",
+      "translation": "eslatmoq",
+      "definition": "To remind is to make someone think of something again.",
+      "example": "She reminded me of our meeting.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "secretary",
+      "translation": "kotib(a)",
+      "definition": "A secretary is a person who works in an office.",
+      "example": "The secretary answered the phone.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "severe",
+      "translation": "og'ir, qattiq",
+      "definition": "When something is severe, it is very bad.",
+      "example": "He had a severe headache.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "talent",
+      "translation": "iste'dod",
+      "definition": "A talent is something that you are good at.",
+      "example": "She has a talent for singing.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thesis",
+      "translation": "tezis, dissertatsiya",
+      "definition": "A thesis is a long paper for school.",
+      "example": "He wrote his thesis on history.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "uniform",
+      "translation": "forma, maxsus kiyim",
+      "definition": "A uniform is a special kind of clothing for school or work.",
+      "example": "I wear a uniform to school.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vision",
+      "translation": "ko'rish qobiliyati",
+      "definition": "Vision is the act of seeing.",
+      "example": "He has good vision.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

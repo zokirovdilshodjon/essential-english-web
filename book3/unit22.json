@@ -1,0 +1,146 @@
+{
+  "unit": "22",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accommodate",
+      "translation": "joylashtirmoq, sig'dirmoq",
+      "definition": "To accommodate is to have enough room.",
+      "example": "The meeting room can accommodate nine people.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "circus",
+      "translation": "sirk",
+      "definition": "A circus is a traveling show with animals and people.",
+      "example": "I like to go to the circus to see the animals do tricks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coincide",
+      "translation": "bir vaqtga to'g'ri kelmoq",
+      "definition": "If two things coincide, they happen at the same time.",
+      "example": "My birthday coincides with Christmas.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "commission",
+      "translation": "buyurtma bermoq (haq evaziga)",
+      "definition": "To commission someone to do something is to pay them to do it.",
+      "example": "The artist was commissioned to create a picture.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dose",
+      "translation": "doza, miqdor",
+      "definition": "A dose is a certain amount of medicine that you take at one time.",
+      "example": "The doctor gave me a dose of medicine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dye",
+      "translation": "bo'yoq; bo'yamoq",
+      "definition": "To dye something is to make it a certain color by using a special liquid.",
+      "example": "She dyed her hair red.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "extent",
+      "translation": "daraja, ko'lam",
+      "definition": "The extent of something is how large, important, or serious it is.",
+      "example": "He didn't realize the extent of the damage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "gender",
+      "translation": "jins (erkak yoki ayol)",
+      "definition": "Gender is the condition of being male or female.",
+      "example": "The form asks for your name, age, and gender.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "headline",
+      "translation": "gazeta sarlavhasi",
+      "definition": "A headline is the title of a newspaper story that is printed in large letters.",
+      "example": "The headline of the paper was about the election.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "informal",
+      "translation": "norasmiy",
+      "definition": "If something is informal, it is not official or formal.",
+      "example": "We had an informal meeting in the park.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "inquire",
+      "translation": "so'ramoq, surishtirmoq",
+      "definition": "To inquire is to ask for information.",
+      "example": "She called to inquire about the job.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "messenger",
+      "translation": "xabarchi, kuryer",
+      "definition": "A messenger is a person who carries information from one place to another.",
+      "example": "The messenger delivered the letter to the king.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "peer",
+      "translation": "sinchiklab qaramoq",
+      "definition": "To peer is to look closely at something to see it better.",
+      "example": "He peered through the window to see who was inside.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "portrait",
+      "translation": "portret",
+      "definition": "A portrait is a painting or photograph of a person.",
+      "example": "There was a portrait of the queen on the wall.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pose",
+      "translation": "pozitsiya egallamoq (rasm uchun)",
+      "definition": "To pose is to stand or sit in a certain way for a photograph or painting.",
+      "example": "The family posed for a picture.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ranch",
+      "translation": "rancho, chorvachilik fermasi",
+      "definition": "A ranch is a large farm where animals like cows and horses are kept.",
+      "example": "My uncle lives on a large ranch in Texas.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "steer",
+      "translation": "boshqarmoq (rulni)",
+      "definition": "To steer is to control the direction of a car, boat, or plane.",
+      "example": "He steered the car through the narrow street.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stripe",
+      "translation": "yo'l-yo'l chiziq",
+      "definition": "A stripe is a long, narrow line of color.",
+      "example": "The zebra has black and white stripes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tame",
+      "translation": "qo'lga o'rgatilgan, yuvosh",
+      "definition": "If an animal is tame, it is not afraid of people.",
+      "example": "The bird was so tame that it sat on my hand.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tempt",
+      "translation": "qiziqtirmoq, og'dirmoq",
+      "definition": "To tempt is to make someone want to have or do something.",
+      "example": "The smell of the cake tempted me to eat a piece.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

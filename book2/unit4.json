@@ -1,0 +1,146 @@
+{
+  "unit": 4,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "chest",
+      "translation": "ko'krak qafasi",
+      "definition": "The chest is the front part of a person’s body under the neck.",
+      "example": "The water in the lake was as high as my chest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "confidence",
+      "translation": "ishonch",
+      "definition": "If you have confidence about something, you are sure of it.",
+      "example": "I have confidence that I did well on the test.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "consequence",
+      "translation": "oqibat, natija",
+      "definition": "A consequence is a result of a choice or action.",
+      "example": "As a consequence of missing my bus, I had to find another way to work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disaster",
+      "translation": "falokat",
+      "definition": "A disaster is a really bad thing that happens.",
+      "example": "When the car crashed, it was a disaster.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disturb",
+      "translation": "bezovta qilmoq",
+      "definition": "To disturb someone means to upset them or interrupt what they are doing.",
+      "example": "Please do not disturb me while I am working.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "estimate",
+      "definition": "To estimate something is to make a guess about it.",
+      "translation": "taxmin qilmoq",
+      "example": "The boy estimated that he would be home in thirty minutes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "honor",
+      "definition": "To honor is to show respect for something or someone.",
+      "translation": "hurmat qilmoq",
+      "example": "Each year we honor those who died in the war.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "impress",
+      "definition": "To impress someone is to make them think that you are good.",
+      "translation": "taassurot qoldirmoq",
+      "example": "He was able to impress the girls with his new car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "marathon",
+      "definition": "A marathon is a very long foot race.",
+      "translation": "marafon",
+      "example": "I ran a marathon and now my legs hurt.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "narrow",
+      "definition": "When something is narrow, it is very thin.",
+      "translation": "tor",
+      "example": "The girl walked through the narrow path.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pale",
+      "definition": "When something is pale, it is very light in color.",
+      "translation": "o'chgan, rangpar",
+      "example": "The girl’s skin was very pale.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rough",
+      "definition": "When something is rough, it is not smooth.",
+      "translation": "dag'al, g'adir-budur",
+      "example": "The surface of the table was rough.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "satisfy",
+      "definition": "To satisfy someone is to make them happy.",
+      "translation": "qoniqtirmoq",
+      "example": "It will satisfy my hunger if I eat this sandwich.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "scream",
+      "definition": "To scream is to make a loud noise with your mouth.",
+      "translation": "baqirmoq",
+      "example": "The girl screamed when she saw the spider.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sensitive",
+      "definition": "When someone is sensitive, they are easily hurt.",
+      "translation": "sezuvchan, nozik",
+      "example": "My teeth are very sensitive to cold water.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "shade",
+      "definition": "Shade is a dark area where there is no sun.",
+      "translation": "soya",
+      "example": "The tree provided shade from the sun.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "supplement",
+      "definition": "To supplement something is to add something else to it.",
+      "translation": "to'ldirmoq",
+      "example": "I supplement my diet with vitamins.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "terror",
+      "definition": "Terror is a feeling of very great fear.",
+      "translation": "dahshat, qo'rqinch",
+      "example": "I felt a sense of terror when I saw the tiger.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "threat",
+      "definition": "A threat is a promise to do something bad to someone.",
+      "translation": "tahdid",
+      "example": "The man made a threat against his neighbor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "victim",
+      "definition": "A victim is a person who is hurt or killed by something or someone.",
+      "translation": "qurbon",
+      "example": "I was a victim of a crime.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

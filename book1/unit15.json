@@ -1,0 +1,146 @@
+{
+  "unit": 15,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "across",
+      "translation": "orqali, kesib",
+      "definition": "To go across something is to go to the other side of it.",
+      "example": "He walked across the bridge.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "breathe",
+      "translation": "nafas olmoq",
+      "definition": "To breathe is to let air go in and out of your body.",
+      "example": "We need oxygen to breathe.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "characteristic",
+      "translation": "xususiyat",
+      "definition": "A characteristic is something that shows what a person or thing is like.",
+      "example": "One characteristic of a tiger is its stripes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "consume",
+      "translation": "iste'mol qilmoq",
+      "definition": "To consume is to eat or drink something.",
+      "example": "Jack consumed a large meal.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "excite",
+      "translation": "hayajonlantirmoq",
+      "definition": "To excite is to make someone feel happy and interested.",
+      "example": "The news excited him.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "extreme",
+      "translation": "ekstremal, o'ta",
+      "definition": "If something is extreme, it is very large or severe.",
+      "example": "The weather was extreme.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fear",
+      "translation": "qo'rquv",
+      "definition": "Fear is the feeling of being afraid.",
+      "example": "I have a fear of heights.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fortunate",
+      "translation": "omadli",
+      "definition": "If you are fortunate, you are lucky.",
+      "example": "I was fortunate to win the lottery.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "happen",
+      "translation": "sodir bo'lmoq",
+      "definition": "To happen is to take place.",
+      "example": "What happened to your arm?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "length",
+      "translation": "uzunlik",
+      "definition": "The length of something is how long it is.",
+      "example": "What is the length of the table?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mistake",
+      "translation": "xato",
+      "definition": "A mistake is something you do wrong.",
+      "example": "I made a mistake on my test.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "observe",
+      "translation": "kuzatmoq",
+      "definition": "To observe is to watch something carefully.",
+      "example": "I observed the birds.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "opportunity",
+      "translation": "imkoniyat",
+      "definition": "An opportunity is a chance to do something.",
+      "example": "I had an opportunity to go to China.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prize",
+      "translation": "sovrin",
+      "definition": "A prize is something you win.",
+      "example": "He won first prize in the race.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "race",
+      "translation": "poyga",
+      "definition": "A race is a contest to see who is fastest.",
+      "example": "He ran in a race.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "realize",
+      "translation": "anglab yetmoq",
+      "definition": "To realize is to suddenly understand something.",
+      "example": "I realized I forgot my keys.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "respond",
+      "translation": "javob qaytarmoq",
+      "definition": "To respond is to answer.",
+      "example": "He didn't respond to my question.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "risk",
+      "translation": "tavakkal, xavf",
+      "definition": "A risk is a chance of something bad happening.",
+      "example": "There is a risk of rain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wonder",
+      "translation": "qiziqmoq, hayron qolmoq",
+      "definition": "To wonder is to ask yourself questions about something.",
+      "example": "I wonder why he is late.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "yet",
+      "translation": "hali",
+      "definition": "Yet is used to say something has not happened up to now.",
+      "example": "I haven't eaten lunch yet.",
+      "part_of_speech": "adverb"
+    }
+  ]
+}

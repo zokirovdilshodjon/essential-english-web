@@ -1,0 +1,146 @@
+{
+  "unit": 13,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "anxiety",
+      "translation": "tashvish, xavotir",
+      "definition": "When someone has anxiety, they have a lot of worries and fear.",
+      "example": "When I have to climb to high places, I’m filled with anxiety.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "army",
+      "translation": "armiya",
+      "definition": "An army is a large group of people who fight in wars.",
+      "example": "The army protects all the people in the country.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "billion",
+      "translation": "milliard",
+      "definition": "A billion is a very large number: 1,000,000,000.",
+      "example": "There are billions of stars in outer space.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "carve",
+      "translation": "o'yib ishlamoq, kesmoq",
+      "definition": "To carve means to cut into something.",
+      "example": "My father usually carves the turkey for Thanksgiving.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "consult",
+      "translation": "maslahatlashmoq",
+      "definition": "To consult someone means to ask them for help.",
+      "example": "I will consult my accountant to find a way to pay for my bills.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "emergency",
+      "translation": "favqulodda vaziyat",
+      "definition": "An emergency is a time when someone needs help right away.",
+      "example": "There is a huge fire in my house! This is an emergency!",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fortune",
+      "translation": "omad, boylik",
+      "definition": "When someone has good fortune, it means they have luck.",
+      "example": "I have good fortune when I play cards.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "guarantee",
+      "translation": "kafolat bermoq",
+      "definition": "To guarantee means to know something will happen.",
+      "example": "I guarantee that the sun will come up in the morning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hike",
+      "translation": "piyoda sayr qilmoq (tabiatda)",
+      "definition": "To hike means to walk in the mountains or forest.",
+      "example": "I always bring plenty of equipment with me when I hike.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "initial",
+      "translation": "dastlabki",
+      "definition": "When something is initial, it is the first thing.",
+      "example": "The initial step when writing a paper is to find a good topic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intense",
+      "translation": "kuchli, jadal",
+      "definition": "If something is intense, it is very strong.",
+      "example": "The heat from the sun was very intense.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lend",
+      "translation": "qarz bermoq",
+      "definition": "To lend something is to give it to someone for a short time.",
+      "example": "My sister lent me her car for the weekend.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "peak",
+      "translation": "cho'qqi",
+      "definition": "The peak is the very top of a mountain.",
+      "example": "We reached the peak after many hours of climbing.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "potential",
+      "translation": "salohiyat",
+      "definition": "Potential means that something could happen in the future.",
+      "example": "He has the potential to be a great musician.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pride",
+      "translation": "g'urur",
+      "definition": "Pride is a feeling of satisfaction from your own achievements.",
+      "example": "I take great pride in my work.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "proof",
+      "translation": "isbot",
+      "definition": "Proof is something that shows that something is true.",
+      "example": "I have proof that I was at home last night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "quit",
+      "translation": "to'xtatmoq, tark etmoq",
+      "definition": "To quit is to stop doing something.",
+      "example": "He quit his job last week.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spin",
+      "translation": "aylanmoq, aylantirmoq",
+      "definition": "To spin is to turn around and around, very quickly.",
+      "example": "The fan spins to keep us cool.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tiny",
+      "translation": "kichkina, mitti",
+      "definition": "When something is tiny, it is very small.",
+      "example": "The baby has tiny hands.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tutor",
+      "translation": "repetitor, repetitorlik qilmoq",
+      "definition": "A tutor is a person who gives lessons to one student.",
+      "example": "My parents hired a tutor to help me with math.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

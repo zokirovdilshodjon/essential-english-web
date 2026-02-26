@@ -1,0 +1,146 @@
+{
+  "unit": 9,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "against",
+      "translation": "qarshi, -ga suyangan holda",
+      "definition": "to be touching it or opposed to it",
+      "example": "They both leaned against the wall.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "beach",
+      "translation": "sohil, plyaj",
+      "definition": "a sandy or rocky place by the ocean",
+      "example": "The little girl built a sandcastle on the beach.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "damage",
+      "translation": "zararlamoq, shikast yetkazmoq",
+      "definition": "to break something",
+      "example": "The car was damaged in the accident.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "discover",
+      "translation": "kashf qilmoq, topmoq",
+      "definition": "to find something for the first time",
+      "example": "I discovered some new information in this book!",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "emotion",
+      "translation": "his-tuyg'u",
+      "definition": "how you feel",
+      "example": "Anger is a common emotion that many people feel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fix",
+      "translation": "tuzatmoq, ta'mirlamoq",
+      "definition": "to make something work again",
+      "example": "My dad has to fix my bike for me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "frank",
+      "translation": "ochiq ko'ngil, samimiy",
+      "definition": "being honest",
+      "example": "The teacher had a frank discussion with her students.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "identify",
+      "translation": "tanib olmoq, aniqlamoq",
+      "definition": "to be able to name someone or something",
+      "example": "I used the chart to identify the name of the star.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "island",
+      "translation": "orol",
+      "definition": "land of any size that is surrounded by water",
+      "example": "Japan is a group of islands.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ocean",
+      "translation": "okean",
+      "definition": "the body of salt water that covers most of the Earth",
+      "example": "The ocean can get very rough at night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "perhaps",
+      "translation": "ehtimol, balki",
+      "definition": "maybe",
+      "example": "Perhaps I will eat an apple for lunch.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "pleasant",
+      "translation": "yoqimli",
+      "definition": "enjoyable and make you feel happy",
+      "example": "The wedding was a pleasant experience for everyone.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "prevent",
+      "translation": "to'sqinlik qilmoq, oldini olmoq",
+      "definition": "to stop something from happening",
+      "example": "The cold weather prevented us from going for a walk.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rock",
+      "translation": "tosh, qoya",
+      "definition": "a hard thing in the ground",
+      "example": "I stacked rocks on top of one another.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "save",
+      "translation": "qutqarmoq, asramoq",
+      "definition": "to keep someone or something from being hurt",
+      "example": "I want to help save the world.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "step",
+      "translation": "qadam tashlamoq",
+      "definition": "to walk by putting one foot in front of the other",
+      "example": "Be careful where you step.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "still",
+      "translation": "hali ham",
+      "definition": "used when you say that a situation keeps on going",
+      "example": "They are still waiting in line to get tickets.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "taste",
+      "translation": "ta'm, lazzat",
+      "definition": "the flavor something has in your mouth",
+      "example": "The ice cream tastes like strawberries.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "throw",
+      "translation": "otmoq, uloqtirmoq",
+      "definition": "to use your hand to make something go through the air",
+      "example": "The pitcher can throw the baseball very fast.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wave",
+      "translation": "to'lqin",
+      "definition": "a line of water that moves across the surface of the ocean",
+      "example": "The water was filled with huge waves.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

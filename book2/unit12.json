@@ -1,0 +1,146 @@
+{
+  "unit": 12,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abuse",
+      "translation": "haqoratlamoq, yomon munosabatda bo'lmoq",
+      "definition": "To abuse is to use something for the wrong purpose.",
+      "example": "The man abused his power and took people's money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "afford",
+      "translation": "qurbi yetmoq (moliyaviy)",
+      "definition": "To afford means to have enough money to pay for something.",
+      "example": "I cannot afford to buy a new car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bake",
+      "translation": "pishirmoq (duxovkada)",
+      "definition": "To bake means to cook food with dry heat, usually in an oven.",
+      "example": "My grandmother is baking a cake for my birthday.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bean",
+      "translation": "loviya, no'xat",
+      "definition": "A bean is a seed from a plant that can be eaten.",
+      "example": "I like to eat beans with my rice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "candle",
+      "translation": "sham",
+      "definition": "A candle is a stick of wax that burns to give light.",
+      "example": "I used a candle when the lights went out.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convert",
+      "translation": "aylantirmoq, o'zgartirmoq",
+      "definition": "To convert something is to change it into something else.",
+      "example": "The man converted his garage into a room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "debt",
+      "translation": "qarz",
+      "definition": "A debt is an amount of money that you owe someone.",
+      "example": "I have a lot of debt because of my student loans.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "decrease",
+      "translation": "kamaymoq, kamaytirmoq",
+      "definition": "To decrease is to make something less or smaller.",
+      "example": "The population of the town has decreased over the years.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fault",
+      "translation": "ayb, xato",
+      "definition": "A fault is a mistake.",
+      "example": "It was my fault that the vase broke.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fund",
+      "translation": "mablag', fond",
+      "definition": "A fund is an amount of money that is kept for a special purpose.",
+      "example": "We have a fund to pay for our daughter's college.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "generous",
+      "translation": "saxiylik, olijanoblik",
+      "definition": "A generous person is someone who likes to give things to others.",
+      "example": "The man was very generous and gave money to the poor.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ingredient",
+      "translation": "masalliq, tarkibiy qism",
+      "definition": "An ingredient is something that is used to make food.",
+      "example": "The main ingredient in the soup is chicken.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "insist",
+      "translation": "turib olmoq, qat'iy talab qilmoq",
+      "definition": "To insist is to be firm about something.",
+      "example": "I insist that you stay for dinner.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mess",
+      "translation": "tartibsizlik, ifloslik",
+      "definition": "A mess is a condition that is untidy or dirty.",
+      "example": "The house was a mess after the party.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "metal",
+      "translation": "metall",
+      "definition": "Metal is a hard substance like iron or gold.",
+      "example": "The key is made of metal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "monitor",
+      "translation": "kuzatib bormoq",
+      "definition": "To monitor is to watch something carefully.",
+      "example": "The teacher monitors the students during the test.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "oppose",
+      "translation": "qarshi chiqmoq",
+      "definition": "To oppose is to be against something or someone.",
+      "example": "Many people oppose the new law.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "passive",
+      "translation": "sust, passiv",
+      "definition": "A passive person does not take action or give energy to things.",
+      "example": "The boy was passive during the game and did not play hard.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "quantity",
+      "translation": "miqdor",
+      "definition": "A quantity is an amount of something.",
+      "example": "I have a large quantity of books in my room.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sue",
+      "translation": "sudga bermoq",
+      "definition": "To sue is to take someone to court.",
+      "example": "He sued the company for the accident.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

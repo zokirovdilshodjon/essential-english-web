@@ -1,0 +1,146 @@
+{
+  "unit": 4,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "appropriate",
+      "translation": "mos, to'g'ri",
+      "definition": "right or normal for a situation",
+      "example": "It's appropriate to wear a suit when you go to the office.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "avoid",
+      "translation": "yaqinlashmaslik",
+      "definition": "to stay away from something",
+      "example": "Avoid the broken bottle on the floor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "behave",
+      "translation": "o'zini tutmoq",
+      "definition": "to act in a particular way",
+      "example": "She always behaves well when her father is around.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "calm",
+      "translation": "hotirjam",
+      "definition": "not getting excited or upset",
+      "example": "A nice warm bath makes me feel so calm.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "concern",
+      "translation": "tashvish, g'am",
+      "definition": "a feeling of worry",
+      "example": "I was filled with concern after reading the newspaper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "content",
+      "translation": "hursand, shod",
+      "definition": "happy and not wanting more",
+      "example": "The baby looked very content sitting on the floor.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "expect",
+      "translation": "umid qilmoq, kutmoq",
+      "definition": "to believe something will happen",
+      "example": "I expect the bus to be here very soon.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "frequently",
+      "translation": "tez-tez",
+      "definition": "happening often",
+      "example": "We meet frequently, either at the beginning or ending of the week.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "habit",
+      "translation": "odat",
+      "definition": "something you do often",
+      "example": "Smoking is a bad habit that can kill you.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "instruct",
+      "translation": "ko'rsatma bermoq",
+      "definition": "to teach someone",
+      "example": "My teacher instructs us in several subjects.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "issue",
+      "translation": "masala, muammo",
+      "definition": "an important topic",
+      "example": "The men spoke about issues that were important to the people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "none",
+      "translation": "hech qancha",
+      "definition": "not any",
+      "example": "He spent all his money. There is none left.",
+      "part_of_speech": "pronoun"
+    },
+    {
+      "word": "patient",
+      "translation": "sabrli, toqatli",
+      "definition": "not becoming angry or upset easily",
+      "example": "I had to be patient and wait until 5 o'clock to leave.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "positive",
+      "translation": "ijobiy",
+      "definition": "good or optimistic",
+      "example": "She has a positive future ahead of her after finishing college.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "punish",
+      "translation": "jazolamoq",
+      "definition": "to make someone suffer for breaking rules",
+      "example": "To punish me, my teacher had me stand in the corner.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "represent",
+      "translation": "vakil bo'lmoq",
+      "definition": "to speak or act for a person or group",
+      "example": "My lawyer will represent me in court.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shake",
+      "translation": "silkitmoq, siltamoq",
+      "definition": "to move back and forth quickly",
+      "example": "When people shake hands, it usually means they agree.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spread",
+      "translation": "tarqatmoq, surkamoq",
+      "definition": "to move quickly to more places",
+      "example": "I like to spread butter on my toast.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stroll",
+      "translation": "sayir qilmoq",
+      "definition": "to walk slowly and calmly",
+      "example": "My dog and I strolled through the park today.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "village",
+      "translation": "qishloq",
+      "definition": "a very small town",
+      "example": "There are only a few houses in my village.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 17,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aim",
+      "translation": "maqsad",
+      "definition": "An aim is a goal or something you want to do.",
+      "example": "My aim is to become a doctor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "attach",
+      "translation": "biriktirmoq",
+      "definition": "To attach something is to put it together with something else.",
+      "example": "I attached the photo to the email.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bet",
+      "translation": "garov bog'lamoq",
+      "definition": "To bet is to risk money on the result of a game or event.",
+      "example": "I bet my brother that I would win the race.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "carriage",
+      "translation": "arava",
+      "definition": "A carriage is a vehicle pulled by a horse.",
+      "example": "The king and queen rode in a golden carriage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "classic",
+      "translation": "klassik",
+      "definition": "If something is classic, it is typical or has been popular for a long time.",
+      "example": "I enjoy reading classic novels.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "commute",
+      "translation": "ishga qatnamoq",
+      "definition": "To commute is to travel a long distance to get to work.",
+      "example": "He commutes to the city by train every day.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "confirm",
+      "translation": "tasdiqlamoq",
+      "definition": "To confirm is to say that something is definitely true.",
+      "example": "The doctor confirmed that the girl was healthy.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "criticize",
+      "translation": "tanqid qilmoq",
+      "definition": "To criticize is to say what is wrong with something or someone.",
+      "example": "He criticized my choice of clothes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "differ",
+      "translation": "farq qilmoq",
+      "definition": "To differ is to be different from something else.",
+      "example": "The two brothers differ in many ways.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "expense",
+      "translation": "xarajat",
+      "definition": "An expense is the money that you spend on something.",
+      "example": "The expense of the trip was more than I expected.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "formal",
+      "translation": "rasmiy",
+      "definition": "If something is formal, it is done in an official or serious way.",
+      "example": "It was a formal dinner, so I wore a suit.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "height",
+      "translation": "balandlik",
+      "definition": "Height is how tall someone or something is.",
+      "example": "The wall was three meters in height.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "invent",
+      "translation": "ixtiro qilmoq",
+      "definition": "To invent is to create something for the first time.",
+      "example": "Thomas Edison invented the light bulb.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "junior",
+      "translation": "kichik (yosh/lavozim)",
+      "definition": "If someone is junior, they have a low rank in an organization.",
+      "example": "He is a junior doctor at the hospital.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "labor",
+      "translation": "mehnat",
+      "definition": "Labor is hard work, usually physical work.",
+      "example": "Building the house required a lot of labor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mechanic",
+      "translation": "mexanik",
+      "definition": "A mechanic is someone who fixes machines or cars.",
+      "example": "The mechanic fixed my car's engine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prime",
+      "translation": "asosiy/eng muhim",
+      "definition": "If something is prime, it is the most important or of the best quality.",
+      "example": "The prime reason for his success was hard work.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "shift",
+      "translation": "smena",
+      "definition": "A shift is a period of time when people work.",
+      "example": "I worked the night shift at the hospital.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "signal",
+      "translation": "ishora/belgi",
+      "definition": "A signal is a sound or action that gives a message.",
+      "example": "The whistle was a signal for the game to start.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sincere",
+      "translation": "samimiy",
+      "definition": "When people are sincere, they tell the truth and mean what they say.",
+      "example": "He gave me a sincere apology.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

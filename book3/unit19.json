@@ -1,0 +1,146 @@
+{
+  "unit": "19",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bench",
+      "translation": "o'rindiq",
+      "definition": "A bench is a long seat for two or more people.",
+      "example": "Most parks have benches for citizens to relax upon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "confront",
+      "translation": "duch kelmoq, qarshi chiqmoq",
+      "definition": "To confront a hard situation or person is to deal with it.",
+      "example": "The couple has to confront each other about their problems.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "daisy",
+      "translation": "moychechak",
+      "definition": "A daisy is a small flower with white petals and a yellow center.",
+      "example": "There were a few daisies growing in the field.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dispute",
+      "translation": "bahs, nizo",
+      "definition": "A dispute is an argument or disagreement that people have.",
+      "example": "Karen and Brian often have disputes about silly things.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "horror",
+      "translation": "dahshat, qo'rqinch",
+      "definition": "Horror is a feeling of being very afraid or shocked.",
+      "example": "The girl screamed in horror when she saw the spider.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "incident",
+      "translation": "voqea, hodisa",
+      "definition": "An incident is an event that is usually unpleasant.",
+      "example": "The police are investigating the incident.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mist",
+      "translation": "tuman",
+      "definition": "Mist is a thin fog that is near the ground.",
+      "example": "The mountain was covered in mist.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "object",
+      "translation": "e'tiroz bildirmoq",
+      "definition": "To object to something is to say that you do not like it.",
+      "example": "He objected to the new plan.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "orphan",
+      "translation": "yetim",
+      "definition": "An orphan is a child whose parents are dead.",
+      "example": "The orphan lived in an orphanage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plot",
+      "translation": "syujet",
+      "definition": "A plot is the series of events in a story.",
+      "example": "The book had a very interesting plot.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pregnant",
+      "translation": "homilador",
+      "definition": "If a woman is pregnant, she is going to have a baby.",
+      "example": "She is six months pregnant.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rage",
+      "translation": "g'azab, qahr",
+      "definition": "Rage is a feeling of very strong anger.",
+      "example": "He was filled with rage after his car was stolen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "revenge",
+      "translation": "qasos, o'ch",
+      "definition": "Revenge is something you do to hurt someone because they hurt you.",
+      "example": "He wanted revenge after his friend lied to him.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shame",
+      "translation": "uyat, sharmandalik",
+      "definition": "Shame is a feeling of being upset and embarrassed.",
+      "example": "He felt shame for what he had done.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sigh",
+      "translation": "xo'rsinmoq",
+      "definition": "To sigh is to let out a long breath because you are sad or tired.",
+      "example": "She sighed after a long day at work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sneak",
+      "translation": "bildirmasdan yurmoq",
+      "definition": "To sneak is to move quietly and secretly.",
+      "example": "He sneaked into the house late at night.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spare",
+      "translation": "ajratmoq (vaqt, pul)",
+      "definition": "To spare is to give something that you do not need.",
+      "example": "Can you spare some change?",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stem",
+      "translation": "poya",
+      "definition": "A stem is the long, thin part of a plant.",
+      "example": "The flower has a long stem.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "supper",
+      "translation": "kechki ovqat",
+      "definition": "Supper is the meal that people eat in the evening.",
+      "example": "We had chicken for supper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tender",
+      "translation": "yumshoq, mayin",
+      "definition": "If something is tender, it is soft and easy to eat.",
+      "example": "The meat was very tender.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 29,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "advertise",
+      "translation": "reklama qilmoq",
+      "definition": "To advertise is to tell people about something on TV, radio, etc.",
+      "example": "They used a rabbit to help them advertise their product.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "assign",
+      "translation": "vazifa qilib topshirmoq",
+      "definition": "To assign something to someone is to tell them to do it.",
+      "example": "I assigned the worker an important task.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "audience",
+      "translation": "tomoshabinlar",
+      "definition": "An audience is a group of people who watch something together.",
+      "example": "There was a large audience at the game.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "breakfast",
+      "translation": "nonushta",
+      "definition": "Breakfast is the first meal of the day.",
+      "example": "I eat breakfast at 8:00 every morning.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "competition",
+      "translation": "musobaqa, raqobat",
+      "definition": "A competition is a contest to see who is the best at something.",
+      "example": "He won the running competition over the weekend.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cool",
+      "translation": "salqin",
+      "definition": "If the weather is cool, it is a little bit cold.",
+      "example": "The weather is cool in the fall.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gain",
+      "translation": "orttirmoq, ega bo'lmoq",
+      "definition": "If you gain something, you get more of it.",
+      "example": "I gained some weight over the summer.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "importance",
+      "translation": "muhimlik, ahamiyat",
+      "definition": "Importance means the quality or condition of being needed or valued.",
+      "example": "VIPs are people of great importance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "knowledge",
+      "translation": "bilim",
+      "definition": "Knowledge is information that you have about something.",
+      "example": "A music teacher should have good knowledge of music.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "major",
+      "translation": "asosiy, muhim, yirik",
+      "definition": "If something is major, it is big or important.",
+      "example": "I have a major problem. My boss wants me to redo my project!",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mean",
+      "translation": "pastkash, berahm",
+      "definition": "Mean describes someone who is unkind or cruel.",
+      "example": "My co-worker is a very mean person. He gets angry very quickly.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "prefer",
+      "translation": "afzal ko'rmoq",
+      "definition": "If you prefer something, you want it more than something else.",
+      "example": "I prefer to take the path that will lead me to a bright future.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "president",
+      "translation": "prezident",
+      "definition": "A president is the leader of a country.",
+      "example": "The president of our country made an important announcement.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "progress",
+      "translation": "o'sish, rivojlanish",
+      "definition": "Progress is the act of getting closer to doing or finishing something.",
+      "example": "Our company made financial progress this year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "respect",
+      "translation": "hurmat qilmoq, hurmat",
+      "definition": "Respect is a good opinion of someone because they are good.",
+      "example": "I have great respect for firemen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rich",
+      "translation": "boy, badavlat",
+      "definition": "If you are rich, you have a lot of money.",
+      "example": "He’s rich. He can buy anything he wants.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "skill",
+      "translation": "mahorat, qobiliyat",
+      "definition": "A skill is the knowledge and ability that allows you to do something well.",
+      "example": "A snowboarder must have the right skills to do well.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "somehow",
+      "translation": "qandaydir yo'l bilan",
+      "definition": "Somehow means in a way or by some means which is not known.",
+      "example": "He somehow had to find a way to reach the life preserver.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "strength",
+      "translation": "kuch, quvvat",
+      "definition": "Strength is the physical power that you have.",
+      "example": "Exercising will increase your strength and give you more power.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vote",
+      "translation": "ovoz bermoq",
+      "definition": "To vote is to officially choose between two or more things.",
+      "example": "I voted for Billy to be our class president.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

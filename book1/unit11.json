@@ -1,0 +1,146 @@
+{
+  "unit": 11,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "anymore",
+      "translation": "endi, boshqa (inkor gapda)",
+      "definition": "Anymore means any longer.",
+      "example": "Her old pants don't fit her anymore.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "asleep",
+      "translation": "uxlayotgan",
+      "definition": "When a person is asleep, they are not awake.",
+      "example": "The baby has been asleep for three hours.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "berry",
+      "translation": "reza meva",
+      "definition": "A berry is a small, soft fruit that grows on a bush.",
+      "example": "The ran is berry good.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "collect",
+      "translation": "to'plamoq, yig'moq",
+      "definition": "To collect is to group things together.",
+      "example": "I collected shells when I was at the beach.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "compete",
+      "translation": "musobaqalashmoq",
+      "definition": "To compete is to try to be better than someone else.",
+      "example": "He will compete with a lot of people in the race.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "conversation",
+      "translation": "suhbat",
+      "definition": "A conversation is a talk between people.",
+      "example": "There were two people having a conversation.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "creature",
+      "translation": "maxluq, jonzot",
+      "definition": "A creature is any living thing.",
+      "example": "The creature from the movie was very scary.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "decision",
+      "translation": "qaror",
+      "definition": "A decision is a choice.",
+      "example": "He made the right decision to go to school.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "either",
+      "translation": "yo u, yo bu",
+      "definition": "Either is used with or to show a choice.",
+      "example": "You can have either ice cream or cake.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "forest",
+      "translation": "o'rmon",
+      "definition": "A forest is a place with many trees.",
+      "example": "The forest was very quiet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ground",
+      "translation": "yer",
+      "definition": "The ground is the top part of the earth.",
+      "example": "The ground was covered with snow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "introduce",
+      "translation": "tanishtirmoq",
+      "definition": "To introduce is to say who someone is.",
+      "example": "I introduced my friends to my parents.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "marry",
+      "translation": "turmush qurmoq",
+      "definition": "To marry is to become husband and wife.",
+      "example": "Rose and Jack got married.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "prepare",
+      "translation": "tayyorlanmoq",
+      "definition": "To prepare is to get ready for something.",
+      "example": "I prepared my food before I went to work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sail",
+      "translation": "suzyoqda suzmoq",
+      "definition": "To sail is to travel on water in a boat.",
+      "example": "I like to sail my boat on the lake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "serious",
+      "translation": "jiddiy",
+      "definition": "If something is serious, it is bad or dangerous.",
+      "example": "The car accident was very serious.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "spend",
+      "translation": "sarflamoq",
+      "definition": "To spend is to use money or time.",
+      "example": "I spent a lot of money on my car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "strange",
+      "translation": "g'alati, noodatiy",
+      "definition": "If something is strange, it is not normal.",
+      "example": "There was a strange smell in the kitchen.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "truth",
+      "translation": "haqiqat",
+      "definition": "The truth is a fact or something that is right.",
+      "example": "He always tells the truth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wake",
+      "translation": "uyg'onmoq",
+      "definition": "To wake is to stop sleeping.",
+      "example": "I woke up early this morning.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

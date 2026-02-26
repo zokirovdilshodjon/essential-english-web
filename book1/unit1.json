@@ -1,0 +1,146 @@
+{
+  "unit": 1,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "afraid",
+      "translation": "qo'rqqan, cho'chigan",
+      "definition": "feeling fear or anxiety",
+      "example": "The woman was afraid of what she saw.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "agree",
+      "translation": "fikriga qo'shilmoq",
+      "definition": "to say yes or think the same way",
+      "example": "I agree with you about the restaurant.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "angry",
+      "translation": "jahli chiqqan",
+      "definition": "feeling or showing anger",
+      "example": "She didn't do her homework, so her father is angry.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "arrive",
+      "translation": "yetib kelmoq",
+      "definition": "to get to or reach a place",
+      "example": "The bus always arrives at the corner of my street at 4:00.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "attack",
+      "translation": "hujum qilmoq",
+      "definition": "to try to fight or hurt",
+      "example": "The man with the sword attacked the other man first.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bottom",
+      "translation": "tagi, pasti",
+      "definition": "the lowest part",
+      "example": "The bottom of my shoe has a hole in it.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "clever",
+      "translation": "aqilli, ziyrak",
+      "definition": "able to solve problems or learn quickly",
+      "example": "The clever boy thought of a good idea.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cruel",
+      "translation": "shafqatsiz",
+      "definition": "causing pain or suffering to others",
+      "example": "The cruel man yelled at his sister.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "finally",
+      "translation": "ahiyri, vanihoyat",
+      "definition": "after a long time or at the end",
+      "example": "He finally crossed the finish line after five hours of running.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "hide",
+      "translation": "yashirinmoq",
+      "definition": "to put or keep out of sight",
+      "example": "The other children will hide while you count to 100.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hunt",
+      "translation": "ov qilmoq",
+      "definition": "to look for or search for an animal to kill",
+      "example": "Long ago, people hunted with bows and arrows.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lot",
+      "translation": "juda ko'p",
+      "definition": "a large number or amount",
+      "example": "There are a lot of apples in the basket.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "middle",
+      "translation": "o'rta, markaz",
+      "definition": "the center or halfway point",
+      "example": "The Canadian flag has a maple leaf in the middle of it.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "moment",
+      "translation": "sekund, on",
+      "definition": "a very short time",
+      "example": "I was only a few moments late for the meeting.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pleased",
+      "translation": "hursand, mamnun",
+      "definition": "happy or satisfied",
+      "example": "She was pleased with the phone call she received.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "promise",
+      "translation": "va'da bermoq",
+      "definition": "to say you will do something for sure",
+      "example": "He promised to return my key by tomorrow.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reply",
+      "translation": "javob bermoq",
+      "definition": "to give an answer",
+      "example": "She asked him what time his meeting was. He replied, at three.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "safe",
+      "translation": "hafsiz, behatar",
+      "definition": "not in danger",
+      "example": "Put on your seat belt in the car to be safe.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "trick",
+      "translation": "hiyla, nayrang",
+      "definition": "something done to fool another person",
+      "example": "His card trick really surprised us.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "well",
+      "translation": "yaxshi",
+      "definition": "in a good way",
+      "example": "The couple can dance quite well.",
+      "part_of_speech": "adverb"
+    }
+  ]
+}

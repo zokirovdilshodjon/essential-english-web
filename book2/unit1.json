@@ -1,0 +1,146 @@
+{
+  "unit": 1,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "anxious",
+      "translation": "xavotirlangan, tashvishlangan",
+      "definition": "When a person is anxious, they worry that something bad will happen.",
+      "example": "She was anxious about not making her appointment on time.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "awful",
+      "translation": "juda yomon",
+      "definition": "When something is awful, it is very bad.",
+      "example": "Her performance last night was awful.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "consist",
+      "translation": "iborat bo'lmoq",
+      "definition": "To consist of is to be made of parts or things.",
+      "example": "Today's choices for lunch consisted of pizza, hamburgers, and hot dogs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "desire",
+      "translation": "xoxlamoq, istamoq",
+      "definition": "To desire is to want something.",
+      "example": "My sister desires a big house and lots of money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "eager",
+      "translation": "chanqoq, sabrsiz",
+      "definition": "When a person is eager about something, they are excited about it.",
+      "example": "The man was eager to talk about the good news.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "household",
+      "translation": "oila a'zolari",
+      "definition": "A household is all the people who live in one house.",
+      "example": "Our household is made up of my father, my mother and me.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "intent",
+      "translation": "niyat, maqsad",
+      "definition": "An intent is a plan to do something.",
+      "example": "Her intent is to visit Italy next summer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "landscape",
+      "translation": "landshaft, manzara",
+      "definition": "A landscape is how an area of land looks.",
+      "example": "The landscape of the country is very green.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lift",
+      "translation": "ko'tarmoq",
+      "definition": "To lift something is to move it higher.",
+      "example": "The man tried to lift the box.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "load",
+      "translation": "yuklamoq",
+      "definition": "To load is to put objects into something.",
+      "example": "The man loaded the boxes into a truck.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lung",
+      "translation": "o'pka",
+      "definition": "A lung is the organ in the body that fills with air when breathing.",
+      "example": "Having strong lungs is necessary for a healthy life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "motion",
+      "translation": "ishora, harakat",
+      "definition": "A motion is a movement that someone makes.",
+      "example": "The police officer made a motion with his hand.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pace",
+      "translation": "temp, sur'at",
+      "definition": "The pace of something is the speed at which it happens.",
+      "example": "I ran the race at a slower pace than my friend.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "polite",
+      "translation": "odobli, aql-xushli",
+      "definition": "When someone is polite, they are acting in a thoughtful way.",
+      "example": "The boy was very polite: he behaved very thoughtfully.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "possess",
+      "translation": "egalik qilmoq, bor bo'lmoq",
+      "definition": "To possess something is to have it or own it.",
+      "example": "My uncle possesses three sheep, a chicken, a cow and a dog.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rapidly",
+      "translation": "juda tez",
+      "definition": "When something happens rapidly, it happens very fast.",
+      "example": "The train moved rapidly on the tracks.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "remark",
+      "translation": "ta'kidlamoq",
+      "definition": "To remark is to say something.",
+      "example": "The teacher remarked on how quickly the students were learning.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "seek",
+      "translation": "qidirmoq, izlamoq",
+      "definition": "To seek is to look for something.",
+      "example": "If I have a problem, I seek my sister's advice.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shine",
+      "translation": "nur taratmoq",
+      "definition": "To shine is to make a bright light.",
+      "example": "The candles are shining in the dark room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "spill",
+      "translation": "to'kmoq, to'kib yubormoq",
+      "definition": "To spill is to have something fall out of its container.",
+      "example": "I spilled the coffee on the table.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

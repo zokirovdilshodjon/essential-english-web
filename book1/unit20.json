@@ -1,0 +1,146 @@
+{
+  "unit": 20,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "achieve",
+      "translation": "erishmoq",
+      "definition": "To achieve something is to successfully do it after trying hard.",
+      "example": "I was happy that I could achieve my goal.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "advise",
+      "translation": "maslahat bermoq",
+      "definition": "To advise someone is to tell them what to do.",
+      "example": "My mother often advises people about their money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "already",
+      "translation": "allaqachon",
+      "definition": "If something happens already, it happens before a certain time.",
+      "example": "It is already time for the movie to start. Let’s go in.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "basic",
+      "translation": "asosiy, oddiy",
+      "definition": "If something is basic, it is very simple or easy.",
+      "example": "I learned some basic English skills in school today.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bit",
+      "translation": "ozgina, biroz",
+      "definition": "A bit is a small amount of something.",
+      "example": "I ate a bit of chocolate before I went to bed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "consider",
+      "translation": "o'ylab ko'rmoq, hisobga olmoq",
+      "definition": "To consider something means to think about it.",
+      "example": "Pete didn’t like his job. He considered getting a new one.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "destroy",
+      "translation": "vayron qilmoq",
+      "definition": "To destroy means to damage something so badly that it cannot be used.",
+      "example": "The glass was destroyed.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "entertain",
+      "translation": "ko'nglini olmoq, xursand qilmoq",
+      "definition": "To entertain someone is to do something that they enjoy.",
+      "example": "The clown entertained the kids at the party.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "extra",
+      "translation": "qo'shimcha",
+      "definition": "If something is extra, it is more than what is needed.",
+      "example": "The squirrel had extra nuts for the winter.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "goal",
+      "translation": "maqsad",
+      "definition": "A goal is something you work toward.",
+      "example": "Her goal was to become a doctor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lie",
+      "translation": "yolg'on gapirmoq",
+      "definition": "To lie is to say or write something untrue to deceive someone.",
+      "example": "Whenever Pinocchio lied to his father, his nose grew.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "meat",
+      "translation": "go'sht",
+      "definition": "Meat is food made of animals.",
+      "example": "This piece of meat I’m eating tastes very good.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "opinion",
+      "translation": "fikr, mulohaza",
+      "definition": "An opinion is a thought about a person or thing.",
+      "example": "Meg gave me her opinion of my new dress.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "real",
+      "translation": "haqiqiy",
+      "definition": "If something is real, it actually exists.",
+      "example": "Some people don’t believe in ghosts because they aren’t real.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "reflect",
+      "translation": "aks ettirmoq",
+      "definition": "To reflect is when a surface sends back light, heat, sound or an image.",
+      "example": "Her face was reflected in the smooth lake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "regard",
+      "translation": "deb hisoblamoq, qaramoq",
+      "definition": "To regard someone or something is to think of them in a certain way.",
+      "example": "The boy regards the girl as a good friend.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "serve",
+      "translation": "xizmat qilmoq",
+      "definition": "To serve someone is to give them food or drinks.",
+      "example": "He served us our drinks with a smile.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "vegetable",
+      "translation": "sabzavot",
+      "definition": "A vegetable is a plant used as food.",
+      "example": "Carrots are my favorite vegetable.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "war",
+      "translation": "urush",
+      "definition": "A war is a big fight between two or more groups of people.",
+      "example": "Many young men died in the war.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "worth",
+      "translation": "arziydigan, qiymatga ega",
+      "definition": "If something is worth an amount of money, it costs that amount.",
+      "example": "Our house is worth a lot of money.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

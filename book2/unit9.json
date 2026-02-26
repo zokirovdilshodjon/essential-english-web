@@ -1,0 +1,146 @@
+{
+  "unit": 9,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "admire",
+      "translation": "qoyil qolmoq, havas qilmoq",
+      "definition": "To admire someone is to like them for what they do.",
+      "example": "I admire my brother for his hard work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "aid",
+      "translation": "yordam bermoq",
+      "definition": "To aid someone is to help them when they need something.",
+      "example": "The doctor aided the boy after his accident.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "attempt",
+      "translation": "harakat qilmoq",
+      "definition": "To attempt something is to try to do that thing.",
+      "example": "I am attempting to learn English.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "authority",
+      "translation": "vakolat, hokimiyat",
+      "definition": "Authority is the power that someone has because of their position.",
+      "example": "The policeman has authority on the streets.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "capital",
+      "translation": "poytaxt",
+      "definition": "A capital is an important city where a country’s leaders live and work.",
+      "example": "We will visit the capital to learn about our government.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cooperate",
+      "translation": "hamkorlik qilmoq",
+      "definition": "To cooperate is to work together to do something.",
+      "example": "The students cooperated to clean up the classroom.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "defend",
+      "translation": "himoya qilmoq",
+      "definition": "To defend someone or something is to protect them from attack.",
+      "example": "The soldiers defended the town from the invaders.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "destruction",
+      "translation": "vayronagarchilik",
+      "definition": "Destruction is damage to something so bad that it can’t be fixed.",
+      "example": "After the big fire, there was much destruction in the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disorder",
+      "translation": "tartibsizlik",
+      "definition": "Disorder is a lack of order, or a complete mess.",
+      "example": "The classroom was in a state of disorder.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "division",
+      "translation": "bo'linish, qism",
+      "definition": "A division is the act of separating something into different parts.",
+      "example": "The division of the money was fair.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enable",
+      "translation": "imkoniyat bermoq",
+      "definition": "To enable someone is to make it possible for them to do something.",
+      "example": "The new law enabled people to get more help.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "frustrate",
+      "translation": "hafsalasini pir qilmoq, rejalarini buzmoq",
+      "definition": "To frustrate someone is to prevent them from doing something or making them feel annoyed.",
+      "example": "The broken car frustrated his travel plans.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "govern",
+      "translation": "boshqarmoq",
+      "definition": "To govern is to control the way a country or city is run.",
+      "example": "The king governs the country.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "plenty",
+      "translation": "ko'p, yetarli",
+      "definition": "If you have plenty of something, you have more than enough.",
+      "example": "We have plenty of food for everyone.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "relieve",
+      "translation": "yengillashtirmoq",
+      "definition": "To relieve something bad means to make it less bad.",
+      "example": "The medicine relieved his headache.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reputation",
+      "translation": "obro', reputatsiya",
+      "definition": "Reputation is the opinion that people have about someone.",
+      "example": "He has a reputation for being a very hard worker.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "royal",
+      "translation": "qirollik",
+      "definition": "If something is royal, it belongs to or is connected with a king or queen.",
+      "example": "The royal family lives in the palace.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "slave",
+      "translation": "qul",
+      "definition": "A slave is a person who is owned by another person and forced to work for no money.",
+      "example": "Many years ago, there were many slaves.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "struggle",
+      "translation": "kurashmoq",
+      "definition": "To struggle is to try very hard to do something difficult.",
+      "example": "He struggled to carry the heavy box.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stupid",
+      "translation": "ahmoq, tentak",
+      "definition": "If someone is stupid, they are not smart.",
+      "example": "It was a stupid mistake.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

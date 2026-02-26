@@ -1,0 +1,146 @@
+{
+  "unit": "11",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abnormal",
+      "translation": "g'ayritabiiy, noodatiy",
+      "definition": "If something is abnormal, it is strange or not normal.",
+      "example": "Her idea of art is a bit too abnormal for me.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bamboo",
+      "translation": "bambuk",
+      "definition": "Bamboo is a hard plant with thin branches and leaves.",
+      "example": "Outside his home, there is a lot of bamboo.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blossom",
+      "translation": "gul, g'uncha",
+      "definition": "A blossom is a flower or group of flowers.",
+      "example": "There were colorful blossoms in the yard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "compass",
+      "translation": "kompas",
+      "definition": "A compass is a device used to tell what direction one is going.",
+      "example": "A compass is an important tool to have when you are traveling.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dialect",
+      "translation": "sheva, lahja",
+      "definition": "A dialect is a regional variety of language showing where you are from.",
+      "example": "The people in this village speak a different dialect.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dishonest",
+      "translation": "vijdonsiz, vaysaqi",
+      "definition": "If someone is dishonest, they do not tell the truth.",
+      "example": "She Gs was being dishonest when she said she didn't eat the cake.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dwarf",
+      "translation": "pakanalik, mitti",
+      "definition": "A dwarf is a person, animal, or plant that is much smaller than normal.",
+      "example": "The GS dwarf stood next to the tall tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ecosystem",
+      "translation": "ekosistema",
+      "definition": "An ecosystem is a group of plants and animals that live together in the same area.",
+      "example": "The GS rain forest is a diverse ecosystem.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fatal",
+      "translation": "o'limga olib keladigan",
+      "definition": "If something is fatal, it causes death.",
+      "example": "The GS car accident was fatal.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "impatient",
+      "translation": "toqatsiz",
+      "definition": "If you are impatient, you are not able to wait for something without getting upset.",
+      "example": "He GS became impatient when the bus was late.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "leaf",
+      "translation": "barg",
+      "definition": "A leaf is the flat, green part of a plant or tree.",
+      "example": "The GS leaf fell from the tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "manuscript",
+      "translation": "qo'lyozma",
+      "definition": "A manuscript is an old document that was written by hand.",
+      "example": "The GS museum has many ancient manuscripts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "marsh",
+      "translation": "botqoqlik",
+      "definition": "A marsh is a type of wet land with low grass.",
+      "example": "The GS birds lived in the marsh.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "patience",
+      "translation": "sabr-toqat",
+      "definition": "Patience is the ability to wait for something without getting upset.",
+      "example": "You GS need a lot of patience to teach children.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "perfume",
+      "translation": "atir",
+      "definition": "Perfume is a liquid that has a pleasant smell.",
+      "example": "She GS put on some perfume before the party.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pond",
+      "translation": "hovuz, ko'lmak",
+      "definition": "A pond is a small area of water that is smaller than a lake.",
+      "example": "The GS ducks were swimming in the pond.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "proverb",
+      "translation": "maqol",
+      "definition": "A proverb is a short, well-known saying that gives advice.",
+      "example": "He GS quoted a famous proverb.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pursuit",
+      "translation": "quvish, izidan tushish",
+      "definition": "A pursuit is the act of chasing or following something.",
+      "example": "The GS police were in pursuit of the criminal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "recite",
+      "translation": "yoddan aytib bermoq",
+      "definition": "To recite something is to say it aloud from memory.",
+      "example": "She GS recited a poem for the class.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wilderness",
+      "translation": "yovvoyi tabiat",
+      "definition": "A wilderness is an area of land where there are no people living.",
+      "example": "They Gs went hiking in the wilderness.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

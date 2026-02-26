@@ -1,0 +1,146 @@
+{
+  "unit": 18,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "ability",
+      "translation": "qobiliyat",
+      "definition": "Ability is the quality of being able to do something.",
+      "example": "This program helps students improve their writing ability.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "agriculture",
+      "translation": "qishloq xo'jaligi",
+      "definition": "Agriculture is the growing of food and raising of animals.",
+      "example": "The country’s economy depends on agriculture.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cartoon",
+      "translation": "multfilm",
+      "definition": "A cartoon is a funny drawing.",
+      "example": "Sometimes, people draw cartoons of famous people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ceiling",
+      "translation": "shift",
+      "definition": "A ceiling is the top part of a room inside a building.",
+      "example": "He stood on a chair to reach the ceiling.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convince",
+      "translation": "ishontirmoq",
+      "definition": "To convince is to make someone believe that something is true.",
+      "example": "She convinced me to buy the house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "curious",
+      "translation": "qiziquvchan",
+      "definition": "When people are curious, they want to learn about something.",
+      "example": "I opened the box because I was curious about what was inside.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "delay",
+      "translation": "kechiktirmoq",
+      "definition": "To delay is to wait until a later time to do something.",
+      "example": "I was delayed at the airport for over two hours.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "diary",
+      "translation": "kundalik",
+      "definition": "A diary is a book in which you write your personal experiences.",
+      "example": "I do not let anyone read my diary.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "element",
+      "translation": "element/qism",
+      "definition": "An element is a particular part of something.",
+      "example": "Taxes are an important element of the economy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "faith",
+      "translation": "ishonch/e'tiqod",
+      "definition": "Faith is a strong belief or trust in something or someone.",
+      "example": "The people had faith that their leader would help them.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grain",
+      "translation": "don/g'alla",
+      "definition": "Grain is food crops such as wheat, corn, or rice.",
+      "example": "The farmer planted grain in his field.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "greet",
+      "translation": "salomlashmoq",
+      "definition": "To greet is to say hello to someone or welcome them.",
+      "example": "She greeted me with a smile.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "investigate",
+      "translation": "o'rganmoq/tadqiq qilmoq",
+      "definition": "To investigate is to search for or learn the facts about something.",
+      "example": "The police are investigating the crime.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "joy",
+      "translation": "quvonch",
+      "definition": "Joy is a feeling of great happiness.",
+      "example": "I felt a lot of joy when I found out I passed the test.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "label",
+      "translation": "yorliq",
+      "definition": "A label is a tag that gives information about something.",
+      "example": "The label on the bottle said that it was poisonous.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "monk",
+      "translation": "rohib",
+      "definition": "A monk is a religious man who lives in a monastery.",
+      "example": "The monks pray many times a day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "odd",
+      "translation": "g'alati",
+      "definition": "When something is odd, it is unusual or strange.",
+      "example": "Her dress was a little odd.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "pause",
+      "translation": "to'xtamoq/tanaffus qilmoq",
+      "definition": "To pause is to stop doing something for a short time.",
+      "example": "She paused for a moment to catch her breath.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "priest",
+      "translation": "ruhony",
+      "definition": "A priest is a person trained to perform religious duties.",
+      "example": "The priest gave a speech at the church.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "profession",
+      "translation": "kasb",
+      "definition": "A profession is a person’s job.",
+      "example": "He is a doctor by profession.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

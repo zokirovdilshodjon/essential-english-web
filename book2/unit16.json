@@ -1,0 +1,146 @@
+{
+  "unit": 16,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "chamber",
+      "translation": "xona (yotoqxona)",
+      "definition": "A chamber is an old word for a bedroom.",
+      "example": "The king stayed in his chamber to rest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deny",
+      "translation": "inkor etmoq",
+      "definition": "To deny something is to say it is not true.",
+      "example": "The boy denied that he broke the window.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "document",
+      "translation": "hujjat",
+      "definition": "A document is an official piece of writing.",
+      "example": "He signed the document to finish the deal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "emphasize",
+      "translation": "ta'kidlamoq",
+      "definition": "To emphasize is to give importance or attention to something.",
+      "example": "The teacher emphasized the importance of hard work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fever",
+      "translation": "isitma",
+      "definition": "A fever is a high body temperature.",
+      "example": "He had a fever, so he stayed in bed all day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flu",
+      "translation": "gripp",
+      "definition": "The flu is a common illness that makes you feel tired and weak.",
+      "example": "Many people get the flu in the winter.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "freeze",
+      "translation": "muzlamoq",
+      "definition": "To freeze is to become very cold or turn into ice.",
+      "example": "If the water gets cold enough, it will freeze.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "gesture",
+      "translation": "imo-ishora",
+      "definition": "A gesture is a movement of the hands or body to express an idea.",
+      "example": "He made a hand gesture to say hello.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "interrupt",
+      "translation": "xalaqit bermoq",
+      "definition": "To interrupt is to stop someone when they are talking or doing something.",
+      "example": "Please do not interrupt me while I am working.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "last",
+      "translation": "davom etmoq",
+      "definition": "To last is to continue for a period of time.",
+      "example": "The movie lasted for two hours.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "likeness",
+      "translation": "o'xshashlik",
+      "definition": "Likeness is the state of being similar or looking like someone else.",
+      "example": "There is a strong likeness between the two brothers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "moreover",
+      "translation": "bundan tashqari",
+      "definition": "Moreover is used to add more information to what has been said.",
+      "example": "It’s a nice car. Moreover, it’s not very expensive.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "perspective",
+      "translation": "nuqtayi nazar",
+      "definition": "A perspective is a way of thinking about or looking at something.",
+      "example": "The trip gave me a new perspective on life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rational",
+      "translation": "oqilona",
+      "definition": "When something is rational, it is based on reason or logic.",
+      "example": "It is not rational to be afraid of the dark.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "recover",
+      "translation": "sog'aymoq",
+      "definition": "To recover is to get well after being ill or injured.",
+      "example": "It took her a long time to recover from her cold.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rely",
+      "translation": "ishonmoq, tayanmoq",
+      "definition": "To rely on something or someone is to trust or depend on them.",
+      "example": "I rely on my alarm clock to wake me up.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shock",
+      "translation": "hayrat",
+      "definition": "Shock is a feeling of being very surprised or upset.",
+      "example": "The news of the accident was a big shock to us.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shy",
+      "translation": "uyatchan",
+      "definition": "When people are shy, they are nervous about meeting or talking to people.",
+      "example": "The shy girl did not want to speak to the class.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stare",
+      "translation": "tikilib qaramoq",
+      "definition": "To stare is to look at something for a long time with eyes wide open.",
+      "example": "I stared at the painting for a long time.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "thus",
+      "translation": "shunday qilib",
+      "definition": "Thus is used to mean “as a result” or “in this way.”",
+      "example": "He studied hard. Thus, he got a good grade.",
+      "part_of_speech": "adverb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 19,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alive",
+      "translation": "tirik",
+      "definition": "If someone or something is alive, they are not dead.",
+      "example": "My grandmother is still alive at ninety-six.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bone",
+      "translation": "suyak",
+      "definition": "A bone is a hard part of the body.",
+      "example": "I brought home a nice bone for my dog.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bother",
+      "translation": "harakat qilmoq, urinmoq",
+      "definition": "To bother is to make the effort to do something.",
+      "example": "No one bothered to wash the dishes today.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "captain",
+      "translation": "kapitan, sardor",
+      "definition": "A captain is the person who leads a ship or airplane.",
+      "example": "The captain sailed his ship to Australia.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conclusion",
+      "translation": "xulosa, yakun",
+      "definition": "The conclusion is the last part of something.",
+      "example": "At the conclusion of the race, the spectators cheered for the winner.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "doubt",
+      "translation": "shubha, gumon",
+      "definition": "Doubt is a feeling of not being sure.",
+      "example": "I have doubt that the story is true.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "explore",
+      "translation": "tadqiq qilmoq, o'rganmoq",
+      "definition": "To explore is to look for new places.",
+      "example": "He loves to explore old caves.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "foreign",
+      "translation": "xorijiy, chet el",
+      "definition": "If something is foreign, it is from a different country.",
+      "example": "He has travelled to many foreign countries.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "glad",
+      "translation": "xursand",
+      "definition": "If you are glad, you are happy.",
+      "example": "I am glad you came to my party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "however",
+      "translation": "biroq, shunga qaramay",
+      "definition": "However means despite or not being limited by something.",
+      "example": "She is a great cook; however, she never had formal training.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "injustice",
+      "translation": "adolatsizlik",
+      "definition": "Injustice is a lack of fairness or justice.",
+      "example": "Putting an innocent person in jail is an injustice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "international",
+      "translation": "xalqaro",
+      "definition": "If something is international, it involves more than one country.",
+      "example": "The United Nations is an international organization.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lawyer",
+      "translation": "advokat, yurist",
+      "definition": "A lawyer is a person who works with the law.",
+      "example": "The lawyer left the courthouse after the judge made a decision.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mention",
+      "translation": "aytib o'tmoq, eslatmoq",
+      "definition": "To mention something is to speak about it.",
+      "example": "The doctor mentioned that I should eat more fruit.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "policy",
+      "translation": "siyosat, qoida",
+      "definition": "A policy is a rule.",
+      "example": "He told us that his policy was to put customers first.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "social",
+      "translation": "ijtimoiy",
+      "definition": "If something is social, it is about many people in a community.",
+      "example": "People should come together and help the world with social problems.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "speech",
+      "translation": "nutq",
+      "definition": "A speech is something said to a group of people.",
+      "example": "She gave a great speech about helping people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "staff",
+      "translation": "xodimlar, shtat",
+      "definition": "A staff is a group of people who work for a business.",
+      "example": "The staff at the hotel were very nice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "toward",
+      "translation": "tomon, -ga qarab",
+      "definition": "If you go toward something, you go closer to it.",
+      "example": "Santa Claus went toward the house and then up the chimney.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "wood",
+      "translation": "yog'och",
+      "definition": "Wood is the thing that trees are made of.",
+      "example": "I put the wood into the fire.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

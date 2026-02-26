@@ -1,0 +1,146 @@
+{
+  "unit": "2",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "acquire",
+      "translation": "orttirmoq, ega bo'lmoq",
+      "definition": "To acquire something is to gain possession of it.",
+      "example": "Tina acquired a strange package yesterday.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "awkward",
+      "translation": "noqulay, xijolatli",
+      "definition": "If something is awkward, it is embarrassing and uncomfortable.",
+      "example": "After dropping his coffee cup, Robbie felt awkward.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "caretaker",
+      "translation": "g'amxo'r, qarovchi",
+      "definition": "A caretaker is a person who takes care of very young, old, or sick people.",
+      "example": "My grandmother’s caretaker helps her get around the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deceive",
+      "translation": "aldamoq",
+      "definition": "To deceive someone is to make them believe something that is not true.",
+      "example": "He tried to deceive his friends as they were playing a game.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "discourage",
+      "translation": "shashtidan tushirmoq",
+      "definition": "To discourage someone is to make them feel less confident.",
+      "example": "Mr. Perry discouraged the students from quitting school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fake",
+      "translation": "soxta, qalbaki",
+      "definition": "If something is fake, it is made to look real in order to trick people.",
+      "example": "The image of the ghost was obviously fake.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hatred",
+      "translation": "nafrat",
+      "definition": "Hatred is a strong feeling of not liking someone or something.",
+      "example": "I have a lot of hatred for people who mistreat animals.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hut",
+      "translation": "kulba",
+      "definition": "A hut is a small house made of wood, grass, or mud.",
+      "example": "We all went into the hut to get out of the rain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inferior",
+      "translation": "past, sifatsiz",
+      "definition": "If something is inferior, it is not as good as something else.",
+      "example": "Cars built a hundred years ago are inferior to modern ones.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "lodge",
+      "translation": "kichik uy",
+      "definition": "A lodge is a house used by people who hunt or fish.",
+      "example": "The log cabin was a great place for a lodge.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "neglect",
+      "translation": "e'tiborsiz qoldirmoq",
+      "definition": "To neglect someone or something is to not take care of them properly.",
+      "example": "William neglected his health, so he got sick.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "newcomer",
+      "translation": "yangi kelgan kishi",
+      "definition": "A newcomer is a person who has recently arrived at a place.",
+      "example": "The students welcomed the newcomer to the school.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "offense",
+      "translation": "xafagarchilik, qonunbuzarlik",
+      "definition": "An offense is behavior that is wrong or breaks a law.",
+      "example": "Stealing a car is a very serious offense.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "overlook",
+      "translation": "e'tibor bermaslik",
+      "definition": "To overlook something is to not notice it or to not realize how important it is.",
+      "example": "He overlooked the mistake he had made.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "repay",
+      "translation": "qaytarib to'lamoq",
+      "definition": "To repay is to pay back or to reward someone or something.",
+      "example": "She repaid her friend for all of his help.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ridiculous",
+      "translation": "be'mani, kulgili",
+      "definition": "If something is ridiculous, it is silly or strange.",
+      "example": "Steve looked ridiculous in those oversized clothes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "satisfactory",
+      "translation": "qoniqarli",
+      "definition": "If something is satisfactory, it is good enough.",
+      "example": "Mina’s performance was satisfactory but not amazing.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "shepherd",
+      "translation": "cho'pon",
+      "definition": "A shepherd is a person who looks after sheep.",
+      "example": "The shepherd moved the sheep to another field.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "venture",
+      "translation": "tavakkal qilmoq",
+      "definition": "To venture is to go to a place that may be dangerous.",
+      "example": "Even though it was dark, we ventured into the forest.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wheat",
+      "translation": "bug'doy",
+      "definition": "Wheat is a plant which is used to make flour for bread.",
+      "example": "The field of golden wheat looked beautiful.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

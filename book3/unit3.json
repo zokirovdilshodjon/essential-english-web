@@ -1,0 +1,146 @@
+{
+  "unit": "3",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alley",
+      "translation": "tor ko'cha",
+      "definition": "An alley is a narrow road behind houses or buildings.",
+      "example": "The GS we walked through the alley to the back of the building.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ax",
+      "translation": "bolta",
+      "definition": "An ax is a tool used to cut wood.",
+      "example": "She used an ax to cut some wood for the fire.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bunch",
+      "translation": "dasta, guldasta",
+      "definition": "A bunch is a group of the same things.",
+      "example": "She was hungry, so she ate the entire bunch of grapes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chore",
+      "translation": "uy yumushi",
+      "definition": "A chore is a job that you have to do but don’t like.",
+      "example": "It’s Nikki’s chore to do the dishes every Tuesday night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "decent",
+      "translation": "tuzuk, munosib",
+      "definition": "When something is decent, it is OK or good enough.",
+      "example": "Eric did a decent job of painting the fence.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "disgrace",
+      "translation": "sharmandalik",
+      "definition": "Disgrace is a feeling of shame.",
+      "example": "He felt a sense of disgrace after failing his big exam.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "elbow",
+      "translation": "tirsak",
+      "definition": "The elbow is the middle part of a person’s arm.",
+      "example": "She pointed to her elbow.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grateful",
+      "translation": "minnatdor",
+      "definition": "When you are grateful, you are happy with something you have received.",
+      "example": "The Gs she was grateful to her friend for the gift.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "irritate",
+      "translation": "asabga tegmoq",
+      "definition": "To irritate someone means to annoy them.",
+      "example": "She was irritated by the loud noise.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "kid",
+      "translation": "hazillashmoq",
+      "definition": "To kid is to make a joke to make someone believe something which is not true.",
+      "example": "I am not lying; I am just kidding.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "loose",
+      "translation": "keng, bo'sh",
+      "definition": "When something is loose, it is not held in place tightly.",
+      "example": "The GS the screw was loose, so it fell out.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "offend",
+      "translation": "xafa qilmoq",
+      "definition": "To offend someone means to make them angry or upset.",
+      "example": "They were offended by what she said.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "overnight",
+      "translation": "tun bo'yi",
+      "definition": "When something happens overnight, it happens during the night.",
+      "example": "The GS the plane flew overnight to London.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "persist",
+      "translation": "davom etmoq (qaysarlik bilan)",
+      "definition": "To persist means to keep doing something even when it is hard.",
+      "example": "He persisted in his studies until he finished.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "pine",
+      "translation": "qarag'ay",
+      "definition": "A pine is a type of tree that is tall and has thin leaves.",
+      "example": "There were many pine trees in the forest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scar",
+      "translation": "chandiq",
+      "definition": "A scar is a mark on the skin after a cut has healed.",
+      "example": "The GS he had a scar on his cheek from the accident.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sensation",
+      "translation": "sezgi",
+      "definition": "A sensation is a feeling a person gets from their senses.",
+      "example": "Mom got a sensation of warmth from the fire.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sled",
+      "translation": "chana",
+      "definition": "A sled is a small vehicle used on snow.",
+      "example": "The GS the boy was riding his sled down the hill.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tease",
+      "translation": "teginmoq, ustidan kulmoq",
+      "definition": "To tease someone means to laugh at or make fun of them.",
+      "example": "Jake teased Charlie because he was shorter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "valentine",
+      "translation": "sevgi izhori (xati)",
+      "definition": "A valentine is a card you send to someone you love on February 14th.",
+      "example": "Harry wanted to send a valentine to his girlfriend.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

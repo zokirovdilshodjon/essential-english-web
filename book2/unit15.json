@@ -1,0 +1,146 @@
+{
+  "unit": 15,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "absorb",
+      "translation": "shimib olmoq",
+      "definition": "To absorb a liquid means to take it inside.",
+      "example": "He used a sponge to absorb the water on the floor.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "boss",
+      "translation": "xo'jayin, boshliq",
+      "definition": "A boss is a person in charge of other people at work.",
+      "example": "My boss is a nice person.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "committee",
+      "translation": "qo'mita",
+      "definition": "A committee is a group of people who meet together to make decisions.",
+      "example": "The school’s committee agreed on a new dress code for students.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contract",
+      "translation": "shartnoma",
+      "definition": "A contract is a written agreement between two people.",
+      "example": "The woman signed a contract when she bought the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crew",
+      "translation": "jamoa, ekipaj",
+      "definition": "A crew is a group of workers.",
+      "example": "My father has a crew that helps him build houses.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "devote",
+      "translation": "bag'ishlamoq",
+      "definition": "To devote time to something means to spend a lot of time doing it.",
+      "example": "She devotes two hours a day to playing the piano.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dig",
+      "translation": "kovlamoq",
+      "definition": "To dig is to make a hole in the ground.",
+      "example": "My dog digs in the yard so he can hide his bones.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dine",
+      "translation": "tushlik/kechki ovqat qilmoq",
+      "definition": "To dine means to eat dinner.",
+      "example": "The young couple dined at their home.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "donate",
+      "translation": "ehson qilmoq",
+      "definition": "To donate means to give something to help others.",
+      "example": "He donated money to the charity.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "double",
+      "translation": "ikki baravar",
+      "definition": "To double something is to make it twice as much.",
+      "example": "He doubled his money in one year.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "elevate",
+      "translation": "ko'tarmoq",
+      "definition": "To elevate something is to put it higher.",
+      "example": "He elevated his feet on a chair.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "flavor",
+      "translation": "ta'm, maza",
+      "definition": "A flavor is the taste of something.",
+      "example": "The ice cream has a strawberry flavor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "foundation",
+      "translation": "fond, asos",
+      "definition": "A foundation is a group that helps people.",
+      "example": "The foundation gives money to schools.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "generation",
+      "translation": "avlod",
+      "definition": "A generation is a group of people born around the same time.",
+      "example": "My grandfather's generation was very hard-working.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "handle",
+      "translation": "tutqich, boshqarmoq",
+      "definition": "A handle is a part of something that you use to carry it.",
+      "example": "The door handle was broken.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "layer",
+      "translation": "qatlam",
+      "definition": "A layer is a thickness of something.",
+      "example": "There was a layer of dust on the table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mud",
+      "translation": "loy",
+      "definition": "Mud is wet dirt.",
+      "example": "His shoes were covered in mud.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "smooth",
+      "translation": "tekis, silliq",
+      "definition": "If something is smooth, it has no bumps.",
+      "example": "The skin on the baby was very smooth.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "soil",
+      "translation": "tuproq",
+      "definition": "Soil is the top layer of the Earth.",
+      "example": "We planted the flowers in the soil.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "unique",
+      "translation": "yagona, o'ziga xos",
+      "definition": "If something is unique, it is the only one of its kind.",
+      "example": "Her dress was unique and very beautiful.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

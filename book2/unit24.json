@@ -1,0 +1,146 @@
+{
+  "unit": 24,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "bath",
+      "translation": "vanna / cho'milish",
+      "definition": "A bath is water in a tub. People take a bath to get clean.",
+      "example": "After playing in the dirt, the boy took a bath.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bend",
+      "translation": "egilmoq / bukmoq",
+      "definition": "To bend is to move something so it is not straight.",
+      "example": "Lee bent over to pick up the paper.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "chew",
+      "translation": "chaynamoq",
+      "definition": "To chew is to move your mouth to break up food.",
+      "example": "I chewed my food carefully before swallowing it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disabled",
+      "translation": "nogiron",
+      "definition": "When a person is disabled, they cannot do what a normal person can do.",
+      "example": "The disabled man used a wheelchair to get around.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fantastic",
+      "translation": "ajoyib / daxshatli",
+      "definition": "If something is fantastic, it is very good.",
+      "example": "The weather was fantastic, so we went to the beach.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fiction",
+      "translation": "badiiy to'qima / fantastika",
+      "definition": "Fiction is a story that is not true.",
+      "example": "I enjoy reading works of fiction because they are very creative.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flag",
+      "translation": "bayroq",
+      "definition": "A flag is a piece of colored cloth that represents something.",
+      "example": "Our country has a beautiful flag.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "inspect",
+      "translation": "tekshirmoq / ko'zdan kechirmoq",
+      "definition": "To inspect is to look at something carefully.",
+      "example": "The boy inspected the coin he found on the ground.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "journal",
+      "translation": "jurnal / kundalik",
+      "definition": "A journal is a type of magazine that comes out regularly.",
+      "example": "He publishes his work in a medical journal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "liquid",
+      "translation": "suyuqlik",
+      "definition": "A liquid is a substance that is neither solid nor gas.",
+      "example": "Water is the most important liquid for life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "marvel",
+      "translation": "hayratlanmoq",
+      "definition": "To marvel at something is to feel surprise and interest in it.",
+      "example": "We marveled at the beautiful sunset.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nutrient",
+      "translation": "oziqlantiruvchi modda",
+      "definition": "A nutrient is something that a living thing needs to keep it alive.",
+      "example": "Vegetables are full of important nutrients.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "overcome",
+      "translation": "yengib o'tmoq",
+      "definition": "To overcome a problem is to successfully fix it.",
+      "example": "She overcame her fear of heights.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "recall",
+      "translation": "eslamoq",
+      "definition": "To recall something is to remember it.",
+      "example": "She was unable to recall what happened in the accident.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "regret",
+      "translation": "afsuslanmoq",
+      "definition": "To regret is to feel sorry about something you did.",
+      "example": "I regret that I didn't study harder for the test.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "soul",
+      "translation": "ruh",
+      "definition": "A soul is a person’s spirit.",
+      "example": "Some people believe that the soul lives on after the body dies.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sufficient",
+      "translation": "yetarli",
+      "definition": "When something is sufficient, it is enough.",
+      "example": "The teacher gave the students sufficient time to finish the test.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "surgery",
+      "translation": "jarrohlik amaliyoti",
+      "definition": "Surgery is medical treatment in which a doctor cuts the body.",
+      "example": "He needed surgery on his knee.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tough",
+      "translation": "qattiq / qiyin",
+      "definition": "If something is tough, it is hard or strong.",
+      "example": "The exam was very tough.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tube",
+      "translation": "trubka / quvur",
+      "definition": "A tube is a pipe through which water or air passes.",
+      "example": "The water pipe was made from a metal tube.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

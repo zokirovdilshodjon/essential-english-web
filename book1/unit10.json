@@ -1,0 +1,146 @@
+{
+  "unit": 10,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "benefit",
+      "translation": "foyda, naf",
+      "definition": "A benefit is a good thing.",
+      "example": "Being able to fly is a good benefit to birds.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "certain",
+      "translation": "ishonchi komil, aniq",
+      "definition": "If you are certain about something, you know it is true.",
+      "example": "I am certain that zebras have stripes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chance",
+      "translation": "imkoniyat, imkon",
+      "definition": "A chance is an opportunity to do something.",
+      "example": "I had a chance to see the Roman Coliseum last summer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "effect",
+      "translation": "effekt, natija",
+      "definition": "An effect is a change made by something else.",
+      "example": "The medicine had a good effect on the boy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "essential",
+      "translation": "muhim, o'ta zarur",
+      "definition": "If something is essential, it is very important and necessary.",
+      "example": "It is essential to have oxygen when you scuba dive.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "far",
+      "translation": "uzoq, olis",
+      "definition": "If something is far, it is not close.",
+      "example": "It’s far going from the east coast to the west coast of America.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "focus",
+      "translation": "diqqatni qaratmoq",
+      "definition": "To focus on something is to think about it and pay attention to it.",
+      "example": "My mom always helps me to focus on my school work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "function",
+      "translation": "vazifa, funksiya",
+      "definition": "The function of something is what it does.",
+      "example": "The function of a flashlight is to help you see in the dark.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grass",
+      "translation": "o't, maysa",
+      "definition": "Grass is the green leaves that cover the ground.",
+      "example": "The grass looked so soft and green.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "guard",
+      "translation": "qo'riqlamoq",
+      "definition": "To guard something is to take care of it.",
+      "example": "The police officer will guard us from any harm.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "image",
+      "translation": "rasm, qiyofa",
+      "definition": "The image of something is a picture of it.",
+      "example": "The image of her eye was very clear.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "immediate",
+      "translation": "tezkor, darhol",
+      "definition": "An immediate response is one that happens very quickly.",
+      "example": "An immediate response to the problem was needed.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "primary",
+      "translation": "asosiy, birinchi darajali",
+      "definition": "If something is primary, it is the most important thing.",
+      "example": "His primary goal is to get a college degree.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "proud",
+      "translation": "mag'rur, faxrlangan",
+      "definition": "If someone is proud, they are happy about something they did.",
+      "example": "She is proud of the picture she painted.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "remain",
+      "translation": "qolmoq",
+      "definition": "To remain is to stay in one place or not change.",
+      "example": "My dog remained in the house while I was gone.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rest",
+      "translation": "dam olmoq",
+      "definition": "To rest is to stop being active while the body gets more energy.",
+      "example": "I rested on the couch after work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "separate",
+      "translation": "alohida, bo'lak",
+      "definition": "If two things are separate, they are not together.",
+      "example": "New York and Los Angeles are in two separate parts of America.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "site",
+      "translation": "joy, o'rin",
+      "definition": "A site is a place where something happens or is located.",
+      "example": "We found the perfect site for our picnic.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tail",
+      "translation": "dum",
+      "definition": "A tail is a part of an animal's body, sticking out from its back.",
+      "example": "Our dog wags its tail when it's happy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trouble",
+      "translation": "muammo, tashvish",
+      "definition": "Trouble is a problem or a difficult situation.",
+      "example": "I have trouble with my homework.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

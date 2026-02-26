@@ -1,0 +1,146 @@
+{
+  "unit": 8,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "broad",
+      "translation": "keng",
+      "definition": "If something is broad, it is wide.",
+      "example": "The river is very long and broad.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bush",
+      "translation": "buta",
+      "definition": "A bush is a plant with many thin branches. It is smaller than a tree.",
+      "example": "My dad and I planted some small bushes around the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "capable",
+      "translation": "qobiliyatli",
+      "definition": "If someone or something is capable of something, they can do it.",
+      "example": "The Olympic athlete is capable of lifting a lot of weight.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cheat",
+      "translation": "aldamoq",
+      "definition": "To cheat is to be dishonest so that you can win or do well.",
+      "example": "They cheated on the test by sharing answers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "concentrate",
+      "translation": "diqqatni jamlamoq",
+      "definition": "To concentrate on someone or something is to give your full attention.",
+      "example": "I could not concentrate on my homework because of the noise.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "conclude",
+      "translation": "xulosa qilmoq",
+      "definition": "To conclude is to arrive at a logical end by looking at evidence.",
+      "example": "I saw the wet grass and concluded that it had rained.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "confident",
+      "translation": "ishonchi komil",
+      "definition": "If you are confident, you are sure of yourself or an outcome.",
+      "example": "I am confident that I will pass the test.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "considerable",
+      "translation": "sezilarli, anchagina",
+      "definition": "If something is considerable, it is large in size, amount, or extent.",
+      "example": "They made a considerable amount of money.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "convey",
+      "translation": "yetkazmoq (fikr, xabar)",
+      "definition": "To convey is to communicate or make an idea known.",
+      "example": "The artist used color to convey a sense of sadness.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "definite",
+      "translation": "aniq",
+      "definition": "If something is definite, it is certain or clear.",
+      "example": "I have a definite plan for the weekend.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "delight",
+      "translation": "zavq, shodlik",
+      "definition": "Delight is a feeling of very great happiness.",
+      "example": "The children's delight was obvious when they saw the puppies.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "destination",
+      "translation": "manzil",
+      "definition": "A destination is the place where someone or something is going.",
+      "example": "We reached our destination after a long flight.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dictate",
+      "translation": "aytib turib yozdirmoq",
+      "definition": "To dictate is to read or say something aloud so that someone else can write it down.",
+      "example": "The boss dictated a letter to his secretary.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "edge",
+      "translation": "chet, qirra",
+      "definition": "The edge is the part of something where it ends or meets another surface.",
+      "example": "He sat on the edge of the bed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "path",
+      "translation": "yo'lak",
+      "definition": "A path is a track that people walk along.",
+      "example": "We followed the path through the forest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "resort",
+      "translation": "kurort",
+      "definition": "A resort is a place where many people go for a vacation.",
+      "example": "We stayed at a beautiful beach resort.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shadow",
+      "translation": "soya",
+      "definition": "A shadow is the dark shape made when something blocks the light.",
+      "example": "The sun made a long shadow on the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "succeed",
+      "translation": "muvaffaqiyat qozonmoq",
+      "definition": "To succeed is to do something you were trying to do.",
+      "example": "I hope you succeed in your new job.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "suspect",
+      "translation": "shubhalanmoq",
+      "definition": "To suspect is to believe that something is true or that someone did something.",
+      "example": "I suspect that he is lying.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "valley",
+      "translation": "vadiy",
+      "definition": "A valley is an area of low land between mountains or hills.",
+      "example": "The river flows through the valley.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

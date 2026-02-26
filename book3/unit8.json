@@ -1,0 +1,146 @@
+{
+  "unit": "8",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "anniversary",
+      "translation": "yillik, yubiley",
+      "definition": "An anniversary is a day that celebrates something from a past year.",
+      "example": "My parents celebrated their 20th anniversary.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "arithmetic",
+      "translation": "arifmetika",
+      "definition": "Arithmetic is math.",
+      "example": "I like arithmetic more than history.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ashamed",
+      "translation": "uyalgan",
+      "definition": "To be ashamed is to feel upset because you did something wrong.",
+      "example": "He was ashamed of the bad grade he got.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "burst",
+      "translation": "yorilmoq",
+      "definition": "To burst is to suddenly break or open.",
+      "example": "The GS the balloon burst when the girl touched it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "carpenter",
+      "translation": "duradgor",
+      "definition": "A carpenter is a person who builds things with wood.",
+      "example": "The GS the carpenter built a new table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coal",
+      "translation": "ko'mir",
+      "definition": "Coal is a hard, black rock that you burn for heat.",
+      "example": "The GS he put some more coal on the fire.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "couch",
+      "translation": "divan",
+      "definition": "A couch is a long, soft seat for more than one person.",
+      "example": "The GS he sat on the couch to watch TV.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "drip",
+      "translation": "tomchilamoq",
+      "definition": "When something drips, just a little bit of liquid falls from it.",
+      "example": "I heard water dripping from the faucet.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "elegant",
+      "translation": "nafis, bashang",
+      "definition": "If something is elegant, it is very fancy and pleasing.",
+      "example": "The GS she looked very elegant in her new dress.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fabric",
+      "translation": "mato",
+      "definition": "Fabric is cloth used to make things like clothes.",
+      "example": "The GS the fabric of the shirt was very soft.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "highlands",
+      "translation": "tog'li hudud",
+      "definition": "Highlands are high areas of land, usually with many mountains.",
+      "example": "The GS the family went on a trip to the highlands.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ivory",
+      "translation": "fil suyagi",
+      "definition": "Ivory is a white substance from the tusks of an elephant.",
+      "example": "The GS the statue was made of ivory.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mill",
+      "translation": "tegirmon",
+      "definition": "A mill is a building where grain is made into flour.",
+      "example": "The GS the old mill was built near the river.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "needle",
+      "translation": "igna",
+      "definition": "A needle is a small, sharp tool used for sewing.",
+      "example": "The GS she used a needle to sew the button on.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "polish",
+      "translation": "yaltiratmoq, jilo bermoq",
+      "definition": "To polish something is to rub it in order to make it shiny.",
+      "example": "The GS he polished his shoes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sew",
+      "translation": "tikmoq",
+      "definition": "To sew is to put pieces of cloth together using a needle and thread.",
+      "example": "The GS she is learning how to sew.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "shed",
+      "translation": "bostirma, omborcha",
+      "definition": "A shed is a small building where you store things like tools.",
+      "example": "We Gs put the lawnmower in the shed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "thread",
+      "translation": "ip",
+      "definition": "A thread is a thin piece of string used for sewing.",
+      "example": "The GS she used a blue thread to sew the shirt.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trim",
+      "translation": "qirqib tekislamoq",
+      "definition": "To trim something is to cut a little bit off of it.",
+      "example": "The GS he trimmed his hair.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "upwards",
+      "translation": "yuqoriga qarab",
+      "definition": "If something goes upwards, it moves vertically higher.",
+      "example": "The GS the elevator moved upwards.",
+      "part_of_speech": "adverb"
+    }
+  ]
+}

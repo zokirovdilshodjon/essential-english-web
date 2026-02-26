@@ -1,0 +1,146 @@
+{
+  "unit": 3,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alien",
+      "translation": "o'zga sayyoralik",
+      "definition": "a creature from a different world",
+      "example": "The alien came in peace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "among",
+      "translation": "orasida, ichida",
+      "definition": "surrounded by or in the middle of",
+      "example": "There was a red apple among the green ones.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "chart",
+      "translation": "grafik jadval, diagramma",
+      "definition": "a list of information",
+      "example": "We used a chart to see how we had improved.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cloud",
+      "translation": "bulut",
+      "definition": "a group of water drops in the sky",
+      "example": "The sky was filled with white clouds.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "comprehend",
+      "translation": "tushunmoq",
+      "definition": "to understand something",
+      "example": "Henry could not comprehend the message.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "describe",
+      "translation": "ta'riflamoq",
+      "definition": "to say what someone or something is like",
+      "example": "They described their tree as colorful with gold ribbon and a star.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ever",
+      "translation": "qachon bo'lsa ham",
+      "definition": "at any time",
+      "example": "Going skiing last winter was the most fun I've ever had.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "fail",
+      "translation": "muvaffaqiyatsizlikka uchramoq",
+      "definition": "to not succeed in what you try to do",
+      "example": "Since he failed to get the job, he was sad.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "friendly",
+      "translation": "do'stona, mehribon",
+      "definition": "behaving in a pleasant, kind way",
+      "example": "The friendly animals came up to the girl.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "grade",
+      "translation": "baho",
+      "definition": "a score or mark given to someone's work",
+      "example": "I managed to get good grades on my report card.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "instead",
+      "translation": "o'rniga",
+      "definition": "in place of",
+      "example": "He ate the carrot instead of the ice cream.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "library",
+      "translation": "kutubxona",
+      "definition": "a place where you go to read books",
+      "example": "The library at school is full of books.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "planet",
+      "translation": "sayyora",
+      "definition": "a large round thing in space",
+      "example": "Saturn is the planet with the ring around it.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "report",
+      "translation": "hisobot",
+      "definition": "something students write for school",
+      "example": "Karen had trouble writing her report.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "several",
+      "translation": "bir nechta, bir talay",
+      "definition": "more than two but not many",
+      "example": "He had to read several books for class.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "solve",
+      "translation": "hal qilmoq, yechmoq",
+      "definition": "to find an answer to something",
+      "example": "All the students could easily solve the math problem.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "suddenly",
+      "translation": "to'satdan, birdaniga",
+      "definition": "happening quickly and unexpectedly",
+      "example": "I was suddenly surprised by the cake my friends brought me.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "suppose",
+      "translation": "faraz qilmoq",
+      "definition": "to guess or think something",
+      "example": "I suppose I should go home now.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "universe",
+      "translation": "olam, koinot",
+      "definition": "all objects in space",
+      "example": "The universe is so large that it cannot be measured.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "view",
+      "translation": "ko'rmoq, qaramoq",
+      "definition": "to look at something",
+      "example": "Michael likes to view himself in the mirror.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

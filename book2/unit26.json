@@ -1,0 +1,146 @@
+{
+  "unit": 26,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "accuse",
+      "translation": "ayblamoq",
+      "definition": "To accuse is to say that someone did something bad.",
+      "example": "She accused him of stealing her favorite pen.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "adjust",
+      "translation": "moslashtirmoq",
+      "definition": "To adjust is to change something slightly to make it better.",
+      "example": "He adjusted his tie before the meeting.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "amuse",
+      "translation": "vaqtini chog' qilmoq",
+      "definition": "To amuse is to make someone laugh or smile.",
+      "example": "The clown amused the children with his tricks.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "coral",
+      "translation": "marjon",
+      "definition": "Coral is a hard substance formed from the skeletons of sea animals.",
+      "example": "The coral reef was a beautiful place to go diving.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cotton",
+      "translation": "paxta",
+      "definition": "Cotton is a soft fiber used to make clothes.",
+      "example": "I prefer wearing clothes made of cotton.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crash",
+      "translation": "to'qnashuv / halokat",
+      "definition": "A crash is a violent accident involving vehicles.",
+      "example": "There was a loud crash on the street outside.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deck",
+      "translation": "paluba",
+      "definition": "A deck is the floor of a ship.",
+      "example": "We stood on the deck and watched the sunset.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "engage",
+      "translation": "band bo'lmoq / jalb qilmoq",
+      "definition": "To engage in something is to take part in it.",
+      "example": "He liked to engage in long conversations.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "firm",
+      "translation": "qattiq / mahkam",
+      "definition": "If something is firm, it is hard and does not move.",
+      "example": "The bed was very firm and comfortable.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fuel",
+      "translation": "yoqilg'i",
+      "definition": "Fuel is something that is burned to produce heat or power.",
+      "example": "The car ran out of fuel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grand",
+      "translation": "hashamatli / ulug'vor",
+      "definition": "When something is grand, it is big and liked by people.",
+      "example": "The grand mountain rose high into the sky.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hurricane",
+      "translation": "dovul / bo'ron",
+      "definition": "A hurricane is a bad storm that happens over the ocean.",
+      "example": "The wind from the hurricane bent the palm tree.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "loss",
+      "translation": "yo'qotish",
+      "definition": "A loss means the act or an instance of losing something.",
+      "example": "I suffered a big loss while I was gambling.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "plain",
+      "translation": "oddiy / bezaksiz",
+      "definition": "If something is simple, it is plain and not decorated.",
+      "example": "He bought a pair of plain white shoes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "reef",
+      "translation": "rif",
+      "definition": "A reef is a line of rocks or coral in the ocean.",
+      "example": "The ship crashed into a coral reef.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shut",
+      "translation": "yopmoq",
+      "definition": "To shut something means to close it tight.",
+      "example": "Please shut the door when you leave.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "strict",
+      "translation": "qattiqqo'l / talabchan",
+      "definition": "If someone is strict, they make sure rules are followed.",
+      "example": "The teacher is very strict about being on time.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "surf",
+      "translation": "serfing bilan shug'ullanmoq",
+      "definition": "To surf is to ride on waves in the ocean.",
+      "example": "He loves to surf when the waves are big.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "task",
+      "translation": "vazifa / topshiriq",
+      "definition": "A task is a piece of work to be done.",
+      "example": "My first task at work was to clean the office.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "zone",
+      "translation": "zona / hudud",
+      "definition": "A zone is an area that has different qualities from others.",
+      "example": "This is a no-parking zone.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

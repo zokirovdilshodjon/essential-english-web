@@ -1,0 +1,146 @@
+{
+  "unit": "23",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aborigine",
+      "translation": "aborigen (Avstraliya tub aholisi)",
+      "definition": "An Aborigine is a native of Australia before Europeans lived there.",
+      "example": "The Aborigines created beautiful artwork.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ban",
+      "translation": "taqiqlamoq",
+      "definition": "To ban something is to not let people do it.",
+      "example": "Smoking is banned in this building.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cautious",
+      "translation": "ehtiyotkor",
+      "definition": "If you are cautious, you are careful in a dangerous situation.",
+      "example": "Be cautious when you are crossing the street.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "confess",
+      "translation": "tan olmoq, iqror bo'lmoq",
+      "definition": "To confess is to say that you did something wrong or bad.",
+      "example": "He confessed to stealing the money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cottage",
+      "translation": "dala hovli, kichik uy",
+      "definition": "A cottage is a small, old-fashioned house.",
+      "example": "They stayed in a little cottage near the beach.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "daytime",
+      "translation": "kunduzi",
+      "definition": "Daytime is the time of day when there is light from the sun.",
+      "example": "I prefer to work during the daytime.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "desperate",
+      "translation": "umidsiz; ashaddiy",
+      "definition": "If you are desperate, you are in a very difficult situation and need help.",
+      "example": "He was desperate for money after losing his job.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fade",
+      "translation": "rangi o'chmoq, xiralashmoq",
+      "definition": "To fade is to become less bright or strong.",
+      "example": "The color of the shirt faded after many washes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fierce",
+      "translation": "shafqatsiz, vahshiy",
+      "definition": "If a person or animal is fierce, they are angry or violent.",
+      "example": "Wolves are fierce animals. Do not disturb them.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gamble",
+      "translation": "qimor o'ynamoq",
+      "definition": "To gamble means to play a game that involves winning or losing money.",
+      "example": "Many people like to go to casinos to gamble.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lawn",
+      "translation": "maysazor",
+      "definition": "A lawn is an area of grass in a garden or park.",
+      "example": "He mowed the lawn on Saturday.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mow",
+      "translation": "o'rmoq (maysani)",
+      "definition": "To mow is to cut grass with a machine.",
+      "example": "He has to mow the grass every week.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "outlaw",
+      "translation": "qonunbuzar, jinoyatchi",
+      "definition": "An outlaw is a person who has broken the law and is hiding from the police.",
+      "example": "The outlaws robbed the bank and ran away.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "prospect",
+      "translation": "imkoniyat, istiqbol",
+      "definition": "A prospect is the possibility that something will happen in the future.",
+      "example": "There is a good prospect of a job for him.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "purse",
+      "translation": "hamyon (ayollar uchun)",
+      "definition": "A purse is a small bag where women keep their money and other things.",
+      "example": "She lost her purse on the bus.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rod",
+      "translation": "tayoq, xoda",
+      "definition": "A rod is a long, thin piece of wood or metal.",
+      "example": "He used a fishing rod to catch a fish.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "seldom",
+      "translation": "kamdan-kam, kam hollarda",
+      "definition": "If something seldom happens, it does not happen often.",
+      "example": "It seldom rains in the desert.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "shave",
+      "translation": "soqol olmoq",
+      "definition": "To shave is to cut the hair on your face or body close to the skin.",
+      "example": "He shaves every morning before work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "terrified",
+      "translation": "juda ham qo'rqqan",
+      "definition": "If you are terrified, you are very scared.",
+      "example": "She was terrified of the big dog.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "wizard",
+      "translation": "sehrgar, afsungar",
+      "definition": "A wizard is a man who has magic powers.",
+      "example": "The wizard used his magic to help the people.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 23,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alike",
+      "translation": "o'xshash",
+      "definition": "If two things are alike, they are similar.",
+      "example": "The two brothers look alike.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "annoy",
+      "translation": "g'ashiga tegmoq",
+      "definition": "To annoy someone is to bother them a little.",
+      "example": "The fly annoyed me while I was trying to sleep.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "architecture",
+      "translation": "arxitektura",
+      "definition": "Architecture is the style or design of a building.",
+      "example": "The architecture of the church is very old.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "artificial",
+      "translation": "sun'iy",
+      "definition": "If something is artificial, it is not natural.",
+      "example": "She put artificial flowers in the vase.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chain",
+      "translation": "zanjir",
+      "definition": "A chain is a series of connected metal rings.",
+      "example": "I put a chain on my bike to keep it safe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "distinct",
+      "translation": "aniq / yaqqol",
+      "definition": "When something is distinct, it is easily noticed.",
+      "example": "There is a distinct difference between the two.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "distinguish",
+      "translation": "farqlamoq",
+      "definition": "To distinguish is to see the difference between things.",
+      "example": "I cannot distinguish between the two colors.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dust",
+      "translation": "chang",
+      "definition": "Dust is tiny pieces of dirt in the air.",
+      "example": "There was a lot of dust on the old books.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "excitement",
+      "translation": "hayajon",
+      "definition": "Excitement is a feeling of being very happy.",
+      "example": "There was a lot of excitement before the party.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "heal",
+      "translation": "sog'aymoq",
+      "definition": "To heal is to become healthy again.",
+      "example": "The wound on my leg healed quickly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inherit",
+      "translation": "meros qilib olmoq",
+      "definition": "To inherit is to get something from someone who has died.",
+      "example": "He inherited a lot of money from his father.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "manner",
+      "translation": "usul / odob",
+      "definition": "A manner is the way that someone does something.",
+      "example": "He answered the question in a polite manner.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mount",
+      "translation": "ko'tarilmoq / minmoq",
+      "definition": "To mount something is to go up or get on it.",
+      "example": "The man mounted his horse and rode away.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "roof",
+      "translation": "tom",
+      "definition": "A roof is the top part of a building.",
+      "example": "The rain made a sound on the roof.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shortage",
+      "translation": "tanqislik",
+      "definition": "A shortage is when there is not enough of something.",
+      "example": "There is a shortage of water in the desert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "solid",
+      "translation": "qattiq",
+      "definition": "If something is solid, it is hard and firm.",
+      "example": "The ice is solid enough to walk on.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stock",
+      "translation": "zaxira",
+      "definition": "A stock is a supply of something.",
+      "example": "We have a large stock of food in the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "substance",
+      "translation": "modda",
+      "definition": "A substance is a type of material.",
+      "example": "Water is a liquid substance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tomb",
+      "translation": "maqbara",
+      "definition": "A tomb is a place where a dead person is buried.",
+      "example": "The king was buried in a grand tomb.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wound",
+      "translation": "jarohat",
+      "definition": "A wound is an injury to the body.",
+      "example": "He had a wound on his arm from the accident.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

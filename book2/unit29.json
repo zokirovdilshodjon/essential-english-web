@@ -1,0 +1,146 @@
+{
+  "unit": 29,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abstract",
+      "translation": "mavhum",
+      "definition": "If ideas are abstract, they are based on general ways of thinking.",
+      "example": "The idea of beauty is abstract.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "annual",
+      "translation": "yillik",
+      "definition": "If something is annual, it happens once a year.",
+      "example": "The town has an annual festival.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "clay",
+      "translation": "gil / loy",
+      "definition": "Clay is a type of heavy, wet soil used to make pots.",
+      "example": "She made a bowl out of clay.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cloth",
+      "translation": "mato",
+      "definition": "Cloth is material used to make clothes.",
+      "example": "His shirt is made of soft cloth.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "curtain",
+      "translation": "parda",
+      "definition": "A curtain is a cloth hung over a window.",
+      "example": "She opened the curtains to let light in.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deserve",
+      "translation": "loyiq bo'lmoq",
+      "definition": "To deserve is to be worthy of something.",
+      "example": "The dog deserved a bone for behaving well.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "feather",
+      "translation": "pat",
+      "definition": "Feathers are the things covering birds’ bodies.",
+      "example": "The bird has colorful feathers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fertile",
+      "translation": "unumdor",
+      "definition": "If land is fertile, it is able to produce good crops.",
+      "example": "The farmer grew many vegetables in the fertile soil.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "flood",
+      "translation": "toshqin",
+      "definition": "A flood is an event in which water covers an area of land.",
+      "example": "The heavy rain caused a flood.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "furniture",
+      "translation": "mebel",
+      "definition": "Furniture is things like tables and chairs.",
+      "example": "We bought some new furniture for the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "grave",
+      "translation": "qabr",
+      "definition": "A grave is the place where a dead person is buried.",
+      "example": "We put flowers on my grandfather's grave.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ideal",
+      "translation": "ideal / juda mos",
+      "definition": "If something is ideal, it is perfect.",
+      "example": "This is an ideal place for a picnic.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "intelligence",
+      "translation": "aql-zakovat",
+      "definition": "Intelligence is the ability to learn and understand.",
+      "example": "She is a woman of great intelligence.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nowadays",
+      "translation": "hozirgi kunda",
+      "definition": "Nowadays means at the present time.",
+      "example": "Nowadays, many people use the Internet.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "obtain",
+      "translation": "qo'lga kiritmoq",
+      "definition": "To obtain something is to get it.",
+      "example": "I need to obtain a passport before I travel.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "religious",
+      "translation": "diniy",
+      "definition": "If someone is religious, they have a belief in a god.",
+      "example": "He is a very religious man.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "romantic",
+      "translation": "romantik",
+      "definition": "If something is romantic, it is related to love.",
+      "example": "They had a romantic dinner.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "shell",
+      "translation": "chig'anoq",
+      "definition": "A shell is the hard outer part of a sea animal.",
+      "example": "I found a beautiful shell on the beach.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shore",
+      "translation": "qirg'oq",
+      "definition": "A shore is the land along the edge of an ocean.",
+      "example": "We walked along the shore at sunset.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wheel",
+      "translation": "g'ildirak",
+      "definition": "A wheel is a round thing on a car or bike.",
+      "example": "The car has four wheels.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

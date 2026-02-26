@@ -1,0 +1,146 @@
+{
+  "unit": 2,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adventure",
+      "translation": "sarguzasht",
+      "definition": "a fun or exciting experience",
+      "example": "Riding in the rough water was an adventure.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "approach",
+      "translation": "yaqin kelmoq",
+      "definition": "to move close to something",
+      "example": "The boy approached his school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "carefully",
+      "translation": "e'tibor bilan",
+      "definition": "with great attention to detail or safety",
+      "example": "The baby carefully climbed down the stairs.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "chemical",
+      "translation": "kimyoviy modda",
+      "definition": "a substance used in chemistry",
+      "example": "The scientist mixed the chemicals.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "create",
+      "translation": "yaratmoq, yasamoq",
+      "definition": "to make something new",
+      "example": "She created an igloo from blocks of snow.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "evil",
+      "translation": "yomon, yovuz",
+      "definition": "very bad or cruel",
+      "example": "The evil figure scared us all.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "experiment",
+      "translation": "tajriba, sinov",
+      "definition": "a test to see what will happen",
+      "example": "The student did an experiment in science class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "kill",
+      "translation": "o'ldirmoq",
+      "definition": "to make someone or something die",
+      "example": "I killed the fly with a fly swatter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "laboratory",
+      "translation": "labaratoriya",
+      "definition": "a room where a scientist works",
+      "example": "My mother works in a laboratory.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "laugh",
+      "translation": "kulgi",
+      "definition": "the sound made when happy",
+      "example": "The sound of their laugh filled the room.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "loud",
+      "translation": "shovqinli, baland",
+      "definition": "making a lot of noise",
+      "example": "The man's voice was so loud that we all could hear him.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nervous",
+      "translation": "xavotirlangan",
+      "definition": "worried that something bad will happen",
+      "example": "The boy became nervous when he heard the news.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "noise",
+      "translation": "shovqin",
+      "definition": "an unpleasant sound",
+      "example": "The crying baby made a loud noise.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "project",
+      "translation": "loyiha, yumush",
+      "definition": "work done for school or a job",
+      "example": "His afternoon work project was to paint the room green.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scare",
+      "translation": "qo'rqitmoq",
+      "definition": "to make someone feel afraid",
+      "example": "My uncle was scared by what he saw in the room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "secret",
+      "translation": "sir",
+      "definition": "something not told to others",
+      "example": "The two boys were sharing a secret.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "shout",
+      "translation": "baqirmoq, qichqirmoq",
+      "definition": "to say something loudly",
+      "example": "My boss shouted at me because I was late for work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "smell",
+      "translation": "hidlamoq",
+      "definition": "to sense with your nose",
+      "example": "The two friends smelled the flower.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "terrible",
+      "translation": "juda yomon",
+      "definition": "very bad",
+      "example": "The way he treated his classmate was terrible.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "worse",
+      "translation": "yomonroq",
+      "definition": "of poorer quality than another",
+      "example": "Business was worse this month than last month.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

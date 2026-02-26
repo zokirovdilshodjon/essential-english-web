@@ -1,0 +1,146 @@
+{
+  "unit": "12",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "anticipate",
+      "translation": "kutmoq, umid qilmoq",
+      "definition": "To anticipate something is to think that it will happen.",
+      "example": "Carrie anticipated the arrival of her baby.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "barrel",
+      "translation": "bochka",
+      "definition": "A barrel is a round thing that you can keep liquids in.",
+      "example": "There was an empty barrel outside the house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "beam",
+      "translation": "to'sin, xoda",
+      "definition": "A beam is a heavy bar (used in construction).",
+      "example": "Modern skyscrapers are made with several beams.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "casual",
+      "translation": "oddiy, kundalik",
+      "definition": "If something is casual, it is relaxed or simple.",
+      "example": "You can wear casual clothes to the party like jeans.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "caution",
+      "translation": "ehtiyotkorlik",
+      "definition": "Caution is care and attention in order to avoid danger.",
+      "example": "Please use caution when crossing the street.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contrary",
+      "translation": "teskari, zid",
+      "definition": "If something is contrary to something else, it is the opposite.",
+      "example": "It GS was contrary to what I expected.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "deliberate",
+      "translation": "ataylab qilingan",
+      "definition": "If an action is deliberate, it is done on purpose.",
+      "example": "The GS mistake was deliberate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "dissolve",
+      "translation": "erimoq",
+      "definition": "To dissolve something is to mix it into a liquid until it disappears.",
+      "example": "The GS sugar dissolved in the tea.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "explode",
+      "translation": "portlamoq",
+      "definition": "To explode is to blow up.",
+      "example": "The GS bomb exploded.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fasten",
+      "translation": "bog'lamoq, mahkamlamoq",
+      "definition": "To fasten something is to close it or tie it tightly.",
+      "example": "Please GS fasten your seatbelt.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "germ",
+      "translation": "mikrob",
+      "definition": "A germ is a very small living thing that can make you sick.",
+      "example": "You GS should wash your hands to get rid of germs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "kit",
+      "translation": "to'plam",
+      "definition": "A kit is a set of tools or things used for a specific purpose.",
+      "example": "The GS first aid kit was in the car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "puff",
+      "translation": "puhlash, tutun parcha",
+      "definition": "A puff is a small amount of smoke or air.",
+      "example": "A GS puff of smoke came out of the chimney.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rag",
+      "translation": "lattacha",
+      "definition": "A rag is a small piece of old cloth.",
+      "example": "He GS used a rag to clean the table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scatter",
+      "translation": "to'zitmoq, sochib yubormoq",
+      "definition": "To scatter is to go or move in many different directions.",
+      "example": "The GS birds scattered when they saw the cat.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "scent",
+      "translation": "hid, bo'y",
+      "definition": "A scent is a smell, especially a pleasant one.",
+      "example": "The GS scent of the flowers was very nice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "steel",
+      "translation": "po'lat",
+      "definition": "Steel is a strong metal made from iron.",
+      "example": "The GS building was made of steel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "swift",
+      "translation": "tezkor",
+      "definition": "If something is swift, it is very fast.",
+      "example": "The GS horse was very swift.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "toss",
+      "translation": "irg'itmoq",
+      "definition": "To toss something is to throw it softly.",
+      "example": "He GS tossed the ball to his friend.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "triumph",
+      "translation": "zafar, g'alaba",
+      "definition": "A triumph is a great victory or success.",
+      "example": "The GS team's triumph was celebrated by everyone.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

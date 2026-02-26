@@ -1,0 +1,146 @@
+{
+  "unit": 17,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "appreciate",
+      "translation": "minnatdor bo'lmoq, qadrlamoq",
+      "definition": "To appreciate something is to be able to see its value.",
+      "example": "I can appreciate the lovely scenery.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "available",
+      "translation": "mavjud, bor",
+      "definition": "If something is available, it means you can get it.",
+      "example": "There were many seats available in the room.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "beat",
+      "translation": "urmoq, g'alaba qozonmoq",
+      "definition": "To beat someone means to do better than they do.",
+      "example": "I managed to beat everyone in the race.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bright",
+      "translation": "yorqin, porloq",
+      "definition": "If something is bright, it shows a lot of light.",
+      "example": "The bright light from the sun made me close my eyes.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "celebrate",
+      "translation": "nishonlamoq",
+      "definition": "To celebrate is to do something to show that an event is special.",
+      "example": "We all celebrated when we heard the great news.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "determine",
+      "translation": "aniqlamoq, qaror qilmoq",
+      "definition": "To determine means to choose or make a decision.",
+      "example": "He tried to determine which one to eat first.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "disappear",
+      "translation": "g'oyib bo'lmoq",
+      "definition": "To disappear means to go away or not be seen.",
+      "example": "The ship disappeared behind the big hill.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "else",
+      "translation": "yana, boshqa",
+      "definition": "If you talk about something else, you talk about something different.",
+      "example": "I wanted a bike for my birthday, but I got something else.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fair",
+      "translation": "adolatli",
+      "definition": "Fair describes treating someone in a way that is right or reasonable.",
+      "example": "He sold me his car for a fair price.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "flow",
+      "translation": "oqmoq",
+      "definition": "To flow is to move easily and continuously in one direction.",
+      "example": "The water flowed over the rocks and into the lake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "forward",
+      "translation": "oldinga",
+      "definition": "If you move forward, you move in the direction in front of you.",
+      "example": "When he can’t find his way, he takes every step forward carefully.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "hill",
+      "translation": "tepalik",
+      "definition": "A hill is a round area of land that is higher than the land around it.",
+      "example": "The sun was rising above the green hills.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "level",
+      "translation": "daraja",
+      "definition": "A level is a point on a scale that measures something.",
+      "example": "Please check the level of the water in the tank.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "lone",
+      "translation": "yolg'iz",
+      "definition": "A lone person or thing is the only one of that kind.",
+      "example": "A lone man walked along the street.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "puddle",
+      "translation": "ko'lmak",
+      "definition": "A puddle is a pool of liquid on the ground.",
+      "example": "When the ice melted, it formed a puddle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "response",
+      "translation": "javob",
+      "definition": "A response is the answer to a question.",
+      "example": "He asked if I was coming, but my response was “no.”",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "season",
+      "translation": "fasl",
+      "definition": "A season is a time of the year: spring, summer, fall or winter.",
+      "example": "Fall is a warm season, while winter is very cold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "solution",
+      "translation": "yechim",
+      "definition": "A solution is a way to solve a problem.",
+      "example": "There are many problems, but only one solution.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "waste",
+      "translation": "isrof qilmoq",
+      "definition": "To waste means to use something carelessly and unnecessarily.",
+      "example": "Turn off the water so you don't waste it.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "whether",
+      "translation": "yoki ... -mi (so'roq)",
+      "definition": "You use whether when you must choose between two things.",
+      "example": "I couldn’t decide whether to go left or right.",
+      "part_of_speech": "conjunction"
+    }
+  ]
+}

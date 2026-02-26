@@ -1,0 +1,146 @@
+{
+  "unit": 22,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alarm",
+      "translation": "trevoga / xavf signali",
+      "definition": "An alarm is something that warns people of danger.",
+      "example": "When the students heard the fire alarm, they left the building.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "apart",
+      "translation": "alohida",
+      "definition": "When people or things are apart, they are not close together.",
+      "example": "The couple decided to live apart from each other.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "arrest",
+      "translation": "hibsga olmoq",
+      "definition": "To arrest someone means to catch them for doing something bad.",
+      "example": "The man was arrested for breaking the law.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "award",
+      "translation": "mukofot",
+      "definition": "An award is a prize someone gets for doing something well.",
+      "example": "He got an award for having the best grades.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "breed",
+      "translation": "zot / tur",
+      "definition": "A breed is a group of animals within a species.",
+      "example": "I have a special breed of dog.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bucket",
+      "translation": "chelak",
+      "definition": "A bucket is a round container used to hold things like water.",
+      "example": "We used a bucket to carry the water.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contest",
+      "translation": "musobaqa",
+      "definition": "A contest is a game or race that people try to win.",
+      "example": "The boy won the spelling contest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "convict",
+      "translation": "mahkum qilmoq",
+      "definition": "To convict someone means to prove that they did a crime.",
+      "example": "The man was convicted of stealing the car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "garage",
+      "translation": "garaj",
+      "definition": "A garage is a part of a house where people keep a car.",
+      "example": "My father put his car in the garage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "journalist",
+      "translation": "jurnalist",
+      "definition": "A journalist is a person who writes news stories.",
+      "example": "The journalist wrote a story about the fire.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pup",
+      "translation": "kuchukcha",
+      "definition": "A pup is a young dog.",
+      "example": "All the pups followed their mother.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "qualify",
+      "translation": "malakaga ega bo'lmoq",
+      "definition": "To qualify is to get the right to do something.",
+      "example": "He qualified for the race by running very fast.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "repair",
+      "translation": "tuzatmoq",
+      "definition": "To repair something is to fix it.",
+      "example": "I repaired my bike after the accident.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "resume",
+      "translation": "qaytadan boshlamoq",
+      "definition": "To resume something means to start it again after a break.",
+      "example": "The game resumed after the rain stopped.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rob",
+      "translation": "talamoq / o'g'irlamoq",
+      "definition": "To rob is to take money or things from a person or place.",
+      "example": "A man tried to rob the bank.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "slip",
+      "translation": "toyib ketmoq",
+      "definition": "To slip is to slide and fall.",
+      "example": "I slipped on the ice and fell down.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "somewhat",
+      "translation": "biroz",
+      "definition": "Somewhat means a little bit.",
+      "example": "The test was somewhat difficult.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "stable",
+      "translation": "otxona",
+      "definition": "A stable is a building where horses are kept.",
+      "example": "The horses were in the stable.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tissue",
+      "translation": "salfetka",
+      "definition": "A tissue is a soft piece of paper.",
+      "example": "I used a tissue to blow my nose.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "yard",
+      "translation": "hovli",
+      "definition": "A yard is an area of land next to a house.",
+      "example": "The kids played in the yard.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

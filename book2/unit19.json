@@ -1,0 +1,146 @@
+{
+  "unit": 19,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "adopt",
+      "translation": "asrab olmoq",
+      "definition": "To adopt is to legally take someone else’s child.",
+      "example": "The girl was adopted by the couple.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "beg",
+      "translation": "yolvormoq/so'ramoq",
+      "definition": "To beg is to ask for something in a very humble way.",
+      "example": "The man begged for some money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "beyond",
+      "translation": "narida/tashqarida",
+      "definition": "Beyond means on the farther side of something.",
+      "example": "The house is just beyond the trees.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "costume",
+      "translation": "kostyum",
+      "definition": "A costume is a set of clothes worn for a particular reason.",
+      "example": "He wore a scary costume for Halloween.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exclaim",
+      "translation": "xitob qilmoq",
+      "definition": "To exclaim is to say something loudly and suddenly.",
+      "example": "“Look!” she exclaimed.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "extend",
+      "translation": "cho'zmoq/kengaytirmoq",
+      "definition": "To extend is to make something longer or larger.",
+      "example": "The table was extended to make room for more people.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fool",
+      "translation": "ahmoq",
+      "definition": "A fool is a person who lacks good judgment or sense.",
+      "example": "The man was a fool for jumping into the cold water.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "forbid",
+      "translation": "taqiqlamoq",
+      "definition": "To forbid is to tell someone they cannot do something.",
+      "example": "The law forbids people to smoke in the building.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "illustrate",
+      "translation": "tasvirlamoq",
+      "definition": "To illustrate is to show the meaning of something using pictures.",
+      "example": "The book was illustrated with many beautiful pictures.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "indeed",
+      "translation": "haqiqatan ham",
+      "definition": "Indeed is used to emphasize that something is true.",
+      "example": "The soup was very good indeed.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "interpret",
+      "translation": "talqin/tarjima qilmoq",
+      "definition": "To interpret is to explain the meaning of something.",
+      "example": "He interpreted the painting as a sign of hope.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "kindly",
+      "translation": "mehribonlik bilan",
+      "definition": "If something is done kindly, it is done in a nice way.",
+      "example": "He kindly offered to help me carry my bags.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "motive",
+      "translation": "sabab/turtki",
+      "definition": "A motive is a reason for doing something.",
+      "example": "The motive for the crime was money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nest",
+      "translation": "uya",
+      "definition": "A nest is a place where a bird lays its eggs.",
+      "example": "The bird made its nest out of sticks and grass.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "origin",
+      "translation": "kelib chiqishi",
+      "definition": "An origin is the beginning of something.",
+      "example": "The origin of the word is Latin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reception",
+      "translation": "qabul qilish",
+      "definition": "A reception is a party held to welcome people.",
+      "example": "The wedding reception was very large.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reject",
+      "translation": "rad etmoq",
+      "definition": "To reject is to refuse to accept or use something.",
+      "example": "She rejected my offer of help.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "silence",
+      "translation": "sukunat",
+      "definition": "Silence is a state of being quiet.",
+      "example": "The teacher asked for silence in the classroom.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stream",
+      "translation": "soy",
+      "definition": "A stream is a small river.",
+      "example": "There is a small stream running through the field.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tone",
+      "translation": "ohang",
+      "definition": "A tone is the sound of someone’s voice.",
+      "example": "I could tell by his tone that he was angry.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

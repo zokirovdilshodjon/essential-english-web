@@ -1,0 +1,146 @@
+{
+  "unit": "28",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "ache",
+      "translation": "og'rimoq",
+      "definition": "To hurt or have pain.",
+      "example": "My head aches because it is loud.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "arctic",
+      "translation": "shimoliy qutbga oid",
+      "definition": "Related to the North Pole.",
+      "example": "It is very cold in the arctic region.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "canal",
+      "translation": "kanal",
+      "definition": "A path for water to travel through.",
+      "example": "The city has many canals for boats.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chemist",
+      "translation": "ximik, dorishunos",
+      "definition": "A scientist who works with chemicals.",
+      "example": "The chemist is testing new medicine.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chill",
+      "translation": "sovuq, qaltiroq",
+      "definition": "A feeling of coldness.",
+      "example": "I felt a chill when I went outside.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "congress",
+      "translation": "kongress",
+      "definition": "A group of leaders who make laws.",
+      "example": "Congress passed a new law today.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dairy",
+      "translation": "sut mahsulotlari",
+      "definition": "Food made from milk.",
+      "example": "Cheese and butter are dairy products.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "descend",
+      "translation": "pastga tushmoq",
+      "definition": "To go down.",
+      "example": "He descended the stairs slowly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grocer",
+      "translation": "baqqol",
+      "definition": "A person who sells food.",
+      "example": "The grocer sold me fresh fruit.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hesitate",
+      "translation": "ikkilanmoq",
+      "definition": "To wait before doing something.",
+      "example": "Don't hesitate to ask for help.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "institution",
+      "translation": "muassasa, tashkilot",
+      "definition": "An organization like a school or bank.",
+      "example": "This is a large financial institution.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "jog",
+      "translation": "sekin yugurmoq",
+      "definition": "To run slowly for exercise.",
+      "example": "I jog every morning in the park.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "merchant",
+      "translation": "savdogar",
+      "definition": "A person who buys and sells things.",
+      "example": "The merchant traveled to many cities.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "poke",
+      "translation": "turtmoq",
+      "definition": "To push with your finger or a tool.",
+      "example": "He poked the fire with a stick.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "postpone",
+      "translation": "keyinga qoldirmoq",
+      "definition": "To do something at a later time.",
+      "example": "They postponed the game until Monday.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "splash",
+      "translation": "shaloqratmoq",
+      "definition": "To make water fly in the air.",
+      "example": "The kids splashed in the pool.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stubborn",
+      "translation": "o'jar, qaysar",
+      "definition": "Not wanting to change your mind.",
+      "example": "He is too stubborn to listen to me.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "suburb",
+      "translation": "shahar atrofi",
+      "definition": "An area where people live outside a city.",
+      "example": "We live in a quiet suburb.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tide",
+      "translation": "suv ko'tarilishi/pasayishi",
+      "definition": "The rise and fall of the ocean.",
+      "example": "The tide comes in every evening.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tragedy",
+      "translation": "fajia",
+      "definition": "A very sad event.",
+      "example": "The accident was a real tragedy.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

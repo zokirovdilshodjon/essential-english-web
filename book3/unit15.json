@@ -1,0 +1,146 @@
+{
+  "unit": "15",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "affair",
+      "translation": "ish, voqea",
+      "definition": "An affair is an event or a thing that happened.",
+      "example": "My wife and I attended a formal affair over the weekend.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "assembly",
+      "translation": "yig'ilish",
+      "definition": "An assembly is a group that is together for the same reason.",
+      "example": "The students had an assembly to talk about their interests.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bless",
+      "translation": "duo qilmoq, yarlaqamoq",
+      "definition": "To bless is to ask God for protection or help.",
+      "example": "The angel blessed the newborn baby to keep it safe.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cereal",
+      "translation": "bo'tqa, kasha",
+      "definition": "Cereal is a food that you mix with milk and eat for breakfast.",
+      "example": "Cereal is a fast and common breakfast food enjoyed in the U.S.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cheerful",
+      "translation": "shod, xursand",
+      "definition": "If someone is cheerful, they are happy and smiling.",
+      "example": "She GS was very cheerful today.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "diameter",
+      "translation": "diametr",
+      "definition": "The diameter is the length of a straight line through the center of a circle.",
+      "example": "The GS diameter of the circle was ten inches.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "exploit",
+      "translation": "foydalanmoq (o'z manfaati uchun)",
+      "definition": "To exploit something is to use it for your own benefit.",
+      "example": "The GS company exploited the natural resources.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "famine",
+      "translation": "ocharchilik",
+      "definition": "A famine is a long period of time with very little food.",
+      "example": "The GS famine caused many people to suffer.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "harvest",
+      "translation": "hosil yig'imi",
+      "definition": "A harvest is the act of gathering crops.",
+      "example": "The GS farmers were busy with the harvest.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "merry",
+      "translation": "shodmon",
+      "definition": "If someone is merry, they are happy and cheerful.",
+      "example": "We GS had a merry time at the party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "nut",
+      "translation": "yong'oq",
+      "definition": "A nut is a dry fruit with a hard shell.",
+      "example": "The GS squirrel was eating a nut.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pardon",
+      "translation": "kechirim",
+      "definition": "A pardon is the act of forgiving someone for a crime.",
+      "example": "The GS king gave him a pardon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pharaoh",
+      "translation": "fir'avn",
+      "definition": "A pharaoh was a king in ancient Egypt.",
+      "example": "The GS pharaoh was buried in a pyramid.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ripe",
+      "translation": "pishgan",
+      "definition": "If a fruit is ripe, it is ready to be eaten.",
+      "example": "The GS apples were ripe and sweet.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "roast",
+      "translation": "qovurmoq (duxovkada)",
+      "definition": "To roast something is to cook it in an oven or over a fire.",
+      "example": "We GS roasted a chicken for dinner.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "routine",
+      "translation": "kun tartibi, odatiy ish",
+      "definition": "A routine is a set of actions that you do regularly.",
+      "example": "My GS morning routine includes exercise.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scheme",
+      "translation": "reja, sxema",
+      "definition": "A scheme is a plan or system.",
+      "example": "The GS company has a new scheme for saving money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "slim",
+      "translation": "xipcha, ozg'in",
+      "definition": "If someone is slim, they are thin.",
+      "example": "She GS is very slim because she exercises every day.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "stove",
+      "translation": "plita, pechka",
+      "definition": "A stove is a piece of equipment used for cooking food.",
+      "example": "The GS stove was very hot.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "theft",
+      "translation": "o'g'rilik",
+      "definition": "A theft is the act of stealing something.",
+      "example": "The GS police are investigating the theft of the car.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

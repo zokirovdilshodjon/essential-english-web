@@ -1,0 +1,146 @@
+{
+  "unit": 13,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "blood",
+      "translation": "qon",
+      "definition": "Blood is the red liquid in your body.",
+      "example": "I cut my finger and got blood on my shirt.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "burn",
+      "translation": "yoqmoq, yonmoq",
+      "definition": "To burn something is to set it on fire.",
+      "example": "I burned some wood in the camp fire.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "cell",
+      "translation": "hujra, xona",
+      "definition": "A cell is a small room where a person is locked in.",
+      "example": "The jail cell was very small.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "contain",
+      "translation": "ichiga olmoq",
+      "definition": "To contain something is to have it inside.",
+      "example": "The mailbox contained a letter.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "correct",
+      "translation": "to'g'ri",
+      "definition": "If something is correct, it is right.",
+      "example": "He gave the correct answer to the question.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "crop",
+      "translation": "hosil",
+      "definition": "A crop is food that is grown by farmers.",
+      "example": "The corn crop was very good this year.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "demand",
+      "translation": "talab qilmoq",
+      "definition": "To demand is to say that you want something.",
+      "example": "I demanded that my money be returned.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "equal",
+      "translation": "teng",
+      "definition": "If two things are equal, they are the same.",
+      "example": "Two plus two equals four.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "feed",
+      "translation": "ovqatlantirmoq",
+      "definition": "To feed is to give food to something.",
+      "example": "I fed the dog.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "hole",
+      "translation": "teshik, chuqur",
+      "definition": "A hole is an empty space in something.",
+      "example": "I dug a hole in the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "increase",
+      "translation": "oshirmoq",
+      "definition": "To increase is to make something larger.",
+      "example": "I increased the volume of the radio.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "lord",
+      "translation": "lord, xo'jayin",
+      "definition": "A lord is a powerful man in old times.",
+      "example": "The lord lived in a large castle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "owe",
+      "translation": "qarzdor bo'lmoq",
+      "definition": "To owe is to have to pay money to someone.",
+      "example": "I owe him some money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "position",
+      "translation": "joylashuv, holat",
+      "definition": "A position is the way someone is sitting or standing.",
+      "example": "I changed my position on the couch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "raise",
+      "translation": "ko'tarmoq",
+      "definition": "To raise is to lift something.",
+      "example": "I raised my hand.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "responsible",
+      "translation": "mas'uliyatli",
+      "definition": "If you are responsible, you do what you should do.",
+      "example": "I am responsible for my own work.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sight",
+      "translation": "ko'rinish, manzara",
+      "definition": "A sight is something you see.",
+      "example": "The Grand Canyon is a beautiful sight.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spot",
+      "translation": "joy, o'rin",
+      "definition": "A spot is a small place.",
+      "example": "I found a good spot for my towel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "structure",
+      "translation": "tuzilma, bino",
+      "definition": "A structure is a building.",
+      "example": "The structure was very old.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "whole",
+      "translation": "butun, hammasi",
+      "definition": "If something is whole, it is all of it.",
+      "example": "I ate the whole pizza.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

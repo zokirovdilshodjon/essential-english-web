@@ -1,0 +1,146 @@
+{
+  "unit": "7",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "abandon",
+      "translation": "tashlab ketmoq",
+      "definition": "To abandon something is to leave it forever or for a long time.",
+      "example": "The old room had been abandoned years ago.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ambitious",
+      "translation": "shijoatli, intiluvchan",
+      "definition": "If you are ambitious, you want to be real successful.",
+      "example": "Kendra had to be ambitious to get into medical school.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "bark",
+      "translation": "vovullamoq",
+      "definition": "When a dog barks, it makes a short, loud noise.",
+      "example": "The dog barked at the stranger.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bay",
+      "translation": "qo'ltiq",
+      "definition": "A bay is an area near the ocean where the land goes inward.",
+      "example": "The GS the boats were anchored in the bay.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brilliant",
+      "translation": "juda aqlli, yorqin",
+      "definition": "If someone is brilliant, they are very smart.",
+      "example": "My Gs sister is a brilliant student.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chin",
+      "translation": "iyak",
+      "definition": "Your chin is the hard part at the bottom of your face.",
+      "example": "Luke put his hand on his chin and thought.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "complaint",
+      "translation": "shikoyat",
+      "definition": "A complaint is something you say when you are unhappy about something.",
+      "example": "Mom Gs said she had a complaint about the service.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deaf",
+      "translation": "kar, eshitmaydigan",
+      "definition": "When someone is deaf, they cannot hear.",
+      "example": "The GS Susan was born deaf.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "enthusiastic",
+      "translation": "g'ayratli, ishtiyoqli",
+      "definition": "To be enthusiastic about something is to be excited by it.",
+      "example": "The GS the children were enthusiastic about going to the zoo.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "expedition",
+      "translation": "ekspeditsiya",
+      "definition": "An expedition is a long trip, usually to a place very few people have been.",
+      "example": "They went on an expedition to the North Pole.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "horizon",
+      "translation": "ufq",
+      "definition": "The horizon is where the sky looks like it meets the ground.",
+      "example": "The GS the sun was sinking below the horizon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "loyal",
+      "translation": "sodiq, vafodor",
+      "definition": "To be loyal to something or someone is to agree to always help them.",
+      "example": "The GS he is a loyal friend.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mayor",
+      "translation": "mer, hokim",
+      "definition": "The mayor is the person in charge of a city.",
+      "example": "The GS the mayor gave a speech to the people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mutual",
+      "translation": "o'zaro",
+      "definition": "If something is mutual, it is felt in the same way by two or more people.",
+      "example": "The GS they have a mutual interest in music.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "overweight",
+      "translation": "vazni og'ir, semiz",
+      "definition": "If someone is overweight, they are heavier than is healthy.",
+      "example": "The GS he became overweight because he ate too much.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "refuge",
+      "translation": "boshpana",
+      "definition": "A refuge is a place where you go to be safe from something.",
+      "example": "When it started to rain, we found refuge in a cave.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "restore",
+      "translation": "tiklamoq",
+      "definition": "To restore something is to fix it or make it the way it was before.",
+      "example": "The GS he restored the old car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rub",
+      "translation": "ishqalamoq",
+      "definition": "To rub something is to push on it with your hand and move it back and forth.",
+      "example": "The GS he rubbed his eyes because he was tired.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "senses",
+      "translation": "sezgi organlari",
+      "definition": "Your senses are how you see, hear, smell, taste and feel things.",
+      "example": "The GS human beings have five senses.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "veterinarian",
+      "translation": "veterinar",
+      "definition": "A veterinarian is a doctor that takes care of animals.",
+      "example": "Wanda became a veterinarian because she loves dogs.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

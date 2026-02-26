@@ -1,0 +1,146 @@
+{
+  "unit": 21,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "astronaut",
+      "translation": "astronavt",
+      "definition": "An astronaut is a person who goes into outer space.",
+      "example": "The astronaut cleaned the space station.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "awake",
+      "translation": "uyg'oq",
+      "definition": "When you are awake, you are not asleep.",
+      "example": "Sometimes I am still awake at midnight.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "courage",
+      "translation": "jasorat",
+      "definition": "Courage is being brave.",
+      "example": "The man had the courage to touch the lion.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "float",
+      "translation": "suzmoq (havoda/suvda)",
+      "definition": "To float is to move on top of water or in the air.",
+      "example": "The bubbles floated in the air.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "grant",
+      "translation": "ruxsat bermoq / bermoq",
+      "definition": "To grant something is to allow someone to have it.",
+      "example": "The teacher granted us a break.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "gravity",
+      "translation": "tortishish kuchi",
+      "definition": "Gravity is the force that makes things fall to Earth.",
+      "example": "Gravity pulls objects toward the ground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "jewel",
+      "translation": "qimmatbaho tosh",
+      "definition": "A jewel is a beautiful stone that is worth a lot of money.",
+      "example": "A diamond is a famous jewel.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "miner",
+      "translation": "shaxtyor",
+      "definition": "A miner is a person who works in a mine.",
+      "example": "The miners worked hard underground.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mineral",
+      "translation": "mineral",
+      "definition": "A mineral is a type of substance found in the Earth.",
+      "example": "Rocks are made of different minerals.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "participate",
+      "translation": "qatnashmoq",
+      "definition": "To participate is to take part in something.",
+      "example": "Everyone participated in the game.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "permission",
+      "translation": "ruxsat",
+      "definition": "Permission is the act of allowing someone to do something.",
+      "example": "I got permission to go to the party.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pour",
+      "translation": "quymoq",
+      "definition": "To pour a liquid means to make it come out of a container.",
+      "example": "I poured some milk into my cereal.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "presence",
+      "translation": "ishtirok / borlik",
+      "definition": "Presence is the state of being in a place.",
+      "example": "Her presence made the room feel brighter.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "raw",
+      "translation": "xom",
+      "definition": "If something is raw, it is not cooked.",
+      "example": "I like to eat raw carrots.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "satellite",
+      "translation": "sun'iy yo'ldosh",
+      "definition": "A satellite is something that is sent into space to get information.",
+      "example": "The satellite sends signals to the TV.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scale",
+      "translation": "tosh-tarozi",
+      "definition": "A scale is something used to measure weight.",
+      "example": "I stepped on the scale to see how much I weighed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "skip",
+      "translation": "tashlab ketmoq / sakramoq",
+      "definition": "To skip is to not do something that you should do.",
+      "example": "I skipped lunch because I was busy.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "stretch",
+      "translation": "cho'zilmoq",
+      "definition": "To stretch is to make your body or an object longer.",
+      "example": "She stretched her arms before the race.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "telescope",
+      "translation": "teleskop",
+      "definition": "A telescope is a tool used to see things far away.",
+      "example": "We used a telescope to look at the stars.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "underground",
+      "translation": "yer osti",
+      "definition": "When something is underground, it is below the surface of the Earth.",
+      "example": "Trains can travel underground.",
+      "part_of_speech": "adverb/adjective"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": "10",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "absence",
+      "translation": "yo'qlik, mavjud emaslik",
+      "definition": "Absence is the state of something being not there.",
+      "example": "The GS absence of rain caused the plants to die.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "aloud",
+      "translation": "ovoz chiqarib",
+      "definition": "If you say something aloud, you say it so that others can hear you.",
+      "example": "The GS the teacher read the story aloud.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "bald",
+      "translation": "kal",
+      "definition": "If someone is bald, they have no hair on their head.",
+      "example": "The GS he became bald as he got older.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "blanket",
+      "translation": "adyol",
+      "definition": "A blanket is a piece of cloth that you use to keep warm while you sleep.",
+      "example": "The GS she put a blanket on the bed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "creep",
+      "translation": "o'rmalamoq, sekin yurmoq",
+      "definition": "To creep is to move quietly and slowly.",
+      "example": "The GS the cat crept toward the mouse.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "divorce",
+      "translation": "ajrashish",
+      "definition": "A divorce is the legal ending of a marriage.",
+      "example": "The GS his parents got a divorce.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "imitate",
+      "translation": "taqlid qilmoq",
+      "definition": "To imitate someone is to do exactly what they do.",
+      "example": "The GS the boy imitated his father.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "infant",
+      "translation": "chaqaloq",
+      "definition": "An infant is a baby.",
+      "example": "The GS the infant was crying.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "kidnap",
+      "translation": "odam o'g'irlamoq",
+      "definition": "To kidnap someone is to take them away by force.",
+      "example": "The GS the men tried to kidnap the child.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nap",
+      "translation": "mizg'ib olmoq",
+      "definition": "A nap is a short sleep, usually during the day.",
+      "example": "The GS he took a nap after lunch.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nowhere",
+      "translation": "hech qayerda",
+      "definition": "Nowhere means no place or not anywhere.",
+      "example": "The GS I looked for my keys, but they were nowhere.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "pat",
+      "translation": "asta urib qo'ymoq",
+      "definition": "To pat something is to hit it softly with your hand.",
+      "example": "The GS she patted the dog on the head.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "relief",
+      "translation": "yengillik",
+      "definition": "Relief is a feeling you get when something bad or painful ends.",
+      "example": "The GS it was a relief to hear that he was safe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reproduce",
+      "translation": "ko'paymoq",
+      "definition": "To reproduce is to make a copy of something or to have a baby.",
+      "example": "The GS some animals reproduce very quickly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rhyme",
+      "translation": "qofiya",
+      "definition": "To rhyme is to have the same sound at the end of a word.",
+      "example": "The GS cat and hat rhyme.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "suck",
+      "translation": "so'rmoq",
+      "definition": "To suck is to put something in your mouth and use your tongue and lips to pull on it.",
+      "example": "The GS the baby was sucking on his thumb.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "urgent",
+      "translation": "shoshilinch",
+      "definition": "If something is urgent, it is very important and needs to be done right away.",
+      "example": "The GS he had an urgent message for the doctor.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "vanish",
+      "translation": "g'oyib bo'lmoq",
+      "definition": "To vanish is to disappear suddenly.",
+      "example": "The GS the bird vanished into the trees.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wagon",
+      "translation": "arava",
+      "definition": "A wagon is a cart used to carry heavy things.",
+      "example": "The GS he used a wagon to carry the wood.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wrinkle",
+      "translation": "ajin",
+      "definition": "A wrinkle is a line on a person's face that happens as they get old.",
+      "example": "The GS she had wrinkles around her eyes.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

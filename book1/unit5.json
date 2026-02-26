@@ -1,0 +1,146 @@
+{
+  "unit": 5,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "aware",
+      "translation": "xabardor, ogoh",
+      "definition": "knowing about something",
+      "example": "I was not aware of the ringing phone.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "badly",
+      "translation": "yomon, jiddiy",
+      "definition": "in a severe or harmful way",
+      "example": "He hurt his arm badly playing with friends.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "belong",
+      "translation": "tegishli bo'lmoq",
+      "definition": "to be owned by someone",
+      "example": "The blue suit belongs to Paul.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "continue",
+      "translation": "davom etmoq/ettirmoq",
+      "definition": "to keep doing something",
+      "example": "She stood under her umbrella as the rain continued to fall.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "error",
+      "translation": "xato",
+      "definition": "something you do wrong; a mistake",
+      "example": "I made an error on my report, so my boss was angry.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "experience",
+      "translation": "taassurot, kechinma",
+      "definition": "something you have seen or done",
+      "example": "Rock climbing was a fun experience.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "field",
+      "translation": "keng maydon, dala",
+      "definition": "a big area of land",
+      "example": "The field of flowers looked so pretty.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hurt",
+      "translation": "jarohatlamoq, jarohat yetkazmoq",
+      "definition": "to cause pain",
+      "example": "She hurt her leg falling down the stairs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "judgment",
+      "translation": "qaror qabul qilish: fikr",
+      "definition": "the ability to form opinions or decisions",
+      "example": "It's good judgment to recycle your aluminum cans.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "likely",
+      "translation": "ehtimol, balki, mumkin",
+      "definition": "probably going to happen",
+      "example": "I will likely stay at home and watch TV tonight.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "normal",
+      "translation": "odatiy, har doimgi",
+      "definition": "not strange or unusual",
+      "example": "It is normal for me to bathe every night.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "rare",
+      "translation": "kamdan-kam: noyob, kamyob",
+      "definition": "not seen very often",
+      "example": "It is rare for him to miss his flight.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "relax",
+      "translation": "dam olmoq, hordiq chiqarmoq",
+      "definition": "to rest and become calm",
+      "example": "The frog relaxed in the warm sun.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "request",
+      "translation": "so'ramoq",
+      "definition": "to ask for something",
+      "example": "The little girl requested a special gift from Santa Claus.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reside",
+      "translation": "muayyan yashamoq, istiqomat qilmoq",
+      "definition": "to live somewhere permanently",
+      "example": "My brother and his family reside in a lovely house on the beach.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "result",
+      "translation": "natija, oqibat",
+      "definition": "something that happens because of something else",
+      "example": "As a result of all the rain, the man had to climb on the roof.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "roll",
+      "translation": "yumalatmoq, dumalatmoq",
+      "definition": "to move by turning over and over",
+      "example": "You must roll the ball into the pins when you bowl.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "since",
+      "translation": "-dan beri/buyon",
+      "definition": "from a past time until now",
+      "example": "Since 1992, he has been driving that car.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "visible",
+      "translation": "ko'zga ko'rinarli, ko'rinib turgan",
+      "definition": "able to be seen",
+      "example": "The moon and stars were visible in the night sky.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "wild",
+      "translation": "yovvoyi",
+      "definition": "found in nature; not tame",
+      "example": "You should be careful around a fox, because it is a wild animal.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

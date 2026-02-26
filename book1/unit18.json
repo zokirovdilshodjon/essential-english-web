@@ -1,0 +1,146 @@
+{
+  "unit": 18,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "argue",
+      "translation": "tortishmoq, bahslashmoq",
+      "definition": "To argue is to angrily speak to someone because you do not agree.",
+      "example": "We argued about where to go for dinner.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "communicate",
+      "translation": "muloqot qilmoq, aloqa qilmoq",
+      "definition": "To communicate is to give information by talking, writing, etc.",
+      "example": "I communicated with Paul about his new ideas.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "crowd",
+      "translation": "olomon, to'da",
+      "definition": "A crowd is a large group of people.",
+      "example": "A large crowd had gathered on the street to see the accident.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "depend",
+      "translation": "bog'liq bo'lmoq, qaram bo'lmoq",
+      "definition": "To depend on someone or something is to need them.",
+      "example": "Children depend on their parents for many things.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "dish",
+      "translation": "likopcha, idish",
+      "definition": "A dish is a plate.",
+      "example": "She put a clean white dish on the table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "empty",
+      "translation": "bo'sh",
+      "definition": "If something is empty, it does not have anything in it.",
+      "example": "My gas tank was almost empty, so I couldn't drive my car very long.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "exact",
+      "translation": "aniq",
+      "definition": "If something is exact, it is just the right amount.",
+      "example": "Please use the exact amount of sugar for the cake.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fresh",
+      "translation": "yangi, yangi uzilgan",
+      "definition": "If something is fresh, it is new.",
+      "example": "I just bought these oranges. They are very fresh.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gather",
+      "translation": "to'plamoq, yig'moq",
+      "definition": "To gather is to collect several things usually from different places.",
+      "example": "Sam gathered some flowers for his mother.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "indicate",
+      "translation": "ko'rsatmoq, bildirmoq",
+      "definition": "To indicate means to show, point or make something clear.",
+      "example": "He pointed to his eyes to indicate where he had hurt himself.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "item",
+      "translation": "buyum, narsa",
+      "definition": "An item is a thing that you buy or sell.",
+      "example": "I have many items for school in my bag.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "offer",
+      "translation": "taklif qilmoq",
+      "definition": "To offer is to present someone with something.",
+      "example": "He offered me the keys to his car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "price",
+      "translation": "narx",
+      "definition": "The price of something is how much it costs.",
+      "example": "What is the price of this item?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "product",
+      "translation": "mahsulot",
+      "definition": "A product is something that is made.",
+      "example": "My sister has many beauty products in her room.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "property",
+      "translation": "mulk, xususiy mulk",
+      "definition": "Property is something that someone owns.",
+      "example": "The house is now my property.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "purchase",
+      "translation": "sotib olmoq",
+      "definition": "To purchase something is to buy it.",
+      "example": "I recently purchased a new car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "recommend",
+      "translation": "tavsiya qilmoq",
+      "definition": "To recommend something is to say that it is good.",
+      "example": "My doctor recommended that I get some exercise.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "select",
+      "translation": "tanlamoq",
+      "definition": "To select something is to choose it.",
+      "example": "I hope that I am selected to play on the team.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "tool",
+      "translation": "asbob, qurol",
+      "definition": "A tool is something that helps you do a task.",
+      "example": "A hammer is a common tool.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "treat",
+      "translation": "muomala qilmoq",
+      "definition": "To treat is to act in a certain way toward someone.",
+      "example": "The kids treated the new boy very nicely.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

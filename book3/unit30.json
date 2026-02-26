@@ -1,0 +1,146 @@
+{
+  "unit": "30",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "appliance",
+      "translation": "uskuna, moslama",
+      "definition": "A machine used in the house.",
+      "example": "A washing machine is a home appliance.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "basin",
+      "translation": "tog'ora, rakovina",
+      "definition": "A large bowl for washing things.",
+      "example": "He washed his face in the basin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "broom",
+      "translation": "supurgi",
+      "definition": "A tool used for sweeping floors.",
+      "example": "Use the broom to sweep the kitchen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "caterpillar",
+      "translation": "kapalak qurti",
+      "definition": "A small insect that becomes a butterfly.",
+      "example": "The caterpillar ate a green leaf.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cupboard",
+      "translation": "shkaf",
+      "definition": "Furniture used to store food or dishes.",
+      "example": "Put the plates in the cupboard.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "delicate",
+      "translation": "nozik, nimjon",
+      "definition": "Easy to break or damage.",
+      "example": "The flower is very delicate.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "emerge",
+      "translation": "paydo bo'lmoq",
+      "definition": "To come out of something.",
+      "example": "The sun emerged from behind the clouds.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "handicap",
+      "translation": "nuqson, to'siq",
+      "definition": "A condition that makes things difficult.",
+      "example": "His lack of experience was a handicap.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hook",
+      "translation": "ilmoq",
+      "definition": "A curved object used to hang things.",
+      "example": "Hang your coat on the hook.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hop",
+      "translation": "sakramoq",
+      "definition": "To jump on one foot.",
+      "example": "The rabbit hopped across the field.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "laundry",
+      "translation": "yuviladigan kiyimlar",
+      "definition": "Clothes that need to be washed.",
+      "example": "I have a lot of laundry to do today.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pursue",
+      "translation": "quvmoq, ortidan tushmoq",
+      "definition": "To follow or try to catch someone.",
+      "example": "The police pursued the criminal.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reluctant",
+      "translation": "istamasdan, xohlamay",
+      "definition": "Not wanting to do something.",
+      "example": "He was reluctant to go to the party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "sleeve",
+      "translation": "yeng",
+      "definition": "The part of a shirt that covers the arm.",
+      "example": "My shirt has long sleeves.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spine",
+      "translation": "umurtqa pog'onasi",
+      "definition": "The bones in the back.",
+      "example": "The spine supports the human body.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stain",
+      "translation": "dog'",
+      "definition": "A dirty mark that is hard to clean.",
+      "example": "There is a coffee stain on my shirt.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "strip",
+      "translation": "bo'lak, tasma",
+      "definition": "A long, narrow piece of something.",
+      "example": "He cut the paper into strips.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "swear",
+      "translation": "qasamyod qilmoq",
+      "definition": "To promise that something is true.",
+      "example": "I swear that I am telling the truth.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "swing",
+      "translation": "uchmoq, tebranmoq",
+      "definition": "To move back and forth.",
+      "example": "The kids like to swing in the park.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "utilize",
+      "translation": "foydalanmoq",
+      "definition": "To use something for a purpose.",
+      "example": "We should utilize new technology.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

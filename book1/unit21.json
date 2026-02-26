@@ -1,0 +1,146 @@
+{
+  "unit": 21,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "appear",
+      "translation": "tuyulmoq, ko'rinmoq",
+      "definition": "To appear is to seem.",
+      "example": "She appeared to be sad. She was crying.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "base",
+      "translation": "asos, tag qism",
+      "definition": "The base of something is the bottom of it.",
+      "example": "The base of the table has three legs.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "brain",
+      "translation": "miya",
+      "definition": "The brain is the organ in your head that lets you think.",
+      "example": "You must use your brain to solve the problem.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "career",
+      "translation": "karyera, ish faoliyati",
+      "definition": "A career is a job you do for a large part of your life.",
+      "example": "He was in the hospitality business for most of his career.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "clerk",
+      "translation": "do'kon yoki idora xizmatchisi",
+      "definition": "A clerk is a person who works in a shop or office.",
+      "example": "The clerk at the shop helped me find what I wanted.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "effort",
+      "translation": "harakat, urinish",
+      "definition": "Effort is hard work.",
+      "example": "He put a lot of effort into finishing his homework.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "enter",
+      "translation": "kirmoq",
+      "definition": "To enter a place is to go into it.",
+      "example": "Two people entered the room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "excellent",
+      "translation": "ajoyib, juda yaxshi",
+      "definition": "When something is excellent, it is very good.",
+      "example": "I got an excellent grade on my school report.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hero",
+      "translation": "qahramon",
+      "definition": "A hero is a person who does something brave.",
+      "example": "The man was a hero for saving the boy from the fire.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hurry",
+      "translation": "shoshilmoq",
+      "definition": "To hurry is to do something quickly.",
+      "example": "I must hurry or I will be late for school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "inform",
+      "translation": "xabardor qilmoq",
+      "definition": "To inform someone is to tell them about something.",
+      "example": "I informed my teacher that I would be late.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "later",
+      "translation": "keyinroq",
+      "definition": "Later means after the present, expected, or usual time.",
+      "example": "She said she would call me later.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "leave",
+      "translation": "ketmoq, tark etmoq",
+      "definition": "To leave is to go away from someone or something.",
+      "example": "He left the house at nine o'clock.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "locate",
+      "translation": "joyini aniqlamoq",
+      "definition": "To locate something is to find it.",
+      "example": "I could not locate my keys in the house.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "nurse",
+      "translation": "hamshira",
+      "definition": "A nurse is a person who helps sick people in a hospital.",
+      "example": "A nurse helped me get better when I was sick.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "operation",
+      "translation": "operatsiya",
+      "definition": "An operation is when a doctor cuts a person’s body to fix it.",
+      "example": "The boy had an operation on his arm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pain",
+      "translation": "og'riq",
+      "definition": "Pain is the feeling that you have when a part of your body hurts.",
+      "example": "His head was full of pain.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "refuse",
+      "translation": "rad etmoq",
+      "definition": "To refuse is to say no to something.",
+      "example": "The dog refused to play with the ball.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "though",
+      "translation": "bo'lsa ham, -ga qaramay",
+      "definition": "Though is used to give information that is different from other information.",
+      "example": "Though he was tired, he kept running.",
+      "part_of_speech": "conjunction"
+    },
+    {
+      "word": "various",
+      "translation": "turli xil",
+      "definition": "If something is various, there are many different kinds of it.",
+      "example": "She owns various types of shoes.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

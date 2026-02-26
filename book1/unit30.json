@@ -1,0 +1,146 @@
+{
+  "unit": 30,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "above",
+      "translation": "tepasida, yuqorisida",
+      "definition": "If something is above, it is at a higher level than something else.",
+      "example": "He straightened the sign that was above the crowd.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "ahead",
+      "translation": "oldinda, oldinga",
+      "definition": "If something is ahead of something else, it is in front of it.",
+      "example": "The blue car drove on ahead of us.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "amount",
+      "translation": "miqdor",
+      "definition": "An amount is how much there is of something.",
+      "example": "Can I use my card to pay for the entire amount?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "belief",
+      "translation": "ishonch, e'tiqod",
+      "definition": "A belief is a strong feeling that something is correct or true.",
+      "example": "A preacher or priest should have a strong belief in God.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "center",
+      "translation": "markaz, o'rta",
+      "definition": "The center of something is the middle of it.",
+      "example": "The center of a dart board is the most important spot.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "common",
+      "translation": "umumiy, odatiy",
+      "definition": "If something is common, it happens often or there is much of it.",
+      "example": "It is common for snow to fall in the winter.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "cost",
+      "translation": "narx turmoq, turmoq",
+      "definition": "To cost is to require expenditure or payment.",
+      "example": "These designer shoes cost more than the regular ones.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "demonstrate",
+      "translation": "ko'rsatib bermoq, namoyish qilmoq",
+      "definition": "To demonstrate something is to show how it is done.",
+      "example": "She demonstrated her plan to her co-workers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "different",
+      "translation": "turli xil, boshqacha",
+      "definition": "Different describes someone or something that is not the same as others.",
+      "example": "Each of my sisters has a different hair style from one another.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "evidence",
+      "translation": "dalil, isbot",
+      "definition": "Evidence is a fact or thing that you use to prove something.",
+      "example": "He used the pictures as evidence that UFOs are real.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "honesty",
+      "translation": "halollik, rostgo'ylik",
+      "definition": "Honesty means the quality of being truthful or honest.",
+      "example": "A courtroom should be a place of honesty.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "idiom",
+      "translation": "idioma, ibora",
+      "definition": "An idiom is a phrase with a meaning different from its words.",
+      "example": "The idiom “when pigs fly” means that something will never happen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "independent",
+      "translation": "mustaqil",
+      "definition": "If something is independent, it is not controlled by something else.",
+      "example": "She chose to live an independent life in the country.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "inside",
+      "translation": "ichkari, ichki qism",
+      "definition": "Inside means the inner part, space or side of something.",
+      "example": "The inside of the box was empty.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "master",
+      "translation": "usta, mohir kishi",
+      "definition": "A master is a person who is very good at something.",
+      "example": "My brother is a master of taekwondo.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "memory",
+      "translation": "xotira",
+      "definition": "A memory is something you remember.",
+      "example": "The memory of my first time in the city will always be the best.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "proper",
+      "translation": "to'g'ri, munosib",
+      "definition": "If something is proper, it is right.",
+      "example": "It is not proper to throw your garbage on the road.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "scan",
+      "translation": "sinchiklab ko'zdan kechirmoq",
+      "definition": "To scan something is to look at it very carefully.",
+      "example": "You must scan each person closely.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "section",
+      "translation": "qism, bo'lim",
+      "definition": "A section is a part of something larger.",
+      "example": "The green section of the graph is the most important part.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "surface",
+      "translation": "yuza, sirt",
+      "definition": "The surface of something is the top part or outside of it.",
+      "example": "The surface of the moon is very rough.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

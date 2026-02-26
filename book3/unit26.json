@@ -1,0 +1,146 @@
+{
+  "unit": "26",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "alter",
+      "translation": "o'zgartirmoq",
+      "definition": "To change something.",
+      "example": "I had to alter my plans because of the rain.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "aside",
+      "translation": "chetga, bir chekkaga",
+      "definition": "On or to one side.",
+      "example": "He put the book aside and started to sleep.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "autumn",
+      "translation": "kuz",
+      "definition": "The season between summer and winter.",
+      "example": "The leaves turn brown in autumn.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blend",
+      "translation": "aralashtirmoq",
+      "definition": "To mix two or more things together.",
+      "example": "Blend the milk and sugar to make the cake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "collapse",
+      "translation": "qulamoq, yiqilmoq",
+      "definition": "To fall down suddenly.",
+      "example": "The old building collapsed during the earthquake.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "crush",
+      "translation": "ezmoq, maydalamoq",
+      "definition": "To press something very hard.",
+      "example": "He crushed the empty can with his hand.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "curve",
+      "translation": "egri chiziq, qayrilish",
+      "definition": "A line that bends smoothly.",
+      "example": "The road has many dangerous curves.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "disgusting",
+      "translation": "yoqimsiz, jirkanch",
+      "definition": "Very unpleasant.",
+      "example": "The smell of the garbage was disgusting.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "drain",
+      "translation": "quritmoq, suvini oqizmoq",
+      "definition": "To let liquid flow away.",
+      "example": "The water drained out of the sink.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "embrace",
+      "translation": "quchoqlamoq",
+      "definition": "To hug someone.",
+      "example": "The mother embraced her child.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "envy",
+      "translation": "hasad qilmoq",
+      "definition": "To wish you had what someone else has.",
+      "example": "I envy his success in business.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fireworks",
+      "translation": "mushakbozlik",
+      "definition": "Objects that explode with light and noise.",
+      "example": "The fireworks were beautiful at night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "flour",
+      "translation": "un",
+      "definition": "Powder made from wheat used for baking.",
+      "example": "We need flour to make bread.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fuse",
+      "translation": "pilik; saqlagich",
+      "definition": "A string that carries fire to an explosive.",
+      "example": "The boy lit the fuse of the firework.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ginger",
+      "translation": "zanjabil",
+      "definition": "A spicy root used in cooking.",
+      "example": "Ginger makes the tea taste better.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "jealous",
+      "translation": "rashkchi, hasadgo'y",
+      "definition": "Feeling unhappy because of someone's success.",
+      "example": "She was jealous of her friend's new dress.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "paste",
+      "translation": "pasta, yelim",
+      "definition": "A thick, soft substance.",
+      "example": "Use this paste to stick the paper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "receipt",
+      "translation": "kvitansiya, chek",
+      "definition": "A paper showing you paid for something.",
+      "example": "Always keep your receipt after buying things.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wipe",
+      "translation": "artmoq, tozalamoq",
+      "definition": "To slide a cloth over something to clean it.",
+      "example": "Please wipe the table after eating.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "wire",
+      "translation": "sim",
+      "definition": "A thin thread of metal.",
+      "example": "The electric wire is broken.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

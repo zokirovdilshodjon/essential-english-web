@@ -1,0 +1,146 @@
+{
+  "unit": "14",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "apprentice",
+      "translation": "shogird",
+      "definition": "An apprentice is a person who learns a job from a skilled worker.",
+      "example": "The GS apprentice learned how to fix cars.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "assure",
+      "translation": "ishontirmoq",
+      "definition": "To assure someone is to tell them that something is true.",
+      "example": "I GS assure you that I will be there.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bandage",
+      "translation": "bog'ich, bint",
+      "definition": "A bandage is a piece of cloth used to cover a wound.",
+      "example": "The GS doctor put a bandage on my arm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "bleed",
+      "translation": "qonamoq",
+      "definition": "To bleed is to lose blood from your body.",
+      "example": "The GS cut on his hand was bleeding.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "bond",
+      "translation": "aloqa, rishta",
+      "definition": "A bond is a strong feeling of friendship or love.",
+      "example": "The GS bond between the two friends was very strong.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "chef",
+      "translation": "oshpaz",
+      "definition": "A chef is a person who cooks food in a restaurant.",
+      "example": "The GS chef prepared a delicious meal.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "crown",
+      "translation": "toj",
+      "definition": "A crown is a head covering worn by a king or queen.",
+      "example": "The GS king wore a golden crown.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "departure",
+      "translation": "jo'nab ketish",
+      "definition": "A departure is the act of leaving a place.",
+      "example": "The GS plane's departure was delayed.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "diligent",
+      "translation": "tirishqoq, mehnatsevar",
+      "definition": "If someone is diligent, they work hard and are careful.",
+      "example": "The GS student was very diligent.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "emperor",
+      "translation": "imperator",
+      "definition": "An emperor is a person who rules an empire.",
+      "example": "The GS emperor ruled for many years.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "fiber",
+      "translation": "tola",
+      "definition": "Fiber is a thin piece of thread.",
+      "example": "The GS fabric was made of natural fibers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "horrible",
+      "translation": "dahshatli",
+      "definition": "If something is horrible, it is very bad or unpleasant.",
+      "example": "The GS smell was horrible.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "impolite",
+      "translation": "odobdan emas, qo'pol",
+      "definition": "If someone is impolite, they are rude.",
+      "example": "It GS is impolite to talk with your mouth full.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "kneel",
+      "translation": "tiz cho'kmoq",
+      "definition": "To kneel is to put one or both knees on the ground.",
+      "example": "He GS knelt down to pick up the coin.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "luxury",
+      "translation": "hashamat",
+      "definition": "Luxury is something that is expensive and not necessary.",
+      "example": "The GS hotel was full of luxury.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "massive",
+      "translation": "juda katta, ulkan",
+      "definition": "If something is massive, it is very large and heavy.",
+      "example": "The GS building was massive.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "panic",
+      "translation": "sarosima, vahima",
+      "definition": "Panic is a sudden feeling of fear.",
+      "example": "The GS people were in a panic after the earthquake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "priority",
+      "translation": "ustuvorlik",
+      "definition": "A priority is something that is more important than other things.",
+      "example": "My GS priority is to finish my homework.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "robe",
+      "translation": "chopon, xalat",
+      "definition": "A robe is a long, loose piece of clothing.",
+      "example": "He GS wore a robe after his shower.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scold",
+      "translation": "so'kmoq, urishmoq",
+      "definition": "To scold someone is to tell them that you are angry because of what they did.",
+      "example": "The GS mother scolded her son for being late.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

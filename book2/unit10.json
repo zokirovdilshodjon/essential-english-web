@@ -1,0 +1,146 @@
+{
+  "unit": 10,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "citizen",
+      "translation": "fuqaro",
+      "definition": "A citizen is someone who lives in a certain town or city.",
+      "example": "Carlos was born in Spain. He is a Spanish citizen.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "council",
+      "translation": "kengash",
+      "definition": "A council is a group of people who run a city or town.",
+      "example": "The council met to discuss the new laws for the city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "declare",
+      "translation": "e'lon qilmoq",
+      "definition": "To declare is to say something officially.",
+      "example": "I declared my love for him.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "enormous",
+      "translation": "juda katta, ulkan",
+      "definition": "When people or things are enormous, they are very large.",
+      "example": "My dog looks enormous next to the cat.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "extraordinary",
+      "translation": "favqulodda",
+      "definition": "When something is extraordinary, it is very strange or special.",
+      "example": "He has an extraordinary talent for painting.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fog",
+      "translation": "tuman",
+      "definition": "Fog is a thick cloud that is near the ground.",
+      "example": "I couldn't see anything because of the fog.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "funeral",
+      "translation": "dafn marosimi",
+      "definition": "A funeral is a ceremony that is held for a person who has died.",
+      "example": "Many people went to his funeral.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "giant",
+      "translation": "bahaybat",
+      "definition": "If something is giant, it is very, very big.",
+      "example": "The giant mountain rose high into the sky.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "impression",
+      "translation": "taassurot",
+      "definition": "An impression is a way of thinking about a person or place.",
+      "example": "My first impression of the city was very good.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "income",
+      "translation": "daromad",
+      "definition": "Income is the money that a person gets for working.",
+      "example": "He has a high income from his job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "mad",
+      "translation": "telba, jinnivoy",
+      "definition": "If someone is mad, they are crazy or very angry.",
+      "example": "The man was mad because someone stole his car.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ought",
+      "translation": "kerak, lozim",
+      "definition": "Ought is used to say that something is the right thing to do.",
+      "example": "You ought to help your mother.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "resist",
+      "translation": "qarshilik ko'rsatmoq",
+      "definition": "To resist is to fight against something or someone.",
+      "example": "The army resisted the attack.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "reveal",
+      "translation": "oshkor qilmoq",
+      "definition": "To reveal is to show something that was hidden.",
+      "example": "He revealed his secret to me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "rid",
+      "translation": "xalos bo'lmoq",
+      "definition": "To rid is to make a place or person free from something.",
+      "example": "I want to get rid of my old clothes.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "sword",
+      "translation": "qilich",
+      "definition": "A sword is a long, sharp weapon.",
+      "example": "The knight used his sword to fight the dragon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "tale",
+      "translation": "ertak, hikoya",
+      "definition": "A tale is a story.",
+      "example": "She told us a tale about a magic castle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trap",
+      "translation": "tuzoq",
+      "definition": "To trap is to catch something in a device.",
+      "example": "The boy trapped a bird in a cage.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "trial",
+      "translation": "sud jarayoni",
+      "definition": "A trial is a legal process to see if someone did something bad.",
+      "example": "The trial lasted for two weeks.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "violent",
+      "translation": "zo'ravonlikka moyil",
+      "definition": "When something is violent, it is forceful and hurtful.",
+      "example": "The movie was very violent.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

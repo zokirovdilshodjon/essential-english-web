@@ -1,0 +1,146 @@
+{
+  "unit": 26,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "advice",
+      "translation": "maslahat",
+      "definition": "Advice is an opinion about what to do.",
+      "example": "I don’t know how to study. Can you give me some advice?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "along",
+      "translation": "bo'ylab, davomida",
+      "definition": "Along means to move from one part of a road, river, etc. to another.",
+      "example": "Walk along this tunnel for ten minutes, and you’ll see the door.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "attention",
+      "translation": "diqqat, e'tibor",
+      "definition": "Attention is the notice, thought, or consideration of someone.",
+      "example": "His work got a lot of attention.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "attract",
+      "translation": "o'ziga tortmoq, jalb qilmoq",
+      "definition": "To attract means to make a person or thing come closer or be interested.",
+      "example": "The magnet attracted the metal.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "climb",
+      "translation": "tirmashib chiqmoq, ko'tarilmoq",
+      "definition": "To climb means to use your hands and feet to go up on something.",
+      "example": "The man climbed the mountain.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "drop",
+      "translation": "tushirib yubormoq",
+      "definition": "To drop is to fall or allow something to fall.",
+      "example": "A small amount of water dropped from the bottle.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "final",
+      "translation": "so'nggi, oxirgi",
+      "definition": "If something is final, it is the last part.",
+      "example": "In the final part of the movie, the man finds the money.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "further",
+      "translation": "uzoqroq, yana",
+      "definition": "Further is used to say something is from a greater distance.",
+      "example": "The road goes further than the house.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "imply",
+      "translation": "nazarda tutmoq, ishora qilmoq",
+      "definition": "To imply something is to suggest it without saying it directly.",
+      "example": "The man implied that he was highly intelligent.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "maintain",
+      "translation": "saqlamoq, bir xilda ushlab turmoq",
+      "definition": "To maintain means to make something continue in the same way.",
+      "example": "The scientist maintained the same temperature in the room.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "neither",
+      "translation": "na u, na bu",
+      "definition": "Neither is used to say that two things or people are not V-ing.",
+      "example": "Neither of us forgot the movie.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "otherwise",
+      "translation": "aks holda",
+      "definition": "Otherwise means different or in another way.",
+      "example": "It’s good to stay active; otherwise, you’ll get fat.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "physical",
+      "translation": "jismoniy",
+      "definition": "If something is physical, it is related to the body not the mind.",
+      "example": "Biking is a physical activity.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "prove",
+      "translation": "isbotlamoq",
+      "definition": "To prove something is to show that it is true.",
+      "example": "My teacher proved the answer on the board.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "react",
+      "translation": "munosabat bildirmoq, reaksiya ko'rsatmoq",
+      "definition": "To react is to act in a certain way because of something that happened.",
+      "example": "James reacted badly to the news.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ride",
+      "translation": "minmoq (ot, velosiped)",
+      "definition": "To ride something is to travel on it and control it.",
+      "example": "I will ride a roller coaster for the first time today.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "situated",
+      "translation": "joylashgan",
+      "definition": "If something is situated somewhere, it is in that place.",
+      "example": "The whiteboard is situated between the two windows.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "society",
+      "translation": "jamiyat",
+      "definition": "Society is a group of people who live together in a community.",
+      "example": "Society expects people to follow the law.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "standard",
+      "translation": "standart, me'yor",
+      "definition": "A standard is what people consider normal or good.",
+      "example": "This book is the standard for smart people.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "suggest",
+      "translation": "taklif qilmoq",
+      "definition": "To suggest something means to give an idea or plan about it.",
+      "example": "He suggested that we go to see his boss.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "unit": 6,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "advantage",
+      "translation": "ustun jihat, foyda",
+      "definition": "something that helps you",
+      "example": "Being tall is an advantage to a basketball player.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cause",
+      "translation": "sabab bo'lmoq",
+      "definition": "to make something happen",
+      "example": "The cold weather caused her to get sick.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "choice",
+      "translation": "tanlash imkoniyati",
+      "definition": "the act of picking something",
+      "example": "I had my choice of five doors to open.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "community",
+      "translation": "jamiyat, jamoa",
+      "definition": "a group of people who live together",
+      "example": "The kids from my community usually play together.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dead",
+      "translation": "o'lgan, o'lik",
+      "definition": "not alive",
+      "example": "A dead person is usually buried in the ground.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "distance",
+      "translation": "masofa",
+      "definition": "how far it is between two things",
+      "example": "The distance between the Earth and the Moon is 384,400 kilometers.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "escape",
+      "translation": "qochib qutulmoq",
+      "definition": "to run away from something bad",
+      "example": "The butterfly could not escape from the cage.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "face",
+      "translation": "duch kelmoq",
+      "definition": "to deal with a problem",
+      "example": "My sister and I have to find a better way to face our differences.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "follow",
+      "translation": "ortidan bormoq, ergashmoq",
+      "definition": "to go behind someone",
+      "example": "The little boy followed his mother home.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "fright",
+      "translation": "qo'rquv, vahima",
+      "definition": "the feeling of being scared",
+      "example": "She was filled with fright.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ghost",
+      "translation": "rux, arvox",
+      "definition": "the spirit of a dead person",
+      "example": "Many people are afraid of ghosts.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "individual",
+      "translation": "individ, kishi",
+      "definition": "one person",
+      "example": "Only one individual could win the bicycle race.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pet",
+      "translation": "uy hayvoni",
+      "definition": "an animal that lives with people",
+      "example": "Out of all my pets, the dog is my favorite.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "reach",
+      "translation": "yetib bormoq, yetib kelmoq",
+      "definition": "to arrive at a place",
+      "example": "I was happy to finally reach my destination.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "return",
+      "translation": "qaytib kelmoq",
+      "definition": "to go back to a place",
+      "example": "I was happy to return home to my mom after school.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "survive",
+      "translation": "tirik qolmoq: saqlab qolmoq",
+      "definition": "to stay alive",
+      "example": "My dog survived her fall into the water.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "upset",
+      "translation": "xafa, tushkin",
+      "definition": "unhappy about something",
+      "example": "She was upset because she broke her toy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "voice",
+      "translation": "ovoz, tovush",
+      "definition": "the sound a person makes when they talk",
+      "example": "He used a microphone, so everyone could hear his voice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "weather",
+      "translation": "ob-havo",
+      "definition": "the condition of the air (hot, rainy, windy, etc.)",
+      "example": "The weather can be sunny, rainy, or cold.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "wise",
+      "translation": "aqlli, dono",
+      "definition": "having experience and good judgment",
+      "example": "Many people believe that owls are very wise animals.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

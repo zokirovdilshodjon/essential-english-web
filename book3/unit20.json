@@ -1,0 +1,146 @@
+{
+  "unit": "20",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "beneath",
+      "translation": "tagida, ostida",
+      "definition": "If something is beneath something else, it is under it.",
+      "example": "The cat was sitting beneath the table.",
+      "part_of_speech": "preposition"
+    },
+    {
+      "word": "cub",
+      "translation": "hayvon bolasi (ayiq, sher)",
+      "definition": "A cub is a baby animal, such as a bear or lion.",
+      "example": "The lion cub was crying for its mother.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dawn",
+      "translation": "tong, sahar",
+      "definition": "Dawn is the time of day when the sun rises.",
+      "example": "At dawn, the sun gently rose over the farm.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "dissatisfied",
+      "translation": "norozi, qoniqmagan",
+      "definition": "If you are dissatisfied, you are not happy with something.",
+      "example": "I was dissatisfied with their decision to work on Sunday.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "ease",
+      "translation": "osonlik",
+      "definition": "When something is done with ease, it is not hard to do.",
+      "example": "The monkey climbed the tree with ease.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "evident",
+      "translation": "aniq, yaqqol",
+      "definition": "When something is evident, it is easy to see or understand.",
+      "example": "It was evident from his face that he was sad.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "hail",
+      "translation": "do'l",
+      "definition": "Hail is small pieces of ice that fall from the sky.",
+      "example": "The hail damaged the roof of the car.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "howl",
+      "translation": "uvillamoq",
+      "definition": "To howl is to make a long, loud sound like a wolf.",
+      "example": "The wolf howled at the moon.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "leap",
+      "translation": "sakramoq",
+      "definition": "To leap is to jump a long distance.",
+      "example": "The athlete leaped over the hurdle.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "magnificent",
+      "translation": "muhtasham, mahobatli",
+      "definition": "If something is magnificent, it is very beautiful and grand.",
+      "example": "The palace was magnificent.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "necessity",
+      "translation": "ehtiyoj, zarurat",
+      "definition": "A necessity is something that you must have.",
+      "example": "Water is a necessity for life.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outcome",
+      "translation": "natija",
+      "definition": "An outcome is the result of something.",
+      "example": "What was the outcome of the meeting?",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "pile",
+      "translation": "to'p, uyum",
+      "definition": "A pile is a group of things that are on top of each other.",
+      "example": "There was a pile of books on the table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "profound",
+      "translation": "chuqur (fikr, hissiyot)",
+      "definition": "If something is profound, it is very deep or intelligent.",
+      "example": "He had a profound understanding of the subject.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "seize",
+      "translation": "ushlab olmoq, tutmoq",
+      "definition": "To seize something is to grab it quickly and strongly.",
+      "example": "The police seized the drugs.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "squeeze",
+      "translation": "siqmoq, qismoq",
+      "definition": "To squeeze something is to press it from both sides.",
+      "example": "She squeezed the lemon to get the juice out.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "supreme",
+      "translation": "oliy, eng yuqori",
+      "definition": "If something is supreme, it is the highest or best.",
+      "example": "The supreme court is the highest court in the country.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "terrific",
+      "translation": "ajoyib, juda yaxshi",
+      "definition": "If something is terrific, it is very good.",
+      "example": "We had a terrific time at the party.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "trait",
+      "translation": "xislat, xususiyat",
+      "definition": "A trait is a quality that a person has.",
+      "example": "Honesty is a good trait to have.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vital",
+      "translation": "muhim, hayotiy",
+      "definition": "If something is vital, it is extremely important or necessary.",
+      "example": "It is vital to eat healthy food.",
+      "part_of_speech": "adjective"
+    }
+  ]
+}

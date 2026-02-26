@@ -1,0 +1,146 @@
+{
+  "unit": "1",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "arise",
+      "translation": "paydo bo'lmoq, tug'ilmoq",
+      "definition": "To arise is to happen.",
+      "example": "Difficulties arose with his computer because it was old.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "benefactor",
+      "translation": "muruvvat ko'rsatuvchi",
+      "definition": "A benefactor is a person who gives money to help someone.",
+      "example": "The student's benefactor gave him money to spend on his studies.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blacksmith",
+      "translation": "temirchi",
+      "definition": "A blacksmith is a person who makes things out of metal.",
+      "example": "The blacksmith pounded the piece of metal until it was flat.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "charitable",
+      "translation": "marhamatli",
+      "definition": "When someone is charitable, they help people who are in need.",
+      "example": "My sister was charitable enough to help me buy my first house.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "chimney",
+      "translation": "mo'ri",
+      "definition": "A chimney is a tall pipe used to carry smoke out of a building.",
+      "example": "The cat was on the roof sitting next to the chimney.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "compensate",
+      "translation": "pul to'lamoq",
+      "definition": "To compensate is to pay someone for the time they spent doing something.",
+      "example": "Her boss compensated her for the extra work she did last week.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "encounter",
+      "translation": "ro'baro kelmoq, duch kelmoq",
+      "definition": "If you encounter something, you meet or come close to it.",
+      "example": "I encountered a sea turtle while I was swimming.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "exceed",
+      "translation": "oshirib yubormoq",
+      "definition": "To exceed is to be more than something.",
+      "example": "Since I exceeded my limit, I decided to get rid of my credit cards.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "forge",
+      "translation": "munosabatlarni yo'lga qo'ymoq",
+      "definition": "To forge is to make or produce, especially with difficulty.",
+      "example": "Stacy and Heather forged their friendship when they were teenagers.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "humble",
+      "translation": "kamtar, tavozeli",
+      "definition": "People who are humble do not believe that they are better than other people.",
+      "example": "Even though Bob is the smartest boy in his class, he is humble.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "iron",
+      "translation": "metal, temir",
+      "definition": "Iron is a strong metal that is used to make many objects.",
+      "example": "The horse had shoes made of iron.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ladder",
+      "translation": "narvon, shoti",
+      "definition": "A ladder is an object that is used to climb up and down things.",
+      "example": "He used a ladder to climb to the top of his tree house.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "modest",
+      "translation": "kamtar, kamtarin",
+      "definition": "If people are modest, they do not think that they are too important.",
+      "example": "Derek is very modest for someone who is so rich.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "occupy",
+      "translation": "yashamoq, turmoq",
+      "definition": "To occupy a place is to live, work, or be there.",
+      "example": "Kevin and Alice occupied the chairs and had a long discussion.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "penny",
+      "translation": "sent",
+      "definition": "A penny is a coin worth one cent.",
+      "example": "U.S. President Abraham Lincoln is on the penny.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "preach",
+      "translation": "va'z o'qimoq",
+      "definition": "To preach is to talk about and promote a religious idea.",
+      "example": "Aaron often preached about living an honest life.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "prosper",
+      "translation": "muvaffaqiyatli rivojlanmoq",
+      "definition": "To prosper is to be successful or make a lot of money.",
+      "example": "Frank's new business finally prospered after many years of hard work.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "province",
+      "translation": "viloyat, provinsiya",
+      "definition": "A province is a small area that is controlled by a country.",
+      "example": "Canada is divided into several different provinces.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "satisfaction",
+      "translation": "qoniqish, mamnuniyat",
+      "definition": "Satisfaction is a feeling you get when you do or receive something good.",
+      "example": "Brad was filled with satisfaction when he saw what was for dinner.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sustain",
+      "translation": "ta'minlamoq",
+      "definition": "To sustain something is to keep it going.",
+      "example": "Wind power is a clean way to sustain a city with energy.",
+      "part_of_speech": "verb"
+    }
+  ]
+}

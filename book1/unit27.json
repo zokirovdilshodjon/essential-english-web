@@ -1,0 +1,146 @@
+{
+  "unit": 27,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "actually",
+      "translation": "aslida, haqiqatda",
+      "definition": "Actually means in fact or really.",
+      "example": "My dad looks a little mean, but actually he’s very kind.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "bite",
+      "translation": "tishlamoq, tishlash",
+      "definition": "Bite is the act of using your teeth to cut and tear into something.",
+      "example": "The boy took a big bite out of his hamburger.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "coast",
+      "translation": "qirg'oq, dengiz bo'yi",
+      "definition": "The coast is the land by an ocean.",
+      "example": "I stayed on the southern coast of Australia.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "deal",
+      "translation": "kelishuv, bitim",
+      "definition": "A deal is an agreement that you have with another person.",
+      "example": "I made a deal with the other company to give us some money.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "desert",
+      "translation": "sahro, cho'l",
+      "definition": "The desert is an area of land without many plants or water.",
+      "example": "Not many plants grow in the desert.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "earthquake",
+      "translation": "yer qimirlashi, zilzila",
+      "definition": "An earthquake is a shaking movement of the ground.",
+      "example": "The building shook during the earthquake.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "effective",
+      "translation": "samarali, foydali",
+      "definition": "If something is effective, it works well.",
+      "example": "Swimming is an effective way to stay healthy.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "examine",
+      "translation": "tekshirib ko'rmoq",
+      "definition": "To examine something is to look at it carefully.",
+      "example": "The doctor examined my eyes today.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "false",
+      "translation": "yolg'on, xato",
+      "definition": "If something is false, it is not correct.",
+      "example": "If you think the answer is false, press the red button.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "gift",
+      "translation": "sovg'a",
+      "definition": "A gift is something you give someone.",
+      "example": "Dave received many gifts for Christmas.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "hunger",
+      "translation": "ochlik",
+      "definition": "Hunger is the feeling that you get when you need to eat.",
+      "example": "After playing all day long, he was filled with hunger.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "imagine",
+      "translation": "tasavvur qilmoq",
+      "definition": "To imagine something is to think of it in your mind.",
+      "example": "Sally imagined herself winning lots of money.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "journey",
+      "translation": "safar, sayohat (uzun)",
+      "definition": "A journey is a long trip.",
+      "example": "I went on a journey across the country with my parents.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "puzzle",
+      "translation": "boshqotirma, jumboq",
+      "definition": "A puzzle is something that is hard to understand.",
+      "example": "The question was a puzzle to him.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "quite",
+      "translation": "ancha, juda",
+      "definition": "Quite is used to say that something is complete or very much.",
+      "example": "I think typing on a keyboard is quite easy.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "rather",
+      "translation": "yaxshisi, ma'qulrog'i",
+      "definition": "Rather is used when you want to do one thing but not the other.",
+      "example": "I would rather have the red one than the blue one.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "specific",
+      "translation": "aniq, maxsus",
+      "definition": "If something is specific, it is precise or exact.",
+      "example": "Please choose a specific place on the map.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tour",
+      "translation": "sayohat, ekskursiya",
+      "definition": "A tour is a short trip in which you see many sights.",
+      "example": "I took a tour of Asia and Europe.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "trip",
+      "translation": "safar, sayohat",
+      "definition": "A trip is a journey to a certain place.",
+      "example": "Ken took a trip to the city yesterday.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "value",
+      "translation": "qiymat, qadr",
+      "definition": "If something has value, it is worth a lot of money.",
+      "example": "Matthew found a treasure of very high value.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

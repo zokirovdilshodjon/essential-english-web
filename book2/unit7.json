@@ -1,0 +1,146 @@
+{
+  "unit": 7,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "basis",
+      "translation": "asos",
+      "definition": "To do something on time’s basis is how often you do it.",
+      "example": "My grandfather gets his hearing checked on a yearly basis.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "biology",
+      "translation": "biologiya",
+      "definition": "Biology is the study of living things.",
+      "example": "We learned about the human heart in biology class.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "cage",
+      "translation": "qafas",
+      "definition": "A cage is something that holds an animal so it cannot leave.",
+      "example": "We put the parrots in their cage at night.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "colleague",
+      "translation": "kasbdosh, hamkasb",
+      "definition": "A colleague is somebody you work with.",
+      "example": "My colleague helped me finish the job.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "colony",
+      "translation": "mustamlaka, koloniya",
+      "definition": "A colony is a country controlled by another country.",
+      "example": "The USA used to be a British colony.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "debate",
+      "translation": "bahs, munozara",
+      "definition": "To debate is to talk about something with people who have different ideas.",
+      "example": "The students debated the new school rules.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "depart",
+      "translation": "jo'nab ketmoq",
+      "definition": "To depart is to leave some place so you can go to another place.",
+      "example": "The plane departed at 6:00.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "depress",
+      "translation": "tushkunlikka tushirmoq",
+      "definition": "To depress someone is to make them feel very sad.",
+      "example": "The bad news depressed me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "factual",
+      "translation": "haqiqiy, faktlarga asoslangan",
+      "definition": "When something is factual, it is true.",
+      "example": "She gave a factual report about the accident.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "fascinate",
+      "translation": "maftun qilmoq",
+      "definition": "To fascinate someone is to make them very interested.",
+      "example": "The stars fascinate me.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "mission",
+      "translation": "vazifa, missiya",
+      "definition": "A mission is a specific task that someone is sent to do.",
+      "example": "The astronaut’s mission was to go to the moon.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "nevertheless",
+      "translation": "shunga qaramay",
+      "definition": "Nevertheless means even though something is true.",
+      "example": "He was sick; nevertheless, he went to work.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "occupation",
+      "translation": "kasb-hunar",
+      "definition": "An occupation is a person’s job.",
+      "example": "My father's occupation is a doctor.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "overseas",
+      "translation": "okean orti, chet el",
+      "definition": "If you go overseas, you go to a country on the other side of an ocean.",
+      "example": "He goes overseas for business every year.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "persuade",
+      "translation": "ko'ndirmoq, ishontirmoq",
+      "definition": "To persuade someone is to make them agree to do something.",
+      "example": "The salesman persuaded me to buy the car.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "route",
+      "translation": "yo'nalish, yo'l",
+      "definition": "A route is the way you go from one place to another.",
+      "example": "I took the fastest route to the airport.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "ruins",
+      "translation": "xarobalar",
+      "definition": "Ruins are the parts of buildings that stay after they have been destroyed.",
+      "example": "We visited the ruins of an old city.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "scholar",
+      "translation": "olim",
+      "definition": "A scholar is a person who studies a lot.",
+      "example": "The scholar spent all day in the library.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "significant",
+      "translation": "muhim",
+      "definition": "When something is significant, it is important.",
+      "example": "I have a significant problem.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "volcano",
+      "translation": "vulqon",
+      "definition": "A volcano is a mountain that shoots out hot rock and smoke.",
+      "example": "The volcano erupted last night.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

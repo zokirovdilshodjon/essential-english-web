@@ -1,0 +1,146 @@
+{
+  "unit": "27",
+  "total_words": 20,
+  "words": [
+    {
+      "word": "acknowledge",
+      "translation": "tan olmoq",
+      "definition": "To accept that something is true.",
+      "example": "The teacher acknowledged that the student was right.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "ambassador",
+      "translation": "elchi",
+      "definition": "A government worker who works in another country.",
+      "example": "The ambassador works at the embassy.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "blonde",
+      "translation": "sariq sochli",
+      "definition": "Light-colored hair.",
+      "example": "She is a blonde with blue eyes.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "conquer",
+      "translation": "zabt etmoq, yengmoq",
+      "definition": "To attack and take control of a country.",
+      "example": "The army tried to conquer the city.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "drag",
+      "translation": "sudramoq",
+      "definition": "To pull something across the ground.",
+      "example": "The dog was dragging the stick.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "exaggerate",
+      "translation": "mubolag'a qilmoq",
+      "definition": "To say something is bigger than it really is.",
+      "example": "He exaggerated the size of the fish.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "heritage",
+      "translation": "meros",
+      "definition": "The history and traditions of a country.",
+      "example": "We must protect our cultural heritage.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "insult",
+      "translation": "haqorat qilmoq",
+      "definition": "To say something rude to someone.",
+      "example": "It is not polite to insult others.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "meanwhile",
+      "translation": "shu vaqt ichida",
+      "definition": "While something else is happening.",
+      "example": "I cooked; meanwhile, he cleaned the room.",
+      "part_of_speech": "adverb"
+    },
+    {
+      "word": "necklace",
+      "translation": "bo'yinturuq, marjon",
+      "definition": "Jewelry worn around the neck.",
+      "example": "She wore a beautiful gold necklace.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "noble",
+      "translation": "olijanob, aslzoda",
+      "definition": "Having high moral qualities or high social rank.",
+      "example": "He is a man of noble character.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "precious",
+      "translation": "qimmatbaho",
+      "definition": "Having great value.",
+      "example": "Diamonds are precious stones.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "prejudice",
+      "translation": "xurofot, noto'g'ri tushuncha",
+      "definition": "An unfair opinion without knowing the facts.",
+      "example": "We must fight against racial prejudice.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "rumor",
+      "translation": "mish-mish",
+      "definition": "Information that may not be true.",
+      "example": "There is a rumor that he is leaving.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sin",
+      "translation": "gunoh",
+      "definition": "Something that is against religious rules.",
+      "example": "Lying is a sin in many religions.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "spectacle",
+      "translation": "tomosha",
+      "definition": "An exciting or unusual event.",
+      "example": "The parade was a great spectacle.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "stack",
+      "translation": "taxlam, tabaqa",
+      "definition": "A neat pile of things.",
+      "example": "There is a stack of books on the table.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "suspicious",
+      "translation": "shubhali",
+      "definition": "Feeling that something is wrong.",
+      "example": "The police were suspicious of the man.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "tin",
+      "translation": "qalay; konserva bankasi",
+      "definition": "A type of metal; a metal container.",
+      "example": "The soup came in a tin.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "vase",
+      "translation": "vaza",
+      "definition": "A container for flowers.",
+      "example": "Put the flowers in the vase.",
+      "part_of_speech": "noun"
+    }
+  ]
+}

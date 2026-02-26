@@ -1,0 +1,146 @@
+{
+  "unit": 14,
+  "total_words": 20,
+  "words": [
+    {
+      "word": "coach",
+      "translation": "murabbiy",
+      "definition": "A coach is a person who teaches sports.",
+      "example": "My coach gets very excited during games.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "control",
+      "translation": "nazorat qilmoq",
+      "definition": "To control something is to make it do what you want.",
+      "example": "To control the TV, just push the buttons.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "description",
+      "translation": "tasvir, ta'rif",
+      "definition": "A description of someone or something says what they are like.",
+      "example": "I gave a description of the man to the police.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "direct",
+      "translation": "to'g'ridan-to'g'ri",
+      "definition": "If something is direct, it goes straight between two places.",
+      "example": "The green path is a direct route to my house.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "exam",
+      "translation": "imtihon",
+      "definition": "An exam is a test.",
+      "example": "I did some practice questions for the math exam.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "example",
+      "translation": "misol",
+      "definition": "An example of something is a thing that is typical of it.",
+      "example": "Cola is an example of a soft drink.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "limit",
+      "translation": "cheklov, chegara",
+      "definition": "A limit is the largest or smallest amount of something that you allow.",
+      "example": "My mother put a limit on how much I could use the phone.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "local",
+      "translation": "mahalliy",
+      "definition": "If something is local, it is nearby.",
+      "example": "The local market sells all the food we need.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "magical",
+      "translation": "sehrli",
+      "definition": "Magical describes something that uses magic.",
+      "example": "The wand was magical.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "mail",
+      "translation": "pochta",
+      "definition": "Mail is the letters and packages that you receive.",
+      "example": "I get a lot of mail every day.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "novel",
+      "translation": "roman",
+      "definition": "A novel is a long story in a book.",
+      "example": "I read a novel over the weekend.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "outline",
+      "translation": "reja, xulosa",
+      "definition": "An outline is a plan for a story or report.",
+      "example": "I wrote an outline for my book.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "poet",
+      "translation": "shoir",
+      "definition": "A poet is a person who writes poems.",
+      "example": "William Shakespeare was a famous poet.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "print",
+      "translation": "chop etmoq",
+      "definition": "To print is to put words or images on paper.",
+      "example": "Make sure you print your name clearly.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "scene",
+      "translation": "sahna, ko'rinish",
+      "definition": "A scene is a part of a movie or book.",
+      "example": "A scary scene happened in the movie.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "sheet",
+      "translation": "varoq, choyshab",
+      "definition": "A sheet is a thin, flat piece of paper.",
+      "example": "I only needed a single sheet of paper.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "silly",
+      "translation": "ahmoqona",
+      "definition": "If someone is silly, they show a lack of thought.",
+      "example": "I made a silly mistake.",
+      "part_of_speech": "adjective"
+    },
+    {
+      "word": "store",
+      "translation": "do'kon",
+      "definition": "A store is a place where you buy things.",
+      "example": "I went to the store to buy some food.",
+      "part_of_speech": "noun"
+    },
+    {
+      "word": "suffer",
+      "translation": "azob chekmoq",
+      "definition": "To suffer is to feel pain or sadness.",
+      "example": "He suffered from a bad headache.",
+      "part_of_speech": "verb"
+    },
+    {
+      "word": "technology",
+      "translation": "texnologiya",
+      "definition": "Technology is new machines and ways of doing things.",
+      "example": "He loves new technology.",
+      "part_of_speech": "noun"
+    }
+  ]
+}
