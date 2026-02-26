@@ -269,7 +269,7 @@ async function fetchUnitWords(bookNum, unitNum) {
   // Cache da bor (null ham saqlanadi — 404 larni qayta tekshirmaslik uchun)
   if(cacheKey in WORDS_CACHE) return WORDS_CACHE[cacheKey];
 
-  const url = `data/book${bookNum}/unit${unitNum}.json`;
+  const url = `book${bookNum}/unit${unitNum}.json`;
   try {
     const res = await fetch(url);
     if(!res.ok){
