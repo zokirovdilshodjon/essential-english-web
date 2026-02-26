@@ -23,11 +23,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
     linear-gradient(90deg,rgba(124,90,246,.03) 1px,transparent 1px);background-size:32px 32px;}
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-
-/* LAYOUT */
 #app{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh;max-width:480px;margin:0 auto;position:relative;z-index:1}
-
-/* TOPBAR */
 .topbar{background:rgba(13,17,23,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);
   padding:10px 16px 8px;position:sticky;top:0;z-index:100;}
 .tb-row{display:flex;align-items:center;gap:10px}
@@ -50,36 +46,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .prog-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:4px}
 .prog-track{height:4px;background:var(--s2);border-radius:10px;overflow:hidden}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:10px;transition:width .8s cubic-bezier(.34,1.56,.64,1)}
-
-/* SCROLL */
 .scroll-area{overflow-y:auto;padding:14px 16px 4px}
-
-/* SECTION */
 .sec{margin-bottom:20px}
 .sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .sec-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
 .sec-link{font-size:12px;color:var(--blue);cursor:pointer;font-weight:700}
-
-/* UNIT PILLS */
 .unit-row{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px}
 .unit-row::-webkit-scrollbar{display:none}
 .unit-pill{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;
   background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .unit-pill.active{background:rgba(124,90,246,.12);border-color:var(--accent);color:var(--al)}
 .unit-pill.done{background:rgba(79,223,138,.08);border-color:var(--green);color:var(--green)}
-
-/* FLASHCARD */
 .fc-outer{perspective:1200px;margin-bottom:10px}
 .fc{width:100%;height:168px;cursor:pointer;
   transform-style:preserve-3d;transition:transform .5s cubic-bezier(.34,1.56,.64,1);position:relative;}
 .fc.flipped{transform:rotateY(180deg)}
-.fc-face{
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--s2),var(--s3));
-  border:1px solid var(--border);border-radius:20px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.fc-face{position:absolute;inset:0;background:linear-gradient(135deg,var(--s2),var(--s3));
+  border:1px solid var(--border);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 8px 24px rgba(0,0,0,.3);}
 .fc-back{transform:rotateY(180deg)}
 .fc-pos{position:absolute;top:12px;left:14px;font-size:10px;font-weight:800;text-transform:uppercase;
   letter-spacing:.08em;padding:2px 8px;border-radius:20px;background:rgba(124,90,246,.12);color:var(--al);}
@@ -99,13 +83,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);
   border-radius:20px;font-size:12px;font-weight:700;color:var(--green);cursor:pointer;transition:all .2s;}
 .audio-btn:hover{background:rgba(79,223,138,.15)}
-
-/* GAMES */
 .games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.game-card{
-  background:var(--s1);border:1px solid var(--border);border-radius:14px;
-  padding:14px 10px;text-align:center;cursor:pointer;transition:all .25s;
-  position:relative;overflow:hidden;}
+.game-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;
+  padding:14px 10px;text-align:center;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
 .game-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
 .game-card:nth-child(1)::after{background:radial-gradient(circle at 50% 110%,rgba(249,123,79,.18),transparent 65%)}
 .game-card:nth-child(2)::after{background:radial-gradient(circle at 50% 110%,rgba(79,156,249,.18),transparent 65%)}
@@ -115,8 +95,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .g-icon{font-size:26px;margin-bottom:5px}
 .g-name{font-size:11px;font-weight:800;line-height:1.2}
 .g-desc{font-size:10px;color:var(--muted);margin-top:2px}
-
-/* GRAMMAR */
 .gr-list{display:flex;flex-direction:column;gap:7px}
 .gr-item{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:12px 14px;
   display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;}
@@ -125,14 +103,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .gr-txt{flex:1}
 .gr-title{font-size:13px;font-weight:700}
 .gr-sub{font-size:11px;color:var(--muted);margin-top:1px}
-
-/* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .stat{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:13px 10px;text-align:center}
 .stat-n{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px}
 .stat-l{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-
-/* LEADERBOARD */
 .lb-list{display:flex;flex-direction:column;gap:5px}
 .lb-row{display:flex;align-items:center;gap:9px;background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:9px 13px}
 .lb-row.me{border-color:var(--accent);background:rgba(124,90,246,.06)}
@@ -141,14 +115,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .lb-av img{width:80%;height:80%;object-fit:contain}
 .lb-name{flex:1;font-size:13px;font-weight:700}
 .lb-xp{font-size:13px;font-weight:800;color:var(--gold)}
-
-/* WORD LIST */
 .wl-item{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border-radius:10px;padding:10px 12px;margin-bottom:5px}
 .wl-w{font-size:14px;font-weight:700;color:var(--blue)}
 .wl-t{font-size:12px;color:var(--muted);margin-top:1px}
 .wl-p{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(192,132,252,.1);color:var(--purple);font-weight:700}
-
-/* BATTLE */
 .battle-hero{background:linear-gradient(135deg,rgba(249,123,79,.08),rgba(192,132,252,.06));
   border:1px solid rgba(249,123,79,.2);border-radius:18px;padding:18px;text-align:center;margin-bottom:14px;}
 .bh-vs{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;
@@ -161,8 +131,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .bh-av img{width:80%;height:80%;object-fit:contain}
 .bh-pname{font-size:11px;font-weight:700;color:var(--muted)}
 .bh-score{font-size:22px;font-weight:800;color:var(--orange)}
-
-/* BUTTONS */
 .btn-p{width:100%;padding:13px;border:none;border-radius:12px;
   background:linear-gradient(135deg,var(--orange),#c75a2f);color:white;
   font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;
@@ -173,8 +141,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   border-radius:12px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;
   color:var(--text);cursor:pointer;transition:all .2s;margin-bottom:7px;}
 .btn-s:hover{border-color:var(--blue)}
-
-/* BOTTOM NAV */
 .bottomnav{background:rgba(13,17,23,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);
   display:flex;padding:6px 4px;padding-bottom:max(6px,env(safe-area-inset-bottom));
   position:sticky;bottom:0;z-index:100;}
@@ -184,13 +150,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .nav-b.active{color:var(--accent)}
 .nav-b-icon{font-size:19px;line-height:1}
 .nav-b-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
-
-/* TAB PAGES */
 .tab-pages>div{display:none}
 .tab-pages>div.active{display:block;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
-/* MODALS */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);
   z-index:200;display:none;align-items:flex-end;justify-content:center;}
 .overlay.open{display:flex;animation:fadeIn .2s ease}
@@ -205,8 +167,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:var(--s2);border:1px solid var(--border);display:flex;align-items:center;
   justify-content:center;cursor:pointer;font-size:14px;color:var(--muted);transition:all .2s;}
 .sc:hover{color:var(--text)}
-
-/* GAME UI */
 .gsbar{display:flex;justify-content:space-between;background:var(--s2);border-radius:11px;padding:10px 14px;margin-bottom:14px;font-size:12px;font-weight:700}
 .gword{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--blue);
   text-align:center;padding:18px;background:var(--s2);border-radius:14px;margin-bottom:14px;}
@@ -217,15 +177,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .gopt:hover{border-color:var(--blue)}
 .gopt.correct{border-color:var(--green);background:rgba(79,223,138,.12);color:var(--green)}
 .gopt.wrong{border-color:var(--red);background:rgba(248,81,73,.12);color:var(--red)}
-
-/* MATCH */
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .mw{padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;transition:all .2s}
 .mw.selected{border-color:var(--blue);background:rgba(79,156,249,.1)}
 .mw.matched{border-color:var(--green);background:rgba(79,223,138,.1);color:var(--green);pointer-events:none}
 .mw.bad{border-color:var(--red);background:rgba(248,81,73,.1);color:var(--red)}
-
-/* ANAGRAM */
 .a-hint{font-size:16px;font-weight:800;color:var(--purple);text-align:center;margin-bottom:8px}
 .a-slots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:52px;padding:8px;background:var(--s2);border-radius:12px;margin-bottom:10px}
 .a-slot{width:40px;height:44px;background:var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;cursor:pointer;transition:all .2s}
@@ -234,68 +190,86 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .a-tile{width:40px;height:44px;background:var(--s2);border:1.5px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;cursor:pointer;transition:all .2s;user-select:none}
 .a-tile:hover{border-color:var(--blue);transform:translateY(-2px)}
 .a-tile.used{opacity:.25;pointer-events:none}
-
-/* GRAMMAR MODAL */
 .gr-rule{background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;margin-bottom:12px}
 .gr-eg{background:var(--s2);border-left:3px solid var(--purple);border-radius:0 9px 9px 0;padding:9px 13px;font-size:12px;font-style:italic;color:var(--purple);margin-bottom:7px}
 .qopt{padding:10px 13px;background:var(--s2);border:1.5px solid var(--border);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;font-family:'Nunito',sans-serif;color:var(--text);text-align:left;margin-bottom:6px;width:100%}
 .qopt:hover{border-color:var(--purple)}
 .qopt.correct{border-color:var(--green);background:rgba(79,223,138,.1);color:var(--green)}
 .qopt.wrong{border-color:var(--red);background:rgba(248,81,73,.1);color:var(--red)}
-
-/* SEARCH */
 .sinp{width:100%;padding:10px 13px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;font-size:13px;font-family:'Nunito',sans-serif;color:var(--text);outline:none;margin-bottom:10px}
 .sinp:focus{border-color:var(--blue)}
 .sinp::placeholder{color:var(--muted)}
-
-/* TOAST & XP */
 .toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:12px;font-weight:700;z-index:500;white-space:nowrap;animation:tIn .3s ease,tOut .3s 2.2s forwards;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 @keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes tOut{to{opacity:0}}
 .xp-pop{position:fixed;top:70px;right:14px;z-index:400;background:var(--gold);color:#080d14;padding:7px 14px;border-radius:20px;font-weight:800;font-size:13px;animation:xpIn .6s cubic-bezier(.34,1.56,.64,1) both,tOut .4s 1.6s forwards;pointer-events:none;}
 @keyframes xpIn{from{opacity:0;transform:translateY(16px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
+/* BATTLE MATCHMAKING */
+.match-status{text-align:center;padding:20px;background:rgba(124,90,246,.06);border:1px solid rgba(124,90,246,.2);border-radius:16px;margin-bottom:14px}
+.match-spinner{font-size:40px;animation:spin 1s linear infinite;display:block;margin-bottom:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.battle-mode-btn{padding:12px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;color:var(--text);cursor:pointer;transition:all .2s;width:100%;margin-bottom:8px;text-align:left;display:flex;align-items:center;gap:10px}
+.battle-mode-btn:hover{border-color:var(--orange)}
+.battle-mode-btn .bm-icon{font-size:22px}
 </style>
 </head>
 <body>
 
-<!-- WORDS DATABASE — JSON dan to'ldiring -->
 <script>
 // ============================================================
-// SO'ZLAR BAZASI
-// Har bir daraja uchun unit_1, unit_2, ... qo'shing
-// Format: {word, translation, definition, example, part_of_speech}
+// SO'ZLAR BAZASI (inline fallback)
 // ============================================================
 const WORDS_DB = {
   beginner: {
     unit_1: [
-      {word:"afraid",translation:"qo'rqqan",definition:"feeling fear or anxiety",example:"The woman was afraid of what she saw.",part_of_speech:"adjective"},
+      {word:"afraid",translation:"qo'rqqan",definition:"feeling fear",example:"The woman was afraid.",part_of_speech:"adjective"},
       {word:"angry",translation:"g'azablangan",definition:"feeling strong annoyance",example:"He was angry about the delay.",part_of_speech:"adjective"},
       {word:"beautiful",translation:"go'zal",definition:"pleasing to the senses",example:"She wore a beautiful dress.",part_of_speech:"adjective"},
-      {word:"calm",translation:"tinch",definition:"not showing nervousness",example:"He remained calm in the crisis.",part_of_speech:"adjective"},
+      {word:"calm",translation:"tinch",definition:"not showing nervousness",example:"He remained calm.",part_of_speech:"adjective"},
       {word:"happy",translation:"xursand",definition:"feeling pleasure",example:"I am happy to help you.",part_of_speech:"adjective"},
-      {word:"kind",translation:"mehribon",definition:"having a friendly nature",example:"He was kind to strangers.",part_of_speech:"adjective"},
-      {word:"strong",translation:"kuchli",definition:"having great physical power",example:"She is very strong.",part_of_speech:"adjective"},
-      {word:"quiet",translation:"jim, sokin",definition:"making little or no noise",example:"Please be quiet in the library.",part_of_speech:"adjective"},
+      {word:"kind",translation:"mehribon",definition:"friendly nature",example:"He was kind to strangers.",part_of_speech:"adjective"},
+      {word:"strong",translation:"kuchli",definition:"great physical power",example:"She is very strong.",part_of_speech:"adjective"},
+      {word:"quiet",translation:"jim, sokin",definition:"making little noise",example:"Be quiet in the library.",part_of_speech:"adjective"},
     ],
     unit_2: [
       {word:"achieve",translation:"erishmoq",definition:"successfully bring about",example:"You can achieve your goals.",part_of_speech:"verb"},
-      {word:"believe",translation:"ishonmoq",definition:"accept as true",example:"I believe in your abilities.",part_of_speech:"verb"},
+      {word:"believe",translation:"ishonmoq",definition:"accept as true",example:"I believe in you.",part_of_speech:"verb"},
       {word:"create",translation:"yaratmoq",definition:"bring into existence",example:"She loves to create art.",part_of_speech:"verb"},
-      {word:"decide",translation:"qaror qilmoq",definition:"come to a resolution",example:"He decided to leave early.",part_of_speech:"verb"},
+      {word:"decide",translation:"qaror qilmoq",definition:"come to a resolution",example:"He decided to leave.",part_of_speech:"verb"},
       {word:"explore",translation:"kashf etmoq",definition:"investigate and discover",example:"Let's explore the city.",part_of_speech:"verb"},
       {word:"forget",translation:"unutmoq",definition:"fail to remember",example:"Don't forget to call me.",part_of_speech:"verb"},
-      {word:"help",translation:"yordam bermoq",definition:"make it easier for someone",example:"Can you help me please?",part_of_speech:"verb"},
+      {word:"help",translation:"yordam bermoq",definition:"make easier for someone",example:"Can you help me?",part_of_speech:"verb"},
       {word:"imagine",translation:"tasavvur qilmoq",definition:"form a mental image",example:"Imagine a perfect world.",part_of_speech:"verb"},
     ],
     unit_3: [
-      {word:"freedom",translation:"ozodlik",definition:"the power to act as one wants",example:"Freedom is very important.",part_of_speech:"noun"},
+      {word:"freedom",translation:"ozodlik",definition:"power to act as one wants",example:"Freedom is important.",part_of_speech:"noun"},
       {word:"knowledge",translation:"bilim",definition:"facts and skills acquired",example:"Knowledge is power.",part_of_speech:"noun"},
       {word:"success",translation:"muvaffaqiyat",definition:"achievement of aim",example:"Hard work leads to success.",part_of_speech:"noun"},
       {word:"challenge",translation:"qiyinchilik",definition:"a difficult task",example:"Every challenge makes us stronger.",part_of_speech:"noun"},
-      {word:"family",translation:"oila",definition:"a group of related people",example:"My family is very supportive.",part_of_speech:"noun"},
+      {word:"family",translation:"oila",definition:"a group of related people",example:"My family is supportive.",part_of_speech:"noun"},
       {word:"friend",translation:"do'st",definition:"a person you like and trust",example:"She is my best friend.",part_of_speech:"noun"},
       {word:"journey",translation:"sayohat",definition:"an act of traveling",example:"Life is a journey.",part_of_speech:"noun"},
-      {word:"music",translation:"musiqa",definition:"vocal or instrumental sound",example:"I love listening to music.",part_of_speech:"noun"},
+      {word:"music",translation:"musiqa",definition:"vocal or instrumental sound",example:"I love music.",part_of_speech:"noun"},
+    ],
+    unit_4: [
+      {word:"ability",translation:"qobiliyat",definition:"capacity to do something",example:"She has great ability.",part_of_speech:"noun"},
+      {word:"adventure",translation:"sarguzasht",definition:"an exciting experience",example:"Life is an adventure.",part_of_speech:"noun"},
+      {word:"clever",translation:"aqlli",definition:"quick to understand",example:"He is a clever student.",part_of_speech:"adjective"},
+      {word:"dangerous",translation:"xavfli",definition:"able to cause harm",example:"That road is dangerous.",part_of_speech:"adjective"},
+      {word:"eager",translation:"ishtiyoqmand",definition:"wanting to do very much",example:"She is eager to learn.",part_of_speech:"adjective"},
+      {word:"famous",translation:"mashhur",definition:"known by many people",example:"He is a famous singer.",part_of_speech:"adjective"},
+      {word:"grateful",translation:"minnatdor",definition:"feeling thankful",example:"I am grateful for your help.",part_of_speech:"adjective"},
+      {word:"honest",translation:"halol",definition:"free of deceit",example:"Always be honest.",part_of_speech:"adjective"},
+    ],
+    unit_5: [
+      {word:"improve",translation:"yaxshilamoq",definition:"make better",example:"I want to improve my English.",part_of_speech:"verb"},
+      {word:"increase",translation:"oshirmoq",definition:"make larger",example:"Prices increased last year.",part_of_speech:"verb"},
+      {word:"inspire",translation:"ilhomlanmoq",definition:"fill with the urge",example:"She inspires everyone around her.",part_of_speech:"verb"},
+      {word:"manage",translation:"boshqarmoq",definition:"be in charge of",example:"He manages the team well.",part_of_speech:"verb"},
+      {word:"notice",translation:"payqamoq",definition:"become aware of",example:"Did you notice the change?",part_of_speech:"verb"},
+      {word:"prepare",translation:"tayyorlamoq",definition:"make ready",example:"Prepare for the exam.",part_of_speech:"verb"},
+      {word:"reduce",translation:"kamaytirmoq",definition:"make smaller",example:"We need to reduce waste.",part_of_speech:"verb"},
+      {word:"support",translation:"qo'llab-quvvatlamoq",definition:"bear all or part of",example:"Please support me.",part_of_speech:"verb"},
     ],
   },
   intermediate: {
@@ -303,32 +277,42 @@ const WORDS_DB = {
       {word:"ambiguous",translation:"noaniq, ikki ma'noli",definition:"open to more than one interpretation",example:"The instructions were ambiguous.",part_of_speech:"adjective"},
       {word:"competent",translation:"malakali",definition:"having the necessary ability",example:"She is a competent engineer.",part_of_speech:"adjective"},
       {word:"diligent",translation:"mehnatsevar",definition:"having care in one's work",example:"He is a diligent student.",part_of_speech:"adjective"},
-      {word:"eloquent",translation:"notiq, chechan",definition:"fluent or persuasive in speaking",example:"She gave an eloquent speech.",part_of_speech:"adjective"},
+      {word:"eloquent",translation:"notiq, chechan",definition:"fluent or persuasive",example:"She gave an eloquent speech.",part_of_speech:"adjective"},
       {word:"flexible",translation:"moslashuvchan",definition:"able to change easily",example:"We need a flexible approach.",part_of_speech:"adjective"},
-      {word:"genuine",translation:"haqiqiy",definition:"truly what something is said to be",example:"This is a genuine concern.",part_of_speech:"adjective"},
+      {word:"genuine",translation:"haqiqiy",definition:"truly what it's said to be",example:"This is a genuine concern.",part_of_speech:"adjective"},
       {word:"innovative",translation:"yangilikchi",definition:"featuring new ideas",example:"They used an innovative method.",part_of_speech:"adjective"},
-      {word:"persistent",translation:"qat'iyatli",definition:"continuing firmly despite difficulty",example:"Be persistent in your efforts.",part_of_speech:"adjective"},
+      {word:"persistent",translation:"qat'iyatli",definition:"continuing despite difficulty",example:"Be persistent in your efforts.",part_of_speech:"adjective"},
     ],
     unit_2: [
       {word:"accomplish",translation:"amalga oshirmoq",definition:"achieve or complete successfully",example:"She accomplished her mission.",part_of_speech:"verb"},
       {word:"analyze",translation:"tahlil qilmoq",definition:"examine in detail",example:"Let's analyze the data.",part_of_speech:"verb"},
       {word:"collaborate",translation:"hamkorlik qilmoq",definition:"work jointly with others",example:"We need to collaborate on this.",part_of_speech:"verb"},
       {word:"demonstrate",translation:"ko'rsatmoq",definition:"show or prove clearly",example:"He demonstrated the technique.",part_of_speech:"verb"},
-      {word:"evaluate",translation:"baholamoq",definition:"form an idea of the amount or quality",example:"We need to evaluate the results.",part_of_speech:"verb"},
+      {word:"evaluate",translation:"baholamoq",definition:"form an idea of the quality",example:"We need to evaluate the results.",part_of_speech:"verb"},
       {word:"negotiate",translation:"muzokaralar olib bormoq",definition:"try to reach an agreement",example:"They negotiated a better deal.",part_of_speech:"verb"},
-      {word:"prioritize",translation:"ustuvorlik bermoq",definition:"designate as most important",example:"Learn to prioritize your tasks.",part_of_speech:"verb"},
-      {word:"summarize",translation:"xulosa qilmoq",definition:"give a brief statement of main points",example:"Please summarize the article.",part_of_speech:"verb"},
+      {word:"prioritize",translation:"ustuvorlik bermoq",definition:"designate as most important",example:"Prioritize your tasks.",part_of_speech:"verb"},
+      {word:"summarize",translation:"xulosa qilmoq",definition:"give a brief statement",example:"Please summarize the article.",part_of_speech:"verb"},
+    ],
+    unit_3: [
+      {word:"abstract",translation:"mavhum",definition:"not based on concrete things",example:"He spoke in abstract terms.",part_of_speech:"adjective"},
+      {word:"crucial",translation:"hal qiluvchi",definition:"of vital importance",example:"This is a crucial decision.",part_of_speech:"adjective"},
+      {word:"dynamic",translation:"dinamik",definition:"positive and full of energy",example:"She has a dynamic personality.",part_of_speech:"adjective"},
+      {word:"efficient",translation:"samarali",definition:"achieving maximum productivity",example:"We need an efficient system.",part_of_speech:"adjective"},
+      {word:"fundamental",translation:"asosiy",definition:"forming a necessary base",example:"Trust is fundamental.",part_of_speech:"adjective"},
+      {word:"hypothesis",translation:"faraz",definition:"a proposed explanation",example:"Test your hypothesis first.",part_of_speech:"noun"},
+      {word:"indicate",translation:"ko'rsatmoq",definition:"point out, show",example:"Data indicates a trend.",part_of_speech:"verb"},
+      {word:"justify",translation:"asoslash",definition:"show to be right",example:"Can you justify this decision?",part_of_speech:"verb"},
     ],
   },
   advanced: {
     unit_1: [
-      {word:"ubiquitous",translation:"hamma joyda mavjud",definition:"present everywhere at the same time",example:"Smartphones have become ubiquitous.",part_of_speech:"adjective"},
-      {word:"pragmatic",translation:"amaliy, pragmatik",definition:"dealing with things sensibly and realistically",example:"Take a pragmatic approach.",part_of_speech:"adjective"},
+      {word:"ubiquitous",translation:"hamma joyda mavjud",definition:"present everywhere",example:"Smartphones have become ubiquitous.",part_of_speech:"adjective"},
+      {word:"pragmatic",translation:"amaliy, pragmatik",definition:"dealing with things realistically",example:"Take a pragmatic approach.",part_of_speech:"adjective"},
       {word:"meticulous",translation:"juda e'tiborli, puxta",definition:"showing great attention to detail",example:"She is meticulous in her work.",part_of_speech:"adjective"},
-      {word:"resilient",translation:"bardoshli, mustahkam",definition:"able to recover quickly from difficulties",example:"Children are incredibly resilient.",part_of_speech:"adjective"},
+      {word:"resilient",translation:"bardoshli, mustahkam",definition:"able to recover quickly",example:"Children are incredibly resilient.",part_of_speech:"adjective"},
       {word:"eloquence",translation:"notiqlik",definition:"fluent or persuasive speaking",example:"His eloquence impressed everyone.",part_of_speech:"noun"},
-      {word:"paradigm",translation:"namuna, paradigma",definition:"a typical example or pattern of something",example:"This is a new paradigm shift.",part_of_speech:"noun"},
-      {word:"phenomenon",translation:"hodisa, fenomen",definition:"a fact or situation that is observed to exist",example:"It was a natural phenomenon.",part_of_speech:"noun"},
+      {word:"paradigm",translation:"namuna, paradigma",definition:"a typical example or pattern",example:"This is a new paradigm shift.",part_of_speech:"noun"},
+      {word:"phenomenon",translation:"hodisa, fenomen",definition:"a fact or situation observed",example:"It was a natural phenomenon.",part_of_speech:"noun"},
       {word:"scrutinize",translation:"sinchkovlik bilan tekshirmoq",definition:"examine or inspect closely",example:"They scrutinized every detail.",part_of_speech:"verb"},
     ],
     unit_2: [
@@ -337,21 +321,18 @@ const WORDS_DB = {
       {word:"exacerbate",translation:"og'irlashtirmoq",definition:"make a problem worse",example:"Stress can exacerbate the condition.",part_of_speech:"verb"},
       {word:"impeccable",translation:"nuqsonsiz, benuqson",definition:"in accordance with the highest standards",example:"Her work is impeccable.",part_of_speech:"adjective"},
       {word:"juxtapose",translation:"yonma-yon qo'ymoq",definition:"place close together for contrast",example:"The author juxtaposes joy and sorrow.",part_of_speech:"verb"},
-      {word:"mitigate",translation:"yengillashtirmoq",definition:"make less severe or painful",example:"Steps taken to mitigate risk.",part_of_speech:"verb"},
-      {word:"perpetuate",translation:"davom ettirmoq",definition:"make something continue indefinitely",example:"Don't perpetuate stereotypes.",part_of_speech:"verb"},
+      {word:"mitigate",translation:"yengillashtirmoq",definition:"make less severe",example:"Steps taken to mitigate risk.",part_of_speech:"verb"},
+      {word:"perpetuate",translation:"davom ettirmoq",definition:"make continue indefinitely",example:"Don't perpetuate stereotypes.",part_of_speech:"verb"},
       {word:"verbose",translation:"so'zami, ko'p so'zli",definition:"using more words than needed",example:"His writing style is verbose.",part_of_speech:"adjective"},
     ],
   },
 };
 
 // ============================================================
-// GRAMMAR DATA — Barcha darajalar uchun
-// beginner | intermediate | advanced
+// GRAMMAR DATA
 // ============================================================
 const GRAMMAR_DATA = {
-
   beginner: [
-    // 1. PRESENT SIMPLE
     {icon:"📌", title:"Present Simple", sub:"Oddiy hozirgi zamon",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + V(s/es)"},
@@ -359,7 +340,7 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Do/Does + S + V ?"},
       ],
       keys:["always","usually","often","sometimes","never","every day","every week","on Mondays"],
-      rules:"Odatiy, takrorlanuvchan yoki doimiy harakatlar uchun ishlatiladi.\nHe/She/It bilan fe'lga <b>-s / -es</b> qo'shiladi.",
+      rules:"Odatiy, takrorlanuvchan yoki doimiy harakatlar uchun.\nHe/She/It bilan fe'lga <b>-s / -es</b> qo'shiladi.\n<b>do not</b> = don't | <b>does not</b> = doesn't",
       examples:[
         "She <b>works</b> every day.",
         "They <b>don't like</b> coffee.",
@@ -367,7 +348,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"She ___ to school every day.",opts:["go","goes","going","gone"],ans:1}},
 
-    // 2. PRESENT CONTINUOUS
     {icon:"⏳", title:"Present Continuous", sub:"Hozir bo'layotgan harakat",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + am/is/are + V-ing"},
@@ -375,7 +355,7 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Am/Is/Are + S + V-ing ?"},
       ],
       keys:["now","at the moment","currently","right now","today","look!","listen!"],
-      rules:"Hozirda yoki ushbu vaqt atrofida bo'layotgan harakatlar uchun.\nShuningdek yaqin kelajak rejalar uchun ham ishlatiladi.",
+      rules:"Hozirda yoki ushbu vaqt atrofida bo'layotgan harakatlar uchun.\nYaqin kelajak rejalari uchun ham ishlatiladi.",
       examples:[
         "I <b>am studying</b> English now.",
         "She <b>is not working</b> today.",
@@ -383,15 +363,14 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"They ___ football right now.",opts:["play","plays","are playing","played"],ans:2}},
 
-    // 3. PAST SIMPLE
     {icon:"📚", title:"Past Simple", sub:"Tugagan o'tgan zamon",
       formulas:[
-        {label:"✅ Tasdiq",  f:"S + V2 (regular: V+ed)"},
+        {label:"✅ Tasdiq",  f:"S + V2 (muntazam: V+ed)"},
         {label:"❌ Inkor",   f:"S + did not + V1"},
         {label:"❓ So'roq",  f:"Did + S + V1 ?"},
       ],
       keys:["yesterday","last week","last year","ago","in 2020","in the morning","once"],
-      rules:"O'tmishda ma'lum vaqtda tugagan harakatlar uchun.\nMuntazam fe'llarga <b>-ed</b>, nomuntazam fe'llar esa alohida shaklga ega.",
+      rules:"O'tmishda ma'lum vaqtda tugagan harakatlar uchun.\nMuntazam fe'llarga <b>-ed</b> qo'shiladi.\nNomuntazam fe'llar alohida shaklga ega.",
       examples:[
         "She <b>visited</b> London last year.",
         "He <b>didn't come</b> to the party.",
@@ -399,7 +378,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"He ___ the book last night.",opts:["read","reads","reading","readed"],ans:0}},
 
-    // 4. PAST CONTINUOUS
     {icon:"🔁", title:"Past Continuous", sub:"O'tmishda davom etgan harakat",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + was/were + V-ing"},
@@ -407,7 +385,7 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Was/Were + S + V-ing ?"},
       ],
       keys:["while","when","at that moment","all day","at 5 o'clock yesterday"],
-      rules:"O'tmishda biror vaqtda davom etayotgan harakat uchun.\nKo'pincha Past Simple bilan birgalikda ishlatiladi.",
+      rules:"O'tmishda biror vaqtda davom etayotgan harakat uchun.\nKo'pincha Past Simple bilan birgalikda ishlatiladi.\n<b>while</b> + Past Continuous | <b>when</b> + Past Simple",
       examples:[
         "I <b>was reading</b> when she called.",
         "They <b>were not sleeping</b> at midnight.",
@@ -415,7 +393,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"She ___ TV when I arrived.",opts:["watched","watches","was watching","is watching"],ans:2}},
 
-    // 5. FUTURE SIMPLE
     {icon:"🔮", title:"Future Simple", sub:"Kelajak zamon",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + will + V1"},
@@ -423,7 +400,7 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Will + S + V1 ?"},
       ],
       keys:["tomorrow","next week","next year","soon","in the future","someday"],
-      rules:"Kelajakdagi qarorlar, bashoratlar va va'dalar uchun.\n<b>Going to</b> — oldindan rejalashtirilgan harakatlar uchun.",
+      rules:"Kelajakdagi qarorlar, bashoratlar va va'dalar uchun.\n<b>Going to</b> — oldindan rejalashtirilgan harakatlar uchun.\nSpontan qarorlar uchun <b>will</b> ishlatiladi.",
       examples:[
         "I <b>will call</b> you tomorrow.",
         "She <b>won't forget</b> your birthday.",
@@ -431,7 +408,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"I ___ visit you next week.",opts:["am","was","will","do"],ans:2}},
 
-    // 6. PRESENT PERFECT
     {icon:"🔄", title:"Present Perfect", sub:"Hozirga aloqasi bor o'tmiş",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + have/has + V3"},
@@ -439,7 +415,7 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Have/Has + S + V3 ?"},
       ],
       keys:["already","yet","ever","never","just","recently","so far","for","since"],
-      rules:"O'tmishda bo'lgan, natijasi hozirga ta'sir qiluvchi harakatlar.\n<b>for</b> = muddat | <b>since</b> = boshlang'ich vaqt",
+      rules:"O'tmishda bo'lgan, natijasi hozirga ta'sir qiluvchi harakatlar.\n<b>for</b> = muddat (for 3 years) | <b>since</b> = boshlang'ich vaqt (since 2020)\n<b>have/has + V3</b> (3-forma: done, gone, seen)",
       examples:[
         "I <b>have seen</b> that movie.",
         "She <b>hasn't finished</b> yet.",
@@ -447,7 +423,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"I ___ never been to Japan.",opts:["am","have","was","had"],ans:1}},
 
-    // 7. PAST PERFECT
     {icon:"⏮", title:"Past Perfect", sub:"O'tmishdagi o'tmiş",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + had + V3"},
@@ -455,7 +430,7 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Had + S + V3 ?"},
       ],
       keys:["before","after","already","by the time","when","until"],
-      rules:"O'tmishdagi ikki harakatdan biri ikkinchisidan oldin bo'lganda ishlatiladi.",
+      rules:"O'tmishdagi ikki harakatdan biri ikkinchisidan oldin bo'lganda.\n<b>by the time</b> + Past Simple, Past Perfect\nBirinchi bo'lgan harakat = Past Perfect",
       examples:[
         "She <b>had left</b> before I arrived.",
         "He <b>hadn't eaten</b> anything all day.",
@@ -463,7 +438,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"When I arrived, she ___ already left.",opts:["has","have","had","was"],ans:2}},
 
-    // 8. FUTURE CONTINUOUS
     {icon:"🚀", title:"Future Continuous", sub:"Kelajakda davom etayotgan harakat",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + will be + V-ing"},
@@ -479,7 +453,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"This time tomorrow I ___ on the beach.",opts:["sit","will sit","will be sitting","am sitting"],ans:2}},
 
-    // 9. PRESENT PERFECT CONTINUOUS
     {icon:"🔃", title:"Present Perfect Continuous", sub:"Davom etib kelayotgan harakat",
       formulas:[
         {label:"✅ Tasdiq",  f:"S + have/has been + V-ing"},
@@ -487,24 +460,33 @@ const GRAMMAR_DATA = {
         {label:"❓ So'roq",  f:"Have/Has + S + been + V-ing ?"},
       ],
       keys:["for","since","how long","all day","lately","recently"],
-      rules:"O'tmishda boshlangan va hozirda ham davom etayotgan harakatlar uchun.\nNatijaga emas, <b>davomiyligiga</b> urg'u beriladi.",
+      rules:"O'tmishda boshlangan va hozirda ham davom etayotgan harakatlar.\nNatijaga emas, <b>davomiyligiga</b> urg'u beriladi.",
       examples:[
         "I <b>have been studying</b> for 3 hours.",
         "She <b>has been waiting</b> since 9am.",
         "<b>How long have</b> you <b>been learning</b> English?",
       ],
       quiz:{q:"He ___ English for 5 years.",opts:["learns","has learned","has been learning","is learning"],ans:2}},
+
+    {icon:"⏭", title:"Future Perfect", sub:"Kelajakda tugagan bo'ladigan harakat",
+      formulas:[
+        {label:"✅ Tasdiq",  f:"S + will have + V3"},
+        {label:"❌ Inkor",   f:"S + will not have + V3"},
+        {label:"❓ So'roq",  f:"Will + S + have + V3 ?"},
+      ],
+      keys:["by tomorrow","by next week","by the time","by 2030","before"],
+      rules:"Kelajakdagi ma'lum bir vaqtga qadar tugagan bo'ladigan harakat.\n<b>by</b> + vaqt bilan ko'p ishlatiladi.",
+      examples:[
+        "I <b>will have finished</b> by Monday.",
+        "She <b>won't have graduated</b> by next year.",
+        "<b>Will</b> you <b>have eaten</b> by 7pm?",
+      ],
+      quiz:{q:"By next year, she ___ her degree.",opts:["finishes","will finish","will have finished","has finished"],ans:2}},
   ],
 
-  // ============================================================
-  // INTERMEDIATE
-  // ============================================================
   intermediate: [
-    // 1. CONDITIONALS
     {icon:"🔀", title:"Zero Conditional", sub:"Har doim to'g'ri bo'lgan holatlar",
-      formulas:[
-        {label:"Formula", f:"If + Present Simple, Present Simple"},
-      ],
+      formulas:[{label:"Formula", f:"If + Present Simple, Present Simple"}],
       keys:["if","when","always","generally"],
       rules:"Ilmiy haqiqatlar, tabiat qonunlari va umumiy haqiqatlar uchun.\n<b>if = when</b> ma'nosida ishlatiladi.",
       examples:[
@@ -514,9 +496,7 @@ const GRAMMAR_DATA = {
       quiz:{q:"If you ___ water, it evaporates.",opts:["heat","heated","will heat","heating"],ans:0}},
 
     {icon:"1️⃣", title:"First Conditional", sub:"Mumkin bo'lgan kelajak",
-      formulas:[
-        {label:"Formula", f:"If + Present Simple, will + V1"},
-      ],
+      formulas:[{label:"Formula", f:"If + Present Simple, will + V1"}],
       keys:["if","unless","as long as","provided that","in case"],
       rules:"Haqiqiy va mumkin bo'lgan kelajak shartlar uchun.\n<b>unless</b> = if ... not ma'nosida",
       examples:[
@@ -526,11 +506,9 @@ const GRAMMAR_DATA = {
       quiz:{q:"If she ___ hard, she will succeed.",opts:["work","works","worked","will work"],ans:1}},
 
     {icon:"2️⃣", title:"Second Conditional", sub:"Xayoliy / mumkin bo'lmagan hozirgi",
-      formulas:[
-        {label:"Formula", f:"If + Past Simple, would + V1"},
-      ],
+      formulas:[{label:"Formula", f:"If + Past Simple, would + V1"}],
       keys:["if","would","could","might","imagine","suppose"],
-      rules:"Hozirda haqiqiy bo'lmagan yoki kam ehtimollik holatlar uchun.\n<b>If I were you</b> — maslahat berishda ko'p ishlatiladi.",
+      rules:"Hozirda haqiqiy bo'lmagan yoki kam ehtimollik holatlar uchun.\n<b>If I were you</b> — maslahat berishda ishlatiladi.",
       examples:[
         "If I <b>had</b> money, I <b>would travel</b>.",
         "If I <b>were</b> you, I <b>would apologize</b>.",
@@ -538,22 +516,19 @@ const GRAMMAR_DATA = {
       quiz:{q:"If he ___ harder, he would pass.",opts:["studies","studied","will study","study"],ans:1}},
 
     {icon:"3️⃣", title:"Third Conditional", sub:"O'tmishga afsus",
-      formulas:[
-        {label:"Formula", f:"If + Past Perfect, would have + V3"},
-      ],
+      formulas:[{label:"Formula", f:"If + Past Perfect, would have + V3"}],
       keys:["if","would have","could have","might have"],
-      rules:"O'tmishda bo'lmagan yoki o'zgartirish mumkin bo'lmagan holatlar uchun.\nAfsus va tanqid ifodalashda ishlatiladi.",
+      rules:"O'tmishda bo'lmagan yoki o'zgartirish mumkin bo'lmagan holatlar.\nAfsus va tanqid ifodalashda ishlatiladi.",
       examples:[
         "If I <b>had studied</b>, I <b>would have passed</b>.",
         "She <b>would have come</b> if you <b>had invited</b> her.",
       ],
       quiz:{q:"If they ___ harder, they would have won.",opts:["try","tried","had tried","have tried"],ans:2}},
 
-    // 2. MODAL VERBS
     {icon:"🎛", title:"Modal Verbs — Imkoniyat", sub:"Can, Could, Be able to",
       formulas:[
-        {label:"can",      f:"S + can + V1 (hozirgi)"},
-        {label:"could",    f:"S + could + V1 (o'tmiş / vaqtincha)"},
+        {label:"can",       f:"S + can + V1 (hozirgi)"},
+        {label:"could",     f:"S + could + V1 (o'tmiş / vaqtincha)"},
         {label:"be able to",f:"S + am/is/are able to + V1"},
       ],
       keys:["can","could","be able to","manage to"],
@@ -567,9 +542,9 @@ const GRAMMAR_DATA = {
 
     {icon:"⚠️", title:"Modal Verbs — Majburiyat", sub:"Must, Have to, Should, Ought to",
       formulas:[
-        {label:"must",     f:"S + must + V1 (ichki majburiyat)"},
-        {label:"have to",  f:"S + have to + V1 (tashqi majburiyat)"},
-        {label:"should",   f:"S + should + V1 (maslahat)"},
+        {label:"must",   f:"S + must + V1 (ichki majburiyat)"},
+        {label:"have to",f:"S + have to + V1 (tashqi majburiyat)"},
+        {label:"should", f:"S + should + V1 (maslahat)"},
       ],
       keys:["must","have to","should","ought to","need to","had better"],
       rules:"<b>must</b> — shaxsiy majburiyat / qat'iy talab\n<b>have to</b> — qoida, qonun yoki tashqi majburiyat\n<b>should</b> — maslahat, tavsiya",
@@ -582,21 +557,20 @@ const GRAMMAR_DATA = {
 
     {icon:"🤔", title:"Modal Verbs — Ehtimollik", sub:"May, Might, Must, Can't",
       formulas:[
-        {label:"must",   f:"S + must + V1 (95% ishonch)"},
-        {label:"may",    f:"S + may + V1 (50% ehtimol)"},
-        {label:"might",  f:"S + might + V1 (30% ehtimol)"},
-        {label:"can't",  f:"S + can't + V1 (imkonsiz)"},
+        {label:"must",  f:"S + must + V1 (95% ishonch)"},
+        {label:"may",   f:"S + may + V1 (50% ehtimol)"},
+        {label:"might", f:"S + might + V1 (30% ehtimol)"},
+        {label:"can't", f:"S + can't + V1 (imkonsiz)"},
       ],
       keys:["must","may","might","could","can't","probably","perhaps"],
-      rules:"<b>must</b> — mantiqiy xulosa (u shunday bo'lishi kerak)\n<b>may/might</b> — noaniqlik, ehtimollik\n<b>can't</b> — mantiqiy inkor",
+      rules:"<b>must</b> — mantiqiy xulosa\n<b>may/might</b> — noaniqlik, ehtimollik\n<b>can't</b> — mantiqiy inkor",
       examples:[
-        "She <b>must be</b> tired. (ishonaman)",
+        "She <b>must be</b> tired.",
         "It <b>might rain</b> tomorrow.",
         "He <b>can't be</b> home — I saw him leave.",
       ],
       quiz:{q:"He knows every answer. He ___ be very smart.",opts:["might","can't","must","may"],ans:2}},
 
-    // 3. PASSIVE VOICE
     {icon:"🔄", title:"Passive Voice — Present & Past", sub:"Ish kimga bajariladi",
       formulas:[
         {label:"Present Simple", f:"S + am/is/are + V3"},
@@ -629,11 +603,7 @@ const GRAMMAR_DATA = {
       quiz:{q:"The problem ___ before I arrived.",opts:["solved","has been solved","had been solved","was solve"],ans:2}},
   ],
 
-  // ============================================================
-  // ADVANCED
-  // ============================================================
   advanced: [
-    // 1. INVERSION
     {icon:"🔃", title:"Inversion", sub:"Inversiya — so'z tartibini o'zgartirish",
       formulas:[
         {label:"Negative adverb", f:"Never/Rarely/Seldom + aux + S + V"},
@@ -652,11 +622,10 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"___ have I seen such a beautiful sunset.",opts:["Rarely","Rare","Rarely I","Rarely I have"],ans:0}},
 
-    // 2. CLEFT SENTENCES
     {icon:"✂️", title:"Cleft Sentences", sub:"It is/was ... that — ta'kidlash",
       formulas:[
-        {label:"It-cleft",    f:"It + is/was + [emphasized part] + that/who + ..."},
-        {label:"Wh-cleft",    f:"What + S + V + is/was + [emphasized part]"},
+        {label:"It-cleft",  f:"It + is/was + [ta'kidlanadigan qism] + that/who + ..."},
+        {label:"Wh-cleft",  f:"What + S + V + is/was + [ta'kidlanadigan qism]"},
       ],
       keys:["it is","it was","what I need","what matters","what happened"],
       rules:"Jumlaning biror qismini ta'kidlash uchun ishlatiladi.\n<b>It-cleft</b> — aniq elementni ajratib ko'rsatadi\n<b>Wh-cleft</b> — gap boshida 'what' bilan keladi",
@@ -668,7 +637,6 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"___ John who called you last night.",opts:["It was","It is","What was","That was"],ans:0}},
 
-    // 3. MIXED CONDITIONALS
     {icon:"🔀", title:"Mixed Conditionals", sub:"Aralash shartli gaplar",
       formulas:[
         {label:"Past → Present", f:"If + Past Perfect, would + V1"},
@@ -682,10 +650,9 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"If he had taken that job, he ___ rich now.",opts:["would be","would have been","will be","had been"],ans:0}},
 
-    // 4. SUBJUNCTIVE MOOD
     {icon:"🎭", title:"Subjunctive Mood", sub:"Istak va taklif ifodasi",
       formulas:[
-        {label:"Present Subjunctive", f:"S + suggest/recommend/insist + that + S + V1 (bare)"},
+        {label:"Present Subjunctive", f:"S + suggest/recommend + that + S + V1 (bare)"},
         {label:"Were-subjunctive",    f:"If I/he/she + were... (xayoliy)"},
       ],
       keys:["suggest","recommend","insist","demand","require","propose","wish","if I were"],
@@ -694,15 +661,13 @@ const GRAMMAR_DATA = {
         "I suggest that he <b>be</b> more careful.",
         "She insisted that he <b>leave</b> immediately.",
         "If I <b>were</b> the president, I would change things.",
-        "I wish she <b>were</b> here with us.",
       ],
       quiz:{q:"The doctor recommended that she ___ more rest.",opts:["gets","get","got","is getting"],ans:1}},
 
-    // 5. EMPHATIC STRUCTURES
     {icon:"💬", title:"Emphatic Structures", sub:"Ta'kidlash strukturalari",
       formulas:[
         {label:"Do/Does/Did emphasis", f:"S + do/does/did + V1 (ta'kid)"},
-        {label:"As much/many as",      f:"as much/many as + number/amount"},
+        {label:"As much/many as",      f:"as much/many as + son/miqdor"},
         {label:"Such...that",          f:"such + (a/an) + adj + noun + that"},
         {label:"So...that",            f:"so + adj/adv + that"},
       ],
@@ -717,24 +682,38 @@ const GRAMMAR_DATA = {
       ],
       quiz:{q:"I ___ tell you this would happen!",opts:["do","did","does","have"],ans:1}},
 
-    // 6. COMPLEX STRUCTURES
     {icon:"🏗", title:"Advanced Complex Structures", sub:"Murakkab grammatik strukturalar",
       formulas:[
-        {label:"Reduced relative clause", f:"N + V-ing/V3 (instead of who/which + verb)"},
+        {label:"Reduced relative clause", f:"N + V-ing/V3 (who/which + verb o'rniga)"},
         {label:"Participle clause",       f:"V-ing/Having + V3, S + V"},
         {label:"Nominalization",          f:"V → Noun (decide → decision)"},
-        {label:"Fronting",                f:"[Object/Adverb] + S + V (emphasis)"},
+        {label:"Fronting",                f:"[Object/Adverb] + S + V (ta'kid)"},
       ],
       keys:["having done","being","given","considering","provided","assuming","regarding","concerning"],
       rules:"<b>Reduced relative:</b> 'the man <b>sitting</b> there' = the man who is sitting\n<b>Participle clause:</b> ikkita harakatni qisqartirish\n<b>Fronting:</b> ob'ektni oldiniga qo'yish — ta'kid",
       examples:[
-        "The man <b>standing</b> there is my boss. (who is standing)",
+        "The man <b>standing</b> there is my boss.",
         "<b>Having finished</b> his work, he went home.",
         "<b>Tired as she was</b>, she kept working.",
         "<b>This I cannot accept.</b> (fronting)",
         "<b>Given the circumstances</b>, we did well.",
       ],
       quiz:{q:"___ his homework, he went out to play.",opts:["Finish","Finished","Having finished","He finished"],ans:2}},
+
+    {icon:"📐", title:"Relative Clauses", sub:"Aniqlovchi va tavsiflovchi gaplar",
+      formulas:[
+        {label:"Defining",       f:"N + who/which/that + V (vergulsiz)"},
+        {label:"Non-defining",   f:"N + , who/which , + V (vergul bilan)"},
+        {label:"Preposition",    f:"N + prep + which/whom + V"},
+      ],
+      keys:["who","which","that","whose","whom","where","when"],
+      rules:"<b>Defining:</b> Narsani aniqlaydi — bo'lmasa ma'no o'zgaradi (vergulsiz)\n<b>Non-defining:</b> Qo'shimcha ma'lumot — bo'lmasa ham bo'ladi (vergul bilan)\n<b>that</b> = non-defining gaplarda ishlatilmaydi",
+      examples:[
+        "The man <b>who called</b> is my uncle. (defining)",
+        "My brother, <b>who lives in London</b>, is a doctor. (non-defining)",
+        "The book <b>about which</b> I told you is amazing.",
+      ],
+      quiz:{q:"The city ___ I was born is very beautiful.",opts:["which","that","where","who"],ans:2}},
   ],
 };
 
@@ -753,11 +732,18 @@ const FAKE_LB=[
   {name:"Akbar",xp:1890,av:"🤖"},
   {name:"Zulfiya",xp:1420,av:"🐱"},
 ];
+
+// ===== ONLINE PLAYERS (fake) =====
+const ONLINE_PLAYERS = [
+  {name:"Sherzod",av:"🐯",xp:1200},
+  {name:"Nilufar",av:"🦋",xp:980},
+  {name:"Bobur",av:"🦁",xp:1540},
+  {name:"Sarvar",av:"🐺",xp:760},
+  {name:"Gulnora",av:"🌸",xp:1890},
+];
 </script>
 
-<!-- APP HTML -->
 <div id="app">
-
   <!-- TOPBAR -->
   <div>
     <div class="topbar">
@@ -818,7 +804,6 @@ const FAKE_LB=[
               O'tish →
             </button>
           </div>
-          <!-- UNIT QUICK PILLS -->
           <div id="unit-quick" style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px"></div>
         </div>
 
@@ -929,13 +914,14 @@ const FAKE_LB=[
             </div>
             <div style="font-size:28px">⚔️</div>
             <div class="bh-player">
-              <div class="bh-av">🤖</div>
-              <div class="bh-pname">Raqib</div>
+              <div class="bh-av" id="bh-opp-av">🤖</div>
+              <div class="bh-pname" id="bh-opp-name">Raqib</div>
               <div class="bh-score" id="bh-opp-s">0</div>
             </div>
           </div>
         </div>
-        <button class="btn-p" onclick="startBattle()">🎯 Jang boshlash</button>
+        <button class="btn-p" onclick="findOpponent()">🎯 Raqib topish</button>
+        <button class="btn-s" onclick="startBotBattle()">🤖 Robot bilan o'ynash</button>
         <button class="btn-s" onclick="openModal('modal-lb')">🏆 Global reyting</button>
         <div class="sec-title" style="margin:14px 0 10px">🏅 Natijalarim</div>
         <div class="stats-row">
@@ -956,7 +942,8 @@ const FAKE_LB=[
   </div>
 </div>
 
-<!-- MODALS -->
+<!-- ==================== MODALS ==================== -->
+
 <!-- WORDS LIST -->
 <div class="overlay" id="modal-words" onclick="closeModal(event,'modal-words')">
   <div class="sheet">
@@ -988,7 +975,7 @@ const FAKE_LB=[
   </div>
 </div>
 
-<!-- ANAGRAM -->
+<!-- ANAGRAM / HIDDEN WORD -->
 <div class="overlay" id="modal-anagram" onclick="closeModal(event,'modal-anagram')">
   <div class="sheet">
     <div class="sh"></div>
@@ -1040,17 +1027,17 @@ const FAKE_LB=[
       <div style="display:flex;flex-direction:column;gap:9px">
         <div class="gr-item" onclick="switchGrLevel('beginner')">
           <div class="gr-ico">🌱</div>
-          <div class="gr-txt"><div class="gr-title">Beginner</div><div class="gr-sub">9 ta mavzu — barcha asosiy zamonlar</div></div>
+          <div class="gr-txt"><div class="gr-title">Beginner</div><div class="gr-sub">10 ta mavzu — barcha asosiy zamonlar</div></div>
           <span id="grl-b-check" style="color:var(--green);font-size:18px"></span>
         </div>
         <div class="gr-item" onclick="switchGrLevel('intermediate')">
           <div class="gr-ico">🔥</div>
-          <div class="gr-txt"><div class="gr-title">Intermediate</div><div class="gr-sub">8 ta mavzu — Conditionals, Modals, Passive</div></div>
+          <div class="gr-txt"><div class="gr-title">Intermediate</div><div class="gr-sub">9 ta mavzu — Conditionals, Modals, Passive</div></div>
           <span id="grl-i-check" style="color:var(--blue);font-size:18px"></span>
         </div>
         <div class="gr-item" onclick="switchGrLevel('advanced')">
           <div class="gr-ico">⚡</div>
-          <div class="gr-txt"><div class="gr-title">Advanced</div><div class="gr-sub">6 ta mavzu — Inversion, Cleft, Mixed</div></div>
+          <div class="gr-txt"><div class="gr-title">Advanced</div><div class="gr-sub">7 ta mavzu — Inversion, Cleft, Complex</div></div>
           <span id="grl-a-check" style="color:var(--purple);font-size:18px"></span>
         </div>
       </div>
@@ -1067,12 +1054,30 @@ const FAKE_LB=[
   </div>
 </div>
 
+<!-- MATCHMAKING / FINDING OPPONENT -->
+<div class="overlay" id="modal-matchmaking">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sb" style="text-align:center;padding-top:10px">
+      <div class="match-status" id="mm-status">
+        <span class="match-spinner" id="mm-spinner">🔍</span>
+        <div style="font-size:16px;font-weight:800;margin-bottom:6px" id="mm-title">Raqib qidirilmoqda...</div>
+        <div style="font-size:12px;color:var(--muted)" id="mm-sub">Online o'yinchilar qidirilmoqda</div>
+      </div>
+      <button class="btn-s" onclick="cancelMatchmaking()">✕ Bekor qilish</button>
+    </div>
+  </div>
+</div>
+
 <!-- BATTLE GAME -->
 <div class="overlay" id="modal-bg">
   <div class="sheet">
     <div class="sh"></div>
     <div class="sb">
-      <div class="st" style="text-align:center">⚔️ 1vs1 Jang</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800">⚔️ 1vs1 Jang</div>
+        <div id="bg-opp-badge" style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(248,81,73,.1);color:var(--red);font-weight:700"></div>
+      </div>
       <div class="gsbar">
         <span>Siz: <b id="bg-my" style="color:var(--blue)">0</b></span>
         <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800" id="bg-time">30</span>
@@ -1101,7 +1106,6 @@ const FAKE_LB=[
 // ===== INIT =====
 window.addEventListener('DOMContentLoaded', ()=>{
   if(!U){ window.location.href='register.html'; return; }
-  // Oxirgi tanlangan kitob va unitni tiklash
   curBook = U.lastBook || 1;
   curUnitNum = U.lastUnit || 1;
   loadTopbar();
@@ -1124,10 +1128,17 @@ function loadTopbar(){
   document.getElementById('tb-xp').textContent = U.xp+' XP';
   document.getElementById('tb-streak').textContent = U.streak;
   if(U.avatarUrl){
-    const av = document.getElementById('tb-av');
-    av.innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+    document.getElementById('tb-av').innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
   }
 }
+
+// ============================================================
+// BOOK & UNIT SYSTEM
+// ============================================================
+let curBook = 1;
+let curUnitNum = 1;
+const BOOK_LEVEL = {1:'beginner',2:'beginner',3:'intermediate',4:'intermediate',5:'advanced',6:'advanced'};
+const BOOK_COLORS = {1:'var(--green)',2:'var(--green)',3:'var(--blue)',4:'var(--blue)',5:'var(--purple)',6:'var(--purple)'};
 
 function getUnitWords(level, unitNum){
   return WORDS_DB[level]?.['unit_'+unitNum] || [];
@@ -1137,52 +1148,22 @@ function getAllWords(level){
   return Object.values(db).flat();
 }
 function getAllWordsForGames(){
-  // O'yinlar uchun hozirgi kitob+unit so'zlari
   const level = BOOK_LEVEL[curBook] || U.level;
-  return currentUnitWords.length >= 4
-    ? currentUnitWords
-    : getAllWords(level);
+  return currentUnitWords.length >= 4 ? currentUnitWords : getAllWords(level);
 }
-
-// ============================================================
-// BOOK & UNIT SYSTEM
-// Kitob: beginner=1-2, intermediate=3-4, advanced=5-6
-// Unit: 1-30 (har kitobda)
-// ============================================================
-
-// Hozirgi tanlangan kitob va unit
-let curBook = 1;
-let curUnitNum = 1;
-
-// Kitob → daraja mapping
-const BOOK_LEVEL = {
-  1:'beginner', 2:'beginner',
-  3:'intermediate', 4:'intermediate',
-  5:'advanced', 6:'advanced',
-};
-const LEVEL_BOOKS = {
-  beginner:[1,2], intermediate:[3,4], advanced:[5,6],
-};
-const BOOK_COLORS = {
-  1:'var(--green)', 2:'var(--green)',
-  3:'var(--blue)',  4:'var(--blue)',
-  5:'var(--purple)',6:'var(--purple)',
-};
 
 function buildBookRow(){
   const row = document.getElementById('book-row');
   row.innerHTML = '';
-  // Foydalanuvchi darajasiga qarab kitoblar
-  const allBooks = [1,2,3,4,5,6];
-  allBooks.forEach(b=>{
-    const el = document.createElement('div');
+  [1,2,3,4,5,6].forEach(b=>{
     const lv = BOOK_LEVEL[b];
-    const lvLabel = {beginner:'Beginner',intermediate:'Interm.',advanced:'Advanced'}[lv];
+    const lvLabel = {beginner:'Beg.',intermediate:'Int.',advanced:'Adv.'}[lv];
+    const el = document.createElement('div');
     el.className = 'unit-pill' + (b===curBook ? ' active':'');
     el.style.borderColor = b===curBook ? BOOK_COLORS[b] : '';
     el.style.color = b===curBook ? BOOK_COLORS[b] : '';
     el.style.background = b===curBook ? `rgba(0,0,0,.3)` : '';
-    el.innerHTML = `📗 Kitob ${b}`;
+    el.innerHTML = `📗 Kitob ${b} <span style="font-size:9px;opacity:.7">${lvLabel}</span>`;
     el.onclick = ()=> selectBook(b);
     row.appendChild(el);
   });
@@ -1199,7 +1180,6 @@ function selectBook(b){
 }
 
 function updateUnitRange(){
-  // Tanlangan kitobdagi unitlar sonini ko'rsatish
   const level = BOOK_LEVEL[curBook];
   const db = WORDS_DB[level] || {};
   const maxUnit = Object.keys(db).length || 30;
@@ -1216,7 +1196,6 @@ function buildQuickUnits(){
   units.slice(0,10).forEach(n=>{
     const el = document.createElement('div');
     el.className = 'unit-pill' + (n===curUnitNum?' active':'');
-    // O'rganilganini tekshirish
     const words = getUnitWords(level, n);
     const learned = words.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
     const isDone = words.length > 0 && learned === words.length;
@@ -1251,22 +1230,13 @@ function goToUnit(){
   const level = BOOK_LEVEL[curBook];
   currentUnitWords = getUnitWords(level, n);
 
-  // Info qatorni yangilash
   const learned = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
   document.getElementById('sel-title').textContent = `Kitob ${curBook} · Unit ${n}`;
   document.getElementById('sel-sub').textContent = `${currentUnitWords.length} ta so'z`;
-  document.getElementById('sel-done').textContent = currentUnitWords.length > 0
-    ? `✓ ${learned}/${currentUnitWords.length}`
-    : '';
-
-  // O'yin label
+  document.getElementById('sel-done').textContent = currentUnitWords.length > 0 ? `✓ ${learned}/${currentUnitWords.length}` : '';
   const gl = document.getElementById('game-unit-label');
   if(gl) gl.textContent = `Kitob ${curBook} · Unit ${n}`;
-
-  // Quick pills yangilash
   buildQuickUnits();
-
-  // Oxirgi tanlangan kitob va unitni saqlash
   U.lastBook = curBook;
   U.lastUnit = n;
 
@@ -1301,14 +1271,8 @@ function flipCard(){
   document.getElementById('fc').classList.toggle('flipped', cardFlipped);
   if(cardFlipped) learnWord(currentUnitWords[cardIdx]);
 }
-function nextCard(){
-  cardIdx = (cardIdx+1) % currentUnitWords.length;
-  updateCard();
-}
-function prevCard(){
-  cardIdx = (cardIdx-1+currentUnitWords.length) % currentUnitWords.length;
-  updateCard();
-}
+function nextCard(){ cardIdx = (cardIdx+1) % currentUnitWords.length; updateCard(); }
+function prevCard(){ cardIdx = (cardIdx-1+currentUnitWords.length) % currentUnitWords.length; updateCard(); }
 function speakWord(){
   const w = currentUnitWords[cardIdx];
   if(!w) return;
@@ -1320,7 +1284,7 @@ function speakWord(){
 function learnWord(w){
   if(!U.learnedWords.find(x=>x.word===w.word)){
     U.learnedWords.push(w);
-    addXP(5);
+    addXP(1);
     saveUser();
     updateStats();
   }
@@ -1347,6 +1311,7 @@ function addXP(n){
   U.xp += n;
   showXP('+'+n+' XP');
   saveUser();
+  document.getElementById('tb-xp').textContent = U.xp+' XP';
 }
 function saveUser(){ sessionStorage.setItem('ep_user', JSON.stringify(U)); }
 function showXP(txt){
@@ -1362,7 +1327,6 @@ function showToast(msg){
 function buildGrammarList(){
   const level = U.grammarLevel || U.level || 'beginner';
   buildGrammarListForLevel(level);
-  // Check mark ni o'rnatish
   const map={beginner:'b',intermediate:'i',advanced:'a'};
   setTimeout(()=>{
     const el = document.getElementById('grl-'+map[level]+'-check');
@@ -1370,59 +1334,11 @@ function buildGrammarList(){
   },100);
 }
 
-function openGrammar(i){
-  const data = GRAMMAR_DATA[U.level] || GRAMMAR_DATA.beginner;
-  const g = data[i];
-
-  // Formulalar
-  const formulasHtml = g.formulas.map(f=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-      <span style="font-size:10px;font-weight:800;color:var(--muted);min-width:80px;text-transform:uppercase;letter-spacing:.05em">${f.label}</span>
-      <span style="background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--blue);flex:1">${f.f}</span>
-    </div>
-  `).join('');
-
-  // Kalit so'zlar
-  const keysHtml = g.keys.map(k=>
-    `<span style="background:rgba(124,90,246,.12);border:1px solid rgba(124,90,246,.2);color:var(--al);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">${k}</span>`
-  ).join(' ');
-
-  // Misollar
-  const exHtml = g.examples.map(e=>`<div class="gr-eg">${e}</div>`).join('');
-
-  document.getElementById('gr-modal-body').innerHTML=`
-    <div class="st">${g.icon} ${g.title}</div>
-    <div style="color:var(--muted);font-size:12px;margin-bottom:14px">${g.sub}</div>
-
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px">📐 FORMULALAR</div>
-    <div style="margin-bottom:14px">${formulasHtml}</div>
-
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px">ℹ️ QOIDA</div>
-    <div class="gr-rule">${g.rules.replace(/\n/g,'<br>')}</div>
-
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px">🔑 KALIT SO'ZLAR</div>
-    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">${keysHtml}</div>
-
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:8px">💬 MISOLLAR</div>
-    ${exHtml}
-
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:14px 0 8px">🧪 MINI TEST</div>
-    <div style="background:var(--s2);border-radius:12px;padding:12px 14px;font-size:14px;font-weight:700;margin-bottom:10px;line-height:1.5">${g.quiz.q}</div>
-    <div id="gr-opts" style="display:flex;flex-direction:column;gap:7px">
-      ${g.quiz.opts.map((o,idx)=>`<button class="qopt" onclick="answerGr(${idx},${g.quiz.ans},this)">${o}</button>`).join('')}
-    </div>
-    <div id="gr-res" style="margin-top:10px;text-align:center;font-size:13px;min-height:18px"></div>
-  `;
-  openModal('modal-grammar');
-}
-
 function switchGrLevel(level){
-  // Barcha checkmark larni tozalash
-  ['b','i','a'].forEach(x=> document.getElementById('grl-'+x+'-check').textContent='');
-  // Tanlangan darajaga check qo'yish
+  ['b','i','a'].forEach(x=>{ const el=document.getElementById('grl-'+x+'-check'); if(el) el.textContent=''; });
   const map={beginner:'b',intermediate:'i',advanced:'a'};
-  document.getElementById('grl-'+map[level]+'-check').textContent='✓';
-  // Grammar listni yangilash
+  const el=document.getElementById('grl-'+map[level]+'-check');
+  if(el) el.textContent='✓';
   U.grammarLevel = level;
   saveUser();
   buildGrammarListForLevel(level);
@@ -1488,15 +1404,18 @@ function openGrammarFromLevel(level,i){
   `;
   openModal('modal-grammar');
 }
+
+function answerGr(idx,ans,el){
   document.querySelectorAll('#gr-opts .qopt').forEach(o=>o.onclick=null);
   const res = document.getElementById('gr-res');
   if(idx===ans){
     el.classList.add('correct');
-    addXP(10);
-    res.innerHTML='<span style="color:var(--green)">✅ To\'g\'ri! +10 XP</span>';
+    addXP(1);
+    res.innerHTML='<span style="color:var(--green)">✅ To\'g\'ri! +1 XP</span>';
   } else {
     el.classList.add('wrong');
-    document.querySelectorAll('#gr-opts .qopt')[ans].classList.add('correct');
+    const opts = document.querySelectorAll('#gr-opts .qopt');
+    if(opts[ans]) opts[ans].classList.add('correct');
     res.innerHTML='<span style="color:var(--red)">❌ Noto\'g\'ri</span>';
   }
 }
@@ -1511,7 +1430,7 @@ function buildLeaderboard(){
     lb.slice(0,8).forEach((p,i)=>{
       const rankColors=['#f5c542','#8b949e','#b08040'];
       const medals=['🥇','🥈','🥉'];
-      const av = typeof p.av==='string'&&p.av.startsWith('http')||p.av?.startsWith('data')
+      const av = typeof p.av==='string'&&(p.av.startsWith('http')||p.av.startsWith('data'))
         ? `<img src="${p.av}" style="width:80%;height:80%;object-fit:contain">`
         : (p.av||'🤖');
       const div=document.createElement('div');
@@ -1538,9 +1457,11 @@ function buildRecentWords(){
 
 // ===== WORD LIST MODAL =====
 function filterWords(q){
-  const all = getAllWords(U.level);
+  const level = BOOK_LEVEL[curBook] || U.level;
+  const all = getAllWords(level);
   const items=document.getElementById('wl-items'); items.innerHTML='';
-  const filtered = q ? all.filter(w=>w.word.includes(q.toLowerCase())||w.translation.includes(q)) : all;
+  const filtered = q ? all.filter(w=>w.word.toLowerCase().includes(q.toLowerCase())||w.translation.includes(q)) : all;
+  if(!filtered.length){items.innerHTML='<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px">So\'z topilmadi</div>';return;}
   filtered.forEach(w=>{
     items.innerHTML+=`<div class="wl-item"><div><div class="wl-w">${w.word}</div><div class="wl-t">${w.translation}</div></div><div class="wl-p">${w.part_of_speech}</div></div>`;
   });
@@ -1579,10 +1500,11 @@ function selectMatch(el,match){
     if(MS.sel.match===match){
       el.classList.add('matched');MS.sel.el.classList.remove('selected');MS.sel.el.classList.add('matched');
       MS.matched++;MS.score+=10;MS.sel=null;
+      addXP(1);
       document.getElementById('ms-score').textContent=MS.score;
       if(MS.matched===4){
         if(MS.round<5){MS.round++;document.getElementById('ms-round').textContent=MS.round;setTimeout(buildMatchRound,600);}
-        else{clearInterval(MS.timer);addXP(MS.score);document.getElementById('mr').textContent=`🎉 ${MS.score} ball! +${MS.score} XP`;}
+        else{clearInterval(MS.timer);showToast(`🎉 ${MS.score} ball!`);}
       }
     } else {
       el.classList.add('bad');MS.sel.el.classList.add('bad');
@@ -1598,7 +1520,7 @@ function startMatchTimer(){
   },1000);
 }
 
-// ===== ANAGRAM =====
+// ===== ANAGRAM / HIDDEN WORD =====
 let AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null};
 function initAnagram(){
   AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null};
@@ -1648,7 +1570,7 @@ function angCheck(){
   const ans=AS.answer.map(x=>x.char).join('');
   if(ans===AS.word){
     AS.score+=20;document.getElementById('as-score').textContent=AS.score;
-    addXP(20);showToast('✅ To\'g\'ri! +20 XP');
+    addXP(1);showToast('✅ To\'g\'ri! +1 XP');
     setTimeout(buildAnagramRound,800);
   } else {showToast('❌ Noto\'g\'ri, qaytadan!');angClear();}
 }
@@ -1670,9 +1592,9 @@ function initQuiz(){
 }
 function buildQuizQ(){
   if(QS.idx>=10){
-    addXP(QS.score*5);
+    addXP(QS.score);
     document.getElementById('qs-word').textContent='🎉 Tugadi!';
-    document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/10 · +${QS.score*5} XP</div>`;
+    document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/10 · +${QS.score} XP</div>`;
     return;
   }
   QS.answered=false;
@@ -1690,8 +1612,9 @@ function buildQuizQ(){
       if(QS.answered)return;QS.answered=true;
       if(o.word===correct.word){
         el.classList.add('correct');QS.score++;
+        addXP(1);
         document.getElementById('qs-score').textContent=QS.score;
-        document.getElementById('qs-res').textContent='✅ To\'g\'ri!';
+        document.getElementById('qs-res').textContent='✅ To\'g\'ri! +1 XP';
       } else {
         el.classList.add('wrong');QS.wrong++;
         document.getElementById('qs-wrong').textContent=QS.wrong;
@@ -1705,7 +1628,8 @@ function buildQuizQ(){
 }
 
 // ===== BATTLE =====
-let BT={timer:null,myScore:0,oppScore:0,time:30,answered:false};
+let BT={timer:null,myScore:0,oppScore:0,time:30,answered:false,isBot:false,opp:null};
+
 function buildBattleUI(){
   document.getElementById('bh-me-name').textContent = U.name;
   if(U.avatarUrl){
@@ -1715,22 +1639,88 @@ function buildBattleUI(){
   document.getElementById('bl').textContent=U.battleLosses||0;
   document.getElementById('bxp').textContent=U.battleXP||0;
 }
-function startBattle(){
-  BT={timer:null,myScore:0,oppScore:0,time:30,answered:false};
+
+// Online raqib qidirish
+let mmTimer=null;
+function findOpponent(){
+  openModal('modal-matchmaking');
+  document.getElementById('mm-title').textContent = 'Raqib qidirilmoqda...';
+  document.getElementById('mm-sub').textContent = 'Online o\'yinchilar qidirilmoqda';
+  document.getElementById('mm-spinner').style.animationDuration = '1s';
+
+  let elapsed = 0;
+  mmTimer = setInterval(()=>{
+    elapsed++;
+    if(elapsed < 3){
+      document.getElementById('mm-sub').textContent = `${elapsed * 32}% qidirildi...`;
+    } else {
+      clearInterval(mmTimer);
+      // Tasodifiy online o'yinchi "topish" ehtimoli 60%
+      const foundOnline = Math.random() < 0.6;
+      if(foundOnline){
+        const opp = ONLINE_PLAYERS[Math.floor(Math.random()*ONLINE_PLAYERS.length)];
+        document.getElementById('mm-spinner').textContent = '✅';
+        document.getElementById('mm-spinner').style.animationDuration = '0s';
+        document.getElementById('mm-title').textContent = `${opp.name} topildi!`;
+        document.getElementById('mm-sub').textContent = 'Jang boshlanmoqda...';
+        setTimeout(()=>{
+          closeModal(null,'modal-matchmaking');
+          startBattleWith(opp, false);
+        }, 1200);
+      } else {
+        // Robot bilan
+        document.getElementById('mm-spinner').textContent = '🤖';
+        document.getElementById('mm-spinner').style.animationDuration = '0s';
+        document.getElementById('mm-title').textContent = 'Raqib topilmadi';
+        document.getElementById('mm-sub').textContent = 'Robot bilan o\'ynaysiz...';
+        setTimeout(()=>{
+          closeModal(null,'modal-matchmaking');
+          startBotBattle();
+        }, 1200);
+      }
+    }
+  }, 1000);
+}
+
+function cancelMatchmaking(){
+  clearInterval(mmTimer);
+  closeModal(null,'modal-matchmaking');
+}
+
+function startBotBattle(){
+  const bot = {name:'AI Bot 🤖', av:'🤖', xp: U.xp + Math.floor(Math.random()*500-250)};
+  startBattleWith(bot, true);
+}
+
+function startBattleWith(opp, isBot){
+  BT={timer:null,myScore:0,oppScore:0,time:30,answered:false,isBot:isBot,opp:opp};
   document.getElementById('bg-my').textContent=0;
   document.getElementById('bg-opp').textContent=0;
+  document.getElementById('bg-time').textContent=30;
+  document.getElementById('bh-opp-name').textContent = opp.name;
+  document.getElementById('bh-opp-av').innerHTML = typeof opp.av==='string'&&(opp.av.startsWith('http')||opp.av.startsWith('data'))
+    ? `<img src="${opp.av}" style="width:80%;height:80%;object-fit:contain">` : opp.av;
+  document.getElementById('bg-opp-badge').textContent = isBot ? '🤖 Bot' : '🟢 Online';
+
   buildBattleQ();
   openModal('modal-bg');
   clearInterval(BT.timer);
   BT.timer=setInterval(()=>{
-    BT.time--;document.getElementById('bg-time').textContent=BT.time;
-    if(Math.random()<0.13){BT.oppScore+=10;document.getElementById('bg-opp').textContent=BT.oppScore;}
+    BT.time--;
+    document.getElementById('bg-time').textContent=BT.time;
+    // Raqib (bot yoki simulyatsiya) javob berishi
+    if(Math.random()<(isBot?0.12:0.1)){
+      BT.oppScore+=10;
+      document.getElementById('bg-opp').textContent=BT.oppScore;
+    }
     if(BT.time<=0){clearInterval(BT.timer);endBattle();}
   },1000);
 }
+
 function buildBattleQ(){
   BT.answered=false;
-  const pool=shuffle([...getAllWords(U.level)]);
+  const pool=shuffle([...getAllWordsForGames()]);
+  if(pool.length < 3){showToast('Kamida 3 ta so\'z kerak!');return;}
   const correct=pool[0];
   const opts=shuffle([correct,...pool.slice(1,3)]);
   document.getElementById('bg-word').textContent=correct.word;
@@ -1742,8 +1732,9 @@ function buildBattleQ(){
       if(BT.answered)return;BT.answered=true;
       if(o.word===correct.word){
         el.classList.add('correct');BT.myScore+=10;
+        addXP(1);
         document.getElementById('bg-my').textContent=BT.myScore;
-        document.getElementById('bg-res').textContent='✅';
+        document.getElementById('bg-res').textContent='✅ +1 XP';
       } else {
         el.classList.add('wrong');
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
@@ -1754,11 +1745,19 @@ function buildBattleQ(){
     c.appendChild(el);
   });
 }
+
 function endBattle(){
   const won=BT.myScore>BT.oppScore;
-  if(won){U.battleWins=(U.battleWins||0)+1;addXP(50);showToast('🏆 G\'alaba! +50 XP');}
-  else{U.battleLosses=(U.battleLosses||0)+1;addXP(10);showToast('💪 Keyingisida yaxshiroq!');}
-  U.battleXP=(U.battleXP||0)+(won?50:10);
+  if(won){
+    U.battleWins=(U.battleWins||0)+1;
+    addXP(10); // g'alaba uchun +10 XP
+    showToast('🏆 G\'alaba! +10 XP');
+  } else {
+    U.battleLosses=(U.battleLosses||0)+1;
+    addXP(2);
+    showToast('💪 Keyingisida yaxshiroq! +2 XP');
+  }
+  U.battleXP=(U.battleXP||0)+(won?10:2);
   saveUser();
   document.getElementById('bg-res').textContent=won?`🏆 G'ALABA! ${BT.myScore}:${BT.oppScore}`:`😞 ${BT.myScore}:${BT.oppScore}`;
   document.getElementById('bg-opts').innerHTML=`<button class="btn-p" style="grid-column:1/-1" onclick="closeModal(null,'modal-bg');buildBattleUI();buildLeaderboard()">← Qaytish</button>`;
@@ -1773,6 +1772,7 @@ function switchTab(name,btn){
   document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
   if(name==='progress'){buildLeaderboard();buildRecentWords();updateStats();}
+  if(name==='battle'){buildBattleUI();}
 }
 
 // ===== MODALS =====
@@ -1790,6 +1790,7 @@ function closeModal(e,id){
   if(id==='modal-match') clearInterval(MS.timer);
   if(id==='modal-anagram') clearInterval(AS.timer);
   if(id==='modal-bg') clearInterval(BT.timer);
+  if(id==='modal-matchmaking') clearInterval(mmTimer);
 }
 
 // ===== UTILS =====
