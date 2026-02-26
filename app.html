@@ -266,12 +266,16 @@ const FALLBACK_WORDS = {
 // Asosiy fetch funksiyasi — JSON dan yuklaydi
 async function fetchUnitWords(bookNum, unitNum) {
   const cacheKey = `book${bookNum}_unit${unitNum}`;
-  if(WORDS_CACHE[cacheKey]) return WORDS_CACHE[cacheKey];
+  // Cache da bor (null ham saqlanadi — 404 larni qayta tekshirmaslik uchun)
+  if(cacheKey in WORDS_CACHE) return WORDS_CACHE[cacheKey];
 
   const url = `data/book${bookNum}/unit${unitNum}.json`;
   try {
     const res = await fetch(url);
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    if(!res.ok){
+      WORDS_CACHE[cacheKey] = null; // 404 ni cache ga yozamiz
+      return null;
+    }
     const data = await res.json();
     // Format: { "unit": 1, "total_words": 20, "words": [...] }
     const words = Array.isArray(data) ? data : (data.words || []);
@@ -279,23 +283,29 @@ async function fetchUnitWords(bookNum, unitNum) {
     return words;
   } catch(e) {
     console.warn(`Unit yuklanmadi (${url}):`, e.message);
-    return null; // null = fayl yo'q
+    WORDS_CACHE[cacheKey] = null;
+    return null;
   }
 }
 
-// Bir kitobdagi barcha unitlarni tekshirish (unit soni aniqlash uchun)
+// Bir kitobdagi mavjud unitlarni aniqlash — ketma-ket tekshiradi
 async function detectUnitsInBook(bookNum) {
   const cacheKey = `book${bookNum}_units`;
-  if(WORDS_CACHE[cacheKey]) return WORDS_CACHE[cacheKey];
+  if(WORDS_CACHE[cacheKey] && WORDS_CACHE[cacheKey].length > 0) return WORDS_CACHE[cacheKey];
 
   const found = [];
-  // 1 dan 30 gacha parallel tekshiramiz
-  const checks = Array.from({length:30},(_,i)=>i+1).map(async n => {
+  // 1 dan 30 gacha ketma-ket, topilmasa to'xtaymiz (3 ta ketma-ket yo'q bo'lsa)
+  let misses = 0;
+  for(let n = 1; n <= 30; n++){
     const words = await fetchUnitWords(bookNum, n);
-    if(words && words.length > 0) found.push(n);
-  });
-  await Promise.all(checks);
-  found.sort((a,b)=>a-b);
+    if(words !== null && words.length > 0){
+      found.push(n);
+      misses = 0;
+    } else {
+      misses++;
+      if(misses >= 3 && found.length > 0) break; // 3 ta yo'q bo'lsa to'xtaymiz
+    }
+  }
   WORDS_CACHE[cacheKey] = found;
   return found;
 }
@@ -1114,8 +1124,6 @@ function loadTopbar(){
 // ============================================================
 let curBook = 1;
 let curUnitNum = 1;
-const BOOK_LEVEL = {1:'beginner',2:'beginner',3:'intermediate',4:'intermediate',5:'advanced',6:'advanced'};
-const BOOK_COLORS = {1:'var(--green)',2:'var(--green)',3:'var(--blue)',4:'var(--blue)',5:'var(--purple)',6:'var(--purple)'};
 
 // Sinxron yordamchi — cache dan (fetch tugagandan keyin)
 function getAllWordsForGames(){
@@ -1147,37 +1155,33 @@ async function selectBook(b){
   curUnitNum = 1;
   document.getElementById('unit-inp').value = 1;
   buildBookRow();
-  await updateUnitRange();
-  await buildQuickUnits();
+  // Avval unit 1 ni yuklaymiz (tezkor)
   await goToUnit();
+  // Background da unitlar sonini aniqlaymiz
+  updateUnitRange();
 }
 
-// Unit range ni aniqlash — 1 dan boshlab fayl bor-yo'qligini tekshiradi
-async function updateUnitRange(){
-  // Tezroq — avval 30 deymiz, keyin aniqlaymiz
+// Unit range ni background da yangilaydi
+function updateUnitRange(){
   document.getElementById('unit-range').textContent = `1–30`;
   document.getElementById('unit-inp').max = 30;
-  // Background da haqiqiy sonni aniqlash
   detectUnitsInBook(curBook).then(units=>{
-    const max = units.length > 0 ? Math.max(...units) : 30;
-    document.getElementById('unit-range').textContent = `1–${max}`;
-    document.getElementById('unit-inp').max = max;
+    if(units.length > 0){
+      const max = Math.max(...units);
+      document.getElementById('unit-range').textContent = `1–${max}`;
+      document.getElementById('unit-inp').max = max;
+    }
     buildQuickUnits();
   });
 }
 
-// Quick unit pills — cache da bor unitlarni ko'rsatadi
-async function buildQuickUnits(){
+// Quick unit pills
+function buildQuickUnits(){
   const quick = document.getElementById('unit-quick');
-  // Cache dan mavjud unitlarni ol
   const cacheKey = `book${curBook}_units`;
   const knownUnits = WORDS_CACHE[cacheKey] || [];
-
-  // Hech bo'lmasa 1-5 unitni ko'rsatamiz
-  const showUnits = knownUnits.length > 0
-    ? knownUnits.slice(0, 12)
-    : [1,2,3,4,5];
-
+  // Agar hali aniqlanmagan bo'lsa, 1-5 ko'rsatamiz
+  const showUnits = knownUnits.length > 0 ? knownUnits.slice(0,12) : [1,2,3,4,5];
   quick.innerHTML = '';
   showUnits.forEach(n=>{
     const el = document.createElement('div');
@@ -1194,7 +1198,6 @@ async function buildQuickUnits(){
     };
     quick.appendChild(el);
   });
-
   if(knownUnits.length > 12){
     const more = document.createElement('div');
     more.className = 'unit-pill';
