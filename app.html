@@ -1480,17 +1480,27 @@ function filterWords(q){
 }
 
 // ===== MATCH GAME =====
-let MS={sel:null,matched:0,score:0,round:1,timer:null,tval:30};
+let MS={sel:null,matched:0,score:0,round:1,rounds:5,timer:null,tval:30,pool:[],usedIdx:0};
 function initMatch(){
-  MS={sel:null,matched:0,score:0,round:1,timer:null,tval:30};
+  const words = getAllWordsForGames();
+  if(words.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
+  const shuffled = shuffle([...words]);
+  const rounds = Math.floor(shuffled.length / 4); // har roundda 4 so'z
+  MS={sel:null,matched:0,score:0,round:1,rounds:Math.max(rounds,1),
+      timer:null,tval:30,pool:shuffled,usedIdx:0};
   document.getElementById('ms-score').textContent=0;
   document.getElementById('ms-round').textContent=1;
-  buildMatchRound(); startMatchTimer();
+  buildMatchRound();
+  startMatchTimer();
 }
 function buildMatchRound(){
-  MS.sel=null;MS.matched=0;
-  const pool=shuffle([...getAllWordsForGames()]).slice(0,4);
-  if(pool.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
+  MS.sel=null; MS.matched=0;
+  // Pool dan keyingi 4 so'zni olamiz — takrorlash yo'q
+  const start = MS.usedIdx;
+  const end = Math.min(start+4, MS.pool.length);
+  let pool = MS.pool.slice(start, end);
+  // Agar 4 tadan kam qolsa, boshidan olamiz
+  if(pool.length < 4) pool = shuffle([...getAllWordsForGames()]).slice(0,4);
   const grid=document.getElementById('mg'); grid.innerHTML='';
   const items=shuffle([
     ...pool.map(w=>({text:w.word,match:w.word,side:'en'})),
@@ -1498,13 +1508,14 @@ function buildMatchRound(){
   ]);
   items.forEach(item=>{
     const el=document.createElement('div');
-    el.className='mw';el.textContent=item.text;el.dataset.match=item.match;
+    el.className='mw'; el.textContent=item.text; el.dataset.match=item.match;
     el.onclick=()=>selectMatch(el,item.match);
     grid.appendChild(el);
   });
   document.getElementById('mr').textContent='So\'zlarni tarjimasi bilan juftlashtiring';
 }
 function selectMatch(el,match){
+  if(MS.tval<=0) return; // Vaqt tugagan bo'lsa harakat qilmaslik
   if(el.classList.contains('matched')) return;
   if(!MS.sel){MS.sel={el,match};el.classList.add('selected');}
   else{
@@ -1515,8 +1526,15 @@ function selectMatch(el,match){
       addXP(1);
       document.getElementById('ms-score').textContent=MS.score;
       if(MS.matched===4){
-        if(MS.round<5){MS.round++;document.getElementById('ms-round').textContent=MS.round;setTimeout(buildMatchRound,600);}
-        else{clearInterval(MS.timer);showToast(`🎉 ${MS.score} ball!`);}
+        MS.usedIdx+=4; // Keyingi 4 so'zga o'tamiz
+        if(MS.round < MS.rounds){
+          MS.round++;
+          document.getElementById('ms-round').textContent=MS.round;
+          setTimeout(buildMatchRound,600);
+        } else {
+          clearInterval(MS.timer);
+          document.getElementById('mr').textContent=`🎉 Tugadi! ${MS.score} ball!`;
+        }
       }
     } else {
       el.classList.add('bad');MS.sel.el.classList.add('bad');
@@ -1525,28 +1543,53 @@ function selectMatch(el,match){
   }
 }
 function startMatchTimer(){
-  MS.tval=30;clearInterval(MS.timer);
+  MS.tval=30; clearInterval(MS.timer);
   MS.timer=setInterval(()=>{
-    MS.tval--;document.getElementById('ms-time').textContent=MS.tval;
-    if(MS.tval<=0){clearInterval(MS.timer);document.getElementById('mr').textContent='⏱ Vaqt tugadi! '+MS.score+' ball';}
+    MS.tval--;
+    document.getElementById('ms-time').textContent=MS.tval;
+    if(MS.tval<=0){
+      clearInterval(MS.timer);
+      // Barcha kartochkalarni o'chirib, tugadi xabarini ko'rsatamiz
+      document.getElementById('mg').querySelectorAll('.mw:not(.matched)').forEach(el=>{
+        el.style.opacity='0.3'; el.style.pointerEvents='none';
+      });
+      document.getElementById('mr').textContent=`⏱ Vaqt tugadi! ${MS.score} ball`;
+    }
   },1000);
 }
 
 // ===== ANAGRAM / HIDDEN WORD =====
-let AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null};
+let AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null,tval:0,pool:[],poolIdx:0};
 function initAnagram(){
-  AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null};
+  const words = getAllWordsForGames().filter(w=>w.word.length>=3&&w.word.length<=8);
+  if(!words.length){ showToast('Mos so\'zlar yo\'q!'); return; }
+  const shuffled = shuffle([...words]);
+  AS={word:'',answer:[],letters:[],usedIdx:[],score:0,timer:null,
+      tval:60,pool:shuffled,poolIdx:0};
   document.getElementById('as-score').textContent=0;
-  buildAnagramRound();startAngTimer();
+  buildAnagramRound();
+  startAngTimer();
 }
 function buildAnagramRound(){
-  const pool = getAllWordsForGames().filter(w=>w.word.length>=3&&w.word.length<=8);
-  if(!pool.length){ showToast('So\'zlar yo\'q!'); return; }
-  const w = pool[Math.floor(Math.random()*pool.length)];
-  AS.word=w.word;AS.answer=[];AS.usedIdx=[];
-  AS.letters=shuffle(w.word.split(''));
+  if(AS.poolIdx >= AS.pool.length){
+    // Hammasi tugadi — qaytadan boshlaymiz (lekin shuffle bilan)
+    AS.pool = shuffle([...AS.pool]);
+    AS.poolIdx = 0;
+  }
+  const w = AS.pool[AS.poolIdx];
+  AS.poolIdx++;
+  AS.word=w.word; AS.answer=[]; AS.usedIdx=[];
+  // Harflar aralashib ketmasligi uchun — asl so'zdan farqli bo'lmaguncha shuffle
+  let letters = w.word.split('');
+  let shuffled = shuffle([...letters]);
+  let attempts = 0;
+  while(shuffled.join('')===w.word && attempts<10){
+    shuffled = shuffle([...letters]);
+    attempts++;
+  }
+  AS.letters = shuffled;
   document.getElementById('a-hint').textContent=w.translation;
-  renderAngLetters();renderAngSlots();
+  renderAngLetters(); renderAngSlots();
 }
 function renderAngLetters(){
   const c=document.getElementById('a-letters');c.innerHTML='';
@@ -1555,7 +1598,7 @@ function renderAngLetters(){
     el.className='a-tile'+(AS.usedIdx.includes(i)?' used':'');
     el.textContent=l;
     el.onclick=()=>{
-      if(AS.usedIdx.includes(i))return;
+      if(AS.tval<=0||AS.usedIdx.includes(i))return;
       AS.usedIdx.push(i);AS.answer.push({char:l,idx:i});
       renderAngLetters();renderAngSlots();
     };
@@ -1569,6 +1612,7 @@ function renderAngSlots(){
     if(AS.answer[i]){
       el.textContent=AS.answer[i].char;
       el.onclick=()=>{
+        if(AS.tval<=0)return;
         const rem=AS.answer.splice(i,1)[0];
         AS.usedIdx=AS.usedIdx.filter(x=>x!==rem.idx);
         renderAngLetters();renderAngSlots();
@@ -1577,8 +1621,12 @@ function renderAngSlots(){
     c.appendChild(el);
   });
 }
-function angClear(){AS.answer=[];AS.usedIdx=[];renderAngLetters();renderAngSlots();}
+function angClear(){
+  if(AS.tval<=0)return;
+  AS.answer=[];AS.usedIdx=[];renderAngLetters();renderAngSlots();
+}
 function angCheck(){
+  if(AS.tval<=0)return;
   const ans=AS.answer.map(x=>x.char).join('');
   if(ans===AS.word){
     AS.score+=20;document.getElementById('as-score').textContent=AS.score;
@@ -1587,53 +1635,92 @@ function angCheck(){
   } else {showToast('❌ Noto\'g\'ri, qaytadan!');angClear();}
 }
 function startAngTimer(){
-  let t=60;clearInterval(AS.timer);
+  AS.tval=60; clearInterval(AS.timer);
   AS.timer=setInterval(()=>{
-    t--;document.getElementById('as-time').textContent=t;
-    if(t<=0){clearInterval(AS.timer);showToast('⏱ Vaqt tugadi!');}
+    AS.tval--;
+    document.getElementById('as-time').textContent=AS.tval;
+    if(AS.tval<=0){
+      clearInterval(AS.timer);
+      // Harflarni o'chiramiz
+      document.getElementById('a-letters').querySelectorAll('.a-tile').forEach(el=>{
+        el.style.opacity='0.3'; el.style.pointerEvents='none';
+      });
+      // To'g'ri javobni ko'rsatamiz
+      document.getElementById('a-hint').textContent=`⏱ Vaqt tugadi! Javob: "${AS.word}" · ${AS.score} ball`;
+    }
   },1000);
 }
 
 // ===== QUIZ =====
-let QS={idx:0,score:0,wrong:0,answered:false};
+let QS={idx:0,score:0,wrong:0,answered:false,pool:[],timer:null,tval:0};
 function initQuiz(){
-  QS={idx:0,score:0,wrong:0,answered:false};
+  const words = getAllWordsForGames();
+  if(words.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
+  // Barcha so'zlarni shuffle qilib pool ga yozamiz — takrorlash yo'q
+  const shuffled = shuffle([...words]);
+  const total = shuffled.length;
+  const timeTotal = total * 8; // har so'z uchun 8 sekund
+  QS={idx:0,score:0,wrong:0,answered:false,pool:shuffled,timer:null,tval:timeTotal};
   document.getElementById('qs-score').textContent=0;
   document.getElementById('qs-wrong').textContent=0;
+  // Timer qo'shamiz
+  startQuizTimer(timeTotal);
   buildQuizQ();
 }
-function buildQuizQ(){
-  if(QS.idx>=10){
-    addXP(QS.score);
-    document.getElementById('qs-word').textContent='🎉 Tugadi!';
-    document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/10 · +${QS.score} XP</div>`;
-    return;
+function startQuizTimer(total){
+  clearInterval(QS.timer);
+  QS.tval = total;
+  // Timer display uchun gsbar ga qo'shamiz
+  const bar = document.querySelector('#modal-quiz .gsbar');
+  if(bar && !document.getElementById('qs-time')){
+    const t = document.createElement('span');
+    t.innerHTML = `⏱ <span id="qs-time">${total}</span>s`;
+    bar.appendChild(t);
+  } else if(document.getElementById('qs-time')){
+    document.getElementById('qs-time').textContent = total;
   }
-  QS.answered=false;
-  const pool=shuffle([...getAllWordsForGames()]);
-  if(pool.length < 4){ showToast('Kamida 4 ta so\'z kerak quiz uchun!'); return; }
-  const correct=pool[0];
-  const opts=shuffle([correct,...pool.slice(1,4)]);
-  document.getElementById('qs-word').textContent=correct.word;
-  document.getElementById('qs-num').textContent=`${QS.idx+1}/10`;
+  QS.timer = setInterval(()=>{
+    QS.tval--;
+    const el = document.getElementById('qs-time');
+    if(el) el.textContent = QS.tval;
+    if(QS.tval <= 0){ clearInterval(QS.timer); endQuiz('time'); }
+  },1000);
+}
+function endQuiz(reason){
+  clearInterval(QS.timer);
+  addXP(QS.score);
+  document.getElementById('qs-word').textContent = reason==='time' ? '⏱ Vaqt tugadi!' : '🎉 Tugadi!';
+  document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/${QS.pool.length} · +${QS.score} XP</div>`;
   document.getElementById('qs-res').textContent='';
-  const c=document.getElementById('qs-opts');c.innerHTML='';
+}
+function buildQuizQ(){
+  if(QS.idx >= QS.pool.length){ endQuiz('done'); return; }
+  QS.answered=false;
+  const correct = QS.pool[QS.idx];
+  // Noto'g'ri variantlarni boshqa so'zlardan olamiz
+  const others = shuffle(getAllWordsForGames().filter(w=>w.word!==correct.word));
+  if(others.length < 3){ showToast('Kamida 4 ta so\'z kerak!'); return; }
+  const opts = shuffle([correct, ...others.slice(0,3)]);
+  document.getElementById('qs-word').textContent = correct.word;
+  document.getElementById('qs-num').textContent = `${QS.idx+1}/${QS.pool.length}`;
+  document.getElementById('qs-res').textContent = '';
+  const c = document.getElementById('qs-opts'); c.innerHTML='';
   opts.forEach(o=>{
-    const el=document.createElement('div');el.className='gopt';el.textContent=o.translation;
+    const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
-      if(QS.answered)return;QS.answered=true;
+      if(QS.answered)return; QS.answered=true;
       if(o.word===correct.word){
-        el.classList.add('correct');QS.score++;
+        el.classList.add('correct'); QS.score++;
         addXP(1);
         document.getElementById('qs-score').textContent=QS.score;
         document.getElementById('qs-res').textContent='✅ To\'g\'ri! +1 XP';
       } else {
-        el.classList.add('wrong');QS.wrong++;
+        el.classList.add('wrong'); QS.wrong++;
         document.getElementById('qs-wrong').textContent=QS.wrong;
         document.getElementById('qs-res').textContent='❌ Noto\'g\'ri';
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
       }
-      setTimeout(()=>{QS.idx++;buildQuizQ();},900);
+      setTimeout(()=>{ QS.idx++; buildQuizQ(); },900);
     };
     c.appendChild(el);
   });
@@ -1705,7 +1792,7 @@ function startBotBattle(){
 }
 
 function startBattleWith(opp, isBot){
-  BT={timer:null,myScore:0,oppScore:0,time:30,answered:false,isBot:isBot,opp:opp};
+  BT={timer:null,myScore:0,oppScore:0,time:30,answered:false,isBot:isBot,opp:opp,botTick:0};
   document.getElementById('bg-my').textContent=0;
   document.getElementById('bg-opp').textContent=0;
   document.getElementById('bg-time').textContent=30;
@@ -1720,12 +1807,28 @@ function startBattleWith(opp, isBot){
   BT.timer=setInterval(()=>{
     BT.time--;
     document.getElementById('bg-time').textContent=BT.time;
-    // Raqib (bot yoki simulyatsiya) javob berishi
-    if(Math.random()<(isBot?0.12:0.1)){
-      BT.oppScore+=10;
-      document.getElementById('bg-opp').textContent=BT.oppScore;
+
+    // Bot: har 5 sekundda to'g'ri javob topadi
+    if(isBot){
+      BT.botTick = (BT.botTick||0) + 1;
+      if(BT.botTick % 5 === 0){
+        BT.oppScore+=10;
+        document.getElementById('bg-opp').textContent=BT.oppScore;
+        // Bot javob berganini ko'rsatamiz
+        const res = document.getElementById('bg-res');
+        const old = res.textContent;
+        res.innerHTML = `${old ? old+'  ' : ''}🤖 ✅`;
+        setTimeout(()=>{ if(res.innerHTML.includes('🤖')) res.innerHTML = old||''; }, 800);
+      }
+    } else {
+      // Online raqib — tasodifiy (biroz sekinroq)
+      if(Math.random() < 0.08){
+        BT.oppScore+=10;
+        document.getElementById('bg-opp').textContent=BT.oppScore;
+      }
     }
-    if(BT.time<=0){clearInterval(BT.timer);endBattle();}
+
+    if(BT.time<=0){ clearInterval(BT.timer); endBattle(); }
   },1000);
 }
 
@@ -1799,8 +1902,9 @@ function openModal(id){
 function closeModal(e,id){
   if(e && e.target!==document.getElementById(id)) return;
   document.getElementById(id).classList.remove('open');
-  if(id==='modal-match') clearInterval(MS.timer);
-  if(id==='modal-anagram') clearInterval(AS.timer);
+  if(id==='modal-match'){ clearInterval(MS.timer); MS.tval=0; }
+  if(id==='modal-anagram'){ clearInterval(AS.timer); AS.tval=0; }
+  if(id==='modal-quiz'){ clearInterval(QS.timer); QS.tval=0; }
   if(id==='modal-bg') clearInterval(BT.timer);
   if(id==='modal-matchmaking') clearInterval(mmTimer);
 }
