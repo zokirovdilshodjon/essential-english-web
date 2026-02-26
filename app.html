@@ -217,116 +217,93 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 
 <script>
 // ============================================================
-// SO'ZLAR BAZASI (inline fallback)
+// SO'ZLAR TIZIMI — JSON fayllardan fetch qiladi
+// Format: data/book{n}/unit{n}.json
+// JSON ichida: { "unit": 1, "total_words": 20, "words": [...] }
 // ============================================================
-const WORDS_DB = {
-  beginner: {
-    unit_1: [
-      {word:"afraid",translation:"qo'rqqan",definition:"feeling fear",example:"The woman was afraid.",part_of_speech:"adjective"},
-      {word:"angry",translation:"g'azablangan",definition:"feeling strong annoyance",example:"He was angry about the delay.",part_of_speech:"adjective"},
-      {word:"beautiful",translation:"go'zal",definition:"pleasing to the senses",example:"She wore a beautiful dress.",part_of_speech:"adjective"},
-      {word:"calm",translation:"tinch",definition:"not showing nervousness",example:"He remained calm.",part_of_speech:"adjective"},
-      {word:"happy",translation:"xursand",definition:"feeling pleasure",example:"I am happy to help you.",part_of_speech:"adjective"},
-      {word:"kind",translation:"mehribon",definition:"friendly nature",example:"He was kind to strangers.",part_of_speech:"adjective"},
-      {word:"strong",translation:"kuchli",definition:"great physical power",example:"She is very strong.",part_of_speech:"adjective"},
-      {word:"quiet",translation:"jim, sokin",definition:"making little noise",example:"Be quiet in the library.",part_of_speech:"adjective"},
-    ],
-    unit_2: [
-      {word:"achieve",translation:"erishmoq",definition:"successfully bring about",example:"You can achieve your goals.",part_of_speech:"verb"},
-      {word:"believe",translation:"ishonmoq",definition:"accept as true",example:"I believe in you.",part_of_speech:"verb"},
-      {word:"create",translation:"yaratmoq",definition:"bring into existence",example:"She loves to create art.",part_of_speech:"verb"},
-      {word:"decide",translation:"qaror qilmoq",definition:"come to a resolution",example:"He decided to leave.",part_of_speech:"verb"},
-      {word:"explore",translation:"kashf etmoq",definition:"investigate and discover",example:"Let's explore the city.",part_of_speech:"verb"},
-      {word:"forget",translation:"unutmoq",definition:"fail to remember",example:"Don't forget to call me.",part_of_speech:"verb"},
-      {word:"help",translation:"yordam bermoq",definition:"make easier for someone",example:"Can you help me?",part_of_speech:"verb"},
-      {word:"imagine",translation:"tasavvur qilmoq",definition:"form a mental image",example:"Imagine a perfect world.",part_of_speech:"verb"},
-    ],
-    unit_3: [
-      {word:"freedom",translation:"ozodlik",definition:"power to act as one wants",example:"Freedom is important.",part_of_speech:"noun"},
-      {word:"knowledge",translation:"bilim",definition:"facts and skills acquired",example:"Knowledge is power.",part_of_speech:"noun"},
-      {word:"success",translation:"muvaffaqiyat",definition:"achievement of aim",example:"Hard work leads to success.",part_of_speech:"noun"},
-      {word:"challenge",translation:"qiyinchilik",definition:"a difficult task",example:"Every challenge makes us stronger.",part_of_speech:"noun"},
-      {word:"family",translation:"oila",definition:"a group of related people",example:"My family is supportive.",part_of_speech:"noun"},
-      {word:"friend",translation:"do'st",definition:"a person you like and trust",example:"She is my best friend.",part_of_speech:"noun"},
-      {word:"journey",translation:"sayohat",definition:"an act of traveling",example:"Life is a journey.",part_of_speech:"noun"},
-      {word:"music",translation:"musiqa",definition:"vocal or instrumental sound",example:"I love music.",part_of_speech:"noun"},
-    ],
-    unit_4: [
-      {word:"ability",translation:"qobiliyat",definition:"capacity to do something",example:"She has great ability.",part_of_speech:"noun"},
-      {word:"adventure",translation:"sarguzasht",definition:"an exciting experience",example:"Life is an adventure.",part_of_speech:"noun"},
-      {word:"clever",translation:"aqlli",definition:"quick to understand",example:"He is a clever student.",part_of_speech:"adjective"},
-      {word:"dangerous",translation:"xavfli",definition:"able to cause harm",example:"That road is dangerous.",part_of_speech:"adjective"},
-      {word:"eager",translation:"ishtiyoqmand",definition:"wanting to do very much",example:"She is eager to learn.",part_of_speech:"adjective"},
-      {word:"famous",translation:"mashhur",definition:"known by many people",example:"He is a famous singer.",part_of_speech:"adjective"},
-      {word:"grateful",translation:"minnatdor",definition:"feeling thankful",example:"I am grateful for your help.",part_of_speech:"adjective"},
-      {word:"honest",translation:"halol",definition:"free of deceit",example:"Always be honest.",part_of_speech:"adjective"},
-    ],
-    unit_5: [
-      {word:"improve",translation:"yaxshilamoq",definition:"make better",example:"I want to improve my English.",part_of_speech:"verb"},
-      {word:"increase",translation:"oshirmoq",definition:"make larger",example:"Prices increased last year.",part_of_speech:"verb"},
-      {word:"inspire",translation:"ilhomlanmoq",definition:"fill with the urge",example:"She inspires everyone around her.",part_of_speech:"verb"},
-      {word:"manage",translation:"boshqarmoq",definition:"be in charge of",example:"He manages the team well.",part_of_speech:"verb"},
-      {word:"notice",translation:"payqamoq",definition:"become aware of",example:"Did you notice the change?",part_of_speech:"verb"},
-      {word:"prepare",translation:"tayyorlamoq",definition:"make ready",example:"Prepare for the exam.",part_of_speech:"verb"},
-      {word:"reduce",translation:"kamaytirmoq",definition:"make smaller",example:"We need to reduce waste.",part_of_speech:"verb"},
-      {word:"support",translation:"qo'llab-quvvatlamoq",definition:"bear all or part of",example:"Please support me.",part_of_speech:"verb"},
-    ],
-  },
-  intermediate: {
-    unit_1: [
-      {word:"ambiguous",translation:"noaniq, ikki ma'noli",definition:"open to more than one interpretation",example:"The instructions were ambiguous.",part_of_speech:"adjective"},
-      {word:"competent",translation:"malakali",definition:"having the necessary ability",example:"She is a competent engineer.",part_of_speech:"adjective"},
-      {word:"diligent",translation:"mehnatsevar",definition:"having care in one's work",example:"He is a diligent student.",part_of_speech:"adjective"},
-      {word:"eloquent",translation:"notiq, chechan",definition:"fluent or persuasive",example:"She gave an eloquent speech.",part_of_speech:"adjective"},
-      {word:"flexible",translation:"moslashuvchan",definition:"able to change easily",example:"We need a flexible approach.",part_of_speech:"adjective"},
-      {word:"genuine",translation:"haqiqiy",definition:"truly what it's said to be",example:"This is a genuine concern.",part_of_speech:"adjective"},
-      {word:"innovative",translation:"yangilikchi",definition:"featuring new ideas",example:"They used an innovative method.",part_of_speech:"adjective"},
-      {word:"persistent",translation:"qat'iyatli",definition:"continuing despite difficulty",example:"Be persistent in your efforts.",part_of_speech:"adjective"},
-    ],
-    unit_2: [
-      {word:"accomplish",translation:"amalga oshirmoq",definition:"achieve or complete successfully",example:"She accomplished her mission.",part_of_speech:"verb"},
-      {word:"analyze",translation:"tahlil qilmoq",definition:"examine in detail",example:"Let's analyze the data.",part_of_speech:"verb"},
-      {word:"collaborate",translation:"hamkorlik qilmoq",definition:"work jointly with others",example:"We need to collaborate on this.",part_of_speech:"verb"},
-      {word:"demonstrate",translation:"ko'rsatmoq",definition:"show or prove clearly",example:"He demonstrated the technique.",part_of_speech:"verb"},
-      {word:"evaluate",translation:"baholamoq",definition:"form an idea of the quality",example:"We need to evaluate the results.",part_of_speech:"verb"},
-      {word:"negotiate",translation:"muzokaralar olib bormoq",definition:"try to reach an agreement",example:"They negotiated a better deal.",part_of_speech:"verb"},
-      {word:"prioritize",translation:"ustuvorlik bermoq",definition:"designate as most important",example:"Prioritize your tasks.",part_of_speech:"verb"},
-      {word:"summarize",translation:"xulosa qilmoq",definition:"give a brief statement",example:"Please summarize the article.",part_of_speech:"verb"},
-    ],
-    unit_3: [
-      {word:"abstract",translation:"mavhum",definition:"not based on concrete things",example:"He spoke in abstract terms.",part_of_speech:"adjective"},
-      {word:"crucial",translation:"hal qiluvchi",definition:"of vital importance",example:"This is a crucial decision.",part_of_speech:"adjective"},
-      {word:"dynamic",translation:"dinamik",definition:"positive and full of energy",example:"She has a dynamic personality.",part_of_speech:"adjective"},
-      {word:"efficient",translation:"samarali",definition:"achieving maximum productivity",example:"We need an efficient system.",part_of_speech:"adjective"},
-      {word:"fundamental",translation:"asosiy",definition:"forming a necessary base",example:"Trust is fundamental.",part_of_speech:"adjective"},
-      {word:"hypothesis",translation:"faraz",definition:"a proposed explanation",example:"Test your hypothesis first.",part_of_speech:"noun"},
-      {word:"indicate",translation:"ko'rsatmoq",definition:"point out, show",example:"Data indicates a trend.",part_of_speech:"verb"},
-      {word:"justify",translation:"asoslash",definition:"show to be right",example:"Can you justify this decision?",part_of_speech:"verb"},
-    ],
-  },
-  advanced: {
-    unit_1: [
-      {word:"ubiquitous",translation:"hamma joyda mavjud",definition:"present everywhere",example:"Smartphones have become ubiquitous.",part_of_speech:"adjective"},
-      {word:"pragmatic",translation:"amaliy, pragmatik",definition:"dealing with things realistically",example:"Take a pragmatic approach.",part_of_speech:"adjective"},
-      {word:"meticulous",translation:"juda e'tiborli, puxta",definition:"showing great attention to detail",example:"She is meticulous in her work.",part_of_speech:"adjective"},
-      {word:"resilient",translation:"bardoshli, mustahkam",definition:"able to recover quickly",example:"Children are incredibly resilient.",part_of_speech:"adjective"},
-      {word:"eloquence",translation:"notiqlik",definition:"fluent or persuasive speaking",example:"His eloquence impressed everyone.",part_of_speech:"noun"},
-      {word:"paradigm",translation:"namuna, paradigma",definition:"a typical example or pattern",example:"This is a new paradigm shift.",part_of_speech:"noun"},
-      {word:"phenomenon",translation:"hodisa, fenomen",definition:"a fact or situation observed",example:"It was a natural phenomenon.",part_of_speech:"noun"},
-      {word:"scrutinize",translation:"sinchkovlik bilan tekshirmoq",definition:"examine or inspect closely",example:"They scrutinized every detail.",part_of_speech:"verb"},
-    ],
-    unit_2: [
-      {word:"amalgamate",translation:"birlashmoq, qo'shmoq",definition:"combine into a single unit",example:"The two companies amalgamated.",part_of_speech:"verb"},
-      {word:"corroborate",translation:"tasdiqlash",definition:"confirm or give support to",example:"Evidence corroborated his story.",part_of_speech:"verb"},
-      {word:"exacerbate",translation:"og'irlashtirmoq",definition:"make a problem worse",example:"Stress can exacerbate the condition.",part_of_speech:"verb"},
-      {word:"impeccable",translation:"nuqsonsiz, benuqson",definition:"in accordance with the highest standards",example:"Her work is impeccable.",part_of_speech:"adjective"},
-      {word:"juxtapose",translation:"yonma-yon qo'ymoq",definition:"place close together for contrast",example:"The author juxtaposes joy and sorrow.",part_of_speech:"verb"},
-      {word:"mitigate",translation:"yengillashtirmoq",definition:"make less severe",example:"Steps taken to mitigate risk.",part_of_speech:"verb"},
-      {word:"perpetuate",translation:"davom ettirmoq",definition:"make continue indefinitely",example:"Don't perpetuate stereotypes.",part_of_speech:"verb"},
-      {word:"verbose",translation:"so'zami, ko'p so'zli",definition:"using more words than needed",example:"His writing style is verbose.",part_of_speech:"adjective"},
-    ],
-  },
+
+// Cache — bir marta yuklanganini qayta yuklamaslik uchun
+const WORDS_CACHE = {};
+
+// Kitob → daraja mapping
+const BOOK_LEVEL = {1:'beginner',2:'beginner',3:'intermediate',4:'intermediate',5:'advanced',6:'advanced'};
+const BOOK_COLORS = {1:'var(--green)',2:'var(--green)',3:'var(--blue)',4:'var(--blue)',5:'var(--purple)',6:'var(--purple)'};
+
+// Fallback — agar JSON fayl topilmasa ishlatiladigan so'zlar
+const FALLBACK_WORDS = {
+  beginner: [
+    {word:"afraid",translation:"qo'rqqan",definition:"feeling fear or anxiety",example:"The woman was afraid of what she saw.",part_of_speech:"adjective"},
+    {word:"agree",translation:"fikriga qo'shilmoq",definition:"to say yes or think the same way",example:"I agree with you.",part_of_speech:"verb"},
+    {word:"angry",translation:"jahli chiqqan",definition:"feeling or showing anger",example:"Her father is angry.",part_of_speech:"adjective"},
+    {word:"beautiful",translation:"go'zal",definition:"pleasing to the senses",example:"She wore a beautiful dress.",part_of_speech:"adjective"},
+    {word:"calm",translation:"tinch",definition:"not showing nervousness",example:"He remained calm.",part_of_speech:"adjective"},
+    {word:"happy",translation:"xursand",definition:"feeling pleasure",example:"I am happy to help you.",part_of_speech:"adjective"},
+    {word:"kind",translation:"mehribon",definition:"friendly nature",example:"He was kind to strangers.",part_of_speech:"adjective"},
+    {word:"strong",translation:"kuchli",definition:"great physical power",example:"She is very strong.",part_of_speech:"adjective"},
+  ],
+  intermediate: [
+    {word:"ambiguous",translation:"noaniq",definition:"open to more than one interpretation",example:"The instructions were ambiguous.",part_of_speech:"adjective"},
+    {word:"competent",translation:"malakali",definition:"having the necessary ability",example:"She is a competent engineer.",part_of_speech:"adjective"},
+    {word:"diligent",translation:"mehnatsevar",definition:"having care in one's work",example:"He is a diligent student.",part_of_speech:"adjective"},
+    {word:"eloquent",translation:"notiq",definition:"fluent or persuasive",example:"She gave an eloquent speech.",part_of_speech:"adjective"},
+    {word:"flexible",translation:"moslashuvchan",definition:"able to change easily",example:"We need a flexible approach.",part_of_speech:"adjective"},
+    {word:"genuine",translation:"haqiqiy",definition:"truly what it is said to be",example:"This is a genuine concern.",part_of_speech:"adjective"},
+    {word:"innovative",translation:"yangilikchi",definition:"featuring new ideas",example:"They used an innovative method.",part_of_speech:"adjective"},
+    {word:"persistent",translation:"qat'iyatli",definition:"continuing despite difficulty",example:"Be persistent.",part_of_speech:"adjective"},
+  ],
+  advanced: [
+    {word:"ubiquitous",translation:"hamma joyda mavjud",definition:"present everywhere",example:"Smartphones have become ubiquitous.",part_of_speech:"adjective"},
+    {word:"pragmatic",translation:"amaliy",definition:"dealing with things realistically",example:"Take a pragmatic approach.",part_of_speech:"adjective"},
+    {word:"meticulous",translation:"puxta",definition:"showing great attention to detail",example:"She is meticulous in her work.",part_of_speech:"adjective"},
+    {word:"resilient",translation:"bardoshli",definition:"able to recover quickly",example:"Children are incredibly resilient.",part_of_speech:"adjective"},
+    {word:"paradigm",translation:"namuna",definition:"a typical example or pattern",example:"This is a new paradigm shift.",part_of_speech:"noun"},
+    {word:"scrutinize",translation:"sinchkovlik bilan tekshirmoq",definition:"examine or inspect closely",example:"They scrutinized every detail.",part_of_speech:"verb"},
+    {word:"mitigate",translation:"yengillashtirmoq",definition:"make less severe",example:"Steps taken to mitigate risk.",part_of_speech:"verb"},
+    {word:"perpetuate",translation:"davom ettirmoq",definition:"make continue indefinitely",example:"Don't perpetuate stereotypes.",part_of_speech:"verb"},
+  ],
 };
+
+// Asosiy fetch funksiyasi — JSON dan yuklaydi
+async function fetchUnitWords(bookNum, unitNum) {
+  const cacheKey = `book${bookNum}_unit${unitNum}`;
+  if(WORDS_CACHE[cacheKey]) return WORDS_CACHE[cacheKey];
+
+  const url = `data/book${bookNum}/unit${unitNum}.json`;
+  try {
+    const res = await fetch(url);
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    // Format: { "unit": 1, "total_words": 20, "words": [...] }
+    const words = Array.isArray(data) ? data : (data.words || []);
+    WORDS_CACHE[cacheKey] = words;
+    return words;
+  } catch(e) {
+    console.warn(`Unit yuklanmadi (${url}):`, e.message);
+    return null; // null = fayl yo'q
+  }
+}
+
+// Bir kitobdagi barcha unitlarni tekshirish (unit soni aniqlash uchun)
+async function detectUnitsInBook(bookNum) {
+  const cacheKey = `book${bookNum}_units`;
+  if(WORDS_CACHE[cacheKey]) return WORDS_CACHE[cacheKey];
+
+  const found = [];
+  // 1 dan 30 gacha parallel tekshiramiz
+  const checks = Array.from({length:30},(_,i)=>i+1).map(async n => {
+    const words = await fetchUnitWords(bookNum, n);
+    if(words && words.length > 0) found.push(n);
+  });
+  await Promise.all(checks);
+  found.sort((a,b)=>a-b);
+  WORDS_CACHE[cacheKey] = found;
+  return found;
+}
+
+// Barcha so'zlarni olish (progress uchun)
+function getAllWordsFallback(level) {
+  return FALLBACK_WORDS[level] || [];
+}
 
 // ============================================================
 // GRAMMAR DATA
@@ -1104,16 +1081,16 @@ const ONLINE_PLAYERS = [
 
 <script>
 // ===== INIT =====
-window.addEventListener('DOMContentLoaded', ()=>{
+window.addEventListener('DOMContentLoaded', async ()=>{
   if(!U){ window.location.href='register.html'; return; }
   curBook = U.lastBook || 1;
   curUnitNum = U.lastUnit || 1;
   loadTopbar();
   buildBookRow();
-  buildQuickUnits();
-  updateUnitRange();
   document.getElementById('unit-inp').value = curUnitNum;
-  goToUnit();
+  // Background da unitlarni aniqlash (barcha kitoblar uchun)
+  updateUnitRange();
+  await goToUnit();
   buildGrammarList();
   buildLeaderboard();
   buildBattleUI();
@@ -1140,18 +1117,14 @@ let curUnitNum = 1;
 const BOOK_LEVEL = {1:'beginner',2:'beginner',3:'intermediate',4:'intermediate',5:'advanced',6:'advanced'};
 const BOOK_COLORS = {1:'var(--green)',2:'var(--green)',3:'var(--blue)',4:'var(--blue)',5:'var(--purple)',6:'var(--purple)'};
 
-function getUnitWords(level, unitNum){
-  return WORDS_DB[level]?.['unit_'+unitNum] || [];
-}
-function getAllWords(level){
-  const db = WORDS_DB[level]||{};
-  return Object.values(db).flat();
-}
+// Sinxron yordamchi — cache dan (fetch tugagandan keyin)
 function getAllWordsForGames(){
+  if(currentUnitWords.length >= 3) return currentUnitWords;
   const level = BOOK_LEVEL[curBook] || U.level;
-  return currentUnitWords.length >= 4 ? currentUnitWords : getAllWords(level);
+  return getAllWordsFallback(level);
 }
 
+// ===== BOOK ROW =====
 function buildBookRow(){
   const row = document.getElementById('book-row');
   row.innerHTML = '';
@@ -1169,36 +1142,49 @@ function buildBookRow(){
   });
 }
 
-function selectBook(b){
+async function selectBook(b){
   curBook = b;
   curUnitNum = 1;
   document.getElementById('unit-inp').value = 1;
   buildBookRow();
-  buildQuickUnits();
-  updateUnitRange();
-  goToUnit();
+  await updateUnitRange();
+  await buildQuickUnits();
+  await goToUnit();
 }
 
-function updateUnitRange(){
-  const level = BOOK_LEVEL[curBook];
-  const db = WORDS_DB[level] || {};
-  const maxUnit = Object.keys(db).length || 30;
-  document.getElementById('unit-range').textContent = `1–${maxUnit}`;
-  document.getElementById('unit-inp').max = maxUnit;
+// Unit range ni aniqlash — 1 dan boshlab fayl bor-yo'qligini tekshiradi
+async function updateUnitRange(){
+  // Tezroq — avval 30 deymiz, keyin aniqlaymiz
+  document.getElementById('unit-range').textContent = `1–30`;
+  document.getElementById('unit-inp').max = 30;
+  // Background da haqiqiy sonni aniqlash
+  detectUnitsInBook(curBook).then(units=>{
+    const max = units.length > 0 ? Math.max(...units) : 30;
+    document.getElementById('unit-range').textContent = `1–${max}`;
+    document.getElementById('unit-inp').max = max;
+    buildQuickUnits();
+  });
 }
 
-function buildQuickUnits(){
-  const level = BOOK_LEVEL[curBook];
-  const db = WORDS_DB[level] || {};
-  const units = Object.keys(db).map(k=>parseInt(k.replace('unit_',''))).sort((a,b)=>a-b);
+// Quick unit pills — cache da bor unitlarni ko'rsatadi
+async function buildQuickUnits(){
   const quick = document.getElementById('unit-quick');
+  // Cache dan mavjud unitlarni ol
+  const cacheKey = `book${curBook}_units`;
+  const knownUnits = WORDS_CACHE[cacheKey] || [];
+
+  // Hech bo'lmasa 1-5 unitni ko'rsatamiz
+  const showUnits = knownUnits.length > 0
+    ? knownUnits.slice(0, 12)
+    : [1,2,3,4,5];
+
   quick.innerHTML = '';
-  units.slice(0,10).forEach(n=>{
+  showUnits.forEach(n=>{
     const el = document.createElement('div');
     el.className = 'unit-pill' + (n===curUnitNum?' active':'');
-    const words = getUnitWords(level, n);
-    const learned = words.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
-    const isDone = words.length > 0 && learned === words.length;
+    const cached = WORDS_CACHE[`book${curBook}_unit${n}`] || [];
+    const learned = cached.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
+    const isDone = cached.length > 0 && learned === cached.length;
     if(isDone) el.classList.add('done');
     el.innerHTML = (isDone?'✓ ':'') + `Unit ${n}`;
     el.onclick = ()=>{
@@ -1208,10 +1194,11 @@ function buildQuickUnits(){
     };
     quick.appendChild(el);
   });
-  if(units.length > 10){
+
+  if(knownUnits.length > 12){
     const more = document.createElement('div');
     more.className = 'unit-pill';
-    more.textContent = `+${units.length-10} ta`;
+    more.textContent = `+${knownUnits.length-12} ta`;
     more.style.color = 'var(--muted)';
     quick.appendChild(more);
   }
@@ -1224,30 +1211,51 @@ function previewUnit(val){
   buildQuickUnits();
 }
 
-function goToUnit(){
+// Asosiy funksiya — JSON dan fetch qilib unit so'zlarini yuklaydi
+async function goToUnit(){
   const n = parseInt(document.getElementById('unit-inp').value) || 1;
   curUnitNum = n;
-  const level = BOOK_LEVEL[curBook];
-  currentUnitWords = getUnitWords(level, n);
 
-  const learned = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
+  // Loading holati
   document.getElementById('sel-title').textContent = `Kitob ${curBook} · Unit ${n}`;
-  document.getElementById('sel-sub').textContent = `${currentUnitWords.length} ta so'z`;
-  document.getElementById('sel-done').textContent = currentUnitWords.length > 0 ? `✓ ${learned}/${currentUnitWords.length}` : '';
+  document.getElementById('sel-sub').textContent = `⏳ Yuklanmoqda...`;
+  document.getElementById('sel-done').textContent = '';
   const gl = document.getElementById('game-unit-label');
   if(gl) gl.textContent = `Kitob ${curBook} · Unit ${n}`;
-  buildQuickUnits();
+
+  // JSON dan yuklash
+  const words = await fetchUnitWords(curBook, n);
+
+  if(words === null){
+    // Fayl topilmadi
+    document.getElementById('sel-sub').textContent = `⚠️ Bu unit hali mavjud emas`;
+    currentUnitWords = [];
+    U.lastBook = curBook;
+    U.lastUnit = n;
+    saveUser();
+    buildQuickUnits();
+    return;
+  }
+
+  currentUnitWords = words;
+  const learned = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
+  document.getElementById('sel-sub').textContent = `${currentUnitWords.length} ta so'z`;
+  document.getElementById('sel-done').textContent = currentUnitWords.length > 0 ? `✓ ${learned}/${currentUnitWords.length}` : '';
+
   U.lastBook = curBook;
   U.lastUnit = n;
 
   if(!currentUnitWords.length){
-    showToast(`Kitob ${curBook}, Unit ${n} hali bo'sh`);
+    showToast(`Kitob ${curBook}, Unit ${n} bo'sh`);
     saveUser();
+    buildQuickUnits();
     return;
   }
+
   cardIdx = 0; cardFlipped = false;
   updateCard();
   saveUser();
+  buildQuickUnits();
 }
 
 // ===== FLASHCARD =====
@@ -1292,9 +1300,9 @@ function learnWord(w){
 
 // ===== PROGRESS =====
 function updateProgress(){
-  const all = getAllWords(U.level);
-  const n = U.learnedWords.filter(w=> all.find(x=>x.word===w.word)).length;
-  const total = all.length;
+  // Hozirgi unit asosida progress ko'rsatamiz
+  const total = currentUnitWords.length || 0;
+  const n = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
   document.getElementById('prog-val').textContent = `${n} / ${total}`;
   document.getElementById('prog-fill').style.width = total ? (n/total*100)+'%' : '0%';
 }
@@ -1457,8 +1465,9 @@ function buildRecentWords(){
 
 // ===== WORD LIST MODAL =====
 function filterWords(q){
-  const level = BOOK_LEVEL[curBook] || U.level;
-  const all = getAllWords(level);
+  const all = currentUnitWords.length > 0
+    ? currentUnitWords
+    : getAllWordsFallback(BOOK_LEVEL[curBook] || U.level);
   const items=document.getElementById('wl-items'); items.innerHTML='';
   const filtered = q ? all.filter(w=>w.word.toLowerCase().includes(q.toLowerCase())||w.translation.includes(q)) : all;
   if(!filtered.length){items.innerHTML='<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px">So\'z topilmadi</div>';return;}
