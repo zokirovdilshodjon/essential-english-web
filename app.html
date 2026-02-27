@@ -1498,30 +1498,56 @@ function speakWord(){
   speakText(w.word);
 }
 
-function speakText(text){
-  if(!text) return;
-  // Web Speech API
+// ===== AUDIO / SPEECH =====
+let _voicesLoaded = false;
+let _voicesList = [];
+function _loadVoices(){
   if('speechSynthesis' in window){
-    speechSynthesis.cancel();
-    const speak = ()=>{
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang='en-US'; u.rate=0.85; u.pitch=1; u.volume=1;
-      const voices = speechSynthesis.getVoices();
-      const v = voices.find(v=>v.lang==='en-US'&&v.name.includes('Google'))
-        || voices.find(v=>v.lang==='en-US')
-        || voices.find(v=>v.lang.startsWith('en'));
-      if(v) u.voice=v;
-      u.onerror=()=>{};
-      speechSynthesis.speak(u);
-    };
-    const voices = speechSynthesis.getVoices();
-    if(voices.length>0){ speak(); }
-    else { speechSynthesis.onvoiceschanged=()=>{ speak(); speechSynthesis.onvoiceschanged=null; }; setTimeout(speak, 300); }
+    _voicesList = speechSynthesis.getVoices();
+    if(_voicesList.length > 0) _voicesLoaded = true;
   }
 }
-window.addEventListener('DOMContentLoaded',()=>{
-  if('speechSynthesis' in window) speechSynthesis.getVoices();
-});
+if('speechSynthesis' in window){
+  _loadVoices();
+  speechSynthesis.onvoiceschanged = ()=>{ _loadVoices(); };
+}
+
+function speakText(text){
+  if(!text) return;
+  if(!('speechSynthesis' in window)){ showToast('Brauzer audio ni qo\'llab-quvvatlamaydi'); return; }
+  speechSynthesis.cancel();
+  const doSpeak = ()=>{
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    u.pitch = 1;
+    u.volume = 1;
+    const voices = speechSynthesis.getVoices();
+    // Eng yaxshi inglizcha ovozni topamiz
+    const v = voices.find(v=>v.lang==='en-US' && v.name.includes('Google'))
+      || voices.find(v=>v.lang==='en-US' && !v.localService)
+      || voices.find(v=>v.lang==='en-US')
+      || voices.find(v=>v.lang==='en-GB')
+      || voices.find(v=>v.lang.startsWith('en'));
+    if(v) u.voice = v;
+    u.onerror = (e)=>{ console.warn('Speech error:', e.error); };
+    speechSynthesis.speak(u);
+  };
+  // Ovozlar tayyor bo'lsa darhol, bo'lmasa kuting
+  const voices = speechSynthesis.getVoices();
+  if(voices.length > 0){
+    doSpeak();
+  } else {
+    // Bir marta kutamiz
+    const handler = ()=>{
+      speechSynthesis.onvoiceschanged = null;
+      doSpeak();
+    };
+    speechSynthesis.onvoiceschanged = handler;
+    // Failsafe: 500ms dan keyin baribir urinib ko'ramiz
+    setTimeout(()=>{ if(speechSynthesis.getVoices().length===0){ doSpeak(); } }, 500);
+  }
+}
 function learnWord(w){
   if(!U.learnedWords.find(x=>x.word===w.word)){
     U.learnedWords.push(w);
@@ -2174,15 +2200,7 @@ function endBattle(){
   document.getElementById('bh-opp-s').textContent=BT.oppScore;
 }
 
-// ===== TABS =====
-function switchTab(name,btn){
-  document.querySelectorAll('.tab-pages>div').forEach(d=>d.classList.remove('active'));
-  document.querySelectorAll('.nav-b').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-  btn.classList.add('active');
-  if(name==='progress'){buildLeaderboard();buildRecentWords();updateStats();}
-  if(name==='battle'){buildBattleUI();}
-}
+// ===== TABS handled below =====
 
 // ===== KUNLIK O'YIN LIMITI =====
 function getTodayKey(){ return new Date().toISOString().slice(0,10); }
@@ -2190,11 +2208,16 @@ function getGamePlayKey(gameId){
   // book+unit+game+sana kombinatsiyasi
   return `played_${gameId}_b${curBook}_u${curUnitNum}_${getTodayKey()}`;
 }
+function isPremiumActive(){
+  return U.isPremium && U.premiumExpiry > Date.now();
+}
 function hasPlayedToday(gameId){
+  if(isPremiumActive()) return false; // Premium - cheksiz o'ynash
   const key = getGamePlayKey(gameId);
   return U.gamePlays && U.gamePlays[key];
 }
 function markPlayedToday(gameId){
+  if(isPremiumActive()) return; // Premium - limit yo'q
   if(!U.gamePlays) U.gamePlays = {};
   const key = getGamePlayKey(gameId);
   U.gamePlays[key] = true;
@@ -2209,12 +2232,29 @@ function tryOpenGame(gameId, modalId){
 }
 function showGameLimitModal(gameId){
   const names = {match:"Word Match", anagram:"Hidden Word", quiz:"Quiz"};
-  showToast(`⏳ ${names[gameId]||gameId} — bugun allaqachon o'ynagansiz! Ertaga qayta urinib ko'ring.`);
+  // Premium bo'lmaganlar uchun premium taklifi bilan ko'rsatamiz
+  const overlay = document.createElement('div');
+  overlay.style = 'position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px';
+  overlay.innerHTML = `
+    <div style="background:var(--s1);border:1px solid var(--border);border-radius:22px;padding:28px 24px;max-width:340px;width:100%;text-align:center">
+      <div style="font-size:48px;margin-bottom:12px">⏳</div>
+      <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:8px">${names[gameId]||gameId}</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5">Bugun bu o'yinni allaqachon o'ynagansiz.<br>Ertaga qayta urinib ko'ring yoki<br>💎 <b style="color:var(--gold)">Premium</b> oling — cheksiz o'ynash!</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button onclick="this.closest('[style*=fixed]').remove();switchTabByName('premium')" style="padding:12px;background:linear-gradient(135deg,var(--gold),var(--orange));border:none;border-radius:12px;color:#080d14;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+          💎 Premium olish
+        </button>
+        <button onclick="this.closest('[style*=fixed]').remove()" style="padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+          ← Qaytish
+        </button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
 }
 
 // ===== MODALS =====
 function openModal(id){
-  // Kunlik limit tekshiruvi
+  // Kunlik limit tekshiruvi (faqat asosiy o'yinlar uchun)
   if(id==='modal-match'){
     if(!tryOpenGame('match','modal-match')) return;
   }
@@ -2224,21 +2264,56 @@ function openModal(id){
   if(id==='modal-quiz'){
     if(!tryOpenGame('quiz','modal-quiz')) return;
   }
-  document.getElementById(id).classList.add('open');
+
+  const el = document.getElementById(id);
+  if(!el){ console.warn('Modal topilmadi:', id); return; }
+  el.classList.add('open');
+
+  // Game inits
   if(id==='modal-match') initMatch();
   if(id==='modal-anagram') initAnagram();
   if(id==='modal-quiz') initQuiz();
   if(id==='modal-words') filterWords('');
   if(id==='modal-lb') buildLeaderboard();
+  if(id==='modal-survival') initSurvival();
+  if(id==='modal-daily') initDailyChallenge();
+  if(id==='modal-custom-words') buildCustomWordsList();
+  if(id==='modal-cert') buildCertList();
+  if(id==='modal-group') initGroupBattle();
+  if(id==='modal-tournament') buildTournament();
+  if(id==='modal-achievements'){
+    buildAchievements();
+    U.lastSeenAch = ACHIEVEMENTS.filter(a=>{const c=a.type==='length'?(U[a.stat]?.length||0):(U[a.stat]||0);return c>=a.goal;}).length;
+    saveUser();
+    const b=document.getElementById('ach-new-badge'); if(b) b.style.display='none';
+  }
+  if(id==='modal-stats-detail') buildDetailedStats();
+  if(id==='modal-prem-avatar') buildPremiumAvatars();
+  if(id==='modal-payment'){
+    const prices={monthly:'5,000 so\'m','3month':'10,000 so\'m'};
+    document.getElementById('pay-plan-label').textContent = selectedPlan==='monthly'?'Oylik':'3 Oylik';
+    document.getElementById('pay-plan-price').textContent = prices[selectedPlan]||'5,000 so\'m';
+    selectedCardType = null;
+    document.getElementById('pay-form').style.display='none';
+    document.getElementById('pay-loading').style.display='none';
+    document.getElementById('pay-error').textContent='';
+    document.getElementById('pay-uzcard').style.borderColor='var(--border)';
+    document.getElementById('pay-uzcard').style.background='var(--s2)';
+    document.getElementById('pay-humo').style.borderColor='var(--border)';
+    document.getElementById('pay-humo').style.background='var(--s2)';
+  }
+  if(id==='modal-weak'){ buildWeakWords(); }
 }
 function closeModal(e,id){
   if(e && e.target!==document.getElementById(id)) return;
-  document.getElementById(id).classList.remove('open');
+  const el = document.getElementById(id);
+  if(el) el.classList.remove('open');
   if(id==='modal-match'){ clearInterval(MS.timer); MS.tval=0; }
   if(id==='modal-anagram'){ clearInterval(AS.timer); AS.tval=0; }
   if(id==='modal-quiz'){ clearInterval(QS.timer); QS.tval=0; }
   if(id==='modal-bg') clearInterval(BT.timer);
   if(id==='modal-matchmaking') clearInterval(mmTimer);
+  if(id==='modal-daily') clearInterval(DC.timer);
 }
 
 // ===== PREMIUM SYSTEM =====
@@ -2785,44 +2860,7 @@ function startDailyCountdown(){
   setInterval(update,1000);
 }
 
-// ===== OVERRIDE openModal for premium modals =====
-const _origOpenModal = openModal;
-function openModal(id){
-  _origOpenModal(id);
-  if(id==='modal-survival') initSurvival();
-  if(id==='modal-payment'){
-    const prices={monthly:'5,000 so\'m','3month':'10,000 so\'m'};
-    document.getElementById('pay-plan-label').textContent=selectedPlan==='monthly'?'Oylik':'3 Oylik';
-    document.getElementById('pay-plan-price').textContent=prices[selectedPlan]||'5,000 so\'m';
-    selectedCardType=null;
-    document.getElementById('pay-form').style.display='none';
-    document.getElementById('pay-loading').style.display='none';
-    document.getElementById('pay-error').textContent='';
-    document.getElementById('pay-uzcard').style.borderColor='var(--border)';
-    document.getElementById('pay-uzcard').style.background='var(--s2)';
-    document.getElementById('pay-humo').style.borderColor='var(--border)';
-    document.getElementById('pay-humo').style.background='var(--s2)';
-  }
-  if(id==='modal-daily') initDailyChallenge();
-  if(id==='modal-custom-words') buildCustomWordsList();
-  if(id==='modal-cert') buildCertList();
-  if(id==='modal-group') initGroupBattle();
-  if(id==='modal-tournament') buildTournament();
-  // Yangi premium modals
-  if(id==='modal-achievements'){ buildAchievements(); U.lastSeenAch=ACHIEVEMENTS.filter(a=>{const c=a.type==='length'?(U[a.stat]?.length||0):(U[a.stat]||0);return c>=a.goal;}).length; saveUser(); const b=document.getElementById('ach-new-badge');if(b)b.style.display='none'; }
-  if(id==='modal-stats-detail') buildDetailedStats();
-  if(id==='modal-prem-avatar') buildPremiumAvatars();
-}
-
-// Override closeModal for new modals
-const _origCloseModal = closeModal;
-function closeModal(e,id){
-  _origCloseModal(e,id);
-  if(id==='modal-daily') clearInterval(DC.timer);
-}
-
 // ===== OVERRIDE switchTab for new tabs =====
-const _origSwitchTab = switchTab;
 function switchTab(name,btn){
   document.querySelectorAll('.tab-pages>div').forEach(d=>d.classList.remove('active'));
   document.querySelectorAll('.nav-b').forEach(b=>b.classList.remove('active'));
@@ -3193,11 +3231,6 @@ function checkPremium(modalId){
   }
   return true;
 }
-function switchTabByName(name){
-  const btn = document.querySelector(`.nav-b[onclick*="${name}"]`);
-  if(btn) btn.click();
-}
-
 // ============================================================
 // WEEKLY ACTIVITY TRACKER
 // ============================================================
