@@ -272,6 +272,38 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .tr-name{font-size:13px;font-weight:700}
 .tr-sub{font-size:11px;color:var(--muted)}
 .tr-score{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--orange)}
+/* ===== YANGI PREMIUM CSS ===== */
+/* Reminder pills */
+.rem-pill{background:var(--s2);border:1.5px solid var(--border);border-radius:11px;
+  padding:9px 6px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:all .2s}
+.rem-pill.active,.rem-pill:hover{border-color:var(--purple);color:var(--purple);background:rgba(192,132,252,.1)}
+/* Achievement card */
+.ach-card{display:flex;align-items:center;gap:12px;background:var(--s1);
+  border:1px solid var(--border);border-radius:13px;padding:12px 14px;transition:all .3s}
+.ach-card.unlocked{border-color:rgba(245,197,66,.4);background:linear-gradient(135deg,rgba(245,197,66,.06),rgba(249,123,79,.04))}
+.ach-card.locked{opacity:.5}
+.ach-icon{font-size:28px;flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  background:var(--s2);border-radius:12px}
+.ach-info{flex:1}
+.ach-title{font-size:13px;font-weight:800}
+.ach-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.ach-prog{height:4px;background:var(--s3);border-radius:4px;margin-top:6px;overflow:hidden}
+.ach-prog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--orange));transition:width .6s}
+/* Premium avatar grid */
+.prem-av-item{aspect-ratio:1;background:var(--s2);border:2px solid var(--border);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;transition:all .2s}
+.prem-av-item:hover,.prem-av-item.selected{border-color:var(--purple);background:rgba(192,132,252,.1);transform:scale(1.05)}
+/* Heatmap */
+.heat-day{flex:1;aspect-ratio:1;border-radius:4px;min-height:28px;transition:all .2s}
+/* XP bar chart */
+.xp-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--accent),var(--purple));
+  min-width:0;transition:height .6s;position:relative}
+.xp-bar-label{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
+  font-size:8px;color:var(--muted);white-space:nowrap}
+/* Translator */
+.tr-example{background:var(--s2);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.5}
+.tr-example b{color:var(--blue)}
 </style>
 </head>
 <body>
@@ -1041,6 +1073,14 @@ const ONLINE_PLAYERS = [
           <div style="display:flex;align-items:center;gap:10px;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🏆</span><div><div style="font-size:13px;font-weight:700">Haftalik Tournament</div><div style="font-size:11px;color:var(--muted)">Global reyting</div></div><span style="margin-left:auto;color:var(--green)">✓</span></div>
           <div style="display:flex;align-items:center;gap:10px;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🎓</span><div><div style="font-size:13px;font-weight:700">Sertifikat</div><div style="font-size:11px;color:var(--muted)">Kitob tugaganda</div></div><span style="margin-left:auto;color:var(--green)">✓</span></div>
           <div style="display:flex;align-items:center;gap:10px;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:11px 14px"><span style="font-size:20px">📝</span><div><div style="font-size:13px;font-weight:700">Shaxsiy So'zlar</div><div style="font-size:11px;color:var(--muted)">O'z so'zlaringizni qo'shing</div></div><span style="margin-left:auto;color:var(--green)">✓</span></div>
+          <!-- YANGI PREMIUM FUNKSIYALAR -->
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🎯</span><div><div style="font-size:13px;font-weight:700">Streak Freeze</div><div style="font-size:11px;color:var(--muted)">Streakni yo'qotmaslik uchun</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🔥</span><div><div style="font-size:13px;font-weight:700">XP Boost</div><div style="font-size:11px;color:var(--muted)">24 soat 2× XP</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🎨</span><div><div style="font-size:13px;font-weight:700">Premium Avatarlar</div><div style="font-size:11px;color:var(--muted)">Eksklyuziv avatar kolleksiya</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">📊</span><div><div style="font-size:13px;font-weight:700">Batafsil Statistika</div><div style="font-size:11px;color:var(--muted)">Grafik va tahlil</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🌍</span><div><div style="font-size:13px;font-weight:700">Tarjimon Rejimi</div><div style="font-size:11px;color:var(--muted)">Kontekstli gaplar + audio</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">⏰</span><div><div style="font-size:13px;font-weight:700">Kunlik Eslatma</div><div style="font-size:11px;color:var(--muted)">O'rganishni unutmang</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(249,123,79,.06));border:1px solid rgba(245,197,66,.3);border-radius:12px;padding:11px 14px"><span style="font-size:20px">🏅</span><div><div style="font-size:13px;font-weight:700">Achievement Tizimi</div><div style="font-size:11px;color:var(--muted)">Yutuqlar va medallar</div></div><span style="margin-left:auto;color:var(--gold)">✓</span></div>
         </div>
 
         <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px">TARIF</div>
@@ -1071,6 +1111,14 @@ const ONLINE_PLAYERS = [
             <button onclick="openModal('modal-cert')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">🎓</span> Sertifikatlarim</button>
             <button onclick="openModal('modal-group')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">👥</span> Guruh battle</button>
             <button onclick="openModal('modal-tournament')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">🏆</span> Haftalik tournament</button>
+            <!-- YANGI PREMIUM TUGMALAR -->
+            <button onclick="openStreakFreeze()" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(245,197,66,.3)"><span style="font-size:18px">🎯</span> <span>Streak Freeze <span id="sf-count-badge" style="background:rgba(245,197,66,.2);color:var(--gold);font-size:10px;padding:2px 7px;border-radius:10px;margin-left:4px">0 ta</span></span></button>
+            <button onclick="openXPBoost()" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(249,123,79,.3)"><span style="font-size:18px">🔥</span> <span>XP Boost <span id="xpboost-badge" style="background:rgba(249,123,79,.2);color:var(--orange);font-size:10px;padding:2px 7px;border-radius:10px;margin-left:4px">OFF</span></span></button>
+            <button onclick="openModal('modal-stats-detail')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(79,156,249,.3)"><span style="font-size:18px">📊</span> Batafsil Statistika</button>
+            <button onclick="openModal('modal-translator')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(79,223,138,.3)"><span style="font-size:18px">🌍</span> Tarjimon Rejimi</button>
+            <button onclick="openModal('modal-reminder')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(192,132,252,.3)"><span style="font-size:18px">⏰</span> Kunlik Eslatma</button>
+            <button onclick="openModal('modal-achievements')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(245,197,66,.3)"><span style="font-size:18px">🏅</span> Achievementlar <span id="ach-new-badge" style="display:none;background:var(--red);color:white;font-size:10px;padding:2px 7px;border-radius:10px;margin-left:4px">Yangi!</span></button>
+            <button onclick="openModal('modal-prem-avatar')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(192,132,252,.3)"><span style="font-size:18px">🎨</span> Premium Avatarlar</button>
           </div>
         </div>
       </div>
@@ -2587,6 +2635,10 @@ function openModal(id){
   if(id==='modal-cert') buildCertList();
   if(id==='modal-group') initGroupBattle();
   if(id==='modal-tournament') buildTournament();
+  // Yangi premium modals
+  if(id==='modal-achievements'){ buildAchievements(); U.lastSeenAch=ACHIEVEMENTS.filter(a=>{const c=a.type==='length'?(U[a.stat]?.length||0):(U[a.stat]||0);return c>=a.goal;}).length; saveUser(); const b=document.getElementById('ach-new-badge');if(b)b.style.display='none'; }
+  if(id==='modal-stats-detail') buildDetailedStats();
+  if(id==='modal-prem-avatar') buildPremiumAvatars();
 }
 
 // Override closeModal for new modals
@@ -2624,6 +2676,383 @@ function trackWordError(word){
   if(!U.wordErrors) U.wordErrors={};
   U.wordErrors[word]=(U.wordErrors[word]||0)+1;
   saveUser();
+}
+
+// ============================================================
+// 🎯 STREAK FREEZE
+// ============================================================
+function openStreakFreeze(){
+  if(!checkPremium('modal-streak-freeze')) return;
+  if(!U.streakFreezes) U.streakFreezes = 2; // Premium oyiga 2 ta
+  document.getElementById('sf-available').textContent = U.streakFreezes;
+  document.getElementById('sf-streak-val').textContent = U.streak||0;
+  // Ikonkalar
+  const icons = document.getElementById('sf-icons');
+  icons.innerHTML = '';
+  for(let i=0;i<(U.streakFreezes||0);i++) icons.innerHTML+=`<span style="font-size:28px">🧊</span>`;
+  if(!U.streakFreezes) icons.innerHTML='<span style="font-size:13px;color:var(--muted)">Freeze qolmadi</span>';
+  document.getElementById('sf-use-btn').disabled = !U.streakFreezes;
+  document.getElementById('sf-status-text').textContent = U.lastFreeze===getTodayStr()
+    ? '✅ Bugun allaqachon ishlatilgan' : 'Premium foydalanuvchilar oyiga 2 ta bepul Freeze oladi';
+  openModal('modal-streak-freeze');
+}
+function useStreakFreeze(){
+  if(!U.streakFreezes||U.streakFreezes<=0){showToast('Freeze qolmadi!');return;}
+  if(U.lastFreeze===getTodayStr()){showToast('Bugun allaqachon ishlatilgan!');return;}
+  U.streakFreezes--;
+  U.lastFreeze = getTodayStr();
+  // Streakni saqlab qolamiz — maxsus flag
+  U.streakFreezeActive = true;
+  saveUser();
+  document.getElementById('sf-available').textContent = U.streakFreezes;
+  document.getElementById('sf-icons').innerHTML = Array.from({length:U.streakFreezes},()=>'<span style="font-size:28px">🧊</span>').join('')||'<span style="font-size:13px;color:var(--muted)">Freeze qolmadi</span>';
+  document.getElementById('sf-use-btn').disabled = true;
+  document.getElementById('sf-status-text').textContent = '✅ Bugun Freeze ishlatildi! Streak saqlanadi.';
+  showToast('🧊 Streak Freeze ishlatildi!');
+}
+function getTodayStr(){ return new Date().toISOString().slice(0,10); }
+
+// ============================================================
+// 🔥 XP BOOST
+// ============================================================
+let boostInterval = null;
+function openXPBoost(){
+  if(!checkPremium('modal-xp-boost')) return;
+  updateBoostUI();
+  openModal('modal-xp-boost');
+}
+function activateXPBoost(){
+  if(U.xpBoostExpiry && U.xpBoostExpiry > Date.now()){
+    showToast('Boost allaqachon faol!'); return;
+  }
+  if(!U.boostsLeft && U.boostsLeft!==undefined && U.boostsLeft<=0){
+    showToast('Bu oy uchun Boost tugadi!'); return;
+  }
+  U.xpBoostExpiry = Date.now() + 24*60*60*1000;
+  if(U.boostsLeft===undefined) U.boostsLeft=3;
+  U.boostsLeft--;
+  saveUser();
+  updateBoostUI();
+  showToast('⚡ XP Boost faollashtirildi! 24 soat 2× XP');
+}
+function updateBoostUI(){
+  const active = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
+  const card = document.getElementById('boost-active-card');
+  const btn = document.getElementById('boost-activate-btn');
+  const badge = document.getElementById('xpboost-badge');
+  if(card) card.style.display = active ? 'block' : 'none';
+  if(btn) btn.textContent = active ? '✅ Boost Faol' : '⚡ Boostni Faollashtirish';
+  if(badge){ badge.textContent = active ? 'ON 2×' : 'OFF'; badge.style.background = active ? 'rgba(249,123,79,.3)':'rgba(249,123,79,.15)'; }
+  if(active){
+    clearInterval(boostInterval);
+    boostInterval = setInterval(()=>{
+      const left = U.xpBoostExpiry - Date.now();
+      if(left<=0){ clearInterval(boostInterval); updateBoostUI(); return; }
+      const h=Math.floor(left/3600000);const m=Math.floor((left%3600000)/60000);const s=Math.floor((left%60000)/1000);
+      const el=document.getElementById('boost-timer');
+      if(el) el.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    },1000);
+  }
+}
+// addXP ni boost bilan kengaytirish
+const _origAddXP = addXP;
+function addXP(n){
+  const boosted = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
+  _origAddXP(boosted ? n*2 : n);
+  checkNewAchievements();
+  trackTodayActivity();
+}
+
+// ============================================================
+// 📊 BATAFSIL STATISTIKA
+// ============================================================
+function openDetailedStats(){
+  if(!checkPremium('modal-stats-detail')) return;
+  buildDetailedStats();
+  openModal('modal-stats-detail');
+}
+function buildDetailedStats(){
+  document.getElementById('ds-words').textContent = U.learnedWords?.length||0;
+  document.getElementById('ds-streak').textContent = U.streak||0;
+  document.getElementById('ds-xp').textContent = U.xp||0;
+  document.getElementById('ds-battles').textContent = U.battleWins||0;
+  // Haftalik heatmap
+  const heatmap = document.getElementById('week-heatmap');
+  if(heatmap){
+    const days = ['Du','Se','Ch','Pa','Ju','Sh','Ya'];
+    const activity = U.weeklyActivity || [0,0,0,0,0,0,0];
+    const maxA = Math.max(...activity,1);
+    heatmap.innerHTML = days.map((d,i)=>{
+      const pct = activity[i]/maxA;
+      const opacity = 0.1 + pct*0.9;
+      return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div class="heat-day" style="background:rgba(124,90,246,${opacity.toFixed(2)})"></div>
+        <span style="font-size:9px;color:var(--muted)">${d}</span>
+      </div>`;
+    }).join('');
+  }
+  // XP chart
+  const chart = document.getElementById('xp-chart');
+  if(chart){
+    const xpHistory = U.xpHistory || [0,0,0,0,0,0,0];
+    const maxXP = Math.max(...xpHistory,1);
+    const dayNames = ['Du','Se','Ch','Pa','Ju','Sh','Ya'];
+    chart.innerHTML = xpHistory.map((v,i)=>{
+      const h = Math.round((v/maxXP)*60)+4;
+      return `<div class="xp-bar" style="height:${h}px" title="${v} XP"><span class="xp-bar-label">${dayNames[i]}</span></div>`;
+    }).join('');
+  }
+  // Tahlil
+  const analysis = document.getElementById('stats-analysis');
+  if(analysis){
+    const totalBattles = (U.battleWins||0)+(U.battleLosses||0);
+    const winRate = totalBattles>0 ? Math.round((U.battleWins||0)/totalBattles*100) : 0;
+    const weakCount = Object.values(U.wordErrors||{}).filter(v=>v>=2).length;
+    analysis.innerHTML = `
+      <div style="background:var(--s2);border-radius:11px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-size:12px;color:var(--muted)">Battle g'alaba foizi</div><div style="font-size:16px;font-weight:800;color:var(--${winRate>50?'green':'orange'}">${winRate}%</div></div>
+        <div style="font-size:24px">${winRate>50?'🏆':'💪'}</div>
+      </div>
+      <div style="background:var(--s2);border-radius:11px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-size:12px;color:var(--muted)">Zaif so'zlar</div><div style="font-size:16px;font-weight:800;color:var(--${weakCount>5?'red':'green'}">${weakCount} ta</div></div>
+        <div style="font-size:24px">${weakCount>5?'⚠️':'✅'}</div>
+      </div>
+      <div style="background:var(--s2);border-radius:11px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-size:12px;color:var(--muted)">O'rtacha kunlik XP</div><div style="font-size:16px;font-weight:800;color:var(--purple)">${Math.round((U.xp||0)/Math.max(U.streak||1,1))}</div></div>
+        <div style="font-size:24px">📈</div>
+      </div>`;
+  }
+}
+
+// ============================================================
+// 🌍 TARJIMON REJIMI
+// ============================================================
+let trDebounce=null;
+function translateLive(val){
+  clearTimeout(trDebounce);
+  if(!val.trim()){
+    document.getElementById('tr-result').innerHTML='<div style="font-size:12px;color:var(--muted)">Natija bu yerda ko\'rinadi</div>';
+    document.getElementById('tr-examples').innerHTML='';
+    return;
+  }
+  document.getElementById('tr-result').innerHTML='<div style="font-size:12px;color:var(--muted)">⏳ Qidirilmoqda...</div>';
+  trDebounce = setTimeout(()=>doTranslate(val.trim()),500);
+}
+function doTranslate(word){
+  // Unit so'zlaridan qidirish
+  const allWords = getAllWordsForGames();
+  const found = allWords.find(w=>w.word.toLowerCase()===word.toLowerCase());
+  const result = document.getElementById('tr-result');
+  const examples = document.getElementById('tr-examples');
+  if(found){
+    result.innerHTML=`
+      <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:4px">${found.word}</div>
+      <div style="font-size:13px;color:var(--blue);font-weight:700;margin-bottom:6px">${found.translation}</div>
+      <div style="font-size:11px;color:var(--muted);background:var(--s3);border-radius:8px;padding:6px 10px;display:inline-block">${found.part_of_speech}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px">${found.definition}</div>`;
+    examples.innerHTML=`<div class="tr-example">"${found.example}"</div>`;
+  } else {
+    // Qisman moslik
+    const partial = allWords.filter(w=>w.word.toLowerCase().includes(word.toLowerCase())).slice(0,3);
+    if(partial.length){
+      result.innerHTML=`<div style="font-size:12px;color:var(--muted)">Aniq mos topilmadi. Yaqin natijalar:</div>`;
+      examples.innerHTML=partial.map(w=>`
+        <div class="tr-example" onclick="document.getElementById('tr-input').value='${w.word}';doTranslate('${w.word}')" style="cursor:pointer">
+          <b>${w.word}</b> — ${w.translation}
+          <div style="color:var(--muted);margin-top:3px">${w.definition}</div>
+        </div>`).join('');
+    } else {
+      result.innerHTML=`<div style="font-size:12px;color:var(--muted)">Hozirgi unitda topilmadi. Boshqa unitni tanlang.</div>`;
+      examples.innerHTML='';
+    }
+  }
+}
+function speakTranslation(){
+  const val = document.getElementById('tr-input').value.trim();
+  if(!val) return;
+  if('speechSynthesis' in window){
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(val);
+    u.lang='en-US'; u.rate=0.85;
+    const v = speechSynthesis.getVoices().find(v=>v.lang.startsWith('en-US'));
+    if(v) u.voice=v;
+    speechSynthesis.speak(u);
+  }
+}
+
+// ============================================================
+// ⏰ KUNLIK ESLATMA
+// ============================================================
+function setReminderTime(time){
+  document.querySelectorAll('.rem-pill').forEach(el=>el.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('selected-reminder-time').textContent = time;
+  U.reminderTime = time;
+}
+function saveReminder(){
+  const time = document.getElementById('selected-reminder-time').textContent;
+  if(time==='Tanlanmagan'){showToast('Vaqtni tanlang!');return;}
+  U.reminderTime = time;
+  U.reminderEnabled = true;
+  saveUser();
+  // Browser notification permission
+  if('Notification' in window){
+    Notification.requestPermission().then(p=>{
+      if(p==='granted'){
+        document.getElementById('reminder-status').textContent=`✅ ${time} da eslatma o'rnatildi`;
+        showToast(`⏰ Eslatma ${time} ga saqlandi!`);
+      } else {
+        document.getElementById('reminder-status').textContent=`⚠️ Brauzer bildirishnomalar ruxsat bermadi`;
+        showToast('Brauzer ruxsatini bering!');
+      }
+    });
+  } else {
+    document.getElementById('reminder-status').textContent=`✅ ${time} ga saqlandi`;
+    showToast(`⏰ Eslatma ${time} ga saqlandi!`);
+  }
+}
+
+// ============================================================
+// 🏅 ACHIEVEMENT TIZIMI
+// ============================================================
+const ACHIEVEMENTS = [
+  {id:'first_word',  icon:'🌱', title:'Birinchi Qadam',  desc:'Birinchi so\'zni o\'rganing',   goal:1,  stat:'learnedWords', type:'length'},
+  {id:'words_10',    icon:'📚', title:'O\'quvchi',        desc:'10 ta so\'z o\'rganing',        goal:10, stat:'learnedWords', type:'length'},
+  {id:'words_50',    icon:'🎯', title:'Izlanuvchan',     desc:'50 ta so\'z o\'rganing',        goal:50, stat:'learnedWords', type:'length'},
+  {id:'words_100',   icon:'🏆', title:'Lug\'at Ustasi',  desc:'100 ta so\'z o\'rganing',       goal:100,stat:'learnedWords', type:'length'},
+  {id:'words_200',   icon:'🦋', title:'Parvoz',          desc:'200 ta so\'z o\'rganing',       goal:200,stat:'learnedWords', type:'length'},
+  {id:'streak_3',    icon:'🔥', title:'Oddiy Streak',    desc:'3 kunlik streak',               goal:3,  stat:'streak',       type:'val'},
+  {id:'streak_7',    icon:'💥', title:'Haftalik Qahram', desc:'7 kunlik streak',               goal:7,  stat:'streak',       type:'val'},
+  {id:'streak_30',   icon:'⚡', title:'Oylik Chempion',  desc:'30 kunlik streak',              goal:30, stat:'streak',       type:'val'},
+  {id:'battle_1',    icon:'⚔️', title:'Birinchi Jang',   desc:'Birinchi battle g\'alabasi',    goal:1,  stat:'battleWins',   type:'val'},
+  {id:'battle_10',   icon:'🛡️', title:'Jangchi',         desc:'10 ta battle g\'alabasi',       goal:10, stat:'battleWins',   type:'val'},
+  {id:'battle_50',   icon:'👑', title:'Jang Qiroli',     desc:'50 ta battle g\'alabasi',       goal:50, stat:'battleWins',   type:'val'},
+  {id:'xp_100',      icon:'⭐', title:'XP Yig\'uvchi',   desc:'100 XP to\'plang',              goal:100,stat:'xp',           type:'val'},
+  {id:'xp_500',      icon:'🌟', title:'XP Sermahsul',    desc:'500 XP to\'plang',              goal:500,stat:'xp',           type:'val'},
+  {id:'xp_1000',     icon:'💎', title:'XP Boyi',         desc:'1000 XP to\'plang',             goal:1000,stat:'xp',          type:'val'},
+];
+function buildAchievements(){
+  const list = document.getElementById('ach-list');
+  if(!list) return;
+  let unlocked=0;
+  list.innerHTML = ACHIEVEMENTS.map(a=>{
+    const cur = a.type==='length' ? (U[a.stat]?.length||0) : (U[a.stat]||0);
+    const done = cur >= a.goal;
+    if(done) unlocked++;
+    const pct = Math.min(100, Math.round(cur/a.goal*100));
+    return `<div class="ach-card ${done?'unlocked':'locked'}">
+      <div class="ach-icon">${done?a.icon:'🔒'}</div>
+      <div class="ach-info">
+        <div class="ach-title">${a.title}</div>
+        <div class="ach-sub">${a.desc}</div>
+        <div class="ach-prog"><div class="ach-prog-fill" style="width:${pct}%"></div></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">${cur}/${a.goal}</div>
+      </div>
+      ${done?'<span style="color:var(--gold);font-size:18px">✓</span>':''}
+    </div>`;
+  }).join('');
+  document.getElementById('ach-unlocked').textContent = unlocked;
+  document.getElementById('ach-total').textContent = ACHIEVEMENTS.length;
+  // Yangi achievement bor? Badge ko'rsat
+  const newBadge = document.getElementById('ach-new-badge');
+  if(newBadge) newBadge.style.display = unlocked>(U.lastSeenAch||0)?'inline':'none';
+}
+function checkNewAchievements(){
+  let newOnes=[];
+  ACHIEVEMENTS.forEach(a=>{
+    const cur = a.type==='length'?(U[a.stat]?.length||0):(U[a.stat]||0);
+    const key='ach_done_'+a.id;
+    if(cur>=a.goal && !U[key]){
+      U[key]=true; newOnes.push(a);
+    }
+  });
+  if(newOnes.length){
+    newOnes.forEach(a=>setTimeout(()=>showToast(`🏅 Achievement: ${a.title}!`),500));
+    const badge=document.getElementById('ach-new-badge');
+    if(badge) badge.style.display='inline';
+    U.lastSeenAch=(U.lastSeenAch||0)+newOnes.length;
+    saveUser();
+  }
+}
+
+// ============================================================
+// 🎨 PREMIUM AVATARLAR
+// ============================================================
+const PREMIUM_AVATARS = [
+  '🦄','🐉','🦅','🐯','🦁','🐺','🦊','🐸',
+  '🧙','🧛','🧝','🤴','👸','🥷','🦸','🧜',
+  '🌙','⭐','🔥','❄️','⚡','🌊','🌺','🍀',
+];
+let selectedPremAv = null;
+function buildPremiumAvatars(){
+  const grid = document.getElementById('prem-av-grid');
+  if(!grid) return;
+  grid.innerHTML = PREMIUM_AVATARS.map(av=>`
+    <div class="prem-av-item ${U.avatarEmoji===av?'selected':''}" onclick="selectPremAv('${av}',this)">${av}</div>
+  `).join('');
+  if(U.avatarEmoji) document.getElementById('prem-av-selected').textContent=U.avatarEmoji;
+}
+function selectPremAv(av, el){
+  selectedPremAv = av;
+  document.querySelectorAll('.prem-av-item').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('prem-av-selected').textContent = av;
+}
+function applyPremiumAvatar(){
+  if(!selectedPremAv){showToast('Avatar tanlang!');return;}
+  U.avatarEmoji = selectedPremAv;
+  U.avatarUrl = null;
+  document.getElementById('tb-av').innerHTML = selectedPremAv;
+  saveUser();
+  closeModal(null,'modal-prem-avatar');
+  showToast('🎨 Avatar yangilandi!');
+}
+
+// ============================================================
+// PREMIUM YORDAMCHI FUNKSIYALAR
+// ============================================================
+function checkPremium(modalId){
+  const isPrem = U.isPremium && U.premiumExpiry > Date.now();
+  if(!isPrem){
+    showToast('💎 Bu funksiya faqat Premium foydalanuvchilar uchun');
+    setTimeout(()=>switchTabByName('premium'),800);
+    return false;
+  }
+  return true;
+}
+function switchTabByName(name){
+  const btn = document.querySelector(`.nav-b[onclick*="${name}"]`);
+  if(btn) btn.click();
+}
+
+// ============================================================
+// WEEKLY ACTIVITY TRACKER
+// ============================================================
+function trackTodayActivity(){
+  if(!U.weeklyActivity) U.weeklyActivity=[0,0,0,0,0,0,0];
+  if(!U.xpHistory) U.xpHistory=[0,0,0,0,0,0,0];
+  const day = new Date().getDay(); // 0=Yak, 1=Du ...
+  const idx = day===0?6:day-1; // Du=0 ... Ya=6
+  U.weeklyActivity[idx] = (U.weeklyActivity[idx]||0)+1;
+  saveUser();
+}
+
+// ============================================================
+// INITPREMIUMFEATURES GA QO'SHIMCHALAR
+// ============================================================
+const _origInitPremium = initPremiumFeatures;
+function initPremiumFeatures(){
+  _origInitPremium();
+  updateBoostUI();
+  checkNewAchievements();
+  // Monthly streak freeze reset
+  const monthKey = new Date().toISOString().slice(0,7);
+  if(U.freezeMonth!==monthKey && U.isPremium){
+    U.streakFreezes=2; U.freezeMonth=monthKey;
+    if(!U.boostsLeft||U.boostsLeftMonth!==monthKey){ U.boostsLeft=3; U.boostsLeftMonth=monthKey; }
+    saveUser();
+  }
+  trackTodayActivity();
 }
 
 // ===== END =====
@@ -2758,6 +3187,185 @@ function trackWordError(word){
       <div id="tourn-lb"></div>
       <button onclick="closeModal(null,'modal-tournament');switchTabByName('battle')" style="width:100%;margin-top:12px;padding:12px;background:linear-gradient(135deg,var(--orange),var(--gold));border:none;border-radius:12px;color:#080d14;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
         ⚔️ XP to'plash uchun jang!
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- STREAK FREEZE MODAL -->
+<div class="overlay" id="modal-streak-freeze" onclick="closeModal(event,'modal-streak-freeze')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-streak-freeze')">✕</div>
+    <div class="sb">
+      <div class="st">🎯 Streak Freeze</div>
+      <div style="text-align:center;padding:10px 0 16px">
+        <div style="font-size:56px;margin-bottom:8px">🧊</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5">Streak Freeze — mashg'ulot o'tkazib yuborsangiz ham streakingiz saqlanadi. Har oy <b style="color:var(--gold)">2 ta bepul</b> Freeze beriladi.</div>
+      </div>
+      <div style="background:var(--s2);border-radius:14px;padding:14px;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:700">Mavjud Freeze</span>
+          <span style="font-size:22px;font-weight:800;color:var(--blue)" id="sf-available">0</span>
+        </div>
+        <div style="display:flex;gap:8px" id="sf-icons"></div>
+      </div>
+      <div style="background:var(--s2);border-radius:14px;padding:14px;margin-bottom:14px">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px">JORIY STREAK</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:32px">🔥</span>
+          <span style="font-size:28px;font-weight:800;color:var(--gold)" id="sf-streak-val">0</span>
+          <span style="font-size:12px;color:var(--muted)">kun</span>
+        </div>
+      </div>
+      <button onclick="useStreakFreeze()" id="sf-use-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--blue),var(--accent));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        🧊 Bugungi Freeze ishlatish
+      </button>
+      <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px" id="sf-status-text">Premium foydalanuvchilar oyiga 2 ta bepul Freeze oladi</div>
+    </div>
+  </div>
+</div>
+
+<!-- XP BOOST MODAL -->
+<div class="overlay" id="modal-xp-boost" onclick="closeModal(event,'modal-xp-boost')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-xp-boost')">✕</div>
+    <div class="sb">
+      <div class="st">🔥 XP Boost</div>
+      <div style="text-align:center;padding:10px 0 16px">
+        <div style="font-size:64px;margin-bottom:8px">⚡</div>
+        <div style="font-size:22px;font-weight:800;color:var(--orange)">2× XP</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px">24 soat davomida barcha XP ikki barobar bo'ladi</div>
+      </div>
+      <div id="boost-active-card" style="display:none;background:linear-gradient(135deg,rgba(249,123,79,.15),rgba(245,197,66,.1));border:1px solid rgba(249,123,79,.4);border-radius:14px;padding:14px;margin-bottom:14px;text-align:center">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">BOOST TUGASHIGA</div>
+        <div style="font-size:28px;font-weight:800;color:var(--orange)" id="boost-timer">--:--:--</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>🎮</span><span style="font-size:13px">O'yin to'g'ri javob: 1 → <b style="color:var(--orange)">2 XP</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>📖</span><span style="font-size:13px">So'z o'rganish: 1 → <b style="color:var(--orange)">2 XP</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>⚔️</span><span style="font-size:13px">Battle g'alaba: 10 → <b style="color:var(--orange)">20 XP</b></span></div>
+      </div>
+      <button onclick="activateXPBoost()" id="boost-activate-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--orange),var(--gold));border:none;border-radius:13px;color:#080d14;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        ⚡ Boostni Faollashtirish
+      </button>
+      <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px">Premium: oyiga 3 ta bepul Boost</div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAILED STATS MODAL -->
+<div class="overlay" id="modal-stats-detail" onclick="closeModal(event,'modal-stats-detail')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-stats-detail')">✕</div>
+    <div class="sb">
+      <div class="st">📊 Batafsil Statistika</div>
+      <!-- Asosiy raqamlar -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px" id="stats-grid">
+        <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--green)" id="ds-words">0</div><div style="font-size:11px;color:var(--muted)">O'rganilgan so'z</div></div>
+        <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--gold)" id="ds-streak">0</div><div style="font-size:11px;color:var(--muted)">Streak 🔥</div></div>
+        <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--purple)" id="ds-xp">0</div><div style="font-size:11px;color:var(--muted)">Jami XP</div></div>
+        <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--blue)" id="ds-battles">0</div><div style="font-size:11px;color:var(--muted)">Battle g'alabasi</div></div>
+      </div>
+      <!-- Haftalik faollik heatmap -->
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">HAFTALIK FAOLLIK</div>
+      <div style="display:flex;gap:4px;margin-bottom:14px" id="week-heatmap"></div>
+      <!-- XP grafigi -->
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">XP TARIXI (so'nggi 7 kun)</div>
+      <div style="background:var(--s2);border-radius:12px;padding:12px;height:80px;display:flex;align-items:flex-end;gap:4px" id="xp-chart"></div>
+      <!-- Kuchli/Zaif tomonlar -->
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin:14px 0 8px">TAHLIL</div>
+      <div id="stats-analysis" style="display:flex;flex-direction:column;gap:7px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSLATOR MODE MODAL -->
+<div class="overlay" id="modal-translator" onclick="closeModal(event,'modal-translator')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-translator')">✕</div>
+    <div class="sb">
+      <div class="st">🌍 Tarjimon Rejimi</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:14px">So'zning kontekstdagi ishlatilishini ko'ring</div>
+      <div style="position:relative;margin-bottom:10px">
+        <input id="tr-input" class="custom-inp" placeholder="So'z yoki jumla kiriting..." style="margin-bottom:0;padding-right:44px" oninput="translateLive(this.value)">
+        <button onclick="speakTranslation()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:20px;cursor:pointer">🔊</button>
+      </div>
+      <div id="tr-result" style="background:var(--s2);border-radius:12px;padding:14px;min-height:60px;margin-bottom:12px">
+        <div style="font-size:12px;color:var(--muted)">Natija bu yerda ko'rinadi</div>
+      </div>
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">MISOL GAPLAR</div>
+      <div id="tr-examples" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- REMINDER MODAL -->
+<div class="overlay" id="modal-reminder" onclick="closeModal(event,'modal-reminder')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-reminder')">✕</div>
+    <div class="sb">
+      <div class="st">⏰ Kunlik Eslatma</div>
+      <div style="text-align:center;padding:8px 0 16px">
+        <div style="font-size:48px;margin-bottom:8px">🔔</div>
+        <div style="font-size:13px;color:var(--muted)">Har kuni bir vaqtda o'rganish uchun eslatma o'rnating</div>
+      </div>
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">VAQTNI TANLANG</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px" id="reminder-times">
+        <button class="rem-pill" onclick="setReminderTime('07:00')">🌅 07:00</button>
+        <button class="rem-pill" onclick="setReminderTime('09:00')">☀️ 09:00</button>
+        <button class="rem-pill" onclick="setReminderTime('12:00')">🕛 12:00</button>
+        <button class="rem-pill" onclick="setReminderTime('18:00')">🌆 18:00</button>
+        <button class="rem-pill" onclick="setReminderTime('20:00')">🌙 20:00</button>
+        <button class="rem-pill" onclick="setReminderTime('22:00')">🌃 22:00</button>
+      </div>
+      <div style="background:var(--s2);border-radius:12px;padding:12px;margin-bottom:12px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">⏰</span>
+        <div><div style="font-size:12px;color:var(--muted)">Tanlangan vaqt</div><div style="font-size:16px;font-weight:800;color:var(--text)" id="selected-reminder-time">Tanlanmagan</div></div>
+      </div>
+      <button onclick="saveReminder()" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--purple),var(--accent));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        🔔 Eslatmani Saqlash
+      </button>
+      <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px" id="reminder-status">Hali eslatma o'rnatilmagan</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS MODAL -->
+<div class="overlay" id="modal-achievements" onclick="closeModal(event,'modal-achievements')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-achievements')">✕</div>
+    <div class="sb">
+      <div class="st">🏅 Achievementlar</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:var(--s2);border-radius:12px;padding:10px 14px;margin-bottom:14px">
+        <div style="font-size:12px;color:var(--muted)">Ochilgan</div>
+        <div style="font-size:16px;font-weight:800;color:var(--gold)"><span id="ach-unlocked">0</span> / <span id="ach-total">0</span></div>
+      </div>
+      <div id="ach-list" style="display:flex;flex-direction:column;gap:8px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PREMIUM AVATARS MODAL -->
+<div class="overlay" id="modal-prem-avatar" onclick="closeModal(event,'modal-prem-avatar')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-prem-avatar')">✕</div>
+    <div class="sb">
+      <div class="st">🎨 Premium Avatarlar</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Eksklyuziv premium avatar kolleksiyasi</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px" id="prem-av-grid"></div>
+      <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center">
+        <div style="font-size:12px;color:var(--muted)">Tanlangan</div>
+        <div style="font-size:36px;margin:6px 0" id="prem-av-selected">—</div>
+      </div>
+      <button onclick="applyPremiumAvatar()" style="width:100%;margin-top:12px;padding:13px;background:linear-gradient(135deg,var(--purple),var(--accent));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        ✅ Qo'llash
       </button>
     </div>
   </div>
