@@ -359,23 +359,25 @@ const FALLBACK_WORDS = {
 // Asosiy fetch funksiyasi — JSON dan yuklaydi
 async function fetchUnitWords(bookNum, unitNum) {
   const cacheKey = `book${bookNum}_unit${unitNum}`;
-  // Cache da bor (null ham saqlanadi — 404 larni qayta tekshirmaslik uchun)
   if(cacheKey in WORDS_CACHE) return WORDS_CACHE[cacheKey];
 
   const url = `book${bookNum}/unit${unitNum}.json`;
+  console.log('🔍 Fetch URL:', url, '| Full URL:', window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + url);
   try {
     const res = await fetch(url);
+    console.log('📡 Response:', res.status, res.statusText, 'for', url);
     if(!res.ok){
-      WORDS_CACHE[cacheKey] = null; // 404 ni cache ga yozamiz
+      console.warn('❌ Fayl topilmadi:', url, res.status);
+      WORDS_CACHE[cacheKey] = null;
       return null;
     }
     const data = await res.json();
-    // Format: { "unit": 1, "total_words": 20, "words": [...] }
     const words = Array.isArray(data) ? data : (data.words || []);
+    console.log('✅ So\'zlar yuklandi:', words.length, 'ta —', url);
     WORDS_CACHE[cacheKey] = words;
     return words;
   } catch(e) {
-    console.warn(`Unit yuklanmadi (${url}):`, e.message);
+    console.error('💥 Fetch xatosi:', url, e.message);
     WORDS_CACHE[cacheKey] = null;
     return null;
   }
@@ -3370,6 +3372,8 @@ function initPremiumFeatures(){
     </div>
   </div>
 </div>
+
+</script>
 
 </body>
 </html>
