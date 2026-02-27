@@ -799,8 +799,20 @@ const GRAMMAR_DATA = {
   ],
 };
 
+// ============================================================
+// UTILITY FUNCTIONS
+// ============================================================
+function shuffle(arr){
+  const a = [...arr];
+  for(let i = a.length-1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 // ===== USER STATE =====
-let U = JSON.parse(sessionStorage.getItem('ep_user') || 'null');
+let U = JSON.parse(localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user') || 'null');
 if(!U){ window.location.href='register.html'; }
 
 let cardIdx=0, cardFlipped=false;
@@ -1335,9 +1347,27 @@ let curUnitNum = 1;
 
 // Sinxron yordamchi — cache dan (fetch tugagandan keyin)
 function getAllWordsForGames(){
-  if(currentUnitWords.length >= 3) return currentUnitWords;
-  const level = BOOK_LEVEL[curBook] || U.level;
-  return getAllWordsFallback(level);
+  // 1. Hozirgi unit so'zlari
+  if(currentUnitWords && currentUnitWords.length >= 4) return currentUnitWords;
+  // 2. Cache dan boshqa unitlarni ham tekshiramiz
+  const allCached = [];
+  for(const key in WORDS_CACHE){
+    const arr = WORDS_CACHE[key];
+    if(Array.isArray(arr)) allCached.push(...arr);
+  }
+  // Takrorlashsiz
+  const unique = [];
+  const seen = new Set();
+  for(const w of allCached){
+    if(w && w.word && !seen.has(w.word)){ seen.add(w.word); unique.push(w); }
+  }
+  if(unique.length >= 4) return unique;
+  // 3. Fallback — kitob darajasiga ko'ra
+  const level = BOOK_LEVEL[curBook] || U.level || 'beginner';
+  const fb = getAllWordsFallback(level);
+  if(fb.length >= 4) return fb;
+  // 4. Barcha fallback so'zlarni birlashtir
+  return [...FALLBACK_WORDS.beginner, ...FALLBACK_WORDS.intermediate, ...FALLBACK_WORDS.advanced];
 }
 
 // ===== BOOK ROW =====
@@ -1519,33 +1549,29 @@ function speakText(text){
   const doSpeak = ()=>{
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US';
-    u.rate = 0.85;
+    u.rate = 0.82;
     u.pitch = 1;
     u.volume = 1;
     const voices = speechSynthesis.getVoices();
-    // Eng yaxshi inglizcha ovozni topamiz
-    const v = voices.find(v=>v.lang==='en-US' && v.name.includes('Google'))
-      || voices.find(v=>v.lang==='en-US' && !v.localService)
-      || voices.find(v=>v.lang==='en-US')
-      || voices.find(v=>v.lang==='en-GB')
-      || voices.find(v=>v.lang.startsWith('en'));
+    // Faqat en-US ovozlaridan eng yaxshisini tanlaymiz
+    const enUS = voices.filter(v => v.lang === 'en-US' || v.lang === 'en_US');
+    const v = enUS.find(v => v.name.includes('Google US English'))
+      || enUS.find(v => v.name.includes('Google'))
+      || enUS.find(v => !v.localService)
+      || enUS[0]
+      || voices.find(v => v.lang === 'en-GB')
+      || voices.find(v => v.lang.startsWith('en'));
     if(v) u.voice = v;
-    u.onerror = (e)=>{ console.warn('Speech error:', e.error); };
+    u.onerror = ()=>{};
     speechSynthesis.speak(u);
   };
-  // Ovozlar tayyor bo'lsa darhol, bo'lmasa kuting
   const voices = speechSynthesis.getVoices();
   if(voices.length > 0){
     doSpeak();
   } else {
-    // Bir marta kutamiz
-    const handler = ()=>{
-      speechSynthesis.onvoiceschanged = null;
-      doSpeak();
-    };
+    const handler = ()=>{ speechSynthesis.onvoiceschanged = null; doSpeak(); };
     speechSynthesis.onvoiceschanged = handler;
-    // Failsafe: 500ms dan keyin baribir urinib ko'ramiz
-    setTimeout(()=>{ if(speechSynthesis.getVoices().length===0){ doSpeak(); } }, 500);
+    setTimeout(doSpeak, 400);
   }
 }
 function learnWord(w){
@@ -1580,7 +1606,10 @@ function addXP(n){
   saveUser();
   document.getElementById('tb-xp').textContent = U.xp+' XP';
 }
-function saveUser(){ sessionStorage.setItem('ep_user', JSON.stringify(U)); }
+function saveUser(){
+  localStorage.setItem('ep_user', JSON.stringify(U));
+  sessionStorage.setItem('ep_user', JSON.stringify(U)); // backup for same-tab compatibility
+}
 function showXP(txt){
   const el=document.createElement('div');el.className='xp-pop';el.textContent=txt;
   document.body.appendChild(el);setTimeout(()=>el.remove(),2100);
@@ -2323,6 +2352,12 @@ function selectPlan(plan){
   selectedPlan = plan;
   document.getElementById('plan-monthly').classList.toggle('selected', plan==='monthly');
   document.getElementById('plan-3month').classList.toggle('selected', plan==='3month');
+  // Agar payment modal ochiq bo'lsa, yangilash
+  const prices = {monthly:"5,000 so'm", '3month':"10,000 so'm"};
+  const lbl = document.getElementById('pay-plan-label');
+  const priceEl = document.getElementById('pay-plan-price');
+  if(lbl) lbl.textContent = plan==='monthly' ? 'Oylik' : '3 Oylik';
+  if(priceEl) priceEl.textContent = prices[plan] || "5,000 so'm";
 }
 
 // ===== KARTA TO'LOV TIZIMI =====
@@ -2460,10 +2495,14 @@ function buyPremium(){ openModal('modal-payment'); }
 
 function activatePremiumDemo(){
   U.isPremium = true;
-  U.premiumExpiry = Date.now() + (selectedPlan==='monthly' ? 30 : 90) * 24*60*60*1000;
+  const days = selectedPlan === 'monthly' ? 30 : 90;
+  U.premiumExpiry = Date.now() + days * 24 * 60 * 60 * 1000;
+  U.premiumPlan = selectedPlan;
+  U.premiumActivated = new Date().toISOString();
   saveUser();
   updatePremiumUI();
-  showToast('🎉 Premium faollashtirildi!');
+  const planName = selectedPlan === 'monthly' ? 'Oylik (30 kun)' : '3 Oylik (90 kun)';
+  showToast(`🎉 Premium faollashtirildi! ${planName}`);
 }
 
 function updatePremiumUI(){
