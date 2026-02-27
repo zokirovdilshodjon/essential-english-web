@@ -1287,11 +1287,32 @@ function prevCard(){ cardIdx = (cardIdx-1+currentUnitWords.length) % currentUnit
 function speakWord(){
   const w = currentUnitWords[cardIdx];
   if(!w) return;
-  if('speechSynthesis' in window){
+  if(!('speechSynthesis' in window)){ showToast('Audio ishlamaydi'); return; }
+  speechSynthesis.cancel();
+  function doSpeak(){
     const u = new SpeechSynthesisUtterance(w.word);
-    u.lang='en-US'; speechSynthesis.speak(u);
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    u.pitch = 1;
+    u.volume = 1;
+    const voices = speechSynthesis.getVoices();
+    const enVoice = voices.find(v=>v.lang==='en-US'&&v.name.includes('Google'))
+      || voices.find(v=>v.lang==='en-US')
+      || voices.find(v=>v.lang.startsWith('en'));
+    if(enVoice) u.voice = enVoice;
+    speechSynthesis.speak(u);
+  }
+  // Ovozlar yuklangan bo'lsa — hoziroq, aks holda yuklangandan keyin
+  if(speechSynthesis.getVoices().length > 0){
+    doSpeak();
+  } else {
+    speechSynthesis.onvoiceschanged = ()=>{ doSpeak(); speechSynthesis.onvoiceschanged=null; };
   }
 }
+window.addEventListener('DOMContentLoaded',()=>{
+  // Ovozlarni oldindan yuklash
+  if('speechSynthesis' in window) speechSynthesis.getVoices();
+});
 function learnWord(w){
   if(!U.learnedWords.find(x=>x.word===w.word)){
     U.learnedWords.push(w);
@@ -1495,24 +1516,38 @@ function initMatch(){
 }
 function buildMatchRound(){
   MS.sel=null; MS.matched=0;
-  // Pool dan keyingi 4 so'zni olamiz — takrorlash yo'q
   const start = MS.usedIdx;
   const end = Math.min(start+4, MS.pool.length);
   let pool = MS.pool.slice(start, end);
-  // Agar 4 tadan kam qolsa, boshidan olamiz
   if(pool.length < 4) pool = shuffle([...getAllWordsForGames()]).slice(0,4);
+
   const grid=document.getElementById('mg'); grid.innerHTML='';
-  const items=shuffle([
-    ...pool.map(w=>({text:w.word,match:w.word,side:'en'})),
-    ...pool.map(w=>({text:w.translation,match:w.word,side:'uz'}))
-  ]);
-  items.forEach(item=>{
-    const el=document.createElement('div');
-    el.className='mw'; el.textContent=item.text; el.dataset.match=item.match;
-    el.onclick=()=>selectMatch(el,item.match);
-    grid.appendChild(el);
+
+  // Chap ustun: inglizcha, o'ng ustun: o'zbekcha — ikkalasi alohida shuffle
+  const enWords = shuffle([...pool]);
+  const uzWords = shuffle([...pool]);
+
+  // 2 ustunli grid: chap=EN, o'ng=UZ
+  enWords.forEach((w,i)=>{
+    // Chap — inglizcha
+    const elEn = document.createElement('div');
+    elEn.className='mw'; elEn.textContent=w.word; elEn.dataset.match=w.word;
+    elEn.style.borderColor='rgba(79,156,249,.3)';
+    elEn.onclick=()=>selectMatch(elEn, w.word);
+    grid.appendChild(elEn);
+
+    // O'ng — o'zbekcha
+    const uz = uzWords[i];
+    const elUz = document.createElement('div');
+    elUz.className='mw'; elUz.textContent=uz.translation; elUz.dataset.match=uz.word;
+    elUz.style.borderColor='rgba(192,132,252,.3)';
+    elUz.onclick=()=>selectMatch(elUz, uz.word);
+    grid.appendChild(elUz);
   });
-  document.getElementById('mr').textContent='So\'zlarni tarjimasi bilan juftlashtiring';
+
+  // Ustun sarlavhalari qo'shamiz
+  const label = document.getElementById('mr');
+  label.innerHTML='<span style="color:var(--blue);font-weight:800">🇬🇧 English</span> ↔ <span style="color:var(--purple);font-weight:800">🇺🇿 O\'zbek</span>';
 }
 function selectMatch(el,match){
   if(MS.tval<=0) return; // Vaqt tugagan bo'lsa harakat qilmaslik
@@ -1659,7 +1694,7 @@ function initQuiz(){
   // Barcha so'zlarni shuffle qilib pool ga yozamiz — takrorlash yo'q
   const shuffled = shuffle([...words]);
   const total = shuffled.length;
-  const timeTotal = total * 3; // har so'z uchun 8 sekund
+  const timeTotal = total * 8; // har so'z uchun 8 sekund
   QS={idx:0,score:0,wrong:0,answered:false,pool:shuffled,timer:null,tval:timeTotal};
   document.getElementById('qs-score').textContent=0;
   document.getElementById('qs-wrong').textContent=0;
@@ -1688,9 +1723,8 @@ function startQuizTimer(total){
 }
 function endQuiz(reason){
   clearInterval(QS.timer);
-  addXP(QS.score);
   document.getElementById('qs-word').textContent = reason==='time' ? '⏱ Vaqt tugadi!' : '🎉 Tugadi!';
-  document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/${QS.pool.length} · +${QS.score} XP</div>`;
+  document.getElementById('qs-opts').innerHTML=`<div style="grid-column:1/-1;text-align:center;font-weight:800;color:var(--green)">Ball: ${QS.score}/${QS.pool.length}</div>`;
   document.getElementById('qs-res').textContent='';
 }
 function buildQuizQ(){
@@ -1792,10 +1826,18 @@ function startBotBattle(){
 }
 
 function startBattleWith(opp, isBot){
-  BT={timer:null,myScore:0,oppScore:0,time:30,answered:false,isBot:isBot,opp:opp,botTick:0};
+  const words = getAllWordsForGames();
+  if(words.length < 3){ showToast('Kamida 3 ta so\'z kerak!'); return; }
+  const shuffled = shuffle([...words]);
+  // Vaqt: har so'z uchun 8 sekund (hamma so'z tugaguncha)
+  const totalTime = shuffled.length * 8;
+  BT={timer:null,myScore:0,oppScore:0,
+      time:totalTime,answered:false,
+      isBot:isBot,opp:opp,botTick:0,
+      pool:shuffled,poolIdx:0};
   document.getElementById('bg-my').textContent=0;
   document.getElementById('bg-opp').textContent=0;
-  document.getElementById('bg-time').textContent=30;
+  document.getElementById('bg-time').textContent=totalTime;
   document.getElementById('bh-opp-name').textContent = opp.name;
   document.getElementById('bh-opp-av').innerHTML = typeof opp.av==='string'&&(opp.av.startsWith('http')||opp.av.startsWith('data'))
     ? `<img src="${opp.av}" style="width:80%;height:80%;object-fit:contain">` : opp.av;
@@ -1808,21 +1850,17 @@ function startBattleWith(opp, isBot){
     BT.time--;
     document.getElementById('bg-time').textContent=BT.time;
 
-    // Bot: har 5 sekundda to'g'ri javob topadi
+    // Bot: har 3 sekundda to'g'ri javob topadi
     if(isBot){
-      BT.botTick = (BT.botTick||0) + 1;
+      BT.botTick=(BT.botTick||0)+1;
       if(BT.botTick % 3 === 0){
         BT.oppScore+=10;
         document.getElementById('bg-opp').textContent=BT.oppScore;
-        // Bot javob berganini ko'rsatamiz
-        const res = document.getElementById('bg-res');
-        const old = res.textContent;
-        res.innerHTML = `${old ? old+'  ' : ''}🤖 ✅`;
-        setTimeout(()=>{ if(res.innerHTML.includes('🤖')) res.innerHTML = old||''; }, 800);
+        document.getElementById('bg-res').textContent='🤖 ✅';
+        setTimeout(()=>{ const r=document.getElementById('bg-res'); if(r.textContent==='🤖 ✅') r.textContent=''; },600);
       }
     } else {
-      // Online raqib — tasodifiy (biroz sekinroq)
-      if(Math.random() < 0.08){
+      if(Math.random()<0.08){
         BT.oppScore+=10;
         document.getElementById('bg-opp').textContent=BT.oppScore;
       }
@@ -1833,20 +1871,27 @@ function startBattleWith(opp, isBot){
 }
 
 function buildBattleQ(){
+  // Pool tugagan bo'lsa — o'yin tugaydi
+  if(BT.poolIdx >= BT.pool.length){
+    clearInterval(BT.timer);
+    endBattle();
+    return;
+  }
   BT.answered=false;
-  const pool=shuffle([...getAllWordsForGames()]);
-  if(pool.length < 3){showToast('Kamida 3 ta so\'z kerak!');return;}
-  const correct=pool[0];
-  const opts=shuffle([correct,...pool.slice(1,3)]);
+  const correct = BT.pool[BT.poolIdx];
+  // Noto'g'ri variantlarni boshqa so'zlardan olamiz
+  const others = shuffle(getAllWordsForGames().filter(w=>w.word!==correct.word));
+  if(others.length < 2){ showToast('Kamida 3 ta so\'z kerak!'); return; }
+  const opts = shuffle([correct, ...others.slice(0,2)]);
   document.getElementById('bg-word').textContent=correct.word;
   document.getElementById('bg-res').textContent='';
-  const c=document.getElementById('bg-opts');c.innerHTML='';
+  const c=document.getElementById('bg-opts'); c.innerHTML='';
   opts.forEach(o=>{
-    const el=document.createElement('div');el.className='gopt';el.textContent=o.translation;
+    const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
-      if(BT.answered)return;BT.answered=true;
+      if(BT.answered)return; BT.answered=true;
       if(o.word===correct.word){
-        el.classList.add('correct');BT.myScore+=10;
+        el.classList.add('correct'); BT.myScore+=10;
         addXP(1);
         document.getElementById('bg-my').textContent=BT.myScore;
         document.getElementById('bg-res').textContent='✅ +1 XP';
@@ -1855,7 +1900,8 @@ function buildBattleQ(){
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         document.getElementById('bg-res').textContent='❌';
       }
-      setTimeout(()=>{if(BT.time>0)buildBattleQ();},700);
+      BT.poolIdx++;
+      setTimeout(()=>{ if(BT.time>0) buildBattleQ(); },700);
     };
     c.appendChild(el);
   });
