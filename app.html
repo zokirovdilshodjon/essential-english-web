@@ -1549,19 +1549,30 @@ function speakText(text){
   const doSpeak = ()=>{
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US';
-    u.rate = 0.82;
-    u.pitch = 1;
+    u.rate = 0.78;
+    u.pitch = 1.0;
     u.volume = 1;
     const voices = speechSynthesis.getVoices();
-    // Faqat en-US ovozlaridan eng yaxshisini tanlaymiz
-    const enUS = voices.filter(v => v.lang === 'en-US' || v.lang === 'en_US');
-    const v = enUS.find(v => v.name.includes('Google US English'))
-      || enUS.find(v => v.name.includes('Google'))
-      || enUS.find(v => !v.localService)
-      || enUS[0]
-      || voices.find(v => v.lang === 'en-GB')
-      || voices.find(v => v.lang.startsWith('en'));
-    if(v) u.voice = v;
+    // Eng yaxshi ingliz ovozini tanlaymiz
+    const enVoices = voices.filter(v => v.lang.startsWith('en-') || v.lang.startsWith('en_'));
+    const v =
+      // 1. Google US English (eng yaxshi)
+      enVoices.find(v => v.name === 'Google US English') ||
+      // 2. Microsoft David / Zira (Windows)
+      enVoices.find(v => v.name.includes('David') && v.name.includes('English')) ||
+      enVoices.find(v => v.name.includes('Zira')) ||
+      // 3. Google ingliz ovozi (har qanday)
+      enVoices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
+      // 4. Mahalliy bo'lmagan (online) ingliz ovozi
+      enVoices.find(v => !v.localService && v.lang === 'en-US') ||
+      enVoices.find(v => !v.localService) ||
+      // 5. en-US
+      enVoices.find(v => v.lang === 'en-US') ||
+      // 6. en-GB
+      enVoices.find(v => v.lang === 'en-GB') ||
+      // 7. Istalgan ingliz ovozi
+      enVoices[0];
+    if(v){ u.voice = v; u.lang = v.lang; }
     u.onerror = ()=>{};
     speechSynthesis.speak(u);
   };
@@ -1571,7 +1582,7 @@ function speakText(text){
   } else {
     const handler = ()=>{ speechSynthesis.onvoiceschanged = null; doSpeak(); };
     speechSynthesis.onvoiceschanged = handler;
-    setTimeout(doSpeak, 400);
+    setTimeout(doSpeak, 300);
   }
 }
 function learnWord(w){
@@ -2036,8 +2047,9 @@ function buildQuizQ(){
   if(QS.idx >= QS.pool.length){ endQuiz('done'); return; }
   QS.answered=false;
   const correct = QS.pool[QS.idx];
-  // Noto'g'ri variantlarni boshqa so'zlardan olamiz
-  const others = shuffle(getAllWordsForGames().filter(w=>w.word!==correct.word));
+  // Noto'g'ri variantlarni pool dan olamiz
+  const allWords = QS.pool.length >= 4 ? QS.pool : [...QS.pool,...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate];
+  const others = shuffle(allWords.filter(w=>w.word!==correct.word));
   if(others.length < 3){ showToast('Kamida 4 ta so\'z kerak!'); return; }
   const opts = shuffle([correct, ...others.slice(0,3)]);
   document.getElementById('qs-word').textContent = correct.word;
@@ -2048,6 +2060,7 @@ function buildQuizQ(){
     const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
       if(QS.answered)return; QS.answered=true;
+      c.querySelectorAll('.gopt').forEach(op=>{ op.style.pointerEvents='none'; });
       if(o.word===correct.word){
         el.classList.add('correct'); QS.score++;
         addXP(1);
@@ -2059,7 +2072,8 @@ function buildQuizQ(){
         document.getElementById('qs-res').textContent='❌ Noto\'g\'ri';
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
       }
-      setTimeout(()=>{ QS.idx++; buildQuizQ(); },900);
+      QS.idx++;
+      setTimeout(()=>{ buildQuizQ(); },900);
     };
     c.appendChild(el);
   });
@@ -2182,8 +2196,9 @@ function buildBattleQ(){
   }
   BT.answered=false;
   const correct = BT.pool[BT.poolIdx];
-  // Noto'g'ri variantlarni boshqa so'zlardan olamiz
-  const others = shuffle(getAllWordsForGames().filter(w=>w.word!==correct.word));
+  // Noto'g'ri variantlarni pool dan olamiz
+  const allWords = BT.pool.length >= 3 ? BT.pool : [...BT.pool,...FALLBACK_WORDS.beginner];
+  const others = shuffle(allWords.filter(w=>w.word!==correct.word));
   if(others.length < 2){ showToast('Kamida 3 ta so\'z kerak!'); return; }
   const opts = shuffle([correct, ...others.slice(0,2)]);
   document.getElementById('bg-word').textContent=correct.word;
@@ -2193,6 +2208,7 @@ function buildBattleQ(){
     const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
       if(BT.answered)return; BT.answered=true;
+      c.querySelectorAll('.gopt').forEach(op=>{ op.style.pointerEvents='none'; });
       if(o.word===correct.word){
         el.classList.add('correct'); BT.myScore++;
         BT.myXP++; addXP(1);
@@ -2568,6 +2584,7 @@ function buildSurvQ(){
     el.textContent=o.translation;
     el.onclick=()=>{
       if(SV.answered)return; SV.answered=true;
+      c.querySelectorAll('.gopt').forEach(op=>{ op.style.pointerEvents='none'; });
       if(o.word===correct.word){
         el.classList.add('correct'); SV.score++; SV.streak++;
         addXP(1);
@@ -2632,6 +2649,7 @@ function buildDCQuestion(){
     const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
       if(DC.answered)return; DC.answered=true;
+      c.querySelectorAll('.gopt').forEach(op=>{ op.style.pointerEvents='none'; });
       if(o.word===correct.word){
         el.classList.add('correct'); DC.score++; addXP(1);
         document.getElementById('dc-myscore').textContent=DC.score;
