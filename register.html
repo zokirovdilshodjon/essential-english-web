@@ -163,6 +163,42 @@ body::before{
 </style>
 </head>
 <body>
+
+<!-- ============================================================
+  MUHIM: Profil mavjudligini tekshirish — sahifa ko'rinishidan OLDIN
+  localStorage → sessionStorage tartibida tekshiriladi
+============================================================ -->
+<script>
+(function checkExistingProfile(){
+  try {
+    // 1. localStorage (asosiy, qurilmada doimiy saqlanadi)
+    const raw = localStorage.getItem('ep_user');
+    if(raw){
+      const u = JSON.parse(raw);
+      if(u && u.name && u.name.trim() && u.level){
+        window.location.replace('app.html');
+        return;
+      }
+    }
+    // 2. sessionStorage (zaxira)
+    const raw2 = sessionStorage.getItem('ep_user');
+    if(raw2){
+      const u2 = JSON.parse(raw2);
+      if(u2 && u2.name && u2.name.trim() && u2.level){
+        // localStorage ga ko'chirib, yo'naltirish
+        localStorage.setItem('ep_user', raw2);
+        window.location.replace('app.html');
+        return;
+      }
+    }
+  } catch(e){
+    // Xato bo'lsa — ro'yxatdan o'tish formasini ko'rsatamiz
+    localStorage.removeItem('ep_user');
+    sessionStorage.removeItem('ep_user');
+  }
+})();
+</script>
+
 <div class="outer">
 
   <!-- LEFT PANEL -->
@@ -252,68 +288,113 @@ let selItem=null;
 
 function buildGrid(tab){
   const grid=document.getElementById('av-grid');
-  grid.innerHTML='';selItem=null;
+  grid.innerHTML='';
+  selItem=null;
   SEEDS[tab].forEach(seed=>{
     const url=`https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
     const el=document.createElement('div');
     el.className='av-item';
     el.innerHTML=`<img src="${url}" loading="lazy">`;
     el.onclick=()=>{
-      if(selItem)selItem.classList.remove('sel');
-      el.classList.add('sel');selItem=el;
+      if(selItem) selItem.classList.remove('sel');
+      el.classList.add('sel');
+      selItem=el;
       state.avatarUrl=url;
       showPreview(url);
     };
     grid.appendChild(el);
   });
 }
+
 function switchTab(tab,btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');buildGrid(tab);
+  btn.classList.add('active');
+  buildGrid(tab);
 }
+
 function showPreview(url){
   const img=document.getElementById('av-img');
-  img.src=url;img.style.display='block';
+  img.src=url;
+  img.style.display='block';
   document.getElementById('av-emoji').style.display='none';
 }
+
 document.getElementById('file-up').addEventListener('change',e=>{
-  const f=e.target.files[0];if(!f)return;
+  const f=e.target.files[0];
+  if(!f) return;
   const r=new FileReader();
   r.onload=ev=>{
     state.avatarUrl=ev.target.result;
     showPreview(ev.target.result);
-    if(selItem){selItem.classList.remove('sel');selItem=null;}
+    if(selItem){ selItem.classList.remove('sel'); selItem=null; }
   };
   r.readAsDataURL(f);
 });
+
 document.getElementById('inp-name').addEventListener('input',e=>{
   const v=e.target.value.trim();
   document.getElementById('prev-name').textContent=v||'Sizning ismingiz';
+  // Xato xabarini olib tashlaymiz
+  if(v){
+    document.getElementById('inp-name').classList.remove('err');
+    document.getElementById('err-name').classList.remove('show');
+  }
 });
+
 function pickLevel(el){
   document.querySelectorAll('.lv').forEach(b=>b.className='lv');
-  const lv=el.dataset.lv;state.level=lv;
+  const lv=el.dataset.lv;
+  state.level=lv;
   el.classList.add(lv==='beginner'?'sel-b':lv==='intermediate'?'sel-i':'sel-a');
 }
+
 function goToApp(){
   const name=document.getElementById('inp-name').value.trim();
   if(!name){
     document.getElementById('inp-name').classList.add('err');
     document.getElementById('err-name').classList.add('show');
-    document.getElementById('inp-name').focus();return;
+    document.getElementById('inp-name').focus();
+    return;
   }
   document.getElementById('inp-name').classList.remove('err');
   document.getElementById('err-name').classList.remove('show');
-  sessionStorage.setItem('ep_user',JSON.stringify({
-    name,level:state.level,avatarUrl:state.avatarUrl,
-    xp:0,streak:1,learnedWords:[],
-    unitProgress:{beginner:0,intermediate:0,advanced:0},
-    currentUnit:{beginner:1,intermediate:1,advanced:1},
-    battleWins:0,battleLosses:0,
-    lastLogin:new Date().toDateString(),
-  }));
-  window.location.href='app.html';
+
+  // ✅ To'liq profil — app.html kutayotgan BARCHA fieldlar
+  const user = {
+    name,
+    level: state.level,
+    avatarUrl: state.avatarUrl,
+    xp: 0,
+    streak: 1,
+    learnedWords: [],
+    wordErrors: {},
+    customWords: [],
+    unitProgress: { beginner:0, intermediate:0, advanced:0 },
+    currentUnit:  { beginner:1, intermediate:1, advanced:1 },
+    lastBook: 1,
+    lastUnit: 1,
+    battleWins: 0,
+    battleLosses: 0,
+    battleXP: 0,
+    dailyScore: {},
+    grammarLevel: state.level,
+    isPremium: false,
+    premiumExpiry: 0,
+    lastLogin: new Date().toDateString(),
+    createdAt: Date.now(),
+  };
+
+  const json = JSON.stringify(user);
+
+  // ✅ ASOSIY: localStorage — tab/brauzer yopilsa ham saqlanadi
+  localStorage.setItem('ep_user', json);
+  // Zaxira: sessionStorage
+  sessionStorage.setItem('ep_user', json);
+
+  window.location.href = 'app.html';
 }
+
+// Sahifa yuklanganda gridni ko'rsatish
 buildGrid('bots');
 </script>
 </body>
