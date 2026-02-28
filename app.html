@@ -812,8 +812,30 @@ function shuffle(arr){
 }
 
 // ===== USER STATE =====
-let U = JSON.parse(localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user') || 'null');
-if(!U){ window.location.href='register.html'; }
+// localStorage va sessionStorage dan o'qiymiz
+let _rawUser = null;
+try { _rawUser = JSON.parse(localStorage.getItem('ep_user')); } catch(e){}
+if(!_rawUser){ try { _rawUser = JSON.parse(sessionStorage.getItem('ep_user')); } catch(e){} }
+
+let U = _rawUser;
+// Profil yo'q yoki noto'g'ri bo'lsa — register ga yuborish
+if(!U || !U.name || !U.level){
+  window.location.href='register.html';
+}
+// Eski strukturalarda yo'q fieldlarni to'ldiramiz (backward compat)
+if(U){
+  U.wordErrors   = U.wordErrors   || {};
+  U.customWords  = U.customWords  || [];
+  U.learnedWords = U.learnedWords || [];
+  U.battleWins   = U.battleWins   || 0;
+  U.battleLosses = U.battleLosses || 0;
+  U.battleXP     = U.battleXP     || 0;
+  U.dailyScore   = U.dailyScore   || {};
+  U.streak       = U.streak       || 1;
+  U.xp           = U.xp           || 0;
+  U.isPremium    = U.isPremium    || false;
+  U.premiumExpiry= U.premiumExpiry|| 0;
+}
 
 let cardIdx=0, cardFlipped=false;
 let currentUnitWords=[];
@@ -842,7 +864,7 @@ const ONLINE_PLAYERS = [
   <div>
     <div class="topbar">
       <div class="tb-row">
-        <div class="tb-av" id="tb-av">🤖</div>
+        <div class="tb-av" id="tb-av" onclick="openModal('modal-profile-menu')" style="cursor:pointer">🤖</div>
         <div class="tb-info">
           <div class="tb-name" id="tb-name">—</div>
           <div class="tb-sub">
@@ -852,6 +874,7 @@ const ONLINE_PLAYERS = [
         </div>
         <div class="tb-right">
           <div class="streak">🔥 <span id="tb-streak">1</span></div>
+          <div onclick="openModal('modal-profile-menu')" style="cursor:pointer;font-size:18px;padding:4px 8px;color:var(--muted)">⚙️</div>
         </div>
       </div>
     </div>
@@ -1150,6 +1173,52 @@ const ONLINE_PLAYERS = [
 
 <!-- ==================== MODALS ==================== -->
 
+<!-- PROFILE MENU -->
+<div class="overlay" id="modal-profile-menu" onclick="closeModal(event,'modal-profile-menu')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-profile-menu')">✕</div>
+    <div class="sb">
+      <div class="st">👤 Profil</div>
+      <!-- Avatar va info -->
+      <div style="display:flex;align-items:center;gap:14px;background:var(--s2);border-radius:14px;padding:14px;margin-bottom:16px">
+        <div style="font-size:40px" id="pm-av">🤖</div>
+        <div>
+          <div style="font-size:16px;font-weight:800" id="pm-name">—</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px" id="pm-level">—</div>
+          <div style="font-size:12px;color:var(--gold);font-weight:800;margin-top:2px" id="pm-xp">0 XP</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px">
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:var(--blue)" id="pm-words">0</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:700">So'zlar</div>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:var(--gold)" id="pm-streak">0</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:700">Streak🔥</div>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:var(--green)" id="pm-wins">0</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:700">G'alaba</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <button onclick="closeModal(null,'modal-profile-menu');switchTabByName('premium')"
+        style="width:100%;padding:12px;background:linear-gradient(135deg,rgba(245,197,66,.15),rgba(249,123,79,.1));border:1px solid rgba(245,197,66,.3);border-radius:12px;color:var(--gold);font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px;text-align:left;display:flex;align-items:center;gap:10px">
+        <span style="font-size:18px">💎</span> Premium <span id="pm-prem-status" style="margin-left:auto;font-size:11px;color:var(--muted)">Bepul</span>
+      </button>
+      <button onclick="logoutConfirm()"
+        style="width:100%;padding:12px;background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.2);border-radius:12px;color:var(--red);font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;text-align:left;display:flex;align-items:center;gap:10px">
+        <span style="font-size:18px">🚪</span> Chiqish / Profilni o'chirish
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- WORDS LIST -->
 <div class="overlay" id="modal-words" onclick="closeModal(event,'modal-words')">
   <div class="sheet">
@@ -1334,8 +1403,40 @@ function loadTopbar(){
   badge.className = 'badge '+U.level;
   document.getElementById('tb-xp').textContent = U.xp+' XP';
   document.getElementById('tb-streak').textContent = U.streak;
+  // Avatar: emoji yoki rasm
+  const avEl = document.getElementById('tb-av');
   if(U.avatarUrl){
-    document.getElementById('tb-av').innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+    if(U.avatarUrl.startsWith('http') || U.avatarUrl.startsWith('data')){
+      avEl.innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+    } else {
+      // Emoji avatar
+      avEl.textContent = U.avatarUrl;
+      avEl.style.fontSize = '22px';
+    }
+  }
+}
+
+// ===== PROFILE MENU =====
+function openProfileMenu(){
+  // Ma'lumotlarni yangilaymiz
+  document.getElementById('pm-av').textContent = U.avatarUrl || '🤖';
+  document.getElementById('pm-name').textContent = U.name;
+  const lvNames = {beginner:'🌱 Beginner',intermediate:'🔥 Intermediate',advanced:'⚡ Advanced'};
+  document.getElementById('pm-level').textContent = lvNames[U.level] || U.level;
+  document.getElementById('pm-xp').textContent = U.xp + ' XP';
+  document.getElementById('pm-words').textContent = U.learnedWords?.length || 0;
+  document.getElementById('pm-streak').textContent = U.streak || 0;
+  document.getElementById('pm-wins').textContent = U.battleWins || 0;
+  const isPrem = U.isPremium && U.premiumExpiry > Date.now();
+  document.getElementById('pm-prem-status').textContent = isPrem ? '✅ Faol' : 'Bepul';
+}
+
+function logoutConfirm(){
+  const yes = confirm(`"${U.name}" profilidan chiqasizmi?\n\n⚠️ Barcha ma'lumotlar (XP, so'zlar, progress) o'chib ketadi!\n\nDavom etish uchun OK bosing.`);
+  if(yes){
+    localStorage.removeItem('ep_user');
+    sessionStorage.removeItem('ep_user');
+    window.location.href = 'register.html';
   }
 }
 
@@ -1528,72 +1629,60 @@ function speakWord(){
   speakText(w.word);
 }
 
-// ===== AUDIO / SPEECH =====
-// Telegram va mobil brauzerlar uchun ishonchli audio
+// ===== AUDIO — DictionaryAPI birlamchi, Web Speech zaxira =====
+// Audio kesh — bir so'z uchun qayta fetch qilmaslik
+const _audioCache = {};
+
 function speakText(text){
   if(!text) return;
+  const word = text.trim().split(/\s+/)[0].toLowerCase().replace(/[^a-z'-]/g,'');
+  if(!word){ _wsSpeech(text); return; }
 
-  // VoiceRSS API (eng ishonchli, hamma qurilmada ishlaydi)
-  // API key: bepul ro'yxatdan o'tish kerak voicerss.org
-  // Hozircha Web Speech API bilan ishlaydi
-  const tryWebSpeech = ()=>{
-    if(!('speechSynthesis' in window)) return false;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'en-US';
-    u.rate = 0.8;
-    u.pitch = 1.0;
-    u.volume = 1.0;
-
-    const voices = speechSynthesis.getVoices();
-    const v =
-      voices.find(v => v.name === 'Google US English') ||
-      voices.find(v => v.lang === 'en-US' && !v.localService) ||
-      voices.find(v => v.lang === 'en-US') ||
-      voices.find(v => v.lang === 'en-GB') ||
-      voices.find(v => v.lang.startsWith('en'));
-    if(v) u.voice = v;
-    u.onerror = ()=>{};
-    speechSynthesis.speak(u);
-
-    // 1s da ham gap bermagan bo'lsa fallback
-    setTimeout(()=>{
-      if(!speechSynthesis.speaking) tryDictAPI(text);
-    }, 1200);
-    return true;
-  };
-
-  const voices = speechSynthesis.getVoices();
-  if(voices.length > 0){
-    tryWebSpeech();
-  } else if('speechSynthesis' in window){
-    speechSynthesis.onvoiceschanged = ()=>{
-      speechSynthesis.onvoiceschanged = null;
-      tryWebSpeech();
-    };
-    setTimeout(()=>{ if(speechSynthesis.getVoices().length===0) tryDictAPI(text); }, 600);
-  } else {
-    tryDictAPI(text);
+  // Keshda bor bo'lsa — hoziroq ijro et
+  if(_audioCache[word]){
+    _playUrl(_audioCache[word]);
+    return;
   }
-}
 
-// Dictionary API audio (so'zlar uchun ishonchli)
-function tryDictAPI(text){
-  // Faqat bitta so'z uchun ishlaydi
-  const word = text.trim().split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g,'');
-  if(!word) return;
-  const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-  fetch(url)
-    .then(r=>r.json())
-    .then(data=>{
-      const phonetics = data[0]?.phonetics || [];
-      const audioUrl = phonetics.find(p=>p.audio)?.audio;
-      if(audioUrl){
-        const a = new Audio(audioUrl);
-        a.play().catch(()=>{});
+  // DictionaryAPI — eng aniq talaffuz (mp3)
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+    .then(r => { if(!r.ok) throw new Error('not found'); return r.json(); })
+    .then(data => {
+      // barcha phonetics dan audio topamiz
+      const phonetics = [].concat(...data.map(d => d.phonetics||[]));
+      const mp3 = phonetics.find(p => p.audio && p.audio.trim())?.audio;
+      if(mp3){
+        _audioCache[word] = mp3;
+        _playUrl(mp3);
+      } else {
+        _wsSpeech(text); // audio yo'q — Web Speech
       }
     })
-    .catch(()=>{});
+    .catch(() => _wsSpeech(text)); // network xato — Web Speech
+}
+
+function _playUrl(url){
+  // https:// yoki // bo'lishi mumkin
+  const fullUrl = url.startsWith('//') ? 'https:' + url : url;
+  const a = new Audio(fullUrl);
+  a.volume = 1;
+  a.play().catch(() => _wsSpeech(''));
+}
+
+// Web Speech API — zaxira (noto'g'ri talaffuz bo'lishi mumkin)
+function _wsSpeech(text){
+  if(!text || !('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.82; u.pitch = 1; u.volume = 1;
+  const voices = speechSynthesis.getVoices();
+  const best =
+    voices.find(v => v.name === 'Google US English') ||
+    voices.find(v => v.lang === 'en-US' && !v.localService) ||
+    voices.find(v => v.lang === 'en-US') ||
+    voices.find(v => v.lang.startsWith('en'));
+  if(best) u.voice = best;
+  speechSynthesis.speak(u);
 }
 
 // Sahifa yuklanishida ovozlarni oldindan tayyorlaymiz
@@ -1634,6 +1723,8 @@ function addXP(n){
   showXP('+'+n+' XP');
   saveUser();
   document.getElementById('tb-xp').textContent = U.xp+' XP';
+  // Reytingni ham yangilaymiz — user o'rni o'zgarishi mumkin
+  buildLeaderboard();
 }
 function saveUser(){
   localStorage.setItem('ep_user', JSON.stringify(U));
@@ -1787,8 +1878,11 @@ function answerGr(idx,ans,el){
 
 // ===== LEADERBOARD =====
 function buildLeaderboard(){
-  const myEntry = {name:U.name, xp:U.xp, isMe:true, av:U.avatarUrl||'🤖'};
-  let lb = [...FAKE_LB.map(x=>({...x,isMe:false})), myEntry].sort((a,b)=>b.xp-a.xp);
+  // U.xp ni har doim yangilab olamiz
+  const myEntry = {name: U.name, xp: U.xp, isMe: true, av: U.avatarUrl||'🤖'};
+  // FAKE_LB ni kopyalab, user XP bilan solishtirish
+  const others = FAKE_LB.map(x=>({...x, isMe:false}));
+  let lb = [...others, myEntry].sort((a,b)=>b.xp-a.xp);
   ['lb-main','lb-modal'].forEach(id=>{
     const el=document.getElementById(id); if(!el) return;
     el.innerHTML='';
@@ -2094,6 +2188,7 @@ function buildQuizQ(){
         if(document.getElementById('qs-wrong')) document.getElementById('qs-wrong').textContent=QS.wrong;
         if(resEl) resEl.textContent='❌ Noto\'g\'ri';
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
+        trackWordError(correct.word); // zaif so'zlarga
       }
       QS.idx++;
       setTimeout(buildQuizQ, 900);
@@ -2218,10 +2313,11 @@ function buildBattleQ(){
   }
   BT.answered=false;
   const correct = BT.pool[BT.poolIdx];
-  const allWords = BT.pool.length >= 3 ? BT.pool : [...BT.pool,...FALLBACK_WORDS.beginner];
+  // Barcha so'zlardan 3 ta noto'g'ri variant olamiz (jami 4 ta)
+  const allWords = [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...BT.pool];
   const others = shuffle(allWords.filter(w=>w.word!==correct.word));
-  if(others.length < 2){ showToast('Kamida 3 ta so\'z kerak!'); return; }
-  const opts = shuffle([correct, ...others.slice(0,2)]);
+  if(others.length < 3){ showToast('Kamida 4 ta so\'z kerak!'); return; }
+  const opts = shuffle([correct, ...others.slice(0,3)]);
   const wordEl = document.getElementById('bg-word');
   const resEl = document.getElementById('bg-res');
   const c = document.getElementById('bg-opts');
@@ -2243,6 +2339,7 @@ function buildBattleQ(){
         el.classList.add('wrong');
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         if(resEl) resEl.textContent='❌';
+        trackWordError(correct.word); // zaif so'zlarga
       }
       BT.poolIdx++;
       setTimeout(buildBattleQ, 700);
@@ -2351,6 +2448,7 @@ function openModal(id){
   if(id==='modal-cert') buildCertList();
   if(id==='modal-group') initGroupBattle();
   if(id==='modal-tournament') buildTournament();
+  if(id==='modal-profile-menu') openProfileMenu();
   if(id==='modal-achievements'){
     buildAchievements();
     U.lastSeenAch = ACHIEVEMENTS.filter(a=>{const c=a.type==='length'?(U[a.stat]?.length||0):(U[a.stat]||0);return c>=a.goal;}).length;
@@ -2582,24 +2680,34 @@ function switchTabByName(name){
 let SV={lives:3,score:0,streak:0,answered:false};
 
 function initSurvival(){
-  SV={lives:3,score:0,streak:0,answered:false};
+  const base = getAllWordsForGames();
+  // Kamida 4 so'z bo'lishi uchun fallback qo'shamiz
+  const pool = base.length >= 4 ? base : [...base,...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate];
+  SV={lives:3, score:0, streak:0, answered:false,
+      pool: shuffle([...pool]),  // aralashtirish
+      usedIdx: 0};               // navbat indeksi
   document.getElementById('surv-score').textContent=0;
   updateSurvLives();
   buildSurvQ();
 }
 
 function updateSurvLives(){
-  const hearts = ['','❤️','❤️❤️','❤️❤️❤️'];
-  document.getElementById('surv-lives').textContent = hearts[SV.lives] || '💔 O\'yin tugadi';
+  const h=['💔 O\'yin tugadi!','❤️','❤️❤️','❤️❤️❤️'];
+  document.getElementById('surv-lives').textContent = h[SV.lives]||'💔';
 }
 
 function buildSurvQ(){
   if(SV.lives<=0){ endSurvival(); return; }
+  // Pool tugasa — boshidan aralashtirgan holda davom etamiz
+  if(SV.usedIdx >= SV.pool.length){
+    SV.pool = shuffle([...SV.pool]);
+    SV.usedIdx = 0;
+  }
   SV.answered=false;
-  const pool = getAllWordsForGames();
-  if(pool.length<3){ showToast('Kamida 3 ta so\'z kerak!'); return; }
-  const correct = pool[Math.floor(Math.random()*pool.length)];
-  const others = shuffle(pool.filter(w=>w.word!==correct.word)).slice(0,3);
+  const correct = SV.pool[SV.usedIdx++];
+  // 3 ta noto'g'ri variant (pool dan, correct dan farqli)
+  const allWords = [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...SV.pool];
+  const others = shuffle(allWords.filter(w=>w.word!==correct.word)).slice(0,3);
   const opts = shuffle([correct,...others]);
   document.getElementById('surv-word').textContent=correct.word;
   document.getElementById('surv-res').textContent='';
@@ -2621,6 +2729,7 @@ function buildSurvQ(){
         el.classList.add('wrong'); SV.lives--; SV.streak=0;
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         document.getElementById('surv-streak-fill').style.width='0%';
+        trackWordError(correct.word); // zaif so'zlarga qo'shamiz
         updateSurvLives();
         if(SV.lives<=0){ document.getElementById('surv-res').textContent='💔 O\'yin tugadi!'; setTimeout(endSurvival,1200); }
         else { document.getElementById('surv-res').textContent='❌ Hayot yo\'qoldi!'; setTimeout(buildSurvQ,900); }
@@ -2645,15 +2754,23 @@ function endSurvival(){
 let DC={timer:null,score:0,time:60,answered:false};
 
 function initDailyChallenge(){
-  DC={timer:null,score:0,time:60,answered:false};
+  const base = getAllWordsForGames();
+  const pool = base.length >= 4
+    ? base
+    : [...base,...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate];
+  DC={timer:null, score:0, time:60, answered:false,
+      pool: shuffle([...pool]),
+      usedIdx: 0};
   document.getElementById('dc-myscore').textContent=0;
-  document.getElementById('dc-gametime').textContent=60;
+  const te = document.getElementById('dc-gametime');
+  te.textContent=60; te.style.color='var(--blue)';
   buildDCQuestion();
   clearInterval(DC.timer);
   DC.timer=setInterval(()=>{
     DC.time--;
-    document.getElementById('dc-gametime').textContent=DC.time;
-    if(DC.time<=10) document.getElementById('dc-gametime').style.color='var(--red)';
+    te.textContent=DC.time;
+    if(DC.time<=10) te.style.color='var(--red)';
+    else if(DC.time<=20) te.style.color='var(--gold)';
     if(DC.time<=0){ clearInterval(DC.timer); endDailyChallenge(); }
   },1000);
   buildDCLeaderboard();
@@ -2661,11 +2778,16 @@ function initDailyChallenge(){
 
 function buildDCQuestion(){
   if(DC.time<=0) return;
+  // Pool tugasa — boshidan
+  if(DC.usedIdx >= DC.pool.length){
+    DC.pool = shuffle([...DC.pool]);
+    DC.usedIdx = 0;
+  }
   DC.answered=false;
-  const pool = getAllWordsForGames();
-  if(pool.length<3) return;
-  const correct = pool[Math.floor(Math.random()*pool.length)];
-  const others = shuffle(pool.filter(w=>w.word!==correct.word)).slice(0,3);
+  const correct = DC.pool[DC.usedIdx++];
+  // 3 ta noto'g'ri variant
+  const allWords = [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...DC.pool];
+  const others = shuffle(allWords.filter(w=>w.word!==correct.word)).slice(0,3);
   const opts = shuffle([correct,...others]);
   document.getElementById('dc-word').textContent=correct.word;
   document.getElementById('dc-res').textContent='';
@@ -2683,6 +2805,7 @@ function buildDCQuestion(){
         el.classList.add('wrong');
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         document.getElementById('dc-res').textContent='❌';
+        trackWordError(correct.word); // zaif so'zlarga
       }
       setTimeout(buildDCQuestion,600);
     };
@@ -2727,22 +2850,33 @@ function buildDCLeaderboard(){
 function buildWeakWords(){
   const list = document.getElementById('weak-list');
   const errors = U.wordErrors || {};
-  const sorted = Object.entries(errors).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const sorted = Object.entries(errors).sort((a,b)=>b[1]-a[1]).slice(0,15);
   if(!sorted.length){
-    list.innerHTML='<div style="color:var(--muted);text-align:center;padding:20px">Xatolar yo\'q! Zo\'r! 🎉</div>';
+    list.innerHTML='<div style="color:var(--muted);text-align:center;padding:20px;font-size:13px">Xatolar yo\'q! Zo\'r! 🎉</div>';
     return;
   }
   const max = sorted[0][1];
+  // Barcha manbalardan so'z izlaymiz
+  const allW = [
+    ...FALLBACK_WORDS.beginner,
+    ...FALLBACK_WORDS.intermediate,
+    ...FALLBACK_WORDS.advanced,
+    ...(U.customWords||[]),
+    ...currentUnitWords
+  ];
   list.innerHTML = sorted.map(([word,count])=>{
     const pct = Math.round(count/max*100);
-    const w = getAllWordsFallback(U.level).find(x=>x.word===word) || {word,translation:'—'};
+    const obj = allW.find(x=>x.word===word) || {word, translation:'—', definition:''};
     return `
       <div class="weak-item">
-        <div>
+        <div style="flex:1">
           <div class="weak-word">${word}</div>
-          <div style="font-size:11px;color:var(--muted)">${w.translation} · ${count} xato</div>
+          <div style="font-size:11px;color:var(--muted)">${obj.translation} · ${count}× xato</div>
         </div>
-        <div class="weak-bar-wrap"><div class="weak-bar" style="width:${pct}%"></div></div>
+        <div>
+          <div class="weak-bar-wrap"><div class="weak-bar" style="width:${pct}%"></div></div>
+          <div style="font-size:10px;color:var(--red);text-align:right;margin-top:2px">${count}×</div>
+        </div>
       </div>
     `;
   }).join('');
@@ -2750,18 +2884,23 @@ function buildWeakWords(){
 
 function practiceWeak(){
   const errors = U.wordErrors || {};
-  const weakWords = Object.keys(errors).slice(0,10);
-  if(!weakWords.length){ showToast('Xatolar yo\'q!'); return; }
-  const pool = weakWords.map(word=>{
-    return getAllWordsFallback(U.level).find(w=>w.word===word);
-  }).filter(Boolean);
-  if(pool.length<2){ showToast('Yetarli so\'z yo\'q!'); return; }
-  currentUnitWords = pool;
+  if(!Object.keys(errors).length){ showToast('Xatolar yo\'q!'); return; }
+  const allW = [
+    ...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,
+    ...(U.customWords||[]),...currentUnitWords
+  ];
+  const weakWords = Object.keys(errors)
+    .sort((a,b)=>errors[b]-errors[a])
+    .slice(0,12)
+    .map(word => allW.find(w=>w.word===word))
+    .filter(Boolean);
+  if(weakWords.length < 2){ showToast('Yetarli so\'z topilmadi! Avval o\'yinlar o\'ynang.'); return; }
+  currentUnitWords = weakWords;
   cardIdx=0; cardFlipped=false;
   updateCard();
   closeModal(null,'modal-weak');
   switchTabByName('home');
-  showToast('Zaif so\'zlar yuklandi!');
+  showToast(`⚠️ ${weakWords.length} ta zaif so'z yuklandi!`);
 }
 
 // ===== CUSTOM WORDS =====
