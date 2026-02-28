@@ -1529,62 +1529,80 @@ function speakWord(){
 }
 
 // ===== AUDIO / SPEECH =====
-let _voicesLoaded = false;
-let _voicesList = [];
-function _loadVoices(){
-  if('speechSynthesis' in window){
-    _voicesList = speechSynthesis.getVoices();
-    if(_voicesList.length > 0) _voicesLoaded = true;
-  }
-}
-if('speechSynthesis' in window){
-  _loadVoices();
-  speechSynthesis.onvoiceschanged = ()=>{ _loadVoices(); };
-}
-
+// Telegram va mobil brauzerlar uchun ishonchli audio
 function speakText(text){
   if(!text) return;
-  if(!('speechSynthesis' in window)){ showToast('Brauzer audio ni qo\'llab-quvvatlamaydi'); return; }
-  speechSynthesis.cancel();
-  const doSpeak = ()=>{
+
+  // VoiceRSS API (eng ishonchli, hamma qurilmada ishlaydi)
+  // API key: bepul ro'yxatdan o'tish kerak voicerss.org
+  // Hozircha Web Speech API bilan ishlaydi
+  const tryWebSpeech = ()=>{
+    if(!('speechSynthesis' in window)) return false;
+    speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US';
-    u.rate = 0.78;
+    u.rate = 0.8;
     u.pitch = 1.0;
-    u.volume = 1;
+    u.volume = 1.0;
+
     const voices = speechSynthesis.getVoices();
-    // Eng yaxshi ingliz ovozini tanlaymiz
-    const enVoices = voices.filter(v => v.lang.startsWith('en-') || v.lang.startsWith('en_'));
     const v =
-      // 1. Google US English (eng yaxshi)
-      enVoices.find(v => v.name === 'Google US English') ||
-      // 2. Microsoft David / Zira (Windows)
-      enVoices.find(v => v.name.includes('David') && v.name.includes('English')) ||
-      enVoices.find(v => v.name.includes('Zira')) ||
-      // 3. Google ingliz ovozi (har qanday)
-      enVoices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
-      // 4. Mahalliy bo'lmagan (online) ingliz ovozi
-      enVoices.find(v => !v.localService && v.lang === 'en-US') ||
-      enVoices.find(v => !v.localService) ||
-      // 5. en-US
-      enVoices.find(v => v.lang === 'en-US') ||
-      // 6. en-GB
-      enVoices.find(v => v.lang === 'en-GB') ||
-      // 7. Istalgan ingliz ovozi
-      enVoices[0];
-    if(v){ u.voice = v; u.lang = v.lang; }
+      voices.find(v => v.name === 'Google US English') ||
+      voices.find(v => v.lang === 'en-US' && !v.localService) ||
+      voices.find(v => v.lang === 'en-US') ||
+      voices.find(v => v.lang === 'en-GB') ||
+      voices.find(v => v.lang.startsWith('en'));
+    if(v) u.voice = v;
     u.onerror = ()=>{};
     speechSynthesis.speak(u);
+
+    // 1s da ham gap bermagan bo'lsa fallback
+    setTimeout(()=>{
+      if(!speechSynthesis.speaking) tryDictAPI(text);
+    }, 1200);
+    return true;
   };
+
   const voices = speechSynthesis.getVoices();
   if(voices.length > 0){
-    doSpeak();
+    tryWebSpeech();
+  } else if('speechSynthesis' in window){
+    speechSynthesis.onvoiceschanged = ()=>{
+      speechSynthesis.onvoiceschanged = null;
+      tryWebSpeech();
+    };
+    setTimeout(()=>{ if(speechSynthesis.getVoices().length===0) tryDictAPI(text); }, 600);
   } else {
-    const handler = ()=>{ speechSynthesis.onvoiceschanged = null; doSpeak(); };
-    speechSynthesis.onvoiceschanged = handler;
-    setTimeout(doSpeak, 300);
+    tryDictAPI(text);
   }
 }
+
+// Dictionary API audio (so'zlar uchun ishonchli)
+function tryDictAPI(text){
+  // Faqat bitta so'z uchun ishlaydi
+  const word = text.trim().split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g,'');
+  if(!word) return;
+  const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+  fetch(url)
+    .then(r=>r.json())
+    .then(data=>{
+      const phonetics = data[0]?.phonetics || [];
+      const audioUrl = phonetics.find(p=>p.audio)?.audio;
+      if(audioUrl){
+        const a = new Audio(audioUrl);
+        a.play().catch(()=>{});
+      }
+    })
+    .catch(()=>{});
+}
+
+// Sahifa yuklanishida ovozlarni oldindan tayyorlaymiz
+window.addEventListener('DOMContentLoaded',()=>{
+  if('speechSynthesis' in window){
+    speechSynthesis.getVoices();
+    speechSynthesis.onvoiceschanged = ()=>{ speechSynthesis.getVoices(); };
+  }
+});
 function learnWord(w){
   if(!U.learnedWords.find(x=>x.word===w.word)){
     U.learnedWords.push(w);
@@ -2052,10 +2070,15 @@ function buildQuizQ(){
   const others = shuffle(allWords.filter(w=>w.word!==correct.word));
   if(others.length < 3){ showToast('Kamida 4 ta so\'z kerak!'); return; }
   const opts = shuffle([correct, ...others.slice(0,3)]);
-  document.getElementById('qs-word').textContent = correct.word;
-  document.getElementById('qs-num').textContent = `${QS.idx+1}/${QS.pool.length}`;
-  document.getElementById('qs-res').textContent = '';
-  const c = document.getElementById('qs-opts'); c.innerHTML='';
+  const wordEl = document.getElementById('qs-word');
+  const numEl = document.getElementById('qs-num');
+  const resEl = document.getElementById('qs-res');
+  const c = document.getElementById('qs-opts');
+  if(!wordEl||!c){ return; } // element topilmasa chiqib ketamiz
+  wordEl.textContent = correct.word;
+  if(numEl) numEl.textContent = `${QS.idx+1}/${QS.pool.length}`;
+  if(resEl) resEl.textContent = '';
+  c.innerHTML='';
   opts.forEach(o=>{
     const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
@@ -2064,16 +2087,16 @@ function buildQuizQ(){
       if(o.word===correct.word){
         el.classList.add('correct'); QS.score++;
         addXP(1);
-        document.getElementById('qs-score').textContent=QS.score;
-        document.getElementById('qs-res').textContent='✅ To\'g\'ri! +1 XP';
+        if(document.getElementById('qs-score')) document.getElementById('qs-score').textContent=QS.score;
+        if(resEl) resEl.textContent='✅ To\'g\'ri! +1 XP';
       } else {
         el.classList.add('wrong'); QS.wrong++;
-        document.getElementById('qs-wrong').textContent=QS.wrong;
-        document.getElementById('qs-res').textContent='❌ Noto\'g\'ri';
+        if(document.getElementById('qs-wrong')) document.getElementById('qs-wrong').textContent=QS.wrong;
+        if(resEl) resEl.textContent='❌ Noto\'g\'ri';
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
       }
       QS.idx++;
-      setTimeout(()=>{ buildQuizQ(); },900);
+      setTimeout(buildQuizQ, 900);
     };
     c.appendChild(el);
   });
@@ -2188,7 +2211,6 @@ function startBattleWith(opp, isBot){
 }
 
 function buildBattleQ(){
-  // Pool tugagan bo'lsa — o'yin tugaydi
   if(BT.poolIdx >= BT.pool.length){
     clearInterval(BT.timer);
     endBattle();
@@ -2196,14 +2218,17 @@ function buildBattleQ(){
   }
   BT.answered=false;
   const correct = BT.pool[BT.poolIdx];
-  // Noto'g'ri variantlarni pool dan olamiz
   const allWords = BT.pool.length >= 3 ? BT.pool : [...BT.pool,...FALLBACK_WORDS.beginner];
   const others = shuffle(allWords.filter(w=>w.word!==correct.word));
   if(others.length < 2){ showToast('Kamida 3 ta so\'z kerak!'); return; }
   const opts = shuffle([correct, ...others.slice(0,2)]);
-  document.getElementById('bg-word').textContent=correct.word;
-  document.getElementById('bg-res').textContent='';
-  const c=document.getElementById('bg-opts'); c.innerHTML='';
+  const wordEl = document.getElementById('bg-word');
+  const resEl = document.getElementById('bg-res');
+  const c = document.getElementById('bg-opts');
+  if(!wordEl||!c) return;
+  wordEl.textContent = correct.word;
+  if(resEl) resEl.textContent='';
+  c.innerHTML='';
   opts.forEach(o=>{
     const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
     el.onclick=()=>{
@@ -2212,15 +2237,15 @@ function buildBattleQ(){
       if(o.word===correct.word){
         el.classList.add('correct'); BT.myScore++;
         BT.myXP++; addXP(1);
-        document.getElementById('bg-my').textContent=BT.myScore;
-        document.getElementById('bg-res').textContent='✅ +1 XP';
+        if(document.getElementById('bg-my')) document.getElementById('bg-my').textContent=BT.myScore;
+        if(resEl) resEl.textContent='✅ +1 XP';
       } else {
         el.classList.add('wrong');
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
-        document.getElementById('bg-res').textContent='❌';
+        if(resEl) resEl.textContent='❌';
       }
       BT.poolIdx++;
-      setTimeout(()=>{ if(BT.time>0) buildBattleQ(); },700);
+      setTimeout(buildBattleQ, 700);
     };
     c.appendChild(el);
   });
@@ -3025,10 +3050,12 @@ function updateBoostUI(){
 // addXP ni boost bilan kengaytirish
 const _origAddXP = addXP;
 function addXP(n){
-  const boosted = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
-  _origAddXP(boosted ? n*2 : n);
-  checkNewAchievements();
-  trackTodayActivity();
+  try {
+    const boosted = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
+    _origAddXP(boosted ? n*2 : n);
+  } catch(e){ console.warn('addXP xato:', e); }
+  try { checkNewAchievements(); } catch(e){}
+  try { trackTodayActivity(); } catch(e){}
 }
 
 // ============================================================
