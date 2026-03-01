@@ -51,8 +51,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .sec-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
 .sec-link{font-size:12px;color:var(--blue);cursor:pointer;font-weight:700}
-.unit-row{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px}
-.unit-row::-webkit-scrollbar{display:none}
+.unit-row{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.unit-row::-webkit-scrollbar{height:3px}
+.unit-row::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+.unit-pill{scroll-snap-align:start}
 .unit-pill{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;
   background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .unit-pill.active{background:rgba(124,90,246,.12);border-color:var(--accent);color:var(--al)}
@@ -1216,7 +1218,7 @@ const ONLINE_PLAYERS = [
         <span>📝 <span id="qs-num">1</span>/10</span>
       </div>
       <div class="gword" id="qs-word">—</div>
-      <div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px">TARJIMANI TANLANG</div>
+      <div id="qs-mode-label" style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px">TARJIMANI TANLANG</div>
       <div class="gopts" id="qs-opts"></div>
       <div id="qs-res" style="margin-top:10px;text-align:center;font-size:13px;min-height:18px"></div>
     </div>
@@ -1332,10 +1334,13 @@ function loadTopbar(){
   const badge = document.getElementById('tb-badge');
   badge.textContent = {beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'}[U.level];
   badge.className = 'badge '+U.level;
-  document.getElementById('tb-xp').textContent = U.xp+' XP';
-  document.getElementById('tb-streak').textContent = U.streak;
+  document.getElementById('tb-xp').textContent = (U.xp||0)+' XP';
+  document.getElementById('tb-streak').textContent = U.streak||0;
+  const avEl = document.getElementById('tb-av');
   if(U.avatarUrl){
-    document.getElementById('tb-av').innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+    avEl.innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+  } else if(U.avatarEmoji){
+    avEl.textContent = U.avatarEmoji;
   }
 }
 
@@ -1374,6 +1379,7 @@ function getAllWordsForGames(){
 function buildBookRow(){
   const row = document.getElementById('book-row');
   row.innerHTML = '';
+  row.style.cssText = 'display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px';
   [1,2,3,4,5,6].forEach(b=>{
     const lv = BOOK_LEVEL[b];
     const lvLabel = {beginner:'Beg.',intermediate:'Int.',advanced:'Adv.'}[lv];
@@ -1633,11 +1639,13 @@ function addXP(n){
   const boosted = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
   const actual = boosted ? n*2 : n;
   U.xp = (U.xp||0) + actual;
+  // Real vaqtli XP log — bugun/hafta/oy uchun
+  if(!U.xpLog) U.xpLog=[];
+  U.xpLog.push({ts: Date.now(), xp: actual});
+  // Juda ko'p bo'lsa eski yozuvlarni tozalaymiz (30 kundan eski)
+  const cutoff30 = Date.now() - 30*24*60*60*1000;
+  if(U.xpLog.length > 500) U.xpLog = U.xpLog.filter(e=>e.ts > cutoff30);
   showXP('+'+actual+' XP'+(boosted?' ⚡2×':''));
-  if(!U.xpHistory) U.xpHistory=[0,0,0,0,0,0,0];
-  const day = new Date().getDay();
-  const idx = day===0?6:day-1;
-  U.xpHistory[idx] = (U.xpHistory[idx]||0)+actual;
   saveUser();
   document.getElementById('tb-xp').textContent = U.xp+' XP';
   const stxp = document.getElementById('st-xp');
@@ -1797,46 +1805,80 @@ function answerGr(idx,ans,el){
 }
 
 // ===== LEADERBOARD =====
-let LB_PERIOD='alltime';
+// Reyting davri holati
+let _lbPeriod = 'alltime';
+
+// Foydalanuvchining xpLog dan davr XP sini hisoblash
+function getMyXpForPeriod(period){
+  const now = Date.now();
+  const DAY = 86400000;
+  // Bugungi kun boshi (00:00:00)
+  const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+  const cutoffs = {
+    today:   todayStart.getTime(),
+    week:    now - 7*DAY,
+    month:   now - 30*DAY,
+    alltime: 0
+  };
+  const cut = cutoffs[period] || 0;
+  if(!U.xpLog || !U.xpLog.length) return 0;
+  return U.xpLog.filter(e=>e.ts >= cut).reduce((s,e)=>s+e.xp, 0);
+}
+
 function buildLeaderboard(){
-  const COEF={daily:0.008,weekly:0.05,monthly:0.22,alltime:1};
-  const LABELS={daily:'📅 Bugun',weekly:'📆 Hafta',monthly:'🗓 Oy',alltime:'🏆 Barcha'};
-  const UNITS={daily:'bugun',weekly:'hafta',monthly:'oy',alltime:'XP'};
+  // Fake LB uchun davr XP ni proporsional hisob
+  const COEF = {today:0.008, week:0.05, month:0.22, alltime:1};
+  const LABELS = {today:'📅 Bugun', week:'📆 Hafta', month:'🗓 Oy', alltime:'🏆 Barcha'};
+  const UNITS  = {today:'bugun',   week:'hafta',    month:'oy',     alltime:'XP'};
+
   ['lb-main','lb-modal'].forEach(containerId=>{
-    const container=document.getElementById(containerId); if(!container) return;
-    container.innerHTML='';
-    // Davr tablari
-    const tabs=document.createElement('div');
-    tabs.style='display:flex;gap:5px;margin-bottom:10px';
-    ['daily','weekly','monthly','alltime'].forEach(p=>{
-      const btn=document.createElement('button');
-      const active=LB_PERIOD===p;
-      btn.style=`flex:1;padding:5px 2px;border-radius:20px;font-size:10px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;border:1.5px solid ${active?'var(--accent)':'var(--border)'};background:${active?'rgba(124,90,246,.15)':'var(--s2)'};color:${active?'var(--al)':'var(--muted)'}`;
-      btn.textContent=LABELS[p];
-      btn.onclick=()=>{LB_PERIOD=p;buildLeaderboard();};
+    const container = document.getElementById(containerId); if(!container) return;
+    container.innerHTML = '';
+
+    // Davr tablar
+    const tabs = document.createElement('div');
+    tabs.style = 'display:flex;gap:5px;margin-bottom:10px';
+    ['today','week','month','alltime'].forEach(p=>{
+      const btn = document.createElement('button');
+      const on = _lbPeriod === p;
+      btn.style = `flex:1;padding:5px 2px;border-radius:20px;font-size:10px;font-weight:800;`+
+                  `font-family:'Nunito',sans-serif;cursor:pointer;`+
+                  `border:1.5px solid ${on?'var(--accent)':'var(--border)'};`+
+                  `background:${on?'rgba(124,90,246,.15)':'var(--s2)'};`+
+                  `color:${on?'var(--al)':'var(--muted)'}`;
+      btn.textContent = LABELS[p];
+      btn.onclick = ()=>{ _lbPeriod=p; buildLeaderboard(); };
       tabs.appendChild(btn);
     });
     container.appendChild(tabs);
-    // Ro'yxat
-    const coef=COEF[LB_PERIOD];
-    const myXP=LB_PERIOD==='alltime'?(U.xp||0):Math.max(0,Math.round((U.xp||0)*coef));
-    const myEntry={name:U.name,xp:myXP,isMe:true,av:U.avatarUrl||'🤖'};
-    const others=FAKE_LB.map(x=>({...x,xp:LB_PERIOD==='alltime'?x.xp:Math.round(x.xp*coef),isMe:false}));
-    const lb=[...others,myEntry].sort((a,b)=>b.xp-a.xp);
-    const list=document.createElement('div');
+
+    // XP hisoblash
+    const coef   = COEF[_lbPeriod];
+    const myXP   = _lbPeriod==='alltime' ? (U.xp||0) : getMyXpForPeriod(_lbPeriod);
+    const myEntry = {name:U.name, xp:myXP, isMe:true, av:U.avatarUrl||U.avatarEmoji||'🤖'};
+    const others  = FAKE_LB.map(x=>({
+      ...x,
+      xp: _lbPeriod==='alltime' ? x.xp : Math.round(x.xp * coef),
+      isMe: false
+    }));
+    const lb = [...others, myEntry].sort((a,b)=>b.xp-a.xp);
+
+    const list = document.createElement('div');
     list.className='lb-list';
     lb.slice(0,8).forEach((p,i)=>{
       const rankColors=['#f5c542','#8b949e','#b08040'];
       const medals=['🥇','🥈','🥉'];
-      const av=typeof p.av==='string'&&(p.av.startsWith('http')||p.av.startsWith('data'))
-        ?`<img src="${p.av}" style="width:80%;height:80%;object-fit:contain">`:(p.av||'🤖');
-      const div=document.createElement('div');
-      div.className='lb-row'+(p.isMe?' me':'');
-      div.innerHTML=`
+      const av = typeof p.av==='string'&&(p.av.startsWith('http')||p.av.startsWith('data'))
+        ? `<img src="${p.av}" style="width:80%;height:80%;object-fit:contain">`
+        : (p.av||'🤖');
+      const unit = UNITS[_lbPeriod];
+      const div = document.createElement('div');
+      div.className = 'lb-row'+(p.isMe?' me':'');
+      div.innerHTML = `
         <div class="lb-rank" style="color:${rankColors[i]||'var(--muted)'}">${i<3?medals[i]:i+1}</div>
         <div class="lb-av">${av}</div>
         <div class="lb-name">${p.name}${p.isMe?' (Siz)':''}</div>
-        <div class="lb-xp">${p.xp} <span style="font-size:10px;color:var(--muted)">${UNITS[LB_PERIOD]}</span></div>`;
+        <div class="lb-xp">${p.xp} <span style="font-size:10px;color:var(--muted);font-weight:600">${unit}</span></div>`;
       list.appendChild(div);
     });
     container.appendChild(list);
@@ -1915,31 +1957,18 @@ function buildMatchRound(){
   label.innerHTML='<span style="color:var(--blue);font-weight:800">🇬🇧 English</span> ↔ <span style="color:var(--purple);font-weight:800">🇺🇿 O\'zbek</span>';
 }
 function selectMatch(el,match){
-  if(MS.tval<=0) return;
+  if(MS.tval<=0) return; // Vaqt tugagan bo'lsa harakat qilmaslik
   if(el.classList.contains('matched')) return;
-  if(!MS.sel){
-    // 1-tanlash: ko'k yoniq highlight
-    MS.sel={el,match};
-    el.classList.add('selected');
-    el.style.cssText='border-color:var(--blue)!important;background:rgba(79,156,249,.3)!important;transform:scale(1.06);box-shadow:0 0 0 3px rgba(79,156,249,.4);font-weight:800;color:var(--blue)';
-  } else {
-    if(MS.sel.el===el){
-      // Xuddi shu — bekor qilish
-      MS.sel.el.classList.remove('selected');
-      MS.sel.el.style.cssText='';
-      MS.sel=null; return;
-    }
+  if(!MS.sel){MS.sel={el,match};el.classList.add('selected');}
+  else{
+    if(MS.sel.el===el){MS.sel.el.classList.remove('selected');MS.sel=null;return;}
     if(MS.sel.match===match){
-      // To'g'ri juft — yashil
-      [el,MS.sel.el].forEach(e=>{
-        e.classList.remove('selected'); e.classList.add('matched');
-        e.style.cssText='border-color:var(--green)!important;background:rgba(79,223,138,.2)!important;color:var(--green);font-weight:800';
-      });
+      el.classList.add('matched');MS.sel.el.classList.remove('selected');MS.sel.el.classList.add('matched');
       MS.matched++;MS.score+=10;MS.sel=null;
       addXP(1);
       document.getElementById('ms-score').textContent=MS.score;
       if(MS.matched===4){
-        MS.usedIdx+=4;
+        MS.usedIdx+=4; // Keyingi 4 so'zga o'tamiz
         if(MS.round < MS.rounds){
           MS.round++;
           document.getElementById('ms-round').textContent=MS.round;
@@ -1947,19 +1976,12 @@ function selectMatch(el,match){
         } else {
           clearInterval(MS.timer);
           markPlayedToday('match');
-          document.getElementById('mr').innerHTML='<span style="color:var(--green);font-weight:800">🎉 Tugadi! '+MS.score+' ball!</span>';
+          document.getElementById('mr').textContent=`🎉 Tugadi! ${MS.score} ball!`;
         }
       }
     } else {
-      // Noto'g'ri — qizil chaqnaydi
-      [el,MS.sel.el].forEach(e=>{
-        e.classList.add('bad');
-        e.style.cssText='border-color:var(--red)!important;background:rgba(248,81,73,.2)!important';
-      });
-      setTimeout(()=>{
-        [el,MS.sel.el].forEach(e=>{e.classList.remove('bad','selected');e.style.cssText='';});
-        MS.sel=null;
-      },700);
+      el.classList.add('bad');MS.sel.el.classList.add('bad');
+      setTimeout(()=>{el.classList.remove('bad','selected');MS.sel.el.classList.remove('bad','selected');MS.sel=null;},700);
     }
   }
 }
@@ -2072,18 +2094,33 @@ function startAngTimer(){
 }
 
 // ===== QUIZ =====
-let QS={idx:0,score:0,wrong:0,answered:false,pool:[],timer:null,tval:0};
-function initQuiz(){
+let QS={idx:0,score:0,wrong:0,answered:false,pool:[],timer:null,tval:0,mode:'eng-uz'};
+function initQuiz(mode){
   const words = getAllWordsForGames();
   if(words.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
-  // Barcha so'zlarni shuffle qilib pool ga yozamiz — takrorlash yo'q
+  // Agar mode ko'rsatilmagan bo'lsa — rejim tanlash ekranini ko'rsatamiz
+  if(!mode){
+    const c = document.getElementById('qs-opts');
+    const wordEl = document.getElementById('qs-word');
+    const resEl = document.getElementById('qs-res');
+    const numEl = document.getElementById('qs-num');
+    if(wordEl) wordEl.textContent = '🎯 Rejim tanlang';
+    if(numEl) numEl.textContent = '';
+    if(resEl) resEl.textContent = '';
+    if(c) c.innerHTML = `
+      <div class="gopt" style="grid-column:1/-1;font-size:15px;padding:16px;text-align:center;border:2px solid var(--blue);background:rgba(79,156,249,.1)"
+           onclick="initQuiz('eng-uz')">🇬🇧→🇺🇿<br><span style="font-size:12px;color:var(--muted);font-weight:600">Inglizcha → O'zbekcha</span></div>
+      <div class="gopt" style="grid-column:1/-1;font-size:15px;padding:16px;text-align:center;border:2px solid var(--purple);background:rgba(124,90,246,.1)"
+           onclick="initQuiz('uz-eng')">🇺🇿→🇬🇧<br><span style="font-size:12px;color:var(--muted);font-weight:600">O'zbekcha → Inglizcha</span></div>
+    `;
+    return;
+  }
   const shuffled = shuffle([...words]);
   const total = shuffled.length;
-  const timeTotal = total * 8; // har so'z uchun 8 sekund
-  QS={idx:0,score:0,wrong:0,answered:false,pool:shuffled,timer:null,tval:timeTotal};
+  const timeTotal = total * 8;
+  QS={idx:0,score:0,wrong:0,answered:false,pool:shuffled,timer:null,tval:timeTotal,mode:mode};
   document.getElementById('qs-score').textContent=0;
   document.getElementById('qs-wrong').textContent=0;
-  // Timer qo'shamiz
   startQuizTimer(timeTotal);
   buildQuizQ();
 }
@@ -2117,25 +2154,29 @@ function buildQuizQ(){
   if(QS.idx >= QS.pool.length){ endQuiz('done'); return; }
   QS.answered=false;
   const correct = QS.pool[QS.idx];
-  // Noto'g'ri variantlarni pool dan olamiz
+  const isUzEng = QS.mode === 'uz-eng';
   const allWords = QS.pool.length >= 4 ? QS.pool : [...QS.pool,...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate];
   const others = shuffle(allWords.filter(w=>w.word!==correct.word));
   if(others.length < 3){ showToast('Kamida 4 ta so\'z kerak!'); return; }
   const opts = shuffle([correct, ...others.slice(0,3)]);
   const wordEl = document.getElementById('qs-word');
-  const numEl = document.getElementById('qs-num');
-  const resEl = document.getElementById('qs-res');
-  const c = document.getElementById('qs-opts');
-  if(!wordEl||!c){ return; } // element topilmasa chiqib ketamiz
-  wordEl.textContent = correct.word;
+  const numEl  = document.getElementById('qs-num');
+  const resEl  = document.getElementById('qs-res');
+  const c      = document.getElementById('qs-opts');
+  if(!wordEl||!c) return;
+  // UZ→ENG: tarjimani ko'rsatib, inglizini toptiramiz
+  // ENG→UZ: inglizini ko'rsatib, tarjimani toptiramiz
+  wordEl.textContent = isUzEng ? correct.translation : correct.word;
   if(numEl) numEl.textContent = `${QS.idx+1}/${QS.pool.length}`;
   if(resEl) resEl.textContent = '';
   c.innerHTML='';
   opts.forEach(o=>{
-    const el=document.createElement('div'); el.className='gopt'; el.textContent=o.translation;
+    const el=document.createElement('div'); el.className='gopt';
+    el.textContent = isUzEng ? o.word : o.translation;
     el.onclick=()=>{
       if(QS.answered)return; QS.answered=true;
       c.querySelectorAll('.gopt').forEach(op=>{ op.style.pointerEvents='none'; });
+      const chosen = isUzEng ? o.word : o.word;
       if(o.word===correct.word){
         el.classList.add('correct'); QS.score++;
         addXP(1);
@@ -2145,7 +2186,10 @@ function buildQuizQ(){
         el.classList.add('wrong'); QS.wrong++;
         if(document.getElementById('qs-wrong')) document.getElementById('qs-wrong').textContent=QS.wrong;
         if(resEl) resEl.textContent='❌ Noto\'g\'ri';
-        c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
+        // To'g'ri javobni ko'rsatamiz
+        const correctText = isUzEng ? correct.word : correct.translation;
+        c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correctText)op.classList.add('correct');});
+        try{ trackWordError(correct.word); }catch(e){}
       }
       QS.idx++;
       setTimeout(buildQuizQ, 900);
@@ -2270,10 +2314,10 @@ function buildBattleQ(){
   }
   BT.answered=false;
   const correct = BT.pool[BT.poolIdx];
-  const allWords = [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...BT.pool];
+  const allWords = BT.pool.length >= 3 ? BT.pool : [...BT.pool,...FALLBACK_WORDS.beginner];
   const others = shuffle(allWords.filter(w=>w.word!==correct.word));
-  if(others.length < 3){ showToast('Kamida 4 ta so\'z kerak!'); return; }
-  const opts = shuffle([correct, ...others.slice(0,3)]);
+  if(others.length < 2){ showToast('Kamida 3 ta so\'z kerak!'); return; }
+  const opts = shuffle([correct, ...others.slice(0,2)]);
   const wordEl = document.getElementById('bg-word');
   const resEl = document.getElementById('bg-res');
   const c = document.getElementById('bg-opts');
@@ -2295,7 +2339,6 @@ function buildBattleQ(){
         el.classList.add('wrong');
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         if(resEl) resEl.textContent='❌';
-        trackWordError(correct.word);
       }
       BT.poolIdx++;
       setTimeout(buildBattleQ, 700);
@@ -2305,19 +2348,33 @@ function buildBattleQ(){
 }
 
 function endBattle(){
-  const won=BT.myScore>BT.oppScore;
-  if(won){
-    U.battleWins=(U.battleWins||0)+1;
-    // G'alaba: faqat to'plangan XP (har to'g'ri javob 1 XP, allaqachon addXP qilingan)
-    showToast(`🏆 G'alaba! ${BT.myXP} XP to'plandi`);
+  const won  = BT.myScore > BT.oppScore;
+  const draw = BT.myScore === BT.oppScore;
+  let bonusXP = 0;
+  let resultTxt = '';
+  if(draw){
+    bonusXP = 10;
+    U.battleXP = (U.battleXP||0) + bonusXP;
+    addXP(bonusXP);
+    resultTxt = `🤝 DURANG! +${bonusXP} XP`;
+    showToast(`🤝 Durang! +${bonusXP} XP to'plandi`);
+  } else if(won){
+    bonusXP = 20;
+    U.battleWins = (U.battleWins||0)+1;
+    U.battleXP = (U.battleXP||0) + bonusXP;
+    addXP(bonusXP);
+    resultTxt = `🏆 G'ALABA! +${bonusXP} XP`;
+    showToast(`🏆 G'alaba! +${bonusXP} XP to'plandi`);
   } else {
-    U.battleLosses=(U.battleLosses||0)+1;
-    // Mag'lubiyat: XP berilmaydi (allaqachon to'plangan XP o'chirilmaydi ham)
-    showToast(`💪 Keyingisida yaxshiroq! Jami: ${BT.myScore}:${BT.oppScore}`);
+    bonusXP = 2;
+    U.battleLosses = (U.battleLosses||0)+1;
+    U.battleXP = (U.battleXP||0) + bonusXP;
+    addXP(bonusXP);
+    resultTxt = `😞 Mag'lubiyat +${bonusXP} XP`;
+    showToast(`💪 Keyingisida yaxshiroq! +${bonusXP} XP`);
   }
-  U.battleXP=(U.battleXP||0)+BT.myXP;
   saveUser();
-  document.getElementById('bg-res').textContent=won?`🏆 G'ALABA! ${BT.myScore}:${BT.oppScore}`:`😞 ${BT.myScore}:${BT.oppScore}`;
+  document.getElementById('bg-res').textContent=`${resultTxt} (${BT.myScore}:${BT.oppScore})`;
   document.getElementById('bg-opts').innerHTML=`<button class="btn-p" style="grid-column:1/-1" onclick="closeModal(null,'modal-bg');buildBattleUI();buildLeaderboard()">← Qaytish</button>`;
   document.getElementById('bh-me-s').textContent=BT.myScore;
   document.getElementById('bh-opp-s').textContent=BT.oppScore;
@@ -2328,7 +2385,7 @@ function endBattle(){
 // ===== KUNLIK O'YIN LIMITI =====
 function getTodayKey(){ return new Date().toISOString().slice(0,10); }
 function getGamePlayKey(gameId){
-  // Faqat sana — unit yoki kitob o'zgarsa ham limit saqlanadi
+  // Faqat gameId + sana — unit o'zgansa ham limit saqlanadi
   return `played_${gameId}_${getTodayKey()}`;
 }
 function isPremiumActive(){
@@ -2635,11 +2692,7 @@ function switchTabByName(name){
 let SV={lives:3,score:0,streak:0,answered:false};
 
 function initSurvival(){
-  const base = getAllWordsForGames();
-  const pool = base.length >= 4 ? base
-    : [...base,...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate];
-  SV={lives:3,score:0,streak:0,answered:false,
-      pool:shuffle([...pool]),usedIdx:0};
+  SV={lives:3,score:0,streak:0,answered:false};
   document.getElementById('surv-score').textContent=0;
   updateSurvLives();
   buildSurvQ();
@@ -2653,11 +2706,10 @@ function updateSurvLives(){
 function buildSurvQ(){
   if(SV.lives<=0){ endSurvival(); return; }
   SV.answered=false;
-  if(!SV.pool||SV.pool.length<4){ SV.pool=shuffle(getAllWordsForGames()); SV.usedIdx=0; }
-  if(SV.usedIdx>=SV.pool.length){ SV.pool=shuffle([...SV.pool]); SV.usedIdx=0; }
-  const correct = SV.pool[SV.usedIdx++];
-  const allW=[...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...SV.pool];
-  const others = shuffle(allW.filter(w=>w.word!==correct.word)).slice(0,3);
+  const pool = getAllWordsForGames();
+  if(pool.length<3){ showToast('Kamida 3 ta so\'z kerak!'); return; }
+  const correct = pool[Math.floor(Math.random()*pool.length)];
+  const others = shuffle(pool.filter(w=>w.word!==correct.word)).slice(0,3);
   const opts = shuffle([correct,...others]);
   document.getElementById('surv-word').textContent=correct.word;
   document.getElementById('surv-res').textContent='';
@@ -2679,7 +2731,6 @@ function buildSurvQ(){
         el.classList.add('wrong'); SV.lives--; SV.streak=0;
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         document.getElementById('surv-streak-fill').style.width='0%';
-        trackWordError(correct.word);
         updateSurvLives();
         if(SV.lives<=0){ document.getElementById('surv-res').textContent='💔 O\'yin tugadi!'; setTimeout(endSurvival,1200); }
         else { document.getElementById('surv-res').textContent='❌ Hayot yo\'qoldi!'; setTimeout(buildSurvQ,900); }
@@ -2703,22 +2754,37 @@ function endSurvival(){
 // ===== DAILY CHALLENGE =====
 let DC={timer:null,score:0,time:60,answered:false};
 
+function getAllWordsDC(){
+  // DC uchun barcha cached so'zlarni birlashtirish — unit chegarasiz
+  const all = [];
+  const seen = new Set();
+  for(const key in WORDS_CACHE){
+    const arr = WORDS_CACHE[key];
+    if(!Array.isArray(arr)) continue;
+    for(const w of arr){
+      if(w && w.word && w.translation && !seen.has(w.word)){
+        seen.add(w.word); all.push(w);
+      }
+    }
+  }
+  if(all.length >= 4) return all;
+  return [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced];
+}
+
 function initDailyChallenge(){
-  const base = getAllWordsForGames();
-  const pool = base.length >= 4 ? base
-    : [...base,...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate];
+  const base = getAllWordsDC();
   DC={timer:null,score:0,time:60,answered:false,
-      pool:shuffle([...pool]),usedIdx:0};
+      pool:shuffle([...base]), usedIdx:0};
   document.getElementById('dc-myscore').textContent=0;
-  const te=document.getElementById('dc-gametime');
-  te.textContent=60; te.style.color='var(--blue)';
+  const te = document.getElementById('dc-gametime');
+  te.textContent=60; te.style.color='var(--text)';
   buildDCQuestion();
   clearInterval(DC.timer);
   DC.timer=setInterval(()=>{
     DC.time--;
     document.getElementById('dc-gametime').textContent=DC.time;
-    const tcEl=document.getElementById('dc-gametime');
-    if(tcEl){ if(DC.time<=10) tcEl.style.color='var(--red)'; else if(DC.time<=20) tcEl.style.color='var(--gold)'; }
+    const _tcEl=document.getElementById('dc-gametime');
+    if(_tcEl){ if(DC.time<=10) _tcEl.style.color='var(--red)'; else if(DC.time<=20) _tcEl.style.color='var(--gold)'; }
     if(DC.time<=0){ clearInterval(DC.timer); endDailyChallenge(); }
   },1000);
   buildDCLeaderboard();
@@ -2727,10 +2793,10 @@ function initDailyChallenge(){
 function buildDCQuestion(){
   if(DC.time<=0) return;
   DC.answered=false;
-  if(!DC.pool||DC.pool.length<4){ DC.pool=shuffle(getAllWordsForGames()); DC.usedIdx=0; }
+  if(!DC.pool||DC.pool.length<4){ DC.pool=shuffle(getAllWordsDC()); DC.usedIdx=0; }
   if(DC.usedIdx>=DC.pool.length){ DC.pool=shuffle([...DC.pool]); DC.usedIdx=0; }
   const correct = DC.pool[DC.usedIdx++];
-  const allW=[...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...DC.pool];
+  const allW = [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced,...DC.pool];
   if(allW.length<4) return;
   const others = shuffle(allW.filter(w=>w.word!==correct.word)).slice(0,3);
   const opts = shuffle([correct,...others]);
@@ -2750,7 +2816,6 @@ function buildDCQuestion(){
         el.classList.add('wrong');
         c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.translation)op.classList.add('correct');});
         document.getElementById('dc-res').textContent='❌';
-        trackWordError(correct.word);
       }
       setTimeout(buildDCQuestion,600);
     };
@@ -3032,7 +3097,6 @@ function initPremiumFeatures(){
   startDailyCountdown();
   updateBoostUI();
   checkNewAchievements();
-  // Oylik streak/boost reset
   const monthKey = new Date().toISOString().slice(0,7);
   if(U.freezeMonth!==monthKey && U.isPremium){
     U.streakFreezes=2; U.freezeMonth=monthKey;
@@ -3126,7 +3190,7 @@ function updateBoostUI(){
   }
 }
 // addXP ni boost bilan kengaytirish
-// addXP — yuqorida birlashtirish (3051)
+// addXP yuqorida to'liq (3051)
 
 // ============================================================
 // 📊 BATAFSIL STATISTIKA
@@ -3344,29 +3408,9 @@ function checkNewAchievements(){
 // 🎨 PREMIUM AVATARLAR
 // ============================================================
 const PREMIUM_AVATARS = [
-  // Mythical & Animals
-    '🦄','🐉','🦅','🐯','🦁','🐺','🦊','🐸',
-    '🐲','🦂','🦇','🐍','🦈','🐙','🦖','🦕',
-    '🐅','🦌','🐎','🐘','🐻','🐼','🐨','🦁',
-
-  // Fantasy Characters
-    '🧙','🧛','🧝','🤴','👸','🥷','🦸','🧜',
-    '🧚','🧞','🧟','🦹','👳','🕵️','👨‍🚀','👩‍🚀',
-
-    // Nature & Elements
-    '🌙','⭐','🔥','❄️','⚡','🌊','🌺','🍀',
-    '🌪️','🌈','☀️','🌑','🌕','🌋','🌵','🌲',
-
-    // Power & Symbols
-    '💎','👑','⚔️','🛡️','🏹','🔮','📿','🗡️',
-    '☯️','♾️','🔱','🧿','✨','💫','🌟','🎯',
-
-    // Space & Cosmic
-    '🪐','🌌','🚀','☄️','🛰️','👽','🛸','🌠',
-
-  // Cool / Gaming Style
-    '🎮','🕶️','🎧','🔥','💀','😈','🤖','👾',
-    '⚙️','🧩','🎲','🏆','🥇','🚩','🎭','🌀'
+  '🦄','🐉','🦅','🐯','🦁','🐺','🦊','🐸',
+  '🧙','🧛','🧝','🤴','👸','🥷','🦸','🧜',
+  '🌙','⭐','🔥','❄️','⚡','🌊','🌺','🍀',
 ];
 let selectedPremAv = null;
 function buildPremiumAvatars(){
@@ -3386,8 +3430,9 @@ function selectPremAv(av, el){
 function applyPremiumAvatar(){
   if(!selectedPremAv){showToast('Avatar tanlang!');return;}
   U.avatarEmoji = selectedPremAv;
-  U.avatarUrl = null;
-  document.getElementById('tb-av').innerHTML = selectedPremAv;
+  U.avatarUrl = null; // Emoji tanlanganda URL ni tozalaymiz
+  const _avEl = document.getElementById('tb-av');
+  if(_avEl) _avEl.textContent = selectedPremAv;
   saveUser();
   closeModal(null,'modal-prem-avatar');
   showToast('🎨 Avatar yangilandi!');
@@ -3420,7 +3465,7 @@ function trackTodayActivity(){
 // ============================================================
 // INITPREMIUMFEATURES GA QO'SHIMCHALAR
 // ============================================================
-// initPremiumFeatures — yuqorida birlashtirish
+// initPremiumFeatures yuqorida to'liq (3333)
 
 // ===== END =====
 </script>
