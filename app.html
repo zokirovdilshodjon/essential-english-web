@@ -306,6 +306,66 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 /* Translator */
 .tr-example{background:var(--s2);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.5}
 .tr-example b{color:var(--blue)}
+/* ===== 5 YANGI O'YIN CSS ===== */
+/* Speaking Practice */
+.speak-word{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;text-align:center;
+  padding:24px 16px;background:var(--s2);border-radius:16px;margin-bottom:14px;
+  letter-spacing:.02em;color:var(--text)}
+.speak-phonetic{text-align:center;font-size:15px;color:var(--blue);margin-bottom:6px;font-weight:600}
+.speak-translation{text-align:center;font-size:13px;color:var(--muted);margin-bottom:14px}
+.mic-btn{width:80px;height:80px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:32px;
+  background:linear-gradient(135deg,var(--red),#c73030);
+  box-shadow:0 6px 24px rgba(239,68,68,.35);transition:all .2s;margin:0 auto}
+.mic-btn:hover{transform:scale(1.08)}
+.mic-btn.listening{animation:pulse-mic 1s infinite;background:linear-gradient(135deg,#ef4444,#dc2626)}
+.mic-btn.off{background:var(--s2);box-shadow:none}
+@keyframes pulse-mic{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}
+  50%{box-shadow:0 0 0 16px rgba(239,68,68,0)}}
+.score-ring{width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;margin:0 auto 10px;font-weight:800;
+  border:4px solid var(--border);position:relative;overflow:hidden}
+.score-ring.good{border-color:var(--green);background:rgba(79,223,138,.1)}
+.score-ring.ok{border-color:var(--gold);background:rgba(245,197,66,.1)}
+.score-ring.bad{border-color:var(--red);background:rgba(239,68,68,.1)}
+/* Word Chain */
+.chain-display{display:flex;flex-wrap:wrap;gap:6px;padding:12px;background:var(--s2);
+  border-radius:13px;min-height:48px;margin-bottom:12px;align-items:center}
+.chain-word{background:linear-gradient(135deg,var(--accent),var(--purple));color:white;
+  padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.chain-arrow{color:var(--muted);font-size:14px}
+.chain-inp{width:100%;padding:12px 14px;background:var(--s2);border:1.5px solid var(--border);
+  border-radius:12px;font-size:16px;font-family:'Syne',sans-serif;font-weight:700;
+  color:var(--text);outline:none;margin-bottom:8px;text-align:center;letter-spacing:.05em}
+.chain-inp:focus{border-color:var(--accent)}
+.chain-last{font-size:13px;text-align:center;padding:8px;background:rgba(124,90,246,.1);
+  border-radius:10px;margin-bottom:10px;color:var(--purple);font-weight:700}
+/* Context Game */
+.ctx-sentence{font-size:16px;line-height:1.8;background:var(--s2);border-radius:13px;
+  padding:16px;margin-bottom:14px;text-align:center}
+.ctx-blank{display:inline-block;min-width:80px;border-bottom:2.5px solid var(--accent);
+  color:var(--accent);font-weight:800;text-align:center;padding:0 4px}
+.ctx-hint{font-size:12px;color:var(--muted);text-align:center;margin-bottom:12px;
+  font-style:italic}
+/* Pronunciation Score */
+.pron-streak{display:flex;justify-content:center;gap:6px;margin-bottom:12px}
+.pron-dot{width:12px;height:12px;border-radius:50%;background:var(--s3);transition:all .3s}
+.pron-dot.hit{background:var(--green)}
+.pron-dot.miss{background:var(--red)}
+.pron-progress{height:6px;background:var(--s3);border-radius:6px;overflow:hidden;margin-bottom:14px}
+.pron-prog-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--green),var(--blue));transition:width .5s}
+/* Word Family */
+.wf-root{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:center;
+  color:var(--text);margin-bottom:4px}
+.wf-translation{text-align:center;font-size:13px;color:var(--muted);margin-bottom:14px}
+.wf-card{background:var(--s2);border:1px solid var(--border);border-radius:12px;
+  padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:space-between}
+.wf-card:hover{border-color:var(--accent);background:rgba(124,90,246,.08)}
+.wf-card.selected{border-color:var(--accent);background:rgba(124,90,246,.12)}
+.wf-form{font-size:15px;font-weight:800;color:var(--text)}
+.wf-type{font-size:11px;color:var(--muted)}
+.wf-ex{font-size:11px;color:var(--blue);margin-top:3px;font-style:italic}
 </style>
 </head>
 <body>
@@ -1038,6 +1098,25 @@ const ONLINE_PLAYERS = [
           </div>
           <div class="game-card" onclick="openModal('modal-quiz')">
             <div class="g-icon">❓</div><div class="g-name">Quiz</div><div class="g-desc">Savol-javob</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-word-chain')">
+            <div class="g-icon">⛓️</div><div class="g-name">So'z Zanjiri</div><div class="g-desc">Oxirgi harfdan</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-context')">
+            <div class="g-icon">📝</div><div class="g-name">Kontekst</div><div class="g-desc">Bo'shliq to'ldir</div>
+          </div>
+        </div>
+
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:8px">🎤 NUTQ O'YINLARI</div>
+        <div class="games-grid" style="margin-bottom:18px">
+          <div class="game-card" onclick="openModal('modal-speaking')">
+            <div class="g-icon">🎤</div><div class="g-name">Speaking</div><div class="g-desc">Mikrofon bilan</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-pron-score')">
+            <div class="g-icon">🎯</div><div class="g-name">Talaffuz Score</div><div class="g-desc">0–100% baho</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-word-family')">
+            <div class="g-icon">🌳</div><div class="g-name">So'z Oilasi</div><div class="g-desc">Barcha shakllar</div>
           </div>
         </div>
 
@@ -3408,30 +3487,9 @@ function checkNewAchievements(){
 // 🎨 PREMIUM AVATARLAR
 // ============================================================
 const PREMIUM_AVATARS = [
-     // Mythical & Animals
-    '🦄','🐉','🦅','🐯','🦁','🐺','🦊','🐸','🦂','🦇','🐍','🦈','🐙','🦖','🦕',
-    '🐅','🦌','🐎','🐘','🐻','🐼','🐨',
-
-    // Fantasy Characters
-    '🧙','🧛','🧝','🧚','🧞','🧟','🦹','🦸','🧜','🤴','👸','🥷','👳','🕵️','👨‍🚀','👩‍🚀',
-
-    // Nature & Elements
-    '🌙','⭐','🔥','❄️','⚡','🌊','🌺','🍀','🌪️','🌈','☀️','🌑','🌕','🌋','🌵','🌲',
-
-    // Power & Symbols
-    '💎','👑','⚔️','🛡️','🏹','🔮','📿','🗡️','☯️','♾️','🔱','🧿','✨','💫','🌟','🎯',
-
-    // Space & Cosmic
-    '🪐','🌌','🚀','☄️','🛰️','👽','🛸','🌠',
-
-    // Gaming & Tech / Cool Style
-    '🎮','🕹️','🎧','🕶️','💀','😈','🤖','👾','⚙️','🧩','🎲','🏆','🥇','🚩','🎭','🌀',
-
-    // Cute / Fun / Magical RPG extras
-    '🎀','💃','🩰','🎗️','💫','🌟','🧿','📿','🏹','🛡️','⚔️','🗡️','🪓','🪄','🏰','🍓','🍉','🍕','🍩','🍪','🐶','🐰','🐹','🐻‍❄️','🦋','🐝','🐞','🐣','🐢','🎰','🎴','🔔','🎇','🎆','🧧','🎁',
-
-    // Status / Rank Icons
-    '🔰','🚩','🏁','⭐','🌟','💠','🔷','🔶','🟥','🟦','🟩','🟪','⚜️'
+  '🦄','🐉','🦅','🐯','🦁','🐺','🦊','🐸',
+  '🧙','🧛','🧝','🤴','👸','🥷','🦸','🧜',
+  '🌙','⭐','🔥','❄️','⚡','🌊','🌺','🍀',
 ];
 let selectedPremAv = null;
 function buildPremiumAvatars(){
@@ -3488,8 +3546,758 @@ function trackTodayActivity(){
 // ============================================================
 // initPremiumFeatures yuqorida to'liq (3333)
 
+// ================================================================
+// 🎤 SPEAKING PRACTICE
+// ================================================================
+let SP = {pool:[],idx:0,score:0,streak:0,listening:false,rec:null};
+
+function initSpeaking(){
+  const words = getAllWordsForGames();
+  if(!words.length){ showToast('So\'zlar yo\'q!'); return; }
+  SP = {pool:shuffle([...words]),idx:0,score:0,streak:0,listening:false,rec:null};
+  document.getElementById('sp-score').textContent=0;
+  document.getElementById('sp-streak').textContent=0;
+  document.getElementById('sp-total').textContent=SP.pool.length;
+  document.getElementById('sp-next-btn').style.display='none';
+  document.getElementById('sp-result').innerHTML='';
+  buildSPWord();
+}
+
+function buildSPWord(){
+  if(SP.idx >= SP.pool.length){ SP.pool=shuffle([...SP.pool]); SP.idx=0; }
+  const w = SP.pool[SP.idx];
+  document.getElementById('sp-word').textContent = w.word;
+  document.getElementById('sp-phonetic').textContent = w.phonetic || '';
+  document.getElementById('sp-translation').textContent = w.translation;
+  document.getElementById('sp-num').textContent = SP.idx+1;
+  document.getElementById('sp-result').innerHTML='';
+  document.getElementById('sp-heard').textContent='';
+  document.getElementById('sp-next-btn').style.display='none';
+  const btn = document.getElementById('sp-mic-btn');
+  btn.className='mic-btn off'; btn.textContent='🎤';
+  document.getElementById('sp-mic-label').textContent='Bosib so\'zni aytib ko\'ring';
+}
+
+function speakCurrentSPWord(){
+  const w = SP.pool[SP.idx];
+  if(w) speakText(w.word);
+}
+
+function toggleListening(){
+  if(!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)){
+    showToast('Brauzeringiz mikrofon funksiyasini qo\'llab-quvvatlamaydi');
+    return;
+  }
+  if(SP.listening){ stopListening(); return; }
+  startListening();
+}
+
+function startListening(){
+  const SRClass = window.SpeechRecognition || window.webkitSpeechRecognition;
+  SP.rec = new SRClass();
+  SP.rec.lang = 'en-US';
+  SP.rec.interimResults = true;
+  SP.rec.maxAlternatives = 5;
+  SP.listening = true;
+
+  const btn = document.getElementById('sp-mic-btn');
+  btn.className='mic-btn listening'; btn.textContent='⏹';
+  document.getElementById('sp-mic-label').textContent='Tinglanmoqda...';
+
+  SP.rec.onresult = (e)=>{
+    const results = Array.from(e.results[e.results.length-1]);
+    const heard = results.map(r=>r.transcript.trim().toLowerCase());
+    document.getElementById('sp-heard').textContent = '🔈 Eshitildi: "' + heard[0] + '"';
+    if(e.results[e.results.length-1].isFinal){
+      stopListening();
+      checkSPPronunciation(heard);
+    }
+  };
+  SP.rec.onerror = ()=>{ stopListening(); showToast('Mikrofon xatosi'); };
+  SP.rec.onend = ()=>{ if(SP.listening) stopListening(); };
+  SP.rec.start();
+}
+
+function stopListening(){
+  SP.listening=false;
+  if(SP.rec){ try{ SP.rec.stop(); }catch(e){} SP.rec=null; }
+  const btn = document.getElementById('sp-mic-btn');
+  btn.className='mic-btn off'; btn.textContent='🎤';
+  document.getElementById('sp-mic-label').textContent='Bosib so\'zni aytib ko\'ring';
+}
+
+function checkSPPronunciation(heardList){
+  const correct = SP.pool[SP.idx].word.toLowerCase().trim();
+  const matched = heardList.some(h=>{
+    const hClean = h.replace(/[^a-z\s]/g,'');
+    return hClean === correct || hClean.includes(correct) || correct.includes(hClean);
+  });
+  // Yaqinlik tekshiruvi (Levenshtein)
+  const closest = heardList.reduce((best,h)=>{
+    const d = levDist(h.replace(/[^a-z]/g,''), correct);
+    return d < best.d ? {d,h} : best;
+  },{d:999,h:''});
+  const closeEnough = closest.d <= Math.max(1, Math.floor(correct.length*0.3));
+
+  const res = document.getElementById('sp-result');
+  if(matched || closeEnough){
+    SP.score++; SP.streak++;
+    addXP(1);
+    document.getElementById('sp-score').textContent=SP.score;
+    document.getElementById('sp-streak').textContent=SP.streak;
+    const msgs = ['🎉 Zo\'r!','✅ To\'g\'ri!','👏 Ajoyib!','🔥 Perfect!'];
+    res.innerHTML=`<div style="text-align:center;background:rgba(79,223,138,.15);border:1px solid rgba(79,223,138,.3);border-radius:12px;padding:14px"><div style="font-size:28px">${msgs[Math.floor(Math.random()*msgs.length)]}</div><div style="font-size:13px;color:var(--green);font-weight:700;margin-top:4px">To'g'ri talaffuz!</div></div>`;
+  } else {
+    SP.streak=0;
+    document.getElementById('sp-streak').textContent=0;
+    res.innerHTML=`<div style="text-align:center;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:14px"><div style="font-size:24px">❌</div><div style="font-size:13px;color:var(--red);font-weight:700;margin-top:4px">Qaytadan urinib ko'ring</div><div style="font-size:12px;color:var(--muted);margin-top:4px">To'g'ri: <b style="color:var(--text)">${correct}</b></div></div>`;
+  }
+  document.getElementById('sp-next-btn').style.display='block';
+}
+
+function nextSPWord(){
+  SP.idx++;
+  buildSPWord();
+}
+
+// Levenshtein masofasi
+function levDist(a,b){
+  const m=a.length,n=b.length;
+  const dp=Array.from({length:m+1},(_,i)=>Array.from({length:n+1},(_,j)=>i||j));
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++)
+    dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[m][n];
+}
+
+// ================================================================
+// ⛓️ WORD CHAIN
+// ================================================================
+let WC = {chain:[],usedWords:new Set(),timer:null,time:30,score:0,started:false};
+
+function initWordChain(){
+  clearInterval(WC.timer);
+  WC = {chain:[],usedWords:new Set(),timer:null,time:60,score:0,started:false};
+  document.getElementById('wc-score').textContent=0;
+  document.getElementById('wc-count').textContent=0;
+  document.getElementById('wc-time').textContent=60;
+  document.getElementById('wc-chain').innerHTML='';
+  document.getElementById('wc-hint').textContent='';
+  document.getElementById('wc-last').textContent='Birinchi so\'zni kiriting';
+  document.getElementById('wc-inp').value='';
+  document.getElementById('wc-inp').focus();
+}
+
+function wc_inp_handler(inp){
+  // Real vaqt belgisi
+  const val = inp.value.trim().toLowerCase();
+  const hint = document.getElementById('wc-hint');
+  if(!val){ hint.textContent=''; return; }
+  if(WC.chain.length > 0){
+    const lastChar = WC.chain[WC.chain.length-1].slice(-1);
+    if(val[0] !== lastChar){
+      hint.textContent=`"${val[0]}" emas, "${lastChar}" harfidan boshlanishi kerak`;
+      hint.style.color='var(--orange)';
+    } else {
+      hint.textContent=''; 
+    }
+  }
+}
+
+function wcSubmit(){
+  const inp = document.getElementById('wc-inp');
+  const word = inp.value.trim().toLowerCase().replace(/[^a-z]/g,'');
+  if(!word){ return; }
+  const hint = document.getElementById('wc-hint');
+
+  // Mavjud so'zlar ichida bormi?
+  const allWords = getAllWordsForGames();
+  const found = allWords.find(w=>w.word.toLowerCase()===word);
+  if(!found){
+    hint.textContent=`"${word}" bu unitda mavjud emas!`;
+    hint.style.color='var(--red)'; return;
+  }
+  // Takror?
+  if(WC.usedWords.has(word)){
+    hint.textContent=`"${word}" allaqachon ishlatilgan!`;
+    hint.style.color='var(--red)'; return;
+  }
+  // Zanjir tekshiruvi
+  if(WC.chain.length > 0){
+    const lastChar = WC.chain[WC.chain.length-1].slice(-1);
+    if(word[0] !== lastChar){
+      hint.textContent=`"${lastChar}" harfidan boshlanishi kerak!`;
+      hint.style.color='var(--red)'; return;
+    }
+  }
+
+  // To'g'ri!
+  WC.chain.push(word);
+  WC.usedWords.add(word);
+  WC.score++;
+  addXP(1);
+  hint.textContent='';
+  document.getElementById('wc-score').textContent=WC.score;
+  document.getElementById('wc-count').textContent=WC.chain.length;
+  inp.value='';
+
+  // Taymer boshlash (birinchi so'zdan keyin)
+  if(!WC.started){
+    WC.started=true;
+    WC.timer=setInterval(()=>{
+      WC.time--;
+      document.getElementById('wc-time').textContent=WC.time;
+      if(WC.time<=0){ clearInterval(WC.timer); wcEnd(); }
+    },1000);
+  }
+
+  // So'ngi harf ko'rsatish
+  const lastChar = word.slice(-1).toUpperCase();
+  document.getElementById('wc-last').textContent=`Keyingisi "${lastChar}" harfidan boshlansin`;
+
+  // Zanjirni ko'rsatish
+  const chain = document.getElementById('wc-chain');
+  chain.innerHTML='';
+  WC.chain.slice(-6).forEach((w,i)=>{
+    if(i>0) chain.innerHTML+=`<span class="chain-arrow">→</span>`;
+    chain.innerHTML+=`<span class="chain-word">${w}</span>`;
+  });
+  chain.scrollLeft = chain.scrollWidth;
+  inp.focus();
+}
+
+function wcEnd(){
+  document.getElementById('wc-inp').disabled=true;
+  document.getElementById('wc-last').textContent=`🏁 Tugadi! ${WC.score} so'z to'g'ri kiritildi`;
+  showToast(`⛓️ So'z Zanjiri: ${WC.score} ball!`);
+}
+
+// ================================================================
+// 📝 KONTEKST O'YINI
+// ================================================================
+let CTX = {pool:[],idx:0,score:0,wrong:0};
+
+function initContext(){
+  const words = getAllWordsForGames().filter(w=>w.example && w.example.length > 5);
+  if(words.length < 4){ showToast('Bu unit uchun misol gaplar yetarli emas!'); return; }
+  CTX = {pool:shuffle([...words]),idx:0,score:0,wrong:0};
+  document.getElementById('ctx-score').textContent=0;
+  document.getElementById('ctx-wrong').textContent=0;
+  document.getElementById('ctx-total').textContent=Math.min(CTX.pool.length,10);
+  buildCTXQuestion();
+}
+
+function buildCTXQuestion(){
+  if(CTX.idx >= Math.min(CTX.pool.length,10)){
+    document.getElementById('ctx-sentence').innerHTML=`🎉 Tugadi! ${CTX.score}/${Math.min(CTX.pool.length,10)} ball`;
+    document.getElementById('ctx-opts').innerHTML='';
+    document.getElementById('ctx-hint').textContent='';
+    markPlayedToday('context');
+    return;
+  }
+  const correct = CTX.pool[CTX.idx];
+  document.getElementById('ctx-num').textContent=CTX.idx+1;
+  document.getElementById('ctx-res').textContent='';
+
+  // Gapdan so'zni olib blanks qo'yamiz
+  const ex = correct.example || `The word is ${correct.word}.`;
+  const regex = new RegExp('\\b'+correct.word+'\\b','i');
+  const blanked = ex.replace(regex, `<span class="ctx-blank">_____</span>`);
+  document.getElementById('ctx-sentence').innerHTML=blanked;
+  document.getElementById('ctx-hint').textContent=`(${correct.translation})`;
+
+  // Variantlar
+  const others = shuffle(CTX.pool.filter(w=>w.word!==correct.word)).slice(0,3);
+  const opts = shuffle([correct,...others]);
+  const c = document.getElementById('ctx-opts'); c.innerHTML='';
+  opts.forEach(o=>{
+    const el=document.createElement('div'); el.className='gopt'; el.textContent=o.word;
+    el.onclick=()=>{
+      c.querySelectorAll('.gopt').forEach(op=>op.style.pointerEvents='none');
+      if(o.word===correct.word){
+        el.classList.add('correct'); CTX.score++; addXP(1);
+        document.getElementById('ctx-score').textContent=CTX.score;
+        document.getElementById('ctx-res').textContent='✅ To\'g\'ri! +1 XP';
+        // Blanks ni to'ldiramiz
+        document.getElementById('ctx-sentence').innerHTML=
+          ex.replace(regex,`<span style="color:var(--green);font-weight:800">${correct.word}</span>`);
+      } else {
+        el.classList.add('wrong'); CTX.wrong++;
+        document.getElementById('ctx-wrong').textContent=CTX.wrong;
+        document.getElementById('ctx-res').textContent='❌ Noto\'g\'ri';
+        c.querySelectorAll('.gopt').forEach(op=>{if(op.textContent===correct.word)op.classList.add('correct');});
+        trackWordError(correct.word);
+      }
+      CTX.idx++;
+      setTimeout(buildCTXQuestion, 1000);
+    };
+    c.appendChild(el);
+  });
+}
+
+// ================================================================
+// 🎯 PRONUNCIATION SCORE
+// ================================================================
+let PS = {pool:[],idx:0,scores:[],best:0,rec:null,listening:false};
+
+function initPronScore(){
+  const words = getAllWordsForGames();
+  if(!words.length){ showToast('So\'zlar yo\'q!'); return; }
+  PS = {pool:shuffle([...words]),idx:0,scores:[],best:0,rec:null,listening:false};
+  document.getElementById('ps-total').textContent=PS.pool.length;
+  document.getElementById('ps-best').textContent=0;
+  document.getElementById('ps-avg').textContent=0;
+  document.getElementById('ps-ring').style.display='none';
+  document.getElementById('ps-next-btn').style.display='none';
+  document.getElementById('ps-heard').textContent='';
+  buildPSDots();
+  buildPSWord();
+}
+
+function buildPSDots(){
+  const dots = document.getElementById('ps-dots');
+  if(!dots) return;
+  dots.innerHTML='';
+  for(let i=0;i<Math.min(PS.pool.length,10);i++){
+    const d=document.createElement('div'); d.className='pron-dot';
+    if(PS.scores[i]!==undefined) d.className='pron-dot '+(PS.scores[i]>=70?'hit':'miss');
+    dots.appendChild(d);
+  }
+}
+
+function buildPSWord(){
+  if(PS.idx >= PS.pool.length){ psEnd(); return; }
+  const w = PS.pool[PS.idx];
+  document.getElementById('ps-word').textContent=w.word;
+  document.getElementById('ps-phonetic').textContent=w.phonetic||'';
+  document.getElementById('ps-translation').textContent=w.translation;
+  document.getElementById('ps-num').textContent=PS.idx+1;
+  document.getElementById('ps-ring').style.display='none';
+  document.getElementById('ps-next-btn').style.display='none';
+  document.getElementById('ps-heard').textContent='';
+  const prog = (PS.idx/PS.pool.length)*100;
+  document.getElementById('ps-prog').style.width=prog+'%';
+  const micBtn=document.getElementById('ps-mic-btn');
+  micBtn.className='mic-btn off'; micBtn.textContent='🎤';
+}
+
+function psListen(){
+  const w = PS.pool[PS.idx];
+  if(w) speakText(w.word);
+}
+
+function psMicToggle(){
+  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){
+    showToast('Brauzeringiz mikrofon funksiyasini qo\'llab-quvvatlamaydi'); return;
+  }
+  if(PS.listening){ psStopMic(); return; }
+  psStartMic();
+}
+
+function psStartMic(){
+  const SRC = window.SpeechRecognition||window.webkitSpeechRecognition;
+  PS.rec=new SRC(); PS.rec.lang='en-US'; PS.rec.maxAlternatives=5;
+  PS.listening=true;
+  const btn=document.getElementById('ps-mic-btn');
+  btn.className='mic-btn listening'; btn.textContent='⏹';
+
+  PS.rec.onresult=(e)=>{
+    const results=Array.from(e.results[e.results.length-1]);
+    const heard=results.map(r=>r.transcript.trim().toLowerCase());
+    const conf=results[0].confidence||0.5;
+    document.getElementById('ps-heard').textContent='🔈 "'+heard[0]+'"';
+    if(e.results[e.results.length-1].isFinal){
+      psStopMic();
+      calcPronScore(heard, conf);
+    }
+  };
+  PS.rec.onerror=()=>{ psStopMic(); };
+  PS.rec.onend=()=>{ if(PS.listening) psStopMic(); };
+  PS.rec.start();
+}
+
+function psStopMic(){
+  PS.listening=false;
+  if(PS.rec){ try{PS.rec.stop();}catch(e){} PS.rec=null; }
+  const btn=document.getElementById('ps-mic-btn');
+  btn.className='mic-btn off'; btn.textContent='🎤';
+}
+
+function calcPronScore(heardList, confidence){
+  const correct=PS.pool[PS.idx].word.toLowerCase();
+  // Eng yaqin natijani topamiz
+  let bestScore=0;
+  heardList.forEach(h=>{
+    const hClean=h.replace(/[^a-z]/g,'');
+    const dist=levDist(hClean,correct);
+    const maxLen=Math.max(hClean.length,correct.length,1);
+    const similarity=Math.round((1-dist/maxLen)*100);
+    const confBonus=Math.round((confidence||0.5)*20);
+    const score=Math.min(100,similarity+confBonus);
+    if(score>bestScore) bestScore=score;
+  });
+  // Bonus: to'liq mos kelsa 100%
+  if(heardList.some(h=>h.replace(/[^a-z]/g,'')===correct)) bestScore=100;
+
+  PS.scores.push(bestScore);
+  if(bestScore>PS.best){ PS.best=bestScore; document.getElementById('ps-best').textContent=bestScore; }
+  const avg=Math.round(PS.scores.reduce((s,v)=>s+v,0)/PS.scores.length);
+  document.getElementById('ps-avg').textContent=avg;
+
+  // Ring ko'rsatamiz
+  const ring=document.getElementById('ps-ring');
+  const ringEl=document.getElementById('ps-ring-el');
+  const ringPct=document.getElementById('ps-ring-pct');
+  const ringMsg=document.getElementById('ps-ring-msg');
+  ring.style.display='block';
+  ringPct.textContent=bestScore+'%';
+  if(bestScore>=80){
+    ringEl.className='score-ring good';
+    ringMsg.innerHTML=`<span style="color:var(--green)">🌟 Ajoyib talaffuz!</span>`;
+    addXP(bestScore>=90?2:1);
+  } else if(bestScore>=50){
+    ringEl.className='score-ring ok';
+    ringMsg.innerHTML=`<span style="color:var(--gold)">👍 Yaxshi, davom eting!</span>`;
+    addXP(1);
+  } else {
+    ringEl.className='score-ring bad';
+    ringMsg.innerHTML=`<span style="color:var(--red)">💪 Qaytadan mashq qiling</span>`;
+    trackWordError(PS.pool[PS.idx].word);
+  }
+  buildPSDots();
+  document.getElementById('ps-next-btn').style.display='block';
+}
+
+function psNext(){
+  PS.idx++;
+  buildPSWord();
+  buildPSDots();
+}
+
+function psEnd(){
+  const avg=PS.scores.length?Math.round(PS.scores.reduce((s,v)=>s+v,0)/PS.scores.length):0;
+  document.getElementById('ps-word').textContent=`${avg}% o'rtacha`;
+  document.getElementById('ps-phonetic').textContent='';
+  document.getElementById('ps-translation').textContent='Tugadi! 🎉';
+  showToast(`🎯 Talaffuz O'rtacha: ${avg}%`);
+}
+
+// ================================================================
+// 🌳 SO'Z OILASI
+// ================================================================
+// So'z oilasini hosil qilish — bu yerda oddiy qoidalar asosida
+const WORD_SUFFIXES = {
+  noun:      ['{w}tion','{w}ness','{w}ity','{w}ment','{w}er','{w}or'],
+  adj:       ['{w}ful','{w}less','{w}ous','{w}al','{w}ic','un{w}'],
+  adv:       ['{w}ly'],
+  verb:      ['{w}ing','{w}ed','{w}s','re{w}'],
+};
+
+// Haqiqiy so'z oilalari (misol ma'lumotlar)
+const WORD_FAMILIES_DB = {
+  'afraid':    [{f:'afraid',t:'adjective',tr:'qo\'rqqan'},{f:'fear',t:'noun',tr:'qo\'rquv'},{f:'fearful',t:'adjective',tr:'qo\'rqinchli'},{f:'fearlessly',t:'adverb',tr:'qo\'rqmasdan'}],
+  'beautiful': [{f:'beautiful',t:'adjective',tr:'go\'zal'},{f:'beauty',t:'noun',tr:'go\'zallik'},{f:'beautifully',t:'adverb',tr:'go\'zal tarzda'},{f:'beautify',t:'verb',tr:'bezamoq'}],
+  'happy':     [{f:'happy',t:'adjective',tr:'baxtli'},{f:'happiness',t:'noun',tr:'baxt'},{f:'happily',t:'adverb',tr:'baxtli holda'},{f:'unhappy',t:'adjective',tr:'baxtli emas'}],
+  'care':      [{f:'care',t:'verb/noun',tr:'g\'amxo\'rlik'},{f:'careful',t:'adjective',tr:'ehtiyotkor'},{f:'carefully',t:'adverb',tr:'ehtiyotkorlik bilan'},{f:'careless',t:'adjective',tr:'beparvo'},{f:'caretaker',t:'noun',tr:'qo\'riqchi'}],
+  'act':       [{f:'act',t:'verb/noun',tr:'harakat'},{f:'action',t:'noun',tr:'amal'},{f:'active',t:'adjective',tr:'faol'},{f:'actively',t:'adverb',tr:'faol ravishda'},{f:'actor',t:'noun',tr:'aktyor'},{f:'react',t:'verb',tr:'munosabat bildirmoq'}],
+  'know':      [{f:'know',t:'verb',tr:'bilmoq'},{f:'knowledge',t:'noun',tr:'bilim'},{f:'known',t:'adjective',tr:'ma\'lum'},{f:'unknown',t:'adjective',tr:'noma\'lum'},{f:'knowing',t:'adjective',tr:'bilimli'}],
+  'use':       [{f:'use',t:'verb/noun',tr:'ishlatmoq'},{f:'useful',t:'adjective',tr:'foydali'},{f:'useless',t:'adjective',tr:'foydasiz'},{f:'usage',t:'noun',tr:'qo\'llanish'},{f:'user',t:'noun',tr:'foydalanuvchi'}],
+};
+
+let WF = {pool:[],idx:0,learned:0};
+
+function initWordFamily(){
+  const words = getAllWordsForGames();
+  WF = {pool:shuffle([...words]),idx:0,learned:0};
+  document.getElementById('wf-learned').textContent=0;
+  document.getElementById('wf-total').textContent=Math.min(WF.pool.length,10);
+  buildWFQuestion();
+}
+
+function buildWFQuestion(){
+  if(WF.idx >= Math.min(WF.pool.length,10)){
+    document.getElementById('wf-root').textContent='🎉 Tugadi!';
+    document.getElementById('wf-translation').textContent=WF.learned+' so\'z oilasi o\'rganildi';
+    document.getElementById('wf-opts').innerHTML='';
+    return;
+  }
+  const w = WF.pool[WF.idx];
+  document.getElementById('wf-num').textContent=WF.idx+1;
+  document.getElementById('wf-root').textContent=w.word;
+  document.getElementById('wf-translation').textContent=w.translation;
+  document.getElementById('wf-res').textContent='';
+  document.getElementById('wf-family-display').style.display='none';
+  document.getElementById('wf-next-btn').style.display='none';
+
+  // So'z oilasini topamiz (DB dan yoki avtomatik)
+  const family = getWordFamily(w.word, w.part_of_speech);
+  // Savollar: oila a'zolaridan birini tanlash
+  // 4 ta variant: 3 ta boshqa so'z + oilaning bitta a'zosi
+  const correctForm = family.find(f=>f.f!==w.word) || family[0];
+  if(!correctForm || family.length < 2){
+    // Bu so'zda oila yo'q — keyingisiga o'tamiz
+    WF.idx++; buildWFQuestion(); return;
+  }
+
+  const allWords = getAllWordsForGames();
+  const others = shuffle(allWords.filter(x=>x.word!==w.word&&x.word!==correctForm.f)).slice(0,3);
+  const opts = shuffle([
+    {word:correctForm.f, correct:true, type:correctForm.t},
+    ...others.map(x=>({word:x.word, correct:false}))
+  ]);
+
+  const c = document.getElementById('wf-opts'); c.innerHTML='';
+  const question=document.createElement('div');
+  question.style='font-size:12px;color:var(--muted);margin-bottom:8px;text-align:center';
+  question.textContent=`"${w.word}" ning ${correctForm.t} shakli qaysi?`;
+  c.appendChild(question);
+
+  opts.forEach(o=>{
+    const el=document.createElement('div'); el.className='wf-card';
+    el.innerHTML=`<div><div class="wf-form">${o.word}</div>${o.type?`<div class="wf-type">${o.type}</div>`:''}
+    </div><span style="color:var(--muted);font-size:16px">›</span>`;
+    el.onclick=()=>{
+      c.querySelectorAll('.wf-card').forEach(x=>x.style.pointerEvents='none');
+      if(o.correct){
+        el.style.borderColor='var(--green)'; el.style.background='rgba(79,223,138,.1)';
+        document.getElementById('wf-res').innerHTML=`<span style="color:var(--green)">✅ To'g'ri! +1 XP</span>`;
+        WF.learned++; addXP(1);
+        document.getElementById('wf-learned').textContent=WF.learned;
+        // To'liq oilani ko'rsatamiz
+        showWordFamily(w.word, family);
+      } else {
+        el.style.borderColor='var(--red)'; el.style.background='rgba(239,68,68,.1)';
+        document.getElementById('wf-res').innerHTML=`<span style="color:var(--red)">❌ Noto'g'ri</span>`;
+        c.querySelectorAll('.wf-card').forEach(x=>{ if(x.querySelector('.wf-form')?.textContent===correctForm.f){ x.style.borderColor='var(--green)'; } });
+        showWordFamily(w.word, family);
+        trackWordError(w.word);
+      }
+      document.getElementById('wf-next-btn').style.display='block';
+    };
+    c.appendChild(el);
+  });
+}
+
+function showWordFamily(word, family){
+  const disp = document.getElementById('wf-family-display');
+  const all = document.getElementById('wf-all-forms');
+  disp.style.display='block';
+  all.innerHTML = family.map(f=>`
+    <div class="wf-card" onclick="speakText('${f.f}')" style="cursor:pointer">
+      <div>
+        <div class="wf-form">${f.f} <span style="font-size:10px;color:var(--muted)">(${f.t})</span></div>
+        <div class="wf-ex">${f.tr}</div>
+      </div>
+      <span style="font-size:16px">🔊</span>
+    </div>`).join('');
+}
+
+function getWordFamily(word, pos){
+  // DB dan izlaymiz
+  const w=word.toLowerCase();
+  if(WORD_FAMILIES_DB[w]) return WORD_FAMILIES_DB[w];
+  // Avtomatik hosil qilish — oddiy qoidalar
+  const family = [{f:word, t:pos||'word', tr:'asl shakl'}];
+  if(pos==='verb'||pos==='noun'||!pos){
+    if(!w.endsWith('e')) family.push({f:w+'ing',t:'gerund/adj',tr:'-ing shakli'});
+    if(!w.endsWith('e')) family.push({f:w+'ed',t:'past tense',tr:'o\'tgan zamon'});
+    family.push({f:w+'er',t:'noun',tr:'ot shakli'});
+    family.push({f:w+'able',t:'adjective',tr:'sifat shakli'});
+  }
+  if(pos==='adjective'||!pos){
+    family.push({f:w+'ly',t:'adverb',tr:'ravish shakli'});
+    family.push({f:w+'ness',t:'noun',tr:'ot shakli'});
+    family.push({f:'un'+w,t:'adjective',tr:'qarama-qarshi'});
+  }
+  return family.slice(0,5);
+}
+
+function wfNext(){
+  WF.idx++;
+  buildWFQuestion();
+}
+
+// ================================================================
+// openModal qo'shimchalari
+// ================================================================
+// Yangi o'yinlarni openModal ga ulash
+const _origOMNew = openModal;
+function openModal(id){
+  _origOMNew(id);
+  if(id==='modal-speaking') initSpeaking();
+  if(id==='modal-word-chain') initWordChain();
+  if(id==='modal-context') initContext();
+  if(id==='modal-pron-score') initPronScore();
+  if(id==='modal-word-family') initWordFamily();
+}
+
+// closeModal qo'shimchalari
+const _origCMNew = closeModal;
+function closeModal(e,id){
+  _origCMNew(e,id);
+  if(id==='modal-speaking'){ stopListening(); }
+  if(id==='modal-pron-score'){ psStopMic(); }
+  if(id==='modal-word-chain'){ clearInterval(WC.timer); }
+}
+
 // ===== END =====
 </script>
+
+<!-- ==================== SPEAKING PRACTICE ==================== -->
+<div class="overlay" id="modal-speaking" onclick="closeModal(event,'modal-speaking')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-speaking')">✕</div>
+    <div class="sb">
+      <div class="st">🎤 Speaking Practice</div>
+      <div class="gsbar">
+        <span>✅ <span id="sp-score">0</span></span>
+        <span>📝 <span id="sp-num">0</span>/<span id="sp-total">0</span></span>
+        <span>🔥 <span id="sp-streak">0</span></span>
+      </div>
+      <div id="sp-word" class="speak-word">—</div>
+      <div id="sp-phonetic" class="speak-phonetic"></div>
+      <div id="sp-translation" class="speak-translation"></div>
+      <div style="text-align:center;margin-bottom:16px">
+        <button onclick="speakCurrentSPWord()" style="background:none;border:1px solid var(--border);border-radius:20px;color:var(--blue);padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">
+          🔊 Eshitish
+        </button>
+      </div>
+      <div id="sp-mic-wrap" style="text-align:center;margin-bottom:16px">
+        <div class="mic-btn off" id="sp-mic-btn" onclick="toggleListening()">🎤</div>
+        <div id="sp-mic-label" style="font-size:12px;color:var(--muted);margin-top:10px">Bosib so'zni aytib ko'ring</div>
+      </div>
+      <div id="sp-result" style="min-height:60px;margin-bottom:10px"></div>
+      <div id="sp-heard" style="text-align:center;font-size:12px;color:var(--muted);margin-bottom:10px"></div>
+      <button id="sp-next-btn" onclick="nextSPWord()" style="display:none;width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        Keyingisi →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== WORD CHAIN ==================== -->
+<div class="overlay" id="modal-word-chain" onclick="closeModal(event,'modal-word-chain')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-word-chain')">✕</div>
+    <div class="sb">
+      <div class="st">⛓️ So'z Zanjiri</div>
+      <div class="gsbar">
+        <span>⛓️ <span id="wc-count">0</span> so'z</span>
+        <span>⏱ <span id="wc-time">30</span>s</span>
+        <span>✅ <span id="wc-score">0</span></span>
+      </div>
+      <div id="wc-rule" style="font-size:12px;color:var(--muted);margin-bottom:10px;text-align:center">
+        Har yangi so'z avvalgisining oxirgi harfidan boshlansin
+      </div>
+      <div id="wc-chain" class="chain-display"></div>
+      <div id="wc-last" class="chain-last">Birinchi so'zni kiriting</div>
+      <input id="wc-inp" class="chain-inp" placeholder="So'z yozing..." oninput="wc_inp_handler(this)"
+        onkeydown="if(event.key==='Enter')wcSubmit()">
+      <div id="wc-hint" style="min-height:20px;text-align:center;font-size:12px;color:var(--red);margin-bottom:8px"></div>
+      <button onclick="wcSubmit()" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        ✓ Tasdiqlash
+      </button>
+      <div style="margin-top:12px">
+        <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">QOIDA:</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.6">
+          • Faqat <b style="color:var(--text)">o'rganilgan unitdagi so'zlar</b> qabul qilinadi<br>
+          • Har so'z avvalgisining <b style="color:var(--accent)">oxirgi harfidan</b> boshlansin<br>
+          • Bir so'zni ikki marta ishlatib bo'lmaydi
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTEXT GAME ==================== -->
+<div class="overlay" id="modal-context" onclick="closeModal(event,'modal-context')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-context')">✕</div>
+    <div class="sb">
+      <div class="st">📝 Kontekst O'yini</div>
+      <div class="gsbar">
+        <span>✅ <span id="ctx-score">0</span></span>
+        <span>❌ <span id="ctx-wrong">0</span></span>
+        <span>📝 <span id="ctx-num">1</span>/<span id="ctx-total">10</span></span>
+      </div>
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px">Bo'sh joyga to'g'ri so'zni qo'ying</div>
+      <div class="ctx-sentence" id="ctx-sentence">—</div>
+      <div class="ctx-hint" id="ctx-hint">—</div>
+      <div class="gopts" id="ctx-opts"></div>
+      <div id="ctx-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRONUNCIATION SCORE ==================== -->
+<div class="overlay" id="modal-pron-score" onclick="closeModal(event,'modal-pron-score')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-pron-score')">✕</div>
+    <div class="sb">
+      <div class="st">🎯 Talaffuz Score</div>
+      <div class="gsbar">
+        <span>🏆 <span id="ps-best">0</span>%</span>
+        <span>📊 O'rt: <span id="ps-avg">0</span>%</span>
+        <span>📝 <span id="ps-num">0</span>/<span id="ps-total">0</span></span>
+      </div>
+      <!-- Streak dots -->
+      <div class="pron-streak" id="ps-dots"></div>
+      <div class="pron-progress"><div class="pron-prog-fill" id="ps-prog" style="width:0%"></div></div>
+
+      <div id="ps-word" class="speak-word">—</div>
+      <div id="ps-phonetic" class="speak-phonetic"></div>
+      <div id="ps-translation" class="speak-translation"></div>
+
+      <!-- Score ring -->
+      <div id="ps-ring" style="display:none;margin-bottom:14px">
+        <div class="score-ring" id="ps-ring-el">
+          <span style="font-size:22px;font-weight:800" id="ps-ring-pct">0%</span>
+          <span style="font-size:10px;color:var(--muted)" id="ps-ring-label">skor</span>
+        </div>
+        <div id="ps-ring-msg" style="text-align:center;font-size:13px;font-weight:700;margin-top:6px"></div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:14px">
+        <button onclick="psListen()" style="flex:1;padding:11px;background:var(--s2);border:1px solid var(--border);border-radius:11px;color:var(--blue);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Eshitish</button>
+        <button class="mic-btn" id="ps-mic-btn" onclick="psMicToggle()" style="width:52px;height:52px;font-size:22px;flex-shrink:0">🎤</button>
+      </div>
+      <div id="ps-heard" style="text-align:center;font-size:12px;color:var(--muted);min-height:18px;margin-bottom:8px"></div>
+      <button id="ps-next-btn" onclick="psNext()" style="display:none;width:100%;padding:12px;background:linear-gradient(135deg,var(--green),#22a06b);border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        Keyingisi →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== WORD FAMILY ==================== -->
+<div class="overlay" id="modal-word-family" onclick="closeModal(event,'modal-word-family')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-word-family')">✕</div>
+    <div class="sb">
+      <div class="st">🌳 So'z Oilasi</div>
+      <div class="gsbar">
+        <span>✅ <span id="wf-learned">0</span> o'rganildi</span>
+        <span>📝 <span id="wf-num">1</span>/<span id="wf-total">10</span></span>
+      </div>
+      <div id="wf-root" class="wf-root">—</div>
+      <div id="wf-translation" class="wf-translation">—</div>
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">SO'Z OILASINI TOPING:</div>
+      <div id="wf-opts" style="display:flex;flex-direction:column;gap:7px;margin-bottom:12px"></div>
+      <div id="wf-res" style="text-align:center;font-size:13px;min-height:20px;margin-bottom:8px"></div>
+      <div id="wf-family-display" style="display:none;background:var(--s2);border-radius:13px;padding:14px;margin-bottom:12px">
+        <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">📖 TO'LIQ OILA:</div>
+        <div id="wf-all-forms"></div>
+      </div>
+      <button id="wf-next-btn" onclick="wfNext()" style="display:none;width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        Keyingisi →
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- PAYMENT MODAL -->
 <div class="overlay" id="modal-payment" onclick="closeModal(event,'modal-payment')">
