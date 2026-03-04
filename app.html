@@ -8,16 +8,25 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0d1117;--s1:#161b27;--s2:#1c2438;--s3:#232d42;
-  --border:#2a3550;--text:#e8f0fe;--muted:#7a8fad;
+  --bg:#0f1219;--s1:#171d2e;--s2:#1e2540;--s3:#263050;
+  --border:#2d3a56;--text:#e6eeff;--muted:#7a8fad;
   --accent:#7c5af6;--al:#a07cf8;
   --blue:#4f9cf9;--green:#4fdf8a;--purple:#c084fc;
   --orange:#f97b4f;--gold:#f5c542;--red:#f85149;
 }
+body.light-mode{
+  --bg:#eef2ff;--s1:#ffffff;--s2:#e4eafb;--s3:#d6dff5;
+  --border:#bfccee;--text:#12183a;--muted:#5a6a99;
+  --accent:#6040e8;--al:#8060f0;
+}
+.theme-btn{background:none;border:1.5px solid var(--border);border-radius:20px;padding:4px 10px;font-size:14px;cursor:pointer;color:var(--text);font-family:'Nunito',sans-serif;transition:all .2s}
+.theme-btn:hover{border-color:var(--accent);background:rgba(124,90,246,.1)}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;
-  background-image:radial-gradient(ellipse 60% 40% at 0% 0%,rgba(124,90,246,.07) 0,transparent 60%),
-    radial-gradient(ellipse 50% 50% at 100% 100%,rgba(192,132,252,.06) 0,transparent 60%);}
+  background-image:radial-gradient(ellipse 60% 40% at 0% 0%,rgba(124,90,246,.08) 0,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 100%,rgba(192,132,252,.07) 0,transparent 60%);}
+body.light-mode{background-image:radial-gradient(ellipse 60% 40% at 0% 0%,rgba(96,64,232,.05) 0,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 100%,rgba(128,96,240,.04) 0,transparent 60%);}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(rgba(124,90,246,.03) 1px,transparent 1px),
     linear-gradient(90deg,rgba(124,90,246,.03) 1px,transparent 1px);background-size:32px 32px;}
@@ -871,7 +880,7 @@ const ONLINE_PLAYERS = [
   <div>
     <div class="topbar">
       <div class="tb-row">
-        <div class="tb-av" id="tb-av">🤖</div>
+        <div class="tb-av" id="tb-av" style="cursor:pointer" onclick="openModal('modal-profile-menu')" title="Profil">🤖</div>
         <div class="tb-info">
           <div class="tb-name" id="tb-name">—</div>
           <div class="tb-sub">
@@ -879,8 +888,10 @@ const ONLINE_PLAYERS = [
             <span id="tb-xp">0 XP</span>
           </div>
         </div>
-        <div class="tb-right">
-          <div class="streak">🔥 <span id="tb-streak">1</span></div>
+        <div class="tb-right" style="display:flex;align-items:center;gap:7px">
+          <div class="streak">🔥 <span id="tb-streak">0</span></div>
+          <button class="theme-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Rejim o'zgartirish">🌙</button>
+          <button class="theme-btn" onclick="logoutUser()" title="Chiqish" style="color:var(--red);border-color:rgba(248,81,73,.3)">🚪</button>
         </div>
       </div>
     </div>
@@ -1086,10 +1097,7 @@ const ONLINE_PLAYERS = [
             <div class="prem-lock">💎</div>
             <div class="g-icon">🎤</div><div class="g-name">Speaking</div><div class="g-desc">Mikrofon bilan</div>
           </div>
-          <div class="game-card" onclick="openPremiumGame('pron-score')" style="position:relative">
-            <div class="prem-lock">💎</div>
-            <div class="g-icon">🎯</div><div class="g-name">Talaffuz Score</div><div class="g-desc">0–100% baho</div>
-          </div>
+          
           <div class="game-card" onclick="openPremiumGame('word-family')" style="position:relative">
             <div class="prem-lock">💎</div>
             <div class="g-icon">🌳</div><div class="g-name">So'z Oilasi</div><div class="g-desc">Barcha shakllar</div>
@@ -1179,7 +1187,7 @@ const ONLINE_PLAYERS = [
             <button onclick="openPremiumGame('daily')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">🌟</span> Daily Challenge</button>
             <button onclick="openPremiumGame('weak')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">⚠️</span> Zaif So'zlar</button>
             <button onclick="openPremiumGame('speaking')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(79,156,249,.3)"><span style="font-size:18px">🎤</span> Speaking Practice</button>
-            <button onclick="openPremiumGame('pron-score')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(79,223,138,.3)"><span style="font-size:18px">🎯</span> Talaffuz Score</button>
+            
             <button onclick="openPremiumGame('word-chain')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(124,90,246,.3)"><span style="font-size:18px">⛓️</span> So'z Zanjiri</button>
             <button onclick="openPremiumGame('context')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(79,156,249,.3)"><span style="font-size:18px">📝</span> Kontekst O'yini</button>
             <button onclick="openPremiumGame('word-family')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(192,132,252,.3)"><span style="font-size:18px">🌳</span> So'z Oilasi</button>
@@ -1390,6 +1398,8 @@ window.addEventListener('DOMContentLoaded', async ()=>{
   buildBattleUI();
   updateStats();
   initPremiumFeatures();
+  try{updateDayStreak();}catch(e){}
+  applyTheme();
 });
 
 function loadTopbar(){
@@ -1699,7 +1709,48 @@ function addXP(n){
 }
 function saveUser(){
   localStorage.setItem('ep_user', JSON.stringify(U));
-  sessionStorage.setItem('ep_user', JSON.stringify(U)); // backup for same-tab compatibility
+  sessionStorage.setItem('ep_user', JSON.stringify(U));
+}
+
+function updatePMtheme(){
+  const isLight=document.body.classList.contains('light-mode');
+  const db=document.getElementById('pm-dark-btn');
+  const lb=document.getElementById('pm-light-btn');
+  if(db&&lb){
+    if(isLight){
+      db.style.borderColor='var(--border)';db.style.background='var(--s1)';
+      lb.style.borderColor='var(--accent)';lb.style.background='rgba(124,90,246,.15)';
+    } else {
+      db.style.borderColor='var(--accent)';db.style.background='rgba(124,90,246,.15)';
+      lb.style.borderColor='var(--border)';lb.style.background='var(--s1)';
+    }
+  }
+}
+
+function applyTheme(){
+  const theme=localStorage.getItem('ep_theme')||'dark';
+  if(theme==='light'){
+    document.body.classList.add('light-mode');
+    const btn=document.getElementById('theme-toggle-btn');
+    if(btn)btn.textContent='☀️';
+  } else {
+    document.body.classList.remove('light-mode');
+    const btn=document.getElementById('theme-toggle-btn');
+    if(btn)btn.textContent='🌙';
+  }
+}
+
+function toggleTheme(){
+  const isLight=document.body.classList.contains('light-mode');
+  localStorage.setItem('ep_theme',isLight?'dark':'light');
+  applyTheme();
+}
+
+function logoutUser(){
+  if(!confirm('Profildan chiqmoqchimisiz?')) return;
+  localStorage.removeItem('ep_user');
+  sessionStorage.removeItem('ep_user');
+  window.location.href='register.html';
 }
 function showXP(txt){
   const el=document.createElement('div');el.className='xp-pop';el.textContent=txt;
@@ -2246,8 +2297,15 @@ let BT={timer:null,myScore:0,oppScore:0,time:30,answered:false,isBot:false,opp:n
 
 function buildBattleUI(){
   document.getElementById('bh-me-name').textContent = U.name;
-  if(U.avatarUrl){
-    document.getElementById('bh-me-av').innerHTML=`<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+  const meAv=document.getElementById('bh-me-av');
+  if(meAv){
+    if(U.avatarUrl){
+      meAv.innerHTML=`<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+    } else if(U.avatarEmoji){
+      meAv.textContent=U.avatarEmoji;
+    } else {
+      meAv.textContent='🤖';
+    }
   }
   document.getElementById('bw').textContent=U.battleWins||0;
   document.getElementById('bl').textContent=U.battleLosses||0;
@@ -2526,9 +2584,19 @@ function openModal(id){
     document.getElementById('pay-humo').style.background='var(--s2)';
   }
   if(id==='modal-weak'){ buildWeakWords(); }
+  if(id==='modal-profile-menu'){
+    const pmAv=document.getElementById('pm-av');
+    if(pmAv){
+      if(U.avatarUrl)pmAv.innerHTML=`<img src="${U.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`;
+      else pmAv.textContent=U.avatarEmoji||'🤖';
+    }
+    const pmN=document.getElementById('pm-name');if(pmN)pmN.textContent=U.name||'—';
+    const pmL=document.getElementById('pm-level');if(pmL)pmL.textContent={beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'}[U.level]||'—';
+    const pmX=document.getElementById('pm-xp');if(pmX)pmX.textContent=(U.xp||0)+' XP';
+    updatePMtheme();
+  }
   // YANGI O'YINLAR
   if(id==='modal-speaking') try{initSpeaking();}catch(e){}
-  if(id==='modal-pron-score') try{initPronScore();}catch(e){}
   if(id==='modal-word-chain') try{initWordChain();}catch(e){}
   if(id==='modal-context') try{initContext();}catch(e){}
   if(id==='modal-word-family') try{initWordFamily();}catch(e){}
@@ -2945,19 +3013,8 @@ function buildWeakWords(){
 }
 
 function practiceWeak(){
-  const errors = U.wordErrors || {};
-  const weakWords = Object.keys(errors).slice(0,10);
-  if(!weakWords.length){ showToast('Xatolar yo\'q!'); return; }
-  const pool = weakWords.map(word=>{
-    return getAllWordsFallback(U.level).find(w=>w.word===word);
-  }).filter(Boolean);
-  if(pool.length<2){ showToast('Yetarli so\'z yo\'q!'); return; }
-  currentUnitWords = pool;
-  cardIdx=0; cardFlipped=false;
-  updateCard();
   closeModal(null,'modal-weak');
-  switchTabByName('home');
-  showToast('Zaif so\'zlar yuklandi!');
+  openWeakQuiz();
 }
 
 // ===== CUSTOM WORDS =====
@@ -3174,6 +3231,84 @@ function trackWordError(word){
   if(!U.wordErrors) U.wordErrors={};
   U.wordErrors[word]=(U.wordErrors[word]||0)+1;
   saveUser();
+  // 10 yoki 15 ta bo'lganda quiz taklif qilish
+  const count=Object.keys(U.wordErrors).length;
+  if(count===10||count===15){
+    setTimeout(()=>{
+      showToast('⚠️ '+count+' ta zaif so\'z! Quiz boshlaymizmi?');
+      setTimeout(()=>openWeakQuiz(),1800);
+    },500);
+  }
+}
+
+let WQ={pool:[],idx:0,score:0,wrong:0};
+
+function openWeakQuiz(){
+  const errors=U.wordErrors||{};
+  const sorted=Object.entries(errors).sort((a,b)=>b[1]-a[1]);
+  if(sorted.length<3){showToast('Kamida 3 ta xato kerak!');return;}
+  // So'zlarni topish (unit so'zlari + fallback)
+  const allWords=getAllWordsForGames();
+  const pool=sorted.map(([w])=>{
+    return allWords.find(x=>x.word===w)||{word:w,translation:'?',phonetic:''};
+  }).filter(x=>x.translation&&x.translation!=='?');
+  if(pool.length<3){showToast('Zaif so\'zlar topilmadi!');return;}
+  WQ={pool:shuffle(pool.slice(0,Math.min(pool.length,15))),idx:0,score:0,wrong:0};
+  const tot=document.getElementById('wq-total');if(tot)tot.textContent=WQ.pool.length;
+  const sc=document.getElementById('wq-score');if(sc)sc.textContent=0;
+  const wr=document.getElementById('wq-wrong');if(wr)wr.textContent=0;
+  wqBuild();
+  openModal('modal-weak-quiz');
+}
+
+function wqBuild(){
+  if(WQ.idx>=WQ.pool.length){
+    const wd=document.getElementById('wq-word');
+    if(wd)wd.textContent='🎉 Tugadi!';
+    const ph=document.getElementById('wq-phonetic');if(ph)ph.textContent='';
+    const opts=document.getElementById('wq-opts');if(opts)opts.innerHTML='';
+    const res=document.getElementById('wq-res');
+    if(res)res.innerHTML=`<div style="text-align:center;font-size:14px;font-weight:800;color:var(--green)">
+      ${WQ.score}/${WQ.pool.length} to'g'ri · ${WQ.score*2} XP!</div>`;
+    try{addXP(WQ.score*2);}catch(e){}
+    return;
+  }
+  const correct=WQ.pool[WQ.idx];
+  const nm=document.getElementById('wq-num');if(nm)nm.textContent=WQ.idx+1;
+  const wd=document.getElementById('wq-word');if(wd)wd.textContent=correct.word;
+  const ph=document.getElementById('wq-phonetic');if(ph)ph.textContent=correct.phonetic||'';
+  const res=document.getElementById('wq-res');if(res)res.textContent="So'zning tarjimasini toping:";
+  const allWords=getAllWordsForGames();
+  const others=shuffle(allWords.filter(w=>w.word!==correct.word&&w.translation)).slice(0,3);
+  if(others.length<3){WQ.idx++;wqBuild();return;}
+  const opts=shuffle([correct,...others]);
+  const c=document.getElementById('wq-opts');if(!c)return;
+  c.innerHTML='';
+  opts.forEach(o=>{
+    const el=document.createElement('div');el.className='gopt';
+    el.textContent=o.translation||o.word;
+    el.onclick=()=>{
+      c.querySelectorAll('.gopt').forEach(x=>x.style.pointerEvents='none');
+      if(o.word===correct.word){
+        el.classList.add('correct');WQ.score++;
+        const sc=document.getElementById('wq-score');if(sc)sc.textContent=WQ.score;
+        const res2=document.getElementById('wq-res');if(res2)res2.textContent='✅ To\'g\'ri! +2 XP';
+        // Xatoni kamaytirish
+        if(U.wordErrors&&U.wordErrors[correct.word]>0){
+          U.wordErrors[correct.word]--;
+          if(U.wordErrors[correct.word]<=0)delete U.wordErrors[correct.word];
+          saveUser();
+        }
+      }else{
+        el.classList.add('wrong');WQ.wrong++;
+        const wr=document.getElementById('wq-wrong');if(wr)wr.textContent=WQ.wrong;
+        const res2=document.getElementById('wq-res');if(res2)res2.textContent='❌ Noto\'g\'ri. To\'g\'ri: '+correct.translation;
+        c.querySelectorAll('.gopt').forEach(x=>{if(x.textContent===correct.translation)x.classList.add('correct');});
+      }
+      WQ.idx++;setTimeout(wqBuild,1200);
+    };
+    c.appendChild(el);
+  });
 }
 
 // ============================================================
@@ -3512,12 +3647,45 @@ function checkPremium(modalId){
 // ============================================================
 // WEEKLY ACTIVITY TRACKER
 // ============================================================
+function getTodayStr(){
+  const d=new Date();
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+function updateDayStreak(){
+  const today=getTodayStr();
+  if(!U.lastStreakDate){
+    // Birinchi kun
+    U.lastStreakDate=today;
+    U.streak=1;
+  } else if(U.lastStreakDate===today){
+    // Bugun allaqachon hisoblangan
+  } else {
+    // Kecha bormi?
+    const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
+    const yStr=yesterday.getFullYear()+'-'+(yesterday.getMonth()+1)+'-'+yesterday.getDate();
+    if(U.lastStreakDate===yStr){
+      U.streak=(U.streak||0)+1; // Streak davom etmoqda
+    } else {
+      U.streak=1; // Streak uzildi, qaytadan
+    }
+    U.lastStreakDate=today;
+  }
+  saveUser();
+  // UI yangilash
+  const el=document.getElementById('tb-streak');
+  if(el)el.textContent=U.streak||0;
+  const sel=document.getElementById('st-streak');
+  if(sel)sel.textContent=U.streak||0;
+}
+
 function trackTodayActivity(){
   if(!U.weeklyActivity) U.weeklyActivity=[0,0,0,0,0,0,0];
   if(!U.xpHistory) U.xpHistory=[0,0,0,0,0,0,0];
-  const day = new Date().getDay(); // 0=Yak, 1=Du ...
-  const idx = day===0?6:day-1; // Du=0 ... Ya=6
+  const day = new Date().getDay();
+  const idx = day===0?6:day-1;
   U.weeklyActivity[idx] = (U.weeklyActivity[idx]||0)+1;
+  updateDayStreak();
   saveUser();
 }
 
@@ -3529,49 +3697,62 @@ function trackTodayActivity(){
 // ================================================================
 // 🎤 SPEAKING PRACTICE
 // ================================================================
-let SP = {pool:[],idx:0,score:0,streak:0,rec:null,listening:false,history:[]};
+let SP = {pool:[],idx:0,score:0,streak:0,rec:null,listening:false,micReady:false};
+
+// Mikrofon ruxsatini oldindan so'rash — faqat bir marta
+async function requestMicPermission(){
+  if(SP.micReady) return true;
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    stream.getTracks().forEach(t=>t.stop()); // stream yopamiz, faqat ruxsat kerak
+    SP.micReady = true;
+    return true;
+  }catch(e){
+    showToast('Mikrofon ruxsati berilmadi. Brauzer sozlamalarini tekshiring.');
+    return false;
+  }
+}
 
 function initSpeaking(){
   const words = getAllWordsForGames();
   if(!words.length){ showToast('So\'zlar yo\'q!'); return; }
-  SP = {pool:shuffle([...words]),idx:0,score:0,streak:0,rec:null,listening:false,history:[]};
-  const s=document.getElementById('sp-score'); if(s) s.textContent=0;
-  const st=document.getElementById('sp-streak'); if(st) st.textContent=0;
-  const tot=document.getElementById('sp-total'); if(tot) tot.textContent=SP.pool.length;
-  const nb=document.getElementById('sp-next-btn'); if(nb) nb.style.display='none';
-  const res=document.getElementById('sp-result'); if(res) res.innerHTML='';
-  const hd=document.getElementById('sp-heard'); if(hd) hd.textContent='';
-  const ring=document.getElementById('sp-ring'); if(ring) ring.style.display='none';
+  SP = {pool:shuffle([...words]),idx:0,score:0,streak:0,rec:null,listening:false,micReady:SP.micReady};
+  const s=document.getElementById('sp-score');if(s)s.textContent=0;
+  const st=document.getElementById('sp-streak');if(st)st.textContent=0;
+  const tot=document.getElementById('sp-total');if(tot)tot.textContent=SP.pool.length;
+  const nb=document.getElementById('sp-next-btn');if(nb)nb.style.display='none';
+  const res=document.getElementById('sp-result');if(res)res.innerHTML='';
+  const hd=document.getElementById('sp-heard');if(hd)hd.textContent='';
+  const ring=document.getElementById('sp-ring');if(ring)ring.style.display='none';
+  // Ruxsatni oldindan so'rash
+  if(!SP.micReady) requestMicPermission();
   spBuildWord();
 }
 
-// stub for pron-score modal — redirects to speaking
-function initPronScore(){ initSpeaking(); }
-
 function spBuildWord(){
-  if(SP.idx>=SP.pool.length){ SP.pool=shuffle([...SP.pool]); SP.idx=0; }
+  if(SP.idx>=SP.pool.length){SP.pool=shuffle([...SP.pool]);SP.idx=0;}
   const w=SP.pool[SP.idx];
-  const wd=document.getElementById('sp-word'); if(wd) wd.textContent=w.word;
-  const ph=document.getElementById('sp-phonetic'); if(ph) ph.textContent=w.phonetic||'';
-  const tr=document.getElementById('sp-translation'); if(tr) tr.textContent=w.translation;
-  const nm=document.getElementById('sp-num'); if(nm) nm.textContent=SP.idx+1;
-  const res=document.getElementById('sp-result'); if(res) res.innerHTML='';
-  const hd=document.getElementById('sp-heard'); if(hd) hd.textContent='';
-  const nb=document.getElementById('sp-next-btn'); if(nb) nb.style.display='none';
-  const ring=document.getElementById('sp-ring'); if(ring) ring.style.display='none';
+  const wd=document.getElementById('sp-word');if(wd)wd.textContent=w.word;
+  const ph=document.getElementById('sp-phonetic');if(ph)ph.textContent=w.phonetic||'';
+  const tr=document.getElementById('sp-translation');if(tr)tr.textContent=w.translation;
+  const nm=document.getElementById('sp-num');if(nm)nm.textContent=SP.idx+1;
+  const res=document.getElementById('sp-result');if(res)res.innerHTML='';
+  const hd=document.getElementById('sp-heard');if(hd)hd.textContent='';
+  const nb=document.getElementById('sp-next-btn');if(nb)nb.style.display='none';
+  const ring=document.getElementById('sp-ring');if(ring)ring.style.display='none';
   const btn=document.getElementById('sp-mic-btn');
-  if(btn){ btn.className='mic-btn off'; btn.textContent='🎤'; }
+  if(btn){btn.className='mic-btn off';btn.textContent='🎤';}
   const lbl=document.getElementById('sp-mic-label');
-  if(lbl) lbl.textContent='Tugmani bosib so\'zni ayting';
+  if(lbl)lbl.textContent='Tugmani bosib so\'zni ayting';
   const prog=document.getElementById('sp-prog');
-  if(prog) prog.style.width=(SP.idx/Math.max(SP.pool.length,1)*100)+'%';
+  if(prog)prog.style.width=(SP.idx/Math.max(SP.pool.length,1)*100)+'%';
 }
 
 function spToggleMic(){
   if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){
-    showToast('Mikrofon qo\'llab-quvvatlanmaydi'); return;
+    showToast('Brauzeringiz mikrofon funksiyasini qo\'llab-quvvatlamaydi');return;
   }
-  if(SP.listening){ spStopMic(); return; }
+  if(SP.listening){spStopMic();return;}
   const SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
   SP.rec=new SRC();
   SP.rec.lang='en-US';
@@ -3580,9 +3761,9 @@ function spToggleMic(){
   SP.rec.maxAlternatives=10;
   SP.listening=true;
   const btn=document.getElementById('sp-mic-btn');
-  if(btn){ btn.className='mic-btn listening'; btn.textContent='⏹'; }
+  if(btn){btn.className='mic-btn listening';btn.textContent='⏹';}
   const lbl=document.getElementById('sp-mic-label');
-  if(lbl) lbl.textContent='🔴 Tinglanmoqda...';
+  if(lbl)lbl.textContent='🔴 Tinglanmoqda...';
   let finalResult=null;
   SP.rec.onresult=(e)=>{
     let interim='';
@@ -3591,67 +3772,65 @@ function spToggleMic(){
       else interim=e.results[i][0].transcript;
     }
     const hd=document.getElementById('sp-heard');
-    if(hd&&interim) hd.textContent='🔈 "'+interim+'"';
+    if(hd&&interim)hd.textContent='🔈 "'+interim+'"';
     if(finalResult){
       const alts=Array.from({length:finalResult.length},(_,i)=>finalResult[i]);
       const heardList=alts.map(r=>r.transcript.trim().toLowerCase());
       const conf=alts[0]?.confidence||0.5;
-      if(hd) hd.textContent='🔈 "'+heardList[0]+'"';
-      spStopMic();
-      spAnalyze(heardList,conf);
+      if(hd)hd.textContent='🔈 "'+heardList[0]+'"';
+      spStopMic();spAnalyze(heardList,conf);
     }
   };
   SP.rec.onerror=(e)=>{
     spStopMic();
-    if(e.error==='no-speech') showToast('Ovoz aniqlanmadi. Qayta urinib ko\'ring');
-    else if(e.error==='not-allowed') showToast('Mikrofon ruxsati berilmagan');
-    else showToast('Xato: '+e.error);
+    if(e.error==='no-speech')showToast('Ovoz aniqlanmadi. Qayta urinib ko\'ring');
+    else if(e.error==='not-allowed')showToast('Mikrofon ruxsati berilmagan');
+    else showToast('Mikrofon xatosi: '+e.error);
   };
-  SP.rec.onend=()=>{ if(SP.listening) spStopMic(); };
-  try{ SP.rec.start(); }catch(e){ spStopMic(); showToast('Mikrofon ishga tushmadi'); }
+  SP.rec.onend=()=>{if(SP.listening)spStopMic();};
+  try{SP.rec.start();}catch(e){spStopMic();}
 }
 
 function spStopMic(){
   SP.listening=false;
-  if(SP.rec){ try{ SP.rec.stop(); }catch(e){} SP.rec=null; }
+  if(SP.rec){try{SP.rec.stop();}catch(e){}SP.rec=null;}
   const btn=document.getElementById('sp-mic-btn');
-  if(btn){ btn.className='mic-btn off'; btn.textContent='🎤'; }
+  if(btn){btn.className='mic-btn off';btn.textContent='🎤';}
   const lbl=document.getElementById('sp-mic-label');
-  if(lbl) lbl.textContent='Tugmani bosib so\'zni ayting';
+  if(lbl)lbl.textContent='Tugmani bosib so\'zni ayting';
 }
 
-function spAnalyze(heardList, conf){
+function spAnalyze(heardList,conf){
   const correct=SP.pool[SP.idx].word.toLowerCase().trim();
-  const heard0=(heardList[0]||'').replace(/[^a-z ]/gi,'').trim().toLowerCase();
+  const heard0=(heardList[0]||'').toLowerCase();
 
-  // 1. ACCURACY — so'z qanchalik to'g'ri eshitildi
+  // 1. ANIQLIK — Levenshtein distance
   let bestDist=Infinity;
   heardList.forEach(h=>{
     const hc=h.replace(/[^a-z]/g,'');
     const d=levDist(hc,correct);
-    if(d<bestDist) bestDist=d;
+    if(d<bestDist)bestDist=d;
   });
-  const maxLen=Math.max((heardList[0]||'').replace(/[^a-z]/g,'').length, correct.length, 1);
+  const maxLen=Math.max(heard0.replace(/[^a-z]/g,'').length,correct.length,1);
   const accuracy=Math.round(Math.max(0,(1-bestDist/maxLen))*100);
 
-  // 2. PRONUNCIATION — fonetik to'g'rilik (confidence + similarity)
+  // 2. TALAFFUZ — exact match yoki confidence + similarity
   const exactMatch=heardList.some(h=>h.replace(/[^a-z]/g,'')===correct);
-  const pronunciation=exactMatch?100:Math.min(100,Math.round(accuracy*0.65+(conf||0.5)*100*0.35));
+  const pronunciation=exactMatch?100:Math.min(100,Math.round(accuracy*0.6+(conf||0.5)*100*0.4));
 
-  // 3. FLUENCY — ravonlik (faqat 1 ta so'z aytilganmi?)
-  const wordCount=heard0.trim().split(/\s+/).filter(Boolean).length;
-  const fluency=wordCount===0?0:wordCount===1?100:wordCount===2?75:wordCount===3?50:30;
+  // 3. RAVONLIK — faqat 1 so'z bo'lsa mukammal
+  const wc=heard0.trim().split(/\s+/).filter(Boolean).length;
+  const fluency=wc===0?0:wc===1?100:wc===2?70:45;
 
-  // 4. CONFIDENCE — Speech Recognition ishonch darajasi
+  // 4. ISHONCH — Speech API confidence
   const confidence=Math.min(100,Math.round((conf||0.5)*100));
 
-  // Umumiy ball (weighted)
+  // Umumiy (weighted)
   const total=Math.round(accuracy*0.4+pronunciation*0.3+fluency*0.2+confidence*0.1);
 
-  SP.history.push(total);
-  if(total>=60){ SP.score++; SP.streak++; }else{ SP.streak=0; }
-  const sc=document.getElementById('sp-score'); if(sc) sc.textContent=SP.score;
-  const str=document.getElementById('sp-streak'); if(str) str.textContent=SP.streak;
+  if(total>=60){SP.score++;SP.streak++;}else{SP.streak=0;}
+  const sc=document.getElementById('sp-score');if(sc)sc.textContent=SP.score;
+  const str=document.getElementById('sp-streak');if(str)str.textContent=SP.streak;
 
   // Ring
   const ring=document.getElementById('sp-ring');
@@ -3659,152 +3838,198 @@ function spAnalyze(heardList, conf){
     ring.style.display='block';
     const re=document.getElementById('sp-ring-el');
     const pct=document.getElementById('sp-ring-pct');
-    if(pct) pct.textContent=total+'%';
-    if(re) re.className='score-ring'+(total>=80?' good':total>=50?' ok':' bad');
+    if(pct)pct.textContent=total+'%';
+    if(re)re.className='score-ring'+(total>=80?' good':total>=50?' ok':' bad');
   }
 
   // XP
-  let xpGained=0;
-  if(total>=90) xpGained=3;
-  else if(total>=70) xpGained=2;
-  else if(total>=50) xpGained=1;
-  if(xpGained>0) try{ addXP(xpGained); }catch(e){}
+  let xp=0;
+  if(total>=90)xp=3;else if(total>=70)xp=2;else if(total>=50)xp=1;
+  if(xp>0)try{addXP(xp);}catch(e){}
 
-  // Batafsil natija — 4 kategoriya
   const col=(v)=>v>=80?'var(--green)':v>=50?'var(--gold)':'var(--red)';
-  let grade='';
-  if(total>=90) grade='<span style="color:var(--green)">🌟 Mukammal!</span>';
-  else if(total>=70) grade='<span style="color:var(--green)">✅ Ajoyib!</span>';
-  else if(total>=50) grade='<span style="color:var(--gold)">👍 Yaxshi</span>';
-  else grade='<span style="color:var(--red)">💪 Mashq qiling</span>';
+  let grade=total>=90?'🌟 Mukammal!':total>=70?'✅ Ajoyib!':total>=50?'👍 Yaxshi':'💪 Mashq qiling';
+  let gc=total>=70?'var(--green)':total>=50?'var(--gold)':'var(--red)';
 
   const res=document.getElementById('sp-result');
-  if(res) res.innerHTML=`
-    <div style="background:var(--s2);border:1px solid var(--border);border-radius:14px;padding:12px 14px">
+  if(res)res.innerHTML=`
+    <div style="background:var(--s2);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-top:4px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-        <div style="font-size:15px;font-weight:800">${grade}</div>
-        ${xpGained?`<div style="background:rgba(245,197,66,.15);color:var(--gold);font-size:12px;font-weight:800;padding:3px 10px;border-radius:20px">+${xpGained} XP</div>`:''}
+        <div style="font-size:14px;font-weight:800;color:${gc}">${grade}</div>
+        ${xp?`<div style="background:rgba(245,197,66,.15);color:var(--gold);font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px">+${xp} XP</div>`:''}
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px">
-        <div style="padding:7px 9px;background:var(--s1);border-radius:9px">
-          <div style="color:var(--muted);margin-bottom:2px">🎯 Aniqlik</div>
-          <div style="font-weight:800;font-size:14px;color:${col(accuracy)}">${accuracy}%</div>
-        </div>
-        <div style="padding:7px 9px;background:var(--s1);border-radius:9px">
-          <div style="color:var(--muted);margin-bottom:2px">🗣️ Talaffuz</div>
-          <div style="font-weight:800;font-size:14px;color:${col(pronunciation)}">${pronunciation}%</div>
-        </div>
-        <div style="padding:7px 9px;background:var(--s1);border-radius:9px">
-          <div style="color:var(--muted);margin-bottom:2px">🌊 Ravonlik</div>
-          <div style="font-weight:800;font-size:14px;color:${col(fluency)}">${fluency}%</div>
-        </div>
-        <div style="padding:7px 9px;background:var(--s1);border-radius:9px">
-          <div style="color:var(--muted);margin-bottom:2px">💪 Ishonch</div>
-          <div style="font-weight:800;font-size:14px;color:${col(confidence)}">${confidence}%</div>
-        </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px">
+        <div style="padding:7px;background:var(--s1);border-radius:8px"><div style="color:var(--muted);margin-bottom:2px">🎯 Aniqlik</div><div style="font-weight:800;font-size:15px;color:${col(accuracy)}">${accuracy}%</div></div>
+        <div style="padding:7px;background:var(--s1);border-radius:8px"><div style="color:var(--muted);margin-bottom:2px">🗣️ Talaffuz</div><div style="font-weight:800;font-size:15px;color:${col(pronunciation)}">${pronunciation}%</div></div>
+        <div style="padding:7px;background:var(--s1);border-radius:8px"><div style="color:var(--muted);margin-bottom:2px">🌊 Ravonlik</div><div style="font-weight:800;font-size:15px;color:${col(fluency)}">${fluency}%</div></div>
+        <div style="padding:7px;background:var(--s1);border-radius:8px"><div style="color:var(--muted);margin-bottom:2px">💪 Ishonch</div><div style="font-weight:800;font-size:15px;color:${col(confidence)}">${confidence}%</div></div>
       </div>
-      ${!exactMatch&&correct?`<div style="margin-top:8px;font-size:11px;color:var(--muted);text-align:center">To'g'ri talaffuz: <b style="color:var(--text)">${correct}</b></div>`:''}
+      ${!exactMatch?`<div style="margin-top:8px;font-size:11px;color:var(--muted);text-align:center">To\'g\'ri: <b style="color:var(--text)">${correct}</b></div>`:''}
     </div>`;
-  const nb=document.getElementById('sp-next-btn'); if(nb) nb.style.display='block';
+  const nb=document.getElementById('sp-next-btn');if(nb)nb.style.display='block';
 }
 
-function spNext(){ SP.idx++; spBuildWord(); }
+function spNext(){SP.idx++;spBuildWord();}
 
 function levDist(a,b){
-  if(!a) return b?b.length:0; if(!b) return a.length;
   const m=a.length,n=b.length;
   const dp=Array.from({length:m+1},(_,i)=>Array.from({length:n+1},(_,j)=>i||j));
-  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++)
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)
     dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
   return dp[m][n];
 }
 
-// Pron score stubs (modal mavjud, lekin Speaking ga yo'naltiradi)
+// ================================================================
+// 🎯 PRONUNCIATION SCORE
+// ================================================================
 let PS = {pool:[],idx:0,scores:[],best:0,rec:null,listening:false};
-function psMicToggle(){ spToggleMic(); }
-function psStopMic(){ spStopMic(); }
-function psNext(){ spNext(); }
 
+function initPronScore(){
+  const words=getAllWordsForGames();
+  if(!words.length){showToast('So\'zlar yo\'q!');return;}
+  PS={pool:shuffle([...words]),idx:0,scores:[],best:0,rec:null,listening:false};
+  document.getElementById('ps-total').textContent=PS.pool.length;
+  document.getElementById('ps-best').textContent=0;
+  document.getElementById('ps-avg').textContent=0;
+  document.getElementById('ps-ring').style.display='none';
+  document.getElementById('ps-next-btn').style.display='none';
+  document.getElementById('ps-heard').textContent='';
+  psBuildDots();psBuildWord();
+}
+
+function psBuildDots(){
+  const el=document.getElementById('ps-dots');if(!el)return;
+  el.innerHTML='';
+  const n=Math.min(PS.pool.length,10);
+  for(let i=0;i<n;i++){
+    const d=document.createElement('div');
+    d.className='pron-dot'+(PS.scores[i]!==undefined?(PS.scores[i]>=70?' hit':' miss'):'');
+    el.appendChild(d);
+  }
+}
+
+function psBuildWord(){
+  if(PS.idx>=PS.pool.length){psEnd();return;}
+  const w=PS.pool[PS.idx];
+  document.getElementById('ps-word').textContent=w.word;
+  document.getElementById('ps-phonetic').textContent=w.phonetic||'';
+  document.getElementById('ps-translation').textContent=w.translation;
+  document.getElementById('ps-num').textContent=PS.idx+1;
+  document.getElementById('ps-ring').style.display='none';
+  document.getElementById('ps-next-btn').style.display='none';
+  document.getElementById('ps-heard').textContent='';
+  document.getElementById('ps-prog').style.width=(PS.idx/PS.pool.length*100)+'%';
+  const btn=document.getElementById('ps-mic-btn');
+  if(btn){btn.className='mic-btn off';btn.textContent='🎤';}
+}
+
+function psMicToggle(){
+  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){
+    showToast('Brauzeringiz mikrofon funksiyasini qo\'llab-quvvatlamaydi');return;
+  }
+  if(PS.listening){psStopMic();return;}
+  const SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
+  PS.rec=new SRC();PS.rec.lang='en-US';PS.rec.maxAlternatives=5;PS.listening=true;
+  const btn=document.getElementById('ps-mic-btn');
+  if(btn){btn.className='mic-btn listening';btn.textContent='⏹';}
+  PS.rec.onresult=(e)=>{
+    const res=Array.from(e.results[e.results.length-1]);
+    const heard=res.map(r=>r.transcript.trim().toLowerCase());
+    const conf=res[0].confidence||0.5;
+    document.getElementById('ps-heard').textContent='🔈 "'+heard[0]+'"';
+    if(e.results[e.results.length-1].isFinal){psStopMic();psCalc(heard,conf);}
+  };
+  PS.rec.onerror=()=>{psStopMic();};
+  PS.rec.onend=()=>{if(PS.listening)psStopMic();};
+  PS.rec.start();
+}
+
+function psStopMic(){
+  PS.listening=false;
+  if(PS.rec){try{PS.rec.stop();}catch(e){}PS.rec=null;}
+  const btn=document.getElementById('ps-mic-btn');
+  if(btn){btn.className='mic-btn off';btn.textContent='🎤';}
+}
+
+function psCalc(heardList,conf){
+  const correct=PS.pool[PS.idx].word.toLowerCase();
+  let best=0;
+  heardList.forEach(h=>{
+    const c=h.replace(/[^a-z]/g,'');
+    const d=levDist(c,correct);
+    const sim=Math.round((1-d/Math.max(c.length,correct.length,1))*100);
+    const sc=Math.min(100,sim+Math.round((conf||0.5)*15));
+    if(sc>best)best=sc;
+  });
+  if(heardList.some(h=>h.replace(/[^a-z]/g,'')===correct))best=100;
+  PS.scores.push(best);
+  if(best>PS.best){PS.best=best;document.getElementById('ps-best').textContent=best;}
+  const avg=Math.round(PS.scores.reduce((s,v)=>s+v,0)/PS.scores.length);
+  document.getElementById('ps-avg').textContent=avg;
+  // Ring
+  const ring=document.getElementById('ps-ring');
+  const re=document.getElementById('ps-ring-el');
+  ring.style.display='block';
+  document.getElementById('ps-ring-pct').textContent=best+'%';
+  if(best>=80){re.className='score-ring good';document.getElementById('ps-ring-msg').innerHTML='<span style="color:var(--green)">🌟 Ajoyib! +2 XP</span>';try{addXP(best>=90?2:1);}catch(e){}}
+  else if(best>=50){re.className='score-ring ok';document.getElementById('ps-ring-msg').innerHTML='<span style="color:var(--gold)">👍 Yaxshi! +1 XP</span>';try{addXP(1);}catch(e){}}
+  else{re.className='score-ring bad';document.getElementById('ps-ring-msg').innerHTML='<span style="color:var(--red)">💪 Mashq qiling</span>';}
+  psBuildDots();
+  document.getElementById('ps-next-btn').style.display='block';
+}
+
+function psNext(){PS.idx++;psBuildWord();psBuildDots();}
+function psEnd(){
+  const avg=PS.scores.length?Math.round(PS.scores.reduce((s,v)=>s+v,0)/PS.scores.length):0;
+  document.getElementById('ps-word').textContent=avg+'% o\'rtacha';
+  document.getElementById('ps-phonetic').textContent='';
+  document.getElementById('ps-translation').textContent='Tugadi! 🎉';
+  showToast('🎯 Talaffuz o\'rtacha: '+avg+'%');
+}
 
 // ================================================================
 // ⛓️ SO'Z ZANJIRI — Umumiy inglizcha so'zlar (katta lug'at)
 // ================================================================
 // ~300+ ta keng tarqalgan inglizcha so'z (oxirgi harf → keyingi boshlanishi uchun)
 const WC_DICT = new Set([
-  'able','about','above','accept','access','act','action','active','add','admit','adopt','adult',
-  'advance','affect','age','ago','agree','air','all','allow','almost','alone','along','already',
-  'also','always','among','and','angry','animal','answer','any','apply','arm','art','ask','ate',
-  'away','back','bad','bag','ball','band','bank','bar','base','bath','bay','be','bed','begin',
-  'believe','best','better','big','bit','black','blow','blue','boat','body','bone','book','born',
-  'both','box','boy','break','bring','brown','build','burn','buy','call','came','can','car','care',
-  'case','catch','cause','cell','change','check','child','city','claim','class','clear','click',
-  'close','club','coat','cold','come','cool','copy','cost','count','course','cover','cut','dark',
-  'data','date','day','dead','deal','deep','describe','desk','did','die','dig','dip','do','dog',
-  'door','down','draw','dream','drive','drop','dry','dust','each','ear','early','east','easy','eat',
-  'edge','effect','end','enjoy','enter','even','ever','every','example','eye','face','fact','fail',
-  'fall','far','farm','fast','fat','fear','feel','feet','fell','few','field','find','fine','fire',
-  'fish','fit','fix','flag','flat','fly','food','foot','force','form','found','free','from','front',
-  'full','fund','gain','game','gave','get','girl','give','glad','go','goal','gold','gone','good',
-  'got','grab','grew','grow','gun','had','hand','hang','hard','has','hate','have','head','hear',
-  'heart','heavy','help','here','hide','high','hill','hit','hold','hole','home','hope','hot','hour',
-  'how','huge','human','hunt','idea','important','include','increase','into','iron','join','joy',
-  'jump','just','keep','kill','kind','king','know','land','large','last','late','lead','leaf','left',
-  'less','let','lie','life','light','like','line','list','live','lock','long','look','lost','lot',
-  'loud','love','low','made','main','make','man','many','map','mark','mass','mean','meet','mind',
-  'mine','mix','more','most','move','much','must','name','need','next','nice','night','nine','no',
-  'nor','not','note','now','old','once','open','other','over','own','page','pain','part','pass',
-  'path','pay','pick','plan','play','plus','point','poor','power','pull','push','put','race','rain',
-  'read','real','red','remain','rest','result','ride','ring','rise','road','rock','role','room',
-  'round','rule','run','said','same','sand','save','say','sea','seat','see','seem','self','sell',
-  'send','set','ship','show','side','sign','sing','site','six','size','skin','sky','slip','slow',
-  'small','soft','soil','some','song','soon','sort','soul','stand','star','stay','step','stop',
-  'storm','story','sun','sure','swim','take','talk','tall','task','team','tell','tend','test',
-  'than','that','them','then','they','thin','think','this','tide','time','tip','tire','together',
-  'too','top','town','tree','true','try','turn','type','under','unit','until','upon','use','very',
-  'view','vote','wait','walk','want','warm','warn','was','wave','way','week','well','went','were',
-  'west','what','when','wide','will','win','wind','wire','wish','with','word','work','world',
-  'write','yard','year','yes','yet','zero',
-  // Extra words for better letter coverage
-  'able','apple','arrow','actor','angel','anger','among','aside','arise','arena',
-  'beach','bench','brain','break','brave','brush','block','blank','blend','brisk',
-  'chess','chase','chalk','chain','child','cheer','cliff','claim','clean','clock',
-  'dance','dream','drink','drive','draft','drain','dress','depth','digit','doubt',
-  'eagle','earth','eight','elite','equal','error','essay','event','exact','extra',
-  'feast','flesh','flame','flash','float','flock','flour','flush','flute','frame',
-  'grace','grain','grand','grant','graph','grass','grave','great','green','greet',
-  'heart','heavy','hence','honey','horse','hotel','house','hurry','hello','habit',
-  'image','issue','index','inner','inbox','ideal','ivory','irony','imply','input',
-  'joint','judge','juice','jumpy','jacket','jelly','jewel','joyful',
-  'knife','knock','kneel','knot',
-  'label','laser','laugh','layer','learn','least','legal','level','limit','logic',
-  'magic','major','match','metal','might','model','money','moral','mount','music',
-  'nerve','noble','north','nurse','novel','night','nexus',
-  'occur','ocean','offer','often','olive','onion','onset','order','other','ought',
-  'paint','panel','paper','party','peace','pilot','pizza','place','plain','plant',
-  'plate','plaza','plead','plumb','plump','plunge','point','polar','pound','press',
-  'price','pride','prime','print','probe','prose','proud','pulse','punch','pupil',
-  'queen','query','quest','queue','quick','quiet','quote',
-  'radar','radio','raise','range','ratio','reach','realm','refer','reign','relax',
-  'reply','right','risky','rival','river','robot','rouge','rough','royal','rugby',
-  'scale','scene','scout','screw','seize','serve','seven','shade','shake','shall',
-  'shape','share','sharp','shelf','shine','shirt','shoot','shore','short','shout',
-  'sight','since','sixth','skill','skull','slave','sleep','slide','slope','smart',
-  'smile','smoke','snack','space','spare','spark','speak','spell','spend','spill',
-  'spine','spite','split','spoke','spoon','sport','spray','squad','staff','stage',
-  'stain','stake','stale','stall','stamp','stare','stark','start','state','steal',
-  'steam','steel','steep','steer','stern','stick','stiff','still','stir','stock',
-  'stone','stoop','store','stove','strap','straw','strip','stroke','style','sugar',
-  'suite','super','surge','swear','sweep','sweet','swift','swing','swoop',
-  'table','taunt','teach','tense','tenth','there','thick','thing','third','those',
-  'three','threw','throw','thumb','tight','title','toast','today','token','topic',
-  'total','touch','tough','tower','track','trade','trail','train','trait','trash',
-  'treat','trend','trial','trick','tribe','tried','troop','truck','trunk','truth',
-  'tumor','tutor','twice','twist','ultra','unify','unity','until','upper','upset',
-  'urban','using','utter','vague','valid','value','valve','vapor','vault','virus',
-  'visit','vital','vivid','vocal','voice','voter','vague',
-  'waste','watch','water','wedge','weigh','wheel','where','which','while','white',
-  'whole','whose','width','witch','woman','women','woods','wrist','wrong','youth',
-  'zippy','zonal',
+  'able','above','act','add','age','ago','air','all','also','and','any','arm','art','ask','ate',
+  'back','bad','bag','ball','band','bank','bar','base','bath','bay','be','bed','big','bit','blow',
+  'blue','boat','body','bone','book','born','both','box','boy','break','bring','brown','build','burn',
+  'call','came','can','car','care','case','cause','cell','change','check','child','city','clear',
+  'close','club','coat','cold','come','cool','cost','count','course','cut',
+  'dark','data','date','day','dead','deal','deep','desk','did','die','dig','dip','do','dog','door',
+  'down','draw','dream','drive','drop','dry','dust',
+  'each','ear','early','east','easy','eat','edge','end','even','ever','eye',
+  'face','fact','fail','fall','far','farm','fast','fat','fear','feel','feet','fell','few','field',
+  'find','fine','fire','fish','fit','fix','flat','fly','food','foot','force','form','found','free',
+  'from','front','full','fund','gain','game','gave','get','girl','give','glad','go','goal','gold',
+  'gone','good','got','grab','grew','grow','gun',
+  'had','hand','hang','hard','has','hate','have','head','hear','heart','heavy','help','here','hide',
+  'high','hill','hit','hold','hole','home','hope','hot','hour','how','huge','human','hunt',
+  'idea','into','iron',
+  'join','joy','jump','just',
+  'keep','kill','kind','king','know',
+  'land','large','last','late','lead','leaf','left','less','let','lie','life','light','like','line',
+  'list','live','lock','long','look','lost','lot','loud','love','low',
+  'made','main','make','man','many','map','mark','mass','mean','meet','mind','mine','mix','more',
+  'most','move','much','must',
+  'name','need','next','nice','night','nine','no','nor','not','note','now',
+  'old','once','open','over','own',
+  'page','pain','part','pass','path','pay','pick','plan','play','plus','point','poor','power',
+  'pull','push','put',
+  'race','rain','read','real','red','rest','ride','ring','rise','road','rock','role','room','round',
+  'rule','run',
+  'said','same','sand','save','say','sea','seat','see','seem','self','sell','send','set','ship',
+  'show','side','sign','sing','site','six','size','skin','sky','slip','slow','small','soft','soil',
+  'some','song','soon','sort','soul','stand','star','stay','step','stop','storm','story','sun','sure',
+  'swim','take','talk','tall','task','team','tell','tend','test','than','that','them','then','they',
+  'thin','think','this','tide','time','tip','tire','together','too','top','town','tree','true','try',
+  'turn','type',
+  'under','unit','until','upon','use',
+  'very','view','vote',
+  'wait','walk','want','warm','warn','was','wave','way','week','well','went','were','west','what',
+  'when','wide','will','win','wind','wire','wish','with','word','work','world','write',
+  'yard','year','yes','yet',
 ]);
 
 let WC = {chain:[],used:new Set(),timer:null,time:60,score:0,started:false};
@@ -3832,14 +4057,28 @@ function wcInpHandler(inp){
   hint.style.color='var(--orange)';
 }
 
+// Inglizcha so'zlar uchun oddiy tekshiruv (faqat lotin harflari, kamida 2 ta)
+const ENGLISH_PATTERN = /^[a-z]{2,}$/;
+// Qabul qilinmaydigan "so'zlar" (raqamlar, bitta harf, etc.)
+function isLikelyEnglish(word){
+  if(!ENGLISH_PATTERN.test(word)) return false;
+  // Bir xil harflar (aaa, bbb) — rad
+  if(/^(.)+$/.test(word)) return false;
+  // Unli harf bo'lishi shart (a,e,i,o,u) — haqiqiy so'z
+  if(!/[aeiou]/.test(word)) return false;
+  return true;
+}
+
 function wcSubmit(){
   const inp=document.getElementById('wc-inp');
-  const word=inp.value.trim().toLowerCase().replace(/[^a-z]/g,'');
+  const raw=inp.value.trim().toLowerCase();
+  const word=raw.replace(/[^a-z]/g,'');
   if(!word)return;
   const hint=document.getElementById('wc-hint');
-  // Uzunlik tekshiruvi
-  if(word.length<2){
-    hint.textContent='Kamida 2 ta harf bo\'lishi kerak!';hint.style.color='var(--red)';return;
+
+  // Inglizcha ko'rinishda emasmi?
+  if(!isLikelyEnglish(word)){
+    hint.textContent=`"${raw}" inglizcha so'z emas!`;hint.style.color='var(--red)';inp.select();return;
   }
   // Takror?
   if(WC.used.has(word)){
@@ -3850,7 +4089,7 @@ function wcSubmit(){
     const last=WC.chain[WC.chain.length-1].slice(-1);
     if(word[0]!==last){hint.textContent=`"${last.toUpperCase()}" harfidan boshlanishi kerak!`;hint.style.color='var(--red)';return;}
   }
-  // ✅ To'g'ri
+  // ✅ Qabul qilindi
   WC.chain.push(word);WC.used.add(word);WC.score++;
   try{addXP(1);}catch(e){}
   hint.textContent='';
@@ -3862,20 +4101,29 @@ function wcSubmit(){
     WC.started=true;
     WC.timer=setInterval(()=>{
       WC.time--;
-      document.getElementById('wc-time').textContent=WC.time;
+      const tEl=document.getElementById('wc-time');if(tEl)tEl.textContent=WC.time;
+      // Qizil rang — 10 soniyadan kam
+      if(tEl&&WC.time<=10)tEl.style.color='var(--red)';
       if(WC.time<=0){clearInterval(WC.timer);wcEnd();}
     },1000);
   }
   // Oxirgi harf
   const lastChar=word.slice(-1).toUpperCase();
   document.getElementById('wc-last').textContent=`Keyingisi "${lastChar}" harfidan boshlansin`;
-  // Zanjir
+  // Zanjir display
   const ch=document.getElementById('wc-chain');ch.innerHTML='';
   WC.chain.slice(-5).forEach((w,i)=>{
     if(i>0)ch.innerHTML+='<span style="color:var(--muted);font-size:14px;margin:0 2px">→</span>';
     ch.innerHTML+=`<span class="chain-word">${w}</span>`;
   });
   inp.focus();
+}
+
+function wcSetTime(sec){
+  WC.time=sec;
+  document.getElementById('wc-time').textContent=sec;
+  document.getElementById('wc-time').style.color='';
+  showToast('⏱ '+Math.round(sec/60)+' daqiqa');
 }
 
 function wcEnd(){
@@ -3953,111 +4201,24 @@ function ctxBuild(){
 // 🌳 SO'Z OILASI
 // ================================================================
 const WF_DB = {
-  // === ASOSIY OILALAR ===
-  'afraid':    [{f:'afraid',t:'adj',tr:'qo\'rqqan'},{f:'fear',t:'noun',tr:'qo\'rquv'},{f:'fearful',t:'adj',tr:'qo\'rqinchli'},{f:'fearless',t:'adj',tr:'jasur'},{f:'fearlessly',t:'adv',tr:'jasurlik bilan'}],
+  'afraid':    [{f:'afraid',t:'adj',tr:'qo\'rqqan'},{f:'fear',t:'noun',tr:'qo\'rquv'},{f:'fearful',t:'adj',tr:'qo\'rqinchli'},{f:'fearlessly',t:'adv',tr:'qo\'rqmasdan'}],
   'beautiful': [{f:'beautiful',t:'adj',tr:'go\'zal'},{f:'beauty',t:'noun',tr:'go\'zallik'},{f:'beautifully',t:'adv',tr:'go\'zal tarzda'},{f:'beautify',t:'verb',tr:'bezamoq'}],
-  'happy':     [{f:'happy',t:'adj',tr:'baxtli'},{f:'happiness',t:'noun',tr:'baxt'},{f:'happily',t:'adv',tr:'baxtli holda'},{f:'unhappy',t:'adj',tr:'baxtli emas'},{f:'unhappiness',t:'noun',tr:'baxtsizlik'}],
-  'care':      [{f:'care',t:'verb/noun',tr:'g\'amxo\'rlik'},{f:'careful',t:'adj',tr:'ehtiyotkor'},{f:'carefully',t:'adv',tr:'ehtiyotkorlik bilan'},{f:'careless',t:'adj',tr:'beparvo'},{f:'carelessly',t:'adv',tr:'beparvolik bilan'}],
-  'act':       [{f:'act',t:'verb/noun',tr:'harakat'},{f:'action',t:'noun',tr:'amal'},{f:'active',t:'adj',tr:'faol'},{f:'actively',t:'adv',tr:'faol tarzda'},{f:'activity',t:'noun',tr:'faoliyat'},{f:'actor',t:'noun',tr:'aktyor'}],
-  'know':      [{f:'know',t:'verb',tr:'bilmoq'},{f:'knowledge',t:'noun',tr:'bilim'},{f:'known',t:'adj',tr:'ma\'lum'},{f:'unknown',t:'adj',tr:'noma\'lum'},{f:'knowing',t:'adj',tr:'bilimdon'}],
-  'use':       [{f:'use',t:'verb/noun',tr:'ishlatmoq'},{f:'useful',t:'adj',tr:'foydali'},{f:'useless',t:'adj',tr:'foydasiz'},{f:'user',t:'noun',tr:'foydalanuvchi'},{f:'usefully',t:'adv',tr:'foydali tarzda'},{f:'reuse',t:'verb',tr:'qayta ishlatmoq'}],
-  'agree':     [{f:'agree',t:'verb',tr:'qo\'shilmoq'},{f:'agreement',t:'noun',tr:'kelishuv'},{f:'agreeable',t:'adj',tr:'maqul'},{f:'disagree',t:'verb',tr:'qarshi bo\'lmoq'},{f:'disagreement',t:'noun',tr:'kelishmovchilik'}],
-  'angry':     [{f:'angry',t:'adj',tr:'g\'azablangan'},{f:'anger',t:'noun',tr:'g\'azab'},{f:'angrily',t:'adv',tr:'g\'azab bilan'},{f:'enrage',t:'verb',tr:'g\'azablamoq'}],
-  'calm':      [{f:'calm',t:'adj/verb',tr:'tinch'},{f:'calmly',t:'adv',tr:'tinch holda'},{f:'calmness',t:'noun',tr:'tinchlik'},{f:'uncalm',t:'adj',tr:'notinch'}],
-  'strong':    [{f:'strong',t:'adj',tr:'kuchli'},{f:'strength',t:'noun',tr:'kuch'},{f:'strongly',t:'adv',tr:'kuchli tarzda'},{f:'strengthen',t:'verb',tr:'mustahkamlash'},{f:'stronghold',t:'noun',tr:'qal\'a'}],
+  'happy':     [{f:'happy',t:'adj',tr:'baxtli'},{f:'happiness',t:'noun',tr:'baxt'},{f:'happily',t:'adv',tr:'baxtli holda'},{f:'unhappy',t:'adj',tr:'baxtli emas'}],
+  'care':      [{f:'care',t:'verb/noun',tr:'g\'amxo\'rlik'},{f:'careful',t:'adj',tr:'ehtiyotkor'},{f:'carefully',t:'adv',tr:'ehtiyotkorlik bilan'},{f:'careless',t:'adj',tr:'beparvo'}],
+  'act':       [{f:'act',t:'verb/noun',tr:'harakat'},{f:'action',t:'noun',tr:'amal'},{f:'active',t:'adj',tr:'faol'},{f:'actor',t:'noun',tr:'aktyor'}],
+  'know':      [{f:'know',t:'verb',tr:'bilmoq'},{f:'knowledge',t:'noun',tr:'bilim'},{f:'known',t:'adj',tr:'ma\'lum'},{f:'unknown',t:'adj',tr:'noma\'lum'}],
+  'use':       [{f:'use',t:'verb/noun',tr:'ishlatmoq'},{f:'useful',t:'adj',tr:'foydali'},{f:'useless',t:'adj',tr:'foydasiz'},{f:'user',t:'noun',tr:'foydalanuvchi'}],
+  'agree':     [{f:'agree',t:'verb',tr:'qo\'shilmoq'},{f:'agreement',t:'noun',tr:'kelishuv'},{f:'agreeable',t:'adj',tr:'maqul'},{f:'disagree',t:'verb',tr:'qarshi bo\'lmoq'}],
+  'angry':     [{f:'angry',t:'adj',tr:'g\'azablangan'},{f:'anger',t:'noun',tr:'g\'azab'},{f:'angrily',t:'adv',tr:'g\'azab bilan'}],
+  'calm':      [{f:'calm',t:'adj/verb',tr:'tinch'},{f:'calmly',t:'adv',tr:'tinch holda'},{f:'calmness',t:'noun',tr:'tinchlik'}],
+  'strong':    [{f:'strong',t:'adj',tr:'kuchli'},{f:'strength',t:'noun',tr:'kuch'},{f:'strongly',t:'adv',tr:'kuchli ravishda'},{f:'strengthen',t:'verb',tr:'mustahkamlash'}],
   'ambiguous': [{f:'ambiguous',t:'adj',tr:'noaniq'},{f:'ambiguity',t:'noun',tr:'noaniqlik'},{f:'ambiguously',t:'adv',tr:'noaniq tarzda'},{f:'unambiguous',t:'adj',tr:'aniq'}],
-  'competent': [{f:'competent',t:'adj',tr:'malakali'},{f:'competence',t:'noun',tr:'malaka'},{f:'competently',t:'adv',tr:'malakali tarzda'},{f:'incompetent',t:'adj',tr:'malakasiz'},{f:'incompetence',t:'noun',tr:'malakasizlik'}],
-  'flexible':  [{f:'flexible',t:'adj',tr:'moslashuvchan'},{f:'flexibility',t:'noun',tr:'moslashuvchanlik'},{f:'inflexible',t:'adj',tr:'qat\'iy'},{f:'flexibly',t:'adv',tr:'moslashuvchan tarzda'}],
+  'competent': [{f:'competent',t:'adj',tr:'malakali'},{f:'competence',t:'noun',tr:'malaka'},{f:'competently',t:'adv',tr:'malakali ravishda'},{f:'incompetent',t:'adj',tr:'malakasiz'}],
+  'flexible':  [{f:'flexible',t:'adj',tr:'moslashuvchan'},{f:'flexibility',t:'noun',tr:'moslashuvchanlik'},{f:'inflexible',t:'adj',tr:'qat\'iy'}],
   'genuine':   [{f:'genuine',t:'adj',tr:'haqiqiy'},{f:'genuinely',t:'adv',tr:'chindan ham'},{f:'genuineness',t:'noun',tr:'haqiqiylik'}],
   'persist':   [{f:'persist',t:'verb',tr:'davom ettirmoq'},{f:'persistent',t:'adj',tr:'qat\'iyatli'},{f:'persistence',t:'noun',tr:'qat\'iyat'},{f:'persistently',t:'adv',tr:'qat\'iyat bilan'}],
-  'pragmatic': [{f:'pragmatic',t:'adj',tr:'amaliy'},{f:'pragmatism',t:'noun',tr:'amaliylik'},{f:'pragmatically',t:'adv',tr:'amaliy tarzda'}],
-  'resilient': [{f:'resilient',t:'adj',tr:'bardoshli'},{f:'resilience',t:'noun',tr:'bardoshlilik'},{f:'resiliently',t:'adv',tr:'chidamli tarzda'}],
-  // === YANGI KENG OILALAR ===
-  'accept':    [{f:'accept',t:'verb',tr:'qabul qilmoq'},{f:'acceptance',t:'noun',tr:'qabul'},{f:'acceptable',t:'adj',tr:'maqbul'},{f:'unacceptable',t:'adj',tr:'maqbul emas'},{f:'acceptably',t:'adv',tr:'maqbul tarzda'}],
-  'achieve':   [{f:'achieve',t:'verb',tr:'erishmoq'},{f:'achievement',t:'noun',tr:'yutuq'},{f:'achievable',t:'adj',tr:'erishish mumkin'},{f:'overachieve',t:'verb',tr:'yuqori ko\'rsatkich'}],
-  'adapt':     [{f:'adapt',t:'verb',tr:'moslashmoq'},{f:'adaptation',t:'noun',tr:'moslashuv'},{f:'adaptable',t:'adj',tr:'moslashuvchan'},{f:'adaptive',t:'adj',tr:'moslashtiruvchi'}],
-  'affect':    [{f:'affect',t:'verb',tr:'ta\'sir qilmoq'},{f:'effect',t:'noun',tr:'ta\'sir'},{f:'effective',t:'adj',tr:'samarali'},{f:'effectively',t:'adv',tr:'samarali tarzda'},{f:'ineffective',t:'adj',tr:'samarasiz'}],
-  'analyze':   [{f:'analyze',t:'verb',tr:'tahlil qilmoq'},{f:'analysis',t:'noun',tr:'tahlil'},{f:'analyst',t:'noun',tr:'tahlilchi'},{f:'analytical',t:'adj',tr:'tahliliy'}],
-  'apply':     [{f:'apply',t:'verb',tr:'qo\'llamoq'},{f:'application',t:'noun',tr:'ariza/ilova'},{f:'applicable',t:'adj',tr:'qo\'llash mumkin'},{f:'applicant',t:'noun',tr:'ariza beruvchi'}],
-  'assume':    [{f:'assume',t:'verb',tr:'faraz qilmoq'},{f:'assumption',t:'noun',tr:'faraz'},{f:'assumed',t:'adj',tr:'taxmin qilingan'}],
-  'avoid':     [{f:'avoid',t:'verb',tr:'qochmoq'},{f:'avoidance',t:'noun',tr:'qochish'},{f:'unavoidable',t:'adj',tr:'muqarrar'},{f:'avoidable',t:'adj',tr:'oldini olish mumkin'}],
-  'believe':   [{f:'believe',t:'verb',tr:'ishonmoq'},{f:'belief',t:'noun',tr:'ishonch/e\'tiqod'},{f:'believer',t:'noun',tr:'ishonuvchi'},{f:'unbelievable',t:'adj',tr:'ishonib bo\'lmas'},{f:'disbelief',t:'noun',tr:'ishonmaslik'}],
-  'benefit':   [{f:'benefit',t:'noun/verb',tr:'foyda'},{f:'beneficial',t:'adj',tr:'foydali'},{f:'beneficially',t:'adv',tr:'foydali tarzda'},{f:'beneficiary',t:'noun',tr:'foydalanuvchi'}],
-  'challenge': [{f:'challenge',t:'noun/verb',tr:'qiyinchilik'},{f:'challenging',t:'adj',tr:'murakkab'},{f:'challenger',t:'noun',tr:'raqib/da\'vogar'}],
-  'change':    [{f:'change',t:'verb/noun',tr:'o\'zgartirmoq'},{f:'changeable',t:'adj',tr:'o\'zgaruvchan'},{f:'unchanged',t:'adj',tr:'o\'zgarishsiz'},{f:'interchangeable',t:'adj',tr:'almashinadigan'}],
-  'clear':     [{f:'clear',t:'adj/verb',tr:'aniq/tozalamoq'},{f:'clearly',t:'adv',tr:'aniq tarzda'},{f:'clarity',t:'noun',tr:'aniqlik'},{f:'unclear',t:'adj',tr:'noaniq'}],
-  'commit':    [{f:'commit',t:'verb',tr:'majburlanmoq'},{f:'commitment',t:'noun',tr:'majburiyat'},{f:'committed',t:'adj',tr:'sodiq'},{f:'uncommitted',t:'adj',tr:'befarq'}],
-  'communicate':[{f:'communicate',t:'verb',tr:'muloqot qilmoq'},{f:'communication',t:'noun',tr:'muloqot'},{f:'communicative',t:'adj',tr:'muloqotga ochiq'},{f:'communicator',t:'noun',tr:'muloqotchi'}],
-  'complex':   [{f:'complex',t:'adj/noun',tr:'murakkab'},{f:'complexity',t:'noun',tr:'murakkablik'},{f:'simplify',t:'verb',tr:'soddalashtirish'}],
-  'confide':   [{f:'confide',t:'verb',tr:'ishonib aytmoq'},{f:'confidence',t:'noun',tr:'ishonch'},{f:'confident',t:'adj',tr:'ishonchli'},{f:'confidently',t:'adv',tr:'ishonch bilan'},{f:'confidential',t:'adj',tr:'maxfiy'}],
-  'connect':   [{f:'connect',t:'verb',tr:'bog\'lamoq'},{f:'connection',t:'noun',tr:'bog\'lanish'},{f:'connected',t:'adj',tr:'bog\'langan'},{f:'disconnect',t:'verb',tr:'uzib qo\'ymoq'}],
-  'conscious': [{f:'conscious',t:'adj',tr:'ongli'},{f:'consciousness',t:'noun',tr:'ong'},{f:'consciously',t:'adv',tr:'ongli tarzda'},{f:'subconscious',t:'adj',tr:'ong osti'}],
-  'create':    [{f:'create',t:'verb',tr:'yaratmoq'},{f:'creation',t:'noun',tr:'yaratish'},{f:'creative',t:'adj',tr:'ijodiy'},{f:'creativity',t:'noun',tr:'ijodkorlik'},{f:'creator',t:'noun',tr:'yaratuvchi'}],
-  'decide':    [{f:'decide',t:'verb',tr:'qaror qilmoq'},{f:'decision',t:'noun',tr:'qaror'},{f:'decisive',t:'adj',tr:'qat\'iy'},{f:'decisively',t:'adv',tr:'qat\'iy tarzda'},{f:'indecisive',t:'adj',tr:'ikkilanuvchi'}],
-  'depend':    [{f:'depend',t:'verb',tr:'bog\'liq bo\'lmoq'},{f:'dependence',t:'noun',tr:'bog\'liqlik'},{f:'dependent',t:'adj',tr:'bog\'liq'},{f:'independent',t:'adj',tr:'mustaqil'},{f:'independence',t:'noun',tr:'mustaqillik'}],
-  'develop':   [{f:'develop',t:'verb',tr:'rivojlanmoq'},{f:'development',t:'noun',tr:'rivojlanish'},{f:'developer',t:'noun',tr:'ishlab chiqaruvchi'},{f:'developed',t:'adj',tr:'rivojlangan'},{f:'underdeveloped',t:'adj',tr:'kam rivojlangan'}],
-  'differ':    [{f:'differ',t:'verb',tr:'farq qilmoq'},{f:'difference',t:'noun',tr:'farq'},{f:'different',t:'adj',tr:'turli'},{f:'differently',t:'adv',tr:'turlicha'},{f:'indifferent',t:'adj',tr:'befarq'}],
-  'educate':   [{f:'educate',t:'verb',tr:'o\'qitmoq'},{f:'education',t:'noun',tr:'ta\'lim'},{f:'educator',t:'noun',tr:'o\'qituvchi'},{f:'educational',t:'adj',tr:'ta\'limiy'},{f:'educated',t:'adj',tr:'ma\'lumotli'}],
-  'employ':    [{f:'employ',t:'verb',tr:'ishga olmoq'},{f:'employment',t:'noun',tr:'ish joyi'},{f:'employer',t:'noun',tr:'ish beruvchi'},{f:'employee',t:'noun',tr:'xodim'},{f:'unemployed',t:'adj',tr:'ishsiz'}],
-  'enjoy':     [{f:'enjoy',t:'verb',tr:'zavqlanmoq'},{f:'enjoyment',t:'noun',tr:'zavq'},{f:'enjoyable',t:'adj',tr:'zavqli'},{f:'enjoyably',t:'adv',tr:'zavq bilan'}],
-  'expect':    [{f:'expect',t:'verb',tr:'kutmoq'},{f:'expectation',t:'noun',tr:'kutish'},{f:'expected',t:'adj',tr:'kutilgan'},{f:'unexpected',t:'adj',tr:'kutilmagan'},{f:'unexpectedly',t:'adv',tr:'kutilmaganda'}],
-  'express':   [{f:'express',t:'verb/adj',tr:'ifodalash'},{f:'expression',t:'noun',tr:'ifoda'},{f:'expressive',t:'adj',tr:'ifodali'},{f:'expressively',t:'adv',tr:'ifodali tarzda'}],
-  'fail':      [{f:'fail',t:'verb',tr:'muvaffaqiyatsiz bo\'lmoq'},{f:'failure',t:'noun',tr:'muvaffaqiyatsizlik'},{f:'failed',t:'adj',tr:'muvaffaqiyatsiz'}],
-  'focus':     [{f:'focus',t:'verb/noun',tr:'e\'tibor qaratmoq'},{f:'focused',t:'adj',tr:'diqqatli'},{f:'unfocused',t:'adj',tr:'diqqatsiz'}],
-  'force':     [{f:'force',t:'verb/noun',tr:'majburlamoq/kuch'},{f:'forceful',t:'adj',tr:'kuchli'},{f:'forcefully',t:'adv',tr:'kuch bilan'},{f:'enforce',t:'verb',tr:'kuchga kirtirmoq'}],
-  'help':      [{f:'help',t:'verb/noun',tr:'yordam'},{f:'helpful',t:'adj',tr:'yordamchi'},{f:'helpfully',t:'adv',tr:'yordam bilan'},{f:'helpless',t:'adj',tr:'ojiz'},{f:'helplessly',t:'adv',tr:'ojizlik bilan'},{f:'helper',t:'noun',tr:'yordamchi'}],
-  'honest':    [{f:'honest',t:'adj',tr:'halol'},{f:'honesty',t:'noun',tr:'halollik'},{f:'honestly',t:'adv',tr:'halol tarzda'},{f:'dishonest',t:'adj',tr:'nohalol'},{f:'dishonesty',t:'noun',tr:'nohalollik'}],
-  'imagine':   [{f:'imagine',t:'verb',tr:'tasavvur qilmoq'},{f:'imagination',t:'noun',tr:'tasavvur'},{f:'imaginative',t:'adj',tr:'tasavvurli'},{f:'imaginary',t:'adj',tr:'xayoliy'}],
-  'improve':   [{f:'improve',t:'verb',tr:'yaxshilamoq'},{f:'improvement',t:'noun',tr:'yaxshilanish'},{f:'improved',t:'adj',tr:'yaxshilangan'},{f:'improvable',t:'adj',tr:'yaxshilash mumkin'}],
-  'include':   [{f:'include',t:'verb',tr:'o\'z ichiga olmoq'},{f:'inclusion',t:'noun',tr:'kiritish'},{f:'inclusive',t:'adj',tr:'keng qamrovli'},{f:'exclude',t:'verb',tr:'chiqarib tashlash'},{f:'exclusive',t:'adj',tr:'eksklyuziv'}],
-  'inform':    [{f:'inform',t:'verb',tr:'xabardor qilmoq'},{f:'information',t:'noun',tr:'ma\'lumot'},{f:'informative',t:'adj',tr:'ma\'lumotli'},{f:'misinform',t:'verb',tr:'noto\'g\'ri xabardor qilish'}],
-  'judge':     [{f:'judge',t:'verb/noun',tr:'hukm qilmoq/sudya'},{f:'judgment',t:'noun',tr:'hukm'},{f:'judgmental',t:'adj',tr:'tanqidchi'},{f:'misjudge',t:'verb',tr:'noto\'g\'ri baholash'}],
-  'learn':     [{f:'learn',t:'verb',tr:'o\'rganmoq'},{f:'learning',t:'noun',tr:'o\'rganish'},{f:'learner',t:'noun',tr:'o\'quvchi'},{f:'learned',t:'adj',tr:'bilimdon'}],
-  'manage':    [{f:'manage',t:'verb',tr:'boshqarmoq'},{f:'management',t:'noun',tr:'boshqaruv'},{f:'manager',t:'noun',tr:'menejer'},{f:'manageable',t:'adj',tr:'boshqarish mumkin'},{f:'mismanage',t:'verb',tr:'noto\'g\'ri boshqarish'}],
-  'motivate':  [{f:'motivate',t:'verb',tr:'rag\'batlantirmoq'},{f:'motivation',t:'noun',tr:'rag\'bat'},{f:'motivated',t:'adj',tr:'rag\'batli'},{f:'motivator',t:'noun',tr:'rag\'batlantiruvchi'}],
-  'organize':  [{f:'organize',t:'verb',tr:'tashkil qilmoq'},{f:'organization',t:'noun',tr:'tashkilot'},{f:'organized',t:'adj',tr:'tartibli'},{f:'disorganized',t:'adj',tr:'tartibsiz'},{f:'organizer',t:'noun',tr:'tashkilotchi'}],
-  'patient':   [{f:'patient',t:'adj/noun',tr:'sabr-toqatli/bemor'},{f:'patience',t:'noun',tr:'sabr'},{f:'patiently',t:'adv',tr:'sabr bilan'},{f:'impatient',t:'adj',tr:'toqatsiz'},{f:'impatiently',t:'adv',tr:'toqatsizlik bilan'}],
-  'possible':  [{f:'possible',t:'adj',tr:'mumkin'},{f:'possibility',t:'noun',tr:'imkoniyat'},{f:'possibly',t:'adv',tr:'ehtimol'},{f:'impossible',t:'adj',tr:'imkonsiz'},{f:'impossibly',t:'adv',tr:'imkonsiz darajada'}],
-  'prepare':   [{f:'prepare',t:'verb',tr:'tayyorlamoq'},{f:'preparation',t:'noun',tr:'tayyorgarlik'},{f:'prepared',t:'adj',tr:'tayyor'},{f:'unprepared',t:'adj',tr:'tayyor emas'}],
-  'produce':   [{f:'produce',t:'verb/noun',tr:'ishlab chiqarmoq'},{f:'production',t:'noun',tr:'ishlab chiqarish'},{f:'productive',t:'adj',tr:'samarali'},{f:'productivity',t:'noun',tr:'samaradorlik'},{f:'producer',t:'noun',tr:'ishlab chiqaruvchi'}],
-  'relate':    [{f:'relate',t:'verb',tr:'bog\'lamoq'},{f:'relation',t:'noun',tr:'munosabat'},{f:'relative',t:'adj/noun',tr:'nisbiy/qarindosh'},{f:'relatively',t:'adv',tr:'nisbatan'},{f:'relationship',t:'noun',tr:'munosabat'}],
-  'respect':   [{f:'respect',t:'verb/noun',tr:'hurmat'},{f:'respectful',t:'adj',tr:'hurmatli'},{f:'respectfully',t:'adv',tr:'hurmat bilan'},{f:'disrespect',t:'verb/noun',tr:'hurmatsizlik'},{f:'respected',t:'adj',tr:'hurmatga sazovor'}],
-  'respond':   [{f:'respond',t:'verb',tr:'javob bermoq'},{f:'response',t:'noun',tr:'javob'},{f:'responsible',t:'adj',tr:'mas\'ul'},{f:'responsibility',t:'noun',tr:'mas\'uliyat'},{f:'irresponsible',t:'adj',tr:'mas\'uliyatsiz'}],
-  'success':   [{f:'success',t:'noun',tr:'muvaffaqiyat'},{f:'succeed',t:'verb',tr:'muvaffaqiyatga erishmoq'},{f:'successful',t:'adj',tr:'muvaffaqiyatli'},{f:'successfully',t:'adv',tr:'muvaffaqiyatli tarzda'},{f:'unsuccessful',t:'adj',tr:'muvaffaqiyatsiz'}],
-  'think':     [{f:'think',t:'verb',tr:'o\'ylamoq'},{f:'thought',t:'noun',tr:'fikr'},{f:'thoughtful',t:'adj',tr:'o\'ychan'},{f:'thoughtfully',t:'adv',tr:'o\'ychanlik bilan'},{f:'thoughtless',t:'adj',tr:'beparvo'}],
-  'trust':     [{f:'trust',t:'verb/noun',tr:'ishonmoq/ishonch'},{f:'trustworthy',t:'adj',tr:'ishonchli'},{f:'trustful',t:'adj',tr:'ishonuvchan'},{f:'distrust',t:'verb/noun',tr:'ishonmaslik'},{f:'mistrust',t:'verb',tr:'shubhalanmoq'}],
-  'value':     [{f:'value',t:'noun/verb',tr:'qiymat/qadrlash'},{f:'valuable',t:'adj',tr:'qimmatli'},{f:'valueless',t:'adj',tr:'qiymatsiz'},{f:'invaluable',t:'adj',tr:'bebaho'}],
-  'work':      [{f:'work',t:'verb/noun',tr:'ishlash'},{f:'worker',t:'noun',tr:'ishchi'},{f:'working',t:'adj',tr:'ishlaydigan'},{f:'workable',t:'adj',tr:'amalga oshirish mumkin'},{f:'overwork',t:'verb',tr:'haddan tashqari ishlash'}],
-  'comfort':   [{f:'comfort',t:'noun/verb',tr:'qulaylik/tasalli'},{f:'comfortable',t:'adj',tr:'qulay'},{f:'comfortably',t:'adv',tr:'qulay tarzda'},{f:'uncomfortable',t:'adj',tr:'noqulay'},{f:'discomfort',t:'noun',tr:'noqulaylik'}],
-  'courage':   [{f:'courage',t:'noun',tr:'jasorat'},{f:'courageous',t:'adj',tr:'jasur'},{f:'courageously',t:'adv',tr:'jasurlik bilan'},{f:'discourage',t:'verb',tr:'ruhini tushirmoq'},{f:'encourage',t:'verb',tr:'rag\'batlantirmoq'}],
-  'danger':    [{f:'danger',t:'noun',tr:'xavf'},{f:'dangerous',t:'adj',tr:'xavfli'},{f:'dangerously',t:'adv',tr:'xavfli tarzda'},{f:'endanger',t:'verb',tr:'xavf ostiga qo\'ymoq'}],
-  'describe':  [{f:'describe',t:'verb',tr:'tasvirlamoq'},{f:'description',t:'noun',tr:'tavsif'},{f:'descriptive',t:'adj',tr:'tasviriy'},{f:'descriptively',t:'adv',tr:'tasviriy tarzda'}],
-  'determine': [{f:'determine',t:'verb',tr:'aniqlash'},{f:'determination',t:'noun',tr:'qat\'iyat'},{f:'determined',t:'adj',tr:'qat\'iyatli'},{f:'undetermined',t:'adj',tr:'aniqlanmagan'}],
-  'discover':  [{f:'discover',t:'verb',tr:'kashf qilmoq'},{f:'discovery',t:'noun',tr:'kashfiyot'},{f:'discoverer',t:'noun',tr:'kashfiyotchi'}],
-  'efficient': [{f:'efficient',t:'adj',tr:'samarali'},{f:'efficiency',t:'noun',tr:'samaradorlik'},{f:'efficiently',t:'adv',tr:'samarali tarzda'},{f:'inefficient',t:'adj',tr:'samarasiz'}],
-  'experience':[{f:'experience',t:'noun/verb',tr:'tajriba'},{f:'experienced',t:'adj',tr:'tajribali'},{f:'inexperienced',t:'adj',tr:'tajribasiz'}],
-  'explain':   [{f:'explain',t:'verb',tr:'tushuntirmoq'},{f:'explanation',t:'noun',tr:'tushuntirish'},{f:'explanatory',t:'adj',tr:'tushuntiruvchan'}],
-  'important': [{f:'important',t:'adj',tr:'muhim'},{f:'importance',t:'noun',tr:'ahamiyat'},{f:'importantly',t:'adv',tr:'muhim ravishda'},{f:'unimportant',t:'adj',tr:'ahamiyatsiz'}],
-  'innovate':  [{f:'innovate',t:'verb',tr:'yangilik kiritmoq'},{f:'innovation',t:'noun',tr:'innovatsiya'},{f:'innovative',t:'adj',tr:'innovatsion'},{f:'innovator',t:'noun',tr:'novator'}],
-  'inspire':   [{f:'inspire',t:'verb',tr:'ilhomlantirmoq'},{f:'inspiration',t:'noun',tr:'ilhom'},{f:'inspired',t:'adj',tr:'ilhomlangan'},{f:'inspiring',t:'adj',tr:'ilhomlantiradigan'}],
-  'interpret': [{f:'interpret',t:'verb',tr:'talqin qilmoq'},{f:'interpretation',t:'noun',tr:'talqin'},{f:'interpreter',t:'noun',tr:'tarjimon'},{f:'misinterpret',t:'verb',tr:'noto\'g\'ri talqin qilish'}],
-  'introduce': [{f:'introduce',t:'verb',tr:'tanishtirmoq'},{f:'introduction',t:'noun',tr:'tanishuv'},{f:'introductory',t:'adj',tr:'kirish'}],
-  'involve':   [{f:'involve',t:'verb',tr:'jalb qilmoq'},{f:'involvement',t:'noun',tr:'jalb bo\'lish'},{f:'involved',t:'adj',tr:'jalb qilingan'},{f:'uninvolved',t:'adj',tr:'jalb qilinmagan'}],
-  'logic':     [{f:'logic',t:'noun',tr:'mantiq'},{f:'logical',t:'adj',tr:'mantiqiy'},{f:'logically',t:'adv',tr:'mantiqiy tarzda'},{f:'illogical',t:'adj',tr:'mantiqsiz'}],
-  'natural':   [{f:'natural',t:'adj',tr:'tabiiy'},{f:'nature',t:'noun',tr:'tabiat'},{f:'naturally',t:'adv',tr:'tabiiy tarzda'},{f:'unnatural',t:'adj',tr:'tabiiy emas'}],
-  'observe':   [{f:'observe',t:'verb',tr:'kuzatmoq'},{f:'observation',t:'noun',tr:'kuzatuv'},{f:'observer',t:'noun',tr:'kuzatuvchi'},{f:'observant',t:'adj',tr:'kuzatuvchan'}],
-  'perform':   [{f:'perform',t:'verb',tr:'bajarmoq'},{f:'performance',t:'noun',tr:'ijro'},{f:'performer',t:'noun',tr:'ijrochi'},{f:'underperform',t:'verb',tr:'past ko\'rsatkich'}],
-  'predict':   [{f:'predict',t:'verb',tr:'bashorat qilmoq'},{f:'prediction',t:'noun',tr:'bashorat'},{f:'predictable',t:'adj',tr:'bashorat qilish mumkin'},{f:'unpredictable',t:'adj',tr:'noaniq'}],
-  'prefer':    [{f:'prefer',t:'verb',tr:'afzal ko\'rmoq'},{f:'preference',t:'noun',tr:'afzallik'},{f:'preferable',t:'adj',tr:'afzalroq'},{f:'preferably',t:'adv',tr:'imkon qadar'}],
-  'promote':   [{f:'promote',t:'verb',tr:'rivojlantirmoq'},{f:'promotion',t:'noun',tr:'targ\'ib/lavozim ko\'tarilishi'},{f:'promoter',t:'noun',tr:'targ\'ibotchi'}],
-  'protect':   [{f:'protect',t:'verb',tr:'himoya qilmoq'},{f:'protection',t:'noun',tr:'himoya'},{f:'protective',t:'adj',tr:'himoyalovchi'},{f:'protector',t:'noun',tr:'himoyachi'}],
-  'reason':    [{f:'reason',t:'noun/verb',tr:'sabab/fikr yuritmoq'},{f:'reasonable',t:'adj',tr:'oqilona'},{f:'reasonably',t:'adv',tr:'oqilona tarzda'},{f:'unreasonable',t:'adj',tr:'nojoiz'}],
-  'recognize': [{f:'recognize',t:'verb',tr:'tan olmoq'},{f:'recognition',t:'noun',tr:'tan olish'},{f:'recognizable',t:'adj',tr:'tanish'},{f:'unrecognizable',t:'adj',tr:'tanib bo\'lmas'}],
-  'solve':     [{f:'solve',t:'verb',tr:'yechmoq'},{f:'solution',t:'noun',tr:'yechim'},{f:'solvable',t:'adj',tr:'yechish mumkin'},{f:'unsolvable',t:'adj',tr:'yechib bo\'lmas'}],
-  'suggest':   [{f:'suggest',t:'verb',tr:'taklif qilmoq'},{f:'suggestion',t:'noun',tr:'taklif'},{f:'suggestive',t:'adj',tr:'taklif qiluvchi'}],
-  'support':   [{f:'support',t:'verb/noun',tr:'qo\'llab-quvvatlamoq'},{f:'supporter',t:'noun',tr:'qo\'llovchi'},{f:'supportive',t:'adj',tr:'qo\'llab-quvvatlovchi'}],
-  'tolerate':  [{f:'tolerate',t:'verb',tr:'bardosh bermoq'},{f:'tolerance',t:'noun',tr:'toqatlilik'},{f:'tolerant',t:'adj',tr:'toqatli'},{f:'intolerant',t:'adj',tr:'toqatsiz'}],
-  'understand':[{f:'understand',t:'verb',tr:'tushunmoq'},{f:'understanding',t:'noun',tr:'tushunish'},{f:'misunderstand',t:'verb',tr:'noto\'g\'ri tushunmoq'},{f:'misunderstanding',t:'noun',tr:'noto\'g\'ri tushunish'}],
+  'pragmatic': [{f:'pragmatic',t:'adj',tr:'amaliy'},{f:'pragmatism',t:'noun',tr:'amaliylik'},{f:'pragmatically',t:'adv',tr:'amaliy ravishda'}],
+  'resilient': [{f:'resilient',t:'adj',tr:'bardoshli'},{f:'resilience',t:'noun',tr:'bardoshlilik'},{f:'resiliently',t:'adv',tr:'chidamli ravishda'}],
 };
 
 let WF={pool:[],idx:0,learned:0};
@@ -4135,14 +4296,13 @@ function wfNext(){WF.idx++;wfBuild();}
 // ================================================================
 const _origOpenPremGame = openPremiumGame;
 openPremiumGame = function(type){
-  const needPremium = ['speaking','pron-score','word-family','context','word-chain'];
+  const needPremium = ['speaking','word-family','context','word-chain'];
   if(needPremium.includes(type)){
     if(!U.isPremium||U.premiumExpiry<Date.now()){
       switchTabByName('premium');showToast('💎 Premium kerak!');return;
     }
     const modalMap = {
       'speaking':'modal-speaking',
-      'pron-score':'modal-pron-score',
       'word-family':'modal-word-family',
       'context':'modal-context',
       'word-chain':'modal-word-chain'
@@ -4150,7 +4310,7 @@ openPremiumGame = function(type){
     const el = document.getElementById(modalMap[type]);
     if(el) el.classList.add('open');
     if(type==='speaking') try{initSpeaking();}catch(e){}
-    if(type==='pron-score') try{initPronScore();}catch(e){}
+    if(type==='speaking') try{initSpeaking();}catch(e){}
     if(type==='word-family') try{initWordFamily();}catch(e){}
     if(type==='context') try{initContext();}catch(e){}
     if(type==='word-chain') try{initWordChain();}catch(e){}
@@ -4167,7 +4327,6 @@ const _origCM2 = closeModal;
 closeModal = function(e,id){
   _origCM2(e,id);
   if(id==='modal-speaking'&&typeof SP!=='undefined'&&SP.rec){try{SP.rec.stop();}catch(ee){}SP.rec=null;SP.listening=false;}
-  if(id==='modal-pron-score'&&typeof PS!=='undefined'&&PS.rec){try{PS.rec.stop();}catch(ee){}PS.rec=null;PS.listening=false;}
   if(id==='modal-word-chain'&&typeof WC!=='undefined'){clearInterval(WC.timer);}
 };
 
@@ -4208,67 +4367,31 @@ const PREMIUM_AVATARS = [
         <span>🔥 <span id="sp-streak">0</span></span>
         <span>📝 <span id="sp-num">0</span>/<span id="sp-total">0</span></span>
       </div>
-      <!-- Progress bar -->
       <div class="pron-progress" style="margin-bottom:12px"><div class="pron-prog-fill" id="sp-prog" style="width:0%"></div></div>
-      <!-- So'z -->
       <div id="sp-word" class="speak-word">—</div>
       <div id="sp-phonetic" class="speak-phonetic"></div>
-      <div id="sp-translation" class="speak-translation"></div>
+      <div id="sp-translation" class="speak-translation" style="margin-bottom:10px"></div>
       <!-- Score ring -->
-      <div id="sp-ring" style="display:none;text-align:center;margin:8px 0">
+      <div id="sp-ring" style="display:none;text-align:center;margin:6px 0 10px">
         <div class="score-ring" id="sp-ring-el" style="margin:0 auto 4px">
           <span style="font-size:20px;font-weight:800" id="sp-ring-pct">0%</span>
           <span style="font-size:9px;color:var(--muted)">umumiy</span>
         </div>
       </div>
-      <!-- Listen -->
       <div style="text-align:center;margin-bottom:10px">
         <button onclick="speakText(SP.pool[SP.idx]?.word||'')" style="background:none;border:1px solid var(--border);border-radius:20px;color:var(--blue);padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Namunani eshit</button>
       </div>
-      <!-- Mic -->
-      <div style="text-align:center;margin-bottom:10px">
+      <div style="text-align:center;margin-bottom:8px">
         <div class="mic-btn off" id="sp-mic-btn" onclick="spToggleMic()">🎤</div>
         <div id="sp-mic-label" style="font-size:12px;color:var(--muted);margin-top:8px">Tugmani bosib so'zni ayting</div>
       </div>
-      <div id="sp-heard" style="text-align:center;font-size:12px;color:var(--muted);min-height:16px;margin-bottom:6px"></div>
+      <div id="sp-heard" style="text-align:center;font-size:12px;color:var(--muted);min-height:16px;margin-bottom:4px"></div>
       <div id="sp-result" style="min-height:40px;margin-bottom:8px"></div>
       <button id="sp-next-btn" onclick="spNext()" style="display:none;width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">Keyingisi →</button>
     </div>
   </div>
 </div>
 
-<!-- ======== PRONUNCIATION SCORE ======== -->
-<div class="overlay" id="modal-pron-score" onclick="closeModal(event,'modal-pron-score')">
-  <div class="sheet"><div class="sh"></div>
-    <div class="sc" onclick="closeModal(null,'modal-pron-score')">✕</div>
-    <div class="sb">
-      <div class="st">🎯 Talaffuz Score</div>
-      <div class="gsbar">
-        <span>🏆 Best: <span id="ps-best">0</span>%</span>
-        <span>📊 O'rt: <span id="ps-avg">0</span>%</span>
-        <span>📝 <span id="ps-num">0</span>/<span id="ps-total">0</span></span>
-      </div>
-      <div class="pron-streak" id="ps-dots"></div>
-      <div class="pron-progress"><div class="pron-prog-fill" id="ps-prog" style="width:0%"></div></div>
-      <div id="ps-word" class="speak-word">—</div>
-      <div id="ps-phonetic" class="speak-phonetic"></div>
-      <div id="ps-translation" class="speak-translation"></div>
-      <div id="ps-ring" style="display:none;margin-bottom:12px;text-align:center">
-        <div class="score-ring" id="ps-ring-el" style="margin:0 auto 8px">
-          <span style="font-size:22px;font-weight:800" id="ps-ring-pct">0%</span>
-          <span style="font-size:10px;color:var(--muted)">skor</span>
-        </div>
-        <div id="ps-ring-msg" style="font-size:13px;font-weight:700"></div>
-      </div>
-      <div style="display:flex;gap:8px;margin-bottom:12px">
-        <button onclick="speakText(PS.pool[PS.idx]?.word||'')" style="flex:1;padding:11px;background:var(--s2);border:1px solid var(--border);border-radius:11px;color:var(--blue);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Eshitish</button>
-        <div class="mic-btn off" id="ps-mic-btn" onclick="psMicToggle()" style="width:50px;height:50px;font-size:22px;flex-shrink:0">🎤</div>
-      </div>
-      <div id="ps-heard" style="text-align:center;font-size:12px;color:var(--muted);min-height:18px;margin-bottom:8px"></div>
-      <button id="ps-next-btn" onclick="psNext()" style="display:none;width:100%;padding:12px;background:linear-gradient(135deg,var(--green),#22a06b);border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">Keyingisi →</button>
-    </div>
-  </div>
-</div>
 
 <!-- ======== WORD CHAIN ======== -->
 <div class="overlay" id="modal-word-chain" onclick="closeModal(event,'modal-word-chain')">
@@ -4281,7 +4404,11 @@ const PREMIUM_AVATARS = [
         <span>⏱ <span id="wc-time">60</span>s</span>
         <span>⭐ <span id="wc-score">0</span> XP</span>
       </div>
-      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:8px">Har yangi so'z avvalgisining <b style="color:var(--accent)">oxirgi harfidan</b> boshlansin</div>
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:8px">Har yangi so'z avvalgisining <b style="color:var(--accent)">oxirgi harfidan</b> boshlansin. Faqat <b style="color:var(--blue)">inglizcha so'zlar</b> qabul qilinadi</div>
+      <div style="display:flex;gap:6px;margin-bottom:8px;justify-content:center">
+        <button onclick="wcSetTime(60)" style="padding:5px 14px;border-radius:20px;border:1.5px solid var(--accent);background:rgba(124,90,246,.15);color:var(--text);font-size:11px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">⏱ 1 daqiqa</button>
+        <button onclick="wcSetTime(120)" style="padding:5px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--s2);color:var(--text);font-size:11px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">⏱ 2 daqiqa</button>
+      </div>
       <div id="wc-chain" class="chain-display"></div>
       <div id="wc-last" style="font-size:13px;text-align:center;padding:8px;background:rgba(124,90,246,.1);border-radius:10px;margin-bottom:10px;color:var(--purple);font-weight:700">Birinchi inglizcha so'zni kiriting</div>
       <input id="wc-inp" class="chain-inp" placeholder="Inglizcha so'z..." oninput="wcInpHandler(this)" onkeydown="if(event.key==='Enter')wcSubmit()" autocomplete="off" autocapitalize="none">
@@ -4720,5 +4847,56 @@ const PREMIUM_AVATARS = [
   </div>
 </div>
 
+
+<!-- ======== WEAK WORDS QUIZ ======== -->
+<div class="overlay" id="modal-weak-quiz" onclick="closeModal(event,'modal-weak-quiz')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-weak-quiz')">✕</div>
+    <div class="sb">
+      <div class="st">⚠️ Zaif So'zlar Quizi</div>
+      <div class="gsbar">
+        <span>✅ <span id="wq-score">0</span></span>
+        <span>❌ <span id="wq-wrong">0</span></span>
+        <span>📝 <span id="wq-num">1</span>/<span id="wq-total">—</span></span>
+      </div>
+      <div id="wq-word" style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;text-align:center;margin:16px 0 4px">—</div>
+      <div id="wq-phonetic" style="text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px"></div>
+      <div id="wq-res" style="text-align:center;font-size:12px;color:var(--muted);min-height:18px;margin-bottom:12px">So'zning tarjimasini toping:</div>
+      <div class="gopts" id="wq-opts"></div>
+      <div style="margin-top:14px;background:var(--s2);border-radius:10px;padding:8px 12px;font-size:11px;color:var(--muted);text-align:center">
+        Ko'p xato qilingan so'zlar · To'g'ri javob uchun <b style="color:var(--gold)">+2 XP</b> · To'g'ri javob xatoni kamaytiradi
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== PROFILE MENU ======== -->
+<div class="overlay" id="modal-profile-menu" onclick="closeModal(event,'modal-profile-menu')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-profile-menu')">✕</div>
+    <div class="sb">
+      <div class="st">👤 Profil</div>
+      <div style="text-align:center;padding:8px 0 16px">
+        <div id="pm-av" style="width:70px;height:70px;border-radius:50%;background:var(--s2);border:3px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 10px;overflow:hidden">🤖</div>
+        <div style="font-size:17px;font-weight:800" id="pm-name">—</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px" id="pm-level">—</div>
+        <div style="font-size:13px;color:var(--gold);margin-top:4px;font-weight:700" id="pm-xp">0 XP</div>
+      </div>
+      <!-- Tema -->
+      <div style="background:var(--s2);border-radius:13px;padding:13px;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:9px">🎨 INTERFEYS REJIMI</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+          <button onclick="localStorage.setItem('ep_theme','dark');applyTheme();updatePMtheme()" id="pm-dark-btn" style="padding:9px;border-radius:10px;border:2px solid var(--accent);background:rgba(124,90,246,.15);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🌙 Tungi</button>
+          <button onclick="localStorage.setItem('ep_theme','light');applyTheme();updatePMtheme()" id="pm-light-btn" style="padding:9px;border-radius:10px;border:2px solid var(--border);background:var(--s1);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">☀️ Kunduzgi</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button onclick="closeModal(null,'modal-profile-menu');switchTabByName('progress')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span>📊</span> Statistika ko'rish</button>
+        <button onclick="closeModal(null,'modal-profile-menu');openWeakQuiz()" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span>⚠️</span> Zaif so'zlar quizi</button>
+        <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.12);border:1.5px solid rgba(248,81,73,.3);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">🚪 Profildan chiqish</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
