@@ -343,41 +343,13 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .wf-card.wrong-ans{border-color:var(--red);background:rgba(239,68,68,.08)}
 .wf-form{font-size:15px;font-weight:800;color:var(--text)}.wf-type{font-size:11px;color:var(--muted)}
 
-/* ═══════════════════ v2.1 ENHANCEMENTS ═══════════════════ */
-/* Daily Quest progress bar */
-.quest-bar{height:4px;background:var(--s2);border-radius:4px;overflow:hidden;margin-top:5px}
-.quest-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--purple));transition:width .5s cubic-bezier(.34,1.56,.64,1)}
-/* Spaced review badge */
-.sr-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(79,223,138,.12);border:1px solid rgba(79,223,138,.25);border-radius:20px;padding:5px 11px;font-size:11px;font-weight:800;color:var(--green);cursor:pointer;transition:all .2s}
-.sr-badge:hover{background:rgba(79,223,138,.2)}
-/* AI status pill */
-.ai-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;transition:all .3s}
-.ai-pill.on{background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.35);color:var(--al)}
-.ai-pill.off{background:var(--s2);border:1px solid var(--border);color:var(--muted)}
-/* Combo indicator */
-@keyframes comboPulse{0%,100%{box-shadow:0 4px 15px rgba(245,197,66,.3)}50%{box-shadow:0 4px 25px rgba(245,197,66,.6)}}
-#combo-indicator{animation:comboPulse 1s infinite}
-/* Achievement unlock pop */
-@keyframes achievePop{0%{transform:translateX(-50%) scale(.4) rotate(-10deg);opacity:0}60%{transform:translateX(-50%) scale(1.15) rotate(2deg)}100%{transform:translateX(-50%) scale(1);opacity:1}}
-/* Heatmap tooltip */
-.heat-day[title]:hover::after{content:attr(title);position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:6px;padding:3px 7px;font-size:10px;white-space:nowrap;z-index:999}
-.heat-day[title]{position:relative}
-/* Spaced review word card accent */
-.fc-face[data-due="true"]{border-color:rgba(79,223,138,.4)}
-/* Settings section cards */
-.settings-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
-.settings-section-title{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-/* AI chat bubble tip */
-.ai-tip-bubble{padding:9px 13px;background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.2);border-radius:10px;font-size:11px;color:var(--accent);line-height:1.6;display:flex;align-items:flex-start;gap:7px}
-.ai-tip-bubble::before{content:"🤖";flex-shrink:0;font-size:14px}
-/* Progress ring */
-@keyframes ringFill{from{stroke-dashoffset:283}to{stroke-dashoffset:var(--end-offset)}}
-/* Notification dot */
-.notif-dot{width:7px;height:7px;border-radius:50%;background:var(--red);position:absolute;top:2px;right:2px;border:2px solid var(--bg)}
-/* Enhanced word card */
-.word-mastery{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted)}
-.mastery-pip{width:6px;height:6px;border-radius:50%;background:var(--border)}
-.mastery-pip.filled{background:var(--green)}
+/* AI Modals */
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-level-btn{transition:all .2s}
+#ai-grammar-result b{color:var(--accent)}
+.ai-chip-topbar{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:800;cursor:pointer;transition:all .2s}
+.ai-chip-topbar.on{background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.35);color:var(--al)}
+.ai-chip-topbar.off{background:var(--s2);border:1px solid var(--border);color:var(--muted)}
 </style>
 </head>
 <body>
@@ -4424,17 +4396,28 @@ const PREMIUM_AVATARS = [
 // ║  AI CONFIGURATION — paste your API key in Settings to enable  ║
 // ╚══════════════════════════════════════════════════════════════╝
 const AI_CONFIG = {
-  enabled: false,
+  // ╔══════════════════════════════════════════════════════════════╗
+  // ║  BU YERGA API KEYINGIZNI YOZING — shunda AI darhol ishlaydi  ║
+  // ║  OpenRouter dan bepul key: https://openrouter.ai              ║
+  // ╚══════════════════════════════════════════════════════════════╝
+  enabled: false,           // API key qo'yilsa avtomatik true bo'ladi
   provider: 'openrouter',
-  apiKey: '',
-  model: 'deepseek/deepseek-chat',
-  // Switch model by changing one line:
-  // 'deepseek/deepseek-chat'      — cheap, very capable
-  // 'mistralai/mistral-small'     — fast, multilingual
-  // 'meta-llama/llama-3-8b-instruct' — free tier
+  apiKey: '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',               // ← SHU YERGA KEY YOZING: 'sk-or-v1-...'
+  //
+  // MODEL TANLASH — faqat shu qatorni o'zgartiring:
+  model: 'meta-llama/llama-3.1-8b-instruct:free',
+  //   'meta-llama/llama-3.1-8b-instruct:free'  — BEPUL, Llama 3.1 8B
+  //   'deepseek/deepseek-chat'                  — Arzon, juda kuchli
+  //   'mistralai/mistral-small'                  — Tez, ko'p tilli
+  //   'openai/gpt-4o-mini'                       — OpenAI mini
+  //
   baseURL: 'https://openrouter.ai/api/v1/chat/completions',
-  maxTokens: 512,
+  maxTokens: 600,
 };
+// API key mavjud bo'lsa — avtomatik yoqish
+if(AI_CONFIG.apiKey && AI_CONFIG.apiKey.length > 10){
+  AI_CONFIG.enabled = true;
+}
 
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  APP NAMESPACE — modular structure                            ║
@@ -5015,9 +4998,145 @@ App.ai = {
   },
 
   loadSavedConfig(){
-    const key = localStorage.getItem('ep_ai_key')||'';
-    const model = localStorage.getItem('ep_ai_model')||AI_CONFIG.model;
-    if(key){ AI_CONFIG.apiKey=key; AI_CONFIG.model=model; AI_CONFIG.enabled=true; }
+    const savedKey = localStorage.getItem('ep_ai_key')||'';
+    const savedModel = localStorage.getItem('ep_ai_model')||'';
+    if(savedKey && savedKey.length > 10){ AI_CONFIG.apiKey=savedKey; AI_CONFIG.enabled=true; }
+    if(savedModel) AI_CONFIG.model=savedModel;
+    if(AI_CONFIG.apiKey && AI_CONFIG.apiKey.length > 10) AI_CONFIG.enabled=true;
+    console.log('🤖 AI:', AI_CONFIG.enabled ? '✅ FAOL — '+AI_CONFIG.model : '⭕ Key yo\'q');
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI VOCABULARY GENERATOR
+  // Berilgan daraja uchun yangi so'z + tarjima + misol
+  // ══════════════════════════════════════════════════════
+  async generateVocabulary(level='intermediate', topic=''){
+    if(!await this.isEnabled()) return null;
+    const topicStr = topic ? `, mavzu: "${topic}"` : '';
+    return this.call(
+      `Siz ingliz tili o'qituvchisisiz. Foydalanuvchi Uzbek. Faqat JSON qaytaring, boshqa hech narsa yo'q.`,
+      `${level} darajadagi o'quvchi uchun${topicStr} 5 ta yangi inglizcha so'z ber. JSON format: {"words":[{"word":"...","translation":"...","definition":"...","example":"...","part_of_speech":"..."}]}`,
+      600
+    ).then(r=>{
+      try{
+        const clean = r.replace(/\`\`\`json|\`\`\`/g,'').trim();
+        return JSON.parse(clean);
+      }catch(e){ console.warn('AI vocab parse error:', e); return null; }
+    });
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI SENTENCE CREATOR
+  // So'z asosida o'zbek izohi bilan misollar
+  // ══════════════════════════════════════════════════════
+  async createSentences(word, level='intermediate'){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      `Siz ingliz tili o'qituvchisisiz. Foydalanuvchi Uzbek. Faqat JSON qaytaring.`,
+      `"${word}" so'zi uchun ${level} darajada 3 ta misol gap ber. JSON: {"sentences":[{"english":"...","uzbek":"...","explanation":"..."}]}`,
+      400
+    ).then(r=>{
+      try{ return JSON.parse(r.replace(/\`\`\`json|\`\`\`/g,'').trim()); }catch(e){ return null; }
+    });
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI GRAMMAR EXPLANATION
+  // Grammatika mavzusini o'zbekcha tushuntirish
+  // ══════════════════════════════════════════════════════
+  async explainGrammarDetail(topic, level='beginner'){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      `Siz ingliz tili grammatika ekspertisiz. O'zbek tilida tushuntiring. Sodda, qisqa, misollar bilan.`,
+      `"${topic}" grammatik mavzusini ${level} darajadagi o'quvchiga o'zbek tilida tushuntiring. 3-4 qisqa gap, 2 ta misol.`,
+      350
+    );
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI WEAK WORD TRAINER
+  // Xato qilingan so'zlar uchun AI test
+  // ══════════════════════════════════════════════════════
+  async generateWeakWordExercises(words){
+    if(!await this.isEnabled()) return null;
+    if(!words||!words.length) return null;
+    return this.call(
+      `Ingliz tili o'qituvchisi. Foydalanuvchi Uzbek. Faqat JSON qaytaring.`,
+      `Bu so'zlar uchun bo'sh joyni to'ldirish mashqi ber: ${words.slice(0,5).join(', ')}. JSON: {"exercises":[{"word":"...","sentence":"Shu yerga ___ kerak.","translation":"...","hint":"..."}]}`,
+      500
+    ).then(r=>{
+      try{ return JSON.parse(r.replace(/\`\`\`json|\`\`\`/g,'').trim()); }catch(e){ return null; }
+    });
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI WORD MEANING CHECKER
+  // So'zning ma'nosini chuqur tushuntirish
+  // ══════════════════════════════════════════════════════
+  async deepExplainWord(word){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      `Ingliz tili lug'at eksperti. O'zbek tilida qisqa va aniq javob ber.`,
+      `"${word}" so'zining: 1) asosiy ma'nosi (o'zbek), 2) qachon ishlatiladi, 3) bir misol gap. Jami 4-5 qisqa gap.`,
+      250
+    );
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI QUIZ GENERATOR
+  // So'zlar bo'yicha AI quiz savollar
+  // ══════════════════════════════════════════════════════
+  async generateQuiz(words, count=5){
+    if(!await this.isEnabled()) return null;
+    const wordList = words.slice(0,10).map(w=>w.word||w).join(', ');
+    return this.call(
+      `Ingliz tili o'qituvchisi. Foydalanuvchi Uzbek. Faqat JSON qaytaring.`,
+      `Bu so'zlar asosida ${count} ta test savol ber: ${wordList}. JSON: {"questions":[{"word":"...","question":"...","options":["...","...","...","..."],"correct":0,"explanation":"..."}]}`,
+      700
+    ).then(r=>{
+      try{ return JSON.parse(r.replace(/\`\`\`json|\`\`\`/g,'').trim()); }catch(e){ return null; }
+    });
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI PERSONALIZED STUDY PLAN
+  // Foydalanuvchi statistikasi asosida tavsiya
+  // ══════════════════════════════════════════════════════
+  async getStudyPlan(userData){
+    if(!await this.isEnabled()) return null;
+    const { learnedWords=[], streak=0, xp=0, level='beginner', wordErrors={} } = userData;
+    const weakCount = Object.keys(wordErrors).length;
+    return this.call(
+      `Shaxsiy ingliz tili murabbiyisiz. O'zbek tilida qisqa, motivatsion, amaliy maslahat bering.`,
+      `O'quvchi ma'lumoti: daraja=${level}, o'rganilgan so'z=${learnedWords.length}, streak=${streak} kun, XP=${xp}, zaif so'z=${weakCount}. 2-3 qisqa maslahat va bugungi maqsad bering.`,
+      250
+    );
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI TRANSLATION WITH CONTEXT
+  // Matnni tarjima qilish + izoh
+  // ══════════════════════════════════════════════════════
+  async translateWithContext(text){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      `Ingliz-o'zbek tarjimon. Aniq, tabiiy tarjima ber.`,
+      `Tarjima qil: "${text}". Format: Tarjima: [o'zbekcha]. Izoh: [qisqa grammatik izoh, agar kerak bo'lsa].`,
+      200
+    );
+  },
+
+  // ══════════════════════════════════════════════════════
+  // AI PRONUNCIATION TIPS
+  // Talaffuz bo'yicha maslahat
+  // ══════════════════════════════════════════════════════
+  async getPronunciationTip(word, heard, score){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      `Talaffuz murabbiyisiz. O'zbek tilida 1 qisqa maslahat ber (max 20 so'z).`,
+      `So'z: "${word}", eshitildi: "${heard}", skor: ${score}%. Nima yaxshilanishi kerak?`,
+      100
+    );
   }
 };
 
@@ -5900,282 +6019,640 @@ App.init = function(){
   </div>
 </div>
 
+<!-- ======== AI VOCABULARY MODAL ======== -->
+<div class="overlay" id="modal-ai-vocab" onclick="closeModal(event,'modal-ai-vocab')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ai-vocab')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 AI So'z Generatori</div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:7px">DARAJA</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px">
+          <button onclick="aiVocabSetLevel('beginner',this)" class="ai-level-btn active" style="padding:8px 4px;border-radius:10px;border:1.5px solid var(--accent);background:rgba(124,90,246,.12);color:var(--al);font-weight:700;font-size:11px;cursor:pointer;font-family:'Nunito',sans-serif">🌱 Beginner</button>
+          <button onclick="aiVocabSetLevel('intermediate',this)" class="ai-level-btn" style="padding:8px 4px;border-radius:10px;border:1.5px solid var(--border);background:var(--s2);color:var(--muted);font-weight:700;font-size:11px;cursor:pointer;font-family:'Nunito',sans-serif">🎯 Intermediate</button>
+          <button onclick="aiVocabSetLevel('advanced',this)" class="ai-level-btn" style="padding:8px 4px;border-radius:10px;border:1.5px solid var(--border);background:var(--s2);color:var(--muted);font-weight:700;font-size:11px;cursor:pointer;font-family:'Nunito',sans-serif">🚀 Advanced</button>
+        </div>
+        <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">MAVZU (ixtiyoriy)</div>
+        <input id="ai-vocab-topic" class="sinp" placeholder="Masalan: travel, food, business..." style="margin-bottom:10px">
+        <button onclick="runAIVocabGen()" id="ai-vocab-btn" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+          ✨ AI So'z Yaratish
+        </button>
+      </div>
+      <div id="ai-vocab-result" style="min-height:60px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== AI GRAMMAR EXPLAIN MODAL ======== -->
+<div class="overlay" id="modal-ai-grammar" onclick="closeModal(event,'modal-ai-grammar')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ai-grammar')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 AI Grammatika</div>
+      <div id="ai-grammar-topic-display" style="background:rgba(124,90,246,.08);border:1px solid rgba(124,90,246,.2);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:13px;font-weight:700;color:var(--al)">—</div>
+      <div id="ai-grammar-result" style="min-height:80px;font-size:13px;line-height:1.8;color:var(--text)">
+        <div style="text-align:center;color:var(--muted);padding:20px">AI yuklanmoqda...</div>
+      </div>
+      <button onclick="closeModal(null,'modal-ai-grammar')" style="width:100%;margin-top:12px;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">← Yopish</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======== AI WEAK WORD TRAINER MODAL ======== -->
+<div class="overlay" id="modal-ai-weak-trainer" onclick="closeModal(event,'modal-ai-weak-trainer')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ai-weak-trainer')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 AI Zaif So'z Treneri</div>
+      <div class="gsbar">
+        <span>✅ <span id="ait-score">0</span></span>
+        <span>❌ <span id="ait-wrong">0</span></span>
+        <span>📝 <span id="ait-num">0</span>/<span id="ait-total">0</span></span>
+      </div>
+      <div id="ait-loading" style="text-align:center;padding:30px;color:var(--muted)">
+        <div style="font-size:36px;margin-bottom:10px">🤖</div>
+        <div style="font-size:13px">AI mashqlar yaratmoqda...</div>
+        <div style="width:40px;height:40px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:14px auto 0"></div>
+      </div>
+      <div id="ait-content" style="display:none">
+        <div id="ait-sentence" style="font-size:16px;line-height:1.9;background:var(--s2);border-radius:13px;padding:16px;margin-bottom:12px;text-align:center"></div>
+        <div id="ait-hint" style="font-size:12px;color:var(--muted);text-align:center;margin-bottom:10px;font-style:italic"></div>
+        <input id="ait-input" class="chain-inp" placeholder="Javob yozing..." autocomplete="off" autocapitalize="none" onkeydown="if(event.key==='Enter')checkAIWeakAnswer()">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px">
+          <button onclick="showAIWeakHint()" style="padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;color:var(--text);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">💡 Ko'rsatma</button>
+          <button onclick="checkAIWeakAnswer()" style="padding:11px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:11px;color:white;font-weight:800;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">✓ Tekshirish</button>
+        </div>
+        <div id="ait-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:10px"></div>
+        <button id="ait-next-btn" onclick="nextAIWeakExercise()" style="display:none;width:100%;margin-top:10px;padding:12px;background:linear-gradient(135deg,var(--green),#2db86a);border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">Keyingisi →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== AI STUDY PLAN MODAL ======== -->
+<div class="overlay" id="modal-ai-plan" onclick="closeModal(event,'modal-ai-plan')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ai-plan')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 AI O'qish Rejasi</div>
+      <div id="ai-plan-result" style="min-height:80px;font-size:13px;line-height:1.9;color:var(--text)">
+        <div style="text-align:center;color:var(--muted);padding:30px">
+          <div style="font-size:40px;margin-bottom:12px">🤖</div>
+          <div>AI shaxsiy reja yaratmoqda...</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
+        <button onclick="refreshAIStudyPlan()" style="padding:11px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🔄 Yangi Reja</button>
+        <button onclick="closeModal(null,'modal-ai-plan')" style="padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">← Yopish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== AI QUIZ MODAL ======== -->
+<div class="overlay" id="modal-ai-quiz" onclick="closeModal(event,'modal-ai-quiz')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ai-quiz')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 AI Quiz</div>
+      <div class="gsbar">
+        <span>✅ <span id="aiq-score">0</span></span>
+        <span>❌ <span id="aiq-wrong">0</span></span>
+        <span>📝 <span id="aiq-num">1</span>/<span id="aiq-total">5</span></span>
+      </div>
+      <div id="aiq-loading" style="text-align:center;padding:30px;color:var(--muted)">
+        <div style="font-size:36px;margin-bottom:10px">🤖</div>
+        <div>AI savollar tayyorlanmoqda...</div>
+        <div style="width:40px;height:40px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:14px auto 0"></div>
+      </div>
+      <div id="aiq-content" style="display:none">
+        <div class="gword" id="aiq-question">—</div>
+        <div class="gopts" id="aiq-opts"></div>
+        <div id="aiq-explain" style="margin-top:8px;padding:8px 12px;background:rgba(124,90,246,.08);border:1px solid rgba(124,90,246,.2);border-radius:10px;font-size:11px;color:var(--al);display:none;line-height:1.6"></div>
+        <div id="aiq-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== AI WORD DEEP EXPLAIN MODAL ======== -->
+<div class="overlay" id="modal-ai-word-explain" onclick="closeModal(event,'modal-ai-word-explain')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ai-word-explain')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 AI So'z Tahlili</div>
+      <div id="ai-explain-word-title" style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--blue);text-align:center;margin-bottom:12px">—</div>
+      <div id="ai-explain-content" style="font-size:13px;line-height:1.9;color:var(--text);min-height:80px">
+        <div style="text-align:center;color:var(--muted);padding:20px">AI yuklanmoqda...</div>
+      </div>
+      <div id="ai-explain-sentences" style="margin-top:12px"></div>
+      <button onclick="closeModal(null,'modal-ai-word-explain')" style="width:100%;margin-top:14px;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">← Yopish</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
-// ESSENTIAL ENGLISH PRO — v2.1 FINAL ENHANCEMENTS
-// Injected on top of v2.0 architecture — zero breaking changes
+// 🤖 AI FEATURES FULL IMPLEMENTATION — v3.0
+// API key ni AI_CONFIG.apiKey ga yozing, keyin AI avtomatik ishlaydi
 // ═══════════════════════════════════════════════════════════════════════════
 
-// ── 1. SPACED REVIEW BANNER (home tab) ─────────────────────────────────
-function injectSpacedReviewBanner(){
-  if(!U) return;
-  const pool = getAllWordsForGames();
-  const due = pool.filter(w=>{
-    try{
-      const d = App.learning.getWordData(w.word);
-      return d.nextReview > 0 && d.nextReview <= Date.now();
-    }catch(e){ return false; }
+// ── AI Vocab Generator ────────────────────────────────────────────────────
+let _aiVocabLevel = 'beginner';
+
+function aiVocabSetLevel(level, btn){
+  _aiVocabLevel = level;
+  document.querySelectorAll('.ai-level-btn').forEach(b=>{
+    b.style.borderColor='var(--border)';
+    b.style.background='var(--s2)';
+    b.style.color='var(--muted)';
   });
-  const banner = document.getElementById('sr-home-banner');
-  if(!banner) return;
-  if(due.length >= 3){
-    banner.style.display = 'flex';
-    const el = document.getElementById('sr-due-count');
-    if(el) el.textContent = due.length;
-  } else {
-    banner.style.display = 'none';
+  btn.style.borderColor='var(--accent)';
+  btn.style.background='rgba(124,90,246,.12)';
+  btn.style.color='var(--al)';
+}
+
+async function openAIVocab(){
+  if(!AI_CONFIG.enabled){
+    showToast('❌ AI yoqilmagan! AI_CONFIG.apiKey ni kiriting');
+    return;
   }
+  document.getElementById('ai-vocab-result').innerHTML='';
+  document.getElementById('ai-vocab-topic').value='';
+  document.getElementById('modal-ai-vocab').classList.add('open');
 }
 
-// ── 2. INJECT SR BANNER HTML INTO HOME TAB ─────────────────────────────
-function ensureSRBanner(){
-  if(document.getElementById('sr-home-banner')) return;
-  const homeTab = document.getElementById('tab-home');
-  if(!homeTab) return;
-  const banner = document.createElement('div');
-  banner.id = 'sr-home-banner';
-  banner.style.cssText = 'display:none;align-items:center;gap:10px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:13px;padding:11px 14px;margin:0 0 14px;cursor:pointer';
-  banner.innerHTML = `
-    <span style="font-size:22px">🔄</span>
-    <div style="flex:1">
-      <div style="font-size:12px;font-weight:800;color:var(--green)">Spaced Review tayyor!</div>
-      <div style="font-size:11px;color:var(--muted)"><span id="sr-due-count">0</span> ta so'z takrorga muhtoj</div>
-    </div>
-    <span style="font-size:18px;color:var(--green)">›</span>`;
-  banner.onclick = ()=>{ openModal('modal-quiz'); };
-  const firstSec = homeTab.querySelector('.sec');
-  if(firstSec) homeTab.insertBefore(banner, firstSec);
-}
-
-// ── 3. AI STATUS CHIP IN TOPBAR ─────────────────────────────────────────
-function injectAIChip(){
-  if(document.getElementById('ai-topbar-chip')) return;
-  const tbRight = document.querySelector('.tb-right');
-  if(!tbRight) return;
-  const chip = document.createElement('div');
-  chip.id = 'ai-topbar-chip';
-  chip.className = 'ai-pill ' + (AI_CONFIG.enabled ? 'on' : 'off');
-  chip.title = 'AI Settings';
-  chip.textContent = AI_CONFIG.enabled ? '🤖 AI' : '🤖';
-  chip.style.cursor = 'pointer';
-  chip.onclick = ()=>{ App.ai.openSettings(); };
-  tbRight.insertBefore(chip, tbRight.firstChild);
-  // Update when AI toggled
-  App.events.on('ai:toggled', (enabled)=>{
-    chip.className = 'ai-pill ' + (enabled ? 'on' : 'off');
-    chip.textContent = enabled ? '🤖 AI' : '🤖';
-  });
-}
-
-// ── 4. ENHANCED LEARN WORD (wires to App.learning) ─────────────────────
-const _origLearnWord = learnWord;
-learnWord = function(w){
-  _origLearnWord(w);
+async function runAIVocabGen(){
+  if(!AI_CONFIG.enabled){ showToast('AI yoqilmagan!'); return; }
+  const topic = document.getElementById('ai-vocab-topic').value.trim();
+  const btn = document.getElementById('ai-vocab-btn');
+  const result = document.getElementById('ai-vocab-result');
+  
+  btn.textContent = '⏳ AI yaratmoqda...';
+  btn.disabled = true;
+  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI so'z yaratmoqda...</div>';
+  
   try{
-    App.learning.updateWordResult(w.word, true);
-    App.progress.trackDailyAction('words');
-    App.achieve.check();
-  } catch(e){}
-};
-
-// ── 5. XP HOOK → combo system ────────────────────────────────────────────
-const _origAddXP = addXP;
-addXP = function(n){
-  _origAddXP(n);
-  try{ App.progress.checkCombo(); } catch(e){}
-  try{ App.achieve.check(); }catch(e){}
-  try{ App.sync.scheduleSync(); }catch(e){}
-};
-
-// ── 6. ENHANCED SETTINGS TAB WITH AI PANEL ──────────────────────────────
-const _origBuildSettings = typeof buildSettingsTab === 'function' ? buildSettingsTab : null;
-buildSettingsTab = function(){
-  const el = document.getElementById('settings-content');
-  if(!el) return;
-  const U_data = App.user.get() || U;
-  if(!U_data) return;
-
-  const isPrem = U_data.isPremium && U_data.premiumExpiry > Date.now();
-  const aiOn = AI_CONFIG.enabled;
-  const learningStats = (() => {
-    try { return App.learning.getStats(); } catch(e) { return {totalStudied:0,avgAccuracy:0,masteredCount:0,dueCount:0}; }
-  })();
-
-  el.innerHTML = `
-    <div style="padding:0 4px">
-      <!-- Profile Card -->
-      <div class="settings-card" style="text-align:center;margin-bottom:14px">
-        <div style="width:66px;height:66px;border-radius:50%;background:var(--s2);border:2.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 10px;overflow:hidden">
-          ${U_data.avatarUrl
-            ? `<img src="${U_data.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`
-            : (U_data.avatarEmoji || '🤖')}
-        </div>
-        <div style="font-weight:800;font-size:17px">${U_data.name || '—'}</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">
-          ${{beginner:'🌱 Beginner',intermediate:'🎯 Intermediate',advanced:'🚀 Advanced'}[U_data.level]||U_data.level}
-        </div>
-        <div style="display:flex;justify-content:center;gap:12px;margin-top:8px;flex-wrap:wrap">
-          <span style="font-size:12px;font-weight:800;color:var(--gold)">${U_data.xp||0} XP</span>
-          <span style="font-size:12px;font-weight:800;color:var(--orange)">${U_data.streak||0} 🔥 Streak</span>
-          <span style="font-size:12px;font-weight:800;color:var(--green)">${U_data.learnedWords?.length||0} 📚</span>
-        </div>
-      </div>
-
-      <!-- Theme -->
-      <div class="settings-card">
-        <div class="settings-section-title">🎨 Interfeys rejimi</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <button onclick="localStorage.setItem('ep_theme','dark');applyTheme();buildSettingsTab()"
-            style="padding:10px;border-radius:10px;border:2px solid ${!document.body.classList.contains('light-mode')?'var(--accent)':'var(--border)'};background:${!document.body.classList.contains('light-mode')?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
-            🌙 Tungi
-          </button>
-          <button onclick="localStorage.setItem('ep_theme','light');applyTheme();buildSettingsTab()"
-            style="padding:10px;border-radius:10px;border:2px solid ${document.body.classList.contains('light-mode')?'var(--accent)':'var(--border)'};background:${document.body.classList.contains('light-mode')?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
-            ☀️ Kunduzgi
-          </button>
-        </div>
-      </div>
-
-      <!-- AI Settings Card -->
-      <div class="settings-card" style="border-color:${aiOn?'rgba(124,90,246,.4)':'var(--border)'};background:${aiOn?'rgba(124,90,246,.06)':'var(--s1)'}">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-          <div>
-            <div style="font-size:14px;font-weight:800">🤖 AI Yordamchi</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:1px">
-              ${aiOn ? '✅ Faol · <b style="color:var(--al)">' + AI_CONFIG.model.split('/').pop() + '</b>' : 'OpenRouter — DeepSeek / Mistral / Llama'}
+    const data = await App.ai.generateVocabulary(_aiVocabLevel, topic);
+    if(!data || !data.words){ 
+      result.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">AI javob qayta ishlashda xato. Qayta urinib ko'ring.</div>';
+      return;
+    }
+    
+    result.innerHTML = `
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:10px;text-transform:uppercase">✨ AI TAVSIYA ETGAN SO'ZLAR</div>
+      ${data.words.map(w=>`
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--blue)">${w.word}</span>
+              <span style="font-size:10px;background:rgba(124,90,246,.12);color:var(--al);padding:2px 7px;border-radius:20px;font-weight:700">${w.part_of_speech||''}</span>
+            </div>
+            <div style="display:flex;gap:5px">
+              <button onclick="speakText('${w.word.replace(/'/g,"\'")}');event.stopPropagation()" style="width:28px;height:28px;border-radius:50%;background:rgba(79,223,138,.1);border:1px solid rgba(79,223,138,.2);cursor:pointer;font-size:13px">🔊</button>
+              <button onclick="addAIWordToCustom('${w.word.replace(/'/g,"\'")}','${(w.translation||'').replace(/'/g,"\'")}','${(w.definition||'').replace(/'/g,"\'")}','${(w.example||'').replace(/'/g,"\'")}');event.stopPropagation()" style="width:28px;height:28px;border-radius:50%;background:rgba(79,156,249,.1);border:1px solid rgba(79,156,249,.2);cursor:pointer;font-size:13px">➕</button>
             </div>
           </div>
-          <div style="font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;background:${aiOn?'rgba(79,223,138,.15)':'var(--s2)'};color:${aiOn?'var(--green)':'var(--muted)'}">${aiOn?'FAOL':"O'CHI"}</div>
+          <div style="font-size:13px;color:var(--purple);font-weight:700;margin-bottom:3px">${w.translation||''}</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:4px">${w.definition||''}</div>
+          <div style="font-size:11px;color:rgba(192,132,252,.8);font-style:italic">"${w.example||''}"</div>
         </div>
-        ${aiOn ? `
-          <div class="ai-tip-bubble" style="margin-bottom:10px">
-            AI funksiyalari yoqilgan. Speaking feedback, grammatika tushuntirishlari va zaif so'z treineri ishlayapti.
-          </div>
-        ` : `
-          <div style="background:var(--s2);border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:11px;color:var(--muted);line-height:1.7">
-            <b style="color:var(--text)">AI yoqilganda:</b>
-            🎤 Speaking AI feedback · 📖 Grammatika tushuntirishlari<br>
-            ⚠️ Zaif so'z AI quizi · 📊 Shaxsiy o'rganish tavsiyalari
-          </div>
-        `}
-        <button onclick="App.ai.openSettings()" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:11px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
-          ⚙️ AI Sozlamalarini Ochish
-        </button>
-        <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:7px">
-          API key: <a href="https://openrouter.ai" target="_blank" style="color:var(--blue)">openrouter.ai</a> dan bepul oling
-        </div>
-      </div>
+      `).join('')}
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">➕ tugmasi bilan shaxsiy so'zlaringizga qo'shing</div>
+    `;
+  } catch(e){
+    result.innerHTML=`<div style="color:var(--red);text-align:center;padding:14px">Xato: ${e.message}</div>`;
+  } finally {
+    btn.textContent = '✨ AI So'z Yaratish';
+    btn.disabled = false;
+  }
+}
 
-      <!-- Daily Quests -->
-      <div class="settings-card">
-        <div class="settings-section-title">⚡ Kunlik vazifalar</div>
-        <div id="daily-quests-container">
-          <div style="text-align:center;padding:10px;color:var(--muted);font-size:12px">Yuklanmoqda...</div>
-        </div>
-      </div>
+function addAIWordToCustom(word, trans, def, ex){
+  if(!U.customWords) U.customWords=[];
+  if(U.customWords.find(w=>w.word===word)){ showToast(`"${word}" allaqachon mavjud!`); return; }
+  U.customWords.push({word, translation:trans, definition:def, example:ex, part_of_speech:'ai-generated'});
+  saveUser();
+  showToast(`✅ "${word}" qo'shildi!`);
+}
 
-      <!-- Learning Analytics -->
-      <div class="settings-card">
-        <div class="settings-section-title">📈 O'rganish statistikasi</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
-            <div style="font-size:22px;font-weight:800;color:var(--green)">${learningStats.totalStudied}</div>
-            <div style="font-size:10px;color:var(--muted)">Kuzatilgan</div>
-          </div>
-          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
-            <div style="font-size:22px;font-weight:800;color:var(--blue)">${learningStats.avgAccuracy}%</div>
-            <div style="font-size:10px;color:var(--muted)">Aniqlik</div>
-          </div>
-          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
-            <div style="font-size:22px;font-weight:800;color:var(--purple)">${learningStats.masteredCount}</div>
-            <div style="font-size:10px;color:var(--muted)">Mukammal</div>
-          </div>
-          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
-            <div style="font-size:22px;font-weight:800;color:var(--gold)">${learningStats.dueCount}</div>
-            <div style="font-size:10px;color:var(--muted)">Takrorga tayyor</div>
-          </div>
-        </div>
-        <div id="learning-analytics"></div>
-      </div>
+// ── AI Grammar Explain ─────────────────────────────────────────────────────
+async function openAIGrammarExplain(topic, level){
+  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  document.getElementById('ai-grammar-topic-display').textContent = '📖 ' + topic;
+  document.getElementById('ai-grammar-result').innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--purple);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI tushuntirmoqda...</div>';
+  document.getElementById('modal-ai-grammar').classList.add('open');
+  
+  try{
+    const explanation = await App.ai.explainGrammarDetail(topic, level||'beginner');
+    if(!explanation){ 
+      document.getElementById('ai-grammar-result').innerHTML='<div style="color:var(--red);padding:14px">AI javob olishda xato.</div>';
+      return;
+    }
+    document.getElementById('ai-grammar-result').innerHTML = `
+      <div style="background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:14px;line-height:1.9;white-space:pre-wrap">${explanation}</div>
+    `;
+  } catch(e){
+    document.getElementById('ai-grammar-result').innerHTML=`<div style="color:var(--red)">Xato: ${e.message}</div>`;
+  }
+}
 
-      <!-- App info -->
-      <div class="settings-card" style="font-size:12px;color:var(--muted);text-align:center">
-        <div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:6px">Essential English PRO</div>
-        <div>v2.1.0 · AI-Ready · Modular Architecture</div>
-        <div style="margin-top:4px">Backend sync: localStorage (API-ready)</div>
-        <div style="margin-top:2px">Model: <span style="color:var(--al)">${AI_CONFIG.model.split('/').pop()}</span> via OpenRouter</div>
-      </div>
+// ── AI Weak Word Trainer ────────────────────────────────────────────────────
+let AIT = { exercises:[], idx:0, score:0, wrong:0 };
 
-      <!-- Danger -->
-      <div style="margin-top:4px;margin-bottom:4px">
-        <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
-          🚪 Profildan chiqish
-        </button>
+async function openAIWeakTrainer(){
+  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  const errors = U.wordErrors||{};
+  const weakWords = Object.keys(errors).sort((a,b)=>errors[b]-errors[a]).slice(0,8);
+  if(weakWords.length < 2){ showToast('Kamida 2 ta xato so'z kerak!'); return; }
+  
+  document.getElementById('modal-ai-weak-trainer').classList.add('open');
+  document.getElementById('ait-loading').style.display='block';
+  document.getElementById('ait-content').style.display='none';
+  AIT = { exercises:[], idx:0, score:0, wrong:0 };
+  document.getElementById('ait-score').textContent=0;
+  document.getElementById('ait-wrong').textContent=0;
+  
+  try{
+    const data = await App.ai.generateWeakWordExercises(weakWords);
+    if(!data||!data.exercises||!data.exercises.length){
+      document.getElementById('ait-loading').innerHTML='<div style="color:var(--red);text-align:center">AI mashq yaratishda xato. Qayta urinib ko'ring.</div>';
+      return;
+    }
+    AIT.exercises = data.exercises;
+    document.getElementById('ait-total').textContent = AIT.exercises.length;
+    document.getElementById('ait-loading').style.display='none';
+    document.getElementById('ait-content').style.display='block';
+    buildAIWeakExercise();
+  } catch(e){
+    document.getElementById('ait-loading').innerHTML=`<div style="color:var(--red);text-align:center">Xato: ${e.message}</div>`;
+  }
+}
+
+function buildAIWeakExercise(){
+  if(AIT.idx >= AIT.exercises.length){
+    document.getElementById('ait-content').innerHTML=`
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:48px;margin-bottom:10px">${AIT.score>=AIT.exercises.length*0.7?'🏆':'💪'}</div>
+        <div style="font-size:20px;font-weight:800;color:var(--gold)">${AIT.score}/${AIT.exercises.length}</div>
+        <div style="font-size:13px;color:var(--muted);margin:6px 0">AI mashqlar tugadi! +${AIT.score*3} XP</div>
+        <button onclick="openAIWeakTrainer()" style="width:100%;padding:12px;background:var(--accent);border:none;border-radius:12px;color:white;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:10px">🔁 Qayta</button>
+      </div>`;
+    try{ addXP(AIT.score*3); }catch(e){}
+    return;
+  }
+  const ex = AIT.exercises[AIT.idx];
+  document.getElementById('ait-num').textContent = AIT.idx+1;
+  document.getElementById('ait-sentence').innerHTML = (ex.sentence||'').replace('___','<span style="display:inline-block;min-width:60px;border-bottom:2.5px solid var(--accent);color:var(--accent);font-weight:800;padding:0 4px">_____</span>');
+  document.getElementById('ait-hint').textContent = ex.translation ? `(${ex.translation})` : '';
+  document.getElementById('ait-input').value='';
+  document.getElementById('ait-res').textContent='';
+  document.getElementById('ait-next-btn').style.display='none';
+  setTimeout(()=>document.getElementById('ait-input').focus(), 100);
+}
+
+function showAIWeakHint(){
+  const ex = AIT.exercises[AIT.idx];
+  if(ex && ex.hint) showToast('💡 ' + ex.hint);
+}
+
+function checkAIWeakAnswer(){
+  const ex = AIT.exercises[AIT.idx];
+  if(!ex) return;
+  const input = document.getElementById('ait-input').value.trim().toLowerCase();
+  const correct = (ex.word||'').toLowerCase().trim();
+  const res = document.getElementById('ait-res');
+  const nextBtn = document.getElementById('ait-next-btn');
+  
+  const isCorrect = input === correct || input.replace(/[^a-z]/g,'') === correct.replace(/[^a-z]/g,'');
+  
+  if(isCorrect){
+    AIT.score++;
+    res.innerHTML=`<span style="color:var(--green)">✅ To'g'ri! "${correct}" +3 XP</span>`;
+    document.getElementById('ait-score').textContent=AIT.score;
+    // Xatoni kamaytirish
+    if(U.wordErrors&&U.wordErrors[correct]){ U.wordErrors[correct]--; if(U.wordErrors[correct]<=0) delete U.wordErrors[correct]; saveUser(); }
+  } else {
+    AIT.wrong++;
+    res.innerHTML=`<span style="color:var(--red)">❌ Noto'g'ri. To'g'ri javob: <b style="color:var(--text)">${correct}</b></span>`;
+    document.getElementById('ait-wrong').textContent=AIT.wrong;
+  }
+  nextBtn.style.display='block';
+}
+
+function nextAIWeakExercise(){
+  AIT.idx++;
+  buildAIWeakExercise();
+}
+
+// ── AI Study Plan ────────────────────────────────────────────────────────
+async function openAIStudyPlan(){
+  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  document.getElementById('modal-ai-plan').classList.add('open');
+  await loadAIStudyPlan();
+}
+
+async function loadAIStudyPlan(){
+  const el = document.getElementById('ai-plan-result');
+  el.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)"><div style="font-size:40px;margin-bottom:12px">🤖</div><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:10px auto"></div></div>';
+  try{
+    const plan = await App.ai.getStudyPlan(U);
+    if(!plan){ el.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">Xato yuz berdi. Qayta urinib ko'ring.</div>'; return; }
+    el.innerHTML=`
+      <div style="background:rgba(124,90,246,.08);border:1px solid rgba(124,90,246,.2);border-radius:13px;padding:14px;line-height:1.9;white-space:pre-wrap;font-size:13px">${plan}</div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:12px;color:var(--muted)">
+        <div style="background:var(--s2);border-radius:10px;padding:8px;text-align:center"><div style="font-size:18px;font-weight:800;color:var(--green)">${(U.learnedWords||[]).length}</div><div>So'zlar</div></div>
+        <div style="background:var(--s2);border-radius:10px;padding:8px;text-align:center"><div style="font-size:18px;font-weight:800;color:var(--gold)">${U.streak||0}🔥</div><div>Streak</div></div>
+      </div>`;
+  }catch(e){ el.innerHTML=`<div style="color:var(--red);padding:14px">Xato: ${e.message}</div>`; }
+}
+
+async function refreshAIStudyPlan(){ await loadAIStudyPlan(); }
+
+// ── AI Quiz ────────────────────────────────────────────────────────────────
+let AIQ = { questions:[], idx:0, score:0, wrong:0 };
+
+async function openAIQuiz(){
+  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  const words = getAllWordsForGames();
+  if(words.length < 4){ showToast('Kamida 4 ta so'z kerak!'); return; }
+  
+  document.getElementById('modal-ai-quiz').classList.add('open');
+  document.getElementById('aiq-loading').style.display='block';
+  document.getElementById('aiq-content').style.display='none';
+  AIQ = { questions:[], idx:0, score:0, wrong:0 };
+  document.getElementById('aiq-score').textContent=0;
+  document.getElementById('aiq-wrong').textContent=0;
+  
+  try{
+    const sample = shuffle([...words]).slice(0,8);
+    const data = await App.ai.generateQuiz(sample, 5);
+    if(!data||!data.questions||!data.questions.length){
+      document.getElementById('aiq-loading').innerHTML='<div style="color:var(--red);text-align:center">AI quiz yaratishda xato.</div>';
+      return;
+    }
+    AIQ.questions = data.questions;
+    document.getElementById('aiq-total').textContent = AIQ.questions.length;
+    document.getElementById('aiq-loading').style.display='none';
+    document.getElementById('aiq-content').style.display='block';
+    buildAIQuizQuestion();
+  } catch(e){
+    document.getElementById('aiq-loading').innerHTML=`<div style="color:var(--red);text-align:center">Xato: ${e.message}</div>`;
+  }
+}
+
+function buildAIQuizQuestion(){
+  if(AIQ.idx >= AIQ.questions.length){
+    const xp = AIQ.score * 2;
+    document.getElementById('aiq-content').innerHTML=`
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:48px;margin-bottom:10px">${AIQ.score >= AIQ.questions.length*0.7?'🏆':'💪'}</div>
+        <div style="font-size:22px;font-weight:800;color:var(--gold)">${AIQ.score}/${AIQ.questions.length}</div>
+        <div style="font-size:13px;color:var(--green);margin:6px 0">+${xp} XP to'plandi!</div>
+        <button onclick="openAIQuiz()" style="width:100%;padding:12px;background:var(--accent);border:none;border-radius:12px;color:white;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:10px">🔁 Yangi AI Quiz</button>
+      </div>`;
+    try{ addXP(xp); } catch(e){}
+    return;
+  }
+  const q = AIQ.questions[AIQ.idx];
+  document.getElementById('aiq-num').textContent = AIQ.idx+1;
+  document.getElementById('aiq-question').textContent = q.question||q.word;
+  document.getElementById('aiq-res').textContent='';
+  document.getElementById('aiq-explain').style.display='none';
+  
+  const opts = document.getElementById('aiq-opts');
+  opts.innerHTML='';
+  (q.options||[]).forEach((opt,i)=>{
+    const el=document.createElement('div'); el.className='gopt';
+    el.textContent=opt;
+    el.onclick=()=>{
+      opts.querySelectorAll('.gopt').forEach(x=>x.style.pointerEvents='none');
+      const isRight = i===(q.correct||0);
+      el.classList.add(isRight?'correct':'wrong');
+      if(!isRight){
+        opts.querySelectorAll('.gopt')[q.correct||0]?.classList.add('correct');
+        AIQ.wrong++;
+        document.getElementById('aiq-wrong').textContent=AIQ.wrong;
+      } else {
+        AIQ.score++;
+        document.getElementById('aiq-score').textContent=AIQ.score;
+        try{ addXP(1); }catch(e){}
+      }
+      if(q.explanation){
+        const expEl=document.getElementById('aiq-explain');
+        expEl.textContent='🤖 ' + q.explanation;
+        expEl.style.display='block';
+      }
+      document.getElementById('aiq-res').textContent = isRight ? '✅ To'g'ri!' : '❌ Noto'g'ri';
+      AIQ.idx++;
+      setTimeout(buildAIQuizQuestion, 1400);
+    };
+    opts.appendChild(el);
+  });
+}
+
+// ── AI Word Deep Explain ───────────────────────────────────────────────────
+async function openAIWordExplain(word){
+  if(!AI_CONFIG.enabled){
+    // AI yoq bo'lsa - oddiy tarjimani ko'rsat
+    showToast('AI yoqilmagan - oddiy ma'lumot ko'rsatilmoqda');
+    return;
+  }
+  document.getElementById('ai-explain-word-title').textContent = word;
+  document.getElementById('ai-explain-content').innerHTML='<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--blue);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto"></div></div>';
+  document.getElementById('ai-explain-sentences').innerHTML='';
+  document.getElementById('modal-ai-word-explain').classList.add('open');
+  
+  try{
+    const [explain, sentences] = await Promise.all([
+      App.ai.deepExplainWord(word),
+      App.ai.createSentences(word, U.level||'intermediate')
+    ]);
+    
+    document.getElementById('ai-explain-content').innerHTML = explain
+      ? `<div style="background:rgba(79,156,249,.06);border:1px solid rgba(79,156,249,.15);border-radius:12px;padding:13px;white-space:pre-wrap">${explain}</div>`
+      : '<div style="color:var(--muted)">Tushuntirish topilmadi.</div>';
+    
+    if(sentences && sentences.sentences){
+      document.getElementById('ai-explain-sentences').innerHTML=`
+        <div style="font-size:11px;font-weight:800;color:var(--muted);margin:12px 0 8px;text-transform:uppercase">📝 MISOL GAPLAR</div>
+        ${sentences.sentences.map(s=>`
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:10px 13px;margin-bottom:7px">
+            <div style="font-size:13px;color:var(--text);font-style:italic;margin-bottom:4px">"${s.english}"</div>
+            <div style="font-size:12px;color:var(--purple)">${s.uzbek}</div>
+            ${s.explanation?`<div style="font-size:11px;color:var(--muted);margin-top:4px">💡 ${s.explanation}</div>`:''}
+          </div>
+        `).join('')}`;
+    }
+  } catch(e){
+    document.getElementById('ai-explain-content').innerHTML=`<div style="color:var(--red)">Xato: ${e.message}</div>`;
+  }
+}
+
+// ── Flashcard ga AI tugmasi qo'shish ──────────────────────────────────────
+function addAIButtonToFlashcard(){
+  const fcCtrl = document.querySelector('.fc-ctrl');
+  if(!fcCtrl || document.getElementById('fc-ai-btn')) return;
+  const aiBtn = document.createElement('div');
+  aiBtn.id = 'fc-ai-btn';
+  aiBtn.style.cssText = 'display:flex;align-items:center;gap:5px;padding:7px 12px;background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.25);border-radius:20px;font-size:12px;font-weight:700;color:var(--al);cursor:pointer;transition:all .2s';
+  aiBtn.innerHTML = '🤖 AI';
+  aiBtn.title = 'AI bilan chuqur o'rgan';
+  aiBtn.onmouseenter = ()=>aiBtn.style.background='rgba(124,90,246,.2)';
+  aiBtn.onmouseleave = ()=>aiBtn.style.background='rgba(124,90,246,.1)';
+  aiBtn.onclick = ()=>{
+    const word = currentUnitWords[cardIdx]?.word;
+    if(word) openAIWordExplain(word);
+  };
+  fcCtrl.appendChild(aiBtn);
+}
+
+// ── Grammar ga AI tugmasi ──────────────────────────────────────────────────
+const _origOpenGrammarFromLevel = typeof openGrammarFromLevel === 'function' ? openGrammarFromLevel : null;
+if(_origOpenGrammarFromLevel){
+  openGrammarFromLevel = function(level, i){
+    _origOpenGrammarFromLevel(level, i);
+    // AI tushuntirish tugmasini modal ichiga qo'shish
+    const gData = GRAMMAR_DATA[level];
+    if(!gData || !gData[i]) return;
+    const topic = gData[i].title;
+    setTimeout(()=>{
+      const grBody = document.getElementById('gr-modal-body');
+      if(!grBody || grBody.querySelector('.ai-gr-explain-btn')) return;
+      if(!AI_CONFIG.enabled) return;
+      const aiBtn = document.createElement('button');
+      aiBtn.className='ai-gr-explain-btn';
+      aiBtn.style.cssText='width:100%;padding:11px;background:linear-gradient(135deg,rgba(192,132,252,.15),rgba(124,90,246,.1));border:1px solid rgba(192,132,252,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:10px';
+      aiBtn.innerHTML='🤖 AI bilan tushuntirish so'rash';
+      aiBtn.onclick=()=>openAIGrammarExplain(topic, level);
+      grBody.appendChild(aiBtn);
+    }, 300);
+  };
+}
+
+// ── Settings tabga AI panel ────────────────────────────────────────────────
+function buildAIPanelInSettings(){
+  const existing = document.getElementById('ai-settings-panel');
+  if(existing) existing.remove();
+  
+  const sc = document.getElementById('settings-content');
+  if(!sc) return;
+  
+  const isOn = AI_CONFIG.enabled;
+  const panel = document.createElement('div');
+  panel.id='ai-settings-panel';
+  panel.style.cssText='background:var(--s1);border:1.5px solid '+(isOn?'rgba(124,90,246,.4)':'var(--border)')+';border-radius:16px;padding:16px;margin-bottom:14px';
+  panel.innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div>
+        <div style="font-size:14px;font-weight:800">🤖 AI Yordamchi</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">${AI_CONFIG.model.split('/').pop()}</div>
+      </div>
+      <div style="padding:4px 12px;border-radius:20px;font-size:11px;font-weight:800;background:${isOn?'rgba(79,223,138,.15)':'rgba(248,81,73,.1)'};color:${isOn?'var(--green)':'var(--muted)'}">${isOn?'✅ FAOL':'⭕ KALIT YO'Q'}</div>
+    </div>
+    ${isOn ? `
+      <div style="background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:var(--green)">
+        ✅ AI faol! Barcha AI funksiyalar ishlamoqda.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+        <button onclick="openAIVocab()" style="padding:10px;background:rgba(124,90,246,.1);border:1.5px solid rgba(124,90,246,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">✨ So'z Gen</button>
+        <button onclick="openAIQuiz()" style="padding:10px;background:rgba(79,156,249,.1);border:1.5px solid rgba(79,156,249,.3);border-radius:11px;color:var(--blue);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">🎯 AI Quiz</button>
+        <button onclick="openAIWeakTrainer()" style="padding:10px;background:rgba(248,81,73,.08);border:1.5px solid rgba(248,81,73,.2);border-radius:11px;color:var(--red);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">⚠️ Zaif Treiner</button>
+        <button onclick="openAIStudyPlan()" style="padding:10px;background:rgba(79,223,138,.08);border:1.5px solid rgba(79,223,138,.2);border-radius:11px;color:var(--green);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">📋 Reja</button>
+      </div>
+    ` : `
+      <div style="background:var(--s2);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--muted);line-height:1.7">
+        <b style="color:var(--text)">AI yoqish uchun:</b><br>
+        Faylni oching → AI_CONFIG.apiKey ga OpenRouter key yozing → Saqlang
+      </div>
+      <div style="font-size:11px;color:var(--blue);text-align:center">🔑 openrouter.ai dan bepul key oling</div>
+    `}
+  `;
+  
+  // settings-content boshiga qo'shish
+  sc.insertBefore(panel, sc.firstChild);
+}
+
+// ── Games tabga AI o'yinlari ───────────────────────────────────────────────
+function injectAIGamesSection(){
+  if(!AI_CONFIG.enabled) return;
+  if(document.getElementById('ai-games-section')) return;
+  
+  const gamesTab = document.getElementById('tab-games');
+  if(!gamesTab) return;
+  
+  const section = document.createElement('div');
+  section.id = 'ai-games-section';
+  section.innerHTML=`
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;margin-top:4px">🤖 AI O'YINLAR (Yangi!)</div>
+    <div class="games-grid" style="margin-bottom:18px">
+      <div class="game-card" onclick="openAIQuiz()" style="border-color:rgba(124,90,246,.3)">
+        <div class="g-icon">🎯</div><div class="g-name">AI Quiz</div><div class="g-desc">AI savollar</div>
+      </div>
+      <div class="game-card" onclick="openAIWeakTrainer()" style="border-color:rgba(248,81,73,.2)">
+        <div class="g-icon">💪</div><div class="g-name">AI Treiner</div><div class="g-desc">Zaif so'zlar</div>
+      </div>
+      <div class="game-card" onclick="openAIVocab()" style="border-color:rgba(79,223,138,.2)">
+        <div class="g-icon">✨</div><div class="g-name">AI So'zlar</div><div class="g-desc">Yangi so'zlar</div>
       </div>
     </div>`;
+  
+  const firstDiv = gamesTab.querySelector('.sec');
+  const firstSection = firstDiv?.querySelector('[style*="BEPUL"]') || firstDiv;
+  if(firstSection) firstSection.parentNode.insertBefore(section, firstSection);
+}
 
-  // Render sub-components
-  setTimeout(()=>{
-    try{ buildDailyQuestsUI(); }catch(e){}
-    try{ buildLearningAnalytics(); }catch(e){}
-  }, 50);
-};
-
-// ── 7. WORD FAMILY DICT — AI auto-expand hook ────────────────────────────
-App.events.on('ai:toggled', async (enabled)=>{
-  if(enabled && WF_DB && Object.keys(WF_DB).length < 50){
-    // Future: AI could auto-expand WF_DB for current unit words
-    // App.ai.call('Generate word family...', 'word')
-  }
+// ── Speaking ga AI tip ─────────────────────────────────────────────────────
+App.events.on('speaking:analyzed', async ({word, heard, score})=>{
+  if(!AI_CONFIG.enabled) return;
+  const tipEl = document.getElementById('sp-ai-tip');
+  if(!tipEl) return;
+  tipEl.style.display='block';
+  tipEl.innerHTML='<span style="color:var(--muted);font-size:11px">🤖 AI fikr yuklanoqda...</span>';
+  try{
+    const tip = await App.ai.getPronunciationTip(word, heard, score);
+    if(tip) tipEl.innerHTML='<span style="font-size:12px;color:var(--al)">🤖 </span><span style="font-size:12px">'+tip+'</span>';
+  }catch(e){ tipEl.style.display='none'; }
 });
 
-// ── 8. POST-INIT WIRING ──────────────────────────────────────────────────
-(function postInit(){
-  // Wait for DOM + App.init to finish
+// ── App init dan keyin AI inject ───────────────────────────────────────────
+const _origAppInit = App.init;
+App.init = function(){
+  _origAppInit.call(App);
   setTimeout(()=>{
-    try{
-      ensureSRBanner();
-      injectSpacedReviewBanner();
-      injectAIChip();
-    }catch(e){ console.warn('Post-init:', e); }
-
-    // Re-run spaced review check after units load
-    App.events.on('unit:loaded', ()=>{
-      try{ injectSpacedReviewBanner(); }catch(e){}
-    });
-
-    // Auto-refresh quests when tab opens
-    App.events.on('tab:switched', ({ name })=>{
-      if(name==='settings'){
-        setTimeout(()=>{
-          try{ buildDailyQuestsUI(); }catch(e){}
-          try{ buildLearningAnalytics(); }catch(e){}
-          try{ injectSpacedReviewBanner(); }catch(e){}
-        }, 100);
-      }
-    });
-
-    // Wire grammar correct/wrong to learning
-    const origAnswerGr = typeof answerGr === 'function' ? answerGr : null;
-    if(origAnswerGr){
-      answerGr = function(idx, ans, el){
-        origAnswerGr(idx, ans, el);
-        try{ App.progress.trackDailyAction('quiz'); App.achieve.check(); }catch(e){}
-      };
-    }
-
-  }, 800);
-})();
-
-// ── 9. EMIT unit:loaded when goToUnit finishes ───────────────────────────
-const _origGoToUnit = goToUnit;
-goToUnit = async function(){
-  await _origGoToUnit();
-  try{ App.events.emit('unit:loaded', { book: curBook, unit: curUnitNum }); }catch(e){}
+    try{ addAIButtonToFlashcard(); }catch(e){}
+    try{ injectAIGamesSection(); }catch(e){}
+    if(AI_CONFIG.enabled) console.log('🤖 AI funksiyalar faol:', AI_CONFIG.model);
+  }, 600);
 };
 
-// ── 10. PREVENT DUPLICATE AI SETTINGS MODAL ─────────────────────────────
-// closeModal already handles removal above. Confirmed.
+// buildSettingsTab override — AI panelini qo'shish
+const _origBuildSettings2 = buildSettingsTab;
+buildSettingsTab = function(){
+  _origBuildSettings2();
+  setTimeout(()=>{ try{ buildAIPanelInSettings(); }catch(e){} }, 80);
+};
+
+// switchTab override — settings tabga o'tganda
+const _origSwitchTab = switchTab;
+switchTab = function(name, btn){
+  _origSwitchTab(name, btn);
+  if(name==='settings') setTimeout(()=>{ try{buildAIPanelInSettings();}catch(e){} }, 120);
+  if(name==='games') setTimeout(()=>{ try{injectAIGamesSection();}catch(e){} }, 100);
+};
+
+// closeModal AI modallar uchun
+const _origCM3 = closeModal;
+closeModal = function(e, id){
+  _origCM3(e, id);
+  const aiModals = ['modal-ai-vocab','modal-ai-grammar','modal-ai-weak-trainer','modal-ai-plan','modal-ai-quiz','modal-ai-word-explain'];
+  if(aiModals.includes(id)){
+    const el=document.getElementById(id);
+    if(el) el.classList.remove('open');
+  }
+};
+
+console.log('🤖 AI Engine v3.0 loaded. Status:', AI_CONFIG.enabled ? 'ACTIVE' : 'WAITING FOR KEY');
 </script>
 
 </body>
