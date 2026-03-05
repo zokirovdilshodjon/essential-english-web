@@ -15,25 +15,9 @@
   --orange:#f97b4f;--gold:#f5c542;--red:#f85149;
 }
 body.light-mode{
-  --bg:#f5f7ff;--s1:#ffffff;--s2:#eaeffa;--s3:#dce4f5;
-  --border:#c2cfe8;--text:#111827;--muted:#4b5a7a;
-  --accent:#5b3fd4;--al:#7a5ce8;
-  --blue:#2563eb;--green:#16a34a;--gold:#b45309;--red:#dc2626;
-}
-body.light-mode .tb-name,
-body.light-mode .tb-sub,
-body.light-mode #tb-xp,
-body.light-mode .badge{
-  color:var(--text) !important;
-}
-body.light-mode .topbar{
-  background:rgba(255,255,255,.95);
-  border-bottom:1px solid var(--border);
-}
-body.light-mode .streak{
-  background:rgba(180,83,9,.1);
-  border-color:rgba(180,83,9,.2);
-  color:#92400e;
+  --bg:#eef2ff;--s1:#ffffff;--s2:#e4eafb;--s3:#d6dff5;
+  --border:#bfccee;--text:#12183a;--muted:#5a6a99;
+  --accent:#6040e8;--al:#8060f0;
 }
 .theme-btn{background:none;border:1.5px solid var(--border);border-radius:20px;padding:4px 10px;font-size:14px;cursor:pointer;color:var(--text);font-family:'Nunito',sans-serif;transition:all .2s}
 .theme-btn:hover{border-color:var(--accent);background:rgba(124,90,246,.1)}
@@ -206,8 +190,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .gopt.wrong{border-color:var(--red);background:rgba(248,81,73,.12);color:var(--red)}
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .mw{padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;transition:all .2s}
-.mw.selected{background:rgba(124,90,246,.2);border-color:var(--accent);color:var(--accent);transform:scale(1.04);box-shadow:0 0 0 2px rgba(124,90,246,.3);}
-.mw.matched{background:rgba(79,223,138,.12);border-color:var(--green);color:var(--green);pointer-events:none;opacity:.7;}
 .mw.selected{border-color:var(--blue);background:rgba(79,156,249,.1)}
 .mw.matched{border-color:var(--green);background:rgba(79,223,138,.1);color:var(--green);pointer-events:none}
 .mw.bad{border-color:var(--red);background:rgba(248,81,73,.1);color:var(--red)}
@@ -1236,8 +1218,17 @@ const ONLINE_PLAYERS = [
     <button class="nav-b" onclick="switchTab('progress',this)"><span class="nav-b-icon">📊</span><span class="nav-b-label">Progress</span></button>
     <button class="nav-b" onclick="switchTab('battle',this)"><span class="nav-b-icon">⚔️</span><span class="nav-b-label">Jang</span></button>
     <button class="nav-b" onclick="switchTab('premium',this)"><span class="nav-b-icon">💎</span><span class="nav-b-label">Premium</span></button>
+    <button class="nav-b" onclick="switchTab('settings',this)"><span class="nav-b-icon">⚙️</span><span class="nav-b-label">Sozlamalar</span></button>
   </div>
 </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="tab-settings">
+      <div class="section-title" style="margin-bottom:14px">⚙️ Sozlamalar</div>
+      <div id="settings-content">
+        <div style="text-align:center;padding:40px;color:var(--muted)">Yuklanmoqda...</div>
+      </div>
+    </div>
 
 <!-- ==================== MODALS ==================== -->
 
@@ -1418,6 +1409,7 @@ window.addEventListener('DOMContentLoaded', async ()=>{
   initPremiumFeatures();
   try{updateDayStreak();}catch(e){}
   applyTheme();
+  try{ App.init(); }catch(e){ console.warn('App.init error:', e); }
 });
 
 function loadTopbar(){
@@ -1686,35 +1678,20 @@ function learnWord(w){
     addXP(1);
     saveUser();
     updateStats();
+    // Module hooks
+    try{App.learning.updateWordResult(w.word,true);}catch(e){}
+    try{App.progress.trackDailyAction('words',1);}catch(e){}
+    try{App.events.emit('word:learned',w);}catch(e){}
   }
 }
 
 // ===== PROGRESS =====
 function updateProgress(){
+  // Hozirgi unit asosida progress ko'rsatamiz
   const total = currentUnitWords.length || 0;
   const n = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
-  document.getElementById('prog-val').textContent = n+' / '+total;
+  document.getElementById('prog-val').textContent = `${n} / ${total}`;
   document.getElementById('prog-fill').style.width = total ? (n/total*100)+'%' : '0%';
-  // Agar barcha so'zlar o'rganilsa — unitni tugallangan deb belgilaymiz
-  if(total>0 && n>=total){
-    markUnitCompleted(curBook, curUnitNum);
-  }
-}
-
-function markUnitCompleted(bookNum, unitNum){
-  if(!U.unitsDone) U.unitsDone={};
-  if(!U.unitsDone[bookNum]) U.unitsDone[bookNum]=0;
-  // Shu unit hozirgacha sanalmagansa, qo'shamiz
-  const key='unit_'+bookNum+'_'+unitNum;
-  if(!U.doneUnitKeys) U.doneUnitKeys=[];
-  if(!U.doneUnitKeys.includes(key)){
-    U.doneUnitKeys.push(key);
-    U.unitsDone[bookNum]=(U.unitsDone[bookNum]||0)+1;
-    saveUser();
-    if(U.unitsDone[bookNum]>=30){
-      setTimeout(()=>showToast('🎓 Kitob '+bookNum+' tugallandi! Sertifikat tayyor!'),500);
-    }
-  }
 }
 function updateStats(){
   document.getElementById('st-words').textContent = U.learnedWords?.length||0;
@@ -1729,20 +1706,20 @@ function addXP(n){
   const boosted = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
   const actual = boosted ? n*2 : n;
   U.xp = (U.xp||0) + actual;
-  // Real vaqtli XP log — bugun/hafta/oy uchun
   if(!U.xpLog) U.xpLog=[];
   U.xpLog.push({ts: Date.now(), xp: actual});
-  // Juda ko'p bo'lsa eski yozuvlarni tozalaymiz (30 kundan eski)
   const cutoff30 = Date.now() - 30*24*60*60*1000;
   if(U.xpLog.length > 500) U.xpLog = U.xpLog.filter(e=>e.ts > cutoff30);
   showXP('+'+actual+' XP'+(boosted?' ⚡2×':''));
   saveUser();
-  document.getElementById('tb-xp').textContent = U.xp+' XP';
-  const stxp = document.getElementById('st-xp');
-  if(stxp) stxp.textContent = U.xp;
+  const xpEl=document.getElementById('tb-xp'); if(xpEl) xpEl.textContent = U.xp+' XP';
+  const stxp = document.getElementById('st-xp'); if(stxp) stxp.textContent = U.xp;
   buildLeaderboard();
   try { checkNewAchievements(); } catch(e){}
   try { trackTodayActivity(); } catch(e){}
+  // Module hooks
+  try { App.progress.checkCombo(); } catch(e){}
+  try { App.events.emit('xp:added',{amount:actual,total:U.xp}); } catch(e){}
 }
 function saveUser(){
   localStorage.setItem('ep_user', JSON.stringify(U));
@@ -2939,57 +2916,22 @@ function getAllWordsDC(){
   return [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced];
 }
 
-function getDailyKey(){ return 'daily_'+new Date().toDateString(); }
-function hasDoneDaily(){ return !!(U.gamePlays && U.gamePlays[getDailyKey()]); }
-
 function initDailyChallenge(){
-  // Bugun o'ynagan bo'lsa — natijani ko'rsat, timer YO'Q
-  if(hasDoneDaily()){
-    showDailyResult();
-    return;
-  }
   const base = getAllWordsDC();
   DC={timer:null,score:0,time:60,answered:false,
       pool:shuffle([...base]), usedIdx:0};
   document.getElementById('dc-myscore').textContent=0;
   const te = document.getElementById('dc-gametime');
   te.textContent=60; te.style.color='var(--text)';
-  // Panel ko'rsatish
-  const panel=document.getElementById('dc-played-msg');
-  if(panel)panel.style.display='none';
-  const gameArea=document.getElementById('dc-game-area');
-  if(gameArea)gameArea.style.display='';
   buildDCQuestion();
   clearInterval(DC.timer);
   DC.timer=setInterval(()=>{
     DC.time--;
+    document.getElementById('dc-gametime').textContent=DC.time;
     const _tcEl=document.getElementById('dc-gametime');
-    if(_tcEl){
-      _tcEl.textContent=DC.time;
-      if(DC.time<=10)_tcEl.style.color='var(--red)';
-      else if(DC.time<=20)_tcEl.style.color='var(--gold)';
-    }
+    if(_tcEl){ if(DC.time<=10) _tcEl.style.color='var(--red)'; else if(DC.time<=20) _tcEl.style.color='var(--gold)'; }
     if(DC.time<=0){ clearInterval(DC.timer); endDailyChallenge(); }
   },1000);
-  buildDCLeaderboard();
-}
-
-function showDailyResult(){
-  const today=new Date().toDateString();
-  const myScore=(U.dailyScore||{})[today]||0;
-  const gameArea=document.getElementById('dc-game-area');
-  if(gameArea)gameArea.style.display='none';
-  const panel=document.getElementById('dc-played-msg');
-  if(panel){
-    panel.style.display='block';
-    panel.innerHTML=`
-      <div style="text-align:center;padding:20px 0">
-        <div style="font-size:48px;margin-bottom:12px">✅</div>
-        <div style="font-size:18px;font-weight:800;margin-bottom:6px">Bugun qatnashdingiz!</div>
-        <div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:6px">${myScore} ball</div>
-        <div style="font-size:12px;color:var(--muted)">Ertaga qayta qatnashing</div>
-      </div>`;
-  }
   buildDCLeaderboard();
 }
 
@@ -3030,23 +2972,14 @@ function endDailyChallenge(){
   U.dailyScore = U.dailyScore || {};
   const today = new Date().toDateString();
   U.dailyScore[today] = Math.max(U.dailyScore[today]||0, DC.score);
-  // Mark as played today
-  if(!U.gamePlays) U.gamePlays={};
-  U.gamePlays[getDailyKey()]=true;
   saveUser();
-  const gameArea=document.getElementById('dc-game-area');
-  if(gameArea)gameArea.style.display='none';
-  const panel=document.getElementById('dc-played-msg');
-  if(panel){
-    panel.style.display='block';
-    panel.innerHTML=`
-      <div style="text-align:center;padding:20px 0">
-        <div style="font-size:48px;margin-bottom:12px">🌟</div>
-        <div style="font-size:18px;font-weight:800;margin-bottom:6px">Barakalla!</div>
-        <div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:6px">${DC.score} ball</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Natijangiz saqlandi</div>
-      </div>`;
-  }
+  document.getElementById('dc-opts').innerHTML=`
+    <div style="grid-column:1/-1;text-align:center;padding:10px">
+      <div style="font-size:32px;margin-bottom:8px">🌟</div>
+      <div style="font-size:20px;font-weight:800;color:var(--gold)">${DC.score} ball</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">Bugungi eng yaxshi natijangiz saqlandi</div>
+    </div>
+  `;
   buildDCLeaderboard();
 }
 
@@ -3138,60 +3071,35 @@ function deleteCustomWord(idx){
 }
 
 // ===== CERTIFICATE =====
-function getBookCompletedUnits(bookNum){
-  // Kitob bo'yicha tugallanagan unitlar sonini hisoblash
-  const cacheKey = 'book'+bookNum+'_units';
-  const knownUnits = WORDS_CACHE[cacheKey] || [];
-  let completed = 0;
-  for(const unitWords of Object.values(WORDS_CACHE)){
-    if(!Array.isArray(unitWords)||unitWords.length===0) continue;
-    // Bu unitning barcha so'zlari o'rganilganmi?
-    const allLearned = unitWords.every(w=>U.learnedWords&&U.learnedWords.find(x=>x.word===w.word));
-    if(allLearned) completed++;
-  }
-  return completed;
-}
-
-function getBookLearnedPct(bookNum){
-  const level = BOOK_LEVEL[bookNum];
-  const db = FALLBACK_WORDS[level]||[];
-  if(!db.length) return 0;
-  const learned = db.filter(w=>U.learnedWords&&U.learnedWords.find(x=>x.word===w.word)).length;
-  return Math.round(learned/db.length*100);
-}
-
 function buildCertList(){
   const list = document.getElementById('cert-list');
-  const UNITS_PER_BOOK = 30; // Har kitobda 30 unit
+  // Qaysi kitoblar tugallanganini tekshirish
   const certs = [];
   for(let b=1;b<=6;b++){
     const level = BOOK_LEVEL[b];
     const db = FALLBACK_WORDS[level]||[];
-    const learned = db.filter(w=>U.learnedWords&&U.learnedWords.find(x=>x.word===w.word)).length;
+    const learned = db.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
     const pct = db.length ? Math.round(learned/db.length*100) : 0;
-    // U.completedUnits — har unit tugaganda saqlash kerak
-    const doneUnits = (U.unitsDone||{})[b] || 0;
-    const allDone = doneUnits >= UNITS_PER_BOOK;
-    certs.push({book:b,level,learned,total:db.length,pct,doneUnits,allDone});
+    certs.push({book:b,level,learned,total:db.length,pct});
   }
   list.innerHTML = certs.map(c=>`
-    <div style="background:var(--s1);border:1px solid ${c.allDone?'var(--gold)':c.pct>=50?'rgba(124,90,246,.3)':'var(--border)'};border-radius:14px;padding:14px;margin-bottom:10px">
+    <div style="background:var(--s1);border:1px solid ${c.pct>=80?'var(--gold)':'var(--border)'};border-radius:14px;padding:14px;margin-bottom:10px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <div style="font-weight:800">📗 Kitob ${c.book} <span style="font-size:11px;font-weight:400;color:var(--muted)">(${c.level})</span></div>
-        <div style="font-size:11px;color:var(--muted)">${c.doneUnits}/${UNITS_PER_BOOK} unit</div>
+        <div style="font-weight:800">📗 Kitob ${c.book}</div>
+        <div style="font-size:11px;color:var(--muted)">${c.learned}/${c.total} so'z</div>
       </div>
       <div style="height:6px;background:var(--s2);border-radius:10px;overflow:hidden;margin-bottom:8px">
-        <div style="height:100%;width:${Math.round(c.doneUnits/UNITS_PER_BOOK*100)}%;background:${c.allDone?'var(--gold)':'var(--accent)'};border-radius:10px;transition:width .5s"></div>
+        <div style="height:100%;width:${c.pct}%;background:${c.pct>=80?'var(--gold)':'var(--accent)'};border-radius:10px;transition:width .5s"></div>
       </div>
-      ${c.allDone ? `
-        <div class="cert-wrap" style="padding:14px;margin-top:8px">
+      ${c.pct>=80 ? `
+        <div class="cert-wrap" style="padding:14px">
           <div class="cert-title">🎓 SERTIFIKAT</div>
-          <div style="font-size:11px;color:var(--muted);margin:4px 0">Barcha 30 unitni muvaffaqiyatli tamomladi</div>
+          <div style="font-size:11px;color:var(--muted);margin:4px 0">Muvaffaqiyatli tamomladi</div>
           <div class="cert-name">${U.name}</div>
           <div style="font-size:11px;color:var(--muted)">Essential English — Kitob ${c.book}</div>
           <button onclick="downloadCert(${c.book})" style="margin-top:10px;padding:8px 16px;background:var(--gold);color:#080d14;border:none;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px">⬇️ Yuklab olish</button>
         </div>
-      ` : `<div style="font-size:11px;color:var(--muted);text-align:center;padding:4px">${c.doneUnits < UNITS_PER_BOOK ? (UNITS_PER_BOOK-c.doneUnits)+' ta unit qoldi · Sertifikat uchun barcha 30 unitni tugating' : '✅ Tayyor!'}</div>`}
+      ` : `<div style="font-size:11px;color:var(--muted);text-align:center">${c.pct}% · Sertifikat uchun 80% kerak</div>`}
     </div>
   `).join('');
 }
@@ -3315,6 +3223,9 @@ function switchTab(name,btn){
     if(gl) gl.textContent=`Kitob ${curBook} · Unit ${curUnitNum}`;
   }
   if(name==='premium') updatePremiumUI();
+
+  if(name==='settings'){ try{buildSettingsTab();}catch(e){} }
+  try{ App.events.emit('tab:switched',{name}); }catch(e){}
 }
 
 // ===== INIT PREMIUM on startup =====
@@ -3337,14 +3248,20 @@ function trackWordError(word){
   if(!U.wordErrors) U.wordErrors={};
   U.wordErrors[word]=(U.wordErrors[word]||0)+1;
   saveUser();
-  // 10 yoki 15 ta bo'lganda quiz taklif qilish
   const count=Object.keys(U.wordErrors).length;
   if(count===10||count===15){
     setTimeout(()=>{
-      showToast('⚠️ '+count+' ta zaif so\'z! Quiz boshlaymizmi?');
+      showToast('⚠️ '+count+' ta zaif so\'z!');
       setTimeout(()=>openWeakQuiz(),1800);
     },500);
   }
+  // Spaced repetition update
+  try{
+    const ws=App.learning.getWordData(word);
+    ws.mistakes=(ws.mistakes||0)+1; ws.difficulty=Math.min(1,(ws.difficulty||0.3)+0.15);
+    App.user.get(); saveUser();
+    App.events.emit('word:error',word);
+  }catch(e){}
 }
 
 let WQ={pool:[],idx:0,score:0,wrong:0};
@@ -3859,61 +3776,41 @@ function spToggleMic(){
     showToast('Brauzeringiz mikrofon funksiyasini qo\'llab-quvvatlamaydi');return;
   }
   if(SP.listening){spStopMic();return;}
-  // Ruxsat so'ralmagan bo'lsa oldin so'raymiz
-  if(!SP.micReady){
-    requestMicPermission().then(ok=>{if(ok)spStartMic();});
-    return;
-  }
-  spStartMic();
-}
-
-function spStartMic(){
   const SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(SP.rec){try{SP.rec.abort();}catch(e){}}
   SP.rec=new SRC();
   SP.rec.lang='en-US';
   SP.rec.continuous=false;
   SP.rec.interimResults=true;
-  SP.rec.maxAlternatives=5;
+  SP.rec.maxAlternatives=10;
   SP.listening=true;
   const btn=document.getElementById('sp-mic-btn');
   if(btn){btn.className='mic-btn listening';btn.textContent='⏹';}
   const lbl=document.getElementById('sp-mic-label');
   if(lbl)lbl.textContent='🔴 Tinglanmoqda...';
-  const hd=document.getElementById('sp-heard');
-  if(hd)hd.textContent='';
-  let gotFinal=false;
+  let finalResult=null;
   SP.rec.onresult=(e)=>{
-    if(gotFinal)return;
+    let interim='';
     for(let i=e.resultIndex;i<e.results.length;i++){
-      if(e.results[i].isFinal){
-        gotFinal=true;
-        const res=e.results[i];
-        const alts=Array.from({length:res.length},(_,j)=>res[j]);
-        const heardList=alts.map(r=>r.transcript.trim().toLowerCase());
-        const conf=res[0]?.confidence||0.6;
-        if(hd)hd.textContent='🔈 "'+heardList[0]+'"';
-        spStopMic();
-        spAnalyze(heardList,conf);
-        return;
-      } else {
-        if(hd)hd.textContent='🔈 '+e.results[i][0].transcript;
-      }
+      if(e.results[i].isFinal) finalResult=e.results[i];
+      else interim=e.results[i][0].transcript;
+    }
+    const hd=document.getElementById('sp-heard');
+    if(hd&&interim)hd.textContent='🔈 "'+interim+'"';
+    if(finalResult){
+      const alts=Array.from({length:finalResult.length},(_,i)=>finalResult[i]);
+      const heardList=alts.map(r=>r.transcript.trim().toLowerCase());
+      const conf=alts[0]?.confidence||0.5;
+      if(hd)hd.textContent='🔈 "'+heardList[0]+'"';
+      spStopMic();spAnalyze(heardList,conf);
     }
   };
   SP.rec.onerror=(e)=>{
     spStopMic();
-    if(e.error==='no-speech'){
-      if(hd)hd.textContent='';
-      showToast('Ovoz aniqlanmadi');
-    } else if(e.error==='not-allowed'){
-      SP.micReady=false;
-      showToast('Mikrofon ruxsati berilmagan. Brauzer sozlamalarini tekshiring.');
-    }
+    if(e.error==='no-speech')showToast('Ovoz aniqlanmadi. Qayta urinib ko\'ring');
+    else if(e.error==='not-allowed')showToast('Mikrofon ruxsati berilmagan');
+    else showToast('Mikrofon xatosi: '+e.error);
   };
-  SP.rec.onend=()=>{
-    if(SP.listening&&!gotFinal){spStopMic();}
-  };
+  SP.rec.onend=()=>{if(SP.listening)spStopMic();};
   try{SP.rec.start();}catch(e){spStopMic();}
 }
 
@@ -3993,6 +3890,8 @@ function spAnalyze(heardList,conf){
       ${!exactMatch?`<div style="margin-top:8px;font-size:11px;color:var(--muted);text-align:center">To\'g\'ri: <b style="color:var(--text)">${correct}</b></div>`:''}
     </div>`;
   const nb=document.getElementById('sp-next-btn');if(nb)nb.style.display='block';
+  const aitip=document.getElementById('sp-ai-tip');if(aitip)aitip.style.display='none';
+  try{App.events.emit('speaking:analyzed',{word:correct,heard:heard0,score:total});}catch(e){}
 }
 
 function spNext(){SP.idx++;spBuildWord();}
@@ -4183,21 +4082,15 @@ function wcInpHandler(inp){
   hint.style.color='var(--orange)';
 }
 
-// English so'zlar lug'ati (WC_DICT) + fonetik tekshiruv
+// Inglizcha so'zlar uchun oddiy tekshiruv (faqat lotin harflari, kamida 2 ta)
+const ENGLISH_PATTERN = /^[a-z]{2,}$/;
+// Qabul qilinmaydigan "so'zlar" (raqamlar, bitta harf, etc.)
 function isLikelyEnglish(word){
-  if(!/^[a-z]{2,}$/.test(word)) return false;
-  if(/^(.){2,}$/.test(word)) return false; // aaa, bbb
-  if(!/[aeiou]/.test(word)) return false;     // unli shart
-  // Inglizcha bo'lmagan kombinatsiyalar (tez-tez o'zbek/rus so'zlar)
-  if(/[qw]{2}/.test(word)) return false;
-  if(/^(bu|bu|shu|uni|va|ha|yo|uy|ko|bo|yo|ga|da|ni|lar|lar|ish|ish|ham|kerak|emas)$/.test(word)) return false;
-  // Lug'atda bormi? (agar lug'atda bo'lsa 100% qabul)
-  if(WC_DICT.has(word)) return true;
-  // Lug'atda yo'q bo'lsa — qo'shimcha tekshiruv
-  // Kamida 3 ta harf va inglizcha pattern
-  if(word.length < 3) return false;
-  // Ketma-ket 4+ undosh — anglizchada bo'lmaydi
-  if(/[bcdfghjklmnpqrstvwxyz]{4}/.test(word)) return false;
+  if(!ENGLISH_PATTERN.test(word)) return false;
+  // Bir xil harflar (aaa, bbb) — rad
+  if(/^(.)+$/.test(word)) return false;
+  // Unli harf bo'lishi shart (a,e,i,o,u) — haqiqiy so'z
+  if(!/[aeiou]/.test(word)) return false;
   return true;
 }
 
@@ -4283,30 +4176,10 @@ function initContext(){
   ctxBuild();
 }
 
-// Gapdan so'zning haqiqiy shaklini topish (inflected form)
-function ctxFindActualForm(sentence, baseWord){
-  const lc = baseWord.toLowerCase();
-  const variants = [
-    lc, lc+'s', lc+'es', lc+'d', lc+'ed', lc+'ing',
-    lc.replace(/e$/,'')+'ing', lc.replace(/e$/,'')+'ed',
-    lc.replace(/y$/,'ies'), lc.replace(/y$/,'ied'),
-    lc+lc.slice(-1)+'ing', lc+lc.slice(-1)+'ed',
-    lc+'ly', lc+'er', lc+'est', lc+'ment', lc+'tion',
-  ].filter((v,i,a)=>v.length>2&&a.indexOf(v)===i);
-  // Eng uzunidan qisqasiga (greedy match)
-  variants.sort((a,b)=>b.length-a.length);
-  for(const v of variants){
-    const re=new RegExp('\\b'+v+'\\b','i');
-    const m=sentence.match(re);
-    if(m) return {form:m[0], variant:v};
-  }
-  return null;
-}
-
 function ctxBuild(){
   const max=Math.min(CTX.pool.length,10);
   if(CTX.idx>=max){
-    document.getElementById('ctx-sentence').innerHTML='🎉 Tugadi! '+CTX.score+'/'+max+' to\'g\'ri';
+    document.getElementById('ctx-sentence').innerHTML=`🎉 Tugadi! ${CTX.score}/${max} to'g'ri`;
     document.getElementById('ctx-opts').innerHTML='';
     document.getElementById('ctx-hint').textContent='';
     document.getElementById('ctx-res').textContent='';
@@ -4315,46 +4188,35 @@ function ctxBuild(){
   const correct=CTX.pool[CTX.idx];
   document.getElementById('ctx-num').textContent=CTX.idx+1;
   document.getElementById('ctx-res').textContent='';
+  // Example jumladan so'zni olib bo'shliq yasaymiz
   const ex=correct.example||('The word is '+correct.word+'.');
-
-  // Gapdan so'zning haqiqiy shaklini topish
-  const found=ctxFindActualForm(ex, correct.word);
-  const actualForm = found ? found.form : correct.word;
-  const formRe = new RegExp('\\b'+actualForm.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');
-
-  const blanked=ex.replace(formRe,'<span class="ctx-blank">_____</span>');
+  const wordRe=new RegExp('\\b'+correct.word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');
+  const blanked=ex.replace(wordRe,'<span class="ctx-blank">_____</span>');
   document.getElementById('ctx-sentence').innerHTML=blanked;
   document.getElementById('ctx-hint').textContent='('+correct.translation+')';
-
-  // Variantlar — to'g'ri javob = gapdan topilgan haqiqiy shakl
+  // Variantlar — pool dan 3 noto'g'ri + 1 to'g'ri
   const pool2=CTX.pool.length>=4?CTX.pool:getAllWordsForGames();
   const others=shuffle(pool2.filter(w=>w.word!==correct.word)).slice(0,3);
   if(others.length<3){CTX.idx++;ctxBuild();return;}
-  // Variantlar: to'g'ri = actualForm, xato = boshqa so'zlarning base shakli
-  const optsData=[
-    {display:actualForm, isCorrect:true},
-    ...others.map(o=>({display:o.word, isCorrect:false}))
-  ];
-  const opts=shuffle(optsData);
+  const opts=shuffle([correct,...others]);
   const c=document.getElementById('ctx-opts');c.innerHTML='';
   opts.forEach(o=>{
-    const el=document.createElement('div');el.className='gopt';el.textContent=o.display;
+    const el=document.createElement('div');el.className='gopt';el.textContent=o.word;
     el.onclick=()=>{
       c.querySelectorAll('.gopt').forEach(x=>x.style.pointerEvents='none');
-      if(o.isCorrect){
+      if(o.word===correct.word){
         el.classList.add('correct');CTX.score++;
         try{addXP(1);}catch(e){}
         document.getElementById('ctx-score').textContent=CTX.score;
         document.getElementById('ctx-res').textContent='✅ To\'g\'ri! +1 XP';
-        document.getElementById('ctx-sentence').innerHTML=ex.replace(formRe,'<b style="color:var(--green)">'+actualForm+'</b>');
+        document.getElementById('ctx-sentence').innerHTML=ex.replace(wordRe,'<b style="color:var(--green)">'+correct.word+'</b>');
       } else {
         el.classList.add('wrong');CTX.wrong++;
         document.getElementById('ctx-wrong').textContent=CTX.wrong;
-        document.getElementById('ctx-res').textContent='❌ Noto\'g\'ri · To\'g\'ri: <b>'+actualForm+'</b>';
-        c.querySelectorAll('.gopt').forEach(x=>{if(x.textContent===actualForm)x.classList.add('correct');});
-        try{trackWordError(correct.word);}catch(e){}
+        document.getElementById('ctx-res').textContent='❌ Noto\'g\'ri';
+        c.querySelectorAll('.gopt').forEach(x=>{if(x.textContent===correct.word)x.classList.add('correct');});
       }
-      CTX.idx++;setTimeout(ctxBuild,1100);
+      CTX.idx++;setTimeout(ctxBuild,1000);
     };
     c.appendChild(el);
   });
@@ -4517,6 +4379,958 @@ const PREMIUM_AVATARS = [
 ];
 
 // ===== END =====
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ESSENTIAL ENGLISH PRO — v2.0 MODULAR ARCHITECTURE
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  AI CONFIGURATION — paste your API key in Settings to enable  ║
+// ╚══════════════════════════════════════════════════════════════╝
+const AI_CONFIG = {
+  enabled: false,
+  provider: 'openrouter',
+  apiKey: '',
+  model: 'deepseek/deepseek-chat',
+  // Switch model by changing one line:
+  // 'deepseek/deepseek-chat'      — cheap, very capable
+  // 'mistralai/mistral-small'     — fast, multilingual
+  // 'meta-llama/llama-3-8b-instruct' — free tier
+  baseURL: 'https://openrouter.ai/api/v1/chat/completions',
+  maxTokens: 512,
+};
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  APP NAMESPACE — modular structure                            ║
+// ╚══════════════════════════════════════════════════════════════╝
+const App = {
+  version: '2.0.0',
+  user: {},      // UserSystem
+  learning: {},  // LearningEngine
+  games: {},     // GameEngine
+  ai: {},        // AIEngine
+  progress: {},  // ProgressSystem
+  achieve: {},   // AchievementSystem
+  lb: {},        // LeaderboardSystem
+  events: {},    // EventBus
+  sync: {},      // BackendSync (placeholder)
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 1 — EventBus (decoupled communication)
+// ═══════════════════════════════════════════════════════════════════════════
+App.events = {
+  _listeners: {},
+  on(event, fn){ (this._listeners[event]||(this._listeners[event]=[])).push(fn); },
+  off(event, fn){ this._listeners[event]=(this._listeners[event]||[]).filter(f=>f!==fn); },
+  emit(event, data){
+    (this._listeners[event]||[]).forEach(fn=>{ try{fn(data);}catch(e){console.warn('Event error:',e);} });
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 2 — UserSystem
+// ═══════════════════════════════════════════════════════════════════════════
+App.user = {
+  _data: null,
+
+  load(){
+    try {
+      const raw = localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user');
+      this._data = raw ? JSON.parse(raw) : null;
+    } catch(e) { this._data = null; }
+    return this._data;
+  },
+
+  get(){ return this._data; },
+
+  save(){
+    if(!this._data) return;
+    const s = JSON.stringify(this._data);
+    localStorage.setItem('ep_user', s);
+    sessionStorage.setItem('ep_user', s);
+    try{ App.events.emit('user:saved', this._data); }catch(e){}
+  },
+
+  update(patch){
+    Object.assign(this._data, patch);
+    this.save();
+    App.events.emit('user:updated', patch);
+  },
+
+  addXP(n){ addXP(n); },  // delegates to global addXP
+
+  updateStreak(){
+    const d = this._data;
+    const today = new Date().toISOString().slice(0,10);
+    if(!d.lastStreakDate){
+      d.lastStreakDate = today; d.streak = 1;
+    } else if(d.lastStreakDate === today){
+      // already counted
+    } else {
+      const yest = new Date(); yest.setDate(yest.getDate()-1);
+      const yStr = yest.toISOString().slice(0,10);
+      d.streak = (d.lastStreakDate === yStr) ? (d.streak||0)+1 : 1;
+      d.lastStreakDate = today;
+    }
+    this.save();
+    App.events.emit('streak:updated', d.streak);
+  },
+
+  logout(){
+    if(!confirm('Profildan chiqmoqchimisiz?')) return;
+    localStorage.removeItem('ep_user');
+    sessionStorage.removeItem('ep_user');
+    window.location.href = 'register.html';
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 3 — LearningEngine (Spaced Repetition SM2-lite)
+// ═══════════════════════════════════════════════════════════════════════════
+App.learning = {
+  // Per-word tracking schema:
+  // { accuracy, mistakes, lastSeen, nextReview, difficulty, views }
+
+  getWordData(word){
+    const U = App.user.get();
+    if(!U.wordStats) U.wordStats = {};
+    if(!U.wordStats[word]) U.wordStats[word] = {
+      accuracy: 0, mistakes: 0, lastSeen: 0, nextReview: 0,
+      difficulty: 0.3, views: 0, streak: 0
+    };
+    return U.wordStats[word];
+  },
+
+  updateWordResult(word, correct){
+    const U = App.user.get();
+    const d = this.getWordData(word);
+    d.views++;
+    d.lastSeen = Date.now();
+    if(correct){
+      d.streak = (d.streak||0) + 1;
+      d.difficulty = Math.max(0, d.difficulty - 0.1);
+      d.accuracy = Math.round(((d.accuracy * (d.views-1)) + 100) / d.views);
+      // SM2-lite: next review interval in ms
+      const interval = Math.min(
+        30 * 24 * 60 * 60 * 1000,
+        (d.streak <= 1 ? 1 : d.streak <= 3 ? 3 : d.streak <= 7 ? 7 : 14) * 24 * 60 * 60 * 1000
+      );
+      d.nextReview = Date.now() + interval;
+    } else {
+      d.streak = 0;
+      d.difficulty = Math.min(1, d.difficulty + 0.2);
+      d.mistakes++;
+      d.accuracy = Math.round(((d.accuracy * (d.views-1)) + 0) / d.views);
+      d.nextReview = Date.now() + 4 * 60 * 60 * 1000; // 4hr retry
+      App.learning.trackError(word);
+    }
+    App.user.save();
+    App.events.emit('word:result', { word, correct, data: d });
+  },
+
+  trackError(word){
+    const U = App.user.get();
+    if(!U.wordErrors) U.wordErrors = {};
+    U.wordErrors[word] = (U.wordErrors[word]||0) + 1;
+    const count = Object.keys(U.wordErrors).length;
+    if(count === 10 || count === 15){
+      setTimeout(()=>{
+        showToast('⚠️ ' + count + ' ta zaif so\'z topildi!');
+        setTimeout(()=>openWeakQuiz(), 1800);
+      }, 500);
+    }
+    App.events.emit('word:error', word);
+  },
+
+  getDueWords(pool){
+    const now = Date.now();
+    return pool.sort((a, b) => {
+      const da = this.getWordData(a.word);
+      const db = this.getWordData(b.word);
+      // Due words first, then by difficulty desc
+      const aDue = da.nextReview <= now ? 1 : 0;
+      const bDue = db.nextReview <= now ? 1 : 0;
+      if(aDue !== bDue) return bDue - aDue;
+      return db.difficulty - da.difficulty;
+    });
+  },
+
+  getWeakWords(limit = 15){
+    const U = App.user.get();
+    const errors = U.wordErrors || {};
+    return Object.entries(errors).sort((a,b)=>b[1]-a[1]).slice(0, limit).map(([w])=>w);
+  },
+
+  getStats(){
+    const U = App.user.get();
+    const stats = U.wordStats || {};
+    const words = Object.values(stats);
+    return {
+      totalStudied: words.length,
+      avgAccuracy: words.length ? Math.round(words.reduce((s,w)=>s+w.accuracy,0)/words.length) : 0,
+      dueCount: words.filter(w=>w.nextReview <= Date.now()).length,
+      masteredCount: words.filter(w=>w.accuracy>=90&&w.views>=5).length,
+    };
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 4 — ProgressSystem (streaks, combos, quests, heatmap)
+// ═══════════════════════════════════════════════════════════════════════════
+App.progress = {
+  _combo: 0,
+  _comboTimer: null,
+  _questDefs: [
+    { id:'learn5', icon:'📚', title:'5 so\'z o\'rgan', goal: 5, stat:'wordsToday', xp: 10 },
+    { id:'quiz10', icon:'🎯', title:'10 quiz javob', goal: 10, stat:'quizToday', xp: 15 },
+    { id:'streak3', icon:'🔥', title:'3 kun streak', goal: 3, stat:'streak', xp: 20 },
+    { id:'battle3', icon:'⚔️', title:'3 ta battle', goal: 3, stat:'battlesToday', xp: 25 },
+    { id:'perfect', icon:'⭐', title:'Perfect quiz', goal: 1, stat:'perfectQuiz', xp: 30 },
+  ],
+
+  checkCombo(){
+    const U = App.user.get();
+    this._combo = (this._combo || 0) + 1;
+    clearTimeout(this._comboTimer);
+    this._comboTimer = setTimeout(()=>{ this._combo = 0; }, 5000);
+    if(this._combo >= 3){
+      const bonus = Math.floor(this._combo / 3);
+      if(bonus > 0){
+        showToast('🔥 COMBO x' + this._combo + '! +' + bonus + ' bonus XP!');
+        const U2 = App.user.get();
+        U2.xp = (U2.xp||0) + bonus;
+        App.user.save();
+      }
+    }
+    App.events.emit('combo:updated', this._combo);
+  },
+
+  trackActivity(){
+    const U = App.user.get();
+    if(!U.weeklyActivity) U.weeklyActivity = [0,0,0,0,0,0,0];
+    const day = new Date().getDay();
+    const idx = day === 0 ? 6 : day - 1;
+    U.weeklyActivity[idx] = (U.weeklyActivity[idx]||0) + 1;
+    // Update today counters
+    const tk = getTodayKey();
+    if(!U.dailyStats) U.dailyStats = {};
+    if(!U.dailyStats[tk]) U.dailyStats[tk] = { words:0, quiz:0, xp:0, battles:0 };
+    U.dailyStats[tk].xp = (U.dailyStats[tk].xp||0) + 1;
+    App.user.updateStreak();
+    App.progress.checkDailyQuests();
+    App.events.emit('activity:tracked');
+  },
+
+  trackDailyAction(type, amount=1){
+    const U = App.user.get();
+    const tk = getTodayKey();
+    if(!U.dailyStats) U.dailyStats = {};
+    if(!U.dailyStats[tk]) U.dailyStats[tk] = { words:0, quiz:0, xp:0, battles:0 };
+    U.dailyStats[tk][type] = (U.dailyStats[tk][type]||0) + amount;
+    App.user.save();
+    App.progress.checkDailyQuests();
+  },
+
+  checkDailyQuests(){
+    const U = App.user.get();
+    const tk = getTodayKey();
+    const daily = (U.dailyStats||{})[tk] || {};
+    if(!U.completedQuests) U.completedQuests = {};
+    this._questDefs.forEach(q => {
+      const qKey = q.id + '_' + tk;
+      if(U.completedQuests[qKey]) return;
+      let val = 0;
+      if(q.stat==='streak') val = U.streak||0;
+      else if(q.stat==='wordsToday') val = daily.words||0;
+      else if(q.stat==='quizToday') val = daily.quiz||0;
+      else if(q.stat==='battlesToday') val = daily.battles||0;
+      else if(q.stat==='perfectQuiz') val = daily.perfectQuiz||0;
+      if(val >= q.goal){
+        U.completedQuests[qKey] = true;
+        App.user.save();
+        setTimeout(()=>{
+          showToast(q.icon + ' Quest: ' + q.title + ' +' + q.xp + ' XP!');
+          const U2 = App.user.get();
+          U2.xp = (U2.xp||0) + q.xp;
+          App.user.save();
+        }, 800);
+        App.events.emit('quest:completed', q);
+      }
+    });
+  },
+
+  getQuestProgress(){
+    const U = App.user.get();
+    const tk = getTodayKey();
+    const daily = (U.dailyStats||{})[tk] || {};
+    return this._questDefs.map(q => {
+      const qKey = q.id + '_' + tk;
+      let val = 0;
+      if(q.stat==='streak') val = U.streak||0;
+      else if(q.stat==='wordsToday') val = daily.words||0;
+      else if(q.stat==='quizToday') val = daily.quiz||0;
+      else if(q.stat==='battlesToday') val = daily.battles||0;
+      else if(q.stat==='perfectQuiz') val = daily.perfectQuiz||0;
+      return { ...q, current: Math.min(val, q.goal), done: !!(U.completedQuests||{})[qKey+tk] };
+    });
+  },
+
+  getHeatmapData(weeks = 12){
+    const U = App.user.get();
+    const data = [];
+    const now = new Date();
+    for(let i = weeks*7 - 1; i >= 0; i--){
+      const d = new Date(now); d.setDate(d.getDate() - i);
+      const key = d.toISOString().slice(0,10);
+      const val = ((U.dailyStats||{})[key]||{}).xp || 0;
+      data.push({ date: key, value: val });
+    }
+    return data;
+  },
+
+  markUnitCompleted(bookNum, unitNum){
+    const U = App.user.get();
+    if(!U.unitsDone) U.unitsDone = {};
+    if(!U.doneUnitKeys) U.doneUnitKeys = [];
+    const key = 'unit_' + bookNum + '_' + unitNum;
+    if(!U.doneUnitKeys.includes(key)){
+      U.doneUnitKeys.push(key);
+      U.unitsDone[bookNum] = (U.unitsDone[bookNum]||0) + 1;
+      App.user.save();
+      if((U.unitsDone[bookNum]||0) >= 30){
+        setTimeout(()=>showToast('🎓 Kitob ' + bookNum + ' tugallandi! Sertifikat tayyor!'), 500);
+      }
+      App.events.emit('unit:completed', { book: bookNum, unit: unitNum });
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 5 — AchievementSystem
+// ═══════════════════════════════════════════════════════════════════════════
+App.achieve = {
+  _defs: [
+    { id:'first_word',   icon:'🌱', title:'Birinchi Qadam',  desc:'Birinchi so\'zni o\'rgan',        goal:1,  stat:'learnedWords', type:'len' },
+    { id:'words_10',     icon:'📖', title:'O\'quvchi',       desc:'10 ta so\'z o\'rgan',             goal:10, stat:'learnedWords', type:'len' },
+    { id:'words_50',     icon:'📚', title:'Kitobxon',        desc:'50 ta so\'z o\'rgan',             goal:50, stat:'learnedWords', type:'len' },
+    { id:'words_100',    icon:'🧠', title:'Bilimdon',        desc:'100 ta so\'z o\'rgan',            goal:100,stat:'learnedWords', type:'len' },
+    { id:'xp_100',       icon:'⭐', title:'XP Yig\'uvchi',  desc:'100 XP to\'pla',                  goal:100,stat:'xp',          type:'val' },
+    { id:'xp_500',       icon:'🌟', title:'XP Champion',    desc:'500 XP to\'pla',                  goal:500,stat:'xp',          type:'val' },
+    { id:'streak_3',     icon:'🔥', title:'Oddiy Streak',   desc:'3 kunlik streak',                  goal:3,  stat:'streak',      type:'val' },
+    { id:'streak_7',     icon:'💥', title:'Haftalik Qahramon',desc:'7 kunlik streak',               goal:7,  stat:'streak',      type:'val' },
+    { id:'streak_30',    icon:'⚡', title:'Oylik Chempion', desc:'30 kunlik streak',                 goal:30, stat:'streak',      type:'val' },
+    { id:'battle_win',   icon:'⚔️', title:'Birinchi G\'alaba',desc:'Birinchi battle g\'alabasi',   goal:1,  stat:'battleWins',  type:'val' },
+    { id:'battle_10',    icon:'🏆', title:'Jangchi',        desc:'10 ta battle g\'alabasi',          goal:10, stat:'battleWins',  type:'val' },
+    { id:'perfect_quiz', icon:'🎯', title:'Mukammal Quiz',  desc:'Quiz da 100% to\'g\'ri javob',    goal:1,  stat:'perfectQuizzes',type:'val'},
+    { id:'combo_5',      icon:'🚀', title:'Combo Master',   desc:'5 combo streak',                   goal:5,  stat:'_combo',      type:'fn'  },
+  ],
+
+  check(){
+    const U = App.user.get();
+    if(!U.achievements) U.achievements = {};
+    let newUnlock = false;
+    this._defs.forEach(a => {
+      if(U.achievements[a.id]) return;
+      let val = 0;
+      if(a.type==='len') val = (U[a.stat]||[]).length;
+      else if(a.type==='val') val = U[a.stat]||0;
+      else if(a.type==='fn') val = App.progress._combo||0;
+      if(val >= a.goal){
+        U.achievements[a.id] = { ts: Date.now() };
+        App.user.save();
+        newUnlock = true;
+        this._showUnlock(a);
+        App.events.emit('achievement:unlocked', a);
+      }
+    });
+    if(newUnlock){
+      const badge = document.getElementById('ach-new-badge');
+      if(badge) badge.style.display = 'inline';
+    }
+  },
+
+  _showUnlock(a){
+    const el = document.createElement('div');
+    el.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:14px 22px;border-radius:20px;font-weight:800;font-size:14px;text-align:center;box-shadow:0 8px 30px rgba(245,197,66,.4);animation:achievePop .5s ease';
+    el.innerHTML = `<div style="font-size:24px;margin-bottom:4px">${a.icon}</div><div>Achievement: ${a.title}</div>`;
+    if(!document.getElementById('ach-anim-style')){
+      const s = document.createElement('style');
+      s.id = 'ach-anim-style';
+      s.textContent = '@keyframes achievePop{0%{transform:translateX(-50%) scale(.5);opacity:0}60%{transform:translateX(-50%) scale(1.1)}100%{transform:translateX(-50%) scale(1);opacity:1}}';
+      document.head.appendChild(s);
+    }
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(), 3500);
+  },
+
+  buildUI(){
+    const U = App.user.get();
+    const list = document.getElementById('ach-list');
+    if(!list) return;
+    const unlocked = U.achievements||{};
+    list.innerHTML = this._defs.map(a=>{
+      const done = !!unlocked[a.id];
+      const ts = done ? new Date(unlocked[a.id].ts).toLocaleDateString() : '';
+      return `<div style="display:flex;align-items:center;gap:12px;background:var(--s1);border:1px solid ${done?'var(--gold)':'var(--border)'};border-radius:13px;padding:12px 14px;margin-bottom:8px;opacity:${done?1:.5}">
+        <div style="font-size:28px;flex-shrink:0">${a.icon}</div>
+        <div style="flex:1">
+          <div style="font-weight:800;font-size:13px">${a.title}</div>
+          <div style="font-size:11px;color:var(--muted)">${a.desc}</div>
+          ${done?`<div style="font-size:10px;color:var(--gold);margin-top:2px">✅ ${ts}</div>`:''}
+        </div>
+        ${done?'<div style="color:var(--gold);font-size:20px">🏅</div>':'<div style="font-size:10px;color:var(--muted);text-align:right">Ochilmagan</div>'}
+      </div>`;
+    }).join('');
+    const badge = document.getElementById('ach-new-badge');
+    if(badge) badge.style.display = 'none';
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 6 — LeaderboardSystem
+// ═══════════════════════════════════════════════════════════════════════════
+App.lb = {
+  _period: 'alltime',
+  _fakePlayers: FAKE_LB,
+
+  setPeriod(p){ this._period = p; this.refreshUI(); },
+
+  getMyXP(period){
+    const U = App.user.get();
+    if(period==='alltime') return U.xp||0;
+    const log = U.xpLog||[];
+    const now = Date.now();
+    const cutoffs = { today: now-86400000, week: now-604800000, month: now-2592000000 };
+    const cut = cutoffs[period] || 0;
+    return log.filter(e=>e.ts>=cut).reduce((s,e)=>s+e.xp,0);
+  },
+
+  refreshUI(){
+    const U = App.user.get();
+    const list = document.getElementById('lb-list');
+    if(!list) return;
+    const myXP = this.getMyXP(this._period);
+    const all = [...this._fakePlayers, { name: U.name+'(Siz)', xp: myXP, av: U.avatarEmoji||'🤖', isMe: true }];
+    all.sort((a,b)=>b.xp-a.xp);
+    list.innerHTML = all.slice(0,10).map((p,i)=>{
+      const medals=['🥇','🥈','🥉'];
+      const avHtml = p.avatarUrl
+        ? `<img src="${p.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`
+        : (p.av||'🤖');
+      return `<div class="lb-row${p.isMe?' me':''}">
+        <div style="font-size:${i<3?'18':'13'}px;width:24px;text-align:center">${i<3?medals[i]:i+1}</div>
+        <div class="lb-av">${avHtml}</div>
+        <div style="flex:1"><div style="font-weight:800;font-size:13px">${p.name}</div></div>
+        <div style="font-weight:800;color:var(--gold);font-size:13px">${p.xp} XP</div>
+      </div>`;
+    }).join('');
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 7 — AIEngine
+// ═══════════════════════════════════════════════════════════════════════════
+App.ai = {
+  async isEnabled(){ return AI_CONFIG.enabled && !!AI_CONFIG.apiKey; },
+
+  async call(systemPrompt, userMsg, maxTok = 512){
+    if(!AI_CONFIG.apiKey) throw new Error('API key not set');
+    const res = await fetch(AI_CONFIG.baseURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + AI_CONFIG.apiKey,
+        'HTTP-Referer': window.location.origin,
+        'X-Title': 'Essential English PRO',
+      },
+      body: JSON.stringify({
+        model: AI_CONFIG.model,
+        max_tokens: maxTok,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userMsg }
+        ]
+      })
+    });
+    if(!res.ok){ const t=await res.text(); throw new Error('AI error: '+t); }
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content || '';
+  },
+
+  // ── AI Feature: Generate vocabulary examples ──
+  async generateExamples(word, level='intermediate'){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      `You are an English teacher. Give 2 short example sentences using the word. Level: ${level}. Reply in JSON: {"examples":["...","..."]}`,
+      `Word: "${word}"`, 200
+    ).then(r=>{ try{return JSON.parse(r);}catch{return null;} });
+  },
+
+  // ── AI Feature: Grammar explanation ──
+  async explainGrammar(topic){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      'You are an English grammar expert. Give a simple 3-sentence explanation in Uzbek language.',
+      `Explain: "${topic}"`, 300
+    );
+  },
+
+  // ── AI Feature: Weak word trainer ──
+  async generateWeakWordQuiz(words){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      'Generate a fill-in-the-blank sentence for each word. Reply JSON: {"questions":[{"word":"...","sentence":"... ___ ...","options":["...","...","...","..."]}]}',
+      `Words: ${words.join(', ')}`, 500
+    ).then(r=>{ try{return JSON.parse(r);}catch{return null;} });
+  },
+
+  // ── AI Feature: Speaking feedback ──
+  async speakingFeedback(word, heard, score){
+    if(!await this.isEnabled()) return null;
+    return this.call(
+      'You are a pronunciation coach. Give ONE short tip in Uzbek (max 20 words).',
+      `Target: "${word}", Heard: "${heard}", Score: ${score}%`, 100
+    );
+  },
+
+  // ── AI Settings UI ──
+  openSettings(){
+    const existing = document.getElementById('modal-ai-settings');
+    if(existing){ openModal('modal-ai-settings'); return; }
+    const modal = document.createElement('div');
+    modal.className = 'overlay';
+    modal.id = 'modal-ai-settings';
+    modal.onclick = (e)=>{ if(e.target===modal) closeAIModal(); };
+    const savedKey = localStorage.getItem('ep_ai_key')||'';
+    const savedModel = AI_CONFIG.model;
+    modal.innerHTML = `
+      <div class="sheet" onclick="event.stopPropagation()">
+        <div class="sh"></div>
+        <button class="sc" onclick="closeAIModal()">✕</button>
+        <div class="sb">
+          <div class="st">🤖 AI Sozlamalari</div>
+          <div style="background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.3);border-radius:12px;padding:12px;margin-bottom:14px;font-size:12px;line-height:1.6;color:var(--text)">
+            <b style="color:var(--accent)">OpenRouter</b> orqali AI modellarini ulang.<br>
+            API key olish: <a href="https://openrouter.ai" target="_blank" style="color:var(--blue)">openrouter.ai</a> (bepul kredit bor)
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">🔑 API KEY</div>
+            <input id="ai-key-inp" type="password" value="${savedKey}"
+              placeholder="sk-or-v1-..."
+              style="width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none">
+          </div>
+          <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">🧠 AI MODEL</div>
+            <select id="ai-model-sel" style="width:100%;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none">
+              <option value="deepseek/deepseek-chat" ${savedModel.includes('deepseek')?'selected':''}>🔹 DeepSeek Chat (arzon, kuchli)</option>
+              <option value="mistralai/mistral-small" ${savedModel.includes('mistral')?'selected':''}>🟣 Mistral Small (tez)</option>
+              <option value="meta-llama/llama-3-8b-instruct" ${savedModel.includes('llama')?'selected':''}>🦙 Llama 3 8B (bepul)</option>
+              <option value="openai/gpt-4o-mini" ${savedModel.includes('gpt-4o-mini')?'selected':''}>🟢 GPT-4o Mini</option>
+            </select>
+          </div>
+          <div id="ai-status" style="text-align:center;font-size:12px;color:var(--muted);min-height:20px;margin-bottom:12px">${AI_CONFIG.enabled?'✅ AI faol':'⭕ AI o\'chirilgan'}</div>
+          <button onclick="App.ai.saveSettings()" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px">
+            💾 Saqlash va Ulash
+          </button>
+          <button onclick="App.ai.testConnection()" style="width:100%;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+            🔌 Ulanishni tekshirish
+          </button>
+          <div style="margin-top:14px;padding:10px;background:var(--s2);border-radius:10px;font-size:11px;color:var(--muted);line-height:1.6">
+            <b style="color:var(--text)">AI yoqilganda:</b><br>
+            • Zaif so'zlar uchun AI quiz<br>
+            • Grammatika tushuntirishlari<br>
+            • Speaking practice AI fikr-mulohazasi<br>
+            • Shaxsiy o'rganish tavsiyalari
+          </div>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+    openModal('modal-ai-settings');
+  },
+
+  saveSettings(){
+    const key = document.getElementById('ai-key-inp')?.value?.trim()||'';
+    const model = document.getElementById('ai-model-sel')?.value||AI_CONFIG.model;
+    AI_CONFIG.apiKey = key;
+    AI_CONFIG.model = model;
+    AI_CONFIG.enabled = !!key;
+    if(key) localStorage.setItem('ep_ai_key', key);
+    else localStorage.removeItem('ep_ai_key');
+    localStorage.setItem('ep_ai_model', model);
+    const st = document.getElementById('ai-status');
+    if(st) st.textContent = key ? '✅ AI faol — ' + model.split('/').pop() : '⭕ AI o\'chirilgan (key yo\'q)';
+    if(st) st.style.color = key ? 'var(--green)' : 'var(--muted)';
+    showToast(key ? '🤖 AI ulandi!' : '⭕ AI o\'chirildi');
+    App.events.emit('ai:toggled', AI_CONFIG.enabled);
+  },
+
+  async testConnection(){
+    const st = document.getElementById('ai-status');
+    if(st){ st.textContent = '⏳ Tekshirilmoqda...'; st.style.color='var(--gold)'; }
+    try {
+      const res = await this.call('Reply with exactly: "OK"', 'Test', 10);
+      if(st){ st.textContent='✅ Ulanish muvaffaqiyatli!'; st.style.color='var(--green)'; }
+      showToast('🤖 AI ishlayapti!');
+    } catch(e){
+      if(st){ st.textContent='❌ Xato: '+e.message.slice(0,40); st.style.color='var(--red)'; }
+      showToast('AI xatosi: '+e.message.slice(0,30));
+    }
+  },
+
+  loadSavedConfig(){
+    const key = localStorage.getItem('ep_ai_key')||'';
+    const model = localStorage.getItem('ep_ai_model')||AI_CONFIG.model;
+    if(key){ AI_CONFIG.apiKey=key; AI_CONFIG.model=model; AI_CONFIG.enabled=true; }
+  }
+};
+
+function closeAIModal(){
+  const m = document.getElementById('modal-ai-settings');
+  if(m){ m.classList.remove('open'); setTimeout(()=>m.remove(),200); }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 8 — BackendSync (localStorage now, API-ready later)
+// ═══════════════════════════════════════════════════════════════════════════
+App.sync = {
+  _pending: false,
+  _timer: null,
+
+  scheduleSync(){
+    clearTimeout(this._timer);
+    this._timer = setTimeout(()=>this.syncUserData(), 3000);
+  },
+
+  // BACKEND PLACEHOLDER — replace with real API call when backend is ready
+  async syncUserData(){
+    const U = App.user.get();
+    if(!U) return;
+    // Currently: just ensures localStorage is fresh
+    // Future: await fetch('/api/users/'+U.id, { method:'PUT', body:JSON.stringify(U), headers:{Authorization:'Bearer '+token} })
+    localStorage.setItem('ep_user', JSON.stringify(U));
+    App.events.emit('sync:done');
+  },
+
+  // BACKEND PLACEHOLDER
+  async fetchLeaderboard(period='alltime'){
+    // Future: const res = await fetch('/api/leaderboard?period='+period);
+    // return res.json();
+    return FAKE_LB;
+  },
+
+  // BACKEND PLACEHOLDER
+  async saveProgress(bookNum, unitNum, wordResults){
+    // Future: await fetch('/api/progress', { method:'POST', body:JSON.stringify({bookNum,unitNum,wordResults}) })
+    const U = App.user.get();
+    if(!U.progressLog) U.progressLog=[];
+    U.progressLog.push({ ts:Date.now(), book:bookNum, unit:unitNum, results:wordResults });
+    if(U.progressLog.length>200) U.progressLog=U.progressLog.slice(-200);
+    App.user.save();
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 9 — GameEngine (registry for easy new game addition)
+// ═══════════════════════════════════════════════════════════════════════════
+App.games = {
+  _registry: {},
+
+  register(id, { name, icon, init, modal, premium=false }){
+    this._registry[id] = { id, name, icon, init, modal, premium };
+  },
+
+  open(id){
+    const g = this._registry[id];
+    if(!g){ openPremiumGame(id); return; }
+    if(g.premium && !isPremiumActive()){
+      checkPremium(g.modal); return;
+    }
+    try { if(g.init) g.init(); } catch(e){ console.error(e); }
+    if(g.modal) openModal(g.modal);
+  },
+
+  // Called after each game result
+  onResult(gameId, result){
+    App.events.emit('game:result', { gameId, result });
+    App.achieve.check();
+    App.progress.checkDailyQuests();
+    if(result.correct !== undefined){
+      App.learning.updateWordResult(result.word, result.correct);
+    }
+  }
+};
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DAILY QUESTS UI
+// ═══════════════════════════════════════════════════════════════════════════
+function buildDailyQuestsUI(){
+  const el = document.getElementById('daily-quests-container');
+  if(!el) return;
+  const quests = App.progress.getQuestProgress();
+  el.innerHTML = quests.map(q=>{
+    const pct = Math.round(q.current/q.goal*100);
+    return `<div style="background:var(--s1);border:1px solid ${q.done?'var(--gold)':'var(--border)'};border-radius:12px;padding:10px 12px;margin-bottom:7px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+        <div style="display:flex;align-items:center;gap:7px">
+          <span style="font-size:18px">${q.icon}</span>
+          <span style="font-weight:800;font-size:12px;${q.done?'color:var(--gold)':''}">${q.title}</span>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:${q.done?'var(--gold)':'var(--muted)'}">${q.done?'✅':q.current+'/'+q.goal} · +${q.xp}XP</div>
+      </div>
+      <div style="height:4px;background:var(--s2);border-radius:4px;overflow:hidden">
+        <div style="height:100%;width:${pct}%;background:${q.done?'var(--gold)':'var(--accent)'};border-radius:4px;transition:width .4s"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LEARNING ANALYTICS UI (enhanced stats)
+// ═══════════════════════════════════════════════════════════════════════════
+function buildLearningAnalytics(){
+  const el = document.getElementById('learning-analytics');
+  if(!el) return;
+  const stats = App.learning.getStats();
+  const U = App.user.get();
+  const heatData = App.progress.getHeatmapData(8);
+  const maxVal = Math.max(...heatData.map(d=>d.value), 1);
+
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:var(--green)">${stats.totalStudied}</div>
+        <div style="font-size:10px;color:var(--muted)">O'rganilgan so'zlar</div>
+      </div>
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:var(--blue)">${stats.avgAccuracy}%</div>
+        <div style="font-size:10px;color:var(--muted)">O'rtacha aniqlik</div>
+      </div>
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:var(--purple)">${stats.masteredCount}</div>
+        <div style="font-size:10px;color:var(--muted)">Mukammal so'zlar</div>
+      </div>
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:var(--gold)">${stats.dueCount}</div>
+        <div style="font-size:10px;color:var(--muted)">Takrorga tayyor</div>
+      </div>
+    </div>
+    <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">📊 8 HAFTALIK FAOLLIK</div>
+    <div style="display:grid;grid-template-columns:repeat(56,1fr);gap:2px;margin-bottom:4px">
+      ${heatData.map(d=>{
+        const intensity = d.value/maxVal;
+        const alpha = Math.max(0.08, intensity);
+        const color = d.value>0 ? `rgba(124,90,246,${alpha})` : 'var(--s2)';
+        return `<div title="${d.date}: ${d.value} XP" style="aspect-ratio:1;border-radius:2px;background:${color}"></div>`;
+      }).join('')}
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted)">
+      <span>8 hafta oldin</span><span>Bugun</span>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SPACED REVIEW PROMPT
+// ═══════════════════════════════════════════════════════════════════════════
+function checkSpacedReview(){
+  const pool = getAllWordsForGames();
+  const due = App.learning.getDueWords(pool).filter(w=>{
+    const d = App.learning.getWordData(w.word);
+    return d.nextReview > 0 && d.nextReview <= Date.now();
+  });
+  if(due.length >= 5){
+    setTimeout(()=>{
+      showToast('📚 ' + due.length + ' ta so\'z takrorga tayyor!');
+    }, 2000);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ENHANCED TOPBAR (combo indicator)
+// ═══════════════════════════════════════════════════════════════════════════
+App.events.on('combo:updated', (combo)=>{
+  let el = document.getElementById('combo-indicator');
+  if(combo < 3){ if(el) el.remove(); return; }
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'combo-indicator';
+    el.style.cssText = 'position:fixed;top:70px;right:12px;z-index:200;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:4px 12px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(245,197,66,.3)';
+    document.body.appendChild(el);
+  }
+  el.textContent = '🔥 COMBO x' + combo;
+  clearTimeout(el._t);
+  el._t = setTimeout(()=>el.remove(), 6000);
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// AI SPEAKING FEEDBACK HOOK (auto-activates when AI is on)
+// ═══════════════════════════════════════════════════════════════════════════
+App.events.on('speaking:analyzed', async ({ word, heard, score })=>{
+  if(!AI_CONFIG.enabled) return;
+  const tip = await App.ai.speakingFeedback(word, heard, score).catch(()=>null);
+  if(tip){
+    const el = document.getElementById('sp-ai-tip');
+    if(el){ el.textContent = '🤖 ' + tip; el.style.display='block'; }
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CONNECT LEGACY FUNCTIONS TO NEW MODULES
+// ═══════════════════════════════════════════════════════════════════════════
+// addXP is already module-aware above
+
+
+// trackWordError: wired to App.learning in App.learning.trackError
+
+
+// saveUser delegates to App.user internally
+
+
+// Achievements handled by App.achieve module
+
+
+// buildLeaderboard is handled by App.lb.refreshUI() in addXP
+
+
+// learnWord wiring handled inside learnWord itself
+
+
+// Connect quiz correct/wrong to learning engine
+const _origAnswerQuiz = typeof answerQuiz === 'function' ? answerQuiz : null;
+
+// Hook into updateProgress for unit completion
+const _origUpdateProgress = updateProgress;
+function updateProgress(){
+  _origUpdateProgress();
+  // Build quests if container exists
+  try{ buildDailyQuestsUI(); }catch(e){}
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SETTINGS TAB — AI + App settings
+// ═══════════════════════════════════════════════════════════════════════════
+function buildSettingsTab(){
+  const el = document.getElementById('settings-content');
+  if(!el) return;
+  const U = App.user.get();
+  el.innerHTML = `
+    <div style="padding:0 4px">
+      <!-- Profile Card -->
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px;text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--s2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px;overflow:hidden" id="settings-av">
+          ${U.avatarUrl?`<img src="${U.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`:(U.avatarEmoji||'🤖')}
+        </div>
+        <div style="font-weight:800;font-size:16px">${U.name}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">${{beginner:'🌱 Beginner',intermediate:'🎯 Intermediate',advanced:'🚀 Advanced'}[U.level]||U.level}</div>
+        <div style="font-size:13px;color:var(--gold);font-weight:700;margin-top:4px">${U.xp||0} XP · ${U.streak||0} 🔥</div>
+      </div>
+
+      <!-- Theme -->
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">🎨 INTERFEYS</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button onclick="localStorage.setItem('ep_theme','dark');applyTheme()" style="padding:10px;border-radius:10px;border:2px solid var(--accent);background:rgba(124,90,246,.15);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🌙 Tungi</button>
+          <button onclick="localStorage.setItem('ep_theme','light');applyTheme()" style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--s2);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">☀️ Kunduzgi</button>
+        </div>
+      </div>
+
+      <!-- AI Settings -->
+      <div style="background:${AI_CONFIG.enabled?'rgba(124,90,246,.08)':'var(--s1)'};border:1px solid ${AI_CONFIG.enabled?'rgba(124,90,246,.4)':'var(--border)'};border-radius:14px;padding:14px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div>
+            <div style="font-size:13px;font-weight:800">🤖 AI Yordamchi</div>
+            <div style="font-size:11px;color:var(--muted)">OpenRouter · ${AI_CONFIG.model.split('/').pop()}</div>
+          </div>
+          <div style="font-size:11px;font-weight:800;color:${AI_CONFIG.enabled?'var(--green)':'var(--muted)'}">${AI_CONFIG.enabled?'✅ FAOL':'⭕ O\'CHI'}</div>
+        </div>
+        <button onclick="App.ai.openSettings()" style="width:100%;padding:10px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:11px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+          ⚙️ AI Sozlamalar
+        </button>
+      </div>
+
+      <!-- Daily Quests -->
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">⚡ KUNLIK VAZIFALAR</div>
+        <div id="daily-quests-container"></div>
+      </div>
+
+      <!-- Learning Analytics -->
+      <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">📈 O'RGANISH TAHLILI</div>
+        <div id="learning-analytics"></div>
+      </div>
+
+      <!-- Danger zone -->
+      <div style="margin-top:6px">
+        <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+          🚪 Profildan chiqish
+        </button>
+      </div>
+    </div>`;
+
+  // Render sub-components
+  setTimeout(()=>{
+    buildDailyQuestsUI();
+    buildLearningAnalytics();
+  }, 50);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// APP INITIALIZATION — wire everything up
+// ═══════════════════════════════════════════════════════════════════════════
+App.init = function(){
+  // Load AI config from localStorage
+  App.ai.loadSavedConfig();
+
+  // Wire leaderboard period buttons
+  document.querySelectorAll('[data-lb-period]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-lb-period]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      App.lb.setPeriod(btn.dataset.lbPeriod);
+    });
+  });
+
+  // Initial quest/analytics render
+  setTimeout(()=>{
+    try { buildDailyQuestsUI(); } catch(e) {}
+    try { checkSpacedReview(); } catch(e) {}
+    App.events.emit('app:ready');
+  }, 500);
+
+  // Register games in the registry
+  App.games.register('speaking',    { name:'Speaking Practice', icon:'🎤', init:initSpeaking,   modal:'modal-speaking',    premium:true });
+  App.games.register('word-chain',  { name:'So\'z Zanjiri',     icon:'⛓️', init:initWordChain,  modal:'modal-word-chain',  premium:true });
+  App.games.register('context',     { name:'Kontekst O\'yini',  icon:'📝', init:initContext,    modal:'modal-context',     premium:true });
+  App.games.register('word-family', { name:'So\'z Oilasi',      icon:'🌳', init:initWordFamily, modal:'modal-word-family', premium:true });
+  App.games.register('match',       { name:'Word Match',         icon:'🃏', init:initMatch,      modal:'modal-match',       premium:false });
+  App.games.register('quiz',        { name:'Quiz',               icon:'🎯', init:()=>initQuiz('eng-uz'), modal:'modal-quiz', premium:false });
+  App.games.register('anagram',     { name:'Hidden Word',        icon:'🔤', init:initAnagram,   modal:'modal-anagram',     premium:false });
+
+  // Settings tab switch
+  App.events.on('tab:switched', ({ name })=>{
+    if(name === 'settings') buildSettingsTab();
+  });
+};
+
+// Override switchTab to emit event
+const _origSwitchTab = switchTab;
+function switchTab(name, btn){
+  _origSwitchTab(name, btn);
+  App.events.emit('tab:switched', { name });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SETTINGS TAB switch handler
+// ═══════════════════════════════════════════════════════════════════════════
+function switchTabByName(name){
+  const btn = document.querySelector(`[onclick*="switchTab('${name}'"]`) ||
+              document.querySelector(`[onclick*="switchTab(\\"${name}\\""]`);
+  switchTab(name, btn);
+}
+
 </script>
 
 <!-- ======== SPEAKING PRACTICE ======== -->
@@ -4551,6 +5365,7 @@ const PREMIUM_AVATARS = [
       <div id="sp-heard" style="text-align:center;font-size:12px;color:var(--muted);min-height:16px;margin-bottom:4px"></div>
       <div id="sp-result" style="min-height:40px;margin-bottom:8px"></div>
       <button id="sp-next-btn" onclick="spNext()" style="display:none;width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">Keyingisi →</button>
+      <div id="sp-ai-tip" style="display:none;margin-top:8px;padding:8px 12px;background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.2);border-radius:10px;font-size:11px;color:var(--accent);line-height:1.5"></div>
     </div>
   </div>
 </div>
@@ -4727,14 +5542,9 @@ const PREMIUM_AVATARS = [
         <div><div style="font-size:11px;color:var(--muted)">Bugungi ball</div><div style="font-size:20px;font-weight:800;color:var(--gold)" id="dc-myscore">0</div></div>
         <div style="text-align:right"><div style="font-size:11px;color:var(--muted)">Vaqt</div><div style="font-size:20px;font-weight:800;color:var(--blue)" id="dc-gametime">60</div></div>
       </div>
-      <!-- Played today message -->
-      <div id="dc-played-msg" style="display:none"></div>
-      <!-- Game area -->
-      <div id="dc-game-area">
-        <div class="gword" id="dc-word">—</div>
-        <div class="gopts" id="dc-opts"></div>
-        <div id="dc-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:8px"></div>
-      </div>
+      <div class="gword" id="dc-word">—</div>
+      <div class="gopts" id="dc-opts"></div>
+      <div id="dc-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:8px"></div>
       <div style="margin-top:14px">
         <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">BUGUNGI TOP 5</div>
         <div id="dc-lb"></div>
