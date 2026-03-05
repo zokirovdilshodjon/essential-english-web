@@ -981,7 +981,10 @@ const ONLINE_PLAYERS = [
             <span class="fc-count" id="fc-count">1 / 8</span>
             <div class="fc-btn" onclick="nextCard()">›</div>
           </div>
-          <div class="audio-btn" onclick="speakWord()">🔊 Eshitish</div>
+          <div style="display:flex;gap:6px">
+            <div class="audio-btn" onclick="speakWord()">🔊 Eshitish</div>
+            <div class="audio-btn" id="fc-ai-btn" onclick="onFlashcardAI()" style="background:rgba(124,90,246,.1);border-color:rgba(124,90,246,.25);color:var(--al);display:none">🤖 AI</div>
+          </div>
         </div>
       </div>
 
@@ -1074,7 +1077,21 @@ const ONLINE_PLAYERS = [
         <div class="sec-title" style="margin-bottom:12px">🎮 O'yinlar</div>
         <div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:12px" id="game-unit-label2"></div>
 
-        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">BEPUL (+1 XP/to'g'ri javob)</div>
+
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;margin-top:2px">🤖 AI O'YINLAR</div>
+        <div class="games-grid" style="margin-bottom:18px">
+          <div class="game-card" onclick="openAIQuiz()" style="border-color:rgba(124,90,246,.3)">
+            <div class="g-icon">🎯</div><div class="g-name">AI Quiz</div><div class="g-desc">Aqlli savollar</div>
+          </div>
+          <div class="game-card" onclick="openAIWeakTrainer()" style="border-color:rgba(248,81,73,.2)">
+            <div class="g-icon">💪</div><div class="g-name">AI Treiner</div><div class="g-desc">Zaif so'zlar</div>
+          </div>
+          <div class="game-card" onclick="openAIVocab()" style="border-color:rgba(79,223,138,.2)">
+            <div class="g-icon">✨</div><div class="g-name">AI So'zlar</div><div class="g-desc">Yangi so'zlar</div>
+          </div>
+        </div>
+
+                <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">BEPUL (+1 XP/to'g'ri javob)</div>
         <div class="games-grid" style="margin-bottom:18px">
           <div class="game-card" onclick="openModal('modal-match')">
             <div class="g-icon">🔗</div><div class="g-name">Word Match</div><div class="g-desc">Juftlashtir</div>
@@ -1219,10 +1236,43 @@ const ONLINE_PLAYERS = [
       </div>
     </div>
 
-    <!-- SETTINGS TAB -->
-    <div id="tab-settings">
+    <!-- AI TAB -->
+    <div id="tab-ai">
       <div class="sec">
-        <div id="settings-content"><div style="text-align:center;padding:40px;color:var(--muted)">Yuklanmoqda...</div></div>
+        <!-- Header -->
+        <div style="text-align:center;padding:10px 0 18px">
+          <div style="font-size:48px;margin-bottom:8px">🤖</div>
+          <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">AI Yordamchi</div>
+          <div id="ai-tab-status" style="font-size:12px;margin-top:5px;color:var(--muted)">Yuklanmoqda...</div>
+        </div>
+
+        <!-- AI funksiyalar grid -->
+        <div id="ai-tab-features">
+          <!-- JS tomonidan to'ldiriladi -->
+        </div>
+
+        <!-- Profile + sozlamalar pastda -->
+        <div style="margin-top:16px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">⚙️ SOZLAMALAR</div>
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">🎨 INTERFEYS</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <button onclick="localStorage.setItem('ep_theme','dark');applyTheme()" style="padding:10px;border-radius:10px;border:2px solid var(--accent);background:rgba(124,90,246,.15);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🌙 Tungi</button>
+              <button onclick="localStorage.setItem('ep_theme','light');applyTheme()" style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--s2);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">☀️ Kunduzgi</button>
+            </div>
+          </div>
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">⚡ KUNLIK VAZIFALAR</div>
+            <div id="daily-quests-container"></div>
+          </div>
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">📈 O'RGANISH TAHLILI</div>
+            <div id="learning-analytics"></div>
+          </div>
+          <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:4px">
+            🚪 Profildan chiqish
+          </button>
+        </div>
       </div>
     </div>
 
@@ -1233,7 +1283,7 @@ const ONLINE_PLAYERS = [
     <button class="nav-b" onclick="switchTab('progress',this)"><span class="nav-b-icon">📊</span><span class="nav-b-label">Progress</span></button>
     <button class="nav-b" onclick="switchTab('battle',this)"><span class="nav-b-icon">⚔️</span><span class="nav-b-label">Jang</span></button>
     <button class="nav-b" onclick="switchTab('premium',this)"><span class="nav-b-icon">💎</span><span class="nav-b-label">Premium</span></button>
-    <button class="nav-b" onclick="switchTab('settings',this)"><span class="nav-b-icon">⚙️</span><span class="nav-b-label">Sozlamalar</span></button>
+    <button class="nav-b" onclick="switchTab('ai',this)"><span class="nav-b-icon">🤖</span><span class="nav-b-label">AI</span></button>
   </div>
 </div>
 
@@ -3233,7 +3283,7 @@ function switchTab(name,btn){
   }
   if(name==='premium') updatePremiumUI();
 
-  if(name==='settings'){ try{buildSettingsTab();}catch(e){} }
+  if(name==='ai'){ try{buildAITab();}catch(e){} }
   try{ App.events.emit('tab:switched',{name}); }catch(e){}
 }
 
@@ -5461,7 +5511,7 @@ App.init = function(){
 
   // Settings tab switch
   App.events.on('tab:switched', ({ name })=>{
-    if(name === 'settings') buildSettingsTab();
+    if(name === 'ai') buildAITab();
   });
 };
 
@@ -6531,75 +6581,13 @@ if(_origOpenGrammarFromLevel){
 }
 
 // ── Settings tabga AI panel ────────────────────────────────────────────────
-function buildAIPanelInSettings(){
-  const existing = document.getElementById('ai-settings-panel');
-  if(existing) existing.remove();
-  
-  const sc = document.getElementById('settings-content');
-  if(!sc) return;
-  
-  const isOn = AI_CONFIG.enabled;
-  const panel = document.createElement('div');
-  panel.id='ai-settings-panel';
-  panel.style.cssText='background:var(--s1);border:1.5px solid '+(isOn?'rgba(124,90,246,.4)':'var(--border)')+';border-radius:16px;padding:16px;margin-bottom:14px';
-  panel.innerHTML=`
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-      <div>
-        <div style="font-size:14px;font-weight:800">🤖 AI Yordamchi</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px">${AI_CONFIG.model.split('/').pop()}</div>
-      </div>
-      <div style="padding:4px 12px;border-radius:20px;font-size:11px;font-weight:800;background:${isOn?'rgba(79,223,138,.15)':'rgba(248,81,73,.1)'};color:${isOn?'var(--green)':'var(--muted)'}">${isOn?'✅ FAOL':'⭕ KALIT YO'Q'}</div>
-    </div>
-    ${isOn ? `
-      <div style="background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:var(--green)">
-        ✅ AI faol! Barcha AI funksiyalar ishlamoqda.
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
-        <button onclick="openAIVocab()" style="padding:10px;background:rgba(124,90,246,.1);border:1.5px solid rgba(124,90,246,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">✨ So'z Gen</button>
-        <button onclick="openAIQuiz()" style="padding:10px;background:rgba(79,156,249,.1);border:1.5px solid rgba(79,156,249,.3);border-radius:11px;color:var(--blue);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">🎯 AI Quiz</button>
-        <button onclick="openAIWeakTrainer()" style="padding:10px;background:rgba(248,81,73,.08);border:1.5px solid rgba(248,81,73,.2);border-radius:11px;color:var(--red);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">⚠️ Zaif Treiner</button>
-        <button onclick="openAIStudyPlan()" style="padding:10px;background:rgba(79,223,138,.08);border:1.5px solid rgba(79,223,138,.2);border-radius:11px;color:var(--green);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">📋 Reja</button>
-      </div>
-    ` : `
-      <div style="background:var(--s2);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--muted);line-height:1.7">
-        <b style="color:var(--text)">AI yoqish uchun:</b><br>
-        Faylni oching → AI_CONFIG.apiKey ga OpenRouter key yozing → Saqlang
-      </div>
-      <div style="font-size:11px;color:var(--blue);text-align:center">🔑 openrouter.ai dan bepul key oling</div>
-    `}
-  `;
-  
-  // settings-content boshiga qo'shish
-  sc.insertBefore(panel, sc.firstChild);
-}
+// buildAIPanelInSettings — artiq emas, buildAITab ishlatiladi
+function buildAIPanelInSettings(){ buildAITab(); }
 
 // ── Games tabga AI o'yinlari ───────────────────────────────────────────────
 function injectAIGamesSection(){
-  if(!AI_CONFIG.enabled) return;
-  if(document.getElementById('ai-games-section')) return;
-  
-  const gamesTab = document.getElementById('tab-games');
-  if(!gamesTab) return;
-  
-  const section = document.createElement('div');
-  section.id = 'ai-games-section';
-  section.innerHTML=`
-    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px;margin-top:4px">🤖 AI O'YINLAR (Yangi!)</div>
-    <div class="games-grid" style="margin-bottom:18px">
-      <div class="game-card" onclick="openAIQuiz()" style="border-color:rgba(124,90,246,.3)">
-        <div class="g-icon">🎯</div><div class="g-name">AI Quiz</div><div class="g-desc">AI savollar</div>
-      </div>
-      <div class="game-card" onclick="openAIWeakTrainer()" style="border-color:rgba(248,81,73,.2)">
-        <div class="g-icon">💪</div><div class="g-name">AI Treiner</div><div class="g-desc">Zaif so'zlar</div>
-      </div>
-      <div class="game-card" onclick="openAIVocab()" style="border-color:rgba(79,223,138,.2)">
-        <div class="g-icon">✨</div><div class="g-name">AI So'zlar</div><div class="g-desc">Yangi so'zlar</div>
-      </div>
-    </div>`;
-  
-  const firstDiv = gamesTab.querySelector('.sec');
-  const firstSection = firstDiv?.querySelector('[style*="BEPUL"]') || firstDiv;
-  if(firstSection) firstSection.parentNode.insertBefore(section, firstSection);
+  // Endi statik HTML da mavjud — bu funksiya endi kerak emas
+  // AI games tab-games ichiga bevosita yozilgan
 }
 
 // ── Speaking ga AI tip ─────────────────────────────────────────────────────
@@ -6616,29 +6604,77 @@ App.events.on('speaking:analyzed', async ({word, heard, score})=>{
 });
 
 // ── App init dan keyin AI inject ───────────────────────────────────────────
-const _origAppInit = App.init;
-App.init = function(){
-  _origAppInit.call(App);
+// AI button va quests — App.init dan keyin
+document.addEventListener('DOMContentLoaded', ()=>{
   setTimeout(()=>{
     try{ addAIButtonToFlashcard(); }catch(e){}
-    try{ injectAIGamesSection(); }catch(e){}
-    if(AI_CONFIG.enabled) console.log('🤖 AI funksiyalar faol:', AI_CONFIG.model);
-  }, 600);
-};
+  }, 800);
+});
 
-// buildSettingsTab override — AI panelini qo'shish
-const _origBuildSettings2 = buildSettingsTab;
-buildSettingsTab = function(){
-  _origBuildSettings2();
-  setTimeout(()=>{ try{ buildAIPanelInSettings(); }catch(e){} }, 80);
-};
+// ══════════════════════════════════════════════════════════
+// buildAITab — AI tabini render qiluvchi asosiy funksiya
+// ══════════════════════════════════════════════════════════
+function buildAITab(){
+  const featEl = document.getElementById('ai-tab-features');
+  const statusEl = document.getElementById('ai-tab-status');
+  if(!featEl) return;
+  const isOn = AI_CONFIG.enabled;
+  if(statusEl) statusEl.innerHTML = isOn
+    ? '<span style="color:var(--green);font-weight:800">✅ AI Faol — '+AI_CONFIG.model.split('/').pop()+'</span>'
+    : '<span style="color:var(--muted)">⭕ API Key qo\'yilmagan</span>';
 
-// switchTab override — settings tabga o'tganda
-const _origSwitchTab = switchTab;
+  featEl.innerHTML = isOn ? `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px">
+      <button onclick="openAIVocab()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(124,90,246,.15),rgba(192,132,252,.1));border:1.5px solid rgba(124,90,246,.35);border-radius:14px;color:var(--al);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <span style="font-size:28px">✨</span>So'z Gen
+      </button>
+      <button onclick="openAIQuiz()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(79,156,249,.12),rgba(79,156,249,.06));border:1.5px solid rgba(79,156,249,.35);border-radius:14px;color:var(--blue);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <span style="font-size:28px">🎯</span>AI Quiz
+      </button>
+      <button onclick="openAIWeakTrainer()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(248,81,73,.1),rgba(248,81,73,.05));border:1.5px solid rgba(248,81,73,.3);border-radius:14px;color:var(--red);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <span style="font-size:28px">💪</span>Zaif Treiner
+      </button>
+      <button onclick="openAIStudyPlan()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(79,223,138,.1),rgba(79,223,138,.05));border:1.5px solid rgba(79,223,138,.3);border-radius:14px;color:var(--green);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <span style="font-size:28px">📋</span>O'qish Rejasi
+      </button>
+      <button onclick="openAIWordExplain(currentUnitWords[cardIdx]?.word||'word')" style="padding:16px 8px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(245,197,66,.05));border:1.5px solid rgba(245,197,66,.3);border-radius:14px;color:var(--gold);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px;grid-column:span 2">
+        <span style="font-size:28px">🔍</span>So'z Tahlili (hozirgi so'z)
+      </button>
+    </div>
+    <div style="background:rgba(79,223,138,.07);border:1px solid rgba(79,223,138,.2);border-radius:11px;padding:10px 13px;font-size:12px;color:var(--green);line-height:1.7;margin-bottom:10px">
+      ✅ AI faol! Grammatika → 🤖 AI izoh tugmasi ham ishlaydi.<br>
+      Flashcard → 🤖 AI tugmasi ham aktiv.
+    </div>
+  ` : `
+    <div style="background:var(--s1);border:1.5px dashed rgba(124,90,246,.3);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:14px">
+      <div style="font-size:40px;margin-bottom:10px">🔑</div>
+      <div style="font-size:15px;font-weight:800;margin-bottom:8px">AI hali faol emas</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px">
+        Faylni matn muharririda oching va<br>
+        <b style="color:var(--text)">AI_CONFIG.apiKey</b> ga keyingizni yozing:
+      </div>
+      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:12px;font-family:monospace;color:var(--accent);margin-bottom:14px;text-align:left;line-height:2">
+        apiKey: <span style="color:var(--gold)">'sk-or-v1-...'</span>,<br>
+        model: <span style="color:var(--green)">'meta-llama/llama-3.1-8b-instruct:free'</span>
+      </div>
+      <a href="https://openrouter.ai" target="_blank" style="display:inline-block;padding:11px 22px;background:linear-gradient(135deg,var(--accent),var(--purple));border-radius:11px;color:white;font-weight:800;font-size:13px;text-decoration:none;box-shadow:0 4px 14px rgba(124,90,246,.3)">
+        🔑 openrouter.ai — Bepul Key Olish
+      </a>
+    </div>
+  `;
+
+  // Quests va analytics
+  setTimeout(()=>{
+    try{ buildDailyQuestsUI(); }catch(e){}
+    try{ buildLearningAnalytics(); }catch(e){}
+  }, 50);
+}
+
+// switchTab — AI tab uchun
+const _origSwitchTabAI = switchTab;
 switchTab = function(name, btn){
-  _origSwitchTab(name, btn);
-  if(name==='settings') setTimeout(()=>{ try{buildAIPanelInSettings();}catch(e){} }, 120);
-  if(name==='games') setTimeout(()=>{ try{injectAIGamesSection();}catch(e){} }, 100);
+  _origSwitchTabAI(name, btn);
+  if(name==='ai') setTimeout(()=>{ try{buildAITab();}catch(e){console.warn(e)} }, 80);
 };
 
 // closeModal AI modallar uchun
@@ -6652,7 +6688,7 @@ closeModal = function(e, id){
   }
 };
 
-console.log('🤖 AI Engine v3.0 loaded. Status:', AI_CONFIG.enabled ? 'ACTIVE' : 'WAITING FOR KEY');
+console.log('🤖 AI Engine v3.0 loaded. Status:', AI_CONFIG.enabled ? '✅ ACTIVE — '+AI_CONFIG.model : '⭕ Waiting for key in AI_CONFIG.apiKey');
 </script>
 
 </body>
