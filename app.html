@@ -1211,6 +1211,13 @@ const ONLINE_PLAYERS = [
       </div>
     </div>
 
+    <!-- SETTINGS TAB -->
+    <div id="tab-settings">
+      <div class="sec">
+        <div id="settings-content"><div style="text-align:center;padding:40px;color:var(--muted)">Yuklanmoqda...</div></div>
+      </div>
+    </div>
+
   </div>
   <div class="bottomnav">
     <button class="nav-b active" onclick="switchTab('home',this)"><span class="nav-b-icon">🏠</span><span class="nav-b-label">Bosh</span></button>
@@ -1222,13 +1229,6 @@ const ONLINE_PLAYERS = [
   </div>
 </div>
 
-    <!-- SETTINGS TAB -->
-    <div id="tab-settings">
-      <div class="section-title" style="margin-bottom:14px">⚙️ Sozlamalar</div>
-      <div id="settings-content">
-        <div style="text-align:center;padding:40px;color:var(--muted)">Yuklanmoqda...</div>
-      </div>
-    </div>
 
 <!-- ==================== MODALS ==================== -->
 
@@ -1687,11 +1687,12 @@ function learnWord(w){
 
 // ===== PROGRESS =====
 function updateProgress(){
-  // Hozirgi unit asosida progress ko'rsatamiz
   const total = currentUnitWords.length || 0;
   const n = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
-  document.getElementById('prog-val').textContent = `${n} / ${total}`;
+  document.getElementById('prog-val').textContent = n+' / '+total;
   document.getElementById('prog-fill').style.width = total ? (n/total*100)+'%' : '0%';
+  if(total>0 && n>=total){ try{markUnitCompleted(curBook,curUnitNum);}catch(e){} }
+  try{ buildDailyQuestsUI(); }catch(e){}
 }
 function updateStats(){
   document.getElementById('st-words').textContent = U.learnedWords?.length||0;
@@ -3670,10 +3671,8 @@ function checkPremium(modalId){
 // ============================================================
 // WEEKLY ACTIVITY TRACKER
 // ============================================================
-function getTodayStr(){
-  const d=new Date();
-  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-}
+// getTodayStr already defined above
+
 
 function updateDayStreak(){
   const today=getTodayStr();
@@ -5200,13 +5199,8 @@ App.events.on('speaking:analyzed', async ({ word, heard, score })=>{
 // Connect quiz correct/wrong to learning engine
 const _origAnswerQuiz = typeof answerQuiz === 'function' ? answerQuiz : null;
 
-// Hook into updateProgress for unit completion
-const _origUpdateProgress = updateProgress;
-function updateProgress(){
-  _origUpdateProgress();
-  // Build quests if container exists
-  try{ buildDailyQuestsUI(); }catch(e){}
-}
+// updateProgress already calls buildDailyQuestsUI() in the original
+
 
 // ═══════════════════════════════════════════════════════════════════════════
 // SETTINGS TAB — AI + App settings
@@ -5215,6 +5209,7 @@ function buildSettingsTab(){
   const el = document.getElementById('settings-content');
   if(!el) return;
   const U = App.user.get();
+  if(!U) return;
   el.innerHTML = `
     <div style="padding:0 4px">
       <!-- Profile Card -->
@@ -5315,21 +5310,13 @@ App.init = function(){
   });
 };
 
-// Override switchTab to emit event
-const _origSwitchTab = switchTab;
-function switchTab(name, btn){
-  _origSwitchTab(name, btn);
-  App.events.emit('tab:switched', { name });
-}
+// switchTab already handles events above
+
 
 // ═══════════════════════════════════════════════════════════════════════════
 // SETTINGS TAB switch handler
 // ═══════════════════════════════════════════════════════════════════════════
-function switchTabByName(name){
-  const btn = document.querySelector(`[onclick*="switchTab('${name}'"]`) ||
-              document.querySelector(`[onclick*="switchTab(\\"${name}\\""]`);
-  switchTab(name, btn);
-}
+// switchTabByName already defined above
 
 </script>
 
