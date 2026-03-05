@@ -342,6 +342,42 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .wf-card:hover{border-color:var(--accent)}.wf-card.correct-ans{border-color:var(--green);background:rgba(79,223,138,.08)}
 .wf-card.wrong-ans{border-color:var(--red);background:rgba(239,68,68,.08)}
 .wf-form{font-size:15px;font-weight:800;color:var(--text)}.wf-type{font-size:11px;color:var(--muted)}
+
+/* ═══════════════════ v2.1 ENHANCEMENTS ═══════════════════ */
+/* Daily Quest progress bar */
+.quest-bar{height:4px;background:var(--s2);border-radius:4px;overflow:hidden;margin-top:5px}
+.quest-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--purple));transition:width .5s cubic-bezier(.34,1.56,.64,1)}
+/* Spaced review badge */
+.sr-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(79,223,138,.12);border:1px solid rgba(79,223,138,.25);border-radius:20px;padding:5px 11px;font-size:11px;font-weight:800;color:var(--green);cursor:pointer;transition:all .2s}
+.sr-badge:hover{background:rgba(79,223,138,.2)}
+/* AI status pill */
+.ai-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;transition:all .3s}
+.ai-pill.on{background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.35);color:var(--al)}
+.ai-pill.off{background:var(--s2);border:1px solid var(--border);color:var(--muted)}
+/* Combo indicator */
+@keyframes comboPulse{0%,100%{box-shadow:0 4px 15px rgba(245,197,66,.3)}50%{box-shadow:0 4px 25px rgba(245,197,66,.6)}}
+#combo-indicator{animation:comboPulse 1s infinite}
+/* Achievement unlock pop */
+@keyframes achievePop{0%{transform:translateX(-50%) scale(.4) rotate(-10deg);opacity:0}60%{transform:translateX(-50%) scale(1.15) rotate(2deg)}100%{transform:translateX(-50%) scale(1);opacity:1}}
+/* Heatmap tooltip */
+.heat-day[title]:hover::after{content:attr(title);position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:6px;padding:3px 7px;font-size:10px;white-space:nowrap;z-index:999}
+.heat-day[title]{position:relative}
+/* Spaced review word card accent */
+.fc-face[data-due="true"]{border-color:rgba(79,223,138,.4)}
+/* Settings section cards */
+.settings-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
+.settings-section-title{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+/* AI chat bubble tip */
+.ai-tip-bubble{padding:9px 13px;background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.2);border-radius:10px;font-size:11px;color:var(--accent);line-height:1.6;display:flex;align-items:flex-start;gap:7px}
+.ai-tip-bubble::before{content:"🤖";flex-shrink:0;font-size:14px}
+/* Progress ring */
+@keyframes ringFill{from{stroke-dashoffset:283}to{stroke-dashoffset:var(--end-offset)}}
+/* Notification dot */
+.notif-dot{width:7px;height:7px;border-radius:50%;background:var(--red);position:absolute;top:2px;right:2px;border:2px solid var(--bg)}
+/* Enhanced word card */
+.word-mastery{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted)}
+.mastery-pip{width:6px;height:6px;border-radius:50%;background:var(--border)}
+.mastery-pip.filled{background:var(--green)}
 </style>
 </head>
 <body>
@@ -5863,5 +5899,284 @@ App.init = function(){
     </div>
   </div>
 </div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// ESSENTIAL ENGLISH PRO — v2.1 FINAL ENHANCEMENTS
+// Injected on top of v2.0 architecture — zero breaking changes
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ── 1. SPACED REVIEW BANNER (home tab) ─────────────────────────────────
+function injectSpacedReviewBanner(){
+  if(!U) return;
+  const pool = getAllWordsForGames();
+  const due = pool.filter(w=>{
+    try{
+      const d = App.learning.getWordData(w.word);
+      return d.nextReview > 0 && d.nextReview <= Date.now();
+    }catch(e){ return false; }
+  });
+  const banner = document.getElementById('sr-home-banner');
+  if(!banner) return;
+  if(due.length >= 3){
+    banner.style.display = 'flex';
+    const el = document.getElementById('sr-due-count');
+    if(el) el.textContent = due.length;
+  } else {
+    banner.style.display = 'none';
+  }
+}
+
+// ── 2. INJECT SR BANNER HTML INTO HOME TAB ─────────────────────────────
+function ensureSRBanner(){
+  if(document.getElementById('sr-home-banner')) return;
+  const homeTab = document.getElementById('tab-home');
+  if(!homeTab) return;
+  const banner = document.createElement('div');
+  banner.id = 'sr-home-banner';
+  banner.style.cssText = 'display:none;align-items:center;gap:10px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:13px;padding:11px 14px;margin:0 0 14px;cursor:pointer';
+  banner.innerHTML = `
+    <span style="font-size:22px">🔄</span>
+    <div style="flex:1">
+      <div style="font-size:12px;font-weight:800;color:var(--green)">Spaced Review tayyor!</div>
+      <div style="font-size:11px;color:var(--muted)"><span id="sr-due-count">0</span> ta so'z takrorga muhtoj</div>
+    </div>
+    <span style="font-size:18px;color:var(--green)">›</span>`;
+  banner.onclick = ()=>{ openModal('modal-quiz'); };
+  const firstSec = homeTab.querySelector('.sec');
+  if(firstSec) homeTab.insertBefore(banner, firstSec);
+}
+
+// ── 3. AI STATUS CHIP IN TOPBAR ─────────────────────────────────────────
+function injectAIChip(){
+  if(document.getElementById('ai-topbar-chip')) return;
+  const tbRight = document.querySelector('.tb-right');
+  if(!tbRight) return;
+  const chip = document.createElement('div');
+  chip.id = 'ai-topbar-chip';
+  chip.className = 'ai-pill ' + (AI_CONFIG.enabled ? 'on' : 'off');
+  chip.title = 'AI Settings';
+  chip.textContent = AI_CONFIG.enabled ? '🤖 AI' : '🤖';
+  chip.style.cursor = 'pointer';
+  chip.onclick = ()=>{ App.ai.openSettings(); };
+  tbRight.insertBefore(chip, tbRight.firstChild);
+  // Update when AI toggled
+  App.events.on('ai:toggled', (enabled)=>{
+    chip.className = 'ai-pill ' + (enabled ? 'on' : 'off');
+    chip.textContent = enabled ? '🤖 AI' : '🤖';
+  });
+}
+
+// ── 4. ENHANCED LEARN WORD (wires to App.learning) ─────────────────────
+const _origLearnWord = learnWord;
+learnWord = function(w){
+  _origLearnWord(w);
+  try{
+    App.learning.updateWordResult(w.word, true);
+    App.progress.trackDailyAction('words');
+    App.achieve.check();
+  } catch(e){}
+};
+
+// ── 5. XP HOOK → combo system ────────────────────────────────────────────
+const _origAddXP = addXP;
+addXP = function(n){
+  _origAddXP(n);
+  try{ App.progress.checkCombo(); } catch(e){}
+  try{ App.achieve.check(); }catch(e){}
+  try{ App.sync.scheduleSync(); }catch(e){}
+};
+
+// ── 6. ENHANCED SETTINGS TAB WITH AI PANEL ──────────────────────────────
+const _origBuildSettings = typeof buildSettingsTab === 'function' ? buildSettingsTab : null;
+buildSettingsTab = function(){
+  const el = document.getElementById('settings-content');
+  if(!el) return;
+  const U_data = App.user.get() || U;
+  if(!U_data) return;
+
+  const isPrem = U_data.isPremium && U_data.premiumExpiry > Date.now();
+  const aiOn = AI_CONFIG.enabled;
+  const learningStats = (() => {
+    try { return App.learning.getStats(); } catch(e) { return {totalStudied:0,avgAccuracy:0,masteredCount:0,dueCount:0}; }
+  })();
+
+  el.innerHTML = `
+    <div style="padding:0 4px">
+      <!-- Profile Card -->
+      <div class="settings-card" style="text-align:center;margin-bottom:14px">
+        <div style="width:66px;height:66px;border-radius:50%;background:var(--s2);border:2.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 10px;overflow:hidden">
+          ${U_data.avatarUrl
+            ? `<img src="${U_data.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`
+            : (U_data.avatarEmoji || '🤖')}
+        </div>
+        <div style="font-weight:800;font-size:17px">${U_data.name || '—'}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">
+          ${{beginner:'🌱 Beginner',intermediate:'🎯 Intermediate',advanced:'🚀 Advanced'}[U_data.level]||U_data.level}
+        </div>
+        <div style="display:flex;justify-content:center;gap:12px;margin-top:8px;flex-wrap:wrap">
+          <span style="font-size:12px;font-weight:800;color:var(--gold)">${U_data.xp||0} XP</span>
+          <span style="font-size:12px;font-weight:800;color:var(--orange)">${U_data.streak||0} 🔥 Streak</span>
+          <span style="font-size:12px;font-weight:800;color:var(--green)">${U_data.learnedWords?.length||0} 📚</span>
+        </div>
+      </div>
+
+      <!-- Theme -->
+      <div class="settings-card">
+        <div class="settings-section-title">🎨 Interfeys rejimi</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button onclick="localStorage.setItem('ep_theme','dark');applyTheme();buildSettingsTab()"
+            style="padding:10px;border-radius:10px;border:2px solid ${!document.body.classList.contains('light-mode')?'var(--accent)':'var(--border)'};background:${!document.body.classList.contains('light-mode')?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+            🌙 Tungi
+          </button>
+          <button onclick="localStorage.setItem('ep_theme','light');applyTheme();buildSettingsTab()"
+            style="padding:10px;border-radius:10px;border:2px solid ${document.body.classList.contains('light-mode')?'var(--accent)':'var(--border)'};background:${document.body.classList.contains('light-mode')?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+            ☀️ Kunduzgi
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Settings Card -->
+      <div class="settings-card" style="border-color:${aiOn?'rgba(124,90,246,.4)':'var(--border)'};background:${aiOn?'rgba(124,90,246,.06)':'var(--s1)'}">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div>
+            <div style="font-size:14px;font-weight:800">🤖 AI Yordamchi</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:1px">
+              ${aiOn ? '✅ Faol · <b style="color:var(--al)">' + AI_CONFIG.model.split('/').pop() + '</b>' : 'OpenRouter — DeepSeek / Mistral / Llama'}
+            </div>
+          </div>
+          <div style="font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;background:${aiOn?'rgba(79,223,138,.15)':'var(--s2)'};color:${aiOn?'var(--green)':'var(--muted)'}">${aiOn?'FAOL':"O'CHI"}</div>
+        </div>
+        ${aiOn ? `
+          <div class="ai-tip-bubble" style="margin-bottom:10px">
+            AI funksiyalari yoqilgan. Speaking feedback, grammatika tushuntirishlari va zaif so'z treineri ishlayapti.
+          </div>
+        ` : `
+          <div style="background:var(--s2);border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:11px;color:var(--muted);line-height:1.7">
+            <b style="color:var(--text)">AI yoqilganda:</b>
+            🎤 Speaking AI feedback · 📖 Grammatika tushuntirishlari<br>
+            ⚠️ Zaif so'z AI quizi · 📊 Shaxsiy o'rganish tavsiyalari
+          </div>
+        `}
+        <button onclick="App.ai.openSettings()" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:11px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+          ⚙️ AI Sozlamalarini Ochish
+        </button>
+        <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:7px">
+          API key: <a href="https://openrouter.ai" target="_blank" style="color:var(--blue)">openrouter.ai</a> dan bepul oling
+        </div>
+      </div>
+
+      <!-- Daily Quests -->
+      <div class="settings-card">
+        <div class="settings-section-title">⚡ Kunlik vazifalar</div>
+        <div id="daily-quests-container">
+          <div style="text-align:center;padding:10px;color:var(--muted);font-size:12px">Yuklanmoqda...</div>
+        </div>
+      </div>
+
+      <!-- Learning Analytics -->
+      <div class="settings-card">
+        <div class="settings-section-title">📈 O'rganish statistikasi</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
+            <div style="font-size:22px;font-weight:800;color:var(--green)">${learningStats.totalStudied}</div>
+            <div style="font-size:10px;color:var(--muted)">Kuzatilgan</div>
+          </div>
+          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
+            <div style="font-size:22px;font-weight:800;color:var(--blue)">${learningStats.avgAccuracy}%</div>
+            <div style="font-size:10px;color:var(--muted)">Aniqlik</div>
+          </div>
+          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
+            <div style="font-size:22px;font-weight:800;color:var(--purple)">${learningStats.masteredCount}</div>
+            <div style="font-size:10px;color:var(--muted)">Mukammal</div>
+          </div>
+          <div style="background:var(--s2);border-radius:11px;padding:11px;text-align:center">
+            <div style="font-size:22px;font-weight:800;color:var(--gold)">${learningStats.dueCount}</div>
+            <div style="font-size:10px;color:var(--muted)">Takrorga tayyor</div>
+          </div>
+        </div>
+        <div id="learning-analytics"></div>
+      </div>
+
+      <!-- App info -->
+      <div class="settings-card" style="font-size:12px;color:var(--muted);text-align:center">
+        <div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:6px">Essential English PRO</div>
+        <div>v2.1.0 · AI-Ready · Modular Architecture</div>
+        <div style="margin-top:4px">Backend sync: localStorage (API-ready)</div>
+        <div style="margin-top:2px">Model: <span style="color:var(--al)">${AI_CONFIG.model.split('/').pop()}</span> via OpenRouter</div>
+      </div>
+
+      <!-- Danger -->
+      <div style="margin-top:4px;margin-bottom:4px">
+        <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+          🚪 Profildan chiqish
+        </button>
+      </div>
+    </div>`;
+
+  // Render sub-components
+  setTimeout(()=>{
+    try{ buildDailyQuestsUI(); }catch(e){}
+    try{ buildLearningAnalytics(); }catch(e){}
+  }, 50);
+};
+
+// ── 7. WORD FAMILY DICT — AI auto-expand hook ────────────────────────────
+App.events.on('ai:toggled', async (enabled)=>{
+  if(enabled && WF_DB && Object.keys(WF_DB).length < 50){
+    // Future: AI could auto-expand WF_DB for current unit words
+    // App.ai.call('Generate word family...', 'word')
+  }
+});
+
+// ── 8. POST-INIT WIRING ──────────────────────────────────────────────────
+(function postInit(){
+  // Wait for DOM + App.init to finish
+  setTimeout(()=>{
+    try{
+      ensureSRBanner();
+      injectSpacedReviewBanner();
+      injectAIChip();
+    }catch(e){ console.warn('Post-init:', e); }
+
+    // Re-run spaced review check after units load
+    App.events.on('unit:loaded', ()=>{
+      try{ injectSpacedReviewBanner(); }catch(e){}
+    });
+
+    // Auto-refresh quests when tab opens
+    App.events.on('tab:switched', ({ name })=>{
+      if(name==='settings'){
+        setTimeout(()=>{
+          try{ buildDailyQuestsUI(); }catch(e){}
+          try{ buildLearningAnalytics(); }catch(e){}
+          try{ injectSpacedReviewBanner(); }catch(e){}
+        }, 100);
+      }
+    });
+
+    // Wire grammar correct/wrong to learning
+    const origAnswerGr = typeof answerGr === 'function' ? answerGr : null;
+    if(origAnswerGr){
+      answerGr = function(idx, ans, el){
+        origAnswerGr(idx, ans, el);
+        try{ App.progress.trackDailyAction('quiz'); App.achieve.check(); }catch(e){}
+      };
+    }
+
+  }, 800);
+})();
+
+// ── 9. EMIT unit:loaded when goToUnit finishes ───────────────────────────
+const _origGoToUnit = goToUnit;
+goToUnit = async function(){
+  await _origGoToUnit();
+  try{ App.events.emit('unit:loaded', { book: curBook, unit: curUnitNum }); }catch(e){}
+};
+
+// ── 10. PREVENT DUPLICATE AI SETTINGS MODAL ─────────────────────────────
+// closeModal already handles removal above. Confirmed.
+</script>
+
 </body>
 </html>
