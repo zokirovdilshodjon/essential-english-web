@@ -15,9 +15,25 @@
   --orange:#f97b4f;--gold:#f5c542;--red:#f85149;
 }
 body.light-mode{
-  --bg:#eef2ff;--s1:#ffffff;--s2:#e4eafb;--s3:#d6dff5;
-  --border:#bfccee;--text:#12183a;--muted:#5a6a99;
-  --accent:#6040e8;--al:#8060f0;
+  --bg:#f5f7ff;--s1:#ffffff;--s2:#eaeffa;--s3:#dce4f5;
+  --border:#c2cfe8;--text:#111827;--muted:#4b5a7a;
+  --accent:#5b3fd4;--al:#7a5ce8;
+  --blue:#2563eb;--green:#16a34a;--gold:#b45309;--red:#dc2626;
+}
+body.light-mode .tb-name,
+body.light-mode .tb-sub,
+body.light-mode #tb-xp,
+body.light-mode .badge{
+  color:var(--text) !important;
+}
+body.light-mode .topbar{
+  background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--border);
+}
+body.light-mode .streak{
+  background:rgba(180,83,9,.1);
+  border-color:rgba(180,83,9,.2);
+  color:#92400e;
 }
 .theme-btn{background:none;border:1.5px solid var(--border);border-radius:20px;padding:4px 10px;font-size:14px;cursor:pointer;color:var(--text);font-family:'Nunito',sans-serif;transition:all .2s}
 .theme-btn:hover{border-color:var(--accent);background:rgba(124,90,246,.1)}
@@ -190,6 +206,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .gopt.wrong{border-color:var(--red);background:rgba(248,81,73,.12);color:var(--red)}
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .mw{padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;transition:all .2s}
+.mw.selected{background:rgba(124,90,246,.2);border-color:var(--accent);color:var(--accent);transform:scale(1.04);box-shadow:0 0 0 2px rgba(124,90,246,.3);}
+.mw.matched{background:rgba(79,223,138,.12);border-color:var(--green);color:var(--green);pointer-events:none;opacity:.7;}
 .mw.selected{border-color:var(--blue);background:rgba(79,156,249,.1)}
 .mw.matched{border-color:var(--green);background:rgba(79,223,138,.1);color:var(--green);pointer-events:none}
 .mw.bad{border-color:var(--red);background:rgba(248,81,73,.1);color:var(--red)}
@@ -1673,11 +1691,30 @@ function learnWord(w){
 
 // ===== PROGRESS =====
 function updateProgress(){
-  // Hozirgi unit asosida progress ko'rsatamiz
   const total = currentUnitWords.length || 0;
   const n = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
-  document.getElementById('prog-val').textContent = `${n} / ${total}`;
+  document.getElementById('prog-val').textContent = n+' / '+total;
   document.getElementById('prog-fill').style.width = total ? (n/total*100)+'%' : '0%';
+  // Agar barcha so'zlar o'rganilsa — unitni tugallangan deb belgilaymiz
+  if(total>0 && n>=total){
+    markUnitCompleted(curBook, curUnitNum);
+  }
+}
+
+function markUnitCompleted(bookNum, unitNum){
+  if(!U.unitsDone) U.unitsDone={};
+  if(!U.unitsDone[bookNum]) U.unitsDone[bookNum]=0;
+  // Shu unit hozirgacha sanalmagansa, qo'shamiz
+  const key='unit_'+bookNum+'_'+unitNum;
+  if(!U.doneUnitKeys) U.doneUnitKeys=[];
+  if(!U.doneUnitKeys.includes(key)){
+    U.doneUnitKeys.push(key);
+    U.unitsDone[bookNum]=(U.unitsDone[bookNum]||0)+1;
+    saveUser();
+    if(U.unitsDone[bookNum]>=30){
+      setTimeout(()=>showToast('🎓 Kitob '+bookNum+' tugallandi! Sertifikat tayyor!'),500);
+    }
+  }
 }
 function updateStats(){
   document.getElementById('st-words').textContent = U.learnedWords?.length||0;
@@ -2902,22 +2939,57 @@ function getAllWordsDC(){
   return [...FALLBACK_WORDS.beginner,...FALLBACK_WORDS.intermediate,...FALLBACK_WORDS.advanced];
 }
 
+function getDailyKey(){ return 'daily_'+new Date().toDateString(); }
+function hasDoneDaily(){ return !!(U.gamePlays && U.gamePlays[getDailyKey()]); }
+
 function initDailyChallenge(){
+  // Bugun o'ynagan bo'lsa — natijani ko'rsat, timer YO'Q
+  if(hasDoneDaily()){
+    showDailyResult();
+    return;
+  }
   const base = getAllWordsDC();
   DC={timer:null,score:0,time:60,answered:false,
       pool:shuffle([...base]), usedIdx:0};
   document.getElementById('dc-myscore').textContent=0;
   const te = document.getElementById('dc-gametime');
   te.textContent=60; te.style.color='var(--text)';
+  // Panel ko'rsatish
+  const panel=document.getElementById('dc-played-msg');
+  if(panel)panel.style.display='none';
+  const gameArea=document.getElementById('dc-game-area');
+  if(gameArea)gameArea.style.display='';
   buildDCQuestion();
   clearInterval(DC.timer);
   DC.timer=setInterval(()=>{
     DC.time--;
-    document.getElementById('dc-gametime').textContent=DC.time;
     const _tcEl=document.getElementById('dc-gametime');
-    if(_tcEl){ if(DC.time<=10) _tcEl.style.color='var(--red)'; else if(DC.time<=20) _tcEl.style.color='var(--gold)'; }
+    if(_tcEl){
+      _tcEl.textContent=DC.time;
+      if(DC.time<=10)_tcEl.style.color='var(--red)';
+      else if(DC.time<=20)_tcEl.style.color='var(--gold)';
+    }
     if(DC.time<=0){ clearInterval(DC.timer); endDailyChallenge(); }
   },1000);
+  buildDCLeaderboard();
+}
+
+function showDailyResult(){
+  const today=new Date().toDateString();
+  const myScore=(U.dailyScore||{})[today]||0;
+  const gameArea=document.getElementById('dc-game-area');
+  if(gameArea)gameArea.style.display='none';
+  const panel=document.getElementById('dc-played-msg');
+  if(panel){
+    panel.style.display='block';
+    panel.innerHTML=`
+      <div style="text-align:center;padding:20px 0">
+        <div style="font-size:48px;margin-bottom:12px">✅</div>
+        <div style="font-size:18px;font-weight:800;margin-bottom:6px">Bugun qatnashdingiz!</div>
+        <div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:6px">${myScore} ball</div>
+        <div style="font-size:12px;color:var(--muted)">Ertaga qayta qatnashing</div>
+      </div>`;
+  }
   buildDCLeaderboard();
 }
 
@@ -2958,14 +3030,23 @@ function endDailyChallenge(){
   U.dailyScore = U.dailyScore || {};
   const today = new Date().toDateString();
   U.dailyScore[today] = Math.max(U.dailyScore[today]||0, DC.score);
+  // Mark as played today
+  if(!U.gamePlays) U.gamePlays={};
+  U.gamePlays[getDailyKey()]=true;
   saveUser();
-  document.getElementById('dc-opts').innerHTML=`
-    <div style="grid-column:1/-1;text-align:center;padding:10px">
-      <div style="font-size:32px;margin-bottom:8px">🌟</div>
-      <div style="font-size:20px;font-weight:800;color:var(--gold)">${DC.score} ball</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:6px">Bugungi eng yaxshi natijangiz saqlandi</div>
-    </div>
-  `;
+  const gameArea=document.getElementById('dc-game-area');
+  if(gameArea)gameArea.style.display='none';
+  const panel=document.getElementById('dc-played-msg');
+  if(panel){
+    panel.style.display='block';
+    panel.innerHTML=`
+      <div style="text-align:center;padding:20px 0">
+        <div style="font-size:48px;margin-bottom:12px">🌟</div>
+        <div style="font-size:18px;font-weight:800;margin-bottom:6px">Barakalla!</div>
+        <div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:6px">${DC.score} ball</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Natijangiz saqlandi</div>
+      </div>`;
+  }
   buildDCLeaderboard();
 }
 
@@ -3057,35 +3138,60 @@ function deleteCustomWord(idx){
 }
 
 // ===== CERTIFICATE =====
+function getBookCompletedUnits(bookNum){
+  // Kitob bo'yicha tugallanagan unitlar sonini hisoblash
+  const cacheKey = 'book'+bookNum+'_units';
+  const knownUnits = WORDS_CACHE[cacheKey] || [];
+  let completed = 0;
+  for(const unitWords of Object.values(WORDS_CACHE)){
+    if(!Array.isArray(unitWords)||unitWords.length===0) continue;
+    // Bu unitning barcha so'zlari o'rganilganmi?
+    const allLearned = unitWords.every(w=>U.learnedWords&&U.learnedWords.find(x=>x.word===w.word));
+    if(allLearned) completed++;
+  }
+  return completed;
+}
+
+function getBookLearnedPct(bookNum){
+  const level = BOOK_LEVEL[bookNum];
+  const db = FALLBACK_WORDS[level]||[];
+  if(!db.length) return 0;
+  const learned = db.filter(w=>U.learnedWords&&U.learnedWords.find(x=>x.word===w.word)).length;
+  return Math.round(learned/db.length*100);
+}
+
 function buildCertList(){
   const list = document.getElementById('cert-list');
-  // Qaysi kitoblar tugallanganini tekshirish
+  const UNITS_PER_BOOK = 30; // Har kitobda 30 unit
   const certs = [];
   for(let b=1;b<=6;b++){
     const level = BOOK_LEVEL[b];
     const db = FALLBACK_WORDS[level]||[];
-    const learned = db.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
+    const learned = db.filter(w=>U.learnedWords&&U.learnedWords.find(x=>x.word===w.word)).length;
     const pct = db.length ? Math.round(learned/db.length*100) : 0;
-    certs.push({book:b,level,learned,total:db.length,pct});
+    // U.completedUnits — har unit tugaganda saqlash kerak
+    const doneUnits = (U.unitsDone||{})[b] || 0;
+    const allDone = doneUnits >= UNITS_PER_BOOK;
+    certs.push({book:b,level,learned,total:db.length,pct,doneUnits,allDone});
   }
   list.innerHTML = certs.map(c=>`
-    <div style="background:var(--s1);border:1px solid ${c.pct>=80?'var(--gold)':'var(--border)'};border-radius:14px;padding:14px;margin-bottom:10px">
+    <div style="background:var(--s1);border:1px solid ${c.allDone?'var(--gold)':c.pct>=50?'rgba(124,90,246,.3)':'var(--border)'};border-radius:14px;padding:14px;margin-bottom:10px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <div style="font-weight:800">📗 Kitob ${c.book}</div>
-        <div style="font-size:11px;color:var(--muted)">${c.learned}/${c.total} so'z</div>
+        <div style="font-weight:800">📗 Kitob ${c.book} <span style="font-size:11px;font-weight:400;color:var(--muted)">(${c.level})</span></div>
+        <div style="font-size:11px;color:var(--muted)">${c.doneUnits}/${UNITS_PER_BOOK} unit</div>
       </div>
       <div style="height:6px;background:var(--s2);border-radius:10px;overflow:hidden;margin-bottom:8px">
-        <div style="height:100%;width:${c.pct}%;background:${c.pct>=80?'var(--gold)':'var(--accent)'};border-radius:10px;transition:width .5s"></div>
+        <div style="height:100%;width:${Math.round(c.doneUnits/UNITS_PER_BOOK*100)}%;background:${c.allDone?'var(--gold)':'var(--accent)'};border-radius:10px;transition:width .5s"></div>
       </div>
-      ${c.pct>=80 ? `
-        <div class="cert-wrap" style="padding:14px">
+      ${c.allDone ? `
+        <div class="cert-wrap" style="padding:14px;margin-top:8px">
           <div class="cert-title">🎓 SERTIFIKAT</div>
-          <div style="font-size:11px;color:var(--muted);margin:4px 0">Muvaffaqiyatli tamomladi</div>
+          <div style="font-size:11px;color:var(--muted);margin:4px 0">Barcha 30 unitni muvaffaqiyatli tamomladi</div>
           <div class="cert-name">${U.name}</div>
           <div style="font-size:11px;color:var(--muted)">Essential English — Kitob ${c.book}</div>
           <button onclick="downloadCert(${c.book})" style="margin-top:10px;padding:8px 16px;background:var(--gold);color:#080d14;border:none;border-radius:20px;font-weight:800;cursor:pointer;font-size:12px">⬇️ Yuklab olish</button>
         </div>
-      ` : `<div style="font-size:11px;color:var(--muted);text-align:center">${c.pct}% · Sertifikat uchun 80% kerak</div>`}
+      ` : `<div style="font-size:11px;color:var(--muted);text-align:center;padding:4px">${c.doneUnits < UNITS_PER_BOOK ? (UNITS_PER_BOOK-c.doneUnits)+' ta unit qoldi · Sertifikat uchun barcha 30 unitni tugating' : '✅ Tayyor!'}</div>`}
     </div>
   `).join('');
 }
@@ -3753,41 +3859,61 @@ function spToggleMic(){
     showToast('Brauzeringiz mikrofon funksiyasini qo\'llab-quvvatlamaydi');return;
   }
   if(SP.listening){spStopMic();return;}
+  // Ruxsat so'ralmagan bo'lsa oldin so'raymiz
+  if(!SP.micReady){
+    requestMicPermission().then(ok=>{if(ok)spStartMic();});
+    return;
+  }
+  spStartMic();
+}
+
+function spStartMic(){
   const SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SP.rec){try{SP.rec.abort();}catch(e){}}
   SP.rec=new SRC();
   SP.rec.lang='en-US';
   SP.rec.continuous=false;
   SP.rec.interimResults=true;
-  SP.rec.maxAlternatives=10;
+  SP.rec.maxAlternatives=5;
   SP.listening=true;
   const btn=document.getElementById('sp-mic-btn');
   if(btn){btn.className='mic-btn listening';btn.textContent='⏹';}
   const lbl=document.getElementById('sp-mic-label');
   if(lbl)lbl.textContent='🔴 Tinglanmoqda...';
-  let finalResult=null;
+  const hd=document.getElementById('sp-heard');
+  if(hd)hd.textContent='';
+  let gotFinal=false;
   SP.rec.onresult=(e)=>{
-    let interim='';
+    if(gotFinal)return;
     for(let i=e.resultIndex;i<e.results.length;i++){
-      if(e.results[i].isFinal) finalResult=e.results[i];
-      else interim=e.results[i][0].transcript;
-    }
-    const hd=document.getElementById('sp-heard');
-    if(hd&&interim)hd.textContent='🔈 "'+interim+'"';
-    if(finalResult){
-      const alts=Array.from({length:finalResult.length},(_,i)=>finalResult[i]);
-      const heardList=alts.map(r=>r.transcript.trim().toLowerCase());
-      const conf=alts[0]?.confidence||0.5;
-      if(hd)hd.textContent='🔈 "'+heardList[0]+'"';
-      spStopMic();spAnalyze(heardList,conf);
+      if(e.results[i].isFinal){
+        gotFinal=true;
+        const res=e.results[i];
+        const alts=Array.from({length:res.length},(_,j)=>res[j]);
+        const heardList=alts.map(r=>r.transcript.trim().toLowerCase());
+        const conf=res[0]?.confidence||0.6;
+        if(hd)hd.textContent='🔈 "'+heardList[0]+'"';
+        spStopMic();
+        spAnalyze(heardList,conf);
+        return;
+      } else {
+        if(hd)hd.textContent='🔈 '+e.results[i][0].transcript;
+      }
     }
   };
   SP.rec.onerror=(e)=>{
     spStopMic();
-    if(e.error==='no-speech')showToast('Ovoz aniqlanmadi. Qayta urinib ko\'ring');
-    else if(e.error==='not-allowed')showToast('Mikrofon ruxsati berilmagan');
-    else showToast('Mikrofon xatosi: '+e.error);
+    if(e.error==='no-speech'){
+      if(hd)hd.textContent='';
+      showToast('Ovoz aniqlanmadi');
+    } else if(e.error==='not-allowed'){
+      SP.micReady=false;
+      showToast('Mikrofon ruxsati berilmagan. Brauzer sozlamalarini tekshiring.');
+    }
   };
-  SP.rec.onend=()=>{if(SP.listening)spStopMic();};
+  SP.rec.onend=()=>{
+    if(SP.listening&&!gotFinal){spStopMic();}
+  };
   try{SP.rec.start();}catch(e){spStopMic();}
 }
 
@@ -4057,15 +4183,21 @@ function wcInpHandler(inp){
   hint.style.color='var(--orange)';
 }
 
-// Inglizcha so'zlar uchun oddiy tekshiruv (faqat lotin harflari, kamida 2 ta)
-const ENGLISH_PATTERN = /^[a-z]{2,}$/;
-// Qabul qilinmaydigan "so'zlar" (raqamlar, bitta harf, etc.)
+// English so'zlar lug'ati (WC_DICT) + fonetik tekshiruv
 function isLikelyEnglish(word){
-  if(!ENGLISH_PATTERN.test(word)) return false;
-  // Bir xil harflar (aaa, bbb) — rad
-  if(/^(.)+$/.test(word)) return false;
-  // Unli harf bo'lishi shart (a,e,i,o,u) — haqiqiy so'z
-  if(!/[aeiou]/.test(word)) return false;
+  if(!/^[a-z]{2,}$/.test(word)) return false;
+  if(/^(.){2,}$/.test(word)) return false; // aaa, bbb
+  if(!/[aeiou]/.test(word)) return false;     // unli shart
+  // Inglizcha bo'lmagan kombinatsiyalar (tez-tez o'zbek/rus so'zlar)
+  if(/[qw]{2}/.test(word)) return false;
+  if(/^(bu|bu|shu|uni|va|ha|yo|uy|ko|bo|yo|ga|da|ni|lar|lar|ish|ish|ham|kerak|emas)$/.test(word)) return false;
+  // Lug'atda bormi? (agar lug'atda bo'lsa 100% qabul)
+  if(WC_DICT.has(word)) return true;
+  // Lug'atda yo'q bo'lsa — qo'shimcha tekshiruv
+  // Kamida 3 ta harf va inglizcha pattern
+  if(word.length < 3) return false;
+  // Ketma-ket 4+ undosh — anglizchada bo'lmaydi
+  if(/[bcdfghjklmnpqrstvwxyz]{4}/.test(word)) return false;
   return true;
 }
 
@@ -4151,10 +4283,30 @@ function initContext(){
   ctxBuild();
 }
 
+// Gapdan so'zning haqiqiy shaklini topish (inflected form)
+function ctxFindActualForm(sentence, baseWord){
+  const lc = baseWord.toLowerCase();
+  const variants = [
+    lc, lc+'s', lc+'es', lc+'d', lc+'ed', lc+'ing',
+    lc.replace(/e$/,'')+'ing', lc.replace(/e$/,'')+'ed',
+    lc.replace(/y$/,'ies'), lc.replace(/y$/,'ied'),
+    lc+lc.slice(-1)+'ing', lc+lc.slice(-1)+'ed',
+    lc+'ly', lc+'er', lc+'est', lc+'ment', lc+'tion',
+  ].filter((v,i,a)=>v.length>2&&a.indexOf(v)===i);
+  // Eng uzunidan qisqasiga (greedy match)
+  variants.sort((a,b)=>b.length-a.length);
+  for(const v of variants){
+    const re=new RegExp('\\b'+v+'\\b','i');
+    const m=sentence.match(re);
+    if(m) return {form:m[0], variant:v};
+  }
+  return null;
+}
+
 function ctxBuild(){
   const max=Math.min(CTX.pool.length,10);
   if(CTX.idx>=max){
-    document.getElementById('ctx-sentence').innerHTML=`🎉 Tugadi! ${CTX.score}/${max} to'g'ri`;
+    document.getElementById('ctx-sentence').innerHTML='🎉 Tugadi! '+CTX.score+'/'+max+' to\'g\'ri';
     document.getElementById('ctx-opts').innerHTML='';
     document.getElementById('ctx-hint').textContent='';
     document.getElementById('ctx-res').textContent='';
@@ -4163,35 +4315,46 @@ function ctxBuild(){
   const correct=CTX.pool[CTX.idx];
   document.getElementById('ctx-num').textContent=CTX.idx+1;
   document.getElementById('ctx-res').textContent='';
-  // Example jumladan so'zni olib bo'shliq yasaymiz
   const ex=correct.example||('The word is '+correct.word+'.');
-  const wordRe=new RegExp('\\b'+correct.word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');
-  const blanked=ex.replace(wordRe,'<span class="ctx-blank">_____</span>');
+
+  // Gapdan so'zning haqiqiy shaklini topish
+  const found=ctxFindActualForm(ex, correct.word);
+  const actualForm = found ? found.form : correct.word;
+  const formRe = new RegExp('\\b'+actualForm.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');
+
+  const blanked=ex.replace(formRe,'<span class="ctx-blank">_____</span>');
   document.getElementById('ctx-sentence').innerHTML=blanked;
   document.getElementById('ctx-hint').textContent='('+correct.translation+')';
-  // Variantlar — pool dan 3 noto'g'ri + 1 to'g'ri
+
+  // Variantlar — to'g'ri javob = gapdan topilgan haqiqiy shakl
   const pool2=CTX.pool.length>=4?CTX.pool:getAllWordsForGames();
   const others=shuffle(pool2.filter(w=>w.word!==correct.word)).slice(0,3);
   if(others.length<3){CTX.idx++;ctxBuild();return;}
-  const opts=shuffle([correct,...others]);
+  // Variantlar: to'g'ri = actualForm, xato = boshqa so'zlarning base shakli
+  const optsData=[
+    {display:actualForm, isCorrect:true},
+    ...others.map(o=>({display:o.word, isCorrect:false}))
+  ];
+  const opts=shuffle(optsData);
   const c=document.getElementById('ctx-opts');c.innerHTML='';
   opts.forEach(o=>{
-    const el=document.createElement('div');el.className='gopt';el.textContent=o.word;
+    const el=document.createElement('div');el.className='gopt';el.textContent=o.display;
     el.onclick=()=>{
       c.querySelectorAll('.gopt').forEach(x=>x.style.pointerEvents='none');
-      if(o.word===correct.word){
+      if(o.isCorrect){
         el.classList.add('correct');CTX.score++;
         try{addXP(1);}catch(e){}
         document.getElementById('ctx-score').textContent=CTX.score;
         document.getElementById('ctx-res').textContent='✅ To\'g\'ri! +1 XP';
-        document.getElementById('ctx-sentence').innerHTML=ex.replace(wordRe,'<b style="color:var(--green)">'+correct.word+'</b>');
+        document.getElementById('ctx-sentence').innerHTML=ex.replace(formRe,'<b style="color:var(--green)">'+actualForm+'</b>');
       } else {
         el.classList.add('wrong');CTX.wrong++;
         document.getElementById('ctx-wrong').textContent=CTX.wrong;
-        document.getElementById('ctx-res').textContent='❌ Noto\'g\'ri';
-        c.querySelectorAll('.gopt').forEach(x=>{if(x.textContent===correct.word)x.classList.add('correct');});
+        document.getElementById('ctx-res').textContent='❌ Noto\'g\'ri · To\'g\'ri: <b>'+actualForm+'</b>';
+        c.querySelectorAll('.gopt').forEach(x=>{if(x.textContent===actualForm)x.classList.add('correct');});
+        try{trackWordError(correct.word);}catch(e){}
       }
-      CTX.idx++;setTimeout(ctxBuild,1000);
+      CTX.idx++;setTimeout(ctxBuild,1100);
     };
     c.appendChild(el);
   });
@@ -4564,9 +4727,14 @@ const PREMIUM_AVATARS = [
         <div><div style="font-size:11px;color:var(--muted)">Bugungi ball</div><div style="font-size:20px;font-weight:800;color:var(--gold)" id="dc-myscore">0</div></div>
         <div style="text-align:right"><div style="font-size:11px;color:var(--muted)">Vaqt</div><div style="font-size:20px;font-weight:800;color:var(--blue)" id="dc-gametime">60</div></div>
       </div>
-      <div class="gword" id="dc-word">—</div>
-      <div class="gopts" id="dc-opts"></div>
-      <div id="dc-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:8px"></div>
+      <!-- Played today message -->
+      <div id="dc-played-msg" style="display:none"></div>
+      <!-- Game area -->
+      <div id="dc-game-area">
+        <div class="gword" id="dc-word">—</div>
+        <div class="gopts" id="dc-opts"></div>
+        <div id="dc-res" style="text-align:center;font-size:13px;min-height:20px;margin-top:8px"></div>
+      </div>
       <div style="margin-top:14px">
         <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">BUGUNGI TOP 5</div>
         <div id="dc-lb"></div>
