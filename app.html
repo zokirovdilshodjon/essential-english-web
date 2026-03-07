@@ -35,11 +35,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 #app{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh;max-width:480px;margin:0 auto;position:relative;z-index:1}
 .topbar{background:rgba(13,17,23,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);
   padding:10px 16px 8px;position:sticky;top:0;z-index:100;}
-body.light-mode .topbar{background:rgba(255,255,255,.97);}
-body.light-mode .tb-name{color:#12183a !important;}
-body.light-mode .tb-sub{color:#5a6a99 !important;}
-body.light-mode .streak{color:#9a7000 !important;background:rgba(180,140,0,.12);border-color:rgba(180,140,0,.25);}
-body.light-mode .xp-chip{color:#5030c0 !important;}
 .tb-row{display:flex;align-items:center;gap:10px}
 .tb-av{width:40px;height:40px;border-radius:50%;background:var(--s2);border:2px solid var(--accent);
   overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
@@ -900,9 +895,9 @@ const ONLINE_PLAYERS = [
         </div>
       </div>
     </div>
-    <div id="trial-banner" style="display:none;background:linear-gradient(90deg,rgba(245,197,66,.15),rgba(249,123,79,.1));border-bottom:1px solid rgba(245,197,66,.2);padding:5px 16px;font-size:11px;font-weight:700;color:var(--gold);display:flex;align-items:center;justify-content:space-between">
-      <span id="trial-banner-text">🎁 Bepul sinov: 3 kun qoldi</span>
-      <span onclick="switchTabByName('premium')" style="color:var(--orange);cursor:pointer;font-size:10px">Premium →</span>
+    <div id="trial-banner" style="display:none;background:linear-gradient(90deg,rgba(245,197,66,.14),rgba(249,123,79,.09));border-bottom:1px solid rgba(245,197,66,.25);padding:5px 16px;align-items:center;justify-content:space-between">
+      <span id="trial-banner-text" style="font-size:11px;font-weight:700;color:var(--gold)">🎁 Bepul sinov: 3 kun qoldi</span>
+      <span onclick="switchTabByName('premium')" style="font-size:10px;font-weight:800;color:var(--orange);cursor:pointer">Premium →</span>
     </div>
     <div class="prog-bar-wrap">
       <div class="prog-labels">
@@ -1125,11 +1120,14 @@ const ONLINE_PLAYERS = [
           <div style="font-size:12px;font-weight:800;color:var(--blue);margin-bottom:6px">🌟 BUGUNGI MUSOBAQA</div>
           <div id="dc-countdown" class="dc-timer">--:--:--</div>
           <div id="dc-score-display" style="display:none;text-align:center;padding:4px 0">
-            <div style="font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:var(--green)" id="dc-my-score-big">0</div>
+            <div style="font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--green)" id="dc-my-score-big">0</div>
             <div style="font-size:11px;color:var(--muted);margin-top:1px">ball to'planding 🏆</div>
           </div>
           <div class="dc-rank" id="dc-rank-preview">Bugun: 0 ball</div>
-          <button onclick="openPremiumGame('daily')" id="dc-play-btn" style="width:100%;margin-top:10px;padding:10px;background:linear-gradient(135deg,var(--blue),var(--accent));border:none;border-radius:10px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">Ishtirok etish →</button>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px" id="dc-btn-area">
+            <button onclick="openPremiumGame('daily')" id="dc-play-btn" style="padding:10px;background:linear-gradient(135deg,var(--blue),var(--accent));border:none;border-radius:10px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">Ishtirok etish →</button>
+            <button onclick="openModal('modal-daily-lb')" id="dc-lb-btn" style="display:none;padding:10px;background:linear-gradient(135deg,var(--gold),var(--orange));border:none;border-radius:10px;color:#080d14;font-weight:800;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">🏆 Reyting</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1391,6 +1389,18 @@ const ONLINE_PLAYERS = [
   </div>
 </div>
 
+<!-- DAILY CHALLENGE LB MODAL -->
+<div class="overlay" id="modal-daily-lb" onclick="closeModal(event,'modal-daily-lb')">
+  <div class="sheet">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-daily-lb')">✕</div>
+    <div class="sb">
+      <div class="st">🏆 Kunlik Reyting</div>
+      <div id="dc-lb-modal-content"></div>
+    </div>
+  </div>
+</div>
+
 <!-- LEADERBOARD MODAL -->
 <div class="overlay" id="modal-lb" onclick="closeModal(event,'modal-lb')">
   <div class="sheet">
@@ -1431,31 +1441,37 @@ function loadTopbar(){
   badge.textContent = {beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'}[U.level];
   badge.className = 'badge '+U.level;
   document.getElementById('tb-xp').textContent = (U.xp||0)+' XP';
-  // Trial banner
-  const banner = document.getElementById('trial-banner');
-  if(banner){
-    if(!U.isPremium || U.premiumExpiry <= Date.now()){
-      if(!U.trialEnd) { U.trialEnd = Date.now() + 3*24*60*60*1000; saveUser(); }
-      const daysLeft = getTrialDaysLeft();
-      if(daysLeft > 0){
-        banner.style.display='flex';
-        const bt = document.getElementById('trial-banner-text');
-        if(bt) bt.textContent = `🎁 Bepul sinov: ${daysLeft} kun qoldi`;
-      } else if(daysLeft === 0) {
-        banner.style.display='flex';
-        banner.style.background='linear-gradient(90deg,rgba(248,81,73,.15),rgba(248,81,73,.08))';
-        banner.style.borderBottom='1px solid rgba(248,81,73,.2)';
-        const bt = document.getElementById('trial-banner-text');
-        if(bt){ bt.textContent = '⏰ Sinov muddati tugadi — Premium oling'; bt.style.color='var(--red)'; }
-      }
-    }
-  }
   document.getElementById('tb-streak').textContent = U.streak||0;
   const avEl = document.getElementById('tb-av');
   if(U.avatarUrl){
     avEl.innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
   } else if(U.avatarEmoji){
     avEl.textContent = U.avatarEmoji;
+  }
+  // Trial banner — faqat premium OLMAGAN va trial aktiv bo'lganlar uchun
+  const banner = document.getElementById('trial-banner');
+  if(banner){
+    const isRealPremium = U.isPremium && U.premiumExpiry > Date.now();
+    if(isRealPremium){
+      // Haqiqiy premium — banner umuman ko'rsatilmaydi
+      banner.style.display = 'none';
+    } else {
+      if(!U.trialEnd){ U.trialEnd = Date.now() + 3*24*60*60*1000; saveUser(); }
+      const daysLeft = getTrialDaysLeft();
+      const bt = document.getElementById('trial-banner-text');
+      if(daysLeft > 0){
+        banner.style.display = 'flex';
+        if(bt) bt.textContent = `🎁 Bepul sinov: ${daysLeft} kun qoldi`;
+        banner.style.background = 'linear-gradient(90deg,rgba(245,197,66,.14),rgba(249,123,79,.09))';
+        banner.style.borderBottom = '1px solid rgba(245,197,66,.25)';
+        if(bt) bt.style.color = 'var(--gold)';
+      } else {
+        banner.style.display = 'flex';
+        banner.style.background = 'linear-gradient(90deg,rgba(248,81,73,.12),rgba(248,81,73,.06))';
+        banner.style.borderBottom = '1px solid rgba(248,81,73,.2)';
+        if(bt){ bt.textContent = '⏰ Sinov muddati tugadi — Premium oling'; bt.style.color = 'var(--red)'; }
+      }
+    }
   }
 }
 
@@ -2537,10 +2553,9 @@ function getGamePlayKey(gameId){
   return `played_${gameId}_${getTodayKey()}`;
 }
 function isPremiumActive(){
-  // Premium yoki aktiv trial
   if(U.isPremium && U.premiumExpiry > Date.now()) return true;
   // 3 kunlik bepul trial
-  if(!U.trialEnd) {
+  if(!U.trialEnd){
     U.trialEnd = Date.now() + 3*24*60*60*1000;
     U.trialStarted = new Date().toISOString();
     saveUser();
@@ -2548,10 +2563,10 @@ function isPremiumActive(){
   return U.trialEnd > Date.now();
 }
 function getTrialDaysLeft(){
-  if(U.isPremium && U.premiumExpiry > Date.now()) return null; // premium
+  if(U.isPremium && U.premiumExpiry > Date.now()) return null; // haqiqiy premium
   if(!U.trialEnd) return 0;
   const ms = U.trialEnd - Date.now();
-  return ms > 0 ? Math.ceil(ms/86400000) : 0;
+  return ms > 0 ? Math.ceil(ms / 86400000) : 0;
 }
 function hasPlayedToday(gameId){
   if(isPremiumActive()) return false; // Premium - cheksiz o'ynash
@@ -3019,16 +3034,44 @@ function endDailyChallenge(){
   U.dailyScore = U.dailyScore || {};
   const today = new Date().toDateString();
   U.dailyScore[today] = Math.max(U.dailyScore[today]||0, DC.score);
-  try{ updateDCCard(); }catch(e){}
   saveUser();
+  // DC modal ichidagi opts o'rniga natija + reyting ko'rish tugmasi
   document.getElementById('dc-opts').innerHTML=`
     <div style="grid-column:1/-1;text-align:center;padding:10px">
-      <div style="font-size:32px;margin-bottom:8px">🌟</div>
-      <div style="font-size:20px;font-weight:800;color:var(--gold)">${DC.score} ball</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:6px">Bugungi eng yaxshi natijangiz saqlandi</div>
+      <div style="font-size:36px;margin-bottom:8px">🌟</div>
+      <div style="font-size:24px;font-weight:800;color:var(--gold)">${DC.score} ball</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px;margin-bottom:14px">Bugungi eng yaxshi natijangiz saqlandi</div>
+      <button onclick="buildDCLeaderboardModal();openModal('modal-daily-lb')" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--gold),var(--orange));border:none;border-radius:12px;color:#080d14;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        🏆 Reytingni ko'rish
+      </button>
     </div>
   `;
-  buildDCLeaderboard();
+  updateDCCard();
+}
+
+function buildDCLeaderboardModal(){
+  const fakeTop = [
+    {name:'Nodira',score:38},{name:'Jasur',score:35},{name:'Malika',score:31},
+    {name:'Akbar',score:28},{name:'Zulfiya',score:22},
+  ];
+  const today = new Date().toDateString();
+  const myScore = (U.dailyScore||{})[today]||0;
+  const all = [...fakeTop,{name:U.name+' (Siz)',score:myScore,isMe:true}].sort((a,b)=>b.score-a.score);
+  const el = document.getElementById('dc-lb-modal-content');
+  if(!el) return;
+  el.innerHTML = `
+    <div style="background:rgba(245,197,66,.08);border:1px solid rgba(245,197,66,.2);border-radius:12px;padding:12px;text-align:center;margin-bottom:14px">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Sizning balingiz</div>
+      <div style="font-size:32px;font-weight:800;color:var(--gold)">${myScore}</div>
+    </div>
+    ${all.slice(0,6).map((p,i)=>`
+      <div class="tournament-row${p.isMe?' me':''}">
+        <div class="tr-rank">${['🥇','🥈','🥉','4','5','6'][i]||i+1}</div>
+        <div class="tr-info"><div class="tr-name">${p.name}</div></div>
+        <div class="tr-score">${p.score} ball</div>
+      </div>
+    `).join('')}
+  `;
 }
 
 function buildDCLeaderboard(){
@@ -3241,40 +3284,54 @@ function buildTournament(){
 // ===== DAILY COUNTDOWN =====
 function startDailyCountdown(){
   updateDCCard();
-  setInterval(updateDCCard, 10000); // har 10 sekundda
+  // Vaqtni ham har soniyada yangilab turish (faqat o'ynamaganlar uchun ko'rinadi)
+  setInterval(()=>{
+    const today = new Date().toDateString();
+    const hasPlayed = ((U.dailyScore||{})[today]||0) > 0;
+    if(!hasPlayed){
+      const now=new Date(), tomorrow=new Date(now);
+      tomorrow.setDate(tomorrow.getDate()+1); tomorrow.setHours(0,0,0,0);
+      const diff=tomorrow-now;
+      const h=Math.floor(diff/3600000), m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+      const el1=document.getElementById('dc-countdown');
+      if(el1) el1.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+  }, 1000);
 }
+
 function updateDCCard(){
   const today = new Date().toDateString();
   const myScore = (U && U.dailyScore && U.dailyScore[today]) || 0;
   const hasPlayed = myScore > 0;
-  
-  const scoreDisp = document.getElementById('dc-score-display');
-  const timerDisp = document.getElementById('dc-countdown');
-  const scoreBig = document.getElementById('dc-my-score-big');
-  const rankPrev = document.getElementById('dc-rank-preview');
-  const playBtn = document.getElementById('dc-play-btn');
-  
+
+  const el_countdown  = document.getElementById('dc-countdown');
+  const el_scoreDisp  = document.getElementById('dc-score-display');
+  const el_scoreBig   = document.getElementById('dc-my-score-big');
+  const el_rankPrev   = document.getElementById('dc-rank-preview');
+  const el_playBtn    = document.getElementById('dc-play-btn');
+  const el_lbBtn      = document.getElementById('dc-lb-btn');
+
   if(hasPlayed){
-    // O'ynalgan — vaqt emas, ball ko'rsat
-    if(scoreDisp) scoreDisp.style.display = 'block';
-    if(timerDisp) timerDisp.style.display = 'none';
-    if(scoreBig) scoreBig.textContent = myScore;
-    if(rankPrev) rankPrev.textContent = '🏆 Bugungi ballingiz: ' + myScore;
-    if(playBtn) playBtn.textContent = '🔄 Yana o\'ynash';
+    // O'ynaldi → vaqtni yashir, balni ko'rsat, reyting tugmasini chiqar
+    if(el_countdown)  el_countdown.style.display  = 'none';
+    if(el_scoreDisp)  el_scoreDisp.style.display  = 'block';
+    if(el_scoreBig)   el_scoreBig.textContent      = myScore;
+    if(el_rankPrev)   el_rankPrev.textContent      = '🏅 Bugungi balingiz: ' + myScore;
+    if(el_playBtn)    el_playBtn.style.display     = 'none';
+    if(el_lbBtn)      el_lbBtn.style.display       = 'block';
   } else {
-    // O'ynamaganlar — vaqt ko'rsat
-    if(scoreDisp) scoreDisp.style.display = 'none';
-    if(timerDisp){
-      timerDisp.style.display = 'block';
-      const now=new Date(), tomorrow=new Date(now);
-      tomorrow.setDate(tomorrow.getDate()+1);
-      tomorrow.setHours(0,0,0,0);
-      const diff=tomorrow-now;
-      const h=Math.floor(diff/3600000), m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
-      timerDisp.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    }
-    if(rankPrev) rankPrev.textContent = 'Bugun: 0 ball';
-    if(playBtn) playBtn.textContent = 'Ishtirok etish →';
+    // Hali o'ynamadi → vaqtni ko'rsat, "Ishtirok etish" tugmasi
+    if(el_countdown)  el_countdown.style.display  = 'block';
+    if(el_scoreDisp)  el_scoreDisp.style.display  = 'none';
+    if(el_rankPrev)   el_rankPrev.textContent      = 'Bugun: 0 ball';
+    if(el_playBtn)    el_playBtn.style.display     = 'block';
+    if(el_lbBtn)      el_lbBtn.style.display       = 'none';
+    // Dastlabki vaqtni ko'rsat
+    const now=new Date(), tomorrow=new Date(now);
+    tomorrow.setDate(tomorrow.getDate()+1); tomorrow.setHours(0,0,0,0);
+    const diff=tomorrow-now;
+    const h=Math.floor(diff/3600000), m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+    if(el_countdown) el_countdown.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   }
 }
 
@@ -3787,7 +3844,7 @@ function trackTodayActivity(){
 // ================================================================
 // 🎤 SPEAKING PRACTICE
 // ================================================================
-let SP = {pool:[],idx:0,score:0,streak:0,rec:null,listening:false,micReady:false,wordResults:[],finished:false};
+let SP = {pool:[],idx:0,score:0,streak:0,rec:null,listening:false,micReady:false};
 
 // Mikrofon ruxsatini oldindan so'rash — faqat bir marta
 async function requestMicPermission(){
@@ -3804,11 +3861,9 @@ async function requestMicPermission(){
 }
 
 function initSpeaking(){
-  // Joriy unitdan so'zlarni olish, max 20 ta
-  const words = currentUnitWords && currentUnitWords.length ? currentUnitWords : getAllWordsForGames();
+  const words = getAllWordsForGames();
   if(!words.length){ showToast('So\'zlar yo\'q!'); return; }
-  const pool = shuffle([...words]).slice(0, 20);
-  SP = {pool, idx:0, score:0, streak:0, rec:null, listening:false, micReady:SP.micReady, wordResults:[], finished:false};
+  SP = {pool:shuffle([...words]),idx:0,score:0,streak:0,rec:null,listening:false,micReady:SP.micReady};
   const s=document.getElementById('sp-score');if(s)s.textContent=0;
   const st=document.getElementById('sp-streak');if(st)st.textContent=0;
   const tot=document.getElementById('sp-total');if(tot)tot.textContent=SP.pool.length;
@@ -3816,6 +3871,7 @@ function initSpeaking(){
   const res=document.getElementById('sp-result');if(res)res.innerHTML='';
   const hd=document.getElementById('sp-heard');if(hd)hd.textContent='';
   const ring=document.getElementById('sp-ring');if(ring)ring.style.display='none';
+  // Ruxsatni oldindan so'rash
   if(!SP.micReady) requestMicPermission();
   spBuildWord();
 }
@@ -3959,90 +4015,10 @@ function spAnalyze(heardList,conf){
     </div>`;
   const nb=document.getElementById('sp-next-btn');if(nb)nb.style.display='block';
   const aitip=document.getElementById('sp-ai-tip');if(aitip)aitip.style.display='none';
-  // So'z natijasini saqlash (finish uchun)
-  SP.wordResults.push({
-    word: correct,
-    translation: SP.pool[SP.idx]?.translation || '',
-    score: total
-  });
   try{App.events.emit('speaking:analyzed',{word:correct,heard:heard0,score:total});}catch(e){}
 }
 
-function spNext(){
-  SP.idx++;
-  if(SP.idx >= SP.pool.length){
-    spShowFinish();
-  } else {
-    spBuildWord();
-  }
-}
-
-function spShowFinish(){
-  SP.finished = true;
-  if(SP.rec){try{SP.rec.stop();}catch(e){}SP.rec=null;}
-  SP.listening = false;
-  // 60% dan kam bo'lganlarni toping
-  const weakWords = SP.wordResults.filter(r => r.score < 60);
-  const total = SP.wordResults.length;
-  const goodCount = SP.wordResults.filter(r => r.score >= 60).length;
-  const avgScore = total ? Math.round(SP.wordResults.reduce((a,r)=>a+r.score,0)/total) : 0;
-  
-  // XP bonus
-  const bonus = Math.round(goodCount * 1.5);
-  try{addXP(bonus);}catch(e){}
-  
-  const spModal = document.getElementById('sp-word')?.closest('.sb');
-  if(!spModal) return;
-  
-  let weakHtml = '';
-  if(weakWords.length > 0){
-    weakHtml = `
-      <div style="margin-top:14px">
-        <div style="font-size:11px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">
-          ⚠️ 60% dan kam — mashq kerak (${weakWords.length} ta)
-        </div>
-        ${weakWords.map(w=>`
-          <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(248,81,73,.07);border:1px solid rgba(248,81,73,.2);border-radius:10px;padding:8px 12px;margin-bottom:6px">
-            <div>
-              <div style="font-weight:800;font-size:13px;color:var(--text)">${w.word}</div>
-              <div style="font-size:11px;color:var(--muted)">${w.translation||''}</div>
-            </div>
-            <div style="font-size:18px;font-weight:800;color:var(--red)">${w.score}%</div>
-          </div>
-        `).join('')}
-      </div>`;
-  } else {
-    weakHtml = `<div style="margin-top:12px;text-align:center;color:var(--green);font-size:13px;font-weight:700">🎉 Hammasi 60%+ ajoyib!</div>`;
-  }
-  
-  spModal.innerHTML = `
-    <div style="text-align:center;padding:10px 0 16px">
-      <div style="font-size:48px;margin-bottom:8px">${avgScore>=80?'🏆':avgScore>=60?'✅':'💪'}</div>
-      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800">Speaking Tugadi!</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0">
-        <div style="background:var(--s2);border-radius:12px;padding:10px;text-align:center">
-          <div style="font-size:22px;font-weight:800;color:var(--blue)">${total}</div>
-          <div style="font-size:11px;color:var(--muted)">Jami</div>
-        </div>
-        <div style="background:var(--s2);border-radius:12px;padding:10px;text-align:center">
-          <div style="font-size:22px;font-weight:800;color:var(--green)">${goodCount}</div>
-          <div style="font-size:11px;color:var(--muted)">Yaxshi</div>
-        </div>
-        <div style="background:var(--s2);border-radius:12px;padding:10px;text-align:center">
-          <div style="font-size:22px;font-weight:800;color:var(--gold)">${avgScore}%</div>
-          <div style="font-size:11px;color:var(--muted)">O'rtacha</div>
-        </div>
-      </div>
-      <div style="background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.2);border-radius:10px;padding:8px;font-size:12px;color:var(--gold);font-weight:700">+${bonus} XP to'plandi!</div>
-    </div>
-    ${weakHtml}
-    <button onclick="initSpeaking()" style="width:100%;margin-top:14px;padding:13px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
-      🔁 Qayta boshlash
-    </button>
-    <button onclick="closeModal(null,'modal-speaking')" style="width:100%;margin-top:8px;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
-      ← Yopish
-    </button>`;
-}
+function spNext(){SP.idx++;spBuildWord();}
 
 function levDist(a,b){
   const m=a.length,n=b.length;
@@ -4537,19 +4513,17 @@ const PREMIUM_AVATARS = [
 // ║  AI CONFIGURATION — paste your API key in Settings to enable  ║
 // ╚══════════════════════════════════════════════════════════════╝
 const AI_CONFIG = {
-  // ━━━ API KEY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  // Gemini key (AIza...):  provider: 'gemini'
-  // OpenRouter key (sk-or-v1-...): provider: 'openrouter'
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   enabled: false,
-  provider: 'gemini',                         // 'gemini' yoki 'openrouter'
-  apiKey: 'AIzaSyA2ajPiE4exZkF3WppJrptMl9eP9r7IRho',  // ← shu yerda
-  model: 'gemini-2.0-flash',                  // Gemini: 'gemini-2.0-flash' | OpenRouter: 'deepseek/deepseek-chat'
+  provider: 'openrouter',
+  apiKey: '',
+  model: 'deepseek/deepseek-chat',
+  // Switch model by changing one line:
+  // 'deepseek/deepseek-chat'      — cheap, very capable
+  // 'mistralai/mistral-small'     — fast, multilingual
+  // 'meta-llama/llama-3-8b-instruct' — free tier
   baseURL: 'https://openrouter.ai/api/v1/chat/completions',
-  maxTokens: 600,
+  maxTokens: 512,
 };
-// Avtomatik yoqish
-if(AI_CONFIG.apiKey && AI_CONFIG.apiKey.length > 10) AI_CONFIG.enabled = true;
 
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  APP NAMESPACE — modular structure                            ║
@@ -4983,29 +4957,14 @@ App.lb = {
 // MODULE 7 — AIEngine
 // ═══════════════════════════════════════════════════════════════════════════
 App.ai = {
-  async isEnabled(){ return AI_CONFIG.enabled && !!AI_CONFIG.apiKey; },
+  async isEnabled(){
+    // AI faqat premium/trial foydalanuvchilar uchun
+    if(!isPremiumActive()) return false;
+    return AI_CONFIG.enabled && !!AI_CONFIG.apiKey;
+  },
 
   async call(systemPrompt, userMsg, maxTok = 512){
     if(!AI_CONFIG.apiKey) throw new Error('API key not set');
-    // Gemini API (AIza... key)
-    const isGemini = AI_CONFIG.apiKey.startsWith('AIza') || AI_CONFIG.provider === 'gemini';
-    if(isGemini){
-      const mdl = (AI_CONFIG.model||'gemini-2.0-flash').replace('models/','');
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent?key=${AI_CONFIG.apiKey}`;
-      const res = await fetch(url, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          contents:[{parts:[{text: systemPrompt + '\n\n' + userMsg}]}],
-          generationConfig:{maxOutputTokens: maxTok, temperature:0.7}
-        })
-      });
-      if(!res.ok){ const t=await res.text(); throw new Error('Gemini '+res.status+': '+t.slice(0,200)); }
-      const data = await res.json();
-      if(data.error) throw new Error('Gemini: '+data.error.message);
-      return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    }
-    // OpenRouter / OpenAI compatible
     const res = await fetch(AI_CONFIG.baseURL, {
       method: 'POST',
       headers: {
@@ -5380,67 +5339,31 @@ function buildSettingsTab(){
   if(!el) return;
   const U = App.user.get();
   if(!U) return;
+  const isLight = localStorage.getItem('ep_theme') === 'light';
   el.innerHTML = `
     <div style="padding:0 4px">
-      <!-- Profile Card -->
-      <div style="background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px;text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--s2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px;overflow:hidden" id="settings-av">
-          ${U.avatarUrl?`<img src="${U.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`:(U.avatarEmoji||'🤖')}
-        </div>
-        <div style="font-weight:800;font-size:16px">${U.name}</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">${{beginner:'🌱 Beginner',intermediate:'🎯 Intermediate',advanced:'🚀 Advanced'}[U.level]||U.level}</div>
-        <div style="font-size:13px;color:var(--gold);font-weight:700;margin-top:4px">${U.xp||0} XP · ${U.streak||0} 🔥</div>
-      </div>
-
-      <!-- Theme -->
       <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
         <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">🎨 INTERFEYS</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <button onclick="localStorage.setItem('ep_theme','dark');applyTheme()" style="padding:10px;border-radius:10px;border:2px solid var(--accent);background:rgba(124,90,246,.15);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🌙 Tungi</button>
-          <button onclick="localStorage.setItem('ep_theme','light');applyTheme()" style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--s2);color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">☀️ Kunduzgi</button>
+          <button onclick="localStorage.setItem('ep_theme','dark');applyTheme();buildSettingsTab()" style="padding:10px;border-radius:10px;border:2px solid ${!isLight?'var(--accent)':'var(--border)'};background:${!isLight?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🌙 Tungi</button>
+          <button onclick="localStorage.setItem('ep_theme','light');applyTheme();buildSettingsTab()" style="padding:10px;border-radius:10px;border:2px solid ${isLight?'var(--accent)':'var(--border)'};background:${isLight?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">☀️ Kunduzgi</button>
         </div>
       </div>
-
-      <!-- AI Settings -->
-      <div style="background:${AI_CONFIG.enabled?'rgba(124,90,246,.08)':'var(--s1)'};border:1px solid ${AI_CONFIG.enabled?'rgba(124,90,246,.4)':'var(--border)'};border-radius:14px;padding:14px;margin-bottom:10px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <div>
-            <div style="font-size:13px;font-weight:800">🤖 AI Yordamchi</div>
-            <div style="font-size:11px;color:var(--muted)">OpenRouter · ${AI_CONFIG.model.split('/').pop()}</div>
-          </div>
-          <div style="font-size:11px;font-weight:800;color:${AI_CONFIG.enabled?'var(--green)':'var(--muted)'}">${AI_CONFIG.enabled?'✅ FAOL':'⭕ O\'CHI'}</div>
-        </div>
-        <button onclick="App.ai.openSettings()" style="width:100%;padding:10px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:11px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
-          ⚙️ AI Sozlamalar
-        </button>
-      </div>
-
-      <!-- Daily Quests -->
       <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
         <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">⚡ KUNLIK VAZIFALAR</div>
         <div id="daily-quests-container"></div>
       </div>
-
-      <!-- Learning Analytics -->
       <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
-        <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">📈 O'RGANISH TAHLILI</div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">📈 O\'RGANISH TAHLILI</div>
         <div id="learning-analytics"></div>
       </div>
-
-      <!-- Danger zone -->
       <div style="margin-top:6px">
-        <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
-          🚪 Profildan chiqish
-        </button>
+        <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">🚪 Profildan chiqish</button>
       </div>
     </div>`;
-
-  // Render sub-components
-  setTimeout(()=>{
-    buildDailyQuestsUI();
-    buildLearningAnalytics();
-  }, 50);
+  setTimeout(()=>{ buildDailyQuestsUI(); buildLearningAnalytics(); }, 50);
 }
+
 
 // ═══════════════════════════════════════════════════════════════════════════
 // APP INITIALIZATION — wire everything up
