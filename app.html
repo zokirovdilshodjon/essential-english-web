@@ -355,6 +355,45 @@ body.light-mode .xp-chip{color:#5030c0 !important;}
 .ai-chip-topbar{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:800;cursor:pointer;transition:all .2s}
 .ai-chip-topbar.on{background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.35);color:var(--al)}
 .ai-chip-topbar.off{background:var(--s2);border:1px solid var(--border);color:var(--muted)}
+/* ===== IRREGULAR VERBS ===== */
+.iv-section{background:linear-gradient(135deg,rgba(79,156,249,.06),rgba(124,90,246,.04));border:1px solid rgba(79,156,249,.2);border-radius:16px;padding:14px 16px;margin-bottom:16px}
+.iv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.iv-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;display:flex;align-items:center;gap:7px}
+.iv-cats{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;-webkit-overflow-scrolling:touch}
+.iv-cats::-webkit-scrollbar{height:0}
+.iv-cat-pill{flex-shrink:0;padding:5px 11px;border-radius:20px;font-size:11px;font-weight:700;background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
+.iv-cat-pill.active{background:rgba(79,156,249,.12);border-color:var(--blue);color:var(--blue)}
+.iv-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:8px;cursor:pointer;transition:all .25s}
+.iv-card:hover{border-color:var(--blue);transform:translateY(-1px)}
+.iv-card-top{display:flex;align-items:center;justify-content:space-between}
+.iv-v1{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--blue)}
+.iv-forms{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700}
+.iv-form{padding:3px 9px;border-radius:8px;font-size:11px;font-weight:800}
+.iv-form.v2{background:rgba(245,197,66,.12);color:var(--gold)}
+.iv-form.v3{background:rgba(192,132,252,.12);color:var(--purple)}
+.iv-uz{font-size:12px;color:var(--muted);margin-top:5px}
+.iv-ex{font-size:11px;color:rgba(79,156,249,.8);font-style:italic;margin-top:4px;display:none}
+.iv-card.expanded .iv-ex{display:block}
+.iv-stats-row{display:flex;gap:8px;margin-bottom:10px}
+.iv-stat{flex:1;background:var(--s2);border-radius:10px;padding:8px;text-align:center}
+.iv-stat-n{font-family:'Syne',sans-serif;font-size:18px;font-weight:800}
+.iv-stat-l{font-size:10px;color:var(--muted);font-weight:700;margin-top:2px}
+/* Verb Flashcard Modal */
+.vfc{width:100%;height:160px;perspective:1000px;margin-bottom:14px;cursor:pointer}
+.vfc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.vfc.flipped .vfc-inner{transform:rotateY(180deg)}
+.vfc-face{position:absolute;inset:0;background:linear-gradient(135deg,var(--s2),var(--s3));border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.vfc-back{transform:rotateY(180deg)}
+.vfc-word{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--blue)}
+.vfc-sub{font-size:12px;color:var(--muted);margin-top:6px}
+.vfc-forms{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.vfc-row{display:flex;align-items:center;gap:8px;font-size:13px}
+.vfc-label{font-size:10px;font-weight:800;width:28px;text-align:right;color:var(--muted)}
+.vfc-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:800}
+/* Verb Quiz */
+.vq-word{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--blue);text-align:center;margin:10px 0 4px}
+.vq-ask{font-size:12px;color:var(--muted);text-align:center;margin-bottom:14px}
+.vq-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 </style>
 </head>
 <body>
@@ -460,6 +499,21 @@ async function detectUnitsInBook(bookNum) {
 function getAllWordsFallback(level) {
   return FALLBACK_WORDS[level] || [];
 }
+
+// ============================================================
+// IRREGULAR VERBS DATA
+// ============================================================
+const IRREGULAR_VERBS = [{"v1":"bet","v2":"bet","v3":"bet","uz":"garov bog'lamoq","example":"I bet you'll win.","cat":"A"},{"v1":"bid","v2":"bid","v3":"bid","uz":"narx taklif qilmoq","example":"He bid $500 at auction.","cat":"A"},{"v1":"burst","v2":"burst","v3":"burst","uz":"portlamoq/yorilib ketmoq","example":"The pipe burst.","cat":"A"},{"v1":"cast","v2":"cast","v3":"cast","uz":"otmoq/tashlash","example":"Cast a wide net.","cat":"A"},{"v1":"cost","v2":"cost","v3":"cost","uz":"qimmatga tushmoq","example":"It cost a lot.","cat":"A"},{"v1":"cut","v2":"cut","v3":"cut","uz":"kesmoq","example":"Cut the rope.","cat":"A"},{"v1":"fit","v2":"fit","v3":"fit","uz":"to'g'ri kelmoq","example":"The dress fits her.","cat":"A"},{"v1":"hit","v2":"hit","v3":"hit","uz":"urmoq","example":"He hit the ball hard.","cat":"A"},{"v1":"hurt","v2":"hurt","v3":"hurt","uz":"og'ritmoq/azob bermoq","example":"That hurts!","cat":"A"},{"v1":"knit","v2":"knit","v3":"knit","uz":"to'qimoq","example":"She knit a scarf.","cat":"A"},{"v1":"let","v2":"let","v3":"let","uz":"ruxsat bermoq","example":"Let it go.","cat":"A"},{"v1":"put","v2":"put","v3":"put","uz":"qo'ymoq","example":"Put it on the table.","cat":"A"},{"v1":"quit","v2":"quit","v3":"quit","uz":"tashlamoq/chiqmoq","example":"He quit his job.","cat":"A"},{"v1":"read","v2":"read","v3":"read","uz":"o'qimoq","example":"Read more books.","cat":"A"},{"v1":"rid","v2":"rid","v3":"rid","uz":"qutulib ketmoq","example":"Get rid of it.","cat":"A"},{"v1":"set","v2":"set","v3":"set","uz":"o'rnatmoq","example":"Set the alarm.","cat":"A"},{"v1":"shed","v2":"shed","v3":"shed","uz":"to'kmoq","example":"Trees shed leaves.","cat":"A"},{"v1":"shut","v2":"shut","v3":"shut","uz":"yopmoq","example":"Shut the window.","cat":"A"},{"v1":"slit","v2":"slit","v3":"slit","uz":"yorib o'tmoq","example":"Slit the envelope open.","cat":"A"},{"v1":"split","v2":"split","v3":"split","uz":"bo'linmoq/ajratmoq","example":"Split the bill.","cat":"A"},{"v1":"spread","v2":"spread","v3":"spread","uz":"tarqatmoq/yoymoq","example":"Spread the news.","cat":"A"},{"v1":"thrust","v2":"thrust","v3":"thrust","uz":"itarmoq","example":"He thrust the door open.","cat":"A"},{"v1":"upset","v2":"upset","v3":"upset","uz":"xafa qilmoq","example":"Don't upset her.","cat":"A"},{"v1":"wed","v2":"wed","v3":"wed","uz":"uylantirmoq/turmushga chiqarmoq","example":"They wed last June.","cat":"A"},{"v1":"bring","v2":"brought","v3":"brought","uz":"olib kelmoq","example":"Bring me water.","cat":"B"},{"v1":"buy","v2":"bought","v3":"bought","uz":"sotib olmoq","example":"Buy some bread.","cat":"B"},{"v1":"catch","v2":"caught","v3":"caught","uz":"tutmoq/ushlamoq","example":"Catch the ball.","cat":"B"},{"v1":"fight","v2":"fought","v3":"fought","uz":"jang qilmoq","example":"Fight for justice.","cat":"B"},{"v1":"seek","v2":"sought","v3":"sought","uz":"qidirmoq/izlamoq","example":"Seek the truth.","cat":"B"},{"v1":"teach","v2":"taught","v3":"taught","uz":"o'rgatmoq","example":"Teach a lesson.","cat":"B"},{"v1":"think","v2":"thought","v3":"thought","uz":"o'ylamoq","example":"Think positive.","cat":"B"},{"v1":"work","v2":"wrought","v3":"wrought","uz":"ishlamoq (arxaik)","example":"Carefully wrought iron.","cat":"B"},{"v1":"deal","v2":"dealt","v3":"dealt","uz":"muomala qilmoq","example":"Deal with it.","cat":"C"},{"v1":"dream","v2":"dreamt","v3":"dreamt","uz":"tush ko'rmoq","example":"I dreamt of you.","cat":"C"},{"v1":"feel","v2":"felt","v3":"felt","uz":"his qilmoq","example":"Feel the music.","cat":"C"},{"v1":"keep","v2":"kept","v3":"kept","uz":"saqlamoq","example":"Keep going.","cat":"C"},{"v1":"kneel","v2":"knelt","v3":"knelt","uz":"tiz cho'kmoq","example":"She knelt down.","cat":"C"},{"v1":"lean","v2":"leant","v3":"leant","uz":"egilmoq","example":"Lean on me.","cat":"C"},{"v1":"leap","v2":"leapt","v3":"leapt","uz":"sakramoq","example":"Leap of faith.","cat":"C"},{"v1":"learn","v2":"learnt","v3":"learnt","uz":"o'rganmoq","example":"Learn something new.","cat":"C"},{"v1":"leave","v2":"left","v3":"left","uz":"tark etmoq","example":"Leave me alone.","cat":"C"},{"v1":"lend","v2":"lent","v3":"lent","uz":"qarz bermoq","example":"Lend me a hand.","cat":"C"},{"v1":"lose","v2":"lost","v3":"lost","uz":"yo'qotmoq","example":"Don't lose hope.","cat":"C"},{"v1":"mean","v2":"meant","v3":"meant","uz":"anglatmoq","example":"What does it mean?","cat":"C"},{"v1":"meet","v2":"met","v3":"met","uz":"uchrashmoq","example":"Nice to meet you.","cat":"C"},{"v1":"send","v2":"sent","v3":"sent","uz":"yubormoq","example":"Send a message.","cat":"C"},{"v1":"sleep","v2":"slept","v3":"slept","uz":"uxlamoq","example":"Sleep tight.","cat":"C"},{"v1":"smell","v2":"smelt","v3":"smelt","uz":"hidlamoq/is bilmoq","example":"It smells good.","cat":"C"},{"v1":"spell","v2":"spelt","v3":"spelt","uz":"imlolab o'qimoq","example":"Spell your name.","cat":"C"},{"v1":"spend","v2":"spent","v3":"spent","uz":"sarflamoq","example":"Spend wisely.","cat":"C"},{"v1":"spill","v2":"spilt","v3":"spilt","uz":"to'kib yubormoq","example":"Don't spill the milk.","cat":"C"},{"v1":"spoil","v2":"spoilt","v3":"spoilt","uz":"buzilib ketmoq","example":"The food spoilt.","cat":"C"},{"v1":"sweep","v2":"swept","v3":"swept","uz":"supurmoq","example":"Sweep the floor.","cat":"C"},{"v1":"weep","v2":"wept","v3":"wept","uz":"yig'lamoq","example":"She wept with joy.","cat":"C"},{"v1":"bleed","v2":"bled","v3":"bled","uz":"qonamoq","example":"His wound bled.","cat":"D"},{"v1":"breed","v2":"bred","v3":"bred","uz":"ko'paytirmoq","example":"They breed horses.","cat":"D"},{"v1":"feed","v2":"fed","v3":"fed","uz":"boqmoq/ovqatlantirmoq","example":"Feed the baby.","cat":"D"},{"v1":"find","v2":"found","v3":"found","uz":"topmoq","example":"Find your key.","cat":"D"},{"v1":"flee","v2":"fled","v3":"fled","uz":"qochmoq","example":"Flee the danger.","cat":"D"},{"v1":"grind","v2":"ground","v3":"ground","uz":"maydalamaq/tortmoq","example":"Grind the coffee.","cat":"D"},{"v1":"have","v2":"had","v3":"had","uz":"ega bo'lmoq","example":"Have fun.","cat":"D"},{"v1":"hear","v2":"heard","v3":"heard","uz":"eshitmoq","example":"Hear me out.","cat":"D"},{"v1":"hold","v2":"held","v3":"held","uz":"ushlab turmoq","example":"Hold my hand.","cat":"D"},{"v1":"lay","v2":"laid","v3":"laid","uz":"yotqizmoq","example":"Lay the table.","cat":"D"},{"v1":"lead","v2":"led","v3":"led","uz":"boshlamoq/yetaklamoq","example":"Lead the way.","cat":"D"},{"v1":"make","v2":"made","v3":"made","uz":"yasamoq","example":"Make a wish.","cat":"D"},{"v1":"pay","v2":"paid","v3":"paid","uz":"to'lamoq","example":"Pay the bill.","cat":"D"},{"v1":"say","v2":"said","v3":"said","uz":"aytmoq","example":"Say hello.","cat":"D"},{"v1":"sell","v2":"sold","v3":"sold","uz":"sotmoq","example":"Sell your car.","cat":"D"},{"v1":"sit","v2":"sat","v3":"sat","uz":"o'tirmoq","example":"Sit down please.","cat":"D"},{"v1":"slide","v2":"slid","v3":"slid","uz":"sirg'anib ketmoq","example":"Slide down the hill.","cat":"D"},{"v1":"speed","v2":"sped","v3":"sped","uz":"tezlikni oshirmoq","example":"Don't speed.","cat":"D"},{"v1":"stand","v2":"stood","v3":"stood","uz":"turmoq","example":"Stand up straight.","cat":"D"},{"v1":"stick","v2":"stuck","v3":"stuck","uz":"yopishtirmoq","example":"Stick to the plan.","cat":"D"},{"v1":"sting","v2":"stung","v3":"stung","uz":"chaqmoq (hasharot)","example":"A bee stung him.","cat":"D"},{"v1":"strike","v2":"struck","v3":"struck","uz":"urmoq/zarba bermoq","example":"Strike a balance.","cat":"D"},{"v1":"swing","v2":"swung","v3":"swung","uz":"tebranmoq","example":"Swing high.","cat":"D"},{"v1":"tell","v2":"told","v3":"told","uz":"aytmoq/gapirmoq","example":"Tell the truth.","cat":"D"},{"v1":"understand","v2":"understood","v3":"understood","uz":"tushunmoq","example":"Understand clearly.","cat":"D"},{"v1":"win","v2":"won","v3":"won","uz":"yutmoq/g'olib bo'lmoq","example":"Win the game.","cat":"D"},{"v1":"wind","v2":"wound","v3":"wound","uz":"o'ramoq","example":"Wind the clock.","cat":"D"},{"v1":"wring","v2":"wrung","v3":"wrung","uz":"siqmoq","example":"Wring the cloth.","cat":"D"},{"v1":"become","v2":"became","v3":"become","uz":"bo'lmoq/aylanmoq","example":"Become a better person.","cat":"E"},{"v1":"come","v2":"came","v3":"come","uz":"kelmoq","example":"Come here now.","cat":"E"},{"v1":"overcome","v2":"overcame","v3":"overcome","uz":"engib o'tmoq","example":"Overcome your fears.","cat":"E"},{"v1":"run","v2":"ran","v3":"run","uz":"yugurmoq","example":"Run as fast as you can.","cat":"E"},{"v1":"begin","v2":"began","v3":"begun","uz":"boshlamoq","example":"Begin a new chapter.","cat":"F"},{"v1":"drink","v2":"drank","v3":"drunk","uz":"ichmoq","example":"Drink more water.","cat":"F"},{"v1":"ring","v2":"rang","v3":"rung","uz":"qo'ng'iroq qilmoq","example":"The bell rang.","cat":"F"},{"v1":"shrink","v2":"shrank","v3":"shrunk","uz":"kichraymoq","example":"The shirt shrank.","cat":"F"},{"v1":"sing","v2":"sang","v3":"sung","uz":"kuylamoq","example":"Sing a song.","cat":"F"},{"v1":"sink","v2":"sank","v3":"sunk","uz":"cho'kmoq","example":"The ship sank.","cat":"F"},{"v1":"spring","v2":"sprang","v3":"sprung","uz":"sakramoq/ko'tarilmoq","example":"Spring forward.","cat":"F"},{"v1":"stink","v2":"stank","v3":"stunk","uz":"hidlanmoq (yomon)","example":"It stinks in here.","cat":"F"},{"v1":"swim","v2":"swam","v3":"swum","uz":"suzmoq","example":"Swim to the shore.","cat":"F"},{"v1":"arise","v2":"arose","v3":"arisen","uz":"paydo bo'lmoq","example":"A problem has arisen.","cat":"G"},{"v1":"awake","v2":"awoke","v3":"awoken","uz":"uyg'onmoq","example":"He awoke at dawn.","cat":"G"},{"v1":"be","v2":"was/were","v3":"been","uz":"bo'lmoq","example":"I have been busy.","cat":"G"},{"v1":"bear","v2":"bore","v3":"borne","uz":"chidamoq/ko'tarmoq","example":"Bear the pain.","cat":"G"},{"v1":"beat","v2":"beat","v3":"beaten","uz":"urmoq/mag'lub etmoq","example":"Beat the record.","cat":"G"},{"v1":"bite","v2":"bit","v3":"bitten","uz":"tishlamoq","example":"Don't bite the hand.","cat":"G"},{"v1":"blow","v2":"blew","v3":"blown","uz":"puflamoq/esmoq","example":"The wind blew.","cat":"G"},{"v1":"break","v2":"broke","v3":"broken","uz":"sindirmoq","example":"Don't break it.","cat":"G"},{"v1":"choose","v2":"chose","v3":"chosen","uz":"tanlamoq","example":"Choose wisely.","cat":"G"},{"v1":"do","v2":"did","v3":"done","uz":"qilmoq","example":"Just do it.","cat":"G"},{"v1":"draw","v2":"drew","v3":"drawn","uz":"chizmoq","example":"Draw a line.","cat":"G"},{"v1":"drive","v2":"drove","v3":"driven","uz":"haydamoq","example":"Drive carefully.","cat":"G"},{"v1":"eat","v2":"ate","v3":"eaten","uz":"yemoq","example":"Eat healthy food.","cat":"G"},{"v1":"fall","v2":"fell","v3":"fallen","uz":"yiqilmoq","example":"Fall in love.","cat":"G"},{"v1":"fly","v2":"flew","v3":"flown","uz":"uchmoq","example":"Fly high.","cat":"G"},{"v1":"forbid","v2":"forbade","v3":"forbidden","uz":"taqiqlamoq","example":"Smoking is forbidden.","cat":"G"},{"v1":"forget","v2":"forgot","v3":"forgotten","uz":"unutmoq","example":"Never forget.","cat":"G"},{"v1":"forgive","v2":"forgave","v3":"forgiven","uz":"kechirmoq","example":"Forgive and forget.","cat":"G"},{"v1":"freeze","v2":"froze","v3":"frozen","uz":"muzlamoq","example":"Frozen in time.","cat":"G"},{"v1":"get","v2":"got","v3":"gotten","uz":"olmoq/qo'lga kiritmoq","example":"Get it done.","cat":"G"},{"v1":"give","v2":"gave","v3":"given","uz":"bermoq","example":"Give your best.","cat":"G"},{"v1":"grow","v2":"grew","v3":"grown","uz":"o'smoq","example":"Grow together.","cat":"G"},{"v1":"hide","v2":"hid","v3":"hidden","uz":"yashirmoq","example":"Hide and seek.","cat":"G"},{"v1":"know","v2":"knew","v3":"known","uz":"bilmoq","example":"I have known him.","cat":"G"},{"v1":"lie","v2":"lay","v3":"lain","uz":"yotmoq","example":"Lie down and rest.","cat":"G"},{"v1":"mistake","v2":"mistook","v3":"mistaken","uz":"adashmoq","example":"I was mistaken.","cat":"G"},{"v1":"ride","v2":"rode","v3":"ridden","uz":"minmoq","example":"Ride a bicycle.","cat":"G"},{"v1":"rise","v2":"rose","v3":"risen","uz":"ko'tarilmoq","example":"The sun has risen.","cat":"G"},{"v1":"see","v2":"saw","v3":"seen","uz":"ko'rmoq","example":"I've seen this before.","cat":"G"},{"v1":"shake","v2":"shook","v3":"shaken","uz":"silkitmoq","example":"Shake hands firmly.","cat":"G"},{"v1":"show","v2":"showed","v3":"shown","uz":"ko'rsatmoq","example":"Show your work.","cat":"G"},{"v1":"speak","v2":"spoke","v3":"spoken","uz":"gapirmoq","example":"Speak your mind.","cat":"G"},{"v1":"steal","v2":"stole","v3":"stolen","uz":"o'g'irlamoq","example":"Steal the spotlight.","cat":"G"},{"v1":"swear","v2":"swore","v3":"sworn","uz":"qasam ichmoq","example":"I swear it's true.","cat":"G"},{"v1":"take","v2":"took","v3":"taken","uz":"olmoq","example":"Take a deep breath.","cat":"G"},{"v1":"tear","v2":"tore","v3":"torn","uz":"yirtmoq","example":"Tear it apart.","cat":"G"},{"v1":"throw","v2":"threw","v3":"thrown","uz":"otmoq","example":"Throw the ball.","cat":"G"},{"v1":"tread","v2":"trod","v3":"trodden","uz":"bosmoq","example":"Tread lightly.","cat":"G"},{"v1":"wake","v2":"woke","v3":"woken","uz":"uyg'onmoq","example":"Wake up early.","cat":"G"},{"v1":"wear","v2":"wore","v3":"worn","uz":"kiymoq","example":"Wear your best.","cat":"G"},{"v1":"weave","v2":"wove","v3":"woven","uz":"to'qimoq","example":"Weave a tale.","cat":"G"},{"v1":"write","v2":"wrote","v3":"written","uz":"yozmoq","example":"Write your story.","cat":"G"},{"v1":"bind","v2":"bound","v3":"bound","uz":"bog'lamoq","example":"Bind the pages.","cat":"H"},{"v1":"build","v2":"built","v3":"built","uz":"qurmoq","example":"Build a house.","cat":"H"},{"v1":"dig","v2":"dug","v3":"dug","uz":"kovlamoq","example":"Dig a hole.","cat":"H"},{"v1":"hang","v2":"hung","v3":"hung","uz":"ilib qo'ymoq","example":"Hang the picture.","cat":"H"},{"v1":"light","v2":"lit","v3":"lit","uz":"yoqmoq/yoritmoq","example":"Light the candle.","cat":"H"},{"v1":"shoot","v2":"shot","v3":"shot","uz":"otmoq (o'q bilan)","example":"Shoot for the stars.","cat":"H"},{"v1":"spin","v2":"spun","v3":"spun","uz":"aylantirmoq","example":"Spin the wheel.","cat":"H"},{"v1":"spit","v2":"spat","v3":"spat","uz":"tupurmoq","example":"Don't spit.","cat":"H"},{"v1":"strive","v2":"strove","v3":"striven","uz":"intilmoq","example":"Strive to improve.","cat":"H"},{"v1":"withdraw","v2":"withdrew","v3":"withdrawn","uz":"tortib olmoq","example":"Withdraw money.","cat":"H"}];
+const IV_CATS = [
+  {cat:'A',title:"Uchala shakli bir xil",pattern:'cut → cut → cut',color:'#4f9cf9'},
+  {cat:'B',title:'-ought/-aught',pattern:'bring → brought → brought',color:'#f5c542'},
+  {cat:'C',title:'-ept/-elt/-ent',pattern:'keep → kept → kept',color:'#c084fc'},
+  {cat:'D',title:"Unli o'zgarishi",pattern:'hold → held → held',color:'#4fdf8a'},
+  {cat:'E',title:'V1 = V3',pattern:'come → came → come',color:'#f97b4f'},
+  {cat:'F',title:'A→O→U',pattern:'sing → sang → sung',color:'#f85149'},
+  {cat:'G',title:"-en/-n qo'shimcha",pattern:'break → broke → broken',color:'#a07cf8'},
+  {cat:'H',title:"Alohida o'zgaruvchi",pattern:'go → went → gone',color:'#e879f9'},
+];
 
 // ============================================================
 // GRAMMAR DATA
@@ -1024,6 +1078,27 @@ const ONLINE_PLAYERS = [
         </div>
         <div class="gr-list" id="gr-list"></div>
       </div>
+
+      <!-- IRREGULAR VERBS -->
+      <div class="sec iv-section">
+        <div class="iv-header">
+          <div class="iv-title">⚡ Irregular Verbs <span style="font-size:11px;background:rgba(79,156,249,.15);color:var(--blue);padding:2px 8px;border-radius:20px;font-weight:700">151</span></div>
+          <div style="display:flex;gap:7px">
+            <div style="font-size:12px;color:var(--blue);font-weight:700;cursor:pointer" onclick="openModal('modal-iv-flashcard')">🃏 Karta</div>
+            <div style="font-size:12px;color:var(--purple);font-weight:700;cursor:pointer" onclick="openModal('modal-iv-quiz')">🎯 Quiz</div>
+          </div>
+        </div>
+        <div class="iv-stats-row">
+          <div class="iv-stat"><div class="iv-stat-n" style="color:var(--blue)" id="iv-learned-count">0</div><div class="iv-stat-l">O'rganildi</div></div>
+          <div class="iv-stat"><div class="iv-stat-n" style="color:var(--gold)" id="iv-total-count">151</div><div class="iv-stat-l">Jami</div></div>
+          <div class="iv-stat"><div class="iv-stat-n" style="color:var(--green)" id="iv-pct">0%</div><div class="iv-stat-l">Progress</div></div>
+        </div>
+        <div class="iv-cats" id="iv-cat-pills"></div>
+        <div id="iv-list"></div>
+        <div style="text-align:center;margin-top:8px">
+          <span style="font-size:11px;color:var(--muted);cursor:pointer" id="iv-show-all-btn" onclick="ivShowAll()">Barchasi ↓</span>
+        </div>
+      </div>
     </div>
 
     <!-- PROGRESS -->
@@ -1100,7 +1175,7 @@ const ONLINE_PLAYERS = [
           </div>
         </div>
 
-                <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">BEPUL (+1 XP/to'g'ri javob)</div>
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">BEPUL (+1 XP/to'g'ri javob)</div>
         <div class="games-grid" style="margin-bottom:18px">
           <div class="game-card" onclick="openModal('modal-match')">
             <div class="g-icon">🔗</div><div class="g-name">Word Match</div><div class="g-desc">Juftlashtir</div>
@@ -1110,6 +1185,16 @@ const ONLINE_PLAYERS = [
           </div>
           <div class="game-card" onclick="openModal('modal-quiz')">
             <div class="g-icon">❓</div><div class="g-name">Quiz</div><div class="g-desc">Savol-javob</div>
+          </div>
+        </div>
+
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:8px">⚡ IRREGULAR VERBS O'YINLARI</div>
+        <div class="games-grid" style="margin-bottom:18px">
+          <div class="game-card" onclick="openModal('modal-iv-flashcard')" style="border-color:rgba(79,156,249,.3)">
+            <div class="g-icon">🃏</div><div class="g-name">Verb Flashcard</div><div class="g-desc">V1→V2→V3 karta</div>
+          </div>
+          <div class="game-card" onclick="openModal('modal-iv-quiz')" style="border-color:rgba(192,132,252,.3)">
+            <div class="g-icon">🎯</div><div class="g-name">Verb Quiz</div><div class="g-desc">Shaklini top</div>
           </div>
         </div>
 
@@ -1384,6 +1469,73 @@ const ONLINE_PLAYERS = [
   </div>
 </div>
 
+<!-- IRREGULAR VERBS FLASHCARD MODAL -->
+<div class="overlay" id="modal-iv-flashcard" onclick="closeModal(event,'modal-iv-flashcard')">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-iv-flashcard')">✕</div>
+    <div class="sb">
+      <div class="st">🃏 Verb Flashcard</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div class="iv-cats" id="ivfc-cat-pills" style="margin-bottom:0;flex:1"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <span style="font-size:12px;color:var(--muted);font-weight:700" id="ivfc-counter">1 / 24</span>
+        <span style="font-size:11px;color:var(--green);font-weight:700" id="ivfc-learned-badge">0 o'rganildi</span>
+      </div>
+      <div class="vfc" id="ivfc-card" onclick="ivfcFlip()">
+        <div class="vfc-inner">
+          <div class="vfc-face">
+            <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-bottom:8px">V1 — Base Form</div>
+            <div class="vfc-word" id="ivfc-v1">—</div>
+            <div class="vfc-sub" id="ivfc-uz">—</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:12px">👆 Bosing — V2 va V3 ko'ring</div>
+          </div>
+          <div class="vfc-face vfc-back" style="background:linear-gradient(135deg,rgba(124,90,246,.15),rgba(192,132,252,.08));">
+            <div class="vfc-forms" id="ivfc-back-content">
+              <div class="vfc-row"><span class="vfc-label">V1</span><span class="vfc-val" style="color:var(--blue)" id="ivfc-bv1">—</span></div>
+              <div style="height:1px;background:var(--border);width:80%;margin:4px 0"></div>
+              <div class="vfc-row"><span class="vfc-label">V2</span><span class="vfc-val" style="color:var(--gold)" id="ivfc-bv2">—</span></div>
+              <div class="vfc-row"><span class="vfc-label">V3</span><span class="vfc-val" style="color:var(--purple)" id="ivfc-bv3">—</span></div>
+              <div style="font-size:11px;color:rgba(79,156,249,.8);font-style:italic;margin-top:8px;text-align:center" id="ivfc-bex">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:10px">
+        <button onclick="ivfcPrev()" style="flex:1;padding:11px;background:var(--s2);border:1px solid var(--border);border-radius:11px;color:var(--text);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">← Oldingi</button>
+        <button onclick="ivfcMarkLearned()" id="ivfc-learn-btn" style="flex:1.5;padding:11px;background:linear-gradient(135deg,rgba(79,223,138,.15),rgba(79,223,138,.08));border:1.5px solid rgba(79,223,138,.3);border-radius:11px;color:var(--green);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">✅ O'rgandim</button>
+        <button onclick="ivfcNext()" style="flex:1;padding:11px;background:var(--s2);border:1px solid var(--border);border-radius:11px;color:var(--text);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">Keyingi →</button>
+      </div>
+      <button onclick="speakText(document.getElementById('ivfc-v1').textContent)" style="width:100%;padding:9px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;color:var(--green);font-weight:700;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Talaffuz eshitish</button>
+    </div>
+  </div>
+</div>
+
+<!-- IRREGULAR VERBS QUIZ MODAL -->
+<div class="overlay" id="modal-iv-quiz" onclick="closeModal(event,'modal-iv-quiz')">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-iv-quiz')">✕</div>
+    <div class="sb">
+      <div class="st">🎯 Verb Quiz</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div class="iv-cats" id="ivq-cat-pills" style="margin-bottom:0;flex:1"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;background:var(--s2);border-radius:11px;padding:9px 13px;margin-bottom:12px">
+        <span style="font-size:12px;color:var(--muted);font-weight:700">Savol <span id="ivq-num">1</span>/<span id="ivq-total">10</span></span>
+        <span style="font-size:12px;font-weight:800;color:var(--green)">✅ <span id="ivq-score">0</span></span>
+        <span style="font-size:12px;font-weight:800;color:var(--red)">❌ <span id="ivq-wrong">0</span></span>
+      </div>
+      <div class="vq-word" id="ivq-word">—</div>
+      <div class="vq-ask" id="ivq-ask">V2 (Past Simple) ni toping:</div>
+      <div id="ivq-res" style="text-align:center;font-size:13px;min-height:20px;margin-bottom:8px"></div>
+      <div class="vq-opts" id="ivq-opts"></div>
+      <div style="margin-top:12px;background:var(--s2);border-radius:10px;padding:8px 12px;font-size:11px;color:var(--muted);display:none" id="ivq-explain"></div>
+    </div>
+  </div>
+</div>
+
 <!-- GRAMMAR LEVEL SELECTOR -->
 <div class="overlay" id="modal-gr-levels" onclick="closeModal(event,'modal-gr-levels')">
   <div class="sheet">
@@ -1482,6 +1634,7 @@ window.addEventListener('DOMContentLoaded', async ()=>{
   updateUnitRange();
   await goToUnit();
   buildGrammarList();
+  buildIrregularVerbs();
   buildLeaderboard();
   buildBattleUI();
   updateStats();
@@ -1877,6 +2030,275 @@ function showToast(msg){
   const t=document.createElement('div');t.className='toast';t.textContent=msg;
   document.body.appendChild(t);setTimeout(()=>t.remove(),2600);
 }
+
+// ===== IRREGULAR VERBS =====
+let _ivCurCat = 'ALL';
+let _ivShowAllMode = false;
+
+function buildIrregularVerbs(){
+  // Cat pills
+  const pillsEl = document.getElementById('iv-cat-pills');
+  if(pillsEl){
+    pillsEl.innerHTML = `<div class="iv-cat-pill${_ivCurCat==='ALL'?' active':''}" onclick="ivSetCat('ALL')">Barchasi</div>` +
+      IV_CATS.map(c=>`<div class="iv-cat-pill${_ivCurCat===c.cat?' active':''}" onclick="ivSetCat('${c.cat}')" style="${_ivCurCat===c.cat?'border-color:'+c.color+';color:'+c.color+';background:'+c.color+'22':''}">
+        ${c.cat}: ${c.title}
+      </div>`).join('');
+  }
+  // Stats
+  const learned = U.ivLearned || [];
+  const total = IRREGULAR_VERBS.length;
+  const lCount = learned.length;
+  const el1=document.getElementById('iv-learned-count');
+  const el2=document.getElementById('iv-pct');
+  if(el1) el1.textContent=lCount;
+  if(el2) el2.textContent=Math.round(lCount/total*100)+'%';
+
+  // List
+  const listEl = document.getElementById('iv-list');
+  if(!listEl) return;
+  let filtered = _ivCurCat==='ALL' ? IRREGULAR_VERBS : IRREGULAR_VERBS.filter(v=>v.cat===_ivCurCat);
+  const showCount = _ivShowAllMode ? filtered.length : Math.min(6, filtered.length);
+  const catInfo = IV_CATS.find(c=>c.cat===_ivCurCat);
+  const accentColor = catInfo ? catInfo.color : 'var(--blue)';
+
+  listEl.innerHTML = filtered.slice(0, showCount).map(v=>{
+    const isLearned = learned.includes(v.v1);
+    return `<div class="iv-card${isLearned?' learned':''}" onclick="this.classList.toggle('expanded')" style="${isLearned?'border-color:rgba(79,223,138,.3);background:rgba(79,223,138,.04)':''}">
+      <div class="iv-card-top">
+        <div>
+          <div class="iv-v1" style="color:${accentColor}">${v.v1} ${isLearned?'<span style="font-size:14px">✅</span>':''}</div>
+          <div class="iv-uz">${v.uz}</div>
+        </div>
+        <div class="iv-forms">
+          <span class="iv-form v2">${v.v2}</span>
+          <span style="font-size:10px;color:var(--muted)">→</span>
+          <span class="iv-form v3">${v.v3}</span>
+        </div>
+      </div>
+      <div class="iv-ex">"${v.example}"</div>
+    </div>`;
+  }).join('');
+
+  const showBtn = document.getElementById('iv-show-all-btn');
+  if(showBtn){
+    if(filtered.length <= 6 || _ivShowAllMode){
+      showBtn.style.display='none';
+    } else {
+      showBtn.style.display='inline';
+      showBtn.textContent=`Barchasi ko'rish (${filtered.length}) ↓`;
+    }
+  }
+}
+
+function ivSetCat(cat){
+  _ivCurCat = cat;
+  _ivShowAllMode = false;
+  buildIrregularVerbs();
+  // Flashcard va Quiz ham yangilaylik
+  if(document.getElementById('modal-iv-flashcard')?.classList.contains('open')) ivfcInit();
+  if(document.getElementById('modal-iv-quiz')?.classList.contains('open')) ivqInit();
+}
+
+function ivShowAll(){
+  _ivShowAllMode = true;
+  buildIrregularVerbs();
+}
+
+// ── FLASHCARD ────────────────────────────────────────────────
+let IVF = { pool:[], idx:0, cat:'ALL', flipped:false };
+
+function ivfcInit(){
+  const cat = _ivCurCat;
+  IVF.pool = cat==='ALL' ? [...IRREGULAR_VERBS] : IRREGULAR_VERBS.filter(v=>v.cat===cat);
+  IVF.idx = 0; IVF.flipped = false;
+  // Cat pills in modal
+  const pillsEl = document.getElementById('ivfc-cat-pills');
+  if(pillsEl){
+    pillsEl.innerHTML = `<div class="iv-cat-pill${IVF.cat==='ALL'?' active':''}" onclick="ivfcSetCat('ALL')">Barchasi</div>` +
+      IV_CATS.map(c=>`<div class="iv-cat-pill${IVF.cat===c.cat?' active':''}" onclick="ivfcSetCat('${c.cat}')" style="${IVF.cat===c.cat?'border-color:'+c.color+';color:'+c.color:''}">
+        ${c.cat}
+      </div>`).join('');
+  }
+  ivfcRender();
+}
+
+function ivfcSetCat(cat){
+  IVF.cat = cat;
+  IVF.pool = cat==='ALL' ? [...IRREGULAR_VERBS] : IRREGULAR_VERBS.filter(v=>v.cat===cat);
+  IVF.idx=0; IVF.flipped=false;
+  // update pills
+  document.querySelectorAll('#ivfc-cat-pills .iv-cat-pill').forEach(p=>{
+    const isActive = (p.textContent.trim()==='Barchasi' && cat==='ALL') || p.textContent.trim().startsWith(cat);
+    const catInfo = IV_CATS.find(c=>c.cat===cat);
+    p.classList.toggle('active', isActive);
+    if(isActive && catInfo){ p.style.borderColor=catInfo.color; p.style.color=catInfo.color; }
+    else { p.style.borderColor=''; p.style.color=''; }
+  });
+  ivfcRender();
+}
+
+function ivfcRender(){
+  const v = IVF.pool[IVF.idx];
+  if(!v) return;
+  const card = document.getElementById('ivfc-card');
+  if(card){ card.classList.remove('flipped'); IVF.flipped=false; }
+  document.getElementById('ivfc-v1').textContent = v.v1;
+  document.getElementById('ivfc-uz').textContent = v.uz;
+  document.getElementById('ivfc-bv1').textContent = v.v1;
+  document.getElementById('ivfc-bv2').textContent = v.v2;
+  document.getElementById('ivfc-bv3').textContent = v.v3;
+  document.getElementById('ivfc-bex').textContent = '"'+v.example+'"';
+  document.getElementById('ivfc-counter').textContent = (IVF.idx+1)+' / '+IVF.pool.length;
+  const isLearned = (U.ivLearned||[]).includes(v.v1);
+  const btn = document.getElementById('ivfc-learn-btn');
+  if(btn){ btn.textContent = isLearned ? '✅ O\'rganildi' : '✅ O\'rgandim'; btn.style.opacity = isLearned ? '0.6' : '1'; }
+  const learnedCount = (U.ivLearned||[]).filter(w=>IVF.pool.some(p=>p.v1===w)).length;
+  document.getElementById('ivfc-learned-badge').textContent = learnedCount+' o\'rganildi';
+}
+
+function ivfcFlip(){
+  const card = document.getElementById('ivfc-card');
+  IVF.flipped = !IVF.flipped;
+  card.classList.toggle('flipped', IVF.flipped);
+}
+
+function ivfcNext(){
+  IVF.idx = (IVF.idx+1) % IVF.pool.length;
+  ivfcRender();
+}
+
+function ivfcPrev(){
+  IVF.idx = (IVF.idx-1+IVF.pool.length) % IVF.pool.length;
+  ivfcRender();
+}
+
+function ivfcMarkLearned(){
+  const v = IVF.pool[IVF.idx];
+  if(!v) return;
+  if(!U.ivLearned) U.ivLearned=[];
+  if(!U.ivLearned.includes(v.v1)){
+    U.ivLearned.push(v.v1);
+    addXP(2);
+    showToast('✅ "'+v.v1+'" o\'rganildi! +2 XP');
+  } else {
+    showToast('⭐ Allaqachon o\'rganilgan!');
+  }
+  saveUser();
+  ivfcRender();
+  buildIrregularVerbs();
+}
+
+// ── QUIZ ────────────────────────────────────────────────────
+let IVQ = { pool:[], idx:0, score:0, wrong:0, askType:'v2' };
+
+function ivqInit(){
+  const cat = _ivCurCat;
+  const base = cat==='ALL' ? [...IRREGULAR_VERBS] : IRREGULAR_VERBS.filter(v=>v.cat===cat);
+  IVQ.pool = shuffle([...base]).slice(0, Math.min(15, base.length));
+  IVQ.idx=0; IVQ.score=0; IVQ.wrong=0;
+  document.getElementById('ivq-score').textContent=0;
+  document.getElementById('ivq-wrong').textContent=0;
+  document.getElementById('ivq-total').textContent=IVQ.pool.length;
+  // Cat pills
+  const pillsEl = document.getElementById('ivq-cat-pills');
+  if(pillsEl){
+    pillsEl.innerHTML = `<div class="iv-cat-pill${cat==='ALL'?' active':''}" onclick="ivqSetCat('ALL')">Barchasi</div>` +
+      IV_CATS.map(c=>`<div class="iv-cat-pill${cat===c.cat?' active':''}" onclick="ivqSetCat('${c.cat}')" style="${cat===c.cat?'border-color:'+c.color+';color:'+c.color:''}">
+        ${c.cat}
+      </div>`).join('');
+  }
+  ivqBuild();
+}
+
+function ivqSetCat(cat){
+  _ivCurCat = cat;
+  ivqInit();
+  document.querySelectorAll('#ivq-cat-pills .iv-cat-pill').forEach(p=>{
+    const isActive = (p.textContent.trim()==='Barchasi' && cat==='ALL') || p.textContent.trim().startsWith(cat);
+    const catInfo = IV_CATS.find(c=>c.cat===cat);
+    p.classList.toggle('active', isActive);
+    if(isActive && catInfo){ p.style.borderColor=catInfo.color; p.style.color=catInfo.color; }
+    else { p.style.borderColor=''; p.style.color=''; }
+  });
+}
+
+function ivqBuild(){
+  if(IVQ.idx >= IVQ.pool.length){
+    // Natija
+    const xp = IVQ.score * 3;
+    document.getElementById('ivq-opts').innerHTML='';
+    document.getElementById('ivq-res').innerHTML='';
+    document.getElementById('ivq-explain').style.display='none';
+    document.getElementById('ivq-word').textContent = IVQ.score>=IVQ.pool.length*0.7?'🏆':'💪';
+    document.getElementById('ivq-ask').innerHTML=`
+      <div style="text-align:center;padding:10px 0">
+        <div style="font-size:22px;font-weight:800;color:var(--gold)">${IVQ.score}/${IVQ.pool.length} to'g'ri</div>
+        <div style="color:var(--green);font-size:13px;margin:6px 0">+${xp} XP</div>
+        <button onclick="ivqInit()" style="padding:11px 28px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:11px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:6px">🔁 Qayta</button>
+      </div>`;
+    try{ addXP(xp); }catch(e){}
+    return;
+  }
+
+  const v = IVQ.pool[IVQ.idx];
+  // Alternately ask V2 or V3
+  IVQ.askType = IVQ.idx % 2 === 0 ? 'v2' : 'v3';
+  const correct = IVQ.askType==='v2' ? v.v2 : v.v3;
+  const askLabel = IVQ.askType==='v2' ? 'V2 (Past Simple)' : 'V3 (Past Participle)';
+
+  document.getElementById('ivq-num').textContent = IVQ.idx+1;
+  document.getElementById('ivq-word').textContent = v.v1;
+  document.getElementById('ivq-ask').textContent = askLabel+' ni toping:';
+  document.getElementById('ivq-res').textContent='';
+  document.getElementById('ivq-explain').style.display='none';
+
+  // Options — 4 ta, shu kategoriyadan yoki barcha verblardan
+  const allPool = IRREGULAR_VERBS;
+  const wrongOpts = shuffle(allPool.filter(w=>w.v1!==v.v1))
+    .slice(0,3)
+    .map(w=> IVQ.askType==='v2' ? w.v2 : w.v3);
+  const opts = shuffle([correct, ...wrongOpts]);
+
+  const optsEl = document.getElementById('ivq-opts');
+  optsEl.innerHTML='';
+  opts.forEach(opt=>{
+    const el = document.createElement('div');
+    el.className='gopt';
+    el.textContent=opt;
+    el.onclick=()=>{
+      optsEl.querySelectorAll('.gopt').forEach(o=>o.style.pointerEvents='none');
+      if(opt===correct){
+        el.classList.add('correct'); IVQ.score++;
+        document.getElementById('ivq-score').textContent=IVQ.score;
+        document.getElementById('ivq-res').innerHTML='<span style="color:var(--green)">✅ To\'g\'ri! +3 XP</span>';
+        try{ addXP(3); }catch(e){}
+        if(!U.ivLearned) U.ivLearned=[];
+        if(!U.ivLearned.includes(v.v1)){ U.ivLearned.push(v.v1); saveUser(); buildIrregularVerbs(); }
+      } else {
+        el.classList.add('wrong'); IVQ.wrong++;
+        optsEl.querySelectorAll('.gopt').forEach(o=>{ if(o.textContent===correct) o.classList.add('correct'); });
+        document.getElementById('ivq-wrong').textContent=IVQ.wrong;
+        document.getElementById('ivq-res').innerHTML='<span style="color:var(--red)">❌ Xato</span>';
+        const ex=document.getElementById('ivq-explain');
+        ex.style.display='block';
+        ex.innerHTML=`<b>${v.v1}</b> → <b style="color:var(--gold)">${v.v2}</b> → <b style="color:var(--purple)">${v.v3}</b> · ${v.uz}<br><i style="color:rgba(79,156,249,.8)">"${v.example}"</i>`;
+        if(!U.wordErrors) U.wordErrors={};
+        U.wordErrors['iv:'+v.v1]=(U.wordErrors['iv:'+v.v1]||0)+1;
+        saveUser();
+      }
+      setTimeout(()=>{ IVQ.idx++; ivqBuild(); }, 1200);
+    };
+    optsEl.appendChild(el);
+  });
+}
+
+// openModal hook — IV modallari uchun init
+const _origOpenModalIV = openModal;
+openModal = function(id){
+  _origOpenModalIV(id);
+  if(id==='modal-iv-flashcard') setTimeout(ivfcInit, 50);
+  if(id==='modal-iv-quiz') setTimeout(ivqInit, 50);
+};
 
 // ===== GRAMMAR =====
 function buildGrammarList(){
