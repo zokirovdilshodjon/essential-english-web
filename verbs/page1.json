@@ -1,0 +1,178 @@
+{
+  "page": 1,
+  "category": "A",
+  "title": "Uchala shakli bir xil (V1 = V2 = V3)",
+  "description": "Bu verblarning hech bir shakli o'zgarmaydi",
+  "pattern": "cut → cut → cut",
+  "total": 24,
+  "verbs": [
+    {
+      "v1": "bet",
+      "v2": "bet",
+      "v3": "bet",
+      "uz": "garov bog'lamoq",
+      "example": "I bet you'll win."
+    },
+    {
+      "v1": "bid",
+      "v2": "bid",
+      "v3": "bid",
+      "uz": "narx taklif qilmoq",
+      "example": "He bid $500 at auction."
+    },
+    {
+      "v1": "burst",
+      "v2": "burst",
+      "v3": "burst",
+      "uz": "portlamoq/yorilib ketmoq",
+      "example": "The pipe burst."
+    },
+    {
+      "v1": "cast",
+      "v2": "cast",
+      "v3": "cast",
+      "uz": "otmoq/tashlash",
+      "example": "Cast a wide net."
+    },
+    {
+      "v1": "cost",
+      "v2": "cost",
+      "v3": "cost",
+      "uz": "qimmatga tushmoq",
+      "example": "It cost a lot."
+    },
+    {
+      "v1": "cut",
+      "v2": "cut",
+      "v3": "cut",
+      "uz": "kesmoq",
+      "example": "Cut the rope."
+    },
+    {
+      "v1": "fit",
+      "v2": "fit",
+      "v3": "fit",
+      "uz": "to'g'ri kelmoq",
+      "example": "The dress fits her."
+    },
+    {
+      "v1": "hit",
+      "v2": "hit",
+      "v3": "hit",
+      "uz": "urmoq",
+      "example": "He hit the ball hard."
+    },
+    {
+      "v1": "hurt",
+      "v2": "hurt",
+      "v3": "hurt",
+      "uz": "og'ritmoq/azob bermoq",
+      "example": "That hurts!"
+    },
+    {
+      "v1": "knit",
+      "v2": "knit",
+      "v3": "knit",
+      "uz": "to'qimoq",
+      "example": "She knit a scarf."
+    },
+    {
+      "v1": "let",
+      "v2": "let",
+      "v3": "let",
+      "uz": "ruxsat bermoq",
+      "example": "Let it go."
+    },
+    {
+      "v1": "put",
+      "v2": "put",
+      "v3": "put",
+      "uz": "qo'ymoq",
+      "example": "Put it on the table."
+    },
+    {
+      "v1": "quit",
+      "v2": "quit",
+      "v3": "quit",
+      "uz": "tashlamoq/chiqmoq",
+      "example": "He quit his job."
+    },
+    {
+      "v1": "read",
+      "v2": "read",
+      "v3": "read",
+      "uz": "o'qimoq",
+      "example": "Read more books."
+    },
+    {
+      "v1": "rid",
+      "v2": "rid",
+      "v3": "rid",
+      "uz": "qutulib ketmoq",
+      "example": "Get rid of it."
+    },
+    {
+      "v1": "set",
+      "v2": "set",
+      "v3": "set",
+      "uz": "o'rnatmoq",
+      "example": "Set the alarm."
+    },
+    {
+      "v1": "shed",
+      "v2": "shed",
+      "v3": "shed",
+      "uz": "to'kmoq",
+      "example": "Trees shed leaves."
+    },
+    {
+      "v1": "shut",
+      "v2": "shut",
+      "v3": "shut",
+      "uz": "yopmoq",
+      "example": "Shut the window."
+    },
+    {
+      "v1": "slit",
+      "v2": "slit",
+      "v3": "slit",
+      "uz": "yorib o'tmoq",
+      "example": "Slit the envelope open."
+    },
+    {
+      "v1": "split",
+      "v2": "split",
+      "v3": "split",
+      "uz": "bo'linmoq/ajratmoq",
+      "example": "Split the bill."
+    },
+    {
+      "v1": "spread",
+      "v2": "spread",
+      "v3": "spread",
+      "uz": "tarqatmoq/yoymoq",
+      "example": "Spread the news."
+    },
+    {
+      "v1": "thrust",
+      "v2": "thrust",
+      "v3": "thrust",
+      "uz": "itarmoq",
+      "example": "He thrust the door open."
+    },
+    {
+      "v1": "upset",
+      "v2": "upset",
+      "v3": "upset",
+      "uz": "xafa qilmoq",
+      "example": "Don't upset her."
+    },
+    {
+      "v1": "wed",
+      "v2": "wed",
+      "v3": "wed",
+      "uz": "uylantirmoq/turmushga chiqarmoq",
+      "example": "They wed last June."
+    }
+  ]
+}

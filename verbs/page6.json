@@ -1,0 +1,73 @@
+{
+  "page": 6,
+  "category": "F",
+  "title": "Tovush o'zgarishi: A → O → U (yoki shunga o'xshash)",
+  "description": "O'rta unli qoida bo'yicha o'zgaradi: a → o → u",
+  "pattern": "sing → sang → sung",
+  "total": 9,
+  "verbs": [
+    {
+      "v1": "begin",
+      "v2": "began",
+      "v3": "begun",
+      "uz": "boshlamoq",
+      "example": "Begin a new chapter."
+    },
+    {
+      "v1": "drink",
+      "v2": "drank",
+      "v3": "drunk",
+      "uz": "ichmoq",
+      "example": "Drink more water."
+    },
+    {
+      "v1": "ring",
+      "v2": "rang",
+      "v3": "rung",
+      "uz": "qo'ng'iroq qilmoq",
+      "example": "The bell rang."
+    },
+    {
+      "v1": "shrink",
+      "v2": "shrank",
+      "v3": "shrunk",
+      "uz": "kichraymoq",
+      "example": "The shirt shrank."
+    },
+    {
+      "v1": "sing",
+      "v2": "sang",
+      "v3": "sung",
+      "uz": "kuylamoq",
+      "example": "Sing a song."
+    },
+    {
+      "v1": "sink",
+      "v2": "sank",
+      "v3": "sunk",
+      "uz": "cho'kmoq",
+      "example": "The ship sank."
+    },
+    {
+      "v1": "spring",
+      "v2": "sprang",
+      "v3": "sprung",
+      "uz": "sakramoq/ko'tarilmoq",
+      "example": "Spring forward."
+    },
+    {
+      "v1": "stink",
+      "v2": "stank",
+      "v3": "stunk",
+      "uz": "hidlanmoq (yomon)",
+      "example": "It stinks in here."
+    },
+    {
+      "v1": "swim",
+      "v2": "swam",
+      "v3": "swum",
+      "uz": "suzmoq",
+      "example": "Swim to the shore."
+    }
+  ]
+}

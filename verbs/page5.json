@@ -1,0 +1,38 @@
+{
+  "page": 5,
+  "category": "E",
+  "title": "V1 = V3 (Base va Past Participle bir xil)",
+  "description": "Asos va uchinchi shakl bir xil, faqat V2 o'zgaradi",
+  "pattern": "come → came → come",
+  "total": 4,
+  "verbs": [
+    {
+      "v1": "become",
+      "v2": "became",
+      "v3": "become",
+      "uz": "bo'lmoq/aylanmoq",
+      "example": "Become a better person."
+    },
+    {
+      "v1": "come",
+      "v2": "came",
+      "v3": "come",
+      "uz": "kelmoq",
+      "example": "Come here now."
+    },
+    {
+      "v1": "overcome",
+      "v2": "overcame",
+      "v3": "overcome",
+      "uz": "engib o'tmoq",
+      "example": "Overcome your fears."
+    },
+    {
+      "v1": "run",
+      "v2": "ran",
+      "v3": "run",
+      "uz": "yugurmoq",
+      "example": "Run as fast as you can."
+    }
+  ]
+}

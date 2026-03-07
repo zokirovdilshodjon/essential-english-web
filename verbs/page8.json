@@ -1,0 +1,101 @@
+{
+  "page": 8,
+  "category": "H",
+  "title": "Alohida o'zgaruvchi (boshqa qoidaga kirmaydi)",
+  "description": "Har biri o'ziga xos tarzda o'zgaradi, maxsus eslab qolish kerak",
+  "pattern": "go → went → gone",
+  "total": 13,
+  "verbs": [
+    {
+      "v1": "bind",
+      "v2": "bound",
+      "v3": "bound",
+      "uz": "bog'lamoq",
+      "example": "Bind the pages."
+    },
+    {
+      "v1": "build",
+      "v2": "built",
+      "v3": "built",
+      "uz": "qurmoq",
+      "example": "Build a house."
+    },
+    {
+      "v1": "buy",
+      "v2": "bought",
+      "v3": "bought",
+      "uz": "sotib olmoq",
+      "example": "Buy groceries."
+    },
+    {
+      "v1": "catch",
+      "v2": "caught",
+      "v3": "caught",
+      "uz": "ushlash",
+      "example": "Catch a cold."
+    },
+    {
+      "v1": "dig",
+      "v2": "dug",
+      "v3": "dug",
+      "uz": "kovlamoq",
+      "example": "Dig a hole."
+    },
+    {
+      "v1": "hang",
+      "v2": "hung",
+      "v3": "hung",
+      "uz": "ilib qo'ymoq",
+      "example": "Hang the picture."
+    },
+    {
+      "v1": "light",
+      "v2": "lit",
+      "v3": "lit",
+      "uz": "yoqmoq/yoritmoq",
+      "example": "Light the candle."
+    },
+    {
+      "v1": "shoot",
+      "v2": "shot",
+      "v3": "shot",
+      "uz": "otmoq (o'q bilan)",
+      "example": "Shoot for the stars."
+    },
+    {
+      "v1": "sit",
+      "v2": "sat",
+      "v3": "sat",
+      "uz": "o'tirmoq",
+      "example": "Sit quietly."
+    },
+    {
+      "v1": "spin",
+      "v2": "spun",
+      "v3": "spun",
+      "uz": "aylantirmoq",
+      "example": "Spin the wheel."
+    },
+    {
+      "v1": "spit",
+      "v2": "spat",
+      "v3": "spat",
+      "uz": "tupurmoq",
+      "example": "Don't spit."
+    },
+    {
+      "v1": "strive",
+      "v2": "strove",
+      "v3": "striven",
+      "uz": "intilmoq",
+      "example": "Strive to improve."
+    },
+    {
+      "v1": "withdraw",
+      "v2": "withdrew",
+      "v3": "withdrawn",
+      "uz": "tortib olmoq",
+      "example": "Withdraw money."
+    }
+  ]
+}

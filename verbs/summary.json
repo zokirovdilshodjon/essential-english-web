@@ -1,0 +1,62 @@
+{
+  "total_verbs": 151,
+  "total_pages": 8,
+  "categories": [
+    {
+      "page": 1,
+      "category": "A",
+      "title": "Uchala shakli bir xil (V1 = V2 = V3)",
+      "pattern": "cut → cut → cut",
+      "count": 24
+    },
+    {
+      "page": 2,
+      "category": "B",
+      "title": "V2 = V3, -ought / -aught bilan tugaydi",
+      "pattern": "bring → brought → brought",
+      "count": 8
+    },
+    {
+      "page": 3,
+      "category": "C",
+      "title": "V2 = V3, qisqartirilgan shakl (-ept/-elt/-eft/-ent/-eld)",
+      "pattern": "keep → kept → kept",
+      "count": 22
+    },
+    {
+      "page": 4,
+      "category": "D",
+      "title": "V2 = V3, unli o'zgarishi yoki -d/-t bilan",
+      "pattern": "hold → held → held",
+      "count": 28
+    },
+    {
+      "page": 5,
+      "category": "E",
+      "title": "V1 = V3 (Base va Past Participle bir xil)",
+      "pattern": "come → came → come",
+      "count": 4
+    },
+    {
+      "page": 6,
+      "category": "F",
+      "title": "Tovush o'zgarishi: A → O → U (yoki shunga o'xshash)",
+      "pattern": "sing → sang → sung",
+      "count": 9
+    },
+    {
+      "page": 7,
+      "category": "G",
+      "title": "V3 = -en / -n qo'shimchasi bilan yasaladi",
+      "pattern": "break → broke → broken",
+      "count": 43
+    },
+    {
+      "page": 8,
+      "category": "H",
+      "title": "Alohida o'zgaruvchi (boshqa qoidaga kirmaydi)",
+      "pattern": "go → went → gone",
+      "count": 13
+    }
+  ]
+}

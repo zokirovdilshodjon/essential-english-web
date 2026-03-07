@@ -1,0 +1,164 @@
+{
+  "page": 3,
+  "category": "C",
+  "title": "V2 = V3, qisqartirilgan shakl (-ept/-elt/-eft/-ent/-eld)",
+  "description": "Oxiri qisqartirilgan, ko'pincha -t bilan tugaydi",
+  "pattern": "keep → kept → kept",
+  "total": 22,
+  "verbs": [
+    {
+      "v1": "deal",
+      "v2": "dealt",
+      "v3": "dealt",
+      "uz": "muomala qilmoq",
+      "example": "Deal with it."
+    },
+    {
+      "v1": "dream",
+      "v2": "dreamt",
+      "v3": "dreamt",
+      "uz": "tush ko'rmoq",
+      "example": "I dreamt of you."
+    },
+    {
+      "v1": "feel",
+      "v2": "felt",
+      "v3": "felt",
+      "uz": "his qilmoq",
+      "example": "Feel the music."
+    },
+    {
+      "v1": "keep",
+      "v2": "kept",
+      "v3": "kept",
+      "uz": "saqlamoq",
+      "example": "Keep going."
+    },
+    {
+      "v1": "kneel",
+      "v2": "knelt",
+      "v3": "knelt",
+      "uz": "tiz cho'kmoq",
+      "example": "She knelt down."
+    },
+    {
+      "v1": "lean",
+      "v2": "leant",
+      "v3": "leant",
+      "uz": "egilmoq",
+      "example": "Lean on me."
+    },
+    {
+      "v1": "leap",
+      "v2": "leapt",
+      "v3": "leapt",
+      "uz": "sakramoq",
+      "example": "Leap of faith."
+    },
+    {
+      "v1": "learn",
+      "v2": "learnt",
+      "v3": "learnt",
+      "uz": "o'rganmoq",
+      "example": "Learn something new."
+    },
+    {
+      "v1": "leave",
+      "v2": "left",
+      "v3": "left",
+      "uz": "tark etmoq",
+      "example": "Leave me alone."
+    },
+    {
+      "v1": "lend",
+      "v2": "lent",
+      "v3": "lent",
+      "uz": "qarz bermoq",
+      "example": "Lend me a hand."
+    },
+    {
+      "v1": "lose",
+      "v2": "lost",
+      "v3": "lost",
+      "uz": "yo'qotmoq",
+      "example": "Don't lose hope."
+    },
+    {
+      "v1": "mean",
+      "v2": "meant",
+      "v3": "meant",
+      "uz": "anglatmoq",
+      "example": "What does it mean?"
+    },
+    {
+      "v1": "meet",
+      "v2": "met",
+      "v3": "met",
+      "uz": "uchrashmoq",
+      "example": "Nice to meet you."
+    },
+    {
+      "v1": "send",
+      "v2": "sent",
+      "v3": "sent",
+      "uz": "yubormoq",
+      "example": "Send a message."
+    },
+    {
+      "v1": "sleep",
+      "v2": "slept",
+      "v3": "slept",
+      "uz": "uxlamoq",
+      "example": "Sleep tight."
+    },
+    {
+      "v1": "smell",
+      "v2": "smelt",
+      "v3": "smelt",
+      "uz": "hidlamoq/is bilmoq",
+      "example": "It smells good."
+    },
+    {
+      "v1": "spell",
+      "v2": "spelt",
+      "v3": "spelt",
+      "uz": "imlolab o'qimoq",
+      "example": "Spell your name."
+    },
+    {
+      "v1": "spend",
+      "v2": "spent",
+      "v3": "spent",
+      "uz": "sarflamoq",
+      "example": "Spend wisely."
+    },
+    {
+      "v1": "spill",
+      "v2": "spilt",
+      "v3": "spilt",
+      "uz": "to'kib yubormoq",
+      "example": "Don't spill the milk."
+    },
+    {
+      "v1": "spoil",
+      "v2": "spoilt",
+      "v3": "spoilt",
+      "uz": "buzilib ketmoq",
+      "example": "The food spoilt."
+    },
+    {
+      "v1": "sweep",
+      "v2": "swept",
+      "v3": "swept",
+      "uz": "supurmoq",
+      "example": "Sweep the floor."
+    },
+    {
+      "v1": "weep",
+      "v2": "wept",
+      "v3": "wept",
+      "uz": "yig'lamoq",
+      "example": "She wept with joy."
+    }
+  ]
+}

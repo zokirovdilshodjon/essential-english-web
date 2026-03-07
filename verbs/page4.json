@@ -1,0 +1,206 @@
+{
+  "page": 4,
+  "category": "D",
+  "title": "V2 = V3, unli o'zgarishi yoki -d/-t bilan",
+  "description": "O'rtadagi unli o'zgaradi, V2 va V3 bir xil",
+  "pattern": "hold → held → held",
+  "total": 28,
+  "verbs": [
+    {
+      "v1": "bleed",
+      "v2": "bled",
+      "v3": "bled",
+      "uz": "qonamoq",
+      "example": "His wound bled."
+    },
+    {
+      "v1": "breed",
+      "v2": "bred",
+      "v3": "bred",
+      "uz": "ko'paytirmoq",
+      "example": "They breed horses."
+    },
+    {
+      "v1": "feed",
+      "v2": "fed",
+      "v3": "fed",
+      "uz": "boqmoq/ovqatlantirmoq",
+      "example": "Feed the baby."
+    },
+    {
+      "v1": "find",
+      "v2": "found",
+      "v3": "found",
+      "uz": "topmoq",
+      "example": "Find your key."
+    },
+    {
+      "v1": "flee",
+      "v2": "fled",
+      "v3": "fled",
+      "uz": "qochmoq",
+      "example": "Flee the danger."
+    },
+    {
+      "v1": "grind",
+      "v2": "ground",
+      "v3": "ground",
+      "uz": "maydalamaq/tortmoq",
+      "example": "Grind the coffee."
+    },
+    {
+      "v1": "have",
+      "v2": "had",
+      "v3": "had",
+      "uz": "ega bo'lmoq",
+      "example": "Have fun."
+    },
+    {
+      "v1": "hear",
+      "v2": "heard",
+      "v3": "heard",
+      "uz": "eshitmoq",
+      "example": "Hear me out."
+    },
+    {
+      "v1": "hold",
+      "v2": "held",
+      "v3": "held",
+      "uz": "ushlab turmoq",
+      "example": "Hold my hand."
+    },
+    {
+      "v1": "lay",
+      "v2": "laid",
+      "v3": "laid",
+      "uz": "yotqizmoq",
+      "example": "Lay the table."
+    },
+    {
+      "v1": "lead",
+      "v2": "led",
+      "v3": "led",
+      "uz": "boshlamoq/yetaklamoq",
+      "example": "Lead the way."
+    },
+    {
+      "v1": "make",
+      "v2": "made",
+      "v3": "made",
+      "uz": "yasamoq",
+      "example": "Make a wish."
+    },
+    {
+      "v1": "pay",
+      "v2": "paid",
+      "v3": "paid",
+      "uz": "to'lamoq",
+      "example": "Pay the bill."
+    },
+    {
+      "v1": "say",
+      "v2": "said",
+      "v3": "said",
+      "uz": "aytmoq",
+      "example": "Say hello."
+    },
+    {
+      "v1": "sell",
+      "v2": "sold",
+      "v3": "sold",
+      "uz": "sotmoq",
+      "example": "Sell your car."
+    },
+    {
+      "v1": "sit",
+      "v2": "sat",
+      "v3": "sat",
+      "uz": "o'tirmoq",
+      "example": "Sit down please."
+    },
+    {
+      "v1": "slide",
+      "v2": "slid",
+      "v3": "slid",
+      "uz": "sirg'anib ketmoq",
+      "example": "Slide down the hill."
+    },
+    {
+      "v1": "speed",
+      "v2": "sped",
+      "v3": "sped",
+      "uz": "tezlikni oshirmoq",
+      "example": "Don't speed."
+    },
+    {
+      "v1": "stand",
+      "v2": "stood",
+      "v3": "stood",
+      "uz": "turmoq",
+      "example": "Stand up straight."
+    },
+    {
+      "v1": "stick",
+      "v2": "stuck",
+      "v3": "stuck",
+      "uz": "yopishtirmoq",
+      "example": "Stick to the plan."
+    },
+    {
+      "v1": "sting",
+      "v2": "stung",
+      "v3": "stung",
+      "uz": "chaqmoq (hasharot)",
+      "example": "A bee stung him."
+    },
+    {
+      "v1": "strike",
+      "v2": "struck",
+      "v3": "struck",
+      "uz": "urmoq/zarba bermoq",
+      "example": "Strike a balance."
+    },
+    {
+      "v1": "swing",
+      "v2": "swung",
+      "v3": "swung",
+      "uz": "tebranmoq",
+      "example": "Swing high."
+    },
+    {
+      "v1": "tell",
+      "v2": "told",
+      "v3": "told",
+      "uz": "aytmoq/gapirmoq",
+      "example": "Tell the truth."
+    },
+    {
+      "v1": "understand",
+      "v2": "understood",
+      "v3": "understood",
+      "uz": "tushunmoq",
+      "example": "Understand clearly."
+    },
+    {
+      "v1": "win",
+      "v2": "won",
+      "v3": "won",
+      "uz": "yutmoq/g'olib bo'lmoq",
+      "example": "Win the game."
+    },
+    {
+      "v1": "wind",
+      "v2": "wound",
+      "v3": "wound",
+      "uz": "o'ramoq",
+      "example": "Wind the clock."
+    },
+    {
+      "v1": "wring",
+      "v2": "wrung",
+      "v3": "wrung",
+      "uz": "siqmoq",
+      "example": "Wring the cloth."
+    }
+  ]
+}

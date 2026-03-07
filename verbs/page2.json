@@ -1,0 +1,66 @@
+{
+  "page": 2,
+  "category": "B",
+  "title": "V2 = V3, -ought / -aught bilan tugaydi",
+  "description": "Past simple va past participle bir xil, -ought yoki -aught qo'shimchasi bilan",
+  "pattern": "bring → brought → brought",
+  "total": 8,
+  "verbs": [
+    {
+      "v1": "bring",
+      "v2": "brought",
+      "v3": "brought",
+      "uz": "olib kelmoq",
+      "example": "Bring me water."
+    },
+    {
+      "v1": "buy",
+      "v2": "bought",
+      "v3": "bought",
+      "uz": "sotib olmoq",
+      "example": "Buy some bread."
+    },
+    {
+      "v1": "catch",
+      "v2": "caught",
+      "v3": "caught",
+      "uz": "tutmoq/ushlamoq",
+      "example": "Catch the ball."
+    },
+    {
+      "v1": "fight",
+      "v2": "fought",
+      "v3": "fought",
+      "uz": "jang qilmoq",
+      "example": "Fight for justice."
+    },
+    {
+      "v1": "seek",
+      "v2": "sought",
+      "v3": "sought",
+      "uz": "qidirmoq/izlamoq",
+      "example": "Seek the truth."
+    },
+    {
+      "v1": "teach",
+      "v2": "taught",
+      "v3": "taught",
+      "uz": "o'rgatmoq",
+      "example": "Teach a lesson."
+    },
+    {
+      "v1": "think",
+      "v2": "thought",
+      "v3": "thought",
+      "uz": "o'ylamoq",
+      "example": "Think positive."
+    },
+    {
+      "v1": "work",
+      "v2": "wrought",
+      "v3": "wrought",
+      "uz": "ishlamoq (arxaik)",
+      "example": "Carefully wrought iron."
+    }
+  ]
+}

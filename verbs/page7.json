@@ -1,0 +1,311 @@
+{
+  "page": 7,
+  "category": "G",
+  "title": "V3 = -en / -n qo'shimchasi bilan yasaladi",
+  "description": "Past participle oxiriga -en yoki -n qo'shiladi",
+  "pattern": "break → broke → broken",
+  "total": 43,
+  "verbs": [
+    {
+      "v1": "arise",
+      "v2": "arose",
+      "v3": "arisen",
+      "uz": "paydo bo'lmoq",
+      "example": "A problem has arisen."
+    },
+    {
+      "v1": "awake",
+      "v2": "awoke",
+      "v3": "awoken",
+      "uz": "uyg'onmoq",
+      "example": "He awoke at dawn."
+    },
+    {
+      "v1": "be",
+      "v2": "was/were",
+      "v3": "been",
+      "uz": "bo'lmoq",
+      "example": "I have been busy."
+    },
+    {
+      "v1": "bear",
+      "v2": "bore",
+      "v3": "borne",
+      "uz": "chidamoq/ko'tarmoq",
+      "example": "Bear the pain."
+    },
+    {
+      "v1": "beat",
+      "v2": "beat",
+      "v3": "beaten",
+      "uz": "urmoq/mag'lub etmoq",
+      "example": "Beat the record."
+    },
+    {
+      "v1": "bite",
+      "v2": "bit",
+      "v3": "bitten",
+      "uz": "tishlamoq",
+      "example": "Don't bite the hand."
+    },
+    {
+      "v1": "blow",
+      "v2": "blew",
+      "v3": "blown",
+      "uz": "puflamoq/esmoq",
+      "example": "The wind blew."
+    },
+    {
+      "v1": "break",
+      "v2": "broke",
+      "v3": "broken",
+      "uz": "sindirmoq",
+      "example": "Don't break it."
+    },
+    {
+      "v1": "choose",
+      "v2": "chose",
+      "v3": "chosen",
+      "uz": "tanlamoq",
+      "example": "Choose wisely."
+    },
+    {
+      "v1": "do",
+      "v2": "did",
+      "v3": "done",
+      "uz": "qilmoq",
+      "example": "Just do it."
+    },
+    {
+      "v1": "draw",
+      "v2": "drew",
+      "v3": "drawn",
+      "uz": "chizmoq",
+      "example": "Draw a line."
+    },
+    {
+      "v1": "drive",
+      "v2": "drove",
+      "v3": "driven",
+      "uz": "haydamoq",
+      "example": "Drive carefully."
+    },
+    {
+      "v1": "eat",
+      "v2": "ate",
+      "v3": "eaten",
+      "uz": "yemoq",
+      "example": "Eat healthy food."
+    },
+    {
+      "v1": "fall",
+      "v2": "fell",
+      "v3": "fallen",
+      "uz": "yiqilmoq",
+      "example": "Fall in love."
+    },
+    {
+      "v1": "fly",
+      "v2": "flew",
+      "v3": "flown",
+      "uz": "uchmoq",
+      "example": "Fly high."
+    },
+    {
+      "v1": "forbid",
+      "v2": "forbade",
+      "v3": "forbidden",
+      "uz": "taqiqlamoq",
+      "example": "Smoking is forbidden."
+    },
+    {
+      "v1": "forget",
+      "v2": "forgot",
+      "v3": "forgotten",
+      "uz": "unutmoq",
+      "example": "Never forget."
+    },
+    {
+      "v1": "forgive",
+      "v2": "forgave",
+      "v3": "forgiven",
+      "uz": "kechirmoq",
+      "example": "Forgive and forget."
+    },
+    {
+      "v1": "freeze",
+      "v2": "froze",
+      "v3": "frozen",
+      "uz": "muzlamoq",
+      "example": "Frozen in time."
+    },
+    {
+      "v1": "get",
+      "v2": "got",
+      "v3": "gotten",
+      "uz": "olmoq/qo'lga kiritmoq",
+      "example": "Get it done."
+    },
+    {
+      "v1": "give",
+      "v2": "gave",
+      "v3": "given",
+      "uz": "bermoq",
+      "example": "Give your best."
+    },
+    {
+      "v1": "go",
+      "v2": "went",
+      "v3": "gone",
+      "uz": "bormoq/ketmoq",
+      "example": "Go for it."
+    },
+    {
+      "v1": "grow",
+      "v2": "grew",
+      "v3": "grown",
+      "uz": "o'smoq",
+      "example": "Grow together."
+    },
+    {
+      "v1": "hide",
+      "v2": "hid",
+      "v3": "hidden",
+      "uz": "yashirmoq",
+      "example": "Hide and seek."
+    },
+    {
+      "v1": "know",
+      "v2": "knew",
+      "v3": "known",
+      "uz": "bilmoq",
+      "example": "I have known him."
+    },
+    {
+      "v1": "lie",
+      "v2": "lay",
+      "v3": "lain",
+      "uz": "yotmoq",
+      "example": "Lie down and rest."
+    },
+    {
+      "v1": "mistake",
+      "v2": "mistook",
+      "v3": "mistaken",
+      "uz": "adashmoq",
+      "example": "I was mistaken."
+    },
+    {
+      "v1": "ride",
+      "v2": "rode",
+      "v3": "ridden",
+      "uz": "minmoq",
+      "example": "Ride a bicycle."
+    },
+    {
+      "v1": "rise",
+      "v2": "rose",
+      "v3": "risen",
+      "uz": "ko'tarilmoq",
+      "example": "The sun has risen."
+    },
+    {
+      "v1": "see",
+      "v2": "saw",
+      "v3": "seen",
+      "uz": "ko'rmoq",
+      "example": "I've seen this before."
+    },
+    {
+      "v1": "shake",
+      "v2": "shook",
+      "v3": "shaken",
+      "uz": "silkitmoq",
+      "example": "Shake hands firmly."
+    },
+    {
+      "v1": "show",
+      "v2": "showed",
+      "v3": "shown",
+      "uz": "ko'rsatmoq",
+      "example": "Show your work."
+    },
+    {
+      "v1": "speak",
+      "v2": "spoke",
+      "v3": "spoken",
+      "uz": "gapirmoq",
+      "example": "Speak your mind."
+    },
+    {
+      "v1": "steal",
+      "v2": "stole",
+      "v3": "stolen",
+      "uz": "o'g'irlamoq",
+      "example": "Steal the spotlight."
+    },
+    {
+      "v1": "swear",
+      "v2": "swore",
+      "v3": "sworn",
+      "uz": "qasam ichmoq",
+      "example": "I swear it's true."
+    },
+    {
+      "v1": "take",
+      "v2": "took",
+      "v3": "taken",
+      "uz": "olmoq",
+      "example": "Take a deep breath."
+    },
+    {
+      "v1": "tear",
+      "v2": "tore",
+      "v3": "torn",
+      "uz": "yirtmoq",
+      "example": "Tear it apart."
+    },
+    {
+      "v1": "throw",
+      "v2": "threw",
+      "v3": "thrown",
+      "uz": "otmoq",
+      "example": "Throw the ball."
+    },
+    {
+      "v1": "tread",
+      "v2": "trod",
+      "v3": "trodden",
+      "uz": "bosmoq",
+      "example": "Tread lightly."
+    },
+    {
+      "v1": "wake",
+      "v2": "woke",
+      "v3": "woken",
+      "uz": "uyg'onmoq",
+      "example": "Wake up early."
+    },
+    {
+      "v1": "wear",
+      "v2": "wore",
+      "v3": "worn",
+      "uz": "kiymoq",
+      "example": "Wear your best."
+    },
+    {
+      "v1": "weave",
+      "v2": "wove",
+      "v3": "woven",
+      "uz": "to'qimoq",
+      "example": "Weave a tale."
+    },
+    {
+      "v1": "write",
+      "v2": "wrote",
+      "v3": "written",
+      "uz": "yozmoq",
+      "example": "Write your story."
+    }
+  ]
+}
