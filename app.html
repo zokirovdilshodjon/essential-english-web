@@ -3085,16 +3085,25 @@ function buildDCQuestion(){
 }
 
 function endDailyChallenge(){
+  clearInterval(DC.timer);
   U.dailyScore = U.dailyScore || {};
   const today = new Date().toDateString();
   U.dailyScore[today] = Math.max(U.dailyScore[today]||0, DC.score);
   saveUser();
+  // Vaqt ko'rsatgichini yashiramiz, natija ko'rsatamiz
+  const gameTimeEl = document.getElementById('dc-gametime');
+  if(gameTimeEl){ gameTimeEl.textContent = '✅'; gameTimeEl.style.color='var(--green)'; }
+  const wordEl = document.getElementById('dc-word');
+  if(wordEl){ wordEl.textContent = '🏁 Tugadi!'; wordEl.style.fontSize='18px'; }
+  document.getElementById('dc-res').textContent='';
   document.getElementById('dc-opts').innerHTML=`
-    <div style="grid-column:1/-1;text-align:center;padding:10px">
-      <div style="font-size:32px;margin-bottom:8px">🌟</div>
-      <div style="font-size:20px;font-weight:800;color:var(--gold)">${DC.score} ball</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:6px">Bugungi eng yaxshi natijangiz saqlandi</div>
+    <div style="grid-column:1/-1;background:linear-gradient(135deg,rgba(245,197,66,.12),rgba(249,123,79,.08));border:1px solid rgba(245,197,66,.25);border-radius:14px;padding:18px;text-align:center;margin-bottom:10px">
+      <div style="font-size:36px;margin-bottom:6px">${DC.score>=20?'🏆':DC.score>=10?'🌟':'💪'}</div>
+      <div style="font-size:28px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif">${DC.score}</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px">ball · Bugungi natija saqlandi</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--green)">+${DC.score} XP to'plandi</div>
     </div>
+    <button onclick="initDailyChallenge()" style="grid-column:1/-1;padding:12px;background:linear-gradient(135deg,var(--blue),var(--accent));border:none;border-radius:12px;color:white;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;font-size:14px">🔁 Qayta o'ynash</button>
   `;
   buildDCLeaderboard();
 }
@@ -4500,17 +4509,15 @@ const PREMIUM_AVATARS = [
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ╔══════════════════════════════════════════════════════════════╗
-// ║  AI CONFIGURATION — paste your API key in Settings to enable  ║
+// ║  AI CONFIGURATION — Anthropic Claude API (built-in)             ║
 // ╚══════════════════════════════════════════════════════════════╝
 const AI_CONFIG = {
-  enabled: false,
-  provider: 'gemini',                           // 'gemini' yoki 'openrouter'
-  apiKey: 'AIzaSyA2ajPiE4exZkF3WppJrptMl9eP9r7IRho',  // Gemini API key
-  model: 'gemini-2.0-flash',
-  baseURL: 'https://openrouter.ai/api/v1/chat/completions',
+  enabled: true,
+  provider: 'anthropic',
+  apiKey: '',   // Anthropic API proxy - key shart emas
+  model: 'claude-sonnet-4-20250514',
   maxTokens: 600,
 };
-if(AI_CONFIG.apiKey && AI_CONFIG.apiKey.length > 10) AI_CONFIG.enabled = true;
 
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  APP NAMESPACE — modular structure                            ║
@@ -4945,49 +4952,26 @@ App.lb = {
 // ═══════════════════════════════════════════════════════════════════════════
 App.ai = {
   async isEnabled(){
-    if(!isPremiumActive()) return false; // AI faqat premium/trial uchun
-    return AI_CONFIG.enabled && !!AI_CONFIG.apiKey;
+    // Anthropic API built-in — har doim faol
+    return true;
   },
 
   async call(systemPrompt, userMsg, maxTok = 512){
-    if(!AI_CONFIG.apiKey) throw new Error('API key not set');
-    const isGemini = AI_CONFIG.apiKey.startsWith('AIza') || AI_CONFIG.provider === 'gemini';
-    if(isGemini){
-      const mdl = (AI_CONFIG.model||'gemini-2.0-flash').replace('models/','');
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent?key=${AI_CONFIG.apiKey}`;
-      const res = await fetch(url, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          contents:[{parts:[{text: systemPrompt + '\n\n' + userMsg}]}],
-          generationConfig:{maxOutputTokens: maxTok, temperature:0.7}
-        })
-      });
-      if(!res.ok){ const t=await res.text(); throw new Error('Gemini '+res.status+': '+t.slice(0,200)); }
-      const data = await res.json();
-      if(data.error) throw new Error('Gemini: '+data.error.message);
-      return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    }
-    const res = await fetch(AI_CONFIG.baseURL, {
+    // Anthropic Claude API ishlatamiz
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + AI_CONFIG.apiKey,
-        'HTTP-Referer': window.location.origin,
-        'X-Title': 'Essential English PRO',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: AI_CONFIG.model,
-        max_tokens: maxTok,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userMsg }
-        ]
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: Math.min(maxTok, 1000),
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
       })
     });
-    if(!res.ok){ const t=await res.text(); throw new Error('AI error: '+t); }
+    if(!res.ok){ const t=await res.text(); throw new Error('AI xato '+res.status+': '+t.slice(0,150)); }
     const data = await res.json();
-    return data.choices?.[0]?.message?.content || '';
+    if(data.error) throw new Error('AI: '+data.error.message);
+    return data.content?.[0]?.text || '';
   },
 
   // ── AI Feature: Generate vocabulary examples ──
@@ -5042,38 +5026,20 @@ App.ai = {
         <button class="sc" onclick="closeAIModal()">✕</button>
         <div class="sb">
           <div class="st">🤖 AI Sozlamalari</div>
-          <div style="background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.3);border-radius:12px;padding:12px;margin-bottom:14px;font-size:12px;line-height:1.6;color:var(--text)">
-            <b style="color:var(--accent)">OpenRouter</b> orqali AI modellarini ulang.<br>
-            API key olish: <a href="https://openrouter.ai" target="_blank" style="color:var(--blue)">openrouter.ai</a> (bepul kredit bor)
+          <div style="background:rgba(79,223,138,.1);border:1px solid rgba(79,223,138,.3);border-radius:12px;padding:12px;margin-bottom:14px;font-size:12px;line-height:1.6;color:var(--text)">
+            ✅ <b style="color:var(--green)">Anthropic Claude</b> orqali AI faol.<br>
+            Hech qanday API key kerak emas — to'g'ridan to'g'ri ishlaydi!
           </div>
-          <div style="margin-bottom:12px">
-            <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">🔑 API KEY</div>
-            <input id="ai-key-inp" type="password" value="${savedKey}"
-              placeholder="sk-or-v1-..."
-              style="width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none">
-          </div>
-          <div style="margin-bottom:14px">
-            <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">🧠 AI MODEL</div>
-            <select id="ai-model-sel" style="width:100%;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none">
-              <option value="deepseek/deepseek-chat" ${savedModel.includes('deepseek')?'selected':''}>🔹 DeepSeek Chat (arzon, kuchli)</option>
-              <option value="mistralai/mistral-small" ${savedModel.includes('mistral')?'selected':''}>🟣 Mistral Small (tez)</option>
-              <option value="meta-llama/llama-3-8b-instruct" ${savedModel.includes('llama')?'selected':''}>🦙 Llama 3 8B (bepul)</option>
-              <option value="openai/gpt-4o-mini" ${savedModel.includes('gpt-4o-mini')?'selected':''}>🟢 GPT-4o Mini</option>
-            </select>
-          </div>
-          <div id="ai-status" style="text-align:center;font-size:12px;color:var(--muted);min-height:20px;margin-bottom:12px">${AI_CONFIG.enabled?'✅ AI faol':'⭕ AI o\'chirilgan'}</div>
-          <button onclick="App.ai.saveSettings()" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px">
-            💾 Saqlash va Ulash
-          </button>
-          <button onclick="App.ai.testConnection()" style="width:100%;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">
+          <div id="ai-status" style="text-align:center;font-size:13px;color:var(--green);font-weight:800;min-height:20px;margin-bottom:14px">✅ AI faol — Claude Sonnet</div>
+          <button onclick="App.ai.testConnection()" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:13px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px">
             🔌 Ulanishni tekshirish
           </button>
           <div style="margin-top:14px;padding:10px;background:var(--s2);border-radius:10px;font-size:11px;color:var(--muted);line-height:1.6">
-            <b style="color:var(--text)">AI yoqilganda:</b><br>
-            • Zaif so'zlar uchun AI quiz<br>
-            • Grammatika tushuntirishlari<br>
-            • Speaking practice AI fikr-mulohazasi<br>
-            • Shaxsiy o'rganish tavsiyalari
+            <b style="color:var(--text)">AI imkoniyatlari:</b><br>
+            • AI Quiz — aqlli savollar<br>
+            • AI Treiner — zaif so'zlar mashqi<br>
+            • AI So'zlar — yangi so'z tavsiyalari<br>
+            • Grammatika tushuntirishlari
           </div>
         </div>
       </div>`;
@@ -5111,12 +5077,9 @@ App.ai = {
   },
 
   loadSavedConfig(){
-    const savedKey = localStorage.getItem('ep_ai_key')||'';
-    const savedModel = localStorage.getItem('ep_ai_model')||'';
-    if(savedKey && savedKey.length > 10){ AI_CONFIG.apiKey=savedKey; AI_CONFIG.enabled=true; }
-    if(savedModel) AI_CONFIG.model=savedModel;
-    if(AI_CONFIG.apiKey && AI_CONFIG.apiKey.length > 10) AI_CONFIG.enabled=true;
-    console.log('🤖 AI:', AI_CONFIG.enabled ? '✅ FAOL — '+AI_CONFIG.model : '⭕ Key yo\'q');
+    // Anthropic API — har doim faol, key shart emas
+    AI_CONFIG.enabled = true;
+    console.log('🤖 AI: ✅ FAOL — Anthropic Claude (built-in)');
   },
 
   // ══════════════════════════════════════════════════════
@@ -5423,12 +5386,13 @@ App.events.on('combo:updated', (combo)=>{
   if(!el){
     el = document.createElement('div');
     el.id = 'combo-indicator';
-    el.style.cssText = 'position:fixed;top:70px;right:12px;z-index:200;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:4px 12px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(245,197,66,.3)';
+    // Pastda, modal ichidagi tugmalarni to'smaslik uchun topbar tagiga joylashtiramiz
+    el.style.cssText = 'position:fixed;top:58px;left:50%;transform:translateX(-50%);z-index:150;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:4px 18px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(245,197,66,.3);pointer-events:none;white-space:nowrap';
     document.body.appendChild(el);
   }
   el.textContent = '🔥 COMBO x' + combo;
   clearTimeout(el._t);
-  el._t = setTimeout(()=>el.remove(), 6000);
+  el._t = setTimeout(()=>{ if(el.parentNode) el.remove(); }, 6000);
 });
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -6681,12 +6645,9 @@ function buildAITab(){
   const featEl = document.getElementById('ai-tab-features');
   const statusEl = document.getElementById('ai-tab-status');
   if(!featEl) return;
-  const isOn = AI_CONFIG.enabled;
-  if(statusEl) statusEl.innerHTML = isOn
-    ? '<span style="color:var(--green);font-weight:800">✅ AI Faol — '+AI_CONFIG.model.split('/').pop()+'</span>'
-    : '<span style="color:var(--muted)">⭕ API Key qo\'yilmagan</span>';
+  if(statusEl) statusEl.innerHTML = '<span style="color:var(--green);font-weight:800">✅ AI Faol — Claude Sonnet (built-in)</span>';
 
-  featEl.innerHTML = isOn ? `
+  featEl.innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px">
       <button onclick="openAIVocab()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(124,90,246,.15),rgba(192,132,252,.1));border:1.5px solid rgba(124,90,246,.35);border-radius:14px;color:var(--al);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
         <span style="font-size:28px">✨</span>So'z Gen
@@ -6707,22 +6668,6 @@ function buildAITab(){
     <div style="background:rgba(79,223,138,.07);border:1px solid rgba(79,223,138,.2);border-radius:11px;padding:10px 13px;font-size:12px;color:var(--green);line-height:1.7;margin-bottom:10px">
       ✅ AI faol! Grammatika → 🤖 AI izoh tugmasi ham ishlaydi.<br>
       Flashcard → 🤖 AI tugmasi ham aktiv.
-    </div>
-  ` : `
-    <div style="background:var(--s1);border:1.5px dashed rgba(124,90,246,.3);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:14px">
-      <div style="font-size:40px;margin-bottom:10px">🔑</div>
-      <div style="font-size:15px;font-weight:800;margin-bottom:8px">AI hali faol emas</div>
-      <div style="font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px">
-        Faylni matn muharririda oching va<br>
-        <b style="color:var(--text)">AI_CONFIG.apiKey</b> ga keyingizni yozing:
-      </div>
-      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:12px;font-family:monospace;color:var(--accent);margin-bottom:14px;text-align:left;line-height:2">
-        apiKey: <span style="color:var(--gold)">'sk-or-v1-...'</span>,<br>
-        model: <span style="color:var(--green)">'meta-llama/llama-3.1-8b-instruct:free'</span>
-      </div>
-      <a href="https://openrouter.ai" target="_blank" style="display:inline-block;padding:11px 22px;background:linear-gradient(135deg,var(--accent),var(--purple));border-radius:11px;color:white;font-weight:800;font-size:13px;text-decoration:none;box-shadow:0 4px 14px rgba(124,90,246,.3)">
-        🔑 openrouter.ai — Bepul Key Olish
-      </a>
     </div>
   `;
 
@@ -6777,7 +6722,7 @@ closeModal = function(e, id){
   }
 };
 
-console.log('🤖 AI Engine v3.0 loaded. Status:', AI_CONFIG.enabled ? '✅ ACTIVE — '+AI_CONFIG.model : '⭕ Waiting for key in AI_CONFIG.apiKey');
+console.log('🤖 AI Engine v3.0 loaded. Status: ✅ ACTIVE — Anthropic Claude (built-in)');
 </script>
 
 </body>
