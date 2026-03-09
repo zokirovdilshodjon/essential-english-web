@@ -124,6 +124,14 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 <script>
 (function(){
   try{
+    // ?logout=1 yoki ?switch=1 bo'lsa, localStorage ni tozala
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('logout') || params.get('switch')){
+      localStorage.removeItem('ep_user');
+      sessionStorage.removeItem('ep_user');
+      return; // redirect qilma
+    }
+
     const raw = localStorage.getItem('ep_user');
     if(raw){
       const u = JSON.parse(raw);
@@ -136,6 +144,11 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
     localStorage.removeItem('ep_user');
   }
 })();
+```
+
+Endi ikkinchi account bilan kirmoqchi bo'lsang:
+```
+register.html?switch=1
 </script>
 
 <script>
