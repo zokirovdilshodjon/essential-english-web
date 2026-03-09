@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Essential English PRO — Ro'yxatdan o'tish</title>
+<title>Essential English PRO — Kirish</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -28,374 +28,344 @@ body::before{
     linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
   background-size:36px 36px;
 }
-.outer{
-  width:100%;max-width:960px;background:var(--s1);
-  border:1px solid var(--border);border-radius:28px;
+.card{
+  width:100%;max-width:440px;
+  background:var(--s1);border:1px solid var(--border);border-radius:28px;
   box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,90,246,.08) inset;
-  display:grid;grid-template-columns:280px 1fr;
-  min-height:560px;overflow:hidden;
+  padding:40px 36px 36px;
   animation:rise .65s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-/* LEFT */
-.left{
-  background:rgba(10,14,24,.6);border-right:1px solid var(--border);
-  padding:32px 24px;display:flex;flex-direction:column;align-items:center;
-}
-.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:32px}
+.logo-row{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center}
 .logo-icon{
-  width:38px;height:38px;border-radius:12px;
+  width:44px;height:44px;border-radius:14px;
   background:linear-gradient(135deg,var(--accent),#5b3fd4);
-  display:flex;align-items:center;justify-content:center;font-size:19px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;
   box-shadow:0 4px 14px rgba(124,90,246,.4);
 }
-.logo-txt{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
-.av-ring-wrap{position:relative;width:160px;height:160px;margin-bottom:18px}
-.av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.av-circle{
-  width:160px;height:160px;border-radius:50%;
-  background:var(--s2);border:2px solid var(--border);
-  overflow:hidden;display:flex;align-items:center;justify-content:center;
-  font-size:70px;position:relative;z-index:1;
-}
-.av-circle img{width:80%;height:80%;object-fit:contain;display:none}
-.av-upload-badge{
-  position:absolute;bottom:6px;right:6px;z-index:2;
-  width:38px;height:38px;border-radius:50%;
-  background:var(--accent);border:3px solid var(--s1);
-  display:flex;align-items:center;justify-content:center;font-size:16px;
-  cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
-}
-.av-upload-badge:hover{transform:scale(1.1)}
-.prev-name{
-  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;
-  text-align:center;margin-bottom:8px;min-height:28px;
-}
-.prev-tag{
-  font-size:12px;color:var(--al);
-  background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.25);
-  padding:4px 14px;border-radius:20px;margin-bottom:20px;
-}
-.divider{width:100%;height:1px;background:var(--border);margin-bottom:16px}
-.left-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+.logo-txt{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em}
+.logo-sub{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:28px}
 
-/* RIGHT */
-.right{padding:36px 36px 32px;display:flex;flex-direction:column}
-.right h1{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:8px}
-.right>p{font-size:14px;color:var(--muted);margin-bottom:26px}
+h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:center;margin-bottom:8px;letter-spacing:-.02em}
+.sub{font-size:14px;color:var(--muted);text-align:center;margin-bottom:32px;line-height:1.5}
+
+/* SCREENS */
+.screen{display:none}
+.screen.active{display:block}
+
+/* Telegram Login Button */
+.tg-btn{
+  width:100%;padding:16px;border:none;border-radius:14px;
+  background:linear-gradient(135deg,#2AABEE,#1a8bbf);
+  color:white;font-size:17px;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;
+  box-shadow:0 8px 28px rgba(42,171,238,.35);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  text-decoration:none;
+}
+.tg-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(42,171,238,.45)}
+.tg-btn:active{transform:scale(.98)}
+.tg-icon{font-size:22px}
+
+/* Token input */
+.divider-row{display:flex;align-items:center;gap:12px;margin:24px 0}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-txt{font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap}
+
 .lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:block}
-.inp-wrap{position:relative;margin-bottom:6px}
+.inp-wrap{position:relative;margin-bottom:8px}
 .inp-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px;pointer-events:none}
 .inp{
   width:100%;padding:14px 14px 14px 44px;
   background:var(--s2);border:1.5px solid var(--border);
   border-radius:14px;font-size:15px;font-family:'Nunito',sans-serif;
   color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;
+  letter-spacing:.15em;text-transform:uppercase;
 }
-.inp::placeholder{color:rgba(122,143,173,.5)}
+.inp::placeholder{color:rgba(122,143,173,.5);letter-spacing:normal;text-transform:none}
 .inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.15)}
 .inp.err{border-color:#f85149}
-.err-txt{font-size:12px;color:#f85149;margin-bottom:16px;padding-left:4px;display:none}
+.err-txt{font-size:12px;color:#f85149;margin-bottom:12px;padding-left:4px;display:none}
 .err-txt.show{display:block}
-.av-sec{margin-bottom:22px;margin-top:4px}
-.tabs{display:flex;gap:7px;margin-bottom:11px}
-.tab{
-  padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;
-  background:var(--s2);border:1.5px solid var(--border);color:var(--muted);
-  cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;
-}
-.tab:hover{border-color:var(--al)}
-.tab.active{background:rgba(124,90,246,.15);border-color:var(--accent);color:white}
-.av-grid{
-  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;
-  max-height:220px;overflow-y:auto;padding:2px;
-}
-.av-grid::-webkit-scrollbar{width:4px}
-.av-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-.av-item{
-  aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);
-  border-radius:12px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .2s;overflow:hidden;
-}
-.av-item:hover{border-color:var(--al);transform:scale(1.06)}
-.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.25);background:rgba(124,90,246,.1)}
-.av-item img{width:36px;height:36px}
-.level-row{display:flex;gap:9px;margin-bottom:26px;margin-top:4px}
-.lv{flex:1;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .2s;text-align:center}
-.lv-em{font-size:24px;display:block;margin-bottom:5px}
-.lv-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
-.lv-hint{font-size:10px;color:var(--muted);line-height:1.3}
-.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}
-.lv.sel-b .lv-name{color:var(--g)}
-.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}
-.lv.sel-i .lv-name{color:var(--b)}
-.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}
-.lv.sel-a .lv-name{color:var(--p)}
-.submit{
-  width:100%;padding:16px;border:none;border-radius:14px;margin-top:auto;
-  background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
-  color:white;font-size:17px;font-weight:800;font-family:'Nunito',sans-serif;
-  cursor:pointer;transition:transform .2s,box-shadow .2s;
-  box-shadow:0 8px 28px rgba(124,90,246,.35);position:relative;overflow:hidden;
-}
-.submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent)}
-.submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
-.submit:active{transform:scale(.98)}
 
-@media(max-width:660px){
-  body{padding:0;align-items:flex-end}
-  .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
-  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:16px 20px;gap:14px}
-  .logo-row,.divider,.left-hint{display:none}
-  .av-ring-wrap{width:76px;height:76px;margin-bottom:0;flex-shrink:0}
-  .av-circle{width:76px;height:76px;font-size:34px}
-  .av-ring-svg{inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px)}
-  .av-upload-badge{width:24px;height:24px;font-size:11px;bottom:1px;right:1px;border-width:2px}
-  .prev-name{font-size:16px;text-align:left;margin-bottom:3px;min-height:auto}
-  .prev-tag{font-size:10px;margin-bottom:0}
-  .right{padding:20px 16px 24px}
-  .right h1{font-size:24px}
-  .av-grid{grid-template-columns:repeat(5,1fr);max-height:160px}
-  .tabs .tab{padding:7px 11px;font-size:11px}
+.submit{
+  width:100%;padding:15px;border:none;border-radius:14px;margin-top:8px;
+  background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
+  color:white;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;
+  box-shadow:0 8px 28px rgba(124,90,246,.35);
+}
+.submit:hover{transform:translateY(-2px)}
+.submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* Loading */
+.loading-wrap{text-align:center;padding:20px 0}
+.spinner{
+  width:44px;height:44px;border:3px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin .8s linear infinite;margin:0 auto 16px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-txt{font-size:14px;color:var(--muted)}
+
+/* Success */
+.success-wrap{text-align:center;padding:10px 0}
+.success-icon{font-size:56px;margin-bottom:16px;display:block}
+.success-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
+.success-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+.progress-bar{width:100%;height:4px;background:var(--s2);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--al));border-radius:4px;animation:fill 2s linear forwards}
+@keyframes fill{from{width:0}to{width:100%}}
+
+/* Info box */
+.info-box{
+  background:rgba(79,156,249,.07);border:1px solid rgba(79,156,249,.2);
+  border-radius:14px;padding:16px;margin-top:20px;
+  font-size:13px;color:var(--muted);line-height:1.7;
+}
+.info-box strong{color:var(--b)}
+.info-box code{
+  background:var(--s2);padding:2px 8px;border-radius:6px;
+  font-family:monospace;color:var(--al);font-size:12px;
+}
+
+@media(max-width:500px){
+  .card{padding:28px 20px 24px;border-radius:20px}
+  h1{font-size:22px}
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-  MUHIM: Profil mavjudligini tekshirish — sahifa ko'rinishidan OLDIN
-  localStorage → sessionStorage tartibida tekshiriladi
-============================================================ -->
+<!-- Mavjud profilni tekshirish -->
 <script>
-(function checkExistingProfile(){
-  try {
-    // 1. localStorage (asosiy, qurilmada doimiy saqlanadi)
+(function(){
+  try{
     const raw = localStorage.getItem('ep_user');
     if(raw){
       const u = JSON.parse(raw);
-      if(u && u.name && u.name.trim() && u.level){
-        window.location.replace('app.html');
-        return;
-      }
-    }
-    // 2. sessionStorage (zaxira)
-    const raw2 = sessionStorage.getItem('ep_user');
-    if(raw2){
-      const u2 = JSON.parse(raw2);
-      if(u2 && u2.name && u2.name.trim() && u2.level){
-        // localStorage ga ko'chirib, yo'naltirish
-        localStorage.setItem('ep_user', raw2);
-        window.location.replace('app.html');
+      if(u && u.name && u.telegram_id) {
+        window.location.replace('app__17_.html');
         return;
       }
     }
   } catch(e){
-    // Xato bo'lsa — ro'yxatdan o'tish formasini ko'rsatamiz
     localStorage.removeItem('ep_user');
-    sessionStorage.removeItem('ep_user');
   }
 })();
 </script>
 
-<div class="outer">
+<!-- Supabase config -->
+<script>
+const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
 
-  <!-- LEFT PANEL -->
-  <div class="left">
-    <div class="logo-row">
-      <div class="logo-icon">🧠</div>
-      <span class="logo-txt">Essential English</span>
+async function sbFetch(path, options={}){
+  const res = await fetch(SUPABASE_URL + path, {
+    ...options,
+    headers:{
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      ...(options.headers||{})
+    }
+  });
+  if(!res.ok){
+    const err = await res.text();
+    throw new Error(err);
+  }
+  return res.json();
+}
+</script>
+
+<div class="card">
+  <div class="logo-row">
+    <div class="logo-icon">🧠</div>
+    <span class="logo-txt">Essential English</span>
+  </div>
+  <div class="logo-sub">PRO · Bot & Web</div>
+
+  <!-- SCREEN 1: Login tanlov -->
+  <div class="screen active" id="screen-main">
+    <h1>Xush kelibsiz 👋</h1>
+    <p class="sub">Telegram orqali kiring — barcha qurilmalaringizda<br>bir xil profil ishlaydi</p>
+
+    <!-- Usul 1: Bot orqali token -->
+    <span class="lbl">Bot orqali kirish (tavsiya)</span>
+    <a href="https://t.me/essentialwords1bot?start=weblogin" target="_blank" class="tg-btn" onclick="showTokenInput()">
+      <span class="tg-icon">✈️</span>
+      Telegram Bot orqali kirish
+    </a>
+
+    <div class="divider-row">
+      <div class="divider-line"></div>
+      <span class="divider-txt">Botdan kod oldingizmi?</span>
+      <div class="divider-line"></div>
     </div>
-    <div class="av-ring-wrap">
-      <svg class="av-ring-svg" viewBox="0 0 176 176">
-        <defs>
-          <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7c5af6"/>
-            <stop offset="50%" stop-color="#c084fc"/>
-            <stop offset="100%" stop-color="#4f9cf9"/>
-          </linearGradient>
-        </defs>
-        <circle cx="88" cy="88" r="84" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="340 180"/>
-      </svg>
-      <div class="av-circle" id="av-circle">
-        <img id="av-img" src="" alt="">
-        <span id="av-emoji">🤖</span>
-      </div>
-      <label class="av-upload-badge" for="file-up">📷</label>
-      <input type="file" id="file-up" accept="image/*" style="display:none">
+
+    <span class="lbl">Kirish kodi</span>
+    <div class="inp-wrap">
+      <span class="inp-ico">🔑</span>
+      <input type="text" id="inp-token" class="inp" placeholder="XXXXXX (6 ta raqam)" maxlength="6" autocomplete="off">
     </div>
-    <div class="prev-name" id="prev-name">Sizning ismingiz</div>
-    <div class="prev-tag">Essential English PRO</div>
-    <div class="divider"></div>
-    <div class="left-hint">Profilingizni yarating va<br>o'rganishni boshlang 🚀</div>
+    <div class="err-txt" id="err-token">Kod noto'g'ri yoki muddati o'tgan</div>
+    <button class="submit" onclick="loginWithToken()">Kirish →</button>
+
+    <div class="info-box">
+      <strong>Qanday ishlaydi?</strong><br>
+      1. Botga <code>/start</code> yuboring<br>
+      2. <code>🌐 Web kirish</code> tugmasini bosing<br>
+      3. Bot 6 xonali kod yuboradi<br>
+      4. Kodni bu yerga kiriting
+    </div>
   </div>
 
-  <!-- RIGHT PANEL -->
-  <div class="right">
-    <h1>Profil yaratish</h1>
-    <p>Nickname kiriting va avatarni tanlang yoki yuklang</p>
-
-    <span class="lbl">Nickname</span>
-    <div class="inp-wrap">
-      <span class="inp-ico">👤</span>
-      <input type="text" id="inp-name" class="inp" placeholder="Ismingizni kiriting..." autocomplete="off" maxlength="20">
+  <!-- SCREEN 2: Loading -->
+  <div class="screen" id="screen-loading">
+    <div class="loading-wrap">
+      <div class="spinner"></div>
+      <div class="loading-txt" id="loading-txt">Tekshirilmoqda...</div>
     </div>
-    <div class="err-txt" id="err-name">Iltimos, ismingizni kiriting!</div>
+  </div>
 
-    <div class="av-sec">
-      <span class="lbl">Avatar tanlash</span>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
-        <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
-        <button class="tab" onclick="switchTab('animals',this)">🐱 Hayvonlar</button>
-      </div>
-      <div class="av-grid" id="av-grid"></div>
+  <!-- SCREEN 3: Muvaffaqiyat -->
+  <div class="screen" id="screen-success">
+    <div class="success-wrap">
+      <span class="success-icon" id="succ-icon">🎉</span>
+      <div class="success-name" id="succ-name">Xush kelibsiz!</div>
+      <div class="success-sub" id="succ-sub">Profilingiz yuklanyapti...</div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div style="font-size:12px;color:var(--muted)">Ilovaga yo'naltirilmoqda...</div>
     </div>
-
-    <span class="lbl">Darajangiz</span>
-    <div class="level-row">
-      <div class="lv sel-b" data-lv="beginner" onclick="pickLevel(this)">
-        <span class="lv-em">🌱</span>
-        <span class="lv-name">Beginner</span>
-        <span class="lv-hint">1–2 kitob</span>
-      </div>
-      <div class="lv" data-lv="intermediate" onclick="pickLevel(this)">
-        <span class="lv-em">🔥</span>
-        <span class="lv-name">Intermediate</span>
-        <span class="lv-hint">3–4 kitob</span>
-      </div>
-      <div class="lv" data-lv="advanced" onclick="pickLevel(this)">
-        <span class="lv-em">⚡</span>
-        <span class="lv-name">Advanced</span>
-        <span class="lv-hint">5–6 kitob</span>
-      </div>
-    </div>
-
-    <button class="submit" onclick="goToApp()">Profilni yaratish →</button>
   </div>
 </div>
 
 <script>
-const SEEDS={
-  bots:['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
-  avatars:['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
-  animals:['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
-};
-const STYLES={bots:'bottts-neutral',avatars:'adventurer-neutral',animals:'thumbs'};
-let state={avatarUrl:'',level:'beginner'};
-let selItem=null;
-
-function buildGrid(tab){
-  const grid=document.getElementById('av-grid');
-  grid.innerHTML='';
-  selItem=null;
-  SEEDS[tab].forEach(seed=>{
-    const url=`https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
-    const el=document.createElement('div');
-    el.className='av-item';
-    el.innerHTML=`<img src="${url}" loading="lazy">`;
-    el.onclick=()=>{
-      if(selItem) selItem.classList.remove('sel');
-      el.classList.add('sel');
-      selItem=el;
-      state.avatarUrl=url;
-      showPreview(url);
-    };
-    grid.appendChild(el);
-  });
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-function switchTab(tab,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  buildGrid(tab);
+function showTokenInput(){
+  // Tugma bosilganda token input ga focus
+  setTimeout(()=>{
+    document.getElementById('inp-token').focus();
+  }, 500);
 }
 
-function showPreview(url){
-  const img=document.getElementById('av-img');
-  img.src=url;
-  img.style.display='block';
-  document.getElementById('av-emoji').style.display='none';
-}
-
-document.getElementById('file-up').addEventListener('change',e=>{
-  const f=e.target.files[0];
-  if(!f) return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    state.avatarUrl=ev.target.result;
-    showPreview(ev.target.result);
-    if(selItem){ selItem.classList.remove('sel'); selItem=null; }
-  };
-  r.readAsDataURL(f);
+// Token input — faqat raqam
+document.getElementById('inp-token').addEventListener('input', function(){
+  this.value = this.value.replace(/\D/g,'').slice(0,6);
+  if(this.value.length === 6) loginWithToken();
 });
 
-document.getElementById('inp-name').addEventListener('input',e=>{
-  const v=e.target.value.trim();
-  document.getElementById('prev-name').textContent=v||'Sizning ismingiz';
-  // Xato xabarini olib tashlaymiz
-  if(v){
-    document.getElementById('inp-name').classList.remove('err');
-    document.getElementById('err-name').classList.remove('show');
-  }
+document.getElementById('inp-token').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') loginWithToken();
 });
 
-function pickLevel(el){
-  document.querySelectorAll('.lv').forEach(b=>b.className='lv');
-  const lv=el.dataset.lv;
-  state.level=lv;
-  el.classList.add(lv==='beginner'?'sel-b':lv==='intermediate'?'sel-i':'sel-a');
-}
-
-function goToApp(){
-  const name=document.getElementById('inp-name').value.trim();
-  if(!name){
-    document.getElementById('inp-name').classList.add('err');
-    document.getElementById('err-name').classList.add('show');
-    document.getElementById('inp-name').focus();
+async function loginWithToken(){
+  const token = document.getElementById('inp-token').value.trim();
+  if(token.length !== 6){
+    document.getElementById('inp-token').classList.add('err');
+    document.getElementById('err-token').textContent = '6 ta raqam kiriting';
+    document.getElementById('err-token').classList.add('show');
     return;
   }
-  document.getElementById('inp-name').classList.remove('err');
-  document.getElementById('err-name').classList.remove('show');
 
-  // ✅ To'liq profil — app.html kutayotgan BARCHA fieldlar
-  const user = {
-    name,
-    level: state.level,
-    avatarUrl: state.avatarUrl,
-    xp: 0,
-    streak: 1,
-    learnedWords: [],
-    wordErrors: {},
-    customWords: [],
-    unitProgress: { beginner:0, intermediate:0, advanced:0 },
-    currentUnit:  { beginner:1, intermediate:1, advanced:1 },
-    lastBook: 1,
-    lastUnit: 1,
-    battleWins: 0,
-    battleLosses: 0,
-    battleXP: 0,
-    dailyScore: {},
-    grammarLevel: state.level,
-    isPremium: false,
-    premiumExpiry: 0,
-    lastLogin: new Date().toDateString(),
-    createdAt: Date.now(),
-  };
+  document.getElementById('inp-token').classList.remove('err');
+  document.getElementById('err-token').classList.remove('show');
 
-  const json = JSON.stringify(user);
+  showScreen('screen-loading');
+  document.getElementById('loading-txt').textContent = 'Kod tekshirilmoqda...';
 
-  // ✅ ASOSIY: localStorage — tab/brauzer yopilsa ham saqlanadi
-  localStorage.setItem('ep_user', json);
-  // Zaxira: sessionStorage
-  sessionStorage.setItem('ep_user', json);
+  try {
+    // Supabase da tokenni tekshirish
+    const data = await sbFetch('/rest/v1/web_login_tokens?select=user_id,used,expires_at&token=eq.' + token + '&used=eq.false&expires_at=gt.' + new Date().toISOString(), {
+      headers: { 'Accept': 'application/json' }
+    });
 
-  window.location.href = 'app.html';
+    if(!data || data.length === 0){
+      showScreen('screen-main');
+      document.getElementById('inp-token').classList.add('err');
+      document.getElementById('err-token').textContent = 'Kod noto\'g\'ri yoki muddati o\'tgan (10 daqiqa)';
+      document.getElementById('err-token').classList.add('show');
+      document.getElementById('inp-token').value = '';
+      return;
+    }
+
+    const userId = data[0].user_id;
+
+    // Tokenni ishlatilgan deb belgilash
+    await sbFetch('/rest/v1/web_login_tokens?token=eq.' + token, {
+      method: 'PATCH',
+      body: JSON.stringify({ used: true })
+    });
+
+    document.getElementById('loading-txt').textContent = 'Profil yuklanmoqda...';
+
+    // Foydalanuvchi ma'lumotlarini olish
+    const users = await sbFetch('/rest/v1/users?select=*&user_id=eq.' + userId);
+
+    if(!users || users.length === 0){
+      throw new Error('Foydalanuvchi topilmadi');
+    }
+
+    const u = users[0];
+
+    // web_data dan eski progress ni olish
+    const webData = u.web_data || {};
+
+    // localStorage ga saqlash — app__17_.html kutayotgan format
+    const profile = {
+      name: u.first_name || u.username || 'Foydalanuvchi',
+      telegram_id: u.user_id,
+      username: u.username || '',
+      level: u.level || webData.level || 'beginner',
+      avatarUrl: u.avatar_url || webData.avatarUrl || '',
+      xp: u.xp || webData.xp || 0,
+      streak: u.streak || webData.streak || 1,
+      isPremium: u.is_premium || false,
+      premiumExpiry: u.premium_expiry || 0,
+      // Progress ma'lumotlari
+      learnedWords: webData.learnedWords || [],
+      wordErrors: webData.wordErrors || {},
+      customWords: webData.customWords || [],
+      unitProgress: webData.unitProgress || { beginner:0, intermediate:0, advanced:0 },
+      currentUnit: webData.currentUnit || { beginner:1, intermediate:1, advanced:1 },
+      lastBook: webData.lastBook || 1,
+      lastUnit: webData.lastUnit || 1,
+      battleWins: webData.battleWins || 0,
+      battleLosses: webData.battleLosses || 0,
+      battleXP: webData.battleXP || 0,
+      dailyScore: webData.dailyScore || {},
+      grammarLevel: webData.grammarLevel || u.level || 'beginner',
+      lastLogin: new Date().toDateString(),
+      total_points: u.total_points || 0,
+    };
+
+    localStorage.setItem('ep_user', JSON.stringify(profile));
+    sessionStorage.setItem('ep_user', JSON.stringify(profile));
+
+    // Muvaffaqiyat ekrani
+    document.getElementById('succ-icon').textContent = profile.isPremium ? '👑' : '🎉';
+    document.getElementById('succ-name').textContent = 'Xush kelibsiz, ' + profile.name + '!';
+    document.getElementById('succ-sub').textContent = profile.isPremium ? '✨ Premium a\'zo — barcha imkoniyatlar ochiq!' : '🌱 ' + profile.level.charAt(0).toUpperCase() + profile.level.slice(1) + ' darajasi';
+
+    showScreen('screen-success');
+
+    // 2 soniyadan keyin app ga o'tish
+    setTimeout(()=>{
+      window.location.href = 'app__17_.html';
+    }, 2000);
+
+  } catch(err){
+    console.error(err);
+    showScreen('screen-main');
+    document.getElementById('err-token').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.';
+    document.getElementById('err-token').classList.add('show');
+  }
 }
-
-// Sahifa yuklanganda gridni ko'rsatish
-buildGrid('bots');
 </script>
 </body>
 </html>
