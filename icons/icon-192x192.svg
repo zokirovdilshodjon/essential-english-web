@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c5af6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f5c542;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#f97b4f;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded rect -->
+  <rect width="192" height="192" rx="38" ry="38" fill="url(#bg)"/>
+  <!-- Inner glow -->
+  <rect width="192" height="192" rx="38" ry="38" 
+        fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3"/>
+  <!-- Letter E -->
+  <text x="96" y="130" 
+        font-family="Arial Black, sans-serif" 
+        font-weight="900" 
+        font-size="111" 
+        text-anchor="middle" 
+        fill="url(#gold)">E</text>
+  <!-- Small star top right -->
+  <text x="149" y="53" 
+        font-size="34" 
+        text-anchor="middle">⭐</text>
+</svg>
