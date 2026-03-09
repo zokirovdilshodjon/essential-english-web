@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Essential English PRO</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7c5af6">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="English PRO">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192x192.svg">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -412,7 +420,7 @@ const WORDS_CACHE = {};
 const BOOK_LEVEL = {1:'beginner',2:'beginner',3:'intermediate',4:'intermediate',5:'advanced',6:'advanced'};
 const BOOK_COLORS = {1:'var(--green)',2:'var(--green)',3:'var(--blue)',4:'var(--blue)',5:'var(--purple)',6:'var(--purple)'};
 
-// Fallback — agar JSON fayl topilmasa ishlatiladigan so'zlar
+// Fallback — agar JSON fayl topilmasa ishlatiladigan soʼzlar
 const FALLBACK_WORDS = {
   beginner: [
     {word:"afraid",translation:"qo'rqqan",definition:"feeling fear or anxiety",example:"The woman was afraid of what she saw.",part_of_speech:"adjective"},
@@ -495,7 +503,7 @@ async function detectUnitsInBook(bookNum) {
   return found;
 }
 
-// Barcha so'zlarni olish (progress uchun)
+// Barcha soʼzlarni olish (progress uchun)
 function getAllWordsFallback(level) {
   return FALLBACK_WORDS[level] || [];
 }
@@ -968,7 +976,7 @@ const ONLINE_PLAYERS = [
     </div>
     <div class="prog-bar-wrap">
       <div class="prog-labels">
-        <span>O'rganilgan so'zlar</span>
+        <span>O'rganilgan soʼzlar</span>
         <span id="prog-val">0 / 0</span>
       </div>
       <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
@@ -1117,7 +1125,7 @@ const ONLINE_PLAYERS = [
       </div>
       <div class="sec">
         <div class="sec-hd">
-          <div class="sec-title">📝 O'rganilgan so'zlar</div>
+          <div class="sec-title">📝 O'rganilgan soʼzlar</div>
           <div class="sec-link" onclick="openModal('modal-words')">Barchasi</div>
         </div>
         <div id="recent-wl"></div>
@@ -1690,7 +1698,7 @@ let curUnitNum = 1;
 
 // Sinxron yordamchi — cache dan (fetch tugagandan keyin)
 function getAllWordsForGames(){
-  // 1. Hozirgi unit so'zlari
+  // 1. Hozirgi unit soʼzlari
   if(currentUnitWords && currentUnitWords.length >= 4) return currentUnitWords;
   // 2. Cache dan boshqa unitlarni ham tekshiramiz
   const allCached = [];
@@ -1709,7 +1717,7 @@ function getAllWordsForGames(){
   const level = BOOK_LEVEL[curBook] || U.level || 'beginner';
   const fb = getAllWordsFallback(level);
   if(fb.length >= 4) return fb;
-  // 4. Barcha fallback so'zlarni birlashtir
+  // 4. Barcha fallback soʼzlarni birlashtir
   return [...FALLBACK_WORDS.beginner, ...FALLBACK_WORDS.intermediate, ...FALLBACK_WORDS.advanced];
 }
 
@@ -1796,7 +1804,7 @@ function previewUnit(val){
   buildQuickUnits();
 }
 
-// Asosiy funksiya — JSON dan fetch qilib unit so'zlarini yuklaydi
+// Asosiy funksiya — JSON dan fetch qilib unit soʼzlarini yuklaydi
 async function goToUnit(){
   const n = parseInt(document.getElementById('unit-inp').value) || 1;
   curUnitNum = n;
@@ -1824,7 +1832,7 @@ async function goToUnit(){
 
   currentUnitWords = words;
   const learned = currentUnitWords.filter(w=>U.learnedWords.find(x=>x.word===w.word)).length;
-  document.getElementById('sel-sub').textContent = `${currentUnitWords.length} ta so'z`;
+  document.getElementById('sel-sub').textContent = `${currentUnitWords.length} ta soʼz`;
   document.getElementById('sel-done').textContent = currentUnitWords.length > 0 ? `✓ ${learned}/${currentUnitWords.length}` : '';
 
   U.lastBook = curBook;
@@ -1917,7 +1925,7 @@ function wsSpeakFallback(text){
   else { speechSynthesis.onvoiceschanged=()=>{speechSynthesis.onvoiceschanged=null;doSpeak();}; setTimeout(doSpeak,400); }
 }
 
-// Dictionary API audio (so'zlar uchun ishonchli)
+// Dictionary API audio (soʼzlar uchun ishonchli)
 function tryDictAPI(text){ speakText(text); }
 
 // Sahifa yuklanishida ovozlarni oldindan tayyorlaymiz
@@ -2546,7 +2554,7 @@ function initMatch(){
   const words = getAllWordsForGames();
   if(words.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
   const shuffled = shuffle([...words]);
-  const rounds = Math.floor(shuffled.length / 4); // har roundda 4 so'z
+  const rounds = Math.floor(shuffled.length / 4); // har roundda 4 soʼz
   MS={sel:null,matched:0,score:0,round:1,rounds:Math.max(rounds,1),
       timer:null,tval:30,pool:shuffled,usedIdx:0};
   document.getElementById('ms-score').textContent=0;
@@ -2601,7 +2609,7 @@ function selectMatch(el,match){
       addXP(1);
       document.getElementById('ms-score').textContent=MS.score;
       if(MS.matched===4){
-        MS.usedIdx+=4; // Keyingi 4 so'zga o'tamiz
+        MS.usedIdx+=4; // Keyingi 4 soʼzga o'tamiz
         if(MS.round < MS.rounds){
           MS.round++;
           document.getElementById('ms-round').textContent=MS.round;
@@ -2655,7 +2663,7 @@ function buildAnagramRound(){
   const w = AS.pool[AS.poolIdx];
   AS.poolIdx++;
   AS.word=w.word; AS.answer=[]; AS.usedIdx=[];
-  // Harflar aralashib ketmasligi uchun — asl so'zdan farqli bo'lmaguncha shuffle
+  // Harflar aralashib ketmasligi uchun — asl soʼzdan farqli bo'lmaguncha shuffle
   let letters = w.word.split('');
   let shuffled = shuffle([...letters]);
   let attempts = 0;
@@ -2866,7 +2874,7 @@ function findOpponent(){
       document.getElementById('mm-sub').textContent = `${elapsed * 32}% qidirildi...`;
     } else {
       clearInterval(mmTimer);
-      // Tasodifiy online o'yinchi "topish" ehtimoli 60%
+      // Tasodifiy online oʼyinchi "topish" ehtimoli 60%
       const foundOnline = Math.random() < 0.6;
       if(foundOnline){
         const opp = ONLINE_PLAYERS[Math.floor(Math.random()*ONLINE_PLAYERS.length)];
@@ -3072,7 +3080,7 @@ function showGameLimitModal(gameId){
     <div style="background:var(--s1);border:1px solid var(--border);border-radius:22px;padding:28px 24px;max-width:340px;width:100%;text-align:center">
       <div style="font-size:48px;margin-bottom:12px">⏳</div>
       <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:8px">${names[gameId]||gameId}</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5">Bugun bu o'yinni allaqachon o'ynagansiz.<br>Ertaga qayta urinib ko'ring yoki<br>💎 <b style="color:var(--gold)">Premium</b> oling — cheksiz o'ynash!</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5">Bugun bu o'yinni allaqachon o'ynagansiz.<br>Ertaga qayta urinib koʼring yoki<br>💎 <b style="color:var(--gold)">Premium</b> oling — cheksiz o'ynash!</div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <button onclick="this.closest('[style*=fixed]').remove();switchTabByName('premium')" style="padding:12px;background:linear-gradient(135deg,var(--gold),var(--orange));border:none;border-radius:12px;color:#080d14;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
           💎 Premium olish
@@ -3439,7 +3447,7 @@ function endSurvival(){
 let DC={timer:null,score:0,time:60,answered:false};
 
 function getAllWordsDC(){
-  // DC uchun barcha cached so'zlarni birlashtirish — unit chegarasiz
+  // DC uchun barcha cached soʼzlarni birlashtirish — unit chegarasiz
   const all = [];
   const seen = new Set();
   for(const key in WORDS_CACHE){
@@ -3845,7 +3853,7 @@ function openWeakQuiz(){
   const errors=U.wordErrors||{};
   const sorted=Object.entries(errors).sort((a,b)=>b[1]-a[1]);
   if(sorted.length<3){showToast('Kamida 3 ta xato kerak!');return;}
-  // So'zlarni topish (unit so'zlari + fallback)
+  // So'zlarni topish (unit soʼzlari + fallback)
   const allWords=getAllWordsForGames();
   const pool=sorted.map(([w])=>{
     return allWords.find(x=>x.word===w)||{word:w,translation:'?',phonetic:''};
@@ -4064,7 +4072,7 @@ function translateLive(val){
   trDebounce = setTimeout(()=>doTranslate(val.trim()),500);
 }
 function doTranslate(word){
-  // Unit so'zlaridan qidirish
+  // Unit soʼzlaridan qidirish
   const allWords = getAllWordsForGames();
   const found = allWords.find(w=>w.word.toLowerCase()===word.toLowerCase());
   const result = document.getElementById('tr-result');
@@ -4414,7 +4422,7 @@ function spAnalyze(heardList,conf){
   const exactMatch=heardList.some(h=>h.replace(/[^a-z]/g,'')===correct);
   const pronunciation=exactMatch?100:Math.min(100,Math.round(accuracy*0.6+(conf||0.5)*100*0.4));
 
-  // 3. RAVONLIK — faqat 1 so'z bo'lsa mukammal
+  // 3. RAVONLIK — faqat 1 soʼz bo'lsa mukammal
   const wc=heard0.trim().split(/\s+/).filter(Boolean).length;
   const fluency=wc===0?0:wc===1?100:wc===2?70:45;
 
@@ -4586,9 +4594,9 @@ function psEnd(){
 }
 
 // ================================================================
-// ⛓️ SO'Z ZANJIRI — Umumiy inglizcha so'zlar (katta lug'at)
+// ⛓️ SO'Z ZANJIRI — Umumiy inglizcha soʼzlar (katta lug'at)
 // ================================================================
-// ~300+ ta keng tarqalgan inglizcha so'z (oxirgi harf → keyingi boshlanishi uchun)
+// ~300+ ta keng tarqalgan inglizcha soʼz (oxirgi harf → keyingi boshlanishi uchun)
 const WC_DICT = new Set([
   'able','above','act','add','age','ago','air','all','also','and','any','arm','art','ask','ate',
   'back','bad','bag','ball','band','bank','bar','base','bath','bay','be','bed','big','bit','blow',
@@ -4655,14 +4663,14 @@ function wcInpHandler(inp){
   hint.style.color='var(--orange)';
 }
 
-// Inglizcha so'zlar uchun oddiy tekshiruv (faqat lotin harflari, kamida 2 ta)
+// Inglizcha soʼzlar uchun oddiy tekshiruv (faqat lotin harflari, kamida 2 ta)
 const ENGLISH_PATTERN = /^[a-z]{2,}$/;
 // Qabul qilinmaydigan "so'zlar" (raqamlar, bitta harf, etc.)
 function isLikelyEnglish(word){
   if(!ENGLISH_PATTERN.test(word)) return false;
   // Bir xil harflar (aaa, bbb) — rad
   if(/^(.)+$/.test(word)) return false;
-  // Unli harf bo'lishi shart (a,e,i,o,u) — haqiqiy so'z
+  // Unli harf bo'lishi shart (a,e,i,o,u) — haqiqiy soʼz
   if(!/[aeiou]/.test(word)) return false;
   return true;
 }
@@ -4726,7 +4734,7 @@ function wcSetTime(sec){
 
 function wcEnd(){
   document.getElementById('wc-inp').disabled=true;
-  document.getElementById('wc-last').textContent=`🏁 Tugadi! ${WC.score} so'z · ${WC.score} XP`;
+  document.getElementById('wc-last').textContent=`🏁 Tugadi! ${WC.score} soʼz · ${WC.score} XP`;
   showToast(`⛓️ So'z Zanjiri: ${WC.score} XP!`);
 }
 
@@ -4736,7 +4744,7 @@ function wcEnd(){
 let CTX={pool:[],idx:0,score:0,wrong:0};
 
 function initContext(){
-  // Faqat example jumlasi bor so'zlarni olamiz — UNIT so'zlari
+  // Faqat example jumlasi bor soʼzlarni olamiz — UNIT soʼzlari
   const words=(currentUnitWords&&currentUnitWords.length
     ? currentUnitWords
     : getAllWordsForGames()
@@ -4761,7 +4769,7 @@ function ctxBuild(){
   const correct=CTX.pool[CTX.idx];
   document.getElementById('ctx-num').textContent=CTX.idx+1;
   document.getElementById('ctx-res').textContent='';
-  // Example jumladan so'zni olib bo'shliq yasaymiz
+  // Example jumladan soʼzni olib bo'shliq yasaymiz
   const ex=correct.example||('The word is '+correct.word+'.');
   const wordRe=new RegExp('\\b'+correct.word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');
   const blanked=ex.replace(wordRe,'<span class="ctx-blank">_____</span>');
@@ -4824,7 +4832,7 @@ let WF={pool:[],idx:0,learned:0};
 function initWordFamily(){
   const words=getAllWordsForGames().filter(w=>w.word&&WF_DB[w.word.toLowerCase()]);
   if(words.length<2){
-    // Fallback — DB dagi barcha so'zlarni ishlatamiz
+    // Fallback — DB dagi barcha soʼzlarni ishlatamiz
     const dbWords=Object.keys(WF_DB).map(w=>({word:w,translation:WF_DB[w][0].tr}));
     WF={pool:shuffle(dbWords),idx:0,learned:0};
   } else {
@@ -4856,7 +4864,7 @@ function wfBuild(){
   // To'g'ri variant: oilaning birinchi bo'lmagan elementi
   const correctMember=family.find(f=>f.f!==wl)||family[1]||family[0];
   document.getElementById('wf-question').textContent=`"${w.word}" ning ${correctMember.t} shakli qaysi?`;
-  // Noto'g'ri variantlar — boshqa so'zlardan
+  // Noto'g'ri variantlar — boshqa soʼzlardan
   const allDbForms=Object.values(WF_DB).flat().map(x=>x.f).filter(f=>f!==wl&&f!==correctMember.f);
   const others=shuffle([...new Set(allDbForms)]).slice(0,3);
   const opts=shuffle([{f:correctMember.f,t:correctMember.t,correct:true},...others.map(f=>({f,correct:false}))]);
@@ -4890,7 +4898,7 @@ function wfBuild(){
 function wfNext(){WF.idx++;wfBuild();}
 
 // ================================================================
-// openPremiumGame — yangi o'yinlarni qo'shamiz
+// openPremiumGame — yangi oʼyinlarni qo'shamiz
 // ================================================================
 const _origOpenPremGame = openPremiumGame;
 openPremiumGame = function(type){
@@ -4916,10 +4924,10 @@ openPremiumGame = function(type){
   _origOpenPremGame(type);
 };
 
-// openModal — yangi o'yinlarni init (override o'rniga to'g'ridan-to'g'ri qo'shamiz)
+// openModal — yangi oʼyinlarni init (override o'rniga to'g'ridan-to'g'ri qo'shamiz)
 // (Asosiy openModal funksiyasiga yangi game initlar qo'shildi)
 
-// closeModal — yangi o'yinlarni tozalash
+// closeModal — yangi oʼyinlarni tozalash
 const _origCM2 = closeModal;
 closeModal = function(e,id){
   _origCM2(e,id);
@@ -5529,7 +5537,7 @@ App.ai = {
             • Zaif so'zlar uchun AI quiz<br>
             • Grammatika tushuntirishlari<br>
             • Speaking practice AI fikr-mulohazasi<br>
-            • Shaxsiy o'rganish tavsiyalari
+            • Shaxsiy oʼrganish tavsiyalari
           </div>
         </div>
       </div>`;
@@ -5577,14 +5585,14 @@ App.ai = {
 
   // ══════════════════════════════════════════════════════
   // AI VOCABULARY GENERATOR
-  // Berilgan daraja uchun yangi so'z + tarjima + misol
+  // Berilgan daraja uchun yangi soʼz + tarjima + misol
   // ══════════════════════════════════════════════════════
   async generateVocabulary(level='intermediate', topic=''){
     if(!await this.isEnabled()) return null;
     const topicStr = topic ? `, mavzu: "${topic}"` : '';
     return this.call(
       `Siz ingliz tili o'qituvchisisiz. Foydalanuvchi Uzbek. Faqat JSON qaytaring, boshqa hech narsa yo'q.`,
-      `${level} darajadagi o'quvchi uchun${topicStr} 5 ta yangi inglizcha so'z ber. JSON format: {"words":[{"word":"...","translation":"...","definition":"...","example":"...","part_of_speech":"..."}]}`,
+      `${level} darajadagi o'quvchi uchun${topicStr} 5 ta yangi inglizcha soʼz ber. JSON format: {"words":[{"word":"...","translation":"...","definition":"...","example":"...","part_of_speech":"..."}]}`,
       600
     ).then(r=>{
       try{
@@ -5624,14 +5632,14 @@ App.ai = {
 
   // ══════════════════════════════════════════════════════
   // AI WEAK WORD TRAINER
-  // Xato qilingan so'zlar uchun AI test
+  // Xato qilingan soʼzlar uchun AI test
   // ══════════════════════════════════════════════════════
   async generateWeakWordExercises(words){
     if(!await this.isEnabled()) return null;
     if(!words||!words.length) return null;
     return this.call(
       `Ingliz tili o'qituvchisi. Foydalanuvchi Uzbek. Faqat JSON qaytaring.`,
-      `Bu so'zlar uchun bo'sh joyni to'ldirish mashqi ber: ${words.slice(0,5).join(', ')}. JSON: {"exercises":[{"word":"...","sentence":"Shu yerga ___ kerak.","translation":"...","hint":"..."}]}`,
+      `Bu soʼzlar uchun bo'sh joyni to'ldirish mashqi ber: ${words.slice(0,5).join(', ')}. JSON: {"exercises":[{"word":"...","sentence":"Shu yerga ___ kerak.","translation":"...","hint":"..."}]}`,
       500
     ).then(r=>{
       try{ return JSON.parse(r.replace(/\`\`\`json|\`\`\`/g,'').trim()); }catch(e){ return null; }
@@ -5660,7 +5668,7 @@ App.ai = {
     const wordList = words.slice(0,10).map(w=>w.word||w).join(', ');
     return this.call(
       `Ingliz tili o'qituvchisi. Foydalanuvchi Uzbek. Faqat JSON qaytaring.`,
-      `Bu so'zlar asosida ${count} ta test savol ber: ${wordList}. JSON: {"questions":[{"word":"...","question":"...","options":["...","...","...","..."],"correct":0,"explanation":"..."}]}`,
+      `Bu soʼzlar asosida ${count} ta test savol ber: ${wordList}. JSON: {"questions":[{"word":"...","question":"...","options":["...","...","...","..."],"correct":0,"explanation":"..."}]}`,
       700
     ).then(r=>{
       try{ return JSON.parse(r.replace(/\`\`\`json|\`\`\`/g,'').trim()); }catch(e){ return null; }
@@ -5677,7 +5685,7 @@ App.ai = {
     const weakCount = Object.keys(wordErrors).length;
     return this.call(
       `Shaxsiy ingliz tili murabbiyisiz. O'zbek tilida qisqa, motivatsion, amaliy maslahat bering.`,
-      `O'quvchi ma'lumoti: daraja=${level}, o'rganilgan so'z=${learnedWords.length}, streak=${streak} kun, XP=${xp}, zaif so'z=${weakCount}. 2-3 qisqa maslahat va bugungi maqsad bering.`,
+      `O'quvchi ma'lumoti: daraja=${level}, o'rganilgan soʼz=${learnedWords.length}, streak=${streak} kun, XP=${xp}, zaif soʼz=${weakCount}. 2-3 qisqa maslahat va bugungi maqsad bering.`,
       250
     );
   },
@@ -5702,7 +5710,7 @@ App.ai = {
   async getPronunciationTip(word, heard, score){
     if(!await this.isEnabled()) return null;
     return this.call(
-      `Talaffuz murabbiyisiz. O'zbek tilida 1 qisqa maslahat ber (max 20 so'z).`,
+      `Talaffuz murabbiyisiz. O'zbek tilida 1 qisqa maslahat ber (max 20 soʼz).`,
       `So'z: "${word}", eshitildi: "${heard}", skor: ${score}%. Nima yaxshilanishi kerak?`,
       100
     );
@@ -5825,7 +5833,7 @@ function buildLearningAnalytics(){
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
       <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center">
         <div style="font-size:22px;font-weight:800;color:var(--green)">${stats.totalStudied}</div>
-        <div style="font-size:10px;color:var(--muted)">O'rganilgan so'zlar</div>
+        <div style="font-size:10px;color:var(--muted)">O'rganilgan soʼzlar</div>
       </div>
       <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center">
         <div style="font-size:22px;font-weight:800;color:var(--blue)">${stats.avgAccuracy}%</div>
@@ -6104,7 +6112,7 @@ App.init = function(){
       <div id="wc-hint" style="min-height:18px;text-align:center;font-size:12px;color:var(--red);margin-bottom:8px"></div>
       <button onclick="wcSubmit()" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">✓ Tasdiqlash</button>
       <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6;text-align:center">
-        Har to'g'ri so'z uchun <b style="color:var(--gold)">+1 XP</b> · Istalgan inglizcha so'z qabul qilinadi
+        Har to'g'ri soʼz uchun <b style="color:var(--gold)">+1 XP</b> · Istalgan inglizcha so'z qabul qilinadi
       </div>
     </div>
   </div>
@@ -6121,7 +6129,7 @@ App.init = function(){
         <span>❌ <span id="ctx-wrong">0</span></span>
         <span>📝 <span id="ctx-num">1</span>/<span id="ctx-total">—</span></span>
       </div>
-      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px">Bo'sh joyga to'g'ri so'zni tanlang</div>
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px">Bo'sh joyga to'g'ri soʼzni tanlang</div>
       <div class="ctx-sentence" id="ctx-sentence">—</div>
       <div id="ctx-hint" style="font-size:12px;color:var(--muted);text-align:center;margin-bottom:12px;font-style:italic"></div>
       <div class="gopts" id="ctx-opts"></div>
@@ -6231,7 +6239,7 @@ App.init = function(){
       <div class="st">❤️ Survival Mode</div>
       <div class="surv-lives" id="surv-lives">❤️❤️❤️</div>
       <div style="background:var(--s2);border-radius:10px;padding:8px 12px;margin-bottom:8px;display:flex;justify-content:space-between">
-        <span style="font-size:12px;color:var(--muted)">To'plangan so'zlar</span>
+        <span style="font-size:12px;color:var(--muted)">To'plangan soʼzlar</span>
         <span style="font-size:13px;font-weight:800;color:var(--green)" id="surv-score">0</span>
       </div>
       <div class="surv-streak-bar"><div class="surv-streak-fill" id="surv-streak-fill" style="width:0%"></div></div>
@@ -6271,7 +6279,7 @@ App.init = function(){
     <div class="sc" onclick="closeModal(null,'modal-weak')">✕</div>
     <div class="sb">
       <div class="st">⚠️ Zaif So'zlar</div>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Ko'p xato qilingan so'zlar — qayta o'rganing</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Ko'p xato qilingan soʼzlar — qayta oʼrganing</div>
       <div id="weak-list"></div>
       <button onclick="practiceWeak()" style="width:100%;margin-top:12px;padding:12px;background:linear-gradient(135deg,var(--red),#c73030);border:none;border-radius:12px;color:white;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
         🔁 Qayta mashq qilish
@@ -6409,7 +6417,7 @@ App.init = function(){
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
         <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>🎮</span><span style="font-size:13px">O'yin to'g'ri javob: 1 → <b style="color:var(--orange)">2 XP</b></span></div>
-        <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>📖</span><span style="font-size:13px">So'z o'rganish: 1 → <b style="color:var(--orange)">2 XP</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>📖</span><span style="font-size:13px">So'z oʼrganish: 1 → <b style="color:var(--orange)">2 XP</b></span></div>
         <div style="display:flex;align-items:center;gap:10px;background:var(--s2);border-radius:11px;padding:10px 14px"><span>⚔️</span><span style="font-size:13px">Battle g'alaba: 10 → <b style="color:var(--orange)">20 XP</b></span></div>
       </div>
       <button onclick="activateXPBoost()" id="boost-activate-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--orange),var(--gold));border:none;border-radius:13px;color:#080d14;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
@@ -6429,7 +6437,7 @@ App.init = function(){
       <div class="st">📊 Batafsil Statistika</div>
       <!-- Asosiy raqamlar -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px" id="stats-grid">
-        <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--green)" id="ds-words">0</div><div style="font-size:11px;color:var(--muted)">O'rganilgan so'z</div></div>
+        <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--green)" id="ds-words">0</div><div style="font-size:11px;color:var(--muted)">O'rganilgan soʼz</div></div>
         <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--gold)" id="ds-streak">0</div><div style="font-size:11px;color:var(--muted)">Streak 🔥</div></div>
         <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--purple)" id="ds-xp">0</div><div style="font-size:11px;color:var(--muted)">Jami XP</div></div>
         <div style="background:var(--s2);border-radius:12px;padding:12px;text-align:center"><div style="font-size:24px;font-weight:800;color:var(--blue)" id="ds-battles">0</div><div style="font-size:11px;color:var(--muted)">Battle g'alabasi</div></div>
@@ -6454,7 +6462,7 @@ App.init = function(){
     <div class="sc" onclick="closeModal(null,'modal-translator')">✕</div>
     <div class="sb">
       <div class="st">🌍 Tarjimon Rejimi</div>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:14px">So'zning kontekstdagi ishlatilishini ko'ring</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:14px">So'zning kontekstdagi ishlatilishini koʼring</div>
       <div style="position:relative;margin-bottom:10px">
         <input id="tr-input" class="custom-inp" placeholder="So'z yoki jumla kiriting..." style="margin-bottom:0;padding-right:44px" oninput="translateLive(this.value)">
         <button onclick="speakTranslation()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:20px;cursor:pointer">🔊</button>
@@ -6477,7 +6485,7 @@ App.init = function(){
       <div class="st">⏰ Kunlik Eslatma</div>
       <div style="text-align:center;padding:8px 0 16px">
         <div style="font-size:48px;margin-bottom:8px">🔔</div>
-        <div style="font-size:13px;color:var(--muted)">Har kuni bir vaqtda o'rganish uchun eslatma o'rnating</div>
+        <div style="font-size:13px;color:var(--muted)">Har kuni bir vaqtda o'rganish uchun eslatma oʼrnating</div>
       </div>
       <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">VAQTNI TANLANG</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px" id="reminder-times">
@@ -6553,7 +6561,7 @@ App.init = function(){
       <div id="wq-res" style="text-align:center;font-size:12px;color:var(--muted);min-height:18px;margin-bottom:12px">So'zning tarjimasini toping:</div>
       <div class="gopts" id="wq-opts"></div>
       <div style="margin-top:14px;background:var(--s2);border-radius:10px;padding:8px 12px;font-size:11px;color:var(--muted);text-align:center">
-        Ko'p xato qilingan so'zlar · To'g'ri javob uchun <b style="color:var(--gold)">+2 XP</b> · To'g'ri javob xatoni kamaytiradi
+        Ko'p xato qilingan soʼzlar · To'g'ri javob uchun <b style="color:var(--gold)">+2 XP</b> · To'g'ri javob xatoni kamaytiradi
       </div>
     </div>
   </div>
@@ -6759,12 +6767,12 @@ async function runAIVocabGen(){
   
   btn.textContent = '⏳ AI yaratmoqda...';
   btn.disabled = true;
-  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI so'z yaratmoqda...</div>';
+  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI soʼz yaratmoqda...</div>';
   
   try{
     const data = await App.ai.generateVocabulary(_aiVocabLevel, topic);
     if(!data || !data.words){ 
-      result.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">AI javob qayta ishlashda xato. Qayta urinib ko'ring.</div>';
+      result.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">AI javob qayta ishlashda xato. Qayta urinib koʼring.</div>';
       return;
     }
     
@@ -6787,12 +6795,12 @@ async function runAIVocabGen(){
           <div style="font-size:11px;color:rgba(192,132,252,.8);font-style:italic">"${w.example||''}"</div>
         </div>
       `).join('')}
-      <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">➕ tugmasi bilan shaxsiy so'zlaringizga qo'shing</div>
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">➕ tugmasi bilan shaxsiy soʼzlaringizga qoʼshing</div>
     `;
   } catch(e){
     result.innerHTML=`<div style="color:var(--red);text-align:center;padding:14px">Xato: ${e.message}</div>`;
   } finally {
-    btn.textContent = '✨ AI So'z Yaratish';
+    btn.textContent = '✨ AI Soʼz Yaratish';
     btn.disabled = false;
   }
 }
@@ -6833,7 +6841,7 @@ async function openAIWeakTrainer(){
   if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
   const errors = U.wordErrors||{};
   const weakWords = Object.keys(errors).sort((a,b)=>errors[b]-errors[a]).slice(0,8);
-  if(weakWords.length < 2){ showToast('Kamida 2 ta xato so'z kerak!'); return; }
+  if(weakWords.length < 2){ showToast('Kamida 2 ta xato soʼz kerak!'); return; }
   
   document.getElementById('modal-ai-weak-trainer').classList.add('open');
   document.getElementById('ait-loading').style.display='block';
@@ -6845,7 +6853,7 @@ async function openAIWeakTrainer(){
   try{
     const data = await App.ai.generateWeakWordExercises(weakWords);
     if(!data||!data.exercises||!data.exercises.length){
-      document.getElementById('ait-loading').innerHTML='<div style="color:var(--red);text-align:center">AI mashq yaratishda xato. Qayta urinib ko'ring.</div>';
+      document.getElementById('ait-loading').innerHTML='<div style="color:var(--red);text-align:center">AI mashq yaratishda xato. Qayta urinib koʼring.</div>';
       return;
     }
     AIT.exercises = data.exercises;
@@ -6903,7 +6911,7 @@ function checkAIWeakAnswer(){
     if(U.wordErrors&&U.wordErrors[correct]){ U.wordErrors[correct]--; if(U.wordErrors[correct]<=0) delete U.wordErrors[correct]; saveUser(); }
   } else {
     AIT.wrong++;
-    res.innerHTML=`<span style="color:var(--red)">❌ Noto'g'ri. To'g'ri javob: <b style="color:var(--text)">${correct}</b></span>`;
+    res.innerHTML=`<span style="color:var(--red)">❌ Noto'g'ri. Toʼg'ri javob: <b style="color:var(--text)">${correct}</b></span>`;
     document.getElementById('ait-wrong').textContent=AIT.wrong;
   }
   nextBtn.style.display='block';
@@ -6926,7 +6934,7 @@ async function loadAIStudyPlan(){
   el.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)"><div style="font-size:40px;margin-bottom:12px">🤖</div><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:10px auto"></div></div>';
   try{
     const plan = await App.ai.getStudyPlan(U);
-    if(!plan){ el.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">Xato yuz berdi. Qayta urinib ko'ring.</div>'; return; }
+    if(!plan){ el.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">Xato yuz berdi. Qayta urinib koʼring.</div>'; return; }
     el.innerHTML=`
       <div style="background:rgba(124,90,246,.08);border:1px solid rgba(124,90,246,.2);border-radius:13px;padding:14px;line-height:1.9;white-space:pre-wrap;font-size:13px">${plan}</div>
       <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:12px;color:var(--muted)">
@@ -6944,7 +6952,7 @@ let AIQ = { questions:[], idx:0, score:0, wrong:0 };
 async function openAIQuiz(){
   if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
   const words = getAllWordsForGames();
-  if(words.length < 4){ showToast('Kamida 4 ta so'z kerak!'); return; }
+  if(words.length < 4){ showToast('Kamida 4 ta soʼz kerak!'); return; }
   
   document.getElementById('modal-ai-quiz').classList.add('open');
   document.getElementById('aiq-loading').style.display='block';
@@ -7012,7 +7020,7 @@ function buildAIQuizQuestion(){
         expEl.textContent='🤖 ' + q.explanation;
         expEl.style.display='block';
       }
-      document.getElementById('aiq-res').textContent = isRight ? '✅ To'g'ri!' : '❌ Noto'g'ri';
+      document.getElementById('aiq-res').textContent = isRight ? "✅ Toʼgʼri!" : "❌ Notoʼgʼri";
       AIQ.idx++;
       setTimeout(buildAIQuizQuestion, 1400);
     };
@@ -7023,8 +7031,8 @@ function buildAIQuizQuestion(){
 // ── AI Word Deep Explain ───────────────────────────────────────────────────
 async function openAIWordExplain(word){
   if(!AI_CONFIG.enabled){
-    // AI yoq bo'lsa - oddiy tarjimani ko'rsat
-    showToast('AI yoqilmagan - oddiy ma'lumot ko'rsatilmoqda');
+    // AI yoq bo'lsa - oddiy tarjimani koʼrsat
+    showToast('AI yoqilmagan - oddiy maʼlumot koʼrsatilmoqda');
     return;
   }
   document.getElementById('ai-explain-word-title').textContent = word;
@@ -7066,7 +7074,7 @@ function addAIButtonToFlashcard(){
   aiBtn.id = 'fc-ai-btn';
   aiBtn.style.cssText = 'display:flex;align-items:center;gap:5px;padding:7px 12px;background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.25);border-radius:20px;font-size:12px;font-weight:700;color:var(--al);cursor:pointer;transition:all .2s';
   aiBtn.innerHTML = '🤖 AI';
-  aiBtn.title = 'AI bilan chuqur o'rgan';
+  aiBtn.title = 'AI bilan chuqur oʼrgan';
   aiBtn.onmouseenter = ()=>aiBtn.style.background='rgba(124,90,246,.2)';
   aiBtn.onmouseleave = ()=>aiBtn.style.background='rgba(124,90,246,.1)';
   aiBtn.onclick = ()=>{
@@ -7091,8 +7099,8 @@ if(_origOpenGrammarFromLevel){
       if(!AI_CONFIG.enabled) return;
       const aiBtn = document.createElement('button');
       aiBtn.className='ai-gr-explain-btn';
-      aiBtn.style.cssText='width:100%;padding:11px;background:linear-gradient(135deg,rgba(192,132,252,.15),rgba(124,90,246,.1));border:1px solid rgba(192,132,252,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:10px';
-      aiBtn.innerHTML='🤖 AI bilan tushuntirish so'rash';
+      aiBtn.style.cssText="width:100%;padding:11px;background:linear-gradient(135deg,rgba(192,132,252,.15),rgba(124,90,246,.1));border:1px solid rgba(192,132,252,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:10px";
+      aiBtn.innerHTML="🤖 AI bilan tushuntirish soʼrash";
       aiBtn.onclick=()=>openAIGrammarExplain(topic, level);
       grBody.appendChild(aiBtn);
     }, 300);
@@ -7103,7 +7111,7 @@ if(_origOpenGrammarFromLevel){
 // buildAIPanelInSettings — artiq emas, buildAITab ishlatiladi
 function buildAIPanelInSettings(){ buildAITab(); }
 
-// ── Games tabga AI o'yinlari ───────────────────────────────────────────────
+// ── Games tabga AI oʼyinlari ───────────────────────────────────────────────
 function injectAIGamesSection(){
   // Endi statik HTML da mavjud — bu funksiya endi kerak emas
   // AI games tab-games ichiga bevosita yozilgan
@@ -7157,7 +7165,7 @@ function buildAITab(){
         <span style="font-size:28px">📋</span>O'qish Rejasi
       </button>
       <button onclick="openAIWordExplain(currentUnitWords[cardIdx]?.word||'word')" style="padding:16px 8px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(245,197,66,.05));border:1.5px solid rgba(245,197,66,.3);border-radius:14px;color:var(--gold);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px;grid-column:span 2">
-        <span style="font-size:28px">🔍</span>So'z Tahlili (hozirgi so'z)
+        <span style="font-size:28px">🔍</span>So'z Tahlili (hozirgi soʼz)
       </button>
     </div>
     <div style="background:rgba(79,223,138,.07);border:1px solid rgba(79,223,138,.2);border-radius:11px;padding:10px 13px;font-size:12px;color:var(--green);line-height:1.7;margin-bottom:10px">
@@ -7234,6 +7242,143 @@ closeModal = function(e, id){
 };
 
 console.log('🤖 AI Engine v3.0 loaded. Status:', AI_CONFIG.enabled ? '✅ ACTIVE — '+AI_CONFIG.model : '⭕ Waiting for key in AI_CONFIG.apiKey');
+
+// ── SERVICE WORKER REGISTRATION ──────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/essential-english-web/sw.js').then(function(reg) {
+      console.log('[PWA] SW registered:', reg.scope);
+      reg.addEventListener('updatefound', function() {
+        var nw = reg.installing;
+        nw.addEventListener('statechange', function() {
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+            showPWAUpdateBanner();
+          }
+        });
+      });
+    }).catch(function(e){ console.warn('[PWA] SW failed:', e); });
+    var refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function() {
+      if (!refreshing) { refreshing = true; window.location.reload(); }
+    });
+  });
+}
+
+// ── PWA INSTALL PROMPT ────────────────────────────────────────────
+var _dip = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault(); _dip = e;
+  setTimeout(showInstallBanner, 4000);
+});
+window.addEventListener('appinstalled', function() {
+  _dip = null; hideInstallBanner();
+  try { showToast('Ilova o\'rnatildi!'); } catch(e) {}
+});
+
+function showInstallBanner() {
+  if (!_dip) return;
+  var dismissed = localStorage.getItem('pwa_dismissed');
+  if (dismissed && Date.now() - +dismissed < 7*24*60*60*1000) return;
+  var el = document.getElementById('pwa-banner');
+  if (el) { el.style.display='flex'; return; }
+  el = document.createElement('div');
+  el.id = 'pwa-banner';
+  el.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;z-index:500;background:linear-gradient(135deg,#7c5af6,#c084fc);border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(124,90,246,.5);font-family:Nunito,sans-serif;animation:pwaSlide .4s ease';
+  el.innerHTML = '<div style="font-size:28px">&#128242;</div>'
+    + '<div style="flex:1"><div style="color:white;font-weight:800;font-size:13px">Ilovani telefonga o\'rnating!</div>'
+    + '<div style="color:rgba(255,255,255,.8);font-size:11px">Offline ishlaydi &#183; Tezroq ochiladi</div></div>'
+    + '<div style="display:flex;flex-direction:column;gap:5px">'
+    + '<button onclick="doPWAInstall()" style="background:white;color:#7c5af6;border:none;border-radius:9px;padding:7px 12px;font-weight:800;font-size:12px;cursor:pointer;font-family:Nunito,sans-serif">O\'rnating</button>'
+    + '<button onclick="dismissPWA()" style="background:rgba(255,255,255,.2);color:white;border:none;border-radius:9px;padding:5px 8px;font-weight:700;font-size:11px;cursor:pointer;font-family:Nunito,sans-serif">Keyinroq</button>'
+    + '</div>';
+  if (!document.getElementById('pwa-css')) {
+    var s = document.createElement('style');
+    s.id = 'pwa-css';
+    s.textContent = '@keyframes pwaSlide{from{transform:translateY(120px);opacity:0}to{transform:translateY(0);opacity:1}}';
+    document.head.appendChild(s);
+  }
+  document.body.appendChild(el);
+}
+
+function hideInstallBanner() {
+  var el = document.getElementById('pwa-banner');
+  if (el) el.remove();
+}
+
+function doPWAInstall() {
+  if (!_dip) return;
+  hideInstallBanner();
+  _dip.prompt();
+  _dip.userChoice.then(function(c){ _dip = null; });
+}
+
+function dismissPWA() {
+  localStorage.setItem('pwa_dismissed', Date.now().toString());
+  hideInstallBanner();
+}
+
+// ── UPDATE BANNER ─────────────────────────────────────────────────
+function showPWAUpdateBanner() {
+  var el = document.createElement('div');
+  el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#4fdf8a;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;font-family:Nunito,sans-serif';
+  el.innerHTML = '<span style="color:#080d14;font-weight:800;font-size:13px">&#128260; Yangi versiya mavjud!</span>'
+    + '<button onclick="window.location.reload()" style="background:#080d14;color:#4fdf8a;border:none;border-radius:8px;padding:6px 14px;font-weight:800;font-size:12px;cursor:pointer;font-family:Nunito,sans-serif">Yangilash</button>';
+  document.body.prepend(el);
+}
+
+// ── OFFLINE STATUS ────────────────────────────────────────────────
+function updateNetStatus() {
+  var online = navigator.onLine;
+  var el = document.getElementById('net-status');
+  if (!online) {
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'net-status';
+      el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9000;background:#f85149;color:white;text-align:center;padding:6px 12px;font-size:12px;font-weight:800;font-family:Nunito,sans-serif';
+      el.textContent = 'Offline — Keshdan ishlaydi';
+      document.body.prepend(el);
+    }
+  } else if (el) { el.remove(); }
+}
+window.addEventListener('online', updateNetStatus);
+window.addEventListener('offline', updateNetStatus);
+window.addEventListener('load', updateNetStatus);
+
+// ── DEEP LINK (?tab=games) ────────────────────────────────────────
+window.addEventListener('load', function() {
+  try {
+    var tab = new URLSearchParams(window.location.search).get('tab');
+    if (tab) setTimeout(function(){ if(typeof switchTabByName==='function') switchTabByName(tab); }, 500);
+  } catch(e) {}
+});
+
+// ── NOTIFICATIONS (Daily Reminder) ───────────────────────────────
+function scheduleDailyNotif() {
+  if (!('Notification' in window)) return;
+  try {
+    var U2 = JSON.parse(localStorage.getItem('ep_user') || 'null');
+    if (!U2 || !U2.reminderTime || !U2.reminderEnabled) return;
+    var parts = U2.reminderTime.split(':');
+    var now = new Date();
+    var target = new Date();
+    target.setHours(+parts[0], +parts[1], 0, 0);
+    if (target <= now) target.setDate(target.getDate() + 1);
+    var delay = target - now;
+    setTimeout(function() {
+      if (document.visibilityState !== 'hidden') return;
+      Notification.requestPermission().then(function(p) {
+        if (p === 'granted') {
+          new Notification("O'rganish vaqti!", {
+            body: "Bugun ham ingliz tilini mashq qiling. Streak: " + (U2.streak||0) + " kun",
+            icon: '/icons/icon-192x192.svg'
+          });
+        }
+      });
+    }, delay);
+  } catch(e) {}
+}
+window.addEventListener('load', function(){ setTimeout(scheduleDailyNotif, 2500); });
+
 </script>
 
 </body>
