@@ -36,7 +36,6 @@ body::before{
   animation:rise .65s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
 .logo-row{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center}
 .logo-icon{
   width:44px;height:44px;border-radius:14px;
@@ -46,15 +45,10 @@ body::before{
 }
 .logo-txt{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em}
 .logo-sub{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:28px}
-
 h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:center;margin-bottom:8px;letter-spacing:-.02em}
 .sub{font-size:14px;color:var(--muted);text-align:center;margin-bottom:32px;line-height:1.5}
-
-/* SCREENS */
 .screen{display:none}
 .screen.active{display:block}
-
-/* Telegram Login Button */
 .tg-btn{
   width:100%;padding:16px;border:none;border-radius:14px;
   background:linear-gradient(135deg,#2AABEE,#1a8bbf);
@@ -67,12 +61,9 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 .tg-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(42,171,238,.45)}
 .tg-btn:active{transform:scale(.98)}
 .tg-icon{font-size:22px}
-
-/* Token input */
 .divider-row{display:flex;align-items:center;gap:12px;margin:24px 0}
 .divider-line{flex:1;height:1px;background:var(--border)}
 .divider-txt{font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap}
-
 .lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:block}
 .inp-wrap{position:relative;margin-bottom:8px}
 .inp-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px;pointer-events:none}
@@ -81,14 +72,13 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
   background:var(--s2);border:1.5px solid var(--border);
   border-radius:14px;font-size:15px;font-family:'Nunito',sans-serif;
   color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;
-  letter-spacing:.15em;text-transform:uppercase;
+  letter-spacing:.15em;
 }
-.inp::placeholder{color:rgba(122,143,173,.5);letter-spacing:normal;text-transform:none}
+.inp::placeholder{color:rgba(122,143,173,.5);letter-spacing:normal}
 .inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.15)}
 .inp.err{border-color:#f85149}
 .err-txt{font-size:12px;color:#f85149;margin-bottom:12px;padding-left:4px;display:none}
 .err-txt.show{display:block}
-
 .submit{
   width:100%;padding:15px;border:none;border-radius:14px;margin-top:8px;
   background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
@@ -98,8 +88,6 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 }
 .submit:hover{transform:translateY(-2px)}
 .submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-/* Loading */
 .loading-wrap{text-align:center;padding:20px 0}
 .spinner{
   width:44px;height:44px;border:3px solid var(--border);
@@ -108,8 +96,6 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-txt{font-size:14px;color:var(--muted)}
-
-/* Success */
 .success-wrap{text-align:center;padding:10px 0}
 .success-icon{font-size:56px;margin-bottom:16px;display:block}
 .success-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
@@ -117,8 +103,6 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 .progress-bar{width:100%;height:4px;background:var(--s2);border-radius:4px;overflow:hidden;margin-bottom:8px}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--al));border-radius:4px;animation:fill 2s linear forwards}
 @keyframes fill{from{width:0}to{width:100%}}
-
-/* Info box */
 .info-box{
   background:rgba(79,156,249,.07);border:1px solid rgba(79,156,249,.2);
   border-radius:14px;padding:16px;margin-top:20px;
@@ -129,7 +113,6 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
   background:var(--s2);padding:2px 8px;border-radius:6px;
   font-family:monospace;color:var(--al);font-size:12px;
 }
-
 @media(max-width:500px){
   .card{padding:28px 20px 24px;border-radius:20px}
   h1{font-size:22px}
@@ -138,15 +121,14 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 </head>
 <body>
 
-<!-- Mavjud profilni tekshirish -->
 <script>
 (function(){
   try{
     const raw = localStorage.getItem('ep_user');
     if(raw){
       const u = JSON.parse(raw);
-      if(u && u.name && u.telegram_id) {
-        window.location.replace('app__17_.html');
+      if(u && u.name && u.telegram_id){
+        window.location.replace('index.html');
         return;
       }
     }
@@ -156,7 +138,6 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 })();
 </script>
 
-<!-- Supabase config -->
 <script>
 const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
@@ -186,14 +167,12 @@ async function sbFetch(path, options={}){
   </div>
   <div class="logo-sub">PRO · Bot & Web</div>
 
-  <!-- SCREEN 1: Login tanlov -->
   <div class="screen active" id="screen-main">
     <h1>Xush kelibsiz 👋</h1>
     <p class="sub">Telegram orqali kiring — barcha qurilmalaringizda<br>bir xil profil ishlaydi</p>
 
-    <!-- Usul 1: Bot orqali token -->
     <span class="lbl">Bot orqali kirish (tavsiya)</span>
-    <a href="https://t.me/essentialwords1bot?start=weblogin" target="_blank" class="tg-btn" onclick="showTokenInput()">
+    <a href="https://t.me/essentialwords1bot?start=weblogin" target="_blank" class="tg-btn" onclick="setTimeout(()=>document.getElementById('inp-token').focus(),1000)">
       <span class="tg-icon">✈️</span>
       Telegram Bot orqali kirish
     </a>
@@ -207,7 +186,7 @@ async function sbFetch(path, options={}){
     <span class="lbl">Kirish kodi</span>
     <div class="inp-wrap">
       <span class="inp-ico">🔑</span>
-      <input type="text" id="inp-token" class="inp" placeholder="XXXXXX (6 ta raqam)" maxlength="6" autocomplete="off">
+      <input type="text" inputmode="numeric" id="inp-token" class="inp" placeholder="XXXXXX (6 ta raqam)" maxlength="6" autocomplete="off">
     </div>
     <div class="err-txt" id="err-token">Kod noto'g'ri yoki muddati o'tgan</div>
     <button class="submit" onclick="loginWithToken()">Kirish →</button>
@@ -221,7 +200,6 @@ async function sbFetch(path, options={}){
     </div>
   </div>
 
-  <!-- SCREEN 2: Loading -->
   <div class="screen" id="screen-loading">
     <div class="loading-wrap">
       <div class="spinner"></div>
@@ -229,7 +207,6 @@ async function sbFetch(path, options={}){
     </div>
   </div>
 
-  <!-- SCREEN 3: Muvaffaqiyat -->
   <div class="screen" id="screen-success">
     <div class="success-wrap">
       <span class="success-icon" id="succ-icon">🎉</span>
@@ -247,14 +224,6 @@ function showScreen(id){
   document.getElementById(id).classList.add('active');
 }
 
-function showTokenInput(){
-  // Tugma bosilganda token input ga focus
-  setTimeout(()=>{
-    document.getElementById('inp-token').focus();
-  }, 500);
-}
-
-// Token input — faqat raqam
 document.getElementById('inp-token').addEventListener('input', function(){
   this.value = this.value.replace(/\D/g,'').slice(0,6);
   if(this.value.length === 6) loginWithToken();
@@ -275,13 +244,15 @@ async function loginWithToken(){
 
   document.getElementById('inp-token').classList.remove('err');
   document.getElementById('err-token').classList.remove('show');
-
   showScreen('screen-loading');
   document.getElementById('loading-txt').textContent = 'Kod tekshirilmoqda...';
 
   try {
-    // Supabase da tokenni tekshirish
-    const data = await sbFetch('/rest/v1/web_login_tokens?select=user_id,used,expires_at&token=eq.' + token + '&used=eq.false&expires_at=gt.' + new Date().toISOString(), {
+    // FIX: expires_at ni to'g'ri encode qilamiz
+    const now = new Date().toISOString();
+    const url = `/rest/v1/web_login_tokens?select=user_id,used,expires_at&token=eq.${token}&used=eq.false&expires_at=gt.${encodeURIComponent(now)}`;
+
+    const data = await sbFetch(url, {
       headers: { 'Accept': 'application/json' }
     });
 
@@ -312,11 +283,8 @@ async function loginWithToken(){
     }
 
     const u = users[0];
-
-    // web_data dan eski progress ni olish
     const webData = u.web_data || {};
 
-    // localStorage ga saqlash — app__17_.html kutayotgan format
     const profile = {
       name: u.first_name || u.username || 'Foydalanuvchi',
       telegram_id: u.user_id,
@@ -327,7 +295,6 @@ async function loginWithToken(){
       streak: u.streak || webData.streak || 1,
       isPremium: u.is_premium || false,
       premiumExpiry: u.premium_expiry || 0,
-      // Progress ma'lumotlari
       learnedWords: webData.learnedWords || [],
       wordErrors: webData.wordErrors || {},
       customWords: webData.customWords || [],
@@ -347,20 +314,21 @@ async function loginWithToken(){
     localStorage.setItem('ep_user', JSON.stringify(profile));
     sessionStorage.setItem('ep_user', JSON.stringify(profile));
 
-    // Muvaffaqiyat ekrani
     document.getElementById('succ-icon').textContent = profile.isPremium ? '👑' : '🎉';
     document.getElementById('succ-name').textContent = 'Xush kelibsiz, ' + profile.name + '!';
-    document.getElementById('succ-sub').textContent = profile.isPremium ? '✨ Premium a\'zo — barcha imkoniyatlar ochiq!' : '🌱 ' + profile.level.charAt(0).toUpperCase() + profile.level.slice(1) + ' darajasi';
+    document.getElementById('succ-sub').textContent = profile.isPremium
+      ? '✨ Premium a\'zo — barcha imkoniyatlar ochiq!'
+      : '🌱 ' + profile.level.charAt(0).toUpperCase() + profile.level.slice(1) + ' darajasi';
 
     showScreen('screen-success');
 
-    // 2 soniyadan keyin app ga o'tish
+    // FIX: index.html ga o'tish (app__17_.html emas)
     setTimeout(()=>{
-      window.location.href = 'app__17_.html';
+      window.location.href = 'index.html';
     }, 2000);
 
   } catch(err){
-    console.error(err);
+    console.error('Login error:', err);
     showScreen('screen-main');
     document.getElementById('err-token').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.';
     document.getElementById('err-token').classList.add('show');
