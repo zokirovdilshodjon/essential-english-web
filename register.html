@@ -149,6 +149,7 @@ async function sbFetch(path, options={}){
       'apikey': SUPABASE_KEY,
       'Authorization': 'Bearer ' + SUPABASE_KEY,
       'Content-Type': 'application/json',
+      'Prefer': 'return=minimal',
       ...(options.headers||{})
     }
   });
@@ -156,7 +157,9 @@ async function sbFetch(path, options={}){
     const err = await res.text();
     throw new Error(err);
   }
-  return res.json();
+  const text = await res.text();
+  if(!text || text.trim() === '') return null;
+  return JSON.parse(text);
 }
 </script>
 
