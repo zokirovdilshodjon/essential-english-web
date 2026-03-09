@@ -1985,92 +1985,10 @@ function addXP(n){
   try { App.progress.checkCombo(); } catch(e){}
   try { App.events.emit('xp:added',{amount:actual,total:U.xp}); } catch(e){}
 }
-<script>
-// Supabase config (app__17_.html ichiga qo'shing — yuqori qismiga)
-const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
-
-// Debounce — har saqlashda serverga yubormay, 5 soniya kutadi
-let _saveTimer = null;
-
 function saveUser(){
-  // 1. Lokal saqlash (tez)
   localStorage.setItem('ep_user', JSON.stringify(U));
   sessionStorage.setItem('ep_user', JSON.stringify(U));
-
-  // 2. Supabase ga sinxronlash (kechiktirilgan, faqat telegram_id bo'lsa)
-  if(U.telegram_id){
-    clearTimeout(_saveTimer);
-    _saveTimer = setTimeout(()=> syncToSupabase(), 5000);
-  }
 }
-
-async function syncToSupabase(){
-  if(!U || !U.telegram_id) return;
-  try {
-    // web_data ga progress ma'lumotlarini yig'amiz
-    const webData = {
-      level: U.level,
-      avatarUrl: U.avatarUrl || '',
-      xp: U.xp || 0,
-      streak: U.streak || 0,
-      learnedWords: U.learnedWords || [],
-      wordErrors: U.wordErrors || {},
-      customWords: U.customWords || [],
-      unitProgress: U.unitProgress || {},
-      currentUnit: U.currentUnit || {},
-      lastBook: U.lastBook || 1,
-      lastUnit: U.lastUnit || 1,
-      battleWins: U.battleWins || 0,
-      battleLosses: U.battleLosses || 0,
-      battleXP: U.battleXP || 0,
-      dailyScore: U.dailyScore || {},
-      grammarLevel: U.grammarLevel || U.level,
-    };
-
-    await fetch(SUPABASE_URL + '/rest/v1/users?user_id=eq.' + U.telegram_id, {
-      method: 'PATCH',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({
-        web_data: webData,
-        xp: U.xp || 0,
-        streak: U.streak || 0,
-        level: U.level,
-        avatar_url: U.avatarUrl || '',
-        last_active: new Date().toISOString()
-      })
-    });
-  } catch(e){
-    console.warn('Supabase sync xatosi (offline?):', e);
-    // Xato bo'lsa ham davom etaveradi — localStorage da saqlangan
-  }
-}
-
-// Sahifa yopilishidan oldin ham saqlash
-window.addEventListener('beforeunload', ()=>{
-  if(U && U.telegram_id){
-    clearTimeout(_saveTimer);
-    // navigator.sendBeacon ishlatiladi chunki fetch async
-    const webData = {
-      level:U.level, xp:U.xp, streak:U.streak,
-      learnedWords:U.learnedWords, wordErrors:U.wordErrors,
-      unitProgress:U.unitProgress, currentUnit:U.currentUnit,
-    };
-    const blob = new Blob([JSON.stringify({
-      web_data: webData, xp: U.xp, streak: U.streak, level: U.level
-    })], {type:'application/json'});
-    navigator.sendBeacon(
-      SUPABASE_URL + '/rest/v1/users?user_id=eq.' + U.telegram_id,
-      blob
-    );
-  }
-});
-</script>
 
 function updatePMtheme(){
   const isLight=document.body.classList.contains('light-mode');
