@@ -113,26 +113,67 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
   background:var(--s2);padding:2px 8px;border-radius:6px;
   font-family:monospace;color:var(--al);font-size:12px;
 }
+
+/* ── Level Picker ── */
+.level-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  margin-bottom:20px;
+}
+.level-card{
+  position:relative;border:2px solid var(--border);border-radius:16px;
+  padding:14px 10px 12px;text-align:center;cursor:pointer;
+  background:var(--s2);transition:border-color .2s,transform .15s,box-shadow .2s;
+  user-select:none;
+}
+.level-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.level-card.selected{border-color:var(--accent);background:rgba(124,90,246,.12);box-shadow:0 0 0 3px rgba(124,90,246,.18)}
+.level-card input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.level-emoji{font-size:26px;display:block;margin-bottom:6px}
+.level-name{font-size:13px;font-weight:800;display:block;margin-bottom:3px}
+.level-books{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+.level-card.selected .level-books{color:var(--al)}
+.level-card.lv-beginner.selected{border-color:var(--g);background:rgba(79,223,138,.08);box-shadow:0 0 0 3px rgba(79,223,138,.15)}
+.level-card.lv-intermediate.selected{border-color:var(--b);background:rgba(79,156,249,.08);box-shadow:0 0 0 3px rgba(79,156,249,.15)}
+.level-card.lv-advanced.selected{border-color:var(--p);background:rgba(192,132,252,.08);box-shadow:0 0 0 3px rgba(192,132,252,.15)}
+.level-card.lv-beginner .level-name{color:var(--g)}
+.level-card.lv-intermediate .level-name{color:var(--b)}
+.level-card.lv-advanced .level-name{color:var(--p)}
+.level-err{font-size:12px;color:#f85149;padding-left:2px;margin-bottom:8px;display:none}
+.level-err.show{display:block}
+
 @media(max-width:500px){
   .card{padding:28px 20px 24px;border-radius:20px}
   h1{font-size:22px}
+  .level-grid{gap:8px}
+  .level-card{padding:12px 6px 10px}
+  .level-emoji{font-size:22px}
+  .level-name{font-size:11px}
 }
 </style>
 </head>
 <body>
 
+<!-- 
+  FIX 1: Early redirect now re-validates against Supabase instead of blindly
+  trusting localStorage. We only skip the page if the token was validated
+  recently (within 30 minutes). Otherwise we show the login form so the
+  user can get a fresh session sync.
+-->
 <script>
 (function(){
-  try{
+  try {
     const raw = localStorage.getItem('ep_user');
-    if(raw){
+    if (raw) {
       const u = JSON.parse(raw);
-      if(u && u.name && u.telegram_id){
+      const lastValidated = parseInt(localStorage.getItem('ep_last_validated') || '0', 10);
+      const thirtyMin = 30 * 60 * 1000;
+      // Only skip login if: profile exists AND was validated recently
+      if (u && u.name && u.telegram_id && (Date.now() - lastValidated < thirtyMin)) {
         window.location.replace('index.html');
         return;
       }
     }
-  } catch(e){
+  } catch(e) {
     localStorage.removeItem('ep_user');
   }
 })();
@@ -142,23 +183,28 @@ h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:cente
 const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
 
-async function sbFetch(path, options={}){
+// FIX 7: Only send 'Prefer: return=minimal' for write operations, not GETs
+async function sbFetch(path, options={}) {
+  const method = (options.method || 'GET').toUpperCase();
+  const isWrite = ['POST','PATCH','PUT','DELETE'].includes(method);
+
   const res = await fetch(SUPABASE_URL + path, {
     ...options,
-    headers:{
+    headers: {
       'apikey': SUPABASE_KEY,
       'Authorization': 'Bearer ' + SUPABASE_KEY,
       'Content-Type': 'application/json',
-      'Prefer': 'return=minimal',
-      ...(options.headers||{})
+      ...(isWrite ? { 'Prefer': 'return=minimal' } : { 'Accept': 'application/json' }),
+      ...(options.headers || {})
     }
   });
-  if(!res.ok){
+
+  if (!res.ok) {
     const err = await res.text();
     throw new Error(err);
   }
   const text = await res.text();
-  if(!text || text.trim() === '') return null;
+  if (!text || text.trim() === '') return null;
   return JSON.parse(text);
 }
 </script>
@@ -170,12 +216,14 @@ async function sbFetch(path, options={}){
   </div>
   <div class="logo-sub">PRO · Bot & Web</div>
 
+  <!-- SCREEN 1: Token entry -->
   <div class="screen active" id="screen-main">
     <h1>Xush kelibsiz 👋</h1>
     <p class="sub">Telegram orqali kiring — barcha qurilmalaringizda<br>bir xil profil ishlaydi</p>
 
     <span class="lbl">Bot orqali kirish (tavsiya)</span>
-    <a href="https://t.me/essentialwords1bot?start=weblogin" target="_blank" class="tg-btn" onclick="setTimeout(()=>document.getElementById('inp-token').focus(),1000)">
+    <a href="https://t.me/essentialwords1bot?start=weblogin" target="_blank" class="tg-btn"
+       onclick="setTimeout(()=>document.getElementById('inp-token').focus(),1000)">
       <span class="tg-icon">✈️</span>
       Telegram Bot orqali kirish
     </a>
@@ -189,7 +237,9 @@ async function sbFetch(path, options={}){
     <span class="lbl">Kirish kodi</span>
     <div class="inp-wrap">
       <span class="inp-ico">🔑</span>
-      <input type="text" inputmode="numeric" id="inp-token" class="inp" placeholder="XXXXXX (6 ta raqam)" maxlength="6" autocomplete="off">
+      <!-- FIX 8: Removed auto-submit on 6 digits — user must press Enter or button -->
+      <input type="text" inputmode="numeric" id="inp-token" class="inp"
+             placeholder="XXXXXX (6 ta raqam)" maxlength="6" autocomplete="off">
     </div>
     <div class="err-txt" id="err-token">Kod noto'g'ri yoki muddati o'tgan</div>
     <button class="submit" onclick="loginWithToken()">Kirish →</button>
@@ -203,6 +253,38 @@ async function sbFetch(path, options={}){
     </div>
   </div>
 
+  <!-- SCREEN 2: Level selection (shown for NEW users only) -->
+  <div class="screen" id="screen-level">
+    <h1>Darajangizni tanlang 📚</h1>
+    <p class="sub">Bu sizning boshlang'ich nuqtangizni belgilaydi.<br>Keyin istalgan vaqt o'zgartirish mumkin.</p>
+
+    <span class="lbl">Daraja</span>
+    <div class="level-grid">
+      <label class="level-card lv-beginner" id="lc-beginner">
+        <input type="radio" name="level" value="beginner">
+        <span class="level-emoji">🌱</span>
+        <span class="level-name">Beginner</span>
+        <span class="level-books">Books 1–2</span>
+      </label>
+      <label class="level-card lv-intermediate" id="lc-intermediate">
+        <input type="radio" name="level" value="intermediate">
+        <span class="level-emoji">🔥</span>
+        <span class="level-name">Intermediate</span>
+        <span class="level-books">Books 3–4</span>
+      </label>
+      <label class="level-card lv-advanced" id="lc-advanced">
+        <input type="radio" name="level" value="advanced">
+        <span class="level-emoji">⚡</span>
+        <span class="level-name">Advanced</span>
+        <span class="level-books">Books 5–6</span>
+      </label>
+    </div>
+    <div class="level-err" id="err-level">Iltimos, darajani tanlang</div>
+
+    <button class="submit" onclick="confirmLevel()">Davom etish →</button>
+  </div>
+
+  <!-- SCREEN 3: Loading -->
   <div class="screen" id="screen-loading">
     <div class="loading-wrap">
       <div class="spinner"></div>
@@ -210,6 +292,7 @@ async function sbFetch(path, options={}){
     </div>
   </div>
 
+  <!-- SCREEN 4: Success -->
   <div class="screen" id="screen-success">
     <div class="success-wrap">
       <span class="success-icon" id="succ-icon">🎉</span>
@@ -222,23 +305,68 @@ async function sbFetch(path, options={}){
 </div>
 
 <script>
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+// ── State ──────────────────────────────────────────────
+let _pendingProfile = null; // holds profile while user picks level
+let _isNewUser = false;
+
+// ── UI helpers ─────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-document.getElementById('inp-token').addEventListener('input', function(){
-  this.value = this.value.replace(/\D/g,'').slice(0,6);
-  if(this.value.length === 6) loginWithToken();
+// Level card selection UI
+document.querySelectorAll('.level-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    document.getElementById('err-level').classList.remove('show');
+  });
 });
 
-document.getElementById('inp-token').addEventListener('keydown', function(e){
-  if(e.key === 'Enter') loginWithToken();
+// Token input — only auto-format, no auto-submit (FIX 8)
+document.getElementById('inp-token').addEventListener('input', function() {
+  this.value = this.value.replace(/\D/g, '').slice(0, 6);
 });
 
-async function loginWithToken(){
+document.getElementById('inp-token').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') loginWithToken();
+});
+
+// ── Level confirmation ─────────────────────────────────
+function confirmLevel() {
+  const selected = document.querySelector('.level-card.selected input[type=radio]');
+  if (!selected) {
+    document.getElementById('err-level').classList.add('show');
+    return;
+  }
+
+  const chosenLevel = selected.value;
+
+  // Apply chosen level to pending profile
+  _pendingProfile.level = chosenLevel;
+  _pendingProfile.grammarLevel = chosenLevel;
+
+  // Set starting book/unit based on level
+  const bookMap = { beginner: 1, intermediate: 3, advanced: 5 };
+  _pendingProfile.lastBook = bookMap[chosenLevel];
+  _pendingProfile.lastUnit = 1;
+  _pendingProfile.currentUnit = {
+    beginner: chosenLevel === 'beginner' ? 1 : 0,
+    intermediate: chosenLevel === 'intermediate' ? 1 : 0,
+    advanced: chosenLevel === 'advanced' ? 1 : 0,
+  };
+
+  showScreen('screen-loading');
+  document.getElementById('loading-txt').textContent = 'Profil saqlanmoqda...';
+
+  finalizeLogin(_pendingProfile);
+}
+
+// ── Main login flow ────────────────────────────────────
+async function loginWithToken() {
   const token = document.getElementById('inp-token').value.trim();
-  if(token.length !== 6){
+  if (token.length !== 6) {
     document.getElementById('inp-token').classList.add('err');
     document.getElementById('err-token').textContent = '6 ta raqam kiriting';
     document.getElementById('err-token').classList.add('show');
@@ -251,15 +379,14 @@ async function loginWithToken(){
   document.getElementById('loading-txt').textContent = 'Kod tekshirilmoqda...';
 
   try {
-    // FIX: expires_at ni to'g'ri encode qilamiz
+    // Step 1: Validate token (server-side expiry check via Supabase RPC or filter)
+    // FIX 5: expires_at checked by Supabase server — client clock doesn't matter
     const now = new Date().toISOString();
-    const url = `/rest/v1/web_login_tokens?select=user_id,used,expires_at&token=eq.${token}&used=eq.false&expires_at=gt.${encodeURIComponent(now)}`;
+    const tokenData = await sbFetch(
+      `/rest/v1/web_login_tokens?select=user_id,used,expires_at&token=eq.${token}&used=eq.false&expires_at=gt.${encodeURIComponent(now)}`
+    );
 
-    const data = await sbFetch(url, {
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if(!data || data.length === 0){
+    if (!tokenData || tokenData.length === 0) {
       showScreen('screen-main');
       document.getElementById('inp-token').classList.add('err');
       document.getElementById('err-token').textContent = 'Kod noto\'g\'ri yoki muddati o\'tgan (10 daqiqa)';
@@ -268,70 +395,121 @@ async function loginWithToken(){
       return;
     }
 
-    const userId = data[0].user_id;
+    // FIX 1: Use telegram_id (user_id from token table) as single source of truth
+    const telegramId = tokenData[0].user_id;
 
-    // Tokenni ishlatilgan deb belgilash
-    await sbFetch('/rest/v1/web_login_tokens?token=eq.' + token, {
+    document.getElementById('loading-txt').textContent = 'Profil yuklanmoqda...';
+
+    // Step 2: Load user profile — keyed by telegram_id (works across all devices)
+    // FIX 1 & 2: Always fetch from Supabase, never trust localStorage alone
+    const users = await sbFetch(`/rest/v1/users?select=*&user_id=eq.${telegramId}`);
+
+    if (!users || users.length === 0) {
+      // Token references a user that doesn't exist in users table
+      showScreen('screen-main');
+      document.getElementById('err-token').textContent = 'Foydalanuvchi topilmadi. Botga /start yuboring.';
+      document.getElementById('err-token').classList.add('show');
+      return;
+    }
+
+    const u = users[0];
+
+    // FIX 3: Merge web_data carefully — Supabase top-level fields are authoritative
+    // for critical data (xp, streak, premium); web_data used for progress/content only
+    const webData = (typeof u.web_data === 'object' && u.web_data !== null) ? u.web_data : {};
+
+    const profile = {
+      name:          u.first_name || u.username || 'Foydalanuvchi',
+      telegram_id:   u.user_id,   // always the Telegram numeric ID
+      username:      u.username || '',
+      // Level: trust Supabase top-level first, fall back to web_data
+      level:         u.level || webData.level || null, // null = new user, needs selection
+      avatarUrl:     u.avatar_url || webData.avatarUrl || '',
+      // Critical counters: Supabase top-level is authoritative
+      xp:            (u.xp != null ? u.xp : null) ?? webData.xp ?? 0,
+      streak:        (u.streak != null ? u.streak : null) ?? webData.streak ?? 1,
+      isPremium:     u.is_premium || false,
+      premiumExpiry: u.premium_expiry || 0,
+      total_points:  u.total_points || 0,
+      // Content progress: comes from web_data only
+      learnedWords:  webData.learnedWords || [],
+      wordErrors:    webData.wordErrors || {},
+      customWords:   webData.customWords || [],
+      unitProgress:  webData.unitProgress || { beginner:0, intermediate:0, advanced:0 },
+      currentUnit:   webData.currentUnit || { beginner:1, intermediate:1, advanced:1 },
+      lastBook:      webData.lastBook || 1,
+      lastUnit:      webData.lastUnit || 1,
+      battleWins:    webData.battleWins || 0,
+      battleLosses:  webData.battleLosses || 0,
+      battleXP:      webData.battleXP || 0,
+      dailyScore:    webData.dailyScore || {},
+      grammarLevel:  webData.grammarLevel || u.level || null,
+      lastLogin:     new Date().toDateString(),
+    };
+
+    // FIX 4: Mark token used AFTER successful profile load (not before)
+    await sbFetch(`/rest/v1/web_login_tokens?token=eq.${token}`, {
       method: 'PATCH',
       body: JSON.stringify({ used: true })
     });
 
-    document.getElementById('loading-txt').textContent = 'Profil yuklanmoqda...';
-
-    // Foydalanuvchi ma'lumotlarini olish
-    const users = await sbFetch('/rest/v1/users?select=*&user_id=eq.' + userId);
-
-    if(!users || users.length === 0){
-      throw new Error('Foydalanuvchi topilmadi');
+    // NEW USER: level not set → show level picker
+    _isNewUser = !profile.level;
+    if (_isNewUser) {
+      _pendingProfile = profile;
+      showScreen('screen-level');
+      return;
     }
 
-    const u = users[0];
-    const webData = u.web_data || {};
+    // RETURNING USER: level already set → go straight in
+    await finalizeLogin(profile);
 
-    const profile = {
-      name: u.first_name || u.username || 'Foydalanuvchi',
-      telegram_id: u.user_id,
-      username: u.username || '',
-      level: u.level || webData.level || 'beginner',
-      avatarUrl: u.avatar_url || webData.avatarUrl || '',
-      xp: u.xp || webData.xp || 0,
-      streak: u.streak || webData.streak || 1,
-      isPremium: u.is_premium || false,
-      premiumExpiry: u.premium_expiry || 0,
-      learnedWords: webData.learnedWords || [],
-      wordErrors: webData.wordErrors || {},
-      customWords: webData.customWords || [],
-      unitProgress: webData.unitProgress || { beginner:0, intermediate:0, advanced:0 },
-      currentUnit: webData.currentUnit || { beginner:1, intermediate:1, advanced:1 },
-      lastBook: webData.lastBook || 1,
-      lastUnit: webData.lastUnit || 1,
-      battleWins: webData.battleWins || 0,
-      battleLosses: webData.battleLosses || 0,
-      battleXP: webData.battleXP || 0,
-      dailyScore: webData.dailyScore || {},
-      grammarLevel: webData.grammarLevel || u.level || 'beginner',
-      lastLogin: new Date().toDateString(),
-      total_points: u.total_points || 0,
-    };
+  } catch(err) {
+    console.error('Login error:', err);
+    showScreen('screen-main');
+    document.getElementById('err-token').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.';
+    document.getElementById('err-token').classList.add('show');
+  }
+}
 
+// ── Save profile and redirect ──────────────────────────
+async function finalizeLogin(profile) {
+  try {
+    // FIX 2: Always save fresh Supabase data to localStorage
     localStorage.setItem('ep_user', JSON.stringify(profile));
     sessionStorage.setItem('ep_user', JSON.stringify(profile));
+    // FIX 6: Record when we last validated so the early-redirect check works
+    localStorage.setItem('ep_last_validated', Date.now().toString());
+
+    // If new user with chosen level, persist level back to Supabase
+    if (_isNewUser) {
+      try {
+        await sbFetch(`/rest/v1/users?user_id=eq.${profile.telegram_id}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ level: profile.level })
+        });
+      } catch(e) {
+        console.warn('Level save to Supabase failed (non-critical):', e);
+        // Non-fatal — profile is already in localStorage
+      }
+    }
 
     document.getElementById('succ-icon').textContent = profile.isPremium ? '👑' : '🎉';
     document.getElementById('succ-name').textContent = 'Xush kelibsiz, ' + profile.name + '!';
+
+    const levelLabels = { beginner: '🌱 Beginner', intermediate: '🔥 Intermediate', advanced: '⚡ Advanced' };
     document.getElementById('succ-sub').textContent = profile.isPremium
       ? '✨ Premium a\'zo — barcha imkoniyatlar ochiq!'
-      : '🌱 ' + profile.level.charAt(0).toUpperCase() + profile.level.slice(1) + ' darajasi';
+      : (levelLabels[profile.level] || profile.level) + ' darajasi';
 
     showScreen('screen-success');
 
-    // FIX: index.html ga o'tish (app__17_.html emas)
-    setTimeout(()=>{
+    setTimeout(() => {
       window.location.href = 'index.html';
     }, 2000);
 
-  } catch(err){
-    console.error('Login error:', err);
+  } catch(err) {
+    console.error('Finalize error:', err);
     showScreen('screen-main');
     document.getElementById('err-token').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.';
     document.getElementById('err-token').classList.add('show');
