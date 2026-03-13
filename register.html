@@ -240,7 +240,7 @@ body::before{
 // CONFIG
 // ══════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← Supabase > Settings > API > anon public
+const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE'; // ← Supabase > Settings > API > anon public
 const APP_URL           = 'app.html';
 
 const { createClient } = supabase;
@@ -342,13 +342,13 @@ async function initApp() {
   try {
     const { data: existing } = await db
       .from('users')
-      .select('user_id, level, avatarUrl')
+      .select('user_id, level, avatar_url')
       .eq('user_id', tgUser.id)
       .maybeSingle();
 
     // Profil to'liq tayyor bo'lsa — to'g'ridan app ga
-    if (existing?.level && existing?.avatarUrl) {
-      saveLocal({ ...existing, name: fullName });
+    if (existing?.level && existing?.avatar_url) {
+      saveLocal({ ...existing, name: fullName, avatarUrl: existing.avatar_url });
       window.location.replace(APP_URL);
       return;
     }
@@ -383,6 +383,23 @@ async function saveProfile() {
     state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
 
+  const localUser = {
+    user_id:  tgUser.id,
+    name:     fullName,
+    username: tgUser.username || '',
+    first_name: tgUser.first_name,
+    last_name:  tgUser.last_name || '',
+    level:    state.level,
+    avatarUrl: state.avatarUrl,
+    avatar_url: state.avatarUrl,
+    xp: 0, streak: 0, learnedWords: [], wordErrors: {}, customWords: [],
+    unitProgress: { beginner:0, intermediate:0, advanced:0 },
+    currentUnit:  { beginner:1, intermediate:1, advanced:1 },
+    lastBook:1, lastUnit:1, isPremium:false, premiumExpiry:0,
+    lastLogin: new Date().toDateString(), createdAt: Date.now(),
+  };
+
+  // Supabase ga saqlash — muvaffaqiyatsiz bo'lsa ham davom etamiz
   try {
     const { error } = await db.from('users').upsert({
       user_id:     tgUser.id,
@@ -390,33 +407,18 @@ async function saveProfile() {
       first_name:  tgUser.first_name,
       last_name:   tgUser.last_name  || null,
       level:       state.level,
-      avatarUrl:   state.avatarUrl,
+      avatar_url:  state.avatarUrl,
       last_active: new Date().toISOString(),
     }, { onConflict: 'user_id' });
 
-    if (error) throw error;
-
-    saveLocal({
-      user_id: tgUser.id,
-      name:    fullName,
-      username: tgUser.username || '',
-      level:   state.level,
-      avatarUrl: state.avatarUrl,
-      xp: 0, streak: 0, learnedWords: [], wordErrors: {}, customWords: [],
-      unitProgress: { beginner:0, intermediate:0, advanced:0 },
-      currentUnit:  { beginner:1, intermediate:1, advanced:1 },
-      lastBook:1, lastUnit:1, isPremium:false, premiumExpiry:0,
-      lastLogin: new Date().toDateString(), createdAt: Date.now(),
-    });
-
-    window.location.href = APP_URL;
-
+    if (error) console.error('Supabase upsert error:', error);
   } catch(err) {
-    console.error(err);
-    btn.disabled    = false;
-    btn.textContent = '❌ Xato! Qayta urinib ko\'ring';
-    setTimeout(() => { btn.textContent = 'Boshlash →'; }, 2500);
+    console.error('Supabase error:', err);
   }
+
+  // Har holda localga saqlab, app ga o'tamiz
+  saveLocal(localUser);
+  window.location.href = APP_URL;
 }
 
 function saveLocal(user) {
