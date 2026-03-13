@@ -2,17 +2,20 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Essential English PRO — Profil</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<!-- Telegram WebApp SDK — MUHIM, birinchi bo'lishi kerak -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0d1117;--s1:#161b27;--s2:#1c2438;--s3:#232d42;
+  --bg:#0d1117;--s1:#161b27;--s2:#1c2438;
   --border:#2a3550;--text:#e8f0fe;--muted:#7a8fad;
   --accent:#7c5af6;--al:#a07cf8;
-  --g:#4fdf8a;--b:#4f9cf9;--p:#c084fc;--gold:#f5c542;
+  --g:#4fdf8a;--b:#4f9cf9;--p:#c084fc;
 }
 html,body{height:100%;min-height:100%}
 body{
@@ -29,208 +32,144 @@ body::before{
     linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
   background-size:36px 36px;
 }
-
-/* LOADING SCREEN */
 #loading-screen{
   position:fixed;inset:0;background:var(--bg);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   z-index:999;gap:16px;
 }
-.loader-icon{font-size:48px;animation:pulse 1.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.15);opacity:.7}}
-.loader-txt{font-family:'Syne',sans-serif;font-size:14px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-
-/* ERROR SCREEN */
+.loader-icon{font-size:52px;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.loader-txt{font-family:'Syne',sans-serif;font-size:13px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
 #error-screen{
   position:fixed;inset:0;background:var(--bg);
   display:none;flex-direction:column;align-items:center;justify-content:center;
-  z-index:998;gap:12px;text-align:center;padding:24px;
+  z-index:998;gap:14px;text-align:center;padding:32px;
 }
-.err-icon{font-size:52px}
+.err-icon{font-size:56px}
 .err-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800}
-.err-desc{font-size:14px;color:var(--muted);max-width:300px;line-height:1.6}
+.err-desc{font-size:14px;color:var(--muted);max-width:280px;line-height:1.7}
 .err-btn{
-  margin-top:8px;padding:12px 28px;border-radius:14px;border:none;
+  margin-top:8px;padding:13px 30px;border-radius:14px;border:none;
   background:linear-gradient(135deg,var(--accent),#5b3fd4);
-  color:white;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;
-  cursor:pointer;
+  color:white;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;
 }
-
 .outer{
   width:100%;max-width:960px;background:var(--s1);
   border:1px solid var(--border);border-radius:28px;
   box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,90,246,.08) inset;
-  display:grid;grid-template-columns:280px 1fr;
-  min-height:560px;overflow:hidden;
-  animation:rise .65s cubic-bezier(.16,1,.3,1) both;
-  display:none;
+  display:none;grid-template-columns:260px 1fr;
+  min-height:540px;overflow:hidden;
+  animation:rise .55s cubic-bezier(.16,1,.3,1) both;
 }
-@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
-/* LEFT */
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .left{
   background:rgba(10,14,24,.6);border-right:1px solid var(--border);
-  padding:32px 24px;display:flex;flex-direction:column;align-items:center;
+  padding:28px 22px;display:flex;flex-direction:column;align-items:center;
 }
-.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:32px}
-.logo-icon{
-  width:38px;height:38px;border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),#5b3fd4);
-  display:flex;align-items:center;justify-content:center;font-size:19px;
-  box-shadow:0 4px 14px rgba(124,90,246,.4);
-}
-.logo-txt{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
-.av-ring-wrap{position:relative;width:160px;height:160px;margin-bottom:18px}
+.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.logo-icon{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#5b3fd4);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 14px rgba(124,90,246,.4)}
+.logo-txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.av-ring-wrap{position:relative;width:150px;height:150px;margin-bottom:16px}
 .av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .av-circle{
-  width:160px;height:160px;border-radius:50%;
-  background:var(--s2);border:2px solid var(--border);
+  width:150px;height:150px;border-radius:50%;background:var(--s2);border:2px solid var(--border);
   overflow:hidden;display:flex;align-items:center;justify-content:center;
-  font-size:70px;position:relative;z-index:1;
+  font-size:64px;position:relative;z-index:1;cursor:pointer;transition:border-color .2s;
 }
+.av-circle:hover{border-color:var(--accent)}
 .av-circle img{width:80%;height:80%;object-fit:contain;display:none}
 .av-upload-badge{
-  position:absolute;bottom:6px;right:6px;z-index:2;
-  width:38px;height:38px;border-radius:50%;
-  background:var(--accent);border:3px solid var(--s1);
-  display:flex;align-items:center;justify-content:center;font-size:16px;
-  cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
+  position:absolute;bottom:5px;right:5px;z-index:2;width:36px;height:36px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--s1);display:flex;align-items:center;justify-content:center;
+  font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
 }
 .av-upload-badge:hover{transform:scale(1.1)}
-.prev-name{
-  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;
-  text-align:center;margin-bottom:4px;min-height:28px;
-}
-.prev-tg{
-  font-size:12px;color:var(--muted);margin-bottom:6px;
-}
-.prev-tag{
-  font-size:12px;color:var(--al);
-  background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.25);
-  padding:4px 14px;border-radius:20px;margin-bottom:20px;
-}
-.divider{width:100%;height:1px;background:var(--border);margin-bottom:16px}
-.left-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
-
-/* TG BADGE */
-.tg-badge{
-  display:flex;align-items:center;gap:8px;
-  background:rgba(79,156,249,.08);border:1px solid rgba(79,156,249,.2);
-  border-radius:12px;padding:10px 14px;margin-bottom:20px;width:100%;
-}
-.tg-badge-icon{font-size:18px}
-.tg-badge-info{flex:1}
-.tg-badge-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.tg-badge-name{font-size:13px;font-weight:700;color:var(--b)}
-
-/* RIGHT */
-.right{padding:36px 36px 32px;display:flex;flex-direction:column}
-.right h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:6px}
-.right>p{font-size:14px;color:var(--muted);margin-bottom:22px}
+.prev-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;text-align:center;margin-bottom:3px}
+.prev-tg{font-size:12px;color:var(--muted);margin-bottom:10px}
+.tg-verified{display:flex;align-items:center;gap:6px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:7px 12px;margin-bottom:16px}
+.tg-v-icon{font-size:14px}
+.tg-v-txt{font-size:11px;color:var(--g);font-weight:700}
+.divider{width:100%;height:1px;background:var(--border);margin-bottom:14px}
+.left-hint{font-size:11px;color:var(--muted);text-align:center;line-height:1.6}
+.right{padding:30px 30px 26px;display:flex;flex-direction:column}
+.right h1{font-family:'Syne',sans-serif;font-size:27px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.right>p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
 .lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.opt-badge{
-  font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.2);
-  color:var(--al);padding:2px 7px;border-radius:8px;
-}
-
-/* Avatar section */
-.av-sec{margin-bottom:20px;margin-top:4px}
-.tabs{display:flex;gap:7px;margin-bottom:11px}
-.tab{
-  padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;
-  background:var(--s2);border:1.5px solid var(--border);color:var(--muted);
-  cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;
-}
+.opt-badge{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.2);color:var(--al);padding:2px 7px;border-radius:8px}
+.av-sec{margin-bottom:18px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tab{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
 .tab:hover{border-color:var(--al)}
 .tab.active{background:rgba(124,90,246,.15);border-color:var(--accent);color:white}
-.av-grid{
-  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;
-  max-height:180px;overflow-y:auto;padding:2px;
-}
+.av-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;max-height:155px;overflow-y:auto;padding:2px}
 .av-grid::-webkit-scrollbar{width:4px}
 .av-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-.av-item{
-  aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);
-  border-radius:12px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .2s;overflow:hidden;
-}
+.av-item{aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;overflow:hidden}
 .av-item:hover{border-color:var(--al);transform:scale(1.06)}
-.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.25);background:rgba(124,90,246,.1)}
-.av-item img{width:36px;height:36px}
-
-/* Level */
-.level-row{display:flex;gap:9px;margin-bottom:24px;margin-top:4px}
-.lv{flex:1;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .2s;text-align:center}
-.lv-em{font-size:22px;display:block;margin-bottom:5px}
-.lv-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
-.lv-hint{font-size:10px;color:var(--muted);line-height:1.3}
-.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}
-.lv.sel-b .lv-name{color:var(--g)}
-.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}
-.lv.sel-i .lv-name{color:var(--b)}
-.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}
-.lv.sel-a .lv-name{color:var(--p)}
-
+.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.22);background:rgba(124,90,246,.1)}
+.av-item img{width:34px;height:34px}
+.level-row{display:flex;gap:8px;margin-bottom:22px;margin-top:4px}
+.lv{flex:1;padding:11px 6px;border-radius:13px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .18s;text-align:center}
+.lv-em{font-size:20px;display:block;margin-bottom:4px}
+.lv-name{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
+.lv-hint{font-size:9px;color:var(--muted);line-height:1.3}
+.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}.lv.sel-b .lv-name{color:var(--g)}
+.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}.lv.sel-i .lv-name{color:var(--b)}
+.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}.lv.sel-a .lv-name{color:var(--p)}
 .submit{
-  width:100%;padding:16px;border:none;border-radius:14px;margin-top:auto;
+  width:100%;padding:15px;border:none;border-radius:13px;margin-top:auto;
   background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
-  color:white;font-size:17px;font-weight:800;font-family:'Nunito',sans-serif;
-  cursor:pointer;transition:transform .2s,box-shadow .2s;
+  color:white;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s;
   box-shadow:0 8px 28px rgba(124,90,246,.35);position:relative;overflow:hidden;
 }
 .submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent)}
-.submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
-.submit:active{transform:scale(.98)}
-.submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
-
-@media(max-width:660px){
+.submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
+.submit:active:not(:disabled){transform:scale(.98)}
+.submit:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:640px){
   body{padding:0;align-items:flex-end}
   .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
-  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:16px 20px;gap:14px}
-  .logo-row,.divider,.left-hint,.tg-badge{display:none}
-  .av-ring-wrap{width:76px;height:76px;margin-bottom:0;flex-shrink:0}
-  .av-circle{width:76px;height:76px;font-size:34px}
-  .av-ring-svg{inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px)}
-  .av-upload-badge{width:24px;height:24px;font-size:11px;bottom:1px;right:1px;border-width:2px}
-  .prev-name{font-size:15px;text-align:left;margin-bottom:2px;min-height:auto}
-  .prev-tg{font-size:11px}
-  .prev-tag{font-size:10px;margin-bottom:0}
-  .right{padding:20px 16px 24px}
-  .right h1{font-size:22px}
-  .av-grid{grid-template-columns:repeat(5,1fr);max-height:140px}
-  .tabs .tab{padding:7px 11px;font-size:11px}
-  .level-row{gap:6px}
+  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:14px 18px;gap:14px;align-items:center}
+  .logo-row,.divider,.left-hint,.tg-verified{display:none}
+  .av-ring-wrap{width:70px;height:70px;margin-bottom:0;flex-shrink:0}
+  .av-circle{width:70px;height:70px;font-size:30px}
+  .av-upload-badge{width:22px;height:22px;font-size:10px;bottom:0;right:0;border-width:2px}
+  .prev-name{font-size:15px;margin-bottom:2px}
+  .right{padding:18px 16px 22px}
+  .right h1{font-size:20px}
+  .av-grid{grid-template-columns:repeat(5,1fr);max-height:130px}
 }
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loading-screen">
   <div class="loader-icon">🧠</div>
   <div class="loader-txt">Yuklanmoqda...</div>
 </div>
 
-<!-- ERROR -->
 <div id="error-screen">
   <div class="err-icon">⚠️</div>
   <div class="err-title">Telegram orqali oching</div>
-  <div class="err-desc">Bu sahifani faqat Telegram bot orqali ochish mumkin.<br><br>Botga o'ting va Web App tugmasini bosing.</div>
-  <button class="err-btn" onclick="window.open('https://t.me/@essentialwords1bot','_blank')">Botga o'tish →</button>
+  <div class="err-desc">
+    Bu sahifani faqat Telegram bot ichidan ochish mumkin.<br><br>
+    <b>@essentialwords1bot</b> ga o'ting va Web ilovani bosing.
+  </div>
+  <button class="err-btn" onclick="window.open('https://t.me/essentialwords1bot','_blank')">
+    Botga o'tish →
+  </button>
 </div>
 
-<!-- MAIN -->
 <div class="outer" id="main-outer">
-  <!-- LEFT PANEL -->
   <div class="left">
     <div class="logo-row">
       <div class="logo-icon">🧠</div>
       <span class="logo-txt">Essential English</span>
     </div>
     <div class="av-ring-wrap">
-      <svg class="av-ring-svg" viewBox="0 0 176 176">
+      <svg class="av-ring-svg" viewBox="0 0 166 166">
         <defs>
           <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#7c5af6"/>
@@ -238,38 +177,31 @@ body::before{
             <stop offset="100%" stop-color="#4f9cf9"/>
           </linearGradient>
         </defs>
-        <circle cx="88" cy="88" r="84" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="340 180"/>
+        <circle cx="83" cy="83" r="79" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="320 170"/>
       </svg>
-      <div class="av-circle" id="av-circle">
+      <div class="av-circle" onclick="document.getElementById('file-up').click()">
         <img id="av-img" src="" alt="">
         <span id="av-emoji">🤖</span>
       </div>
       <label class="av-upload-badge" for="file-up">📷</label>
       <input type="file" id="file-up" accept="image/*" style="display:none">
     </div>
-    <div class="prev-name" id="prev-name">Yuklanmoqda...</div>
+    <div class="prev-name" id="prev-name">...</div>
     <div class="prev-tg" id="prev-tg"></div>
-    <div class="prev-tag">Essential English PRO</div>
-
-    <div class="tg-badge">
-      <div class="tg-badge-icon">✅</div>
-      <div class="tg-badge-info">
-        <div class="tg-badge-label">Telegram orqali tasdiqlangan</div>
-        <div class="tg-badge-name" id="tg-badge-name">...</div>
-      </div>
+    <div class="tg-verified">
+      <span class="tg-v-icon">✅</span>
+      <span class="tg-v-txt">Telegram orqali tasdiqlangan</span>
     </div>
-
     <div class="divider"></div>
-    <div class="left-hint">Telegram hisobingiz bilan<br>avtomatik kirish 🚀</div>
+    <div class="left-hint">Ismingiz Telegram<br>hisobingizdan olinadi 🔒</div>
   </div>
 
-  <!-- RIGHT PANEL -->
   <div class="right">
     <h1>Profilni sozlash</h1>
-    <p>Telegram hisobingiz orqali avtomatik kirdingiz. Avatar va darajani tanlang.</p>
+    <p>Telegramdagi ismingiz avtomatik qo'yildi. Avatar va darajani tanlang (ixtiyoriy).</p>
 
     <div class="av-sec">
-      <span class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></span>
+      <div class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></div>
       <div class="tabs">
         <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
         <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
@@ -278,7 +210,7 @@ body::before{
       <div class="av-grid" id="av-grid"></div>
     </div>
 
-    <span class="lbl">Darajangiz <span class="opt-badge">ixtiyoriy</span></span>
+    <div class="lbl">Darajangiz <span class="opt-badge">ixtiyoriy</span></div>
     <div class="level-row">
       <div class="lv sel-b" data-lv="beginner" onclick="pickLevel(this)">
         <span class="lv-em">🌱</span>
@@ -298,40 +230,33 @@ body::before{
     </div>
 
     <button class="submit" id="submit-btn" onclick="saveProfile()">
-      Profilni saqlash →
+      Boshlash →
     </button>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// SUPABASE CONFIG — o'zgartiring
-// ═══════════════════════════════════════════
-const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← anon key kiriting
+// ══════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════
+const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← Supabase > Settings > API > anon public
+const APP_URL           = 'app.html';
 
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
-let tgUser = null;       // Telegram foydalanuvchi
-let state = {
-  avatarUrl: '',
-  level: 'beginner'
-};
+let tgUser  = null;
+let state   = { avatarUrl: '', level: 'beginner' };
 let selItem = null;
 
-// ═══════════════════════════════════════════
-// AVATAR GRID
-// ═══════════════════════════════════════════
+// ── AVATAR ──
 const SEEDS = {
-  bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
-  avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
-  animals: ['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
+  bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8'],
+  avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler'],
+  animals: ['Felix','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Coco','Pepper','Maple'],
 };
-const STYLES = {bots:'bottts-neutral', avatars:'adventurer-neutral', animals:'thumbs'};
+const STYLES = { bots:'bottts-neutral', avatars:'adventurer-neutral', animals:'thumbs' };
 
 function buildGrid(tab) {
   const grid = document.getElementById('av-grid');
@@ -339,7 +264,7 @@ function buildGrid(tab) {
   selItem = null;
   SEEDS[tab].forEach(seed => {
     const url = `https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
-    const el = document.createElement('div');
+    const el  = document.createElement('div');
     el.className = 'av-item';
     el.innerHTML = `<img src="${url}" loading="lazy">`;
     el.onclick = () => {
@@ -347,7 +272,7 @@ function buildGrid(tab) {
       el.classList.add('sel');
       selItem = el;
       state.avatarUrl = url;
-      showPreview(url);
+      showAvatar(url);
     };
     grid.appendChild(el);
   });
@@ -359,7 +284,7 @@ function switchTab(tab, btn) {
   buildGrid(tab);
 }
 
-function showPreview(url) {
+function showAvatar(url) {
   const img = document.getElementById('av-img');
   img.src = url;
   img.style.display = 'block';
@@ -372,7 +297,7 @@ document.getElementById('file-up').addEventListener('change', e => {
   const r = new FileReader();
   r.onload = ev => {
     state.avatarUrl = ev.target.result;
-    showPreview(ev.target.result);
+    showAvatar(ev.target.result);
     if (selItem) { selItem.classList.remove('sel'); selItem = null; }
   };
   r.readAsDataURL(f);
@@ -380,164 +305,126 @@ document.getElementById('file-up').addEventListener('change', e => {
 
 function pickLevel(el) {
   document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
-  const lv = el.dataset.lv;
-  state.level = lv;
-  el.classList.add(lv === 'beginner' ? 'sel-b' : lv === 'intermediate' ? 'sel-i' : 'sel-a');
+  state.level = el.dataset.lv;
+  el.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
 }
 
-// ═══════════════════════════════════════════
-// TELEGRAM INIT
-// ═══════════════════════════════════════════
+// ── TELEGRAM INIT ──
 async function initApp() {
   const tg = window.Telegram?.WebApp;
-
-  // --- DEV MODE: test uchun (ishlab chiqishda) ---
-  // Agar Telegram dan tashqarida ochilsa va DEV_MODE yoqilgan bo'lsa
-  const DEV_MODE = false; // production da false qiling
-  const DEV_USER = { id: 123456789, first_name: 'Test', last_name: 'User', username: 'testuser' };
 
   if (tg) {
     tg.ready();
     tg.expand();
+    tg.setHeaderColor && tg.setHeaderColor('#0d1117');
+    tg.setBackgroundColor && tg.setBackgroundColor('#0d1117');
   }
 
   // Telegram user olish
-  tgUser = tg?.initDataUnsafe?.user || (DEV_MODE ? DEV_USER : null);
+  tgUser = tg?.initDataUnsafe?.user ?? null;
+
+  // Localhost da test uchun
+  if (!tgUser && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+    tgUser = { id: 999999999, first_name: 'Test', last_name: 'Dev', username: 'testdev' };
+  }
 
   if (!tgUser) {
-    // Telegram orqali ochilmagan
     document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('error-screen').style.display = 'flex';
+    document.getElementById('error-screen').style.display  = 'flex';
     return;
   }
 
-  // UI ga ismni ko'rsatish
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
   document.getElementById('prev-name').textContent = fullName;
-  document.getElementById('prev-tg').textContent = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
-  document.getElementById('tg-badge-name').textContent = fullName;
+  document.getElementById('prev-tg').textContent   = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
 
-  // Supabase dan tekshirish — bu foydalanuvchi avval ro'yxatdan o'tganmi?
+  // Supabase tekshirish
   try {
-    const { data: existingUser } = await db
+    const { data: existing } = await db
       .from('users')
-      .select('*')
+      .select('user_id, level, avatarUrl')
       .eq('user_id', tgUser.id)
-      .single();
+      .maybeSingle();
 
-    if (existingUser && existingUser.level && existingUser.avatarUrl) {
-      // Profil to'liq — to'g'ridan app.html ga
-      saveToStorage(existingUser);
-      window.location.replace('app.html');
+    // Profil to'liq tayyor bo'lsa — to'g'ridan app ga
+    if (existing?.level && existing?.avatarUrl) {
+      saveLocal({ ...existing, name: fullName });
+      window.location.replace(APP_URL);
       return;
     }
 
-    // Profil bor lekin to'liq emas YOKI yo'q — ro'yxatdan o'tish formasi
-    if (existingUser) {
-      // Mavjud ma'lumotlarni ko'rsatish
-      state.level = existingUser.level || 'beginner';
-      // Darajani UI da belgilash
+    // Daraja mavjud bo'lsa — UI da belgilash
+    if (existing?.level) {
+      state.level = existing.level;
       document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
       const lvEl = document.querySelector(`[data-lv="${state.level}"]`);
-      if (lvEl) {
-        const cls = state.level === 'beginner' ? 'sel-b' : state.level === 'intermediate' ? 'sel-i' : 'sel-a';
-        lvEl.classList.add(cls);
-      }
+      if (lvEl) lvEl.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
     }
   } catch(e) {
-    // Profil topilmadi — yangi foydalanuvchi, davom etamiz
+    console.warn('Supabase:', e.message);
   }
 
-  // Formani ko'rsatish
   document.getElementById('loading-screen').style.display = 'none';
   document.getElementById('main-outer').style.display = 'grid';
-
   buildGrid('bots');
 }
 
-// ═══════════════════════════════════════════
-// PROFIL SAQLASH
-// ═══════════════════════════════════════════
+// ── SAQLASH ──
 async function saveProfile() {
   if (!tgUser) return;
 
   const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Saqlanmoqda...';
+  btn.disabled    = true;
+  btn.textContent = '⏳ Saqlanmoqda...';
 
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
 
-  // Agar avatar tanlanmagan bo'lsa — default dicebear
   if (!state.avatarUrl) {
-    const seed = tgUser.first_name || String(tgUser.id);
-    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${seed}`;
+    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
 
   try {
-    // Supabase da users jadvalini yangilash
-    const { error } = await db
-      .from('users')
-      .upsert({
-        user_id: tgUser.id,
-        username: tgUser.username || null,
-        first_name: tgUser.first_name,
-        last_name: tgUser.last_name || null,
-        level: state.level,
-        avatarUrl: state.avatarUrl,
-        last_active: new Date().toISOString()
-      }, { onConflict: 'user_id' });
+    const { error } = await db.from('users').upsert({
+      user_id:     tgUser.id,
+      username:    tgUser.username   || null,
+      first_name:  tgUser.first_name,
+      last_name:   tgUser.last_name  || null,
+      level:       state.level,
+      avatarUrl:   state.avatarUrl,
+      last_active: new Date().toISOString(),
+    }, { onConflict: 'user_id' });
 
     if (error) throw error;
 
-    // localStorage ga saqlash
-    const userObj = {
+    saveLocal({
       user_id: tgUser.id,
-      name: fullName,
+      name:    fullName,
       username: tgUser.username || '',
-      first_name: tgUser.first_name,
-      last_name: tgUser.last_name || '',
-      level: state.level,
+      level:   state.level,
       avatarUrl: state.avatarUrl,
-      xp: 0,
-      streak: 0,
-      learnedWords: [],
-      wordErrors: {},
-      customWords: [],
+      xp: 0, streak: 0, learnedWords: [], wordErrors: {}, customWords: [],
       unitProgress: { beginner:0, intermediate:0, advanced:0 },
       currentUnit:  { beginner:1, intermediate:1, advanced:1 },
-      lastBook: 1,
-      lastUnit: 1,
-      battleWins: 0,
-      battleLosses: 0,
-      battleXP: 0,
-      dailyScore: {},
-      grammarLevel: state.level,
-      isPremium: false,
-      premiumExpiry: 0,
-      lastLogin: new Date().toDateString(),
-      createdAt: Date.now(),
-    };
+      lastBook:1, lastUnit:1, isPremium:false, premiumExpiry:0,
+      lastLogin: new Date().toDateString(), createdAt: Date.now(),
+    });
 
-    saveToStorage(userObj);
-    window.location.href = 'app.html';
+    window.location.href = APP_URL;
 
   } catch(err) {
-    console.error('Saqlashda xato:', err);
-    btn.disabled = false;
-    btn.textContent = 'Xato yuz berdi, qayta urinib ko\'ring';
-    setTimeout(() => { btn.textContent = 'Profilni saqlash →'; }, 2500);
+    console.error(err);
+    btn.disabled    = false;
+    btn.textContent = '❌ Xato! Qayta urinib ko\'ring';
+    setTimeout(() => { btn.textContent = 'Boshlash →'; }, 2500);
   }
 }
 
-function saveToStorage(user) {
-  const json = JSON.stringify(user);
-  localStorage.setItem('ep_user', json);
-  sessionStorage.setItem('ep_user', json);
+function saveLocal(user) {
+  const j = JSON.stringify(user);
+  try { localStorage.setItem('ep_user', j); } catch(e){}
+  try { sessionStorage.setItem('ep_user', j); } catch(e){}
 }
 
-// ═══════════════════════════════════════════
-// ISHGA TUSHIRISH
-// ═══════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', initApp);
 </script>
 </body>
