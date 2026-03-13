@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Essential English PRO — Kirish</title>
+<title>Essential English PRO — Profil</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -28,493 +29,516 @@ body::before{
     linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
   background-size:36px 36px;
 }
-.card{
-  width:100%;max-width:440px;
-  background:var(--s1);border:1px solid var(--border);border-radius:28px;
+
+/* LOADING SCREEN */
+#loading-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:999;gap:16px;
+}
+.loader-icon{font-size:48px;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.15);opacity:.7}}
+.loader-txt{font-family:'Syne',sans-serif;font-size:14px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+/* ERROR SCREEN */
+#error-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  z-index:998;gap:12px;text-align:center;padding:24px;
+}
+.err-icon{font-size:52px}
+.err-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800}
+.err-desc{font-size:14px;color:var(--muted);max-width:300px;line-height:1.6}
+.err-btn{
+  margin-top:8px;padding:12px 28px;border-radius:14px;border:none;
+  background:linear-gradient(135deg,var(--accent),#5b3fd4);
+  color:white;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;
+  cursor:pointer;
+}
+
+.outer{
+  width:100%;max-width:960px;background:var(--s1);
+  border:1px solid var(--border);border-radius:28px;
   box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,90,246,.08) inset;
-  padding:40px 36px 36px;
+  display:grid;grid-template-columns:280px 1fr;
+  min-height:560px;overflow:hidden;
   animation:rise .65s cubic-bezier(.16,1,.3,1) both;
+  display:none;
 }
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.logo-row{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center}
+
+/* LEFT */
+.left{
+  background:rgba(10,14,24,.6);border-right:1px solid var(--border);
+  padding:32px 24px;display:flex;flex-direction:column;align-items:center;
+}
+.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:32px}
 .logo-icon{
-  width:44px;height:44px;border-radius:14px;
+  width:38px;height:38px;border-radius:12px;
   background:linear-gradient(135deg,var(--accent),#5b3fd4);
-  display:flex;align-items:center;justify-content:center;font-size:22px;
+  display:flex;align-items:center;justify-content:center;font-size:19px;
   box-shadow:0 4px 14px rgba(124,90,246,.4);
 }
-.logo-txt{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em}
-.logo-sub{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:28px}
-h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;text-align:center;margin-bottom:8px;letter-spacing:-.02em}
-.sub{font-size:14px;color:var(--muted);text-align:center;margin-bottom:32px;line-height:1.5}
-.screen{display:none}
-.screen.active{display:block}
-.tg-btn{
-  width:100%;padding:16px;border:none;border-radius:14px;
-  background:linear-gradient(135deg,#2AABEE,#1a8bbf);
+.logo-txt{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.av-ring-wrap{position:relative;width:160px;height:160px;margin-bottom:18px}
+.av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.av-circle{
+  width:160px;height:160px;border-radius:50%;
+  background:var(--s2);border:2px solid var(--border);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  font-size:70px;position:relative;z-index:1;
+}
+.av-circle img{width:80%;height:80%;object-fit:contain;display:none}
+.av-upload-badge{
+  position:absolute;bottom:6px;right:6px;z-index:2;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--s1);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
+}
+.av-upload-badge:hover{transform:scale(1.1)}
+.prev-name{
+  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;
+  text-align:center;margin-bottom:4px;min-height:28px;
+}
+.prev-tg{
+  font-size:12px;color:var(--muted);margin-bottom:6px;
+}
+.prev-tag{
+  font-size:12px;color:var(--al);
+  background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.25);
+  padding:4px 14px;border-radius:20px;margin-bottom:20px;
+}
+.divider{width:100%;height:1px;background:var(--border);margin-bottom:16px}
+.left-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+
+/* TG BADGE */
+.tg-badge{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(79,156,249,.08);border:1px solid rgba(79,156,249,.2);
+  border-radius:12px;padding:10px 14px;margin-bottom:20px;width:100%;
+}
+.tg-badge-icon{font-size:18px}
+.tg-badge-info{flex:1}
+.tg-badge-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.tg-badge-name{font-size:13px;font-weight:700;color:var(--b)}
+
+/* RIGHT */
+.right{padding:36px 36px 32px;display:flex;flex-direction:column}
+.right h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:6px}
+.right>p{font-size:14px;color:var(--muted);margin-bottom:22px}
+.lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.opt-badge{
+  font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.2);
+  color:var(--al);padding:2px 7px;border-radius:8px;
+}
+
+/* Avatar section */
+.av-sec{margin-bottom:20px;margin-top:4px}
+.tabs{display:flex;gap:7px;margin-bottom:11px}
+.tab{
+  padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;
+  background:var(--s2);border:1.5px solid var(--border);color:var(--muted);
+  cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;
+}
+.tab:hover{border-color:var(--al)}
+.tab.active{background:rgba(124,90,246,.15);border-color:var(--accent);color:white}
+.av-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:8px;
+  max-height:180px;overflow-y:auto;padding:2px;
+}
+.av-grid::-webkit-scrollbar{width:4px}
+.av-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.av-item{
+  aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;overflow:hidden;
+}
+.av-item:hover{border-color:var(--al);transform:scale(1.06)}
+.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.25);background:rgba(124,90,246,.1)}
+.av-item img{width:36px;height:36px}
+
+/* Level */
+.level-row{display:flex;gap:9px;margin-bottom:24px;margin-top:4px}
+.lv{flex:1;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .2s;text-align:center}
+.lv-em{font-size:22px;display:block;margin-bottom:5px}
+.lv-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
+.lv-hint{font-size:10px;color:var(--muted);line-height:1.3}
+.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}
+.lv.sel-b .lv-name{color:var(--g)}
+.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}
+.lv.sel-i .lv-name{color:var(--b)}
+.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}
+.lv.sel-a .lv-name{color:var(--p)}
+
+.submit{
+  width:100%;padding:16px;border:none;border-radius:14px;margin-top:auto;
+  background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
   color:white;font-size:17px;font-weight:800;font-family:'Nunito',sans-serif;
   cursor:pointer;transition:transform .2s,box-shadow .2s;
-  box-shadow:0 8px 28px rgba(42,171,238,.35);
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  text-decoration:none;
+  box-shadow:0 8px 28px rgba(124,90,246,.35);position:relative;overflow:hidden;
 }
-.tg-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(42,171,238,.45)}
-.tg-btn:active{transform:scale(.98)}
-.tg-icon{font-size:22px}
-.divider-row{display:flex;align-items:center;gap:12px;margin:24px 0}
-.divider-line{flex:1;height:1px;background:var(--border)}
-.divider-txt{font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap}
-.lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:block}
-.inp-wrap{position:relative;margin-bottom:8px}
-.inp-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px;pointer-events:none}
-.inp{
-  width:100%;padding:14px 14px 14px 44px;
-  background:var(--s2);border:1.5px solid var(--border);
-  border-radius:14px;font-size:15px;font-family:'Nunito',sans-serif;
-  color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;
-  letter-spacing:.15em;
-}
-.inp::placeholder{color:rgba(122,143,173,.5);letter-spacing:normal}
-.inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.15)}
-.inp.err{border-color:#f85149}
-.err-txt{font-size:12px;color:#f85149;margin-bottom:12px;padding-left:4px;display:none}
-.err-txt.show{display:block}
-.submit{
-  width:100%;padding:15px;border:none;border-radius:14px;margin-top:8px;
-  background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
-  color:white;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;
-  cursor:pointer;transition:transform .2s,box-shadow .2s;
-  box-shadow:0 8px 28px rgba(124,90,246,.35);
-}
-.submit:hover{transform:translateY(-2px)}
-.submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.loading-wrap{text-align:center;padding:20px 0}
-.spinner{
-  width:44px;height:44px;border:3px solid var(--border);
-  border-top-color:var(--accent);border-radius:50%;
-  animation:spin .8s linear infinite;margin:0 auto 16px;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-txt{font-size:14px;color:var(--muted)}
-.success-wrap{text-align:center;padding:10px 0}
-.success-icon{font-size:56px;margin-bottom:16px;display:block}
-.success-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
-.success-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
-.progress-bar{width:100%;height:4px;background:var(--s2);border-radius:4px;overflow:hidden;margin-bottom:8px}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--al));border-radius:4px;animation:fill 2s linear forwards}
-@keyframes fill{from{width:0}to{width:100%}}
-.info-box{
-  background:rgba(79,156,249,.07);border:1px solid rgba(79,156,249,.2);
-  border-radius:14px;padding:16px;margin-top:20px;
-  font-size:13px;color:var(--muted);line-height:1.7;
-}
-.info-box strong{color:var(--b)}
-.info-box code{
-  background:var(--s2);padding:2px 8px;border-radius:6px;
-  font-family:monospace;color:var(--al);font-size:12px;
-}
+.submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent)}
+.submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
+.submit:active{transform:scale(.98)}
+.submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
-/* ── Level Picker ── */
-.level-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
-  margin-bottom:20px;
-}
-.level-card{
-  position:relative;border:2px solid var(--border);border-radius:16px;
-  padding:14px 10px 12px;text-align:center;cursor:pointer;
-  background:var(--s2);transition:border-color .2s,transform .15s,box-shadow .2s;
-  user-select:none;
-}
-.level-card:hover{transform:translateY(-2px);border-color:var(--accent)}
-.level-card.selected{border-color:var(--accent);background:rgba(124,90,246,.12);box-shadow:0 0 0 3px rgba(124,90,246,.18)}
-.level-card input[type=radio]{position:absolute;opacity:0;pointer-events:none}
-.level-emoji{font-size:26px;display:block;margin-bottom:6px}
-.level-name{font-size:13px;font-weight:800;display:block;margin-bottom:3px}
-.level-books{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.04em}
-.level-card.selected .level-books{color:var(--al)}
-.level-card.lv-beginner.selected{border-color:var(--g);background:rgba(79,223,138,.08);box-shadow:0 0 0 3px rgba(79,223,138,.15)}
-.level-card.lv-intermediate.selected{border-color:var(--b);background:rgba(79,156,249,.08);box-shadow:0 0 0 3px rgba(79,156,249,.15)}
-.level-card.lv-advanced.selected{border-color:var(--p);background:rgba(192,132,252,.08);box-shadow:0 0 0 3px rgba(192,132,252,.15)}
-.level-card.lv-beginner .level-name{color:var(--g)}
-.level-card.lv-intermediate .level-name{color:var(--b)}
-.level-card.lv-advanced .level-name{color:var(--p)}
-.level-err{font-size:12px;color:#f85149;padding-left:2px;margin-bottom:8px;display:none}
-.level-err.show{display:block}
-
-@media(max-width:500px){
-  .card{padding:28px 20px 24px;border-radius:20px}
-  h1{font-size:22px}
-  .level-grid{gap:8px}
-  .level-card{padding:12px 6px 10px}
-  .level-emoji{font-size:22px}
-  .level-name{font-size:11px}
+@media(max-width:660px){
+  body{padding:0;align-items:flex-end}
+  .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
+  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:16px 20px;gap:14px}
+  .logo-row,.divider,.left-hint,.tg-badge{display:none}
+  .av-ring-wrap{width:76px;height:76px;margin-bottom:0;flex-shrink:0}
+  .av-circle{width:76px;height:76px;font-size:34px}
+  .av-ring-svg{inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px)}
+  .av-upload-badge{width:24px;height:24px;font-size:11px;bottom:1px;right:1px;border-width:2px}
+  .prev-name{font-size:15px;text-align:left;margin-bottom:2px;min-height:auto}
+  .prev-tg{font-size:11px}
+  .prev-tag{font-size:10px;margin-bottom:0}
+  .right{padding:20px 16px 24px}
+  .right h1{font-size:22px}
+  .av-grid{grid-template-columns:repeat(5,1fr);max-height:140px}
+  .tabs .tab{padding:7px 11px;font-size:11px}
+  .level-row{gap:6px}
 }
 </style>
 </head>
 <body>
 
-<!-- 
-  FIX 1: Early redirect now re-validates against Supabase instead of blindly
-  trusting localStorage. We only skip the page if the token was validated
-  recently (within 30 minutes). Otherwise we show the login form so the
-  user can get a fresh session sync.
--->
-<script>
-(function(){
-  try {
-    const raw = localStorage.getItem('ep_user');
-    if (raw) {
-      const u = JSON.parse(raw);
-      const lastValidated = parseInt(localStorage.getItem('ep_last_validated') || '0', 10);
-      const thirtyMin = 30 * 60 * 1000;
-      // Only skip login if: profile exists AND was validated recently
-      if (u && u.name && u.telegram_id && (Date.now() - lastValidated < thirtyMin)) {
-        window.location.replace('index.html');
-        return;
-      }
-    }
-  } catch(e) {
-    localStorage.removeItem('ep_user');
-  }
-})();
-</script>
+<!-- LOADING -->
+<div id="loading-screen">
+  <div class="loader-icon">🧠</div>
+  <div class="loader-txt">Yuklanmoqda...</div>
+</div>
 
-<script>
-const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
+<!-- ERROR -->
+<div id="error-screen">
+  <div class="err-icon">⚠️</div>
+  <div class="err-title">Telegram orqali oching</div>
+  <div class="err-desc">Bu sahifani faqat Telegram bot orqali ochish mumkin.<br><br>Botga o'ting va Web App tugmasini bosing.</div>
+  <button class="err-btn" onclick="window.open('https://t.me/your_bot','_blank')">Botga o'tish →</button>
+</div>
 
-// FIX 7: Only send 'Prefer: return=minimal' for write operations, not GETs
-async function sbFetch(path, options={}) {
-  const method = (options.method || 'GET').toUpperCase();
-  const isWrite = ['POST','PATCH','PUT','DELETE'].includes(method);
+<!-- MAIN -->
+<div class="outer" id="main-outer">
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <div class="logo-row">
+      <div class="logo-icon">🧠</div>
+      <span class="logo-txt">Essential English</span>
+    </div>
+    <div class="av-ring-wrap">
+      <svg class="av-ring-svg" viewBox="0 0 176 176">
+        <defs>
+          <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7c5af6"/>
+            <stop offset="50%" stop-color="#c084fc"/>
+            <stop offset="100%" stop-color="#4f9cf9"/>
+          </linearGradient>
+        </defs>
+        <circle cx="88" cy="88" r="84" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="340 180"/>
+      </svg>
+      <div class="av-circle" id="av-circle">
+        <img id="av-img" src="" alt="">
+        <span id="av-emoji">🤖</span>
+      </div>
+      <label class="av-upload-badge" for="file-up">📷</label>
+      <input type="file" id="file-up" accept="image/*" style="display:none">
+    </div>
+    <div class="prev-name" id="prev-name">Yuklanmoqda...</div>
+    <div class="prev-tg" id="prev-tg"></div>
+    <div class="prev-tag">Essential English PRO</div>
 
-  const res = await fetch(SUPABASE_URL + path, {
-    ...options,
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY,
-      'Content-Type': 'application/json',
-      ...(isWrite ? { 'Prefer': 'return=minimal' } : { 'Accept': 'application/json' }),
-      ...(options.headers || {})
-    }
-  });
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err);
-  }
-  const text = await res.text();
-  if (!text || text.trim() === '') return null;
-  return JSON.parse(text);
-}
-</script>
-
-<div class="card">
-  <div class="logo-row">
-    <div class="logo-icon">🧠</div>
-    <span class="logo-txt">Essential English</span>
-  </div>
-  <div class="logo-sub">PRO · Bot & Web</div>
-
-  <!-- SCREEN 1: Token entry -->
-  <div class="screen active" id="screen-main">
-    <h1>Xush kelibsiz 👋</h1>
-    <p class="sub">Telegram orqali kiring — barcha qurilmalaringizda<br>bir xil profil ishlaydi</p>
-
-    <span class="lbl">Bot orqali kirish (tavsiya)</span>
-    <a href="https://t.me/essentialwords1bot?start=weblogin" target="_blank" class="tg-btn"
-       onclick="setTimeout(()=>document.getElementById('inp-token').focus(),1000)">
-      <span class="tg-icon">✈️</span>
-      Telegram Bot orqali kirish
-    </a>
-
-    <div class="divider-row">
-      <div class="divider-line"></div>
-      <span class="divider-txt">Botdan kod oldingizmi?</span>
-      <div class="divider-line"></div>
+    <div class="tg-badge">
+      <div class="tg-badge-icon">✅</div>
+      <div class="tg-badge-info">
+        <div class="tg-badge-label">Telegram orqali tasdiqlangan</div>
+        <div class="tg-badge-name" id="tg-badge-name">...</div>
+      </div>
     </div>
 
-    <span class="lbl">Kirish kodi</span>
-    <div class="inp-wrap">
-      <span class="inp-ico">🔑</span>
-      <!-- FIX 8: Removed auto-submit on 6 digits — user must press Enter or button -->
-      <input type="text" inputmode="numeric" id="inp-token" class="inp"
-             placeholder="XXXXXX (6 ta raqam)" maxlength="6" autocomplete="off">
-    </div>
-    <div class="err-txt" id="err-token">Kod noto'g'ri yoki muddati o'tgan</div>
-    <button class="submit" onclick="loginWithToken()">Kirish →</button>
-
-    <div class="info-box">
-      <strong>Qanday ishlaydi?</strong><br>
-      1. Botga <code>/start</code> yuboring<br>
-      2. <code>🌐 Web kirish</code> tugmasini bosing<br>
-      3. Bot 6 xonali kod yuboradi<br>
-      4. Kodni bu yerga kiriting
-    </div>
+    <div class="divider"></div>
+    <div class="left-hint">Telegram hisobingiz bilan<br>avtomatik kirish 🚀</div>
   </div>
 
-  <!-- SCREEN 2: Level selection (shown for NEW users only) -->
-  <div class="screen" id="screen-level">
-    <h1>Darajangizni tanlang 📚</h1>
-    <p class="sub">Bu sizning boshlang'ich nuqtangizni belgilaydi.<br>Keyin istalgan vaqt o'zgartirish mumkin.</p>
+  <!-- RIGHT PANEL -->
+  <div class="right">
+    <h1>Profilni sozlash</h1>
+    <p>Telegram hisobingiz orqali avtomatik kirdingiz. Avatar va darajani tanlang.</p>
 
-    <span class="lbl">Daraja</span>
-    <div class="level-grid">
-      <label class="level-card lv-beginner" id="lc-beginner">
-        <input type="radio" name="level" value="beginner">
-        <span class="level-emoji">🌱</span>
-        <span class="level-name">Beginner</span>
-        <span class="level-books">Books 1–2</span>
-      </label>
-      <label class="level-card lv-intermediate" id="lc-intermediate">
-        <input type="radio" name="level" value="intermediate">
-        <span class="level-emoji">🔥</span>
-        <span class="level-name">Intermediate</span>
-        <span class="level-books">Books 3–4</span>
-      </label>
-      <label class="level-card lv-advanced" id="lc-advanced">
-        <input type="radio" name="level" value="advanced">
-        <span class="level-emoji">⚡</span>
-        <span class="level-name">Advanced</span>
-        <span class="level-books">Books 5–6</span>
-      </label>
+    <div class="av-sec">
+      <span class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></span>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
+        <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
+        <button class="tab" onclick="switchTab('animals',this)">🐱 Hayvonlar</button>
+      </div>
+      <div class="av-grid" id="av-grid"></div>
     </div>
-    <div class="level-err" id="err-level">Iltimos, darajani tanlang</div>
 
-    <button class="submit" onclick="confirmLevel()">Davom etish →</button>
-  </div>
-
-  <!-- SCREEN 3: Loading -->
-  <div class="screen" id="screen-loading">
-    <div class="loading-wrap">
-      <div class="spinner"></div>
-      <div class="loading-txt" id="loading-txt">Tekshirilmoqda...</div>
+    <span class="lbl">Darajangiz <span class="opt-badge">ixtiyoriy</span></span>
+    <div class="level-row">
+      <div class="lv sel-b" data-lv="beginner" onclick="pickLevel(this)">
+        <span class="lv-em">🌱</span>
+        <span class="lv-name">Beginner</span>
+        <span class="lv-hint">1–2 kitob</span>
+      </div>
+      <div class="lv" data-lv="intermediate" onclick="pickLevel(this)">
+        <span class="lv-em">🔥</span>
+        <span class="lv-name">Intermediate</span>
+        <span class="lv-hint">3–4 kitob</span>
+      </div>
+      <div class="lv" data-lv="advanced" onclick="pickLevel(this)">
+        <span class="lv-em">⚡</span>
+        <span class="lv-name">Advanced</span>
+        <span class="lv-hint">5–6 kitob</span>
+      </div>
     </div>
-  </div>
 
-  <!-- SCREEN 4: Success -->
-  <div class="screen" id="screen-success">
-    <div class="success-wrap">
-      <span class="success-icon" id="succ-icon">🎉</span>
-      <div class="success-name" id="succ-name">Xush kelibsiz!</div>
-      <div class="success-sub" id="succ-sub">Profilingiz yuklanyapti...</div>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-      <div style="font-size:12px;color:var(--muted)">Ilovaga yo'naltirilmoqda...</div>
-    </div>
+    <button class="submit" id="submit-btn" onclick="saveProfile()">
+      Profilni saqlash →
+    </button>
   </div>
 </div>
 
 <script>
-// ── State ──────────────────────────────────────────────
-let _pendingProfile = null; // holds profile while user picks level
-let _isNewUser = false;
+// ═══════════════════════════════════════════
+// SUPABASE CONFIG — o'zgartiring
+// ═══════════════════════════════════════════
+const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← anon key kiriting
 
-// ── UI helpers ─────────────────────────────────────────
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Level card selection UI
-document.querySelectorAll('.level-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    document.getElementById('err-level').classList.remove('show');
-  });
-});
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let tgUser = null;       // Telegram foydalanuvchi
+let state = {
+  avatarUrl: '',
+  level: 'beginner'
+};
+let selItem = null;
 
-// Token input — only auto-format, no auto-submit (FIX 8)
-document.getElementById('inp-token').addEventListener('input', function() {
-  this.value = this.value.replace(/\D/g, '').slice(0, 6);
-});
+// ═══════════════════════════════════════════
+// AVATAR GRID
+// ═══════════════════════════════════════════
+const SEEDS = {
+  bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
+  avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
+  animals: ['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
+};
+const STYLES = {bots:'bottts-neutral', avatars:'adventurer-neutral', animals:'thumbs'};
 
-document.getElementById('inp-token').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') loginWithToken();
-});
-
-// ── Level confirmation ─────────────────────────────────
-function confirmLevel() {
-  const selected = document.querySelector('.level-card.selected input[type=radio]');
-  if (!selected) {
-    document.getElementById('err-level').classList.add('show');
-    return;
-  }
-
-  const chosenLevel = selected.value;
-
-  // Apply chosen level to pending profile
-  _pendingProfile.level = chosenLevel;
-  _pendingProfile.grammarLevel = chosenLevel;
-
-  // Set starting book/unit based on level
-  const bookMap = { beginner: 1, intermediate: 3, advanced: 5 };
-  _pendingProfile.lastBook = bookMap[chosenLevel];
-  _pendingProfile.lastUnit = 1;
-  _pendingProfile.currentUnit = {
-    beginner: chosenLevel === 'beginner' ? 1 : 0,
-    intermediate: chosenLevel === 'intermediate' ? 1 : 0,
-    advanced: chosenLevel === 'advanced' ? 1 : 0,
-  };
-
-  showScreen('screen-loading');
-  document.getElementById('loading-txt').textContent = 'Profil saqlanmoqda...';
-
-  finalizeLogin(_pendingProfile);
-}
-
-// ── Main login flow ────────────────────────────────────
-async function loginWithToken() {
-  const token = document.getElementById('inp-token').value.trim();
-  if (token.length !== 6) {
-    document.getElementById('inp-token').classList.add('err');
-    document.getElementById('err-token').textContent = '6 ta raqam kiriting';
-    document.getElementById('err-token').classList.add('show');
-    return;
-  }
-
-  document.getElementById('inp-token').classList.remove('err');
-  document.getElementById('err-token').classList.remove('show');
-  showScreen('screen-loading');
-  document.getElementById('loading-txt').textContent = 'Kod tekshirilmoqda...';
-
-  try {
-    // Step 1: Validate token (server-side expiry check via Supabase RPC or filter)
-    // FIX 5: expires_at checked by Supabase server — client clock doesn't matter
-    const now = new Date().toISOString();
-    const tokenData = await sbFetch(
-      `/rest/v1/web_login_tokens?select=user_id,used,expires_at&token=eq.${token}&used=eq.false&expires_at=gt.${encodeURIComponent(now)}`
-    );
-
-    if (!tokenData || tokenData.length === 0) {
-      showScreen('screen-main');
-      document.getElementById('inp-token').classList.add('err');
-      document.getElementById('err-token').textContent = 'Kod noto\'g\'ri yoki muddati o\'tgan (10 daqiqa)';
-      document.getElementById('err-token').classList.add('show');
-      document.getElementById('inp-token').value = '';
-      return;
-    }
-
-    // FIX 1: Use telegram_id (user_id from token table) as single source of truth
-    const telegramId = tokenData[0].user_id;
-
-    document.getElementById('loading-txt').textContent = 'Profil yuklanmoqda...';
-
-    // Step 2: Load user profile — keyed by telegram_id (works across all devices)
-    // FIX 1 & 2: Always fetch from Supabase, never trust localStorage alone
-    const users = await sbFetch(`/rest/v1/users?select=*&user_id=eq.${telegramId}`);
-
-    if (!users || users.length === 0) {
-      // Token references a user that doesn't exist in users table
-      showScreen('screen-main');
-      document.getElementById('err-token').textContent = 'Foydalanuvchi topilmadi. Botga /start yuboring.';
-      document.getElementById('err-token').classList.add('show');
-      return;
-    }
-
-    const u = users[0];
-
-    // FIX 3: Merge web_data carefully — Supabase top-level fields are authoritative
-    // for critical data (xp, streak, premium); web_data used for progress/content only
-    const webData = (typeof u.web_data === 'object' && u.web_data !== null) ? u.web_data : {};
-
-    const profile = {
-      name:          u.first_name || u.username || 'Foydalanuvchi',
-      telegram_id:   u.user_id,   // always the Telegram numeric ID
-      username:      u.username || '',
-      // Level: trust Supabase top-level first, fall back to web_data
-      level:         u.level || webData.level || null, // null = new user, needs selection
-      avatarUrl:     u.avatar_url || webData.avatarUrl || '',
-      // Critical counters: Supabase top-level is authoritative
-      xp:            (u.xp != null ? u.xp : null) ?? webData.xp ?? 0,
-      streak:        (u.streak != null ? u.streak : null) ?? webData.streak ?? 1,
-      isPremium:     u.is_premium || false,
-      premiumExpiry: u.premium_expiry || 0,
-      total_points:  u.total_points || 0,
-      // Content progress: comes from web_data only
-      learnedWords:  webData.learnedWords || [],
-      wordErrors:    webData.wordErrors || {},
-      customWords:   webData.customWords || [],
-      unitProgress:  webData.unitProgress || { beginner:0, intermediate:0, advanced:0 },
-      currentUnit:   webData.currentUnit || { beginner:1, intermediate:1, advanced:1 },
-      lastBook:      webData.lastBook || 1,
-      lastUnit:      webData.lastUnit || 1,
-      battleWins:    webData.battleWins || 0,
-      battleLosses:  webData.battleLosses || 0,
-      battleXP:      webData.battleXP || 0,
-      dailyScore:    webData.dailyScore || {},
-      grammarLevel:  webData.grammarLevel || u.level || null,
-      lastLogin:     new Date().toDateString(),
+function buildGrid(tab) {
+  const grid = document.getElementById('av-grid');
+  grid.innerHTML = '';
+  selItem = null;
+  SEEDS[tab].forEach(seed => {
+    const url = `https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
+    const el = document.createElement('div');
+    el.className = 'av-item';
+    el.innerHTML = `<img src="${url}" loading="lazy">`;
+    el.onclick = () => {
+      if (selItem) selItem.classList.remove('sel');
+      el.classList.add('sel');
+      selItem = el;
+      state.avatarUrl = url;
+      showPreview(url);
     };
+    grid.appendChild(el);
+  });
+}
 
-    // FIX 4: Mark token used AFTER successful profile load (not before)
-    await sbFetch(`/rest/v1/web_login_tokens?token=eq.${token}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ used: true })
-    });
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  buildGrid(tab);
+}
 
-    // NEW USER: level not set → show level picker
-    _isNewUser = !profile.level;
-    if (_isNewUser) {
-      _pendingProfile = profile;
-      showScreen('screen-level');
+function showPreview(url) {
+  const img = document.getElementById('av-img');
+  img.src = url;
+  img.style.display = 'block';
+  document.getElementById('av-emoji').style.display = 'none';
+}
+
+document.getElementById('file-up').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    state.avatarUrl = ev.target.result;
+    showPreview(ev.target.result);
+    if (selItem) { selItem.classList.remove('sel'); selItem = null; }
+  };
+  r.readAsDataURL(f);
+});
+
+function pickLevel(el) {
+  document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
+  const lv = el.dataset.lv;
+  state.level = lv;
+  el.classList.add(lv === 'beginner' ? 'sel-b' : lv === 'intermediate' ? 'sel-i' : 'sel-a');
+}
+
+// ═══════════════════════════════════════════
+// TELEGRAM INIT
+// ═══════════════════════════════════════════
+async function initApp() {
+  const tg = window.Telegram?.WebApp;
+
+  // --- DEV MODE: test uchun (ishlab chiqishda) ---
+  // Agar Telegram dan tashqarida ochilsa va DEV_MODE yoqilgan bo'lsa
+  const DEV_MODE = false; // production da false qiling
+  const DEV_USER = { id: 123456789, first_name: 'Test', last_name: 'User', username: 'testuser' };
+
+  if (tg) {
+    tg.ready();
+    tg.expand();
+  }
+
+  // Telegram user olish
+  tgUser = tg?.initDataUnsafe?.user || (DEV_MODE ? DEV_USER : null);
+
+  if (!tgUser) {
+    // Telegram orqali ochilmagan
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('error-screen').style.display = 'flex';
+    return;
+  }
+
+  // UI ga ismni ko'rsatish
+  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+  document.getElementById('prev-name').textContent = fullName;
+  document.getElementById('prev-tg').textContent = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
+  document.getElementById('tg-badge-name').textContent = fullName;
+
+  // Supabase dan tekshirish — bu foydalanuvchi avval ro'yxatdan o'tganmi?
+  try {
+    const { data: existingUser } = await db
+      .from('users')
+      .select('*')
+      .eq('user_id', tgUser.id)
+      .single();
+
+    if (existingUser && existingUser.level && existingUser.avatarUrl) {
+      // Profil to'liq — to'g'ridan app.html ga
+      saveToStorage(existingUser);
+      window.location.replace('app.html');
       return;
     }
 
-    // RETURNING USER: level already set → go straight in
-    await finalizeLogin(profile);
-
-  } catch(err) {
-    console.error('Login error:', err);
-    showScreen('screen-main');
-    document.getElementById('err-token').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.';
-    document.getElementById('err-token').classList.add('show');
-  }
-}
-
-// ── Save profile and redirect ──────────────────────────
-async function finalizeLogin(profile) {
-  try {
-    // FIX 2: Always save fresh Supabase data to localStorage
-    localStorage.setItem('ep_user', JSON.stringify(profile));
-    sessionStorage.setItem('ep_user', JSON.stringify(profile));
-    // FIX 6: Record when we last validated so the early-redirect check works
-    localStorage.setItem('ep_last_validated', Date.now().toString());
-
-    // If new user with chosen level, persist level back to Supabase
-    if (_isNewUser) {
-      try {
-        await sbFetch(`/rest/v1/users?user_id=eq.${profile.telegram_id}`, {
-          method: 'PATCH',
-          body: JSON.stringify({ level: profile.level })
-        });
-      } catch(e) {
-        console.warn('Level save to Supabase failed (non-critical):', e);
-        // Non-fatal — profile is already in localStorage
+    // Profil bor lekin to'liq emas YOKI yo'q — ro'yxatdan o'tish formasi
+    if (existingUser) {
+      // Mavjud ma'lumotlarni ko'rsatish
+      state.level = existingUser.level || 'beginner';
+      // Darajani UI da belgilash
+      document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
+      const lvEl = document.querySelector(`[data-lv="${state.level}"]`);
+      if (lvEl) {
+        const cls = state.level === 'beginner' ? 'sel-b' : state.level === 'intermediate' ? 'sel-i' : 'sel-a';
+        lvEl.classList.add(cls);
       }
     }
+  } catch(e) {
+    // Profil topilmadi — yangi foydalanuvchi, davom etamiz
+  }
 
-    document.getElementById('succ-icon').textContent = profile.isPremium ? '👑' : '🎉';
-    document.getElementById('succ-name').textContent = 'Xush kelibsiz, ' + profile.name + '!';
+  // Formani ko'rsatish
+  document.getElementById('loading-screen').style.display = 'none';
+  document.getElementById('main-outer').style.display = 'grid';
 
-    const levelLabels = { beginner: '🌱 Beginner', intermediate: '🔥 Intermediate', advanced: '⚡ Advanced' };
-    document.getElementById('succ-sub').textContent = profile.isPremium
-      ? '✨ Premium a\'zo — barcha imkoniyatlar ochiq!'
-      : (levelLabels[profile.level] || profile.level) + ' darajasi';
+  buildGrid('bots');
+}
 
-    showScreen('screen-success');
+// ═══════════════════════════════════════════
+// PROFIL SAQLASH
+// ═══════════════════════════════════════════
+async function saveProfile() {
+  if (!tgUser) return;
 
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 2000);
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Saqlanmoqda...';
+
+  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+
+  // Agar avatar tanlanmagan bo'lsa — default dicebear
+  if (!state.avatarUrl) {
+    const seed = tgUser.first_name || String(tgUser.id);
+    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${seed}`;
+  }
+
+  try {
+    // Supabase da users jadvalini yangilash
+    const { error } = await db
+      .from('users')
+      .upsert({
+        user_id: tgUser.id,
+        username: tgUser.username || null,
+        first_name: tgUser.first_name,
+        last_name: tgUser.last_name || null,
+        level: state.level,
+        avatarUrl: state.avatarUrl,
+        last_active: new Date().toISOString()
+      }, { onConflict: 'user_id' });
+
+    if (error) throw error;
+
+    // localStorage ga saqlash
+    const userObj = {
+      user_id: tgUser.id,
+      name: fullName,
+      username: tgUser.username || '',
+      first_name: tgUser.first_name,
+      last_name: tgUser.last_name || '',
+      level: state.level,
+      avatarUrl: state.avatarUrl,
+      xp: 0,
+      streak: 0,
+      learnedWords: [],
+      wordErrors: {},
+      customWords: [],
+      unitProgress: { beginner:0, intermediate:0, advanced:0 },
+      currentUnit:  { beginner:1, intermediate:1, advanced:1 },
+      lastBook: 1,
+      lastUnit: 1,
+      battleWins: 0,
+      battleLosses: 0,
+      battleXP: 0,
+      dailyScore: {},
+      grammarLevel: state.level,
+      isPremium: false,
+      premiumExpiry: 0,
+      lastLogin: new Date().toDateString(),
+      createdAt: Date.now(),
+    };
+
+    saveToStorage(userObj);
+    window.location.href = 'app.html';
 
   } catch(err) {
-    console.error('Finalize error:', err);
-    showScreen('screen-main');
-    document.getElementById('err-token').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.';
-    document.getElementById('err-token').classList.add('show');
+    console.error('Saqlashda xato:', err);
+    btn.disabled = false;
+    btn.textContent = 'Xato yuz berdi, qayta urinib ko\'ring';
+    setTimeout(() => { btn.textContent = 'Profilni saqlash →'; }, 2500);
   }
 }
+
+function saveToStorage(user) {
+  const json = JSON.stringify(user);
+  localStorage.setItem('ep_user', json);
+  sessionStorage.setItem('ep_user', json);
+}
+
+// ═══════════════════════════════════════════
+// ISHGA TUSHIRISH
+// ═══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', initApp);
 </script>
 </body>
 </html>
