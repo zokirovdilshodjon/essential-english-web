@@ -240,8 +240,8 @@ body::before{
 // CONFIG
 // ══════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← Supabase > Settings > API > anon public
-const APP_URL           = 'index.html';
+const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE'; // ← Supabase > Settings > API > anon public
+const APP_URL           = 'app.html';
 
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -312,6 +312,7 @@ function pickLevel(el) {
 // ── TELEGRAM INIT ──
 async function initApp() {
   const tg = window.Telegram?.WebApp;
+
   if (tg) {
     tg.ready();
     tg.expand();
@@ -319,8 +320,10 @@ async function initApp() {
     tg.setBackgroundColor && tg.setBackgroundColor('#0d1117');
   }
 
+  // Telegram user olish
   tgUser = tg?.initDataUnsafe?.user ?? null;
 
+  // Localhost da test uchun
   if (!tgUser && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     tgUser = { id: 999999999, first_name: 'Test', last_name: 'Dev', username: 'testdev' };
   }
@@ -331,23 +334,11 @@ async function initApp() {
     return;
   }
 
-  // ✅ 1. localStorage tekshir — eng tez yo'l
-  try {
-    const localRaw = localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user');
-    if (localRaw) {
-      const localUser = JSON.parse(localRaw);
-      if (localUser?.user_id === tgUser.id && localUser?.level && localUser?.avatarUrl) {
-        window.location.replace(APP_URL);
-        return;
-      }
-    }
-  } catch(e) {}
-
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
   document.getElementById('prev-name').textContent = fullName;
   document.getElementById('prev-tg').textContent   = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
 
-  // ✅ 2. Supabase tekshir — localStorage bo'sh bo'lsa
+  // Supabase tekshirish
   try {
     const { data: existing } = await db
       .from('users')
@@ -355,12 +346,14 @@ async function initApp() {
       .eq('user_id', tgUser.id)
       .maybeSingle();
 
+    // Profil to'liq tayyor bo'lsa — to'g'ridan app ga
     if (existing?.level && existing?.avatar_url) {
       saveLocal({ ...existing, name: fullName, avatarUrl: existing.avatar_url });
       window.location.replace(APP_URL);
       return;
     }
 
+    // Daraja mavjud bo'lsa — UI da belgilash
     if (existing?.level) {
       state.level = existing.level;
       document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
@@ -371,7 +364,6 @@ async function initApp() {
     console.warn('Supabase:', e.message);
   }
 
-  // ✅ 3. Ikkalasida ham yo'q — ro'yxatdan o'tish formasini ko'rsat
   document.getElementById('loading-screen').style.display = 'none';
   document.getElementById('main-outer').style.display = 'grid';
   buildGrid('bots');
@@ -380,28 +372,25 @@ async function initApp() {
 // ── SAQLASH ──
 async function saveProfile() {
   if (!tgUser) return;
+
   const btn = document.getElementById('submit-btn');
   btn.disabled    = true;
   btn.textContent = '⏳ Saqlanmoqda...';
 
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
 
-  // Avatar yo'q bo'lsa default qo'yamiz
   if (!state.avatarUrl) {
     state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
 
-  // ✅ Avatar URL ni log qilib tekshiramiz
-  console.log('Saving avatar_url:', state.avatarUrl);
-
   const localUser = {
-    user_id:    tgUser.id,
-    name:       fullName,
-    username:   tgUser.username || '',
+    user_id:  tgUser.id,
+    name:     fullName,
+    username: tgUser.username || '',
     first_name: tgUser.first_name,
     last_name:  tgUser.last_name || '',
-    level:      state.level,
-    avatarUrl:  state.avatarUrl,
+    level:    state.level,
+    avatarUrl: state.avatarUrl,
     avatar_url: state.avatarUrl,
     xp: 0, streak: 0, learnedWords: [], wordErrors: {}, customWords: [],
     unitProgress: { beginner:0, intermediate:0, advanced:0 },
@@ -410,8 +399,9 @@ async function saveProfile() {
     lastLogin: new Date().toDateString(), createdAt: Date.now(),
   };
 
- try {
-    const saveData = {
+  // Supabase ga saqlash — muvaffaqiyatsiz bo'lsa ham davom etamiz
+  try {
+    const { error } = await db.from('users').upsert({
       user_id:     tgUser.id,
       username:    tgUser.username   || null,
       first_name:  tgUser.first_name,
@@ -419,24 +409,14 @@ async function saveProfile() {
       level:       state.level,
       avatar_url:  state.avatarUrl,
       last_active: new Date().toISOString(),
-    };
+    }, { onConflict: 'user_id' });
 
-    // ✅ Console da ko'rish
-    alert('Saqlanayotgan avatar: ' + state.avatarUrl);
-
-    const { data, error } = await db
-      .from('users')
-      .upsert(saveData, { onConflict: 'user_id' })
-      .select();
-
-    if (error) {
-      alert('XATO: ' + JSON.stringify(error));
-    } else {
-      alert('SAQLANDI: ' + JSON.stringify(data));
-    }
+    if (error) console.error('Supabase upsert error:', error);
   } catch(err) {
-    alert('ERROR: ' + err.message);
+    console.error('Supabase error:', err);
   }
+
+  // Har holda localga saqlab, app ga o'tamiz
   saveLocal(localUser);
   window.location.href = APP_URL;
 }
