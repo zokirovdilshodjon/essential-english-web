@@ -223,8 +223,7 @@ body.light-mode .xp-chip{color:#5030c0 !important;}
 .sinp{width:100%;padding:10px 13px;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;font-size:13px;font-family:'Nunito',sans-serif;color:var(--text);outline:none;margin-bottom:10px}
 .sinp:focus{border-color:var(--blue)}
 .sinp::placeholder{color:var(--muted)}
-.toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:12px;font-weight:700;z-index:500;white-space:nowrap;animation:tIn .3s ease,tOut .3s 2.2s forwards;box-shadow:0 8px 24px rgba(0,0,0,.5);}
-@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:12px;font-weight:700;z-index:500;white-space:nowrap;animation:tIn .3s ease,tOut .3s 2.2s forwards;box-shadow:0 8px 24px rgba(0,0,0,.5);}@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes tOut{to{opacity:0}}
 .xp-pop{position:fixed;top:70px;right:14px;z-index:400;background:var(--gold);color:#080d14;padding:7px 14px;border-radius:20px;font-weight:800;font-size:13px;animation:xpIn .6s cubic-bezier(.34,1.56,.64,1) both,tOut .4s 1.6s forwards;pointer-events:none;}
 @keyframes xpIn{from{opacity:0;transform:translateY(16px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
