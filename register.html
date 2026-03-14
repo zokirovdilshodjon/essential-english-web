@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Essential English PRO — Profil</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<!-- Telegram WebApp SDK — MUHIM, birinchi bo'lishi kerak -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -271,8 +269,9 @@ function buildGrid(tab) {
       if (selItem) selItem.classList.remove('sel');
       el.classList.add('sel');
       selItem = el;
-      state.avatarUrl = url;
+      state.avatarUrl = url; // ✅ aniq saqlanayapti
       showAvatar(url);
+      console.log('Avatar tanlandi:', state.avatarUrl); // test uchun
     };
     grid.appendChild(el);
   });
@@ -285,6 +284,7 @@ function switchTab(tab, btn) {
 }
 
 function showAvatar(url) {
+  state.avatarUrl = url; // ✅ bu yerda ham saqlaymiz
   const img = document.getElementById('av-img');
   img.src = url;
   img.style.display = 'block';
@@ -380,16 +380,17 @@ async function initApp() {
 // ── SAQLASH ──
 async function saveProfile() {
   if (!tgUser) return;
-  const btn = document.getElementById('submit-btn');
-  btn.disabled    = true;
-  btn.textContent = '⏳ Saqlanmoqda...';
 
-  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
-
-  // Avatar yo'q bo'lsa default qo'yamiz
+  // ✅ Avatar tanlanganmi? Yo'q bo'lsa default
   if (!state.avatarUrl) {
     state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled    = true;
+  btn.textContent = '⏳ ' + state.avatarUrl.slice(0, 20); // ✅ debug: URL boshlanishi
+
+  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
 
   const localUser = {
     user_id:    tgUser.id,
@@ -408,25 +409,31 @@ async function saveProfile() {
   };
 
   try {
-    const saveData = {
-      user_id:     tgUser.id,
-      username:    tgUser.username   || null,
-      first_name:  tgUser.first_name,
-      last_name:   tgUser.last_name  || null,
-      level:       state.level,
-      avatar_url:  state.avatarUrl,
-      last_active: new Date().toISOString(),
-    };
-
-    const { error } = await db
+    const { data, error } = await db
       .from('users')
-      .upsert(saveData, { onConflict: 'user_id' });
+      .upsert({
+        user_id:     tgUser.id,
+        username:    tgUser.username || null,
+        first_name:  tgUser.first_name,
+        last_name:   tgUser.last_name || null,
+        level:       state.level,
+        avatar_url:  state.avatarUrl,
+        last_active: new Date().toISOString(),
+      }, { onConflict: 'user_id' })
+      .select();
 
     if (error) {
-      console.error('Supabase upsert xatosi:', error);
+      btn.textContent = '❌ ' + error.message.slice(0, 30);
+      btn.disabled = false;
+      return; // ✅ xato bo'lsa to'xtaymiz
     }
+
+    btn.textContent = '✅ Saqlandi!';
+
   } catch(err) {
-    console.error('saveProfile xatosi:', err.message);
+    btn.textContent = '💥 ' + err.message.slice(0, 30);
+    btn.disabled = false;
+    return;
   }
 
   saveLocal(localUser);
