@@ -926,7 +926,7 @@ function shuffle(arr){
 
 // ===== USER STATE =====
 let U = JSON.parse(localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user') || 'null');
-if(!U){ window.location.href='registr.html'; }
+if(!U){ window.location.href='register.html'; }
 
 let cardIdx=0, cardFlipped=false;
 let currentUnitWords=[];
@@ -1632,7 +1632,7 @@ const ONLINE_PLAYERS = [
 <script>
 // ===== INIT =====
 window.addEventListener('DOMContentLoaded', async ()=>{
-  if(!U){ window.location.href='registr.html'; return; }
+  if(!U){ window.location.href='register.html'; return; }
   curBook = U.lastBook || 1;
   curUnitNum = U.lastUnit || 1;
   loadTopbar();
@@ -2028,7 +2028,7 @@ function logoutUser(){
   if(!confirm('Profildan chiqmoqchimisiz?')) return;
   localStorage.removeItem('ep_user');
   sessionStorage.removeItem('ep_user');
-  window.location.href='registr.html';
+  window.location.href='register.html';
 }
 function showXP(txt){
   const el=document.createElement('div');el.className='xp-pop';el.textContent=txt;
@@ -5058,7 +5058,7 @@ App.user = {
     if(!confirm('Profildan chiqmoqchimisiz?')) return;
     localStorage.removeItem('ep_user');
     sessionStorage.removeItem('ep_user');
-    window.location.href = 'registr.html';
+    window.location.href = 'register.html';
   }
 };
 
