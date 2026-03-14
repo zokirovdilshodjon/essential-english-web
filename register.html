@@ -386,9 +386,13 @@ async function saveProfile() {
 
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
 
+  // Avatar yo'q bo'lsa default qo'yamiz
   if (!state.avatarUrl) {
     state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
+
+  // ✅ Avatar URL ni log qilib tekshiramiz
+  console.log('Saving avatar_url:', state.avatarUrl);
 
   const localUser = {
     user_id:    tgUser.id,
@@ -407,17 +411,31 @@ async function saveProfile() {
   };
 
   try {
-    const { error } = await db.from('users').upsert({
+    // ✅ avatar_url ni aniq ko'rsatamiz
+    const saveData = {
       user_id:     tgUser.id,
       username:    tgUser.username   || null,
       first_name:  tgUser.first_name,
       last_name:   tgUser.last_name  || null,
       level:       state.level,
-      avatar_url:  state.avatarUrl,
+      avatar_url:  state.avatarUrl,  // ✅ bu to'liq URL bo'lishi kerak
       last_active: new Date().toISOString(),
-    }, { onConflict: 'user_id' });
+    };
 
-    if (error) console.error('Supabase upsert error:', error);
+    console.log('Supabase ga yuborilayotgan data:', saveData);
+
+    const { data, error } = await db.from('users').upsert(
+      saveData,
+      { onConflict: 'user_id' }
+    ).select();
+
+    console.log('Supabase javob:', data, error);
+
+    if (error) {
+      console.error('Supabase upsert error:', error);
+    } else {
+      console.log('✅ Supabase ga saqlandi:', data);
+    }
   } catch(err) {
     console.error('Supabase error:', err);
   }
