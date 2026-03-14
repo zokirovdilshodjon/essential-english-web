@@ -410,36 +410,33 @@ async function saveProfile() {
     lastLogin: new Date().toDateString(), createdAt: Date.now(),
   };
 
-  try {
-    // ✅ avatar_url ni aniq ko'rsatamiz
+ try {
     const saveData = {
       user_id:     tgUser.id,
       username:    tgUser.username   || null,
       first_name:  tgUser.first_name,
       last_name:   tgUser.last_name  || null,
       level:       state.level,
-      avatar_url:  state.avatarUrl,  // ✅ bu to'liq URL bo'lishi kerak
+      avatar_url:  state.avatarUrl,
       last_active: new Date().toISOString(),
     };
 
-    console.log('Supabase ga yuborilayotgan data:', saveData);
+    // ✅ Console da ko'rish
+    alert('Saqlanayotgan avatar: ' + state.avatarUrl);
 
-    const { data, error } = await db.from('users').upsert(
-      saveData,
-      { onConflict: 'user_id' }
-    ).select();
-
-    console.log('Supabase javob:', data, error);
+    const { data, error } = await db
+      .from('users')
+      .upsert(saveData, { onConflict: 'user_id' })
+      .select();
 
     if (error) {
-      console.error('Supabase upsert error:', error);
+      alert('XATO: ' + JSON.stringify(error));
     } else {
-      console.log('✅ Supabase ga saqlandi:', data);
+      alert('SAQLANDI: ' + JSON.stringify(data));
     }
   } catch(err) {
-    console.error('Supabase error:', err);
+    alert('ERROR: ' + err.message);
   }
-
   saveLocal(localUser);
   window.location.href = APP_URL;
 }
