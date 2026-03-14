@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Essential English PRO — Profil</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<!-- Telegram WebApp SDK — MUHIM, birinchi bo'lishi kerak -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -238,7 +240,7 @@ body::before{
 // CONFIG
 // ══════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
+const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← Supabase > Settings > API > anon public
 const APP_URL           = 'index.html';
 
 const { createClient } = supabase;
@@ -269,9 +271,8 @@ function buildGrid(tab) {
       if (selItem) selItem.classList.remove('sel');
       el.classList.add('sel');
       selItem = el;
-      state.avatarUrl = url; // ✅ aniq saqlanayapti
+      state.avatarUrl = url;
       showAvatar(url);
-      console.log('Avatar tanlandi:', state.avatarUrl); // test uchun
     };
     grid.appendChild(el);
   });
@@ -284,7 +285,6 @@ function switchTab(tab, btn) {
 }
 
 function showAvatar(url) {
-  state.avatarUrl = url; // ✅ bu yerda ham saqlaymiz
   const img = document.getElementById('av-img');
   img.src = url;
   img.style.display = 'block';
@@ -380,17 +380,19 @@ async function initApp() {
 // ── SAQLASH ──
 async function saveProfile() {
   if (!tgUser) return;
+  const btn = document.getElementById('submit-btn');
+  btn.disabled    = true;
+  btn.textContent = '⏳ Saqlanmoqda...';
 
-  // ✅ Avatar tanlanganmi? Yo'q bo'lsa default
+  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+
+  // Avatar yo'q bo'lsa default qo'yamiz
   if (!state.avatarUrl) {
     state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
 
-  const btn = document.getElementById('submit-btn');
-  btn.disabled    = true;
-  btn.textContent = '⏳ ' + state.avatarUrl.slice(0, 20); // ✅ debug: URL boshlanishi
-
-  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+  // ✅ Avatar URL ni log qilib tekshiramiz
+  console.log('Saving avatar_url:', state.avatarUrl);
 
   const localUser = {
     user_id:    tgUser.id,
@@ -408,34 +410,33 @@ async function saveProfile() {
     lastLogin: new Date().toDateString(), createdAt: Date.now(),
   };
 
-  try {
+ try {
+    const saveData = {
+      user_id:     tgUser.id,
+      username:    tgUser.username   || null,
+      first_name:  tgUser.first_name,
+      last_name:   tgUser.last_name  || null,
+      level:       state.level,
+      avatar_url:  state.avatarUrl,
+      last_active: new Date().toISOString(),
+    };
+
+    // ✅ Console da ko'rish
+    alert('Saqlanayotgan avatar: ' + state.avatarUrl);
+
     const { data, error } = await db
       .from('users')
-      .upsert({
-        user_id:     tgUser.id,
-        username:    tgUser.username || null,
-        first_name:  tgUser.first_name,
-        last_name:   tgUser.last_name || null,
-        level:       state.level,
-        avatar_url:  state.avatarUrl,
-        last_active: new Date().toISOString(),
-      }, { onConflict: 'user_id' })
+      .upsert(saveData, { onConflict: 'user_id' })
       .select();
 
     if (error) {
-      btn.textContent = '❌ ' + error.message.slice(0, 30);
-      btn.disabled = false;
-      return; // ✅ xato bo'lsa to'xtaymiz
+      alert('XATO: ' + JSON.stringify(error));
+    } else {
+      alert('SAQLANDI: ' + JSON.stringify(data));
     }
-
-    btn.textContent = '✅ Saqlandi!';
-
   } catch(err) {
-    btn.textContent = '💥 ' + err.message.slice(0, 30);
-    btn.disabled = false;
-    return;
+    alert('ERROR: ' + err.message);
   }
-
   saveLocal(localUser);
   window.location.href = APP_URL;
 }
