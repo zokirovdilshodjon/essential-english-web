@@ -924,8 +924,51 @@ function shuffle(arr){
 }
 
 // ===== USER STATE =====
-let U = JSON.parse(localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user') || 'null');
-if(!U){ window.location.href='register.html'; }
+let U = null;
+
+async function loadUserFromSupabase() {
+  // 1. Avval localStorage dan tez yuklaymiz
+  const local = localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user');
+  U = local ? JSON.parse(local) : null;
+
+  if (!U) {
+    window.location.href = 'register.html';
+    return false;
+  }
+
+  // 2. Telegram user ID dan Supabase dan yangi ma'lumot olamiz
+  const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
+  const userId = tgUser?.id || U.user_id;
+
+  if (!userId) return true; // localhost test
+
+  try {
+    const SUPABASE_URL = 'https://zgaavmiimhxawicineco.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
+    const { createClient } = supabase;
+    const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const { data, error } = await db
+      .from('users')
+      .select('user_id, level, avatar_url, first_name, last_name, username')
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    if (data && !error) {
+      // Supabase dan kelgan ma'lumotlarni localStorage ga o'zgartirmagan narsalar bilan birlashtirish
+      U.level     = data.level     || U.level;
+      U.avatar_url = data.avatar_url || U.avatar_url;
+      U.avatarUrl  = data.avatar_url || U.avatarUrl;
+      U.user_id    = data.user_id;
+      // XP, streak, learnedWords — localda saqlanadi (hozircha)
+      saveUser();
+    }
+  } catch(e) {
+    console.warn('Supabase sync xato:', e.message);
+  }
+
+  return true;
+}
 
 let cardIdx=0, cardFlipped=false;
 let currentUnitWords=[];
@@ -1631,25 +1674,14 @@ const ONLINE_PLAYERS = [
 <script>
 // ===== INIT =====
 window.addEventListener('DOMContentLoaded', async ()=>{
+  // Avval Supabase dan yuklaymiz
+  const ok = await loadUserFromSupabase();
+  if(!ok) return;
   if(!U){ window.location.href='register.html'; return; }
+
   curBook = U.lastBook || 1;
   curUnitNum = U.lastUnit || 1;
   loadTopbar();
-  buildBookRow();
-  document.getElementById('unit-inp').value = curUnitNum;
-  // Background da unitlarni aniqlash (barcha kitoblar uchun)
-  updateUnitRange();
-  await goToUnit();
-  buildGrammarList();
-  buildIrregularVerbs();
-  buildLeaderboard();
-  buildBattleUI();
-  updateStats();
-  initPremiumFeatures();
-  try{updateDayStreak();}catch(e){}
-  applyTheme();
-  try{ App.init(); }catch(e){ console.warn('App.init error:', e); }
-});
 
 function loadTopbar(){
   document.getElementById('tb-name').textContent = U.name;
