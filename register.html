@@ -164,7 +164,7 @@ body::before{
 // ══════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← SHU JOYNI O'ZGARTIRING!
-const APP_URL           = 'app.html';
+const APP_URL           = 'index.html';
 
 // Mavjud profil tekshiruvi — sahifa ko'rinishidan OLDIN
 (function checkExistingProfile() {
@@ -417,7 +417,7 @@ async function checkSupabaseProfile(userId) {
     if (!data || !data.length) return;
     const row = data[0];
 
-    // To'liq profil — to'g'ridan app.html ga o'tish
+    // To'liq profil — to'g'ridan index.html ga o'tish
     if (row.level && row.avatar_url) {
       saveLocal({
         userId:    row.user_id,
@@ -487,7 +487,7 @@ function saveLocal(overrides = {}) {
     // Asosiy
     name,
     level,
-    avatarUrl,             // app.html → U.avatarUrl
+    avatarUrl,             // index.html → U.avatarUrl
     avatar_url: avatarUrl, // Supabase ustun nomi bilan moslik
     // XP / Streak
     xp:            overrides.xp            ?? existing.xp            ?? 0,
