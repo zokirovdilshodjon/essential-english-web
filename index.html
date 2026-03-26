@@ -5879,7 +5879,7 @@ App.events.on('combo:updated', (combo)=>{
   if(!el){
     el = document.createElement('div');
     el.id = 'combo-indicator';
-    el.style.cssText = 'position:fixed;top:70px;right:12px;z-index:200;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:4px 12px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(245,197,66,.3)';
+    el.style.cssText = 'position:fixed;top:12px;left:50%;z-index:200;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:4px 12px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(245,197,66,.3)';
     document.body.appendChild(el);
   }
   el.textContent = '🔥 COMBO x' + combo;
