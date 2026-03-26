@@ -917,8 +917,145 @@ function shuffle(arr){
 }
 
 // ===== USER STATE =====
-let U = JSON.parse(localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user') || 'null');
-if(!U){ window.location.href='register.html'; }
+// ══════════════════════════════════════════════════════════
+// SUPABASE CONFIG
+// ══════════════════════════════════════════════════════════
+const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
+
+function getStorageKey(userId) {
+  return userId ? `ep_user_${userId}` : 'ep_user_guest';
+}
+
+async function sbFetchUser(userId) {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?user_id=eq.${userId}&select=user_id,first_name,username,level,avatar_url,xp,streak,total_points`,
+      {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        }
+      }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data && data.length > 0 ? data[0] : null;
+  } catch(e) {
+    return null;
+  }
+}
+
+async function syncToSupabase(user) {
+  if (!user || !user.userId) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'apikey':         SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Prefer':        'resolution=merge-duplicates',
+      },
+      body: JSON.stringify({
+        user_id:      user.userId,
+        first_name:   user.name,
+        avatar_url:   user.avatarUrl || user.avatar_url || '',
+        level:        user.level,
+        xp:           user.xp || 0,
+        streak:       user.streak || 0,
+        total_points: user.xp || 0,
+        last_active:  new Date().toISOString(),
+      }),
+    });
+  } catch(e) {}
+}
+
+async function loadUser() {
+  let tgUserId = null;
+  try {
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      const tgUser = tg.initDataUnsafe?.user;
+      if (tgUser && tgUser.id) tgUserId = tgUser.id;
+    }
+  } catch(e) {}
+
+  const storageKey = getStorageKey(tgUserId);
+
+  let localUser = null;
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw) localUser = JSON.parse(raw);
+    if (localUser && tgUserId && localUser.userId && String(localUser.userId) !== String(tgUserId)) {
+      localUser = null;
+    }
+  } catch(e) {
+    localStorage.removeItem(storageKey);
+    localUser = null;
+  }
+
+  if (tgUserId) {
+    const dbUser = await sbFetchUser(tgUserId);
+    if (dbUser) {
+      if (localUser) {
+        localUser.xp           = dbUser.xp           ?? localUser.xp    ?? 0;
+        localUser.streak       = dbUser.streak        ?? localUser.streak ?? 1;
+        localUser.total_points = dbUser.total_points  ?? localUser.total_points ?? 0;
+        localUser.userId       = dbUser.user_id;
+        localUser.lastSyncedAt = Date.now();
+      } else {
+        localUser = {
+          userId:       dbUser.user_id,
+          name:         dbUser.first_name || dbUser.username || 'User',
+          level:        dbUser.level || 'beginner',
+          avatarUrl:    dbUser.avatar_url || '',
+          avatar_url:   dbUser.avatar_url || '',
+          xp:           dbUser.xp    || 0,
+          streak:       dbUser.streak || 1,
+          total_points: dbUser.total_points || 0,
+          learnedWords: [],
+          wordErrors:   {},
+          customWords:  [],
+          unitProgress: { beginner: 0, intermediate: 0, advanced: 0 },
+          currentUnit:  { beginner: 1, intermediate: 1, advanced: 1 },
+          lastBook:     1,
+          lastUnit:     1,
+          battleWins:   0,
+          battleLosses: 0,
+          battleXP:     0,
+          dailyScore:   {},
+          grammarLevel: dbUser.level || 'beginner',
+          isPremium:    false,
+          premiumExpiry:0,
+          lastLogin:    new Date().toDateString(),
+          createdAt:    Date.now(),
+          lastSyncedAt: Date.now(),
+        };
+      }
+      const json = JSON.stringify(localUser);
+      localStorage.setItem(storageKey, json);
+      localStorage.setItem('ep_user', json);
+      sessionStorage.setItem('ep_user', json);
+    }
+  }
+
+  if (!localUser || !localUser.name || !localUser.level) {
+    window.location.href = 'register.html';
+    return null;
+  }
+
+  localUser.lastLogin = new Date().toDateString();
+  const json = JSON.stringify(localUser);
+  localStorage.setItem(storageKey, json);
+  localStorage.setItem('ep_user', json);
+  sessionStorage.setItem('ep_user', json);
+
+  return localUser;
+}
+
+let U = null;
 
 let cardIdx=0, cardFlipped=false;
 let currentUnitWords=[];
@@ -1624,7 +1761,8 @@ const ONLINE_PLAYERS = [
 <script>
 // ===== INIT =====
 window.addEventListener('DOMContentLoaded', async ()=>{
-  if(!U){ window.location.href='register.html'; return; }
+  U = await loadUser();
+  if(!U) return;
   curBook = U.lastBook || 1;
   curUnitNum = U.lastUnit || 1;
   loadTopbar();
@@ -1978,8 +2116,15 @@ function addXP(n){
   try { App.events.emit('xp:added',{amount:actual,total:U.xp}); } catch(e){}
 }
 function saveUser(){
-  localStorage.setItem('ep_user', JSON.stringify(U));
-  sessionStorage.setItem('ep_user', JSON.stringify(U));
+  if (!U) return;
+  const storageKey = getStorageKey(U.userId || null);
+  const json = JSON.stringify(U);
+  localStorage.setItem(storageKey, json);
+  localStorage.setItem('ep_user', json);
+  sessionStorage.setItem('ep_user', json);
+  if (U.userId) {
+    syncToSupabase(U).catch(e => console.warn('Supabase sync:', e));
+  }
 }
 
 function updatePMtheme(){
@@ -2018,6 +2163,8 @@ function toggleTheme(){
 
 function logoutUser(){
   if(!confirm('Profildan chiqmoqchimisiz?')) return;
+  const storageKey = getStorageKey(U?.userId || null);
+  localStorage.removeItem(storageKey);
   localStorage.removeItem('ep_user');
   sessionStorage.removeItem('ep_user');
   window.location.href='register.html';
@@ -5879,12 +6026,19 @@ App.events.on('combo:updated', (combo)=>{
   if(!el){
     el = document.createElement('div');
     el.id = 'combo-indicator';
-    el.style.cssText = 'position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:200;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:4px 12px;border-radius:20px;font-weight:800;font-size:12px;box-shadow:0 4px 15px rgba(245,197,66,.3)';
+    el.style.cssText = 'position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:500;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:6px 18px;border-radius:20px;font-weight:800;font-size:13px;box-shadow:0 4px 15px rgba(245,197,66,.4);animation:comboIn .3s cubic-bezier(.34,1.56,.64,1)';
     document.body.appendChild(el);
+    // Animatsiya style qo'shish
+    if(!document.getElementById('combo-anim-style')){
+      const s = document.createElement('style');
+      s.id = 'combo-anim-style';
+      s.textContent = '@keyframes comboIn{from{opacity:0;transform:translateX(-50%) translateY(-12px) scale(.8)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}';
+      document.head.appendChild(s);
+    }
   }
-  el.textContent = '🔥 COMBO x' + combo;
+  el.textContent = '🔥 COMBO x' + combo + '! +1 bonus XP!';
   clearTimeout(el._t);
-  el._t = setTimeout(()=>el.remove(), 6000);
+  el._t = setTimeout(()=>el.remove(), 3000);
 });
 
 // ═══════════════════════════════════════════════════════════════════════════
