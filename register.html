@@ -5,10 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Essential English PRO — Ro'yxatdan o'tish</title>
 
-<!-- Telegram WebApp SDK -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-<!-- Supabase SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -37,6 +34,23 @@ body::before{
     linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
   background-size:36px 36px;
 }
+
+/* Loading overlay */
+#loading-overlay{
+  position:fixed;inset:0;z-index:999;
+  background:var(--bg);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;
+  transition:opacity .4s;
+}
+#loading-overlay.hidden{opacity:0;pointer-events:none}
+.spinner{
+  width:40px;height:40px;border:3px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-txt{font-size:14px;color:var(--muted)}
+
 .outer{
   width:100%;max-width:960px;background:var(--s1);
   border:1px solid var(--border);border-radius:28px;
@@ -60,7 +74,6 @@ body::before{
 .logo-txt{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
 .av-ring-wrap{position:relative;width:160px;height:160px;margin-bottom:18px}
 .av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
 .av-circle{
   width:160px;height:160px;border-radius:50%;
   background:var(--s2);border:2px solid var(--border);
@@ -157,32 +170,13 @@ body::before{
 </head>
 <body>
 
-<script>
-// ══════════════════════════════════════════════════════
-// CONFIG — SUPABASE_ANON_KEY NI TO'LDIRING!
-// Supabase → Settings → API → Project API keys → anon public
-// ══════════════════════════════════════════════════════
-const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'; // ← SHU JOYNI O'ZGARTIRING!
-const APP_URL           = 'index.html';
+<!-- Loading overlay — sahifa tayyor bo'lguncha ko'rsatiladi -->
+<div id="loading-overlay">
+  <div class="spinner"></div>
+  <div class="loading-txt">Profil tekshirilmoqda...</div>
+</div>
 
-// Mavjud profil tekshiruvi — sahifa ko'rinishidan OLDIN
-(function checkExistingProfile() {
-  try {
-    const raw = localStorage.getItem('ep_user') || sessionStorage.getItem('ep_user');
-    if (!raw) return;
-    const u = JSON.parse(raw);
-    if (u && u.name && u.name.trim() && u.level) {
-      window.location.replace(APP_URL);
-    }
-  } catch(e) {
-    localStorage.removeItem('ep_user');
-    sessionStorage.removeItem('ep_user');
-  }
-})();
-</script>
-
-<div class="outer">
+<div class="outer" id="main-form" style="display:none">
   <!-- LEFT -->
   <div class="left">
     <div class="logo-row">
@@ -268,6 +262,13 @@ const APP_URL           = 'index.html';
 
 <script>
 // ══════════════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════════════
+const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
+const APP_URL           = 'index.html';
+
+// ══════════════════════════════════════════════════════
 // HOLAT
 // ══════════════════════════════════════════════════════
 let tgUser  = null;
@@ -275,8 +276,303 @@ let state   = { avatarUrl: '', level: 'beginner' };
 let selItem = null;
 
 // ══════════════════════════════════════════════════════
-// AVATAR TIZIMI
+// MUHIM: localStorage key — telegram_id ga bog'liq
+// Shu tufayli bitta qurilmada 2 account izolyatsiya qilinadi
 // ══════════════════════════════════════════════════════
+function getStorageKey(userId) {
+  // userId bo'lmasa (Telegram tashqarida) — umumiy key
+  return userId ? `ep_user_${userId}` : 'ep_user_guest';
+}
+
+// ══════════════════════════════════════════════════════
+// SUPABASE HELPER
+// ══════════════════════════════════════════════════════
+async function sbFetch(path, options = {}) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    ...options,
+    headers: {
+      'Content-Type':  'application/json',
+      'apikey':         SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      ...(options.headers || {}),
+    },
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Supabase ${res.status}: ${err}`);
+  }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+// ══════════════════════════════════════════════════════
+// ASOSIY INIT — sahifa yuklanganda birinchi ishlaydigan
+// ══════════════════════════════════════════════════════
+async function init() {
+  try {
+    // 1. Telegram dan user ma'lumotini olish
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
+
+    const u = tg?.initDataUnsafe?.user;
+
+    if (u && u.id) {
+      // Telegram accounti bor — ID bo'yicha tekshir
+      tgUser = u;
+      await checkAndRedirect(u.id);
+    } else {
+      // Telegram tashqarida ochilgan (test uchun)
+      hideLoading();
+      showForm();
+    }
+  } catch(e) {
+    console.warn('Init error:', e);
+    hideLoading();
+    showForm();
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// PROFIL TEKSHIRUVI — telegram_id asosida
+// BUG 1 FIX: localStorage ni telegram_id bilan bog'laymiz
+// BUG 2 FIX: Supabase dan YANGI ma'lumot olamiz
+// ══════════════════════════════════════════════════════
+async function checkAndRedirect(userId) {
+  const storageKey = getStorageKey(userId);
+
+  try {
+    // Avval Supabase dan so'raymiz (haqiqat manbai)
+    // BUG 2 FIX: DB dan oxirgi xp, streak olish kafolatlanadi
+    const data = await sbFetch(
+      `users?user_id=eq.${userId}&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points`,
+      { method: 'GET' }
+    );
+
+    if (data && data.length > 0) {
+      const row = data[0];
+
+      // To'liq profil — redirect
+      if (row.level && row.avatar_url) {
+        // BUG 2 FIX: localStorage ni DB dan yangilash (har safar fresh data)
+        saveLocal(userId, {
+          userId:       row.user_id,
+          name:         row.first_name || row.username || 'User',
+          level:        row.level,
+          avatarUrl:    row.avatar_url,
+          avatar_url:   row.avatar_url,
+          xp:           row.xp           || 0,
+          streak:       row.streak       || 1,
+          total_points: row.total_points || 0,
+        });
+        window.location.replace(APP_URL);
+        return;
+      }
+
+      // Qisman profil — formani to'ldirish
+      if (row.level) {
+        state.level = row.level;
+      }
+      if (row.avatar_url) {
+        state.avatarUrl = row.avatar_url;
+      }
+    }
+  } catch(e) {
+    // Supabase ishlamasa — localdan tekshir (fallback)
+    console.warn('Supabase check failed, trying local:', e);
+
+    const storageKey = getStorageKey(userId);
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (raw) {
+        const u = JSON.parse(raw);
+        // userId mosligini TEKSHIR — BUG 1 FIX
+        if (u && u.userId == userId && u.name && u.level && u.avatarUrl) {
+          window.location.replace(APP_URL);
+          return;
+        }
+      }
+    } catch(e2) {
+      localStorage.removeItem(storageKey);
+    }
+  }
+
+  // Profil to'liq emas — formani ko'rsat
+  hideLoading();
+  showForm();
+  setupForm();
+}
+
+// ══════════════════════════════════════════════════════
+// FORMANI TAYYORLASH
+// ══════════════════════════════════════════════════════
+function setupForm() {
+  buildGrid('bots');
+
+  if (!tgUser) return;
+
+  const u = tgUser;
+  const displayName = [u.first_name, u.last_name].filter(Boolean).join(' ')
+    || u.username
+    || 'Telegram User';
+
+  const nameInp = document.getElementById('inp-name');
+  nameInp.value    = displayName;
+  nameInp.readOnly = true;
+
+  document.getElementById('prev-name').textContent = displayName;
+  document.getElementById('prev-tg').textContent   = u.username ? `@${u.username}` : 'Essential English PRO';
+  document.getElementById('tg-verified').classList.add('show');
+
+  // Avvalgi state ni formaga qo'yish
+  if (state.level) {
+    const lvEl = document.querySelector(`.lv[data-lv="${state.level}"]`);
+    if (lvEl) pickLevel(lvEl);
+  }
+  if (state.avatarUrl) {
+    showPreview(state.avatarUrl);
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// PROFIL SAQLASH
+// ══════════════════════════════════════════════════════
+function saveLocal(userId, overrides = {}) {
+  const storageKey = getStorageKey(userId);
+
+  // Mavjud local ma'lumotni o'qish
+  let existing = {};
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw) existing = JSON.parse(raw);
+  } catch(e) {}
+
+  const name      = overrides.name      || document.getElementById('inp-name')?.value?.trim() || '';
+  const avatarUrl = overrides.avatarUrl || state.avatarUrl || '';
+  const level     = overrides.level     || state.level     || 'beginner';
+
+  const user = {
+    ...existing,
+    // Asosiy
+    userId:        overrides.userId        ?? userId,
+    name,
+    level,
+    avatarUrl,
+    avatar_url:    avatarUrl,
+    // BUG 2 FIX: xp va boshqa ko'rsatkichlar DB dan kelsa — uni ishlat
+    // aks holda localdan (0 dan boshlanmaydi)
+    xp:            overrides.xp            ?? existing.xp            ?? 0,
+    streak:        overrides.streak        ?? existing.streak        ?? 1,
+    total_points:  overrides.total_points  ?? existing.total_points  ?? 0,
+    // O'rganish holati — localda saqlanadi
+    learnedWords:  existing.learnedWords   || [],
+    wordErrors:    existing.wordErrors     || {},
+    customWords:   existing.customWords    || [],
+    unitProgress:  existing.unitProgress   || { beginner: 0, intermediate: 0, advanced: 0 },
+    currentUnit:   existing.currentUnit    || { beginner: 1, intermediate: 1, advanced: 1 },
+    lastBook:      existing.lastBook       || 1,
+    lastUnit:      existing.lastUnit       || 1,
+    // Battle
+    battleWins:    existing.battleWins     || 0,
+    battleLosses:  existing.battleLosses   || 0,
+    battleXP:      existing.battleXP       || 0,
+    // Boshqa
+    dailyScore:    existing.dailyScore     || {},
+    grammarLevel:  existing.grammarLevel   || level,
+    isPremium:     overrides.isPremium     ?? existing.isPremium     ?? false,
+    premiumExpiry: overrides.premiumExpiry ?? existing.premiumExpiry ?? 0,
+    lastLogin:     new Date().toDateString(),
+    createdAt:     existing.createdAt      || Date.now(),
+    // DB dan oxirgi yangilanish vaqti
+    lastSyncedAt:  Date.now(),
+  };
+
+  const json = JSON.stringify(user);
+  // BUG 1 FIX: key = ep_user_{telegram_id} — har account uchun alohida
+  localStorage.setItem(storageKey, json);
+  // index.html eski 'ep_user' key dan o'qiyotgan bo'lsa ham ishlashi uchun
+  // shu accountning ma'lumotini 'ep_user' ga ham yozamiz
+  // (index.html dagi o'qish mantiqini ham yangilash kerak — pastda ko'rsatilgan)
+  localStorage.setItem('ep_user', json);
+  sessionStorage.setItem('ep_user', json);
+
+  return user;
+}
+
+async function upsertToSupabase(userId, name, avatarUrl, level) {
+  try {
+    await sbFetch('users', {
+      method: 'POST',
+      headers: { 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify({
+        user_id:     userId,
+        first_name:  name,
+        avatar_url:  avatarUrl,
+        level:       level,
+        last_active: new Date().toISOString(),
+      }),
+    });
+    console.log('✅ Supabase upsert OK');
+  } catch(e) {
+    console.warn('Supabase upsert (fon, davom etiladi):', e);
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// SUBMIT TUGMASI
+// ══════════════════════════════════════════════════════
+async function saveProfile() {
+  const name = document.getElementById('inp-name').value.trim();
+  if (!name) {
+    document.getElementById('inp-name').classList.add('err');
+    document.getElementById('err-name').classList.add('show');
+    document.getElementById('inp-name').focus();
+    return;
+  }
+  document.getElementById('inp-name').classList.remove('err');
+  document.getElementById('err-name').classList.remove('show');
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled    = true;
+  btn.textContent = '⏳ Saqlanmoqda...';
+
+  const userId = tgUser?.id || null;
+
+  try {
+    // 1. Localga saqlash (telegram_id bilan)
+    saveLocal(userId);
+
+    // 2. Supabase ga fon rejimida
+    if (userId) {
+      upsertToSupabase(userId, name, state.avatarUrl, state.level)
+        .catch(e => console.warn('Supabase fon upsert:', e));
+    }
+
+    // 3. App ga o'tish
+    window.location.href = APP_URL;
+  } catch(e) {
+    console.error('saveProfile:', e);
+    try { saveLocal(userId); } catch(e2) {}
+    window.location.href = APP_URL;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// UI YORDAMCHI FUNKSIYALAR
+// ══════════════════════════════════════════════════════
+function hideLoading() {
+  const overlay = document.getElementById('loading-overlay');
+  overlay.classList.add('hidden');
+  setTimeout(() => overlay.style.display = 'none', 400);
+}
+
+function showForm() {
+  document.getElementById('main-form').style.display = 'grid';
+}
+
+// AVATAR TIZIMI
 const SEEDS = {
   bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
   avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
@@ -317,7 +613,6 @@ function showPreview(url) {
   document.getElementById('av-emoji').style.display = 'none';
 }
 
-// Fayl yuklash
 document.getElementById('file-up').addEventListener('change', e => {
   const f = e.target.files[0];
   if (!f) return;
@@ -330,7 +625,6 @@ document.getElementById('file-up').addEventListener('change', e => {
   r.readAsDataURL(f);
 });
 
-// Ism kiritish
 document.getElementById('inp-name').addEventListener('input', e => {
   const v = e.target.value.trim();
   document.getElementById('prev-name').textContent = v || 'Sizning ismingiz';
@@ -340,7 +634,6 @@ document.getElementById('inp-name').addEventListener('input', e => {
   }
 });
 
-// Daraja tanlash
 function pickLevel(el) {
   document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
   const lv = el.dataset.lv;
@@ -349,224 +642,9 @@ function pickLevel(el) {
 }
 
 // ══════════════════════════════════════════════════════
-// TELEGRAM WEBAPP AUTO-LOGIN
+// ISHGA TUSHIRISH
 // ══════════════════════════════════════════════════════
-function initTelegramLogin() {
-  try {
-    const tg = window.Telegram?.WebApp;
-    if (!tg) return;
-    tg.ready();
-    tg.expand();
-
-    const u = tg.initDataUnsafe?.user;
-    if (!u || !u.id) return;
-
-    tgUser = u;
-    const displayName = [u.first_name, u.last_name].filter(Boolean).join(' ')
-      || u.username
-      || 'Telegram User';
-
-    // Ism maydonini to'ldirish
-    const nameInp = document.getElementById('inp-name');
-    nameInp.value    = displayName;
-    nameInp.readOnly = true;
-    document.getElementById('prev-name').textContent = displayName;
-    document.getElementById('prev-tg').textContent   = u.username ? `@${u.username}` : 'Essential English PRO';
-    document.getElementById('tg-verified').classList.add('show');
-
-    // Supabase dan profil tekshirish (fon rejimida — bloklamaydi)
-    checkSupabaseProfile(u.id).catch(e => console.warn('Supabase check:', e));
-  } catch(e) {
-    console.warn('Telegram init:', e);
-    // Xato bo'lsa ham forma ko'rinadi
-  }
-}
-
-// ══════════════════════════════════════════════════════
-// SUPABASE AMALIYOTLARI
-// ══════════════════════════════════════════════════════
-
-async function sbFetch(path, options = {}) {
-  if (SUPABASE_ANON_KEY === 'YOUR_ANON_KEY_HERE') {
-    throw new Error('SUPABASE_ANON_KEY kiritilmagan');
-  }
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    ...options,
-    headers: {
-      'Content-Type':  'application/json',
-      'apikey':         SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      ...(options.headers || {}),
-    },
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Supabase ${res.status}: ${err}`);
-  }
-  const text = await res.text();
-  return text ? JSON.parse(text) : null;
-}
-
-// Mavjud profil tekshiruvi
-async function checkSupabaseProfile(userId) {
-  try {
-    const data = await sbFetch(
-      `users?user_id=eq.${userId}&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak`,
-      { method: 'GET' }
-    );
-    if (!data || !data.length) return;
-    const row = data[0];
-
-    // To'liq profil — to'g'ridan index.html ga o'tish
-    if (row.level && row.avatar_url) {
-      saveLocal({
-        userId:    row.user_id,
-        name:      row.first_name || row.username || 'User',
-        level:     row.level,
-        avatarUrl: row.avatar_url,
-        xp:        row.xp    || 0,
-        streak:    row.streak || 1,
-      });
-      window.location.replace(APP_URL);
-      return;
-    }
-
-    // Qisman profil — formaga qo'yish
-    if (row.level) {
-      state.level = row.level;
-      document.querySelectorAll('.lv').forEach(el => el.className = 'lv');
-      const lvEl = document.querySelector(`.lv[data-lv="${row.level}"]`);
-      if (lvEl) pickLevel(lvEl);
-    }
-    if (row.avatar_url) {
-      state.avatarUrl = row.avatar_url;
-      showPreview(row.avatar_url);
-    }
-  } catch(e) {
-    console.warn('Supabase profil (davom etiladi):', e);
-    // Xato bo'lsa — foydalanuvchi BLOKLANMAYDI
-  }
-}
-
-// Supabase ga upsert
-async function upsertToSupabase(userId, name, avatarUrl, level) {
-  try {
-    await sbFetch('users', {
-      method: 'POST',
-      headers: { 'Prefer': 'resolution=merge-duplicates' },
-      body: JSON.stringify({
-        user_id:     userId,
-        first_name:  name,
-        avatar_url:  avatarUrl,   // ← to'g'ri ustun nomi (underscore)
-        level:       level,
-        last_active: new Date().toISOString(),
-      }),
-    });
-  } catch(e) {
-    console.warn('Supabase upsert (davom etiladi):', e);
-    // Xato bo'lsa — foydalanuvchi BLOKLANMAYDI
-  }
-}
-
-// ══════════════════════════════════════════════════════
-// PROFIL SAQLASH (localStorage)
-// ══════════════════════════════════════════════════════
-function saveLocal(overrides = {}) {
-  const name      = overrides.name      || document.getElementById('inp-name').value.trim();
-  const avatarUrl = overrides.avatarUrl || state.avatarUrl;
-  const level     = overrides.level     || state.level;
-
-  let existing = {};
-  try {
-    const raw = localStorage.getItem('ep_user');
-    if (raw) existing = JSON.parse(raw);
-  } catch(e) {}
-
-  const user = {
-    ...existing,
-    // Asosiy
-    name,
-    level,
-    avatarUrl,             // index.html → U.avatarUrl
-    avatar_url: avatarUrl, // Supabase ustun nomi bilan moslik
-    // XP / Streak
-    xp:            overrides.xp            ?? existing.xp            ?? 0,
-    streak:        overrides.streak        ?? existing.streak        ?? 1,
-    // O'rganish
-    learnedWords:  existing.learnedWords   || [],
-    wordErrors:    existing.wordErrors     || {},
-    customWords:   existing.customWords    || [],
-    unitProgress:  existing.unitProgress   || { beginner: 0, intermediate: 0, advanced: 0 },
-    currentUnit:   existing.currentUnit    || { beginner: 1, intermediate: 1, advanced: 1 },
-    lastBook:      existing.lastBook       || 1,
-    lastUnit:      existing.lastUnit       || 1,
-    // Battle
-    battleWins:    existing.battleWins     || 0,
-    battleLosses:  existing.battleLosses   || 0,
-    battleXP:      existing.battleXP       || 0,
-    // Boshqa
-    dailyScore:    existing.dailyScore     || {},
-    grammarLevel:  existing.grammarLevel   || level,
-    isPremium:     overrides.isPremium     ?? existing.isPremium     ?? false,
-    premiumExpiry: overrides.premiumExpiry ?? existing.premiumExpiry ?? 0,
-    userId:        overrides.userId        ?? existing.userId        ?? (tgUser?.id || null),
-    lastLogin:     new Date().toDateString(),
-    createdAt:     existing.createdAt      || Date.now(),
-  };
-
-  const json = JSON.stringify(user);
-  localStorage.setItem('ep_user', json);
-  sessionStorage.setItem('ep_user', json);
-  return user;
-}
-
-// ══════════════════════════════════════════════════════
-// ASOSIY TUGMA
-// ══════════════════════════════════════════════════════
-async function saveProfile() {
-  const name = document.getElementById('inp-name').value.trim();
-  if (!name) {
-    document.getElementById('inp-name').classList.add('err');
-    document.getElementById('err-name').classList.add('show');
-    document.getElementById('inp-name').focus();
-    return;
-  }
-  document.getElementById('inp-name').classList.remove('err');
-  document.getElementById('err-name').classList.remove('show');
-
-  const btn = document.getElementById('submit-btn');
-  btn.disabled    = true;
-  btn.textContent = '⏳ Saqlanmoqda...';
-
-  try {
-    // 1. Localga saqlash (har doim ishlaydi)
-    saveLocal();
-
-    // 2. Supabase ga fon rejimida upsert
-    const userId = tgUser?.id || null;
-    if (userId) {
-      upsertToSupabase(userId, name, state.avatarUrl, state.level)
-        .catch(e => console.warn('Supabase fon upsert:', e));
-    }
-
-    // 3. App ga o'tish
-    window.location.href = APP_URL;
-
-  } catch(e) {
-    console.error('saveProfile:', e);
-    // Har qanday xatoda ham app ga o'tish
-    try { saveLocal(); } catch(e2) {}
-    window.location.href = APP_URL;
-  }
-}
-
-// ══════════════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
-  buildGrid('bots');
-  initTelegramLogin();
-});
+document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
