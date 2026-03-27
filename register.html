@@ -355,21 +355,20 @@ async function checkAndRedirect(userId) {
       const row = data[0];
 
       // To'liq profil — redirect
-      if (row.level && row.avatar_url) {
-        // BUG 2 FIX: localStorage ni DB dan yangilash (har safar fresh data)
-        saveLocal(userId, {
-          userId:       row.user_id,
-          name:         row.first_name || row.username || 'User',
-          level:        row.level,
-          avatarUrl:    row.avatar_url,
-          avatar_url:   row.avatar_url,
-          xp:           row.xp           || 0,
-          streak:       row.streak       || 1,
-          total_points: row.total_points || 0,
-        });
-        window.location.replace(APP_URL);
-        return;
-      }
+      if (row.level) {
+  saveLocal(userId, {
+    userId:       row.user_id,
+    name:         row.first_name || row.username || 'User',
+    level:        row.level,
+    avatarUrl:    row.avatar_url  || '',
+    avatar_url:   row.avatar_url  || '',
+    xp:           row.xp          || 0,
+    streak:       row.streak      || 1,
+    total_points: row.total_points || 0,
+  });
+  window.location.replace(APP_URL);
+  return;
+}
 
       // Qisman profil — formani to'ldirish
       if (row.level) {
