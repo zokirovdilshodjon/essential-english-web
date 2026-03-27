@@ -255,8 +255,8 @@ body::before{
     </div>
 
     <button class="submit" id="submit-btn" onclick="saveProfile()">
-      Boshlash →
-    </button>
+  Boshlash → (Avatar va daraja ixtiyoriy)
+</button>
   </div>
 </div>
 
@@ -410,6 +410,11 @@ async function checkAndRedirect(userId) {
 function setupForm() {
   buildGrid('bots');
 
+  // Default avatar preview ko'rsatish
+  const defaultAvatar = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo`;
+  showPreview(defaultAvatar);
+  // state ga yozmaymiz — foydalanuvchi o'zi tanlasa o'zgaradi
+
   if (!tgUser) return;
 
   const u = tgUser;
@@ -425,13 +430,16 @@ function setupForm() {
   document.getElementById('prev-tg').textContent   = u.username ? `@${u.username}` : 'Essential English PRO';
   document.getElementById('tg-verified').classList.add('show');
 
-  // Avvalgi state ni formaga qo'yish
+  // Daraja — default beginner allaqachon tanlangan (HTML da sel-b bor)
+  state.level = 'beginner';
+
+  // Agar avvalgi state bo'lsa — qo'yamiz
+  if (state.avatarUrl) {
+    showPreview(state.avatarUrl);
+  }
   if (state.level) {
     const lvEl = document.querySelector(`.lv[data-lv="${state.level}"]`);
     if (lvEl) pickLevel(lvEl);
-  }
-  if (state.avatarUrl) {
-    showPreview(state.avatarUrl);
   }
 }
 
@@ -539,17 +547,24 @@ async function saveProfile() {
 
   const userId = tgUser?.id || null;
 
+  // Avatar tanlanmagan bo'lsa — default avatar (birinchi bot avatar)
+  if (!state.avatarUrl) {
+    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo`;
+  }
+
+  // Daraja tanlanmagan bo'lsa — default beginner
+  if (!state.level) {
+    state.level = 'beginner';
+  }
+
   try {
-    // 1. Localga saqlash (telegram_id bilan)
     saveLocal(userId);
 
-    // 2. Supabase ga fon rejimida
     if (userId) {
       upsertToSupabase(userId, name, state.avatarUrl, state.level)
         .catch(e => console.warn('Supabase fon upsert:', e));
     }
 
-    // 3. App ga o'tish
     window.location.href = APP_URL;
   } catch(e) {
     console.error('saveProfile:', e);
@@ -557,7 +572,6 @@ async function saveProfile() {
     window.location.href = APP_URL;
   }
 }
-
 // ══════════════════════════════════════════════════════
 // UI YORDAMCHI FUNKSIYALAR
 // ══════════════════════════════════════════════════════
