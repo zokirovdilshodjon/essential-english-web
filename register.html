@@ -217,13 +217,14 @@ body::before{
     <h1>Profilni sozlash</h1>
     <p>Telegramdagi ismingiz avtomatik qo'yildi. Avatar va darajani tanlang (ixtiyoriy).</p>
 
-    <span class="lbl">Ismingiz</span>
-    <div class="inp-wrap">
-      <span class="inp-ico">👤</span>
-      <input type="text" id="inp-name" class="inp"
-        placeholder="Ismingizni kiriting..." autocomplete="off" maxlength="30">
-    </div>
-    <div class="err-txt" id="err-name">Iltimos, ismingizni kiriting!</div>
+    <span class="lbl">Ismingiz <span style="font-size:9px;background:rgba(79,156,249,.15);border:1px solid rgba(79,156,249,.2);padding:2px 8px;border-radius:20px;color:#4f9cf9;vertical-align:middle;margin-left:6px">Telegramdan olinadi</span></span>
+<div class="inp-wrap">
+  <span class="inp-ico">👤</span>
+  <input type="text" id="inp-name" class="inp"
+    placeholder="Yuklanmoqda..." autocomplete="off" maxlength="30" readonly
+    style="opacity:.7;cursor:default;background:rgba(28,36,56,.8)">
+</div>
+<div class="err-txt" id="err-name">Ism yuklanmadi, qayta urinib ko'ring!</div>
 
     <div class="av-sec">
       <div class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></div>
@@ -410,12 +411,25 @@ async function checkAndRedirect(userId) {
 function setupForm() {
   buildGrid('bots');
 
-  // Default avatar preview ko'rsatish
+  // Default avatar
   const defaultAvatar = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo`;
   showPreview(defaultAvatar);
-  // state ga yozmaymiz — foydalanuvchi o'zi tanlasa o'zgaradi
+  state.level = 'beginner';
 
-  if (!tgUser) return;
+  // Beginner default tanlangan ko'rinishi
+  const defaultLv = document.querySelector('.lv[data-lv="beginner"]');
+  if (defaultLv) pickLevel(defaultLv);
+
+  // Telegram user yo'q — forma ko'rsatamiz lekin ism bo'sh
+  if (!tgUser) {
+    const nameInp = document.getElementById('inp-name');
+    nameInp.readOnly = false;
+    nameInp.placeholder = 'Ismingizni kiriting...';
+    nameInp.style.opacity = '1';
+    nameInp.style.cursor = 'text';
+    nameInp.style.background = '';
+    return;
+  }
 
   const u = tgUser;
   const displayName = [u.first_name, u.last_name].filter(Boolean).join(' ')
@@ -430,17 +444,7 @@ function setupForm() {
   document.getElementById('prev-tg').textContent   = u.username ? `@${u.username}` : 'Essential English PRO';
   document.getElementById('tg-verified').classList.add('show');
 
-  // Daraja — default beginner allaqachon tanlangan (HTML da sel-b bor)
-  state.level = 'beginner';
-
-  // Agar avvalgi state bo'lsa — qo'yamiz
-  if (state.avatarUrl) {
-    showPreview(state.avatarUrl);
-  }
-  if (state.level) {
-    const lvEl = document.querySelector(`.lv[data-lv="${state.level}"]`);
-    if (lvEl) pickLevel(lvEl);
-  }
+  if (state.avatarUrl) showPreview(state.avatarUrl);
 }
 
 // ══════════════════════════════════════════════════════
@@ -531,13 +535,23 @@ async function upsertToSupabase(userId, name, avatarUrl, level) {
 // SUBMIT TUGMASI
 // ══════════════════════════════════════════════════════
 async function saveProfile() {
-  const name = document.getElementById('inp-name').value.trim();
-  if (!name) {
-    document.getElementById('inp-name').classList.add('err');
-    document.getElementById('err-name').classList.add('show');
+  // Ism — Telegramdan yoki qo'lda kiritilgan
+const name = document.getElementById('inp-name').value.trim()
+  || tgUser?.first_name
+  || tgUser?.username
+  || '';
+
+if (!name) {
+  document.getElementById('inp-name').classList.add('err');
+  document.getElementById('err-name').classList.add('show');
+  // readonly bo'lmasa focus
+  if (!document.getElementById('inp-name').readOnly) {
     document.getElementById('inp-name').focus();
-    return;
   }
+  return;
+}
+// Ismni inputga yozamiz (agar Telegramdan olindi va input bo'sh bo'lsa)
+document.getElementById('inp-name').value = name;
   document.getElementById('inp-name').classList.remove('err');
   document.getElementById('err-name').classList.remove('show');
 
