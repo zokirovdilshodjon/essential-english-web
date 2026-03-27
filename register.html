@@ -380,13 +380,15 @@ function setupForm() {
   var defaultLv = document.querySelector('.lv[data-lv="beginner"]');
   if (defaultLv) pickLevel(defaultLv);
 
+  var nameInp = document.getElementById('inp-name');
+
   if (!tgUser) {
-    var nameInp = document.getElementById('inp-name');
-    nameInp.readOnly    = false;
-    nameInp.placeholder = 'Ismingizni kiriting...';
-    nameInp.style.opacity    = '1';
-    nameInp.style.cursor     = 'text';
-    nameInp.style.background = '';
+    // Telegram tashqarida — ism yo'q, placeholder ko'rsatamiz, readonly qoladi
+    nameInp.placeholder = 'Telegram orqali oching...';
+    nameInp.readOnly    = true;
+    nameInp.style.opacity    = '0.5';
+    nameInp.style.cursor     = 'not-allowed';
+    nameInp.style.background = 'rgba(28,36,56,.8)';
     return;
   }
 
@@ -395,14 +397,11 @@ function setupForm() {
   var lastName  = (u.last_name  || '').trim();
   var username  = (u.username   || '').trim();
 
-  // FIX 4: Ismni to'g'ri birlashtirish
   var displayName = ([firstName, lastName].filter(Boolean).join(' ').trim())
     || username
     || 'Telegram User';
 
-  var nameInp = document.getElementById('inp-name');
-
-  // FIX 5: readonly bo'lsa value qo'yilmaydi — avval olib tashlab, keyin qo'yamiz
+  // readonly inputga value qo'yish: avval false, value, keyin true
   nameInp.readOnly = false;
   nameInp.value    = displayName;
   nameInp.readOnly = true;
@@ -485,15 +484,13 @@ async function upsertToSupabase(userId, name, avatarUrl, level) {
   }
 }
 
-// ═══════════════════════════════════════
-// FIX 6: saveProfile — ism 3 manbadan
-// ═══════════════════════════════════════
 async function saveProfile() {
+  // Ism faqat Telegramdan olinadi — foydalanuvchi o'zgartira olmaydi
   var inputVal = document.getElementById('inp-name').value.trim();
   var tgName   = '';
   if (tgUser) {
-    tgName = ([tgUser.first_name || '', tgUser.last_name || ''].join(' ').trim())
-      || tgUser.username || '';
+    tgName = ([(tgUser.first_name || ''), (tgUser.last_name || '')].join(' ').trim())
+      || (tgUser.username || '');
     tgName = tgName.trim();
   }
   var name = inputVal || tgName || '';
@@ -501,13 +498,13 @@ async function saveProfile() {
   if (!name) {
     var ni = document.getElementById('inp-name');
     ni.classList.add('err');
+    document.getElementById('err-name').textContent = 'Iltimos, botdan oching — Telegram ism kerak!';
     document.getElementById('err-name').classList.add('show');
-    if (!ni.readOnly) ni.focus();
     return;
   }
 
-  // inputga yazmadik bo'lsa — yozamiz (localStorage uchun kerak)
-  if (!inputVal) {
+  // input bo'sh bo'lsa (tgUser dan oldik) — sync qilamiz
+  if (!inputVal && name) {
     var ni2 = document.getElementById('inp-name');
     ni2.readOnly = false;
     ni2.value    = name;
