@@ -34,8 +34,6 @@ body::before{
     linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
   background-size:36px 36px;
 }
-
-/* Loading overlay */
 #loading-overlay{
   position:fixed;inset:0;z-index:999;
   background:var(--bg);display:flex;flex-direction:column;
@@ -50,7 +48,6 @@ body::before{
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-txt{font-size:14px;color:var(--muted)}
-
 .outer{
   width:100%;max-width:960px;background:var(--s1);
   border:1px solid var(--border);border-radius:28px;
@@ -112,7 +109,7 @@ body::before{
 .inp::placeholder{color:rgba(122,143,173,.5)}
 .inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.15)}
 .inp.err{border-color:#f85149}
-.inp[readonly]{opacity:.7;cursor:default}
+.inp[readonly]{opacity:.85;cursor:default}
 .err-txt{font-size:12px;color:#f85149;margin-bottom:16px;padding-left:4px;display:none}
 .err-txt.show{display:block}
 .av-sec{margin-bottom:22px;margin-top:4px}
@@ -170,14 +167,12 @@ body::before{
 </head>
 <body>
 
-<!-- Loading overlay — sahifa tayyor bo'lguncha ko'rsatiladi -->
 <div id="loading-overlay">
   <div class="spinner"></div>
   <div class="loading-txt">Profil tekshirilmoqda...</div>
 </div>
 
 <div class="outer" id="main-form" style="display:none">
-  <!-- LEFT -->
   <div class="left">
     <div class="logo-row">
       <div class="logo-icon">🧠</div>
@@ -187,8 +182,8 @@ body::before{
       <svg class="av-ring-svg" viewBox="0 0 176 176">
         <defs>
           <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#7c5af6"/>
-            <stop offset="50%"  stop-color="#c084fc"/>
+            <stop offset="0%" stop-color="#7c5af6"/>
+            <stop offset="50%" stop-color="#c084fc"/>
             <stop offset="100%" stop-color="#4f9cf9"/>
           </linearGradient>
         </defs>
@@ -203,7 +198,7 @@ body::before{
       <input type="file" id="file-up" accept="image/*" style="display:none">
     </div>
     <div class="prev-name" id="prev-name">Sizning ismingiz</div>
-    <div class="prev-tg"   id="prev-tg">Essential English PRO</div>
+    <div class="prev-tg" id="prev-tg">Essential English PRO</div>
     <div class="tg-verified" id="tg-verified">
       <span>✅</span>
       <span class="tg-v-txt">Telegram orqali tasdiqlangan</span>
@@ -212,19 +207,18 @@ body::before{
     <div class="left-hint">Ismingiz Telegram<br>hisobingizdan olinadi 🔒</div>
   </div>
 
-  <!-- RIGHT -->
   <div class="right">
     <h1>Profilni sozlash</h1>
     <p>Telegramdagi ismingiz avtomatik qo'yildi. Avatar va darajani tanlang (ixtiyoriy).</p>
 
     <span class="lbl">Ismingiz <span style="font-size:9px;background:rgba(79,156,249,.15);border:1px solid rgba(79,156,249,.2);padding:2px 8px;border-radius:20px;color:#4f9cf9;vertical-align:middle;margin-left:6px">Telegramdan olinadi</span></span>
-<div class="inp-wrap">
-  <span class="inp-ico">👤</span>
-  <input type="text" id="inp-name" class="inp"
-    placeholder="Yuklanmoqda..." autocomplete="off" maxlength="30" readonly
-    style="opacity:.7;cursor:default;background:rgba(28,36,56,.8)">
-</div>
-<div class="err-txt" id="err-name">Ism yuklanmadi, qayta urinib ko'ring!</div>
+    <div class="inp-wrap">
+      <span class="inp-ico">👤</span>
+      <input type="text" id="inp-name" class="inp"
+        placeholder="Yuklanmoqda..." autocomplete="off" maxlength="30" readonly
+        style="opacity:.7;cursor:default;background:rgba(28,36,56,.8)">
+    </div>
+    <div class="err-txt" id="err-name">Ism yuklanmadi, qayta urinib ko'ring!</div>
 
     <div class="av-sec">
       <div class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></div>
@@ -256,140 +250,109 @@ body::before{
     </div>
 
     <button class="submit" id="submit-btn" onclick="saveProfile()">
-  Boshlash →
-</button>
+      Boshlash →
+    </button>
   </div>
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
 const APP_URL           = 'index.html';
 
-// ══════════════════════════════════════════════════════
-// HOLAT
-// ══════════════════════════════════════════════════════
 let tgUser  = null;
 let state   = { avatarUrl: '', level: 'beginner' };
 let selItem = null;
 
-// ══════════════════════════════════════════════════════
-// MUHIM: localStorage key — telegram_id ga bog'liq
-// Shu tufayli bitta qurilmada 2 account izolyatsiya qilinadi
-// ══════════════════════════════════════════════════════
 function getStorageKey(userId) {
-  // userId bo'lmasa (Telegram tashqarida) — umumiy key
-  return userId ? `ep_user_${userId}` : 'ep_user_guest';
+  return userId ? 'ep_user_' + userId : 'ep_user_guest';
 }
 
-// ══════════════════════════════════════════════════════
-// SUPABASE HELPER
-// ══════════════════════════════════════════════════════
-async function sbFetch(path, options = {}) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    ...options,
-    headers: {
+async function sbFetch(path, options) {
+  options = options || {};
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, Object.assign({}, options, {
+    headers: Object.assign({
       'Content-Type':  'application/json',
       'apikey':         SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      ...(options.headers || {}),
-    },
-  });
+      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+    }, options.headers || {}),
+  }));
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`Supabase ${res.status}: ${err}`);
+    throw new Error('Supabase ' + res.status + ': ' + err);
   }
   const text = await res.text();
   return text ? JSON.parse(text) : null;
 }
 
-// ══════════════════════════════════════════════════════
-// ASOSIY INIT — sahifa yuklanganda birinchi ishlaydigan
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════
+// FIX 1 & 2 & 3: init — delay + setupForm
+// ═══════════════════════════════════════
 async function init() {
   try {
-    // 1. Telegram dan user ma'lumotini olish
-    const tg = window.Telegram?.WebApp;
+    const tg = window.Telegram && window.Telegram.WebApp;
+
     if (tg) {
       tg.ready();
       tg.expand();
+      // FIX 1: Telegram WebApp to'liq yuklanishi uchun 200ms kutamiz
+      await new Promise(function(r){ setTimeout(r, 200); });
     }
 
-    const u = tg?.initDataUnsafe?.user;
+    const u = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
 
     if (u && u.id) {
-      // Telegram accounti bor — ID bo'yicha tekshir
       tgUser = u;
       await checkAndRedirect(u.id);
     } else {
-      // Telegram tashqarida ochilgan (test uchun)
+      // FIX 2: else blokida setupForm() chaqirilmagan edi — TUZATILDI
       hideLoading();
       showForm();
+      setupForm();
     }
   } catch(e) {
     console.warn('Init error:', e);
+    // FIX 3: catch blokida ham setupForm() TUZATILDI
     hideLoading();
     showForm();
+    setupForm();
   }
 }
 
-// ══════════════════════════════════════════════════════
-// PROFIL TEKSHIRUVI — telegram_id asosida
-// BUG 1 FIX: localStorage ni telegram_id bilan bog'laymiz
-// BUG 2 FIX: Supabase dan YANGI ma'lumot olamiz
-// ══════════════════════════════════════════════════════
 async function checkAndRedirect(userId) {
-  const storageKey = getStorageKey(userId);
-
+  var storageKey = getStorageKey(userId);
   try {
-    // Avval Supabase dan so'raymiz (haqiqat manbai)
-    // BUG 2 FIX: DB dan oxirgi xp, streak olish kafolatlanadi
-    const data = await sbFetch(
-      `users?user_id=eq.${userId}&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points`,
+    var data = await sbFetch(
+      'users?user_id=eq.' + userId + '&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points',
       { method: 'GET' }
     );
 
     if (data && data.length > 0) {
-      const row = data[0];
-
-      // To'liq profil — redirect
+      var row = data[0];
       if (row.level) {
-  saveLocal(userId, {
-    userId:       row.user_id,
-    name:         row.first_name || row.username || 'User',
-    level:        row.level,
-    avatarUrl:    row.avatar_url  || '',
-    avatar_url:   row.avatar_url  || '',
-    xp:           row.xp          || 0,
-    streak:       row.streak      || 1,
-    total_points: row.total_points || 0,
-  });
-  window.location.replace(APP_URL);
-  return;
-}
-
-      // Qisman profil — formani to'ldirish
-      if (row.level) {
-        state.level = row.level;
+        saveLocal(userId, {
+          userId:       row.user_id,
+          name:         row.first_name || row.username || 'User',
+          level:        row.level,
+          avatarUrl:    row.avatar_url  || '',
+          avatar_url:   row.avatar_url  || '',
+          xp:           row.xp          || 0,
+          streak:       row.streak      || 1,
+          total_points: row.total_points || 0,
+        });
+        window.location.replace(APP_URL);
+        return;
       }
-      if (row.avatar_url) {
-        state.avatarUrl = row.avatar_url;
-      }
+      if (row.level)      state.level     = row.level;
+      if (row.avatar_url) state.avatarUrl = row.avatar_url;
     }
   } catch(e) {
-    // Supabase ishlamasa — localdan tekshir (fallback)
     console.warn('Supabase check failed, trying local:', e);
-
-    const storageKey = getStorageKey(userId);
     try {
-      const raw = localStorage.getItem(storageKey);
+      var raw = localStorage.getItem(storageKey);
       if (raw) {
-        const u = JSON.parse(raw);
-        // userId mosligini TEKSHIR — BUG 1 FIX
-        if (u && u.userId == userId && u.name && u.level && u.avatarUrl) {
+        var u2 = JSON.parse(raw);
+        if (u2 && u2.userId == userId && u2.name && u2.level && u2.avatarUrl) {
           window.location.replace(APP_URL);
           return;
         }
@@ -399,85 +362,84 @@ async function checkAndRedirect(userId) {
     }
   }
 
-  // Profil to'liq emas — formani ko'rsat
   hideLoading();
   showForm();
   setupForm();
 }
 
-// ══════════════════════════════════════════════════════
-// FORMANI TAYYORLASH
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════
+// FIX 4 & 5: setupForm — ism to'g'ri qo'yiladi
+// ═══════════════════════════════════════
 function setupForm() {
   buildGrid('bots');
 
-  // Default avatar
-  const defaultAvatar = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo`;
+  var defaultAvatar = 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo';
   showPreview(defaultAvatar);
   state.level = 'beginner';
 
-  // Beginner default tanlangan ko'rinishi
-  const defaultLv = document.querySelector('.lv[data-lv="beginner"]');
+  var defaultLv = document.querySelector('.lv[data-lv="beginner"]');
   if (defaultLv) pickLevel(defaultLv);
 
-  // Telegram user yo'q — forma ko'rsatamiz lekin ism bo'sh
   if (!tgUser) {
-    const nameInp = document.getElementById('inp-name');
-    nameInp.readOnly = false;
+    var nameInp = document.getElementById('inp-name');
+    nameInp.readOnly    = false;
     nameInp.placeholder = 'Ismingizni kiriting...';
-    nameInp.style.opacity = '1';
-    nameInp.style.cursor = 'text';
+    nameInp.style.opacity    = '1';
+    nameInp.style.cursor     = 'text';
     nameInp.style.background = '';
     return;
   }
 
-  const u = tgUser;
-  const displayName = [u.first_name, u.last_name].filter(Boolean).join(' ')
-    || u.username
+  var u = tgUser;
+  var firstName = (u.first_name || '').trim();
+  var lastName  = (u.last_name  || '').trim();
+  var username  = (u.username   || '').trim();
+
+  // FIX 4: Ismni to'g'ri birlashtirish
+  var displayName = ([firstName, lastName].filter(Boolean).join(' ').trim())
+    || username
     || 'Telegram User';
 
-  const nameInp = document.getElementById('inp-name');
+  var nameInp = document.getElementById('inp-name');
+
+  // FIX 5: readonly bo'lsa value qo'yilmaydi — avval olib tashlab, keyin qo'yamiz
+  nameInp.readOnly = false;
   nameInp.value    = displayName;
   nameInp.readOnly = true;
+  nameInp.style.opacity    = '0.85';
+  nameInp.style.cursor     = 'default';
+  nameInp.style.background = 'rgba(28,36,56,.8)';
 
   document.getElementById('prev-name').textContent = displayName;
-  document.getElementById('prev-tg').textContent   = u.username ? `@${u.username}` : 'Essential English PRO';
+  document.getElementById('prev-tg').textContent   = username ? ('@' + username) : 'Essential English PRO';
   document.getElementById('tg-verified').classList.add('show');
 
   if (state.avatarUrl) showPreview(state.avatarUrl);
 }
 
-// ══════════════════════════════════════════════════════
-// PROFIL SAQLASH
-// ══════════════════════════════════════════════════════
-function saveLocal(userId, overrides = {}) {
-  const storageKey = getStorageKey(userId);
+function saveLocal(userId, overrides) {
+  overrides = overrides || {};
+  var storageKey = getStorageKey(userId);
 
-  // Mavjud local ma'lumotni o'qish
-  let existing = {};
+  var existing = {};
   try {
-    const raw = localStorage.getItem(storageKey);
+    var raw = localStorage.getItem(storageKey);
     if (raw) existing = JSON.parse(raw);
   } catch(e) {}
 
-  const name      = overrides.name      || document.getElementById('inp-name')?.value?.trim() || '';
-  const avatarUrl = overrides.avatarUrl || state.avatarUrl || '';
-  const level     = overrides.level     || state.level     || 'beginner';
+  var name      = overrides.name      || (document.getElementById('inp-name') && document.getElementById('inp-name').value.trim()) || '';
+  var avatarUrl = overrides.avatarUrl || state.avatarUrl || '';
+  var level     = overrides.level     || state.level     || 'beginner';
 
-  const user = {
-    ...existing,
-    // Asosiy
-    userId:        overrides.userId        ?? userId,
-    name,
-    level,
-    avatarUrl,
+  var user = Object.assign({}, existing, {
+    userId:        overrides.userId        != null ? overrides.userId        : userId,
+    name:          name,
+    level:         level,
+    avatarUrl:     avatarUrl,
     avatar_url:    avatarUrl,
-    // BUG 2 FIX: xp va boshqa ko'rsatkichlar DB dan kelsa — uni ishlat
-    // aks holda localdan (0 dan boshlanmaydi)
-    xp:            overrides.xp            ?? existing.xp            ?? 0,
-    streak:        overrides.streak        ?? existing.streak        ?? 1,
-    total_points:  overrides.total_points  ?? existing.total_points  ?? 0,
-    // O'rganish holati — localda saqlanadi
+    xp:            overrides.xp            != null ? overrides.xp            : (existing.xp            || 0),
+    streak:        overrides.streak        != null ? overrides.streak        : (existing.streak        || 1),
+    total_points:  overrides.total_points  != null ? overrides.total_points  : (existing.total_points  || 0),
     learnedWords:  existing.learnedWords   || [],
     wordErrors:    existing.wordErrors     || {},
     customWords:   existing.customWords    || [],
@@ -485,27 +447,20 @@ function saveLocal(userId, overrides = {}) {
     currentUnit:   existing.currentUnit    || { beginner: 1, intermediate: 1, advanced: 1 },
     lastBook:      existing.lastBook       || 1,
     lastUnit:      existing.lastUnit       || 1,
-    // Battle
     battleWins:    existing.battleWins     || 0,
     battleLosses:  existing.battleLosses   || 0,
     battleXP:      existing.battleXP       || 0,
-    // Boshqa
     dailyScore:    existing.dailyScore     || {},
     grammarLevel:  existing.grammarLevel   || level,
-    isPremium:     overrides.isPremium     ?? existing.isPremium     ?? false,
-    premiumExpiry: overrides.premiumExpiry ?? existing.premiumExpiry ?? 0,
+    isPremium:     overrides.isPremium     != null ? overrides.isPremium     : (existing.isPremium     || false),
+    premiumExpiry: overrides.premiumExpiry != null ? overrides.premiumExpiry : (existing.premiumExpiry || 0),
     lastLogin:     new Date().toDateString(),
     createdAt:     existing.createdAt      || Date.now(),
-    // DB dan oxirgi yangilanish vaqti
     lastSyncedAt:  Date.now(),
-  };
+  });
 
-  const json = JSON.stringify(user);
-  // BUG 1 FIX: key = ep_user_{telegram_id} — har account uchun alohida
+  var json = JSON.stringify(user);
   localStorage.setItem(storageKey, json);
-  // index.html eski 'ep_user' key dan o'qiyotgan bo'lsa ham ishlashi uchun
-  // shu accountning ma'lumotini 'ep_user' ga ham yozamiz
-  // (index.html dagi o'qish mantiqini ham yangilash kerak — pastda ko'rsatilgan)
   localStorage.setItem('ep_user', json);
   sessionStorage.setItem('ep_user', json);
 
@@ -525,60 +480,58 @@ async function upsertToSupabase(userId, name, avatarUrl, level) {
         last_active: new Date().toISOString(),
       }),
     });
-    console.log('✅ Supabase upsert OK');
   } catch(e) {
-    console.warn('Supabase upsert (fon, davom etiladi):', e);
+    console.warn('Supabase upsert (fon):', e);
   }
 }
 
-// ══════════════════════════════════════════════════════
-// SUBMIT TUGMASI
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════
+// FIX 6: saveProfile — ism 3 manbadan
+// ═══════════════════════════════════════
 async function saveProfile() {
-  // Ism — Telegramdan yoki qo'lda kiritilgan
-const name = document.getElementById('inp-name').value.trim()
-  || tgUser?.first_name
-  || tgUser?.username
-  || '';
-
-if (!name) {
-  document.getElementById('inp-name').classList.add('err');
-  document.getElementById('err-name').classList.add('show');
-  // readonly bo'lmasa focus
-  if (!document.getElementById('inp-name').readOnly) {
-    document.getElementById('inp-name').focus();
+  var inputVal = document.getElementById('inp-name').value.trim();
+  var tgName   = '';
+  if (tgUser) {
+    tgName = ([tgUser.first_name || '', tgUser.last_name || ''].join(' ').trim())
+      || tgUser.username || '';
+    tgName = tgName.trim();
   }
-  return;
-}
-// Ismni inputga yozamiz (agar Telegramdan olindi va input bo'sh bo'lsa)
-document.getElementById('inp-name').value = name;
+  var name = inputVal || tgName || '';
+
+  if (!name) {
+    var ni = document.getElementById('inp-name');
+    ni.classList.add('err');
+    document.getElementById('err-name').classList.add('show');
+    if (!ni.readOnly) ni.focus();
+    return;
+  }
+
+  // inputga yazmadik bo'lsa — yozamiz (localStorage uchun kerak)
+  if (!inputVal) {
+    var ni2 = document.getElementById('inp-name');
+    ni2.readOnly = false;
+    ni2.value    = name;
+    ni2.readOnly = true;
+  }
+
   document.getElementById('inp-name').classList.remove('err');
   document.getElementById('err-name').classList.remove('show');
 
-  const btn = document.getElementById('submit-btn');
+  var btn = document.getElementById('submit-btn');
   btn.disabled    = true;
   btn.textContent = '⏳ Saqlanmoqda...';
 
-  const userId = tgUser?.id || null;
+  var userId = tgUser ? tgUser.id : null;
 
-  // Avatar tanlanmagan bo'lsa — default avatar (birinchi bot avatar)
-  if (!state.avatarUrl) {
-    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo`;
-  }
-
-  // Daraja tanlanmagan bo'lsa — default beginner
-  if (!state.level) {
-    state.level = 'beginner';
-  }
+  if (!state.avatarUrl) state.avatarUrl = 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Robo';
+  if (!state.level)     state.level     = 'beginner';
 
   try {
     saveLocal(userId);
-
     if (userId) {
       upsertToSupabase(userId, name, state.avatarUrl, state.level)
-        .catch(e => console.warn('Supabase fon upsert:', e));
+        .catch(function(e){ console.warn('fon upsert:', e); });
     }
-
     window.location.href = APP_URL;
   } catch(e) {
     console.error('saveProfile:', e);
@@ -586,37 +539,34 @@ document.getElementById('inp-name').value = name;
     window.location.href = APP_URL;
   }
 }
-// ══════════════════════════════════════════════════════
-// UI YORDAMCHI FUNKSIYALAR
-// ══════════════════════════════════════════════════════
+
 function hideLoading() {
-  const overlay = document.getElementById('loading-overlay');
+  var overlay = document.getElementById('loading-overlay');
   overlay.classList.add('hidden');
-  setTimeout(() => overlay.style.display = 'none', 400);
+  setTimeout(function(){ overlay.style.display = 'none'; }, 400);
 }
 
 function showForm() {
   document.getElementById('main-form').style.display = 'grid';
 }
 
-// AVATAR TIZIMI
-const SEEDS = {
+var SEEDS = {
   bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
   avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
   animals: ['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
 };
-const STYLES = { bots: 'bottts-neutral', avatars: 'adventurer-neutral', animals: 'thumbs' };
+var STYLES = { bots: 'bottts-neutral', avatars: 'adventurer-neutral', animals: 'thumbs' };
 
 function buildGrid(tab) {
-  const grid = document.getElementById('av-grid');
+  var grid = document.getElementById('av-grid');
   grid.innerHTML = '';
   selItem = null;
-  SEEDS[tab].forEach(seed => {
-    const url = `https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
-    const el  = document.createElement('div');
+  SEEDS[tab].forEach(function(seed) {
+    var url = 'https://api.dicebear.com/7.x/' + STYLES[tab] + '/svg?seed=' + seed;
+    var el  = document.createElement('div');
     el.className = 'av-item';
-    el.innerHTML = `<img src="${url}" loading="lazy">`;
-    el.onclick = () => {
+    el.innerHTML = '<img src="' + url + '" loading="lazy">';
+    el.onclick = function() {
       if (selItem) selItem.classList.remove('sel');
       el.classList.add('sel');
       selItem = el;
@@ -628,23 +578,23 @@ function buildGrid(tab) {
 }
 
 function switchTab(tab, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
   btn.classList.add('active');
   buildGrid(tab);
 }
 
 function showPreview(url) {
-  const img = document.getElementById('av-img');
+  var img = document.getElementById('av-img');
   img.src = url;
   img.style.display = 'block';
   document.getElementById('av-emoji').style.display = 'none';
 }
 
-document.getElementById('file-up').addEventListener('change', e => {
-  const f = e.target.files[0];
+document.getElementById('file-up').addEventListener('change', function(e) {
+  var f = e.target.files[0];
   if (!f) return;
-  const r = new FileReader();
-  r.onload = ev => {
+  var r = new FileReader();
+  r.onload = function(ev) {
     state.avatarUrl = ev.target.result;
     showPreview(ev.target.result);
     if (selItem) { selItem.classList.remove('sel'); selItem = null; }
@@ -652,8 +602,8 @@ document.getElementById('file-up').addEventListener('change', e => {
   r.readAsDataURL(f);
 });
 
-document.getElementById('inp-name').addEventListener('input', e => {
-  const v = e.target.value.trim();
+document.getElementById('inp-name').addEventListener('input', function(e) {
+  var v = e.target.value.trim();
   document.getElementById('prev-name').textContent = v || 'Sizning ismingiz';
   if (v) {
     document.getElementById('inp-name').classList.remove('err');
@@ -662,15 +612,12 @@ document.getElementById('inp-name').addEventListener('input', e => {
 });
 
 function pickLevel(el) {
-  document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
-  const lv = el.dataset.lv;
+  document.querySelectorAll('.lv').forEach(function(b){ b.className = 'lv'; });
+  var lv = el.dataset.lv;
   state.level = lv;
   el.classList.add(lv === 'beginner' ? 'sel-b' : lv === 'intermediate' ? 'sel-i' : 'sel-a');
 }
 
-// ══════════════════════════════════════════════════════
-// ISHGA TUSHIRISH
-// ══════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
