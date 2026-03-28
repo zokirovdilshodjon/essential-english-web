@@ -182,7 +182,7 @@ body::before{
       <div class="tabs">
         <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
         <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
-        <button class="tab" onclick="switchTab('animals',this)">🐱 Emojlar</button>
+        <button class="tab" onclick="switchTab('animals',this)">🐱 Hayvonlar</button>
       </div>
       <div class="av-grid" id="av-grid"></div>
       <div class="err-txt" id="err-avatar">⚠️ Iltimos avatar tanlang!</div>
@@ -279,6 +279,19 @@ function getTelegramUser() {
 }
 
 // ══════════════════════════════════════════════
+// QORA EKRAN HIMOYASI — 4 soniyada majburiy ko'rsatish
+// ══════════════════════════════════════════════
+var _formShown = false;
+function safeShowForm() {
+  if (_formShown) return;
+  _formShown = true;
+  hideLoading();
+  showForm();
+  setupForm();
+}
+setTimeout(function(){ safeShowForm(); }, 4000);
+
+// ══════════════════════════════════════════════
 // INIT — retry bilan
 // ══════════════════════════════════════════════
 async function init() {
@@ -289,16 +302,11 @@ async function init() {
       tg.expand();
     }
 
-    // 1-urinish: darhol
     var u = getTelegramUser();
-
-    // 2-urinish: 300ms kutib
     if (!u || !u.id) {
       await new Promise(function(r){ setTimeout(r, 300); });
       u = getTelegramUser();
     }
-
-    // 3-urinish: yana 500ms kutib
     if (!u || !u.id) {
       await new Promise(function(r){ setTimeout(r, 500); });
       u = getTelegramUser();
@@ -308,31 +316,40 @@ async function init() {
       tgUser = u;
       await checkAndRedirect(u.id);
     } else {
-      hideLoading();
-      showForm();
-      setupForm();
+      safeShowForm();
     }
   } catch(e) {
     console.warn('init err:', e);
-    hideLoading();
-    showForm();
-    setupForm();
+    safeShowForm();
   }
 }
 
 async function checkAndRedirect(uid) {
+  // Supabase 5 soniyada javob bermasa — formani ko'rsat
+  var sbDone = false;
+  var sbTimer = setTimeout(function() {
+    if (!sbDone) { sbDone = true; safeShowForm(); }
+  }, 5000);
+
   try {
     var data = await sbFetch('users?user_id=eq.'+uid+'&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points');
+    sbDone = true;
+    clearTimeout(sbTimer);
+
     if (data && data.length > 0 && data[0].level && data[0].avatar_url) {
       var r = data[0];
-      // DB dagi ism: first_name + last_name
       var dbName = ([r.first_name||'', r.last_name||''].join(' ').trim()) || r.username || 'User';
       saveLocal(uid, { userId:r.user_id, name:dbName, level:r.level, avatarUrl:r.avatar_url, xp:r.xp||0, streak:r.streak||1, total_points:r.total_points||0 });
       window.location.replace(APP_URL);
       return;
     }
+    // Profil to'liq emas — formani ko'rsat
+    safeShowForm();
   } catch(e) {
+    sbDone = true;
+    clearTimeout(sbTimer);
     console.warn('SB check fail:', e);
+    // Localdan tekshirish
     try {
       var raw = localStorage.getItem(getStorageKey(uid));
       if (raw) {
@@ -342,10 +359,8 @@ async function checkAndRedirect(uid) {
         }
       }
     } catch(e2) {}
+    safeShowForm();
   }
-  hideLoading();
-  showForm();
-  setupForm();
 }
 
 // ══════════════════════════════════════════════
