@@ -920,6 +920,9 @@ function shuffle(arr){
 // ══════════════════════════════════════════════════════════
 // SUPABASE CONFIG
 // ══════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
+// SUPABASE CONFIG
+// ══════════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
 
@@ -927,23 +930,56 @@ function getStorageKey(userId) {
   return userId ? `ep_user_${userId}` : 'ep_user_guest';
 }
 
+// ══════════════════════════════════════════════════════════
+// TELEGRAM USER — 3 usul bilan olish (register.html bilan bir xil)
+// ══════════════════════════════════════════════════════════
+function getTelegramUser() {
+  const tg = window.Telegram?.WebApp;
+  if (!tg) return null;
+
+  // 1-usul: initDataUnsafe.user
+  const u = tg.initDataUnsafe?.user;
+  if (u && u.id) return u;
+
+  // 2-usul: initData string dan parse
+  try {
+    const initData = tg.initData || '';
+    if (initData) {
+      const params  = new URLSearchParams(initData);
+      const userStr = params.get('user');
+      if (userStr) {
+        const parsed = JSON.parse(decodeURIComponent(userStr));
+        if (parsed && parsed.id) return parsed;
+      }
+    }
+  } catch(e) {}
+
+  // 3-usul: hash dan
+  try {
+    const hash = window.location.hash.replace('#','');
+    if (hash) {
+      const hParams = new URLSearchParams(hash);
+      const hUser   = hParams.get('user');
+      if (hUser) {
+        const hp = JSON.parse(decodeURIComponent(hUser));
+        if (hp && hp.id) return hp;
+      }
+    }
+  } catch(e) {}
+
+  return null;
+}
+
 async function sbFetchUser(userId) {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?user_id=eq.${userId}&select=user_id,first_name,username,level,avatar_url,xp,streak,total_points`,
-      {
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        }
-      }
+      `${SUPABASE_URL}/rest/v1/users?user_id=eq.${userId}&select=user_id,first_name,last_name,username,level,avatar_url,xp,streak,total_points`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
     );
     if (!res.ok) return null;
     const data = await res.json();
     return data && data.length > 0 ? data[0] : null;
-  } catch(e) {
-    return null;
-  }
+  } catch(e) { return null; }
 }
 
 async function syncToSupabase(user) {
@@ -971,14 +1007,28 @@ async function syncToSupabase(user) {
   } catch(e) {}
 }
 
+// ══════════════════════════════════════════════════════════
+// loadUser — Telegram ismini to'g'ri oladi
+// ══════════════════════════════════════════════════════════
 async function loadUser() {
-  let tgUserId = null;
+  let tgUserObj = null;
+  let tgUserId  = null;
+
   try {
     const tg = window.Telegram?.WebApp;
     if (tg) {
       tg.ready();
-      const tgUser = tg.initDataUnsafe?.user;
-      if (tgUser && tgUser.id) tgUserId = tgUser.id;
+      // Retry: darhol, 300ms, 600ms
+      tgUserObj = getTelegramUser();
+      if (!tgUserObj) {
+        await new Promise(r => setTimeout(r, 300));
+        tgUserObj = getTelegramUser();
+      }
+      if (!tgUserObj) {
+        await new Promise(r => setTimeout(r, 300));
+        tgUserObj = getTelegramUser();
+      }
+      if (tgUserObj && tgUserObj.id) tgUserId = tgUserObj.id;
     }
   } catch(e) {}
 
@@ -986,8 +1036,9 @@ async function loadUser() {
 
   let localUser = null;
   try {
-    const raw = localStorage.getItem(storageKey);
+    const raw = localStorage.getItem(storageKey) || localStorage.getItem('ep_user');
     if (raw) localUser = JSON.parse(raw);
+    // userId mos kelmasa — eski ma'lumot, o'chirish
     if (localUser && tgUserId && localUser.userId && String(localUser.userId) !== String(tgUserId)) {
       localUser = null;
     }
@@ -999,16 +1050,24 @@ async function loadUser() {
   if (tgUserId) {
     const dbUser = await sbFetchUser(tgUserId);
     if (dbUser) {
+      // DB dan to'liq ism: first_name + last_name
+      const dbName = ([dbUser.first_name||'', dbUser.last_name||''].join(' ').trim())
+        || dbUser.username || 'User';
+
       if (localUser) {
+        // LocalUser ni DB bilan yangilash
         localUser.xp           = dbUser.xp           ?? localUser.xp    ?? 0;
         localUser.streak       = dbUser.streak        ?? localUser.streak ?? 1;
         localUser.total_points = dbUser.total_points  ?? localUser.total_points ?? 0;
         localUser.userId       = dbUser.user_id;
+        localUser.name         = dbName;          // ✅ ismni DB dan yangilash
+        localUser.avatarUrl    = dbUser.avatar_url || localUser.avatarUrl;
+        localUser.avatar_url   = dbUser.avatar_url || localUser.avatar_url;
         localUser.lastSyncedAt = Date.now();
       } else {
         localUser = {
           userId:       dbUser.user_id,
-          name:         dbUser.first_name || dbUser.username || 'User',
+          name:         dbName,
           level:        dbUser.level || 'beginner',
           avatarUrl:    dbUser.avatar_url || '',
           avatar_url:   dbUser.avatar_url || '',
@@ -1046,6 +1105,16 @@ async function loadUser() {
     return null;
   }
 
+  // Agar Telegram user bor va local da ism noto'g'ri bo'lsa — yangilaymiz
+  if (tgUserObj && tgUserObj.id) {
+    const fn   = (tgUserObj.first_name || '').trim();
+    const ln   = (tgUserObj.last_name  || '').trim();
+    const tgName = ([fn, ln].filter(Boolean).join(' ')) || tgUserObj.username || '';
+    if (tgName && localUser.name !== tgName) {
+      localUser.name = tgName;
+    }
+  }
+
   localUser.lastLogin = new Date().toDateString();
   const json = JSON.stringify(localUser);
   localStorage.setItem(storageKey, json);
@@ -1056,28 +1125,97 @@ async function loadUser() {
 }
 
 let U = null;
+let cardIdx = 0, cardFlipped = false;
+let currentUnitWords = [];
 
-let cardIdx=0, cardFlipped=false;
-let currentUnitWords=[];
+// ══════════════════════════════════════════════════════════
+// LEADERBOARD — Supabase dan REAL foydalanuvchilar
+// FAKE_LB ni o'chiring, shu funksiyalarni ishlating
+// ══════════════════════════════════════════════════════════
+let LB_CACHE = null; // Cache — har safar so'rov ketmasin
 
-// ===== LEADERBOARD DATA =====
-const FAKE_LB=[
-  {name:"Nodira",xp:3420,av:"😺"},
-  {name:"Jasur",xp:2980,av:"🦊"},
-  {name:"Malika",xp:2450,av:"🐸"},
-  {name:"Akbar",xp:1890,av:"🤖"},
-  {name:"Zulfiya",xp:1420,av:"🐱"},
-];
+async function fetchRealLeaderboard() {
+  if (LB_CACHE) return LB_CACHE;
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp,total_points&order=xp.desc&limit=50`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    LB_CACHE = data;
+    return data;
+  } catch(e) {
+    return [];
+  }
+}
 
-// ===== ONLINE PLAYERS (fake) =====
-const ONLINE_PLAYERS = [
-  {name:"Sherzod",av:"🐯",xp:1200},
-  {name:"Nilufar",av:"🦋",xp:980},
-  {name:"Bobur",av:"🦁",xp:1540},
-  {name:"Sarvar",av:"🐺",xp:760},
-  {name:"Gulnora",av:"🌸",xp:1890},
-];
-</script>
+// Leaderboard render — container elementni ID bilan bering
+async function renderLeaderboard(containerId, myUserId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const users = await fetchRealLeaderboard();
+  const myId  = myUserId || (U && U.userId) || null;
+
+  if (!users || users.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:#7a8fad;padding:20px">Hali hech kim yo\'q</p>';
+    return;
+  }
+
+  const medals = ['🥇','🥈','🥉'];
+  let html = '';
+
+  users.forEach((u, idx) => {
+    const rank   = idx + 1;
+    const isMe   = String(u.user_id) === String(myId);
+    const name   = ([u.first_name||'', u.last_name||''].join(' ').trim()) || 'Foydalanuvchi';
+    const xp     = u.xp || u.total_points || 0;
+    const avatar = u.avatar_url || `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${u.user_id}`;
+    const badge  = rank <= 3 ? medals[rank-1] : rank;
+    const meStyle = isMe ? 'border:2px solid #7c5af6;background:rgba(124,90,246,.08);' : '';
+
+    html += `<div class="lb-row" style="${meStyle}">
+      <span class="lb-rank">${badge}</span>
+      <img class="lb-av" src="${avatar}" onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${u.user_id}'">
+      <span class="lb-name">${name}${isMe ? ' <span style="color:#7c5af6;font-size:11px">(Siz)</span>' : ''}</span>
+      <span class="lb-xp">${xp.toLocaleString()} XP</span>
+    </div>`;
+  });
+
+  // Agar joriy user ro'yxatda yo'q bo'lsa
+  const inList = users.some(u => String(u.user_id) === String(myId));
+  if (!inList && myId && U) {
+    html += `<div style="text-align:center;color:#7a8fad;font-size:12px;padding:4px">• • •</div>`;
+    html += `<div class="lb-row" style="border:2px solid #7c5af6;background:rgba(124,90,246,.08);">
+      <span class="lb-rank">?</span>
+      <img class="lb-av" src="${U.avatarUrl||''}" onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=me'">
+      <span class="lb-name">${U.name} <span style="color:#7c5af6;font-size:11px">(Siz)</span></span>
+      <span class="lb-xp">${(U.xp||0).toLocaleString()} XP</span>
+    </div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ══════════════════════════════════════════════════════════
+// ONLINE PLAYERS — Supabase dan so'nggi 30 daqiqada
+// faol bo'lgan foydalanuvchilar
+// ══════════════════════════════════════════════════════════
+async function fetchOnlinePlayers() {
+  try {
+    // So'nggi 30 daqiqa
+    const since = new Date(Date.now() - 30 * 60 * 1000).toISOString();
+    const res   = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${since}&order=xp.desc&limit=10`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (!res.ok) return [];
+    return await res.json();
+  } catch(e) {
+    return [];
+  }
+}
 
 <div id="app">
   <!-- TOPBAR -->
