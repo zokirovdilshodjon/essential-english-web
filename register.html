@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Essential English PRO</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -35,15 +34,13 @@ body::before{
 #loading-overlay.hidden{opacity:0;pointer-events:none}
 .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-txt{font-size:14px;color:var(--muted)}
+.loading-txt{font-size:14px;color:var(--muted);text-align:center;padding:0 20px}
 .outer{
   width:100%;max-width:960px;background:var(--s1);border:1px solid var(--border);border-radius:28px;
   box-shadow:0 40px 80px rgba(0,0,0,.6);display:grid;grid-template-columns:280px 1fr;
   min-height:560px;overflow:hidden;animation:rise .65s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
-/* LEFT */
 .left{background:rgba(10,14,24,.6);border-right:1px solid var(--border);padding:32px 24px;display:flex;flex-direction:column;align-items:center;}
 .logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:32px}
 .logo-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#5b3fd4);display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 4px 14px rgba(124,90,246,.4)}
@@ -59,13 +56,9 @@ body::before{
 .tg-v-txt{font-size:11px;color:var(--blue);font-weight:700}
 .divider{width:100%;height:1px;background:var(--border);margin-bottom:16px}
 .left-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
-
-/* RIGHT */
 .right{padding:32px 36px 28px;display:flex;flex-direction:column;gap:0}
 .right h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:6px}
 .right>p{font-size:13px;color:var(--muted);margin-bottom:20px}
-
-/* Ism display */
 .name-display{
   display:flex;align-items:center;gap:10px;
   background:var(--s2);border:1.5px solid var(--border);
@@ -74,15 +67,11 @@ body::before{
 .name-ico{font-size:18px}
 .name-val{font-size:15px;font-weight:700;color:var(--text);flex:1}
 .name-lock{font-size:13px;opacity:.5}
-
 .lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .badge-req{font-size:9px;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.3);padding:2px 8px;border-radius:20px;color:var(--gold);text-transform:none;letter-spacing:0;font-weight:700}
 .badge-tg{font-size:9px;background:rgba(79,156,249,.15);border:1px solid rgba(79,156,249,.2);padding:2px 8px;border-radius:20px;color:var(--blue);text-transform:none;letter-spacing:0;font-weight:700}
-
 .err-txt{font-size:12px;color:#f85149;margin-bottom:12px;padding-left:4px;display:none}
 .err-txt.show{display:block}
-
-/* Avatar grid */
 .av-sec{margin-bottom:4px}
 .tabs{display:flex;gap:7px;margin-bottom:10px}
 .tab{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
@@ -95,8 +84,6 @@ body::before{
 .av-item:hover{border-color:var(--al);transform:scale(1.06)}
 .av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.3);background:rgba(124,90,246,.1)}
 .av-item img{width:34px;height:34px}
-
-/* Level */
 .level-row{display:flex;gap:9px;margin-bottom:4px;margin-top:4px}
 .lv{flex:1;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .2s;text-align:center}
 .lv:hover{border-color:var(--al)}
@@ -109,8 +96,6 @@ body::before{
 .lv.sel-i .lv-name{color:var(--blue)}
 .lv.sel-a{border-color:var(--purple);background:rgba(192,132,252,.07)}
 .lv.sel-a .lv-name{color:var(--purple)}
-
-/* Submit */
 .submit{
   width:100%;padding:15px;border:none;border-radius:14px;margin-top:16px;
   background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
@@ -122,7 +107,6 @@ body::before{
 .submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
 .submit:active{transform:scale(.98)}
 .submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
-
 @media(max-width:660px){
   body{padding:0;align-items:flex-end}
   .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
@@ -146,11 +130,10 @@ body::before{
 
 <div id="loading-overlay">
   <div class="spinner"></div>
-  <div class="loading-txt">Profil tekshirilmoqda...</div>
+  <div class="loading-txt" id="loading-txt">Profil tekshirilmoqda...</div>
 </div>
 
 <div class="outer" id="main-form" style="display:none">
-  <!-- LEFT panel -->
   <div class="left">
     <div class="logo-row">
       <div class="logo-icon">🧠</div>
@@ -183,12 +166,10 @@ body::before{
     <div class="left-hint">Ismingiz Telegram<br>hisobingizdan olinadi 🔒</div>
   </div>
 
-  <!-- RIGHT panel -->
   <div class="right">
     <h1>Profilni sozlash</h1>
     <p>Avatar va darajangizni tanlang, so'ng boshlang!</p>
 
-    <!-- Ism — faqat ko'rsatish -->
     <div class="lbl">Ismingiz <span class="badge-tg">Telegramdan olinadi 🔒</span></div>
     <div class="name-display">
       <span class="name-ico">👤</span>
@@ -196,7 +177,6 @@ body::before{
       <span class="name-lock">🔒</span>
     </div>
 
-    <!-- Avatar — MAJBURIY -->
     <div class="av-sec">
       <div class="lbl">Avatar tanlang <span class="badge-req">★ majburiy</span></div>
       <div class="tabs">
@@ -208,7 +188,6 @@ body::before{
       <div class="err-txt" id="err-avatar">⚠️ Iltimos avatar tanlang!</div>
     </div>
 
-    <!-- Daraja — MAJBURIY -->
     <div class="lbl">Darajangiz <span class="badge-req">★ majburiy</span></div>
     <div class="level-row">
       <div class="lv" data-lv="beginner" onclick="pickLevel(this)">
@@ -240,56 +219,115 @@ var SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
 var SUPABASE_ANON_KEY = 'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a';
 var APP_URL           = 'index.html';
 
-var tgUser  = null;
-// avatarSelected: foydalanuvchi qo'lda tanladimi — boshlanganda false
-var state   = { avatarUrl: '', level: '', avatarSelected: false, levelSelected: false };
+var tgUser = null;
+var state  = { avatarUrl:'', level:'', avatarSelected:false, levelSelected:false, name:'' };
 var selItem = null;
 
-function getStorageKey(uid) {
-  return uid ? 'ep_user_' + uid : 'ep_user_guest';
-}
+function getStorageKey(uid){ return uid ? 'ep_user_'+uid : 'ep_user_guest'; }
 
 async function sbFetch(path, opts) {
   opts = opts || {};
-  var res = await fetch(SUPABASE_URL + '/rest/v1/' + path, Object.assign({}, opts, {
-    headers: Object.assign({
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-    }, opts.headers || {}),
+  var res = await fetch(SUPABASE_URL+'/rest/v1/'+path, Object.assign({},opts,{
+    headers: Object.assign({'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY},opts.headers||{}),
   }));
-  if (!res.ok) throw new Error('SB ' + res.status + ': ' + await res.text());
+  if(!res.ok) throw new Error('SB '+res.status+': '+await res.text());
   var t = await res.text();
   return t ? JSON.parse(t) : null;
 }
 
-// ─────────────────────────────────────────
-// INIT
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
+// Telegram user ma'lumotini BARCHA usullar bilan olish
+// ══════════════════════════════════════════════
+function getTelegramUser() {
+  var tg = window.Telegram && window.Telegram.WebApp;
+  if (!tg) return null;
+
+  // 1-usul: initDataUnsafe.user (standart)
+  var u = tg.initDataUnsafe && tg.initDataUnsafe.user;
+  if (u && u.id) return u;
+
+  // 2-usul: initData string'dan parse qilish
+  // initData = "query_id=...&user=%7B%22id%22%3A...&auth_date=..."
+  try {
+    var initData = tg.initData || '';
+    if (initData) {
+      var params = new URLSearchParams(initData);
+      var userStr = params.get('user');
+      if (userStr) {
+        var parsed = JSON.parse(decodeURIComponent(userStr));
+        if (parsed && parsed.id) return parsed;
+      }
+    }
+  } catch(e) {
+    console.warn('initData parse err:', e);
+  }
+
+  // 3-usul: window location hash dan (ba'zi eski versiyalar)
+  try {
+    var hash = window.location.hash.replace('#','');
+    if (hash) {
+      var hParams = new URLSearchParams(hash);
+      var hUser = hParams.get('user') || hParams.get('tgWebAppData');
+      if (hUser) {
+        var hParsed = JSON.parse(decodeURIComponent(hUser));
+        if (hParsed && hParsed.id) return hParsed;
+      }
+    }
+  } catch(e2) {}
+
+  return null;
+}
+
+// ══════════════════════════════════════════════
+// INIT — retry bilan
+// ══════════════════════════════════════════════
 async function init() {
   try {
     var tg = window.Telegram && window.Telegram.WebApp;
-    if (tg) { tg.ready(); tg.expand(); await new Promise(function(r){ setTimeout(r, 250); }); }
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
 
-    var u = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
+    // 1-urinish: darhol
+    var u = getTelegramUser();
+
+    // 2-urinish: 300ms kutib
+    if (!u || !u.id) {
+      await new Promise(function(r){ setTimeout(r, 300); });
+      u = getTelegramUser();
+    }
+
+    // 3-urinish: yana 500ms kutib
+    if (!u || !u.id) {
+      await new Promise(function(r){ setTimeout(r, 500); });
+      u = getTelegramUser();
+    }
+
     if (u && u.id) {
       tgUser = u;
       await checkAndRedirect(u.id);
     } else {
-      hideLoading(); showForm(); setupForm();
+      hideLoading();
+      showForm();
+      setupForm();
     }
   } catch(e) {
     console.warn('init err:', e);
-    hideLoading(); showForm(); setupForm();
+    hideLoading();
+    showForm();
+    setupForm();
   }
 }
 
 async function checkAndRedirect(uid) {
   try {
-    var data = await sbFetch('users?user_id=eq.' + uid + '&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points');
-    if (data && data.length > 0 && data[0].level) {
+    var data = await sbFetch('users?user_id=eq.'+uid+'&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points');
+    if (data && data.length > 0 && data[0].level && data[0].avatar_url) {
       var r = data[0];
-      saveLocal(uid, { userId: r.user_id, name: r.first_name || r.username || 'User', level: r.level, avatarUrl: r.avatar_url || '', xp: r.xp || 0, streak: r.streak || 1, total_points: r.total_points || 0 });
+      // DB dagi ism: first_name + last_name
+      var dbName = ([r.first_name||'', r.last_name||''].join(' ').trim()) || r.username || 'User';
+      saveLocal(uid, { userId:r.user_id, name:dbName, level:r.level, avatarUrl:r.avatar_url, xp:r.xp||0, streak:r.streak||1, total_points:r.total_points||0 });
       window.location.replace(APP_URL);
       return;
     }
@@ -299,65 +337,70 @@ async function checkAndRedirect(uid) {
       var raw = localStorage.getItem(getStorageKey(uid));
       if (raw) {
         var u2 = JSON.parse(raw);
-        if (u2 && u2.userId == uid && u2.name && u2.level && u2.avatarUrl) {
+        if (u2 && u2.userId==uid && u2.name && u2.level && u2.avatarUrl) {
           window.location.replace(APP_URL); return;
         }
       }
     } catch(e2) {}
   }
-  hideLoading(); showForm(); setupForm();
+  hideLoading();
+  showForm();
+  setupForm();
 }
 
-// ─────────────────────────────────────────
-// FORM SETUP — ism Telegramdan, majburiy emas
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
+// FORM SETUP
+// ══════════════════════════════════════════════
 function setupForm() {
   buildGrid('bots');
 
-  // Ismni ko'rsatish
-  var displayName = 'Telegram User';
+  var displayName = '';
   var username    = '';
+
   if (tgUser) {
     var fn = (tgUser.first_name || '').trim();
     var ln = (tgUser.last_name  || '').trim();
     username    = (tgUser.username || '').trim();
-    displayName = ([fn, ln].filter(Boolean).join(' ')) || username || 'Telegram User';
+    displayName = ([fn, ln].filter(Boolean).join(' ')) || username || '';
   }
 
-  document.getElementById('name-val').textContent   = displayName;
-  document.getElementById('prev-name').textContent  = displayName;
-  document.getElementById('prev-tg').textContent    = username ? ('@' + username) : 'Essential English PRO';
-  if (tgUser) document.getElementById('tg-verified').classList.add('show');
+  // Ism bo'sh bo'lsa — botdan ochish kerakligini ko'rsat
+  var showName = displayName || '—';
 
-  // state ga ism saqlash
-  state.name = displayName;
+  document.getElementById('name-val').textContent  = showName;
+  document.getElementById('prev-name').textContent = displayName || 'Essential English PRO';
+  document.getElementById('prev-tg').textContent   = username ? ('@'+username) : 'Essential English PRO';
 
-  // Avatar va daraja TANLANMAGAN holatda boshlanadi
+  if (tgUser && displayName) {
+    document.getElementById('tg-verified').classList.add('show');
+  }
+
+  state.name           = displayName;
   state.avatarSelected = false;
   state.levelSelected  = false;
   state.avatarUrl      = '';
   state.level          = '';
 }
 
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
 // AVATAR
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
 var SEEDS = {
   bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
   avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
   animals: ['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
 };
-var STYLES = { bots: 'bottts-neutral', avatars: 'adventurer-neutral', animals: 'thumbs' };
+var STYLES = { bots:'bottts-neutral', avatars:'adventurer-neutral', animals:'thumbs' };
 
 function buildGrid(tab) {
   var grid = document.getElementById('av-grid');
   grid.innerHTML = '';
   selItem = null;
   SEEDS[tab].forEach(function(seed) {
-    var url = 'https://api.dicebear.com/7.x/' + STYLES[tab] + '/svg?seed=' + seed;
+    var url = 'https://api.dicebear.com/7.x/'+STYLES[tab]+'/svg?seed='+seed;
     var el  = document.createElement('div');
     el.className = 'av-item';
-    el.innerHTML = '<img src="' + url + '" loading="lazy">';
+    el.innerHTML = '<img src="'+url+'" loading="lazy">';
     el.onclick = function() {
       if (selItem) selItem.classList.remove('sel');
       el.classList.add('sel');
@@ -365,7 +408,6 @@ function buildGrid(tab) {
       state.avatarUrl      = url;
       state.avatarSelected = true;
       showPreview(url);
-      // xatoni yashirish
       document.getElementById('err-avatar').classList.remove('show');
     };
     grid.appendChild(el);
@@ -385,40 +427,28 @@ function showPreview(url) {
   document.getElementById('av-emoji').style.display = 'none';
 }
 
-// ─────────────────────────────────────────
-// DARAJA
-// ─────────────────────────────────────────
 function pickLevel(el) {
-  document.querySelectorAll('.lv').forEach(function(b){ b.className = 'lv'; });
+  document.querySelectorAll('.lv').forEach(function(b){ b.className='lv'; });
   var lv = el.dataset.lv;
   state.level         = lv;
   state.levelSelected = true;
-  el.classList.add(lv === 'beginner' ? 'sel-b' : lv === 'intermediate' ? 'sel-i' : 'sel-a');
+  el.classList.add(lv==='beginner'?'sel-b':lv==='intermediate'?'sel-i':'sel-a');
   document.getElementById('err-level').classList.remove('show');
 }
 
-// ─────────────────────────────────────────
-// SUBMIT — avatar VA daraja MAJBURIY
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
+// SUBMIT
+// ══════════════════════════════════════════════
 async function saveProfile() {
   var ok = true;
-
-  // Avatar tekshiruvi
-  if (!state.avatarSelected || !state.avatarUrl) {
+  if (!state.avatarSelected) {
     document.getElementById('err-avatar').classList.add('show');
     ok = false;
-  } else {
-    document.getElementById('err-avatar').classList.remove('show');
   }
-
-  // Daraja tekshiruvi
-  if (!state.levelSelected || !state.level) {
+  if (!state.levelSelected) {
     document.getElementById('err-level').classList.add('show');
     ok = false;
-  } else {
-    document.getElementById('err-level').classList.remove('show');
   }
-
   if (!ok) return;
 
   var btn = document.getElementById('submit-btn');
@@ -426,7 +456,7 @@ async function saveProfile() {
   btn.textContent = '⏳ Saqlanmoqda...';
 
   var uid  = tgUser ? tgUser.id : null;
-  var name = state.name || (tgUser ? (tgUser.first_name || tgUser.username || 'User') : 'User');
+  var name = state.name || (tgUser ? ((tgUser.first_name||'').trim()+' '+(tgUser.last_name||'').trim()).trim() || tgUser.username || 'User' : 'User');
 
   try {
     saveLocal(uid, {});
@@ -436,51 +466,40 @@ async function saveProfile() {
     }
     window.location.href = APP_URL;
   } catch(e) {
-    console.error('saveProfile err:', e);
     try { saveLocal(uid, {}); } catch(e2) {}
     window.location.href = APP_URL;
   }
 }
 
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
 // LOCAL STORAGE
-// ─────────────────────────────────────────
+// ══════════════════════════════════════════════
 function saveLocal(uid, overrides) {
   overrides = overrides || {};
   var key = getStorageKey(uid);
   var ex  = {};
-  try { var r = localStorage.getItem(key); if (r) ex = JSON.parse(r); } catch(e) {}
+  try { var r=localStorage.getItem(key); if(r) ex=JSON.parse(r); } catch(e){}
 
-  var name      = overrides.name      || state.name      || (tgUser ? (tgUser.first_name || tgUser.username || 'User') : 'User');
+  var name      = overrides.name      || state.name || 'User';
   var avatarUrl = overrides.avatarUrl !== undefined ? overrides.avatarUrl : state.avatarUrl;
-  var level     = overrides.level     || state.level     || 'beginner';
+  var level     = overrides.level     || state.level || 'beginner';
 
   var user = Object.assign({}, ex, {
-    userId:       overrides.userId        != null ? overrides.userId        : uid,
-    name:         name,
-    level:        level,
-    avatarUrl:    avatarUrl,
-    avatar_url:   avatarUrl,
-    xp:           overrides.xp            != null ? overrides.xp            : (ex.xp            || 0),
-    streak:       overrides.streak        != null ? overrides.streak        : (ex.streak        || 1),
-    total_points: overrides.total_points  != null ? overrides.total_points  : (ex.total_points  || 0),
-    learnedWords: ex.learnedWords  || [],
-    wordErrors:   ex.wordErrors    || {},
-    customWords:  ex.customWords   || [],
-    unitProgress: ex.unitProgress  || { beginner:0, intermediate:0, advanced:0 },
-    currentUnit:  ex.currentUnit   || { beginner:1, intermediate:1, advanced:1 },
-    lastBook:     ex.lastBook      || 1,
-    lastUnit:     ex.lastUnit      || 1,
-    battleWins:   ex.battleWins    || 0,
-    battleLosses: ex.battleLosses  || 0,
-    battleXP:     ex.battleXP      || 0,
-    dailyScore:   ex.dailyScore    || {},
-    grammarLevel: ex.grammarLevel  || level,
-    isPremium:    overrides.isPremium != null ? overrides.isPremium : (ex.isPremium || false),
-    premiumExpiry:overrides.premiumExpiry != null ? overrides.premiumExpiry : (ex.premiumExpiry || 0),
-    lastLogin:    new Date().toDateString(),
-    createdAt:    ex.createdAt || Date.now(),
-    lastSyncedAt: Date.now(),
+    userId:       overrides.userId!=null ? overrides.userId : uid,
+    name:name, level:level, avatarUrl:avatarUrl, avatar_url:avatarUrl,
+    xp:           overrides.xp!=null          ? overrides.xp          : (ex.xp||0),
+    streak:       overrides.streak!=null      ? overrides.streak      : (ex.streak||1),
+    total_points: overrides.total_points!=null? overrides.total_points: (ex.total_points||0),
+    learnedWords: ex.learnedWords||[], wordErrors:ex.wordErrors||{},
+    customWords:  ex.customWords||[],
+    unitProgress: ex.unitProgress||{beginner:0,intermediate:0,advanced:0},
+    currentUnit:  ex.currentUnit||{beginner:1,intermediate:1,advanced:1},
+    lastBook:ex.lastBook||1, lastUnit:ex.lastUnit||1,
+    battleWins:ex.battleWins||0, battleLosses:ex.battleLosses||0, battleXP:ex.battleXP||0,
+    dailyScore:ex.dailyScore||{}, grammarLevel:ex.grammarLevel||level,
+    isPremium:overrides.isPremium!=null?overrides.isPremium:(ex.isPremium||false),
+    premiumExpiry:overrides.premiumExpiry!=null?overrides.premiumExpiry:(ex.premiumExpiry||0),
+    lastLogin:new Date().toDateString(), createdAt:ex.createdAt||Date.now(), lastSyncedAt:Date.now(),
   });
 
   var json = JSON.stringify(user);
@@ -491,17 +510,24 @@ function saveLocal(uid, overrides) {
 }
 
 async function upsertSB(uid, name, avatarUrl, level) {
+  // first_name va last_name ni ajratib yuboring
+  var parts = name.split(' ');
+  var firstName = parts[0] || name;
+  var lastName  = parts.slice(1).join(' ') || '';
   await sbFetch('users', {
-    method: 'POST',
-    headers: { 'Prefer': 'resolution=merge-duplicates' },
-    body: JSON.stringify({ user_id: uid, first_name: name, avatar_url: avatarUrl, level: level, last_active: new Date().toISOString() }),
+    method:'POST',
+    headers:{'Prefer':'resolution=merge-duplicates'},
+    body:JSON.stringify({
+      user_id:uid, first_name:firstName, last_name:lastName,
+      avatar_url:avatarUrl, level:level, last_active:new Date().toISOString()
+    }),
   });
 }
 
 function hideLoading() {
   var o = document.getElementById('loading-overlay');
   o.classList.add('hidden');
-  setTimeout(function(){ o.style.display = 'none'; }, 400);
+  setTimeout(function(){ o.style.display='none'; }, 400);
 }
 function showForm() {
   document.getElementById('main-form').style.display = 'grid';
