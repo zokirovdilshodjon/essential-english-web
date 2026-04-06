@@ -2,162 +2,174 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Essential English PRO</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Essential English PRO — Profil</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<!-- Telegram WebApp SDK — MUHIM, birinchi bo'lishi kerak -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0d1117;--s1:#161b27;--s2:#1c2438;
   --border:#2a3550;--text:#e8f0fe;--muted:#7a8fad;
   --accent:#7c5af6;--al:#a07cf8;
-  --green:#4fdf8a;--blue:#4f9cf9;--purple:#c084fc;--gold:#f5c542;
+  --g:#4fdf8a;--b:#4f9cf9;--p:#c084fc;
 }
-html,body{min-height:100%}
+html,body{height:100%;min-height:100%}
 body{
   background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;
-  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:16px;
   background-image:
     radial-gradient(ellipse 70% 60% at 15% 10%,rgba(124,90,246,.15) 0,transparent 60%),
     radial-gradient(ellipse 60% 50% at 85% 90%,rgba(79,156,249,.1) 0,transparent 60%);
 }
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(124,90,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(124,90,246,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,90,246,.04) 1px,transparent 1px);
   background-size:36px 36px;
 }
-#loading-overlay{
-  position:fixed;inset:0;z-index:999;background:var(--bg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .4s;
+#loading-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:999;gap:16px;
 }
-#loading-overlay.hidden{opacity:0;pointer-events:none}
-.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-txt{font-size:14px;color:var(--muted)}
+.loader-icon{font-size:52px;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.loader-txt{font-family:'Syne',sans-serif;font-size:13px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+#error-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  z-index:998;gap:14px;text-align:center;padding:32px;
+}
+.err-icon{font-size:56px}
+.err-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800}
+.err-desc{font-size:14px;color:var(--muted);max-width:280px;line-height:1.7}
+.err-btn{
+  margin-top:8px;padding:13px 30px;border-radius:14px;border:none;
+  background:linear-gradient(135deg,var(--accent),#5b3fd4);
+  color:white;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;
+}
 .outer{
-  width:100%;max-width:960px;background:var(--s1);border:1px solid var(--border);border-radius:28px;
-  box-shadow:0 40px 80px rgba(0,0,0,.6);display:grid;grid-template-columns:280px 1fr;
-  min-height:560px;overflow:hidden;animation:rise .65s cubic-bezier(.16,1,.3,1) both;
+  width:100%;max-width:960px;background:var(--s1);
+  border:1px solid var(--border);border-radius:28px;
+  box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,90,246,.08) inset;
+  display:none;grid-template-columns:260px 1fr;
+  min-height:540px;overflow:hidden;
+  animation:rise .55s cubic-bezier(.16,1,.3,1) both;
 }
-@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
-/* LEFT */
-.left{background:rgba(10,14,24,.6);border-right:1px solid var(--border);padding:32px 24px;display:flex;flex-direction:column;align-items:center;}
-.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:32px}
-.logo-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#5b3fd4);display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 4px 14px rgba(124,90,246,.4)}
-.logo-txt{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
-.av-ring-wrap{position:relative;width:160px;height:160px;margin-bottom:18px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.left{
+  background:rgba(10,14,24,.6);border-right:1px solid var(--border);
+  padding:28px 22px;display:flex;flex-direction:column;align-items:center;
+}
+.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.logo-icon{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#5b3fd4);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 14px rgba(124,90,246,.4)}
+.logo-txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.av-ring-wrap{position:relative;width:150px;height:150px;margin-bottom:16px}
 .av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
-.av-circle{width:160px;height:160px;border-radius:50%;background:var(--s2);border:2px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:70px;position:relative;z-index:1}
-.av-circle img{width:80%;height:80%;object-fit:contain;display:none}
-.prev-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;text-align:center;margin-bottom:8px;min-height:28px}
-.prev-tg{font-size:12px;color:var(--al);background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.25);padding:4px 14px;border-radius:20px;margin-bottom:20px}
-.tg-verified{display:none;align-items:center;gap:6px;margin-bottom:16px}
-.tg-verified.show{display:flex}
-.tg-v-txt{font-size:11px;color:var(--blue);font-weight:700}
-.divider{width:100%;height:1px;background:var(--border);margin-bottom:16px}
-.left-hint{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
-
-/* RIGHT */
-.right{padding:32px 36px 28px;display:flex;flex-direction:column;gap:0}
-.right h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:6px}
-.right>p{font-size:13px;color:var(--muted);margin-bottom:20px}
-
-/* Ism display */
-.name-display{
-  display:flex;align-items:center;gap:10px;
-  background:var(--s2);border:1.5px solid var(--border);
-  border-radius:14px;padding:13px 16px;margin-bottom:18px;
+@keyframes spin{to{transform:rotate(360deg)}}
+.av-circle{
+  width:150px;height:150px;border-radius:50%;background:var(--s2);border:2px solid var(--border);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  font-size:64px;position:relative;z-index:1;cursor:pointer;transition:border-color .2s;
 }
-.name-ico{font-size:18px}
-.name-val{font-size:15px;font-weight:700;color:var(--text);flex:1}
-.name-lock{font-size:13px;opacity:.5}
-
+.av-circle:hover{border-color:var(--accent)}
+.av-circle img{width:80%;height:80%;object-fit:contain;display:none}
+.av-upload-badge{
+  position:absolute;bottom:5px;right:5px;z-index:2;width:36px;height:36px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--s1);display:flex;align-items:center;justify-content:center;
+  font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
+}
+.av-upload-badge:hover{transform:scale(1.1)}
+.prev-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;text-align:center;margin-bottom:3px}
+.prev-tg{font-size:12px;color:var(--muted);margin-bottom:10px}
+.tg-verified{display:flex;align-items:center;gap:6px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:7px 12px;margin-bottom:16px}
+.tg-v-icon{font-size:14px}
+.tg-v-txt{font-size:11px;color:var(--g);font-weight:700}
+.divider{width:100%;height:1px;background:var(--border);margin-bottom:14px}
+.left-hint{font-size:11px;color:var(--muted);text-align:center;line-height:1.6}
+.right{padding:30px 30px 26px;display:flex;flex-direction:column}
+.right h1{font-family:'Syne',sans-serif;font-size:27px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.right>p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
 .lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.badge-req{font-size:9px;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.3);padding:2px 8px;border-radius:20px;color:var(--gold);text-transform:none;letter-spacing:0;font-weight:700}
-.badge-tg{font-size:9px;background:rgba(79,156,249,.15);border:1px solid rgba(79,156,249,.2);padding:2px 8px;border-radius:20px;color:var(--blue);text-transform:none;letter-spacing:0;font-weight:700}
-
-.err-txt{font-size:12px;color:#f85149;margin-bottom:12px;padding-left:4px;display:none}
-.err-txt.show{display:block}
-
-/* Avatar grid */
-.av-sec{margin-bottom:4px}
-.tabs{display:flex;gap:7px;margin-bottom:10px}
+.opt-badge{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.2);color:var(--al);padding:2px 7px;border-radius:8px}
+.av-sec{margin-bottom:18px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
 .tab{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
 .tab:hover{border-color:var(--al)}
 .tab.active{background:rgba(124,90,246,.15);border-color:var(--accent);color:white}
-.av-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;max-height:170px;overflow-y:auto;padding:2px;margin-bottom:6px}
+.av-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;max-height:155px;overflow-y:auto;padding:2px}
 .av-grid::-webkit-scrollbar{width:4px}
 .av-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-.av-item{aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;overflow:hidden}
+.av-item{aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;overflow:hidden}
 .av-item:hover{border-color:var(--al);transform:scale(1.06)}
-.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.3);background:rgba(124,90,246,.1)}
+.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.22);background:rgba(124,90,246,.1)}
 .av-item img{width:34px;height:34px}
-
-/* Level */
-.level-row{display:flex;gap:9px;margin-bottom:4px;margin-top:4px}
-.lv{flex:1;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .2s;text-align:center}
-.lv:hover{border-color:var(--al)}
-.lv-em{font-size:22px;display:block;margin-bottom:4px}
-.lv-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
-.lv-hint{font-size:10px;color:var(--muted);line-height:1.3}
-.lv.sel-b{border-color:var(--green);background:rgba(79,223,138,.07)}
-.lv.sel-b .lv-name{color:var(--green)}
-.lv.sel-i{border-color:var(--blue);background:rgba(79,156,249,.07)}
-.lv.sel-i .lv-name{color:var(--blue)}
-.lv.sel-a{border-color:var(--purple);background:rgba(192,132,252,.07)}
-.lv.sel-a .lv-name{color:var(--purple)}
-
-/* Submit */
+.level-row{display:flex;gap:8px;margin-bottom:22px;margin-top:4px}
+.lv{flex:1;padding:11px 6px;border-radius:13px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .18s;text-align:center}
+.lv-em{font-size:20px;display:block;margin-bottom:4px}
+.lv-name{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
+.lv-hint{font-size:9px;color:var(--muted);line-height:1.3}
+.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}.lv.sel-b .lv-name{color:var(--g)}
+.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}.lv.sel-i .lv-name{color:var(--b)}
+.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}.lv.sel-a .lv-name{color:var(--p)}
 .submit{
-  width:100%;padding:15px;border:none;border-radius:14px;margin-top:16px;
+  width:100%;padding:15px;border:none;border-radius:13px;margin-top:auto;
   background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
   color:white;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;
-  cursor:pointer;transition:transform .2s,box-shadow .2s;
+  cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s;
   box-shadow:0 8px 28px rgba(124,90,246,.35);position:relative;overflow:hidden;
 }
 .submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent)}
-.submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
-.submit:active{transform:scale(.98)}
-.submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
-
-@media(max-width:660px){
+.submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
+.submit:active:not(:disabled){transform:scale(.98)}
+.submit:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:640px){
   body{padding:0;align-items:flex-end}
   .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
-  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:14px 18px;gap:12px}
-  .logo-row,.divider,.left-hint{display:none}
-  .av-ring-wrap{width:72px;height:72px;margin-bottom:0;flex-shrink:0}
-  .av-circle{width:72px;height:72px;font-size:32px}
-  .av-ring-svg{inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px)}
-  .prev-name{font-size:15px;text-align:left;margin-bottom:2px;min-height:auto}
-  .prev-tg{font-size:10px;margin-bottom:0}
-  .tg-verified{margin-bottom:0}
-  .right{padding:18px 16px 24px}
-  .right h1{font-size:22px}
-  .av-grid{grid-template-columns:repeat(5,1fr);max-height:145px}
-  .tabs .tab{padding:6px 10px;font-size:11px}
-  .level-row{gap:6px}
+  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:14px 18px;gap:14px;align-items:center}
+  .logo-row,.divider,.left-hint,.tg-verified{display:none}
+  .av-ring-wrap{width:70px;height:70px;margin-bottom:0;flex-shrink:0}
+  .av-circle{width:70px;height:70px;font-size:30px}
+  .av-upload-badge{width:22px;height:22px;font-size:10px;bottom:0;right:0;border-width:2px}
+  .prev-name{font-size:15px;margin-bottom:2px}
+  .right{padding:18px 16px 22px}
+  .right h1{font-size:20px}
+  .av-grid{grid-template-columns:repeat(5,1fr);max-height:130px}
 }
 </style>
 </head>
 <body>
 
-<div id="loading-overlay">
-  <div class="spinner"></div>
-  <div class="loading-txt">Profil tekshirilmoqda...</div>
+<div id="loading-screen">
+  <div class="loader-icon">🧠</div>
+  <div class="loader-txt">Yuklanmoqda...</div>
 </div>
 
-<div class="outer" id="main-form" style="display:none">
-  <!-- LEFT panel -->
+<div id="error-screen">
+  <div class="err-icon">⚠️</div>
+  <div class="err-title">Telegram orqali oching</div>
+  <div class="err-desc">
+    Bu sahifani faqat Telegram bot ichidan ochish mumkin.<br><br>
+    <b>@essentialwords1bot</b> ga o'ting va Web ilovani bosing.
+  </div>
+  <button class="err-btn" onclick="window.open('https://t.me/essentialwords1bot','_blank')">
+    Botga o'tish →
+  </button>
+</div>
+
+<div class="outer" id="main-outer">
   <div class="left">
     <div class="logo-row">
       <div class="logo-icon">🧠</div>
       <span class="logo-txt">Essential English</span>
     </div>
     <div class="av-ring-wrap">
-      <svg class="av-ring-svg" viewBox="0 0 176 176">
+      <svg class="av-ring-svg" viewBox="0 0 166 166">
         <defs>
           <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#7c5af6"/>
@@ -165,53 +177,42 @@ body::before{
             <stop offset="100%" stop-color="#4f9cf9"/>
           </linearGradient>
         </defs>
-        <circle cx="88" cy="88" r="84" stroke="url(#rg)" stroke-width="3"
-          fill="none" stroke-linecap="round" stroke-dasharray="340 180"/>
+        <circle cx="83" cy="83" r="79" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="320 170"/>
       </svg>
-      <div class="av-circle" id="av-circle">
+      <div class="av-circle" onclick="document.getElementById('file-up').click()">
         <img id="av-img" src="" alt="">
         <span id="av-emoji">🤖</span>
       </div>
+      <label class="av-upload-badge" for="file-up">📷</label>
+      <input type="file" id="file-up" accept="image/*" style="display:none">
     </div>
-    <div class="prev-name" id="prev-name">Yuklanmoqda...</div>
-    <div class="prev-tg" id="prev-tg">Essential English PRO</div>
-    <div class="tg-verified" id="tg-verified">
-      <span>✅</span>
+    <div class="prev-name" id="prev-name">...</div>
+    <div class="prev-tg" id="prev-tg"></div>
+    <div class="tg-verified">
+      <span class="tg-v-icon">✅</span>
       <span class="tg-v-txt">Telegram orqali tasdiqlangan</span>
     </div>
     <div class="divider"></div>
     <div class="left-hint">Ismingiz Telegram<br>hisobingizdan olinadi 🔒</div>
   </div>
 
-  <!-- RIGHT panel -->
   <div class="right">
     <h1>Profilni sozlash</h1>
-    <p>Avatar va darajangizni tanlang, so'ng boshlang!</p>
+    <p>Telegramdagi ismingiz avtomatik qo'yildi. Avatar va darajani tanlang (ixtiyoriy).</p>
 
-    <!-- Ism — faqat ko'rsatish -->
-    <div class="lbl">Ismingiz <span class="badge-tg">Telegramdan olinadi 🔒</span></div>
-    <div class="name-display">
-      <span class="name-ico">👤</span>
-      <span class="name-val" id="name-val">Yuklanmoqda...</span>
-      <span class="name-lock">🔒</span>
-    </div>
-
-    <!-- Avatar — MAJBURIY -->
     <div class="av-sec">
-      <div class="lbl">Avatar tanlang <span class="badge-req">★ majburiy</span></div>
+      <div class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></div>
       <div class="tabs">
         <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
         <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
         <button class="tab" onclick="switchTab('animals',this)">🐱 Hayvonlar</button>
       </div>
       <div class="av-grid" id="av-grid"></div>
-      <div class="err-txt" id="err-avatar">⚠️ Iltimos avatar tanlang!</div>
     </div>
 
-    <!-- Daraja — MAJBURIY -->
-    <div class="lbl">Darajangiz <span class="badge-req">★ majburiy</span></div>
+    <div class="lbl">Darajangiz <span class="opt-badge">ixtiyoriy</span></div>
     <div class="level-row">
-      <div class="lv" data-lv="beginner" onclick="pickLevel(this)">
+      <div class="lv sel-b" data-lv="beginner" onclick="pickLevel(this)">
         <span class="lv-em">🌱</span>
         <span class="lv-name">Beginner</span>
         <span class="lv-hint">1–2 kitob</span>
@@ -227,7 +228,6 @@ body::before{
         <span class="lv-hint">5–6 kitob</span>
       </div>
     </div>
-    <div class="err-txt" id="err-level">⚠️ Iltimos darajani tanlang!</div>
 
     <button class="submit" id="submit-btn" onclick="saveProfile()">
       Boshlash →
@@ -236,720 +236,198 @@ body::before{
 </div>
 
 <script>
-var SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
-var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
-// REAL LEADERBOARD PATCH — paste this entire block into index.html
-//
-// INSTRUCTIONS:
-//   1. Find the FAKE_LB array definition (starts with "const FAKE_LB = [")
-//      and DELETE everything from that line until its closing "];"
-//   2. Find the ONLINE_PLAYERS array definition (starts with "const ONLINE_PLAYERS = [")
-//      and DELETE everything from that line until its closing "];"
-//   3. Find the old "function buildLeaderboard(){" function
-//      and DELETE everything from that line until its closing "}"
-//      (it ends right before "function buildRecentWords")
-//   4. Paste THIS ENTIRE FILE in place of all the deleted code.
-//   5. Fix the Supabase anon key — replace:
-//        'sb_publishable_bHdghGBflOo1ScRf2VzQig_u7RQxS0a'
-//      with your real key from Supabase → Settings → API (starts with eyJ...)
-// ════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════
+const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE'; // ← Supabase > Settings > API > anon public
+const APP_URL           = 'app.html';
 
-// ── Cache ────────────────────────────────────────────────────────────────
-let _lbCache        = null;
-let _lbCacheTime    = 0;
-let _onlineCache    = null;
-let _onlineCacheTs  = 0;
-const LB_TTL     = 60_000;   // refresh leaderboard every 60s
-const ONLINE_TTL = 30_000;   // refresh online players every 30s
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ── Fetch all users ordered by XP ────────────────────────────────────────
-async function fetchRealLeaderboard() {
-  const now = Date.now();
-  if (_lbCache && now - _lbCacheTime < LB_TTL) return _lbCache;
-  try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users` +
-      `?select=user_id,first_name,last_name,avatar_url,xp,total_points` +
-      `&order=xp.desc&limit=50`,
-      {
-        headers: {
-          'apikey':        SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        }
-      }
-    );
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    _lbCache     = Array.isArray(data) ? data : [];
-    _lbCacheTime = now;
-    return _lbCache;
-  } catch(e) {
-    console.warn('fetchRealLeaderboard error:', e.message);
-    return _lbCache || [];   // return stale cache on failure
-  }
-}
+let tgUser  = null;
+let state   = { avatarUrl: '', level: 'beginner' };
+let selItem = null;
 
-// ── Fetch users active in the last 30 minutes ────────────────────────────
-async function fetchOnlinePlayers() {
-  const now = Date.now();
-  if (_onlineCache && now - _onlineCacheTs < ONLINE_TTL) return _onlineCache;
-  try {
-    const since = new Date(now - 30 * 60 * 1000).toISOString();
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users` +
-      `?select=user_id,first_name,last_name,avatar_url,xp` +
-      `&last_active=gte.${encodeURIComponent(since)}` +
-      `&order=xp.desc&limit=20`,
-      {
-        headers: {
-          'apikey':        SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        }
-      }
-    );
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    _onlineCache   = Array.isArray(data) ? data : [];
-    _onlineCacheTs = now;
-    return _onlineCache;
-  } catch(e) {
-    console.warn('fetchOnlinePlayers error:', e.message);
-    return _onlineCache || [];
-  }
-}
-
-// ── Helper: display name from a Supabase user row ─────────────────────────
-function dbUserName(u) {
-  return ([u.first_name || '', u.last_name || ''].join(' ').trim()) || 'Foydalanuvchi';
-}
-
-// ── Main leaderboard builder — replaces old buildLeaderboard() ────────────
-let _lbPeriod = 'alltime';
-
-async function buildLeaderboard() {
-  const PERIOD_LABELS = { today:'📅 Bugun', week:'📆 Hafta', month:'🗓 Oy', alltime:'🏆 Barcha' };
-  const PERIOD_UNITS  = { today:'bugun',     week:'hafta',    month:'oy',     alltime:'XP'  };
-
-  // Fetch real data
-  const users = await fetchRealLeaderboard();
-  const myId  = String(U?.userId || '');
-
-  ['lb-main', 'lb-modal'].forEach(containerId => {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = '';
-
-    // ── Period tabs ──────────────────────────────────────────────────
-    const tabs = document.createElement('div');
-    tabs.style.cssText = 'display:flex;gap:5px;margin-bottom:10px';
-
-    ['today','week','month','alltime'].forEach(p => {
-      const on  = _lbPeriod === p;
-      const btn = document.createElement('button');
-      btn.style.cssText =
-        `flex:1;padding:5px 2px;border-radius:20px;font-size:10px;font-weight:800;` +
-        `font-family:'Nunito',sans-serif;cursor:pointer;` +
-        `border:1.5px solid ${on ? 'var(--accent)' : 'var(--border)'};` +
-        `background:${on ? 'rgba(124,90,246,.15)' : 'var(--s2)'};` +
-        `color:${on ? 'var(--al)' : 'var(--muted)'}`;
-      btn.textContent = PERIOD_LABELS[p];
-      btn.onclick = () => { _lbPeriod = p; buildLeaderboard(); };
-      tabs.appendChild(btn);
-    });
-    container.appendChild(tabs);
-
-    // ── Compute XP for the selected period ──────────────────────────
-    // For real users we only have total XP stored. For period filtering we
-    // use the current user's xpLog (accurate) and approximate others.
-    const PERIOD_FRACTION = { today: 0.008, week: 0.05, month: 0.22, alltime: 1 };
-    const frac = PERIOD_FRACTION[_lbPeriod] || 1;
-
-    // Build merged list: DB users + current user (so they always appear)
-    const list = users.map(u => {
-      const isMe = String(u.user_id) === myId;
-      const rawXP = u.xp || u.total_points || 0;
-      let xp = _lbPeriod === 'alltime' ? rawXP : Math.round(rawXP * frac);
-      // For the current user use precise xpLog data
-      if (isMe && _lbPeriod !== 'alltime') xp = getMyXpForPeriod(_lbPeriod);
-      return {
-        name:      isMe ? (U.name || dbUserName(u)) : dbUserName(u),
-        xp,
-        avatar:    u.avatar_url || '',
-        isMe,
-        userId:    String(u.user_id),
-      };
-    });
-
-    // If current user isn't in DB yet, add them manually
-    const meInList = list.some(p => p.isMe);
-    if (!meInList && U) {
-      list.push({
-        name:   U.name || 'Siz',
-        xp:     _lbPeriod === 'alltime' ? (U.xp || 0) : getMyXpForPeriod(_lbPeriod),
-        avatar: U.avatarUrl || '',
-        isMe:   true,
-        userId: myId,
-      });
-    }
-
-    // Sort descending
-    list.sort((a, b) => b.xp - a.xp);
-
-    // ── Render rows ──────────────────────────────────────────────────
-    const medals = ['🥇','🥈','🥉'];
-    const unit   = PERIOD_UNITS[_lbPeriod];
-    const lbList = document.createElement('div');
-    lbList.className = 'lb-list';
-
-    // Show top 8 always; if current user is below rank 8, append separator + their row
-    const top8  = list.slice(0, 8);
-    const myRank = list.findIndex(p => p.isMe);
-    const showExtra = myRank >= 8;
-
-    top8.forEach((p, i) => {
-      lbList.appendChild(_makeLbRow(p, i, medals, unit));
-    });
-
-    if (showExtra) {
-      const sep = document.createElement('div');
-      sep.style.cssText = 'text-align:center;color:var(--muted);font-size:12px;padding:4px';
-      sep.textContent = '• • •';
-      lbList.appendChild(sep);
-      lbList.appendChild(_makeLbRow(list[myRank], myRank, medals, unit));
-    }
-
-    // Empty state
-    if (!list.length) {
-      const empty = document.createElement('div');
-      empty.style.cssText = 'text-align:center;color:var(--muted);padding:20px;font-size:13px';
-      empty.textContent = 'Hali hech kim yo\'q';
-      lbList.appendChild(empty);
-    }
-
-    container.appendChild(lbList);
-  });
-}
-
-// ── Row builder helper ────────────────────────────────────────────────────
-function _makeLbRow(p, rank, medals, unit) {
-  const div = document.createElement('div');
-  div.className = 'lb-row' + (p.isMe ? ' me' : '');
-
-  const rankColors = ['#f5c542','#8b949e','#b08040'];
-  const rankDisplay = rank < 3 ? medals[rank] : (rank + 1);
-  const rankColor   = rankColors[rank] || 'var(--muted)';
-
-  // Avatar — URL image or fallback emoji/dicebear
-  let avHtml;
-  if (p.avatar && (p.avatar.startsWith('http') || p.avatar.startsWith('data'))) {
-    const seed = encodeURIComponent(p.userId || p.name);
-    avHtml = `<img src="${p.avatar}"
-      onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${seed}'"
-      style="width:80%;height:80%;object-fit:contain">`;
-  } else {
-    // emoji or unknown
-    avHtml = p.avatar || '🤖';
-  }
-
-  div.innerHTML = `
-    <div class="lb-rank" style="color:${rankColor}">${rankDisplay}</div>
-    <div class="lb-av">${avHtml}</div>
-    <div class="lb-name">
-      ${escapeHtml(p.name)}
-      ${p.isMe ? '<span style="color:var(--al);font-size:11px;font-weight:700"> (Siz)</span>' : ''}
-    </div>
-    <div class="lb-xp">
-      ${p.xp.toLocaleString()}
-      <span style="font-size:10px;color:var(--muted);font-weight:600"> ${unit}</span>
-    </div>`;
-  return div;
-}
-
-// ── Safe HTML escape ──────────────────────────────────────────────────────
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// ── getMyXpForPeriod stays the same ──────────────────────────────────────
-function getMyXpForPeriod(period) {
-  const now = Date.now();
-  const DAY = 86_400_000;
-  const todayStart = new Date(); todayStart.setHours(0,0,0,0);
-  const cutoffs = {
-    today:   todayStart.getTime(),
-    week:    now - 7  * DAY,
-    month:   now - 30 * DAY,
-    alltime: 0,
-  };
-  const cut = cutoffs[period] ?? 0;
-  if (!U?.xpLog?.length) return 0;
-  return U.xpLog.filter(e => e.ts >= cut).reduce((s, e) => s + e.xp, 0);
-}
-
-// ── Battle: find a real online opponent ───────────────────────────────────
-let _mmTimer = null;
-
-async function findOpponent() {
-  openModal('modal-matchmaking');
-  document.getElementById('mm-title').textContent  = 'Raqib qidirilmoqda...';
-  document.getElementById('mm-sub').textContent    = 'Online o\'yinchilar qidirilmoqda';
-  document.getElementById('mm-spinner').style.animationDuration = '1s';
-
-  // Fetch real online users
-  const online = await fetchOnlinePlayers();
-  // Remove self
-  const myId   = String(U?.userId || '');
-  const others = online.filter(u => String(u.user_id) !== myId);
-
-  let elapsed = 0;
-  _mmTimer = setInterval(() => {
-    elapsed++;
-    document.getElementById('mm-sub').textContent = `${Math.min(elapsed * 34, 99)}% qidirildi...`;
-
-    if (elapsed < 2) return;   // show loading for at least 2s
-
-    clearInterval(_mmTimer);
-
-    if (others.length > 0) {
-      // Pick a random real online opponent
-      const raw  = others[Math.floor(Math.random() * others.length)];
-      const name = dbUserName(raw);
-      const opp  = {
-        name,
-        av:     raw.avatar_url || `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${raw.user_id}`,
-        xp:     raw.xp || 0,
-        userId: String(raw.user_id),
-      };
-      document.getElementById('mm-spinner').textContent           = '✅';
-      document.getElementById('mm-spinner').style.animationDuration = '0s';
-      document.getElementById('mm-title').textContent = `${name} topildi!`;
-      document.getElementById('mm-sub').textContent   = 'Jang boshlanmoqda...';
-      setTimeout(() => {
-        closeModal(null, 'modal-matchmaking');
-        startBattleWith(opp, false);
-      }, 1200);
-    } else {
-      // No real users online → bot fallback
-      document.getElementById('mm-spinner').textContent           = '🤖';
-      document.getElementById('mm-spinner').style.animationDuration = '0s';
-      document.getElementById('mm-title').textContent = 'Online raqib yo\'q';
-      document.getElementById('mm-sub').textContent   = 'Robot bilan o\'ynaysiz...';
-      setTimeout(() => {
-        closeModal(null, 'modal-matchmaking');
-        startBotBattle();
-      }, 1200);
-    }
-  }, 1000);
-}
-
-function cancelMatchmaking() {
-  clearInterval(_mmTimer);
-  closeModal(null, 'modal-matchmaking');
-}
-
-// ── Daily challenge leaderboard — real data ───────────────────────────────
-async function buildDCLeaderboard() {
-  const el = document.getElementById('dc-lb');
-  if (!el) return;
-
-  const users = await fetchRealLeaderboard();
-  const today = new Date().toDateString();
-  const myId  = String(U?.userId || '');
-
-  // Build list: use dailyScore[today] where available; otherwise 0
-  const scored = users.map(u => {
-    const isMe  = String(u.user_id) === myId;
-    // For others we don't store per-day data, so use 0 unless they are current user
-    const score = isMe ? ((U.dailyScore || {})[today] || 0) : 0;
-    return { name: isMe ? (U.name || dbUserName(u)) : dbUserName(u), score, isMe };
-  }).filter(u => u.isMe || u.score > 0);   // only show users with scores today
-
-  // Add current user if not already included
-  if (!scored.some(p => p.isMe)) {
-    scored.push({ name: U?.name || 'Siz', score: (U?.dailyScore||{})[today]||0, isMe: true });
-  }
-
-  scored.sort((a, b) => b.score - a.score);
-  const top5 = scored.slice(0, 5);
-
-  el.innerHTML = top5.map((p, i) => `
-    <div class="tournament-row${p.isMe ? ' me' : ''}">
-      <div class="tr-rank">${i + 1}</div>
-      <div class="tr-info"><div class="tr-name">${escapeHtml(p.name)}</div></div>
-      <div class="tr-score">${p.score} ball</div>
-    </div>
-  `).join('') || '<div style="color:var(--muted);font-size:12px;text-align:center;padding:10px">Bugun hali hech kim o\'ynamadi</div>';
-}
-
-// ── Tournament leaderboard — real data ───────────────────────────────────
-async function buildTournament() {
-  const users = await fetchRealLeaderboard();
-  const myId  = String(U?.userId || '');
-
-  const list = users.map(u => ({
-    name:  String(u.user_id) === myId ? (U.name || dbUserName(u)) : dbUserName(u),
-    xp:    u.xp || u.total_points || 0,
-    isMe:  String(u.user_id) === myId,
-  })).sort((a, b) => b.xp - a.xp);
-
-  const el = document.getElementById('tourn-lb');
-  if (el) {
-    const medals = ['🥇','🥈','🥉'];
-    el.innerHTML = list.slice(0, 8).map((p, i) => `
-      <div class="tournament-row${p.isMe ? ' me' : ''}">
-        <div class="tr-rank">${i < 3 ? medals[i] : i + 1}</div>
-        <div class="tr-info"><div class="tr-name">${escapeHtml(p.name)}${p.isMe?' (Siz)':''}</div></div>
-        <div class="tr-score">${p.xp.toLocaleString()} XP</div>
-      </div>`).join('') || '<div style="color:var(--muted);text-align:center;padding:14px">Ma\'lumot yuklanmoqda...</div>';
-  }
-
-  // Week countdown timer
-  const now     = new Date();
-  const sunday  = new Date(now);
-  sunday.setDate(now.getDate() + ((7 - now.getDay()) % 7 || 7));
-  sunday.setHours(23, 59, 59, 0);
-  const diff = sunday - now;
-  const h = Math.floor(diff / 3_600_000);
-  const m = Math.floor((diff % 3_600_000) / 60_000);
-  const s = Math.floor((diff % 60_000) / 1_000);
-  const te = document.getElementById('tourn-timer');
-  if (te) te.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-}
-
-// ── Group battle members — real data ─────────────────────────────────────
-async function buildGroupMembers() {
-  const el = document.getElementById('group-members');
-  if (!el) return;
-
-  const users = await fetchRealLeaderboard();
-  const myId  = String(U?.userId || '');
-  const top3  = users.slice(0, 3).map(u => ({
-    name:  String(u.user_id) === myId ? (U.name || dbUserName(u)) : dbUserName(u),
-    xp:    u.xp || 0,
-    isMe:  String(u.user_id) === myId,
-  }));
-
-  // Ensure current user is shown
-  if (!top3.some(p => p.isMe)) {
-    top3.push({ name: U?.name || 'Siz', xp: U?.xp || 0, isMe: true });
-    top3.sort((a, b) => b.xp - a.xp);
-  }
-
-  el.innerHTML = `
-    <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">GURUH REYTINGI</div>
-    ${top3.map((m, i) => `
-      <div class="tournament-row${m.isMe ? ' me' : ''}">
-        <div class="tr-rank">${i + 1}</div>
-        <div class="tr-info"><div class="tr-name">${escapeHtml(m.name)}${m.isMe?' (Siz)':''}</div></div>
-        <div class="tr-score">${m.xp.toLocaleString()} XP</div>
-      </div>`).join('')}
-    <button onclick="startGroupBattle()" style="width:100%;margin-top:10px;padding:11px;background:linear-gradient(135deg,var(--orange),#c75a2f);border:none;border-radius:12px;color:white;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif">
-      ⚔️ Guruh jangi boshlash
-    </button>`;
-}
-
-// ── syncToSupabase — push current user's XP back ─────────────────────────
-async function syncToSupabase(user) {
-  if (!user?.userId) return;
-  // Invalidate cache so next leaderboard fetch returns fresh data
-  _lbCache     = null;
-  _lbCacheTime = 0;
-  try {
-    await fetch(`${SUPABASE_URL}/rest/v1/users`, {
-      method: 'POST',
-      headers: {
-        'Content-Type':  'application/json',
-        'apikey':         SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Prefer':        'resolution=merge-duplicates',
-      },
-      body: JSON.stringify({
-        user_id:      String(user.userId),
-        first_name:   user.name,
-        avatar_url:   user.avatarUrl || user.avatar_url || '',
-        level:        user.level,
-        xp:           user.xp           || 0,
-        streak:       user.streak        || 0,
-        total_points: user.xp           || 0,
-        last_active:  new Date().toISOString(),
-      }),
-    });
-  } catch(e) {
-    console.warn('syncToSupabase error:', e.message);
-  }
-}';
-var APP_URL           = 'index.html';
-
-var tgUser  = null;
-// avatarSelected: foydalanuvchi qo'lda tanladimi — boshlanganda false
-var state   = { avatarUrl: '', level: '', avatarSelected: false, levelSelected: false };
-var selItem = null;
-
-function getStorageKey(uid) {
-  return uid ? 'ep_user_' + uid : 'ep_user_guest';
-}
-
-async function sbFetch(path, opts) {
-  opts = opts || {};
-  var res = await fetch(SUPABASE_URL + '/rest/v1/' + path, Object.assign({}, opts, {
-    headers: Object.assign({
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-    }, opts.headers || {}),
-  }));
-  if (!res.ok) throw new Error('SB ' + res.status + ': ' + await res.text());
-  var t = await res.text();
-  return t ? JSON.parse(t) : null;
-}
-
-// ─────────────────────────────────────────
-// INIT
-// ─────────────────────────────────────────
-async function init() {
-  try {
-    var tg = window.Telegram && window.Telegram.WebApp;
-    if (tg) { tg.ready(); tg.expand(); await new Promise(function(r){ setTimeout(r, 250); }); }
-
-    var u = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
-    if (u && u.id) {
-      tgUser = u;
-      await checkAndRedirect(u.id);
-    } else {
-      hideLoading(); showForm(); setupForm();
-    }
-  } catch(e) {
-    console.warn('init err:', e);
-    hideLoading(); showForm(); setupForm();
-  }
-}
-
-async function checkAndRedirect(uid) {
-  try {
-    var data = await sbFetch('users?user_id=eq.' + uid + '&select=user_id,username,first_name,last_name,level,avatar_url,xp,streak,total_points');
-    if (data && data.length > 0 && data[0].level) {
-      var r = data[0];
-      saveLocal(uid, { userId: r.user_id, name: r.first_name || r.username || 'User', level: r.level, avatarUrl: r.avatar_url || '', xp: r.xp || 0, streak: r.streak || 1, total_points: r.total_points || 0 });
-      window.location.replace(APP_URL);
-      return;
-    }
-  } catch(e) {
-    console.warn('SB check fail:', e);
-    try {
-      var raw = localStorage.getItem(getStorageKey(uid));
-      if (raw) {
-        var u2 = JSON.parse(raw);
-        if (u2 && u2.userId == uid && u2.name && u2.level && u2.avatarUrl) {
-          window.location.replace(APP_URL); return;
-        }
-      }
-    } catch(e2) {}
-  }
-  hideLoading(); showForm(); setupForm();
-}
-
-// ─────────────────────────────────────────
-// FORM SETUP — ism Telegramdan, majburiy emas
-// ─────────────────────────────────────────
-function setupForm() {
-  buildGrid('bots');
-
-  // Ismni ko'rsatish
-  var displayName = 'Telegram User';
-  var username    = '';
-  if (tgUser) {
-    var fn = (tgUser.first_name || '').trim();
-    var ln = (tgUser.last_name  || '').trim();
-    username    = (tgUser.username || '').trim();
-    displayName = ([fn, ln].filter(Boolean).join(' ')) || username || 'Telegram User';
-  }
-
-  document.getElementById('name-val').textContent   = displayName;
-  document.getElementById('prev-name').textContent  = displayName;
-  document.getElementById('prev-tg').textContent    = username ? ('@' + username) : 'Essential English PRO';
-  if (tgUser) document.getElementById('tg-verified').classList.add('show');
-
-  // state ga ism saqlash
-  state.name = displayName;
-
-  // Avatar va daraja TANLANMAGAN holatda boshlanadi
-  state.avatarSelected = false;
-  state.levelSelected  = false;
-  state.avatarUrl      = '';
-  state.level          = '';
-}
-
-// ─────────────────────────────────────────
-// AVATAR
-// ─────────────────────────────────────────
-var SEEDS = {
-  bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8','J9','K0','L1','M2','P3','Q4','R5','S6'],
-  avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler','Parker','Harley','Jamie','Devon','Robin','Sam','Chris','Taylor','Lee','Kim','Dana','Pat'],
-  animals: ['Felix','Mittens','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Latte','Matcha','Sesame','Dumpling','Taro','Yuzu','Coco','Pepper','Ginger','Maple','Honey','Chai','Panda','Koala'],
+// ── AVATAR ──
+const SEEDS = {
+  bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8'],
+  avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler'],
+  animals: ['Felix','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Coco','Pepper','Maple'],
 };
-var STYLES = { bots: 'bottts-neutral', avatars: 'adventurer-neutral', animals: 'thumbs' };
+const STYLES = { bots:'bottts-neutral', avatars:'adventurer-neutral', animals:'thumbs' };
 
 function buildGrid(tab) {
-  var grid = document.getElementById('av-grid');
+  const grid = document.getElementById('av-grid');
   grid.innerHTML = '';
   selItem = null;
-  SEEDS[tab].forEach(function(seed) {
-    var url = 'https://api.dicebear.com/7.x/' + STYLES[tab] + '/svg?seed=' + seed;
-    var el  = document.createElement('div');
+  SEEDS[tab].forEach(seed => {
+    const url = `https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
+    const el  = document.createElement('div');
     el.className = 'av-item';
-    el.innerHTML = '<img src="' + url + '" loading="lazy">';
-    el.onclick = function() {
+    el.innerHTML = `<img src="${url}" loading="lazy">`;
+    el.onclick = () => {
       if (selItem) selItem.classList.remove('sel');
       el.classList.add('sel');
       selItem = el;
-      state.avatarUrl      = url;
-      state.avatarSelected = true;
-      showPreview(url);
-      // xatoni yashirish
-      document.getElementById('err-avatar').classList.remove('show');
+      state.avatarUrl = url;
+      showAvatar(url);
     };
     grid.appendChild(el);
   });
 }
 
 function switchTab(tab, btn) {
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   buildGrid(tab);
 }
 
-function showPreview(url) {
-  var img = document.getElementById('av-img');
+function showAvatar(url) {
+  const img = document.getElementById('av-img');
   img.src = url;
   img.style.display = 'block';
   document.getElementById('av-emoji').style.display = 'none';
 }
 
-// ─────────────────────────────────────────
-// DARAJA
-// ─────────────────────────────────────────
+document.getElementById('file-up').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    state.avatarUrl = ev.target.result;
+    showAvatar(ev.target.result);
+    if (selItem) { selItem.classList.remove('sel'); selItem = null; }
+  };
+  r.readAsDataURL(f);
+});
+
 function pickLevel(el) {
-  document.querySelectorAll('.lv').forEach(function(b){ b.className = 'lv'; });
-  var lv = el.dataset.lv;
-  state.level         = lv;
-  state.levelSelected = true;
-  el.classList.add(lv === 'beginner' ? 'sel-b' : lv === 'intermediate' ? 'sel-i' : 'sel-a');
-  document.getElementById('err-level').classList.remove('show');
+  document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
+  state.level = el.dataset.lv;
+  el.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
 }
 
-// ─────────────────────────────────────────
-// SUBMIT — avatar VA daraja MAJBURIY
-// ─────────────────────────────────────────
+// ── TELEGRAM INIT ──
+async function initApp() {
+  const tg = window.Telegram?.WebApp;
+
+  if (tg) {
+    tg.ready();
+    tg.expand();
+    tg.setHeaderColor && tg.setHeaderColor('#0d1117');
+    tg.setBackgroundColor && tg.setBackgroundColor('#0d1117');
+  }
+
+  // Telegram user olish
+  tgUser = tg?.initDataUnsafe?.user ?? null;
+
+  // Localhost da test uchun
+  if (!tgUser && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+    tgUser = { id: 999999999, first_name: 'Test', last_name: 'Dev', username: 'testdev' };
+  }
+
+  if (!tgUser) {
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('error-screen').style.display  = 'flex';
+    return;
+  }
+
+  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+  document.getElementById('prev-name').textContent = fullName;
+  document.getElementById('prev-tg').textContent   = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
+
+  // Supabase tekshirish
+  try {
+    const { data: existing } = await db
+      .from('users')
+      .select('user_id, level, avatar_url')
+      .eq('user_id', tgUser.id)
+      .maybeSingle();
+
+    // Profil to'liq tayyor bo'lsa — to'g'ridan app ga
+    if (existing?.level && existing?.avatar_url) {
+      saveLocal({ ...existing, name: fullName, avatarUrl: existing.avatar_url });
+      window.location.replace(APP_URL);
+      return;
+    }
+
+    // Daraja mavjud bo'lsa — UI da belgilash
+    if (existing?.level) {
+      state.level = existing.level;
+      document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
+      const lvEl = document.querySelector(`[data-lv="${state.level}"]`);
+      if (lvEl) lvEl.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
+    }
+  } catch(e) {
+    console.warn('Supabase:', e.message);
+  }
+
+  document.getElementById('loading-screen').style.display = 'none';
+  document.getElementById('main-outer').style.display = 'grid';
+  buildGrid('bots');
+}
+
+// ── SAQLASH ──
 async function saveProfile() {
-  var ok = true;
+  if (!tgUser) return;
 
-  // Avatar tekshiruvi
-  if (!state.avatarSelected || !state.avatarUrl) {
-    document.getElementById('err-avatar').classList.add('show');
-    ok = false;
-  } else {
-    document.getElementById('err-avatar').classList.remove('show');
-  }
-
-  // Daraja tekshiruvi
-  if (!state.levelSelected || !state.level) {
-    document.getElementById('err-level').classList.add('show');
-    ok = false;
-  } else {
-    document.getElementById('err-level').classList.remove('show');
-  }
-
-  if (!ok) return;
-
-  var btn = document.getElementById('submit-btn');
+  const btn = document.getElementById('submit-btn');
   btn.disabled    = true;
   btn.textContent = '⏳ Saqlanmoqda...';
 
-  var uid  = tgUser ? tgUser.id : null;
-  var name = state.name || (tgUser ? (tgUser.first_name || tgUser.username || 'User') : 'User');
+  const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
 
-  try {
-    saveLocal(uid, {});
-    if (uid) {
-      upsertSB(uid, name, state.avatarUrl, state.level)
-        .catch(function(e){ console.warn('SB upsert bg:', e); });
-    }
-    window.location.href = APP_URL;
-  } catch(e) {
-    console.error('saveProfile err:', e);
-    try { saveLocal(uid, {}); } catch(e2) {}
-    window.location.href = APP_URL;
+  if (!state.avatarUrl) {
+    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
   }
+
+  const localUser = {
+    user_id:  tgUser.id,
+    name:     fullName,
+    username: tgUser.username || '',
+    first_name: tgUser.first_name,
+    last_name:  tgUser.last_name || '',
+    level:    state.level,
+    avatarUrl: state.avatarUrl,
+    avatar_url: state.avatarUrl,
+    xp: 0, streak: 0, learnedWords: [], wordErrors: {}, customWords: [],
+    unitProgress: { beginner:0, intermediate:0, advanced:0 },
+    currentUnit:  { beginner:1, intermediate:1, advanced:1 },
+    lastBook:1, lastUnit:1, isPremium:false, premiumExpiry:0,
+    lastLogin: new Date().toDateString(), createdAt: Date.now(),
+  };
+
+  // Supabase ga saqlash — muvaffaqiyatsiz bo'lsa ham davom etamiz
+  try {
+    const { error } = await db.from('users').upsert({
+      user_id:     tgUser.id,
+      username:    tgUser.username   || null,
+      first_name:  tgUser.first_name,
+      last_name:   tgUser.last_name  || null,
+      level:       state.level,
+      avatar_url:  state.avatarUrl,
+      last_active: new Date().toISOString(),
+    }, { onConflict: 'user_id' });
+
+    if (error) console.error('Supabase upsert error:', error);
+  } catch(err) {
+    console.error('Supabase error:', err);
+  }
+
+  // Har holda localga saqlab, app ga o'tamiz
+  saveLocal(localUser);
+  window.location.href = APP_URL;
 }
 
-// ─────────────────────────────────────────
-// LOCAL STORAGE
-// ─────────────────────────────────────────
-function saveLocal(uid, overrides) {
-  overrides = overrides || {};
-  var key = getStorageKey(uid);
-  var ex  = {};
-  try { var r = localStorage.getItem(key); if (r) ex = JSON.parse(r); } catch(e) {}
-
-  var name      = overrides.name      || state.name      || (tgUser ? (tgUser.first_name || tgUser.username || 'User') : 'User');
-  var avatarUrl = overrides.avatarUrl !== undefined ? overrides.avatarUrl : state.avatarUrl;
-  var level     = overrides.level     || state.level     || 'beginner';
-
-  var user = Object.assign({}, ex, {
-    userId:       overrides.userId        != null ? overrides.userId        : uid,
-    name:         name,
-    level:        level,
-    avatarUrl:    avatarUrl,
-    avatar_url:   avatarUrl,
-    xp:           overrides.xp            != null ? overrides.xp            : (ex.xp            || 0),
-    streak:       overrides.streak        != null ? overrides.streak        : (ex.streak        || 1),
-    total_points: overrides.total_points  != null ? overrides.total_points  : (ex.total_points  || 0),
-    learnedWords: ex.learnedWords  || [],
-    wordErrors:   ex.wordErrors    || {},
-    customWords:  ex.customWords   || [],
-    unitProgress: ex.unitProgress  || { beginner:0, intermediate:0, advanced:0 },
-    currentUnit:  ex.currentUnit   || { beginner:1, intermediate:1, advanced:1 },
-    lastBook:     ex.lastBook      || 1,
-    lastUnit:     ex.lastUnit      || 1,
-    battleWins:   ex.battleWins    || 0,
-    battleLosses: ex.battleLosses  || 0,
-    battleXP:     ex.battleXP      || 0,
-    dailyScore:   ex.dailyScore    || {},
-    grammarLevel: ex.grammarLevel  || level,
-    isPremium:    overrides.isPremium != null ? overrides.isPremium : (ex.isPremium || false),
-    premiumExpiry:overrides.premiumExpiry != null ? overrides.premiumExpiry : (ex.premiumExpiry || 0),
-    lastLogin:    new Date().toDateString(),
-    createdAt:    ex.createdAt || Date.now(),
-    lastSyncedAt: Date.now(),
-  });
-
-  var json = JSON.stringify(user);
-  localStorage.setItem(key, json);
-  localStorage.setItem('ep_user', json);
-  sessionStorage.setItem('ep_user', json);
-  return user;
+function saveLocal(user) {
+  const j = JSON.stringify(user);
+  try { localStorage.setItem('ep_user', j); } catch(e){}
+  try { sessionStorage.setItem('ep_user', j); } catch(e){}
 }
 
-async function upsertSB(uid, name, avatarUrl, level) {
-  await sbFetch('users', {
-    method: 'POST',
-    headers: { 'Prefer': 'resolution=merge-duplicates' },
-    body: JSON.stringify({ user_id: uid, first_name: name, avatar_url: avatarUrl, level: level, last_active: new Date().toISOString() }),
-  });
-}
-
-function hideLoading() {
-  var o = document.getElementById('loading-overlay');
-  o.classList.add('hidden');
-  setTimeout(function(){ o.style.display = 'none'; }, 400);
-}
-function showForm() {
-  document.getElementById('main-form').style.display = 'grid';
-}
-
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', initApp);
 </script>
 </body>
 </html>
