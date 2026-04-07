@@ -920,9 +920,6 @@ function shuffle(arr){
 // ══════════════════════════════════════════════════════════
 // SUPABASE CONFIG
 // ══════════════════════════════════════════════════════════
-// ══════════════════════════════════════════════════════════
-// SUPABASE CONFIG
-// ══════════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
 
@@ -983,10 +980,19 @@ async function sbFetchUser(userId) {
 }
 
 async function syncToSupabase(user) {
-  if (!user || !user.userId) return;
+  // Support both field names: userId (app) and user_id (registration)
+  const uid = user && (user.userId || user.user_id);
+  if (!uid) return;
   // Invalidate leaderboard cache so next view shows fresh XP
   _lbCache     = null;
   _lbCacheTime = 0;
+  // Never store base64 image data in DB — only store URL strings
+  const avatarUrl  = user.avatarUrl || user.avatar_url || '';
+  const safeAvatar = avatarUrl.startsWith('data:') ? '' : avatarUrl;
+  // Split full name into first/last name for DB columns
+  const nameParts = (user.name || '').trim().split(' ');
+  const firstName = nameParts[0] || '';
+  const lastName  = nameParts.slice(1).join(' ') || null;
   try {
     await fetch(`${SUPABASE_URL}/rest/v1/users`, {
       method: 'POST',
@@ -997,9 +1003,10 @@ async function syncToSupabase(user) {
         'Prefer':        'resolution=merge-duplicates',
       },
       body: JSON.stringify({
-        user_id:      String(user.userId),
-        first_name:   user.name,
-        avatar_url:   user.avatarUrl || user.avatar_url || '',
+        user_id:      String(uid),
+        first_name:   firstName,
+        last_name:    lastName,
+        avatar_url:   safeAvatar,
         level:        user.level,
         xp:           user.xp || 0,
         streak:       user.streak || 0,
@@ -1103,6 +1110,11 @@ async function loadUser() {
       localStorage.setItem('ep_user', json);
       sessionStorage.setItem('ep_user', json);
     }
+  }
+
+  // Normalize field names: registration saves user_id, app uses userId
+  if (localUser && localUser.user_id && !localUser.userId) {
+    localUser.userId = localUser.user_id;
   }
 
   if (!localUser || !localUser.name || !localUser.level) {
@@ -2240,12 +2252,15 @@ function addXP(n){
 }
 function saveUser(){
   if (!U) return;
-  const storageKey = getStorageKey(U.userId || null);
+  // Support both field names for backward compatibility with register page
+  const uid = U.userId || U.user_id || null;
+  if (uid && !U.userId) U.userId = uid; // normalize field name
+  const storageKey = getStorageKey(uid);
   const json = JSON.stringify(U);
   localStorage.setItem(storageKey, json);
   localStorage.setItem('ep_user', json);
   sessionStorage.setItem('ep_user', json);
-  if (U.userId) {
+  if (uid) {
     syncToSupabase(U).catch(e => console.warn('Supabase sync:', e));
   }
 }
@@ -2286,7 +2301,8 @@ function toggleTheme(){
 
 function logoutUser(){
   if(!confirm('Profildan chiqmoqchimisiz?')) return;
-  const storageKey = getStorageKey(U?.userId || null);
+  const uid = U?.userId || U?.user_id || null;
+  const storageKey = getStorageKey(uid);
   localStorage.removeItem(storageKey);
   localStorage.removeItem('ep_user');
   sessionStorage.removeItem('ep_user');
@@ -3161,7 +3177,6 @@ function buildQuizQ(){
     el.onclick=()=>{
       if(QS.answered)return; QS.answered=true;
       c.querySelectorAll('.gopt').forEach(op=>{ op.style.pointerEvents='none'; });
-      const chosen = isUzEng ? o.word : o.word;
       if(o.word===correct.word){
         el.classList.add('correct'); QS.score++;
         addXP(1);
@@ -5397,9 +5412,9 @@ const PREMIUM_AVATARS = [
 // ╚══════════════════════════════════════════════════════════════╝
 const AI_CONFIG = {
   enabled: true,
-  provider: 'gemini',
-  apiKey: 'AIzaSyA2ajPiE4exZkF3WppJrptMl9eP9r7IRho',
-  model: 'gemini-2.0-flash',
+  provider: 'openrouter',
+  apiKey: '',              // ← Shu yerga openrouter.ai dan olgan API keyingizni qo'ying
+  model: 'meta-llama/llama-3.1-8b-instruct:free',
   baseURL: 'https://openrouter.ai/api/v1/chat/completions',
   maxTokens: 600,
 };
@@ -5676,7 +5691,7 @@ App.progress = {
       else if(q.stat==='quizToday') val = daily.quiz||0;
       else if(q.stat==='battlesToday') val = daily.battles||0;
       else if(q.stat==='perfectQuiz') val = daily.perfectQuiz||0;
-      return { ...q, current: Math.min(val, q.goal), done: !!(U.completedQuests||{})[qKey+tk] };
+      return { ...q, current: Math.min(val, q.goal), done: !!(U.completedQuests||{})[qKey] };
     });
   },
 
@@ -6344,14 +6359,7 @@ App.events.on('combo:updated', (combo)=>{
 // ═══════════════════════════════════════════════════════════════════════════
 // AI SPEAKING FEEDBACK HOOK (auto-activates when AI is on)
 // ═══════════════════════════════════════════════════════════════════════════
-App.events.on('speaking:analyzed', async ({ word, heard, score })=>{
-  if(!AI_CONFIG.enabled) return;
-  const tip = await App.ai.speakingFeedback(word, heard, score).catch(()=>null);
-  if(tip){
-    const el = document.getElementById('sp-ai-tip');
-    if(el){ el.textContent = '🤖 ' + tip; el.style.display='block'; }
-  }
-});
+// speaking:analyzed event is handled below (in the AI engine section)
 
 // ═══════════════════════════════════════════════════════════════════════════
 // CONNECT LEGACY FUNCTIONS TO NEW MODULES
