@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Essential English PRO — Profil</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<!-- Telegram WebApp SDK — MUHIM, birinchi bo'lishi kerak -->
+<!-- Telegram WebApp SDK -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -85,6 +85,9 @@ body::before{
   font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
 }
 .av-upload-badge:hover{transform:scale(1.1)}
+
+/* FIX: wrap name+handle so they stack vertically in mobile flex row */
+.prev-info{display:flex;flex-direction:column;gap:2px}
 .prev-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;text-align:center;margin-bottom:3px}
 .prev-tg{font-size:12px;color:var(--muted);margin-bottom:10px}
 .tg-verified{display:flex;align-items:center;gap:6px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:7px 12px;margin-bottom:16px}
@@ -136,7 +139,10 @@ body::before{
   .av-ring-wrap{width:70px;height:70px;margin-bottom:0;flex-shrink:0}
   .av-circle{width:70px;height:70px;font-size:30px}
   .av-upload-badge{width:22px;height:22px;font-size:10px;bottom:0;right:0;border-width:2px}
-  .prev-name{font-size:15px;margin-bottom:2px}
+  /* FIX: on mobile, prev-info stacks vertically next to the avatar */
+  .prev-info{flex:1;min-width:0}
+  .prev-name{font-size:15px;margin-bottom:2px;text-align:left}
+  .prev-tg{margin-bottom:0;text-align:left}
   .right{padding:18px 16px 22px}
   .right h1{font-size:20px}
   .av-grid{grid-template-columns:repeat(5,1fr);max-height:130px}
@@ -179,15 +185,18 @@ body::before{
         </defs>
         <circle cx="83" cy="83" r="79" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="320 170"/>
       </svg>
-      <div class="av-circle" onclick="document.getElementById('file-up').click()">
+      <div class="av-circle" id="av-circle-btn">
         <img id="av-img" src="" alt="">
         <span id="av-emoji">🤖</span>
       </div>
-      <label class="av-upload-badge" for="file-up">📷</label>
+      <label class="av-upload-badge" for="file-up" title="Rasm yuklash">📷</label>
       <input type="file" id="file-up" accept="image/*" style="display:none">
     </div>
-    <div class="prev-name" id="prev-name">...</div>
-    <div class="prev-tg" id="prev-tg"></div>
+    <!-- FIX: wrapped in .prev-info so they stack vertically on mobile -->
+    <div class="prev-info">
+      <div class="prev-name" id="prev-name">...</div>
+      <div class="prev-tg" id="prev-tg"></div>
+    </div>
     <div class="tg-verified">
       <span class="tg-v-icon">✅</span>
       <span class="tg-v-txt">Telegram orqali tasdiqlangan</span>
@@ -236,18 +245,19 @@ body::before{
 </div>
 
 <script>
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════
 // CONFIG
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE'; // ← Supabase > Settings > API > anon public
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
 const APP_URL           = 'app.html';
 
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let tgUser  = null;
-let state   = { avatarUrl: '', level: 'beginner' };
+// FIX: track whether user uploaded a custom file (base64) separately
+let state   = { avatarUrl: '', avatarIsFile: false, level: 'beginner' };
 let selItem = null;
 
 // ── AVATAR ──
@@ -271,7 +281,8 @@ function buildGrid(tab) {
       if (selItem) selItem.classList.remove('sel');
       el.classList.add('sel');
       selItem = el;
-      state.avatarUrl = url;
+      state.avatarUrl    = url;
+      state.avatarIsFile = false;   // it's a URL, safe to store in DB
       showAvatar(url);
     };
     grid.appendChild(el);
@@ -291,17 +302,28 @@ function showAvatar(url) {
   document.getElementById('av-emoji').style.display = 'none';
 }
 
+// FIX: file upload — mark as file so we don't push base64 to Supabase
 document.getElementById('file-up').addEventListener('change', e => {
   const f = e.target.files[0];
   if (!f) return;
+  if (f.size > 2 * 1024 * 1024) {
+    alert('Rasm 2MB dan kichik bo\'lishi kerak');
+    e.target.value = '';
+    return;
+  }
   const r = new FileReader();
   r.onload = ev => {
-    state.avatarUrl = ev.target.result;
+    state.avatarUrl    = ev.target.result; // base64 — only stored locally
+    state.avatarIsFile = true;             // skip pushing this to Supabase
     showAvatar(ev.target.result);
     if (selItem) { selItem.classList.remove('sel'); selItem = null; }
   };
   r.readAsDataURL(f);
 });
+
+document.getElementById('av-circle-btn').onclick = () => {
+  document.getElementById('file-up').click();
+};
 
 function pickLevel(el) {
   document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
@@ -316,14 +338,13 @@ async function initApp() {
   if (tg) {
     tg.ready();
     tg.expand();
-    tg.setHeaderColor && tg.setHeaderColor('#0d1117');
+    tg.setHeaderColor  && tg.setHeaderColor('#0d1117');
     tg.setBackgroundColor && tg.setBackgroundColor('#0d1117');
   }
 
-  // Telegram user olish
   tgUser = tg?.initDataUnsafe?.user ?? null;
 
-  // Localhost da test uchun
+  // Localhost test mode
   if (!tgUser && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     tgUser = { id: 999999999, first_name: 'Test', last_name: 'Dev', username: 'testdev' };
   }
@@ -338,7 +359,7 @@ async function initApp() {
   document.getElementById('prev-name').textContent = fullName;
   document.getElementById('prev-tg').textContent   = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
 
-  // Supabase tekshirish
+  // Check Supabase for existing profile
   try {
     const { data: existing } = await db
       .from('users')
@@ -346,14 +367,21 @@ async function initApp() {
       .eq('user_id', tgUser.id)
       .maybeSingle();
 
-    // Profil to'liq tayyor bo'lsa — to'g'ridan app ga
+    // Profile complete — go straight to app
     if (existing?.level && existing?.avatar_url) {
-      saveLocal({ ...existing, name: fullName, avatarUrl: existing.avatar_url });
+      saveLocal(buildLocalUser({
+        ...existing,
+        name:      fullName,
+        avatarUrl: existing.avatar_url,
+        // FIX: ensure both field names are present
+        userId:    existing.user_id,
+        user_id:   existing.user_id,
+      }));
       window.location.replace(APP_URL);
       return;
     }
 
-    // Daraja mavjud bo'lsa — UI da belgilash
+    // Restore saved level if exists
     if (existing?.level) {
       state.level = existing.level;
       document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
@@ -361,15 +389,15 @@ async function initApp() {
       if (lvEl) lvEl.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
     }
   } catch(e) {
-    console.warn('Supabase:', e.message);
+    console.warn('Supabase check:', e.message);
   }
 
   document.getElementById('loading-screen').style.display = 'none';
-  document.getElementById('main-outer').style.display = 'grid';
+  document.getElementById('main-outer').style.display     = 'grid';
   buildGrid('bots');
 }
 
-// ── SAQLASH ──
+// ── SAVE PROFILE ──
 async function saveProfile() {
   if (!tgUser) return;
 
@@ -379,35 +407,24 @@ async function saveProfile() {
 
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
 
+  // Default avatar if none selected
   if (!state.avatarUrl) {
-    state.avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
+    state.avatarUrl    = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
+    state.avatarIsFile = false;
   }
 
-  const localUser = {
-    user_id:  tgUser.id,
-    name:     fullName,
-    username: tgUser.username || '',
-    first_name: tgUser.first_name,
-    last_name:  tgUser.last_name || '',
-    level:    state.level,
-    avatarUrl: state.avatarUrl,
-    avatar_url: state.avatarUrl,
-    xp: 0, streak: 0, learnedWords: [], wordErrors: {}, customWords: [],
-    unitProgress: { beginner:0, intermediate:0, advanced:0 },
-    currentUnit:  { beginner:1, intermediate:1, advanced:1 },
-    lastBook:1, lastUnit:1, isPremium:false, premiumExpiry:0,
-    lastLogin: new Date().toDateString(), createdAt: Date.now(),
-  };
+  // FIX: only store URL-based avatars in Supabase, not base64 blobs
+  const dbAvatarUrl = state.avatarIsFile ? '' : state.avatarUrl;
 
-  // Supabase ga saqlash — muvaffaqiyatsiz bo'lsa ham davom etamiz
+  // Supabase upsert — fail gracefully
   try {
     const { error } = await db.from('users').upsert({
       user_id:     tgUser.id,
-      username:    tgUser.username   || null,
+      username:    tgUser.username    || null,
       first_name:  tgUser.first_name,
-      last_name:   tgUser.last_name  || null,
+      last_name:   tgUser.last_name   || null,
       level:       state.level,
-      avatar_url:  state.avatarUrl,
+      avatar_url:  dbAvatarUrl,
       last_active: new Date().toISOString(),
     }, { onConflict: 'user_id' });
 
@@ -416,15 +433,59 @@ async function saveProfile() {
     console.error('Supabase error:', err);
   }
 
-  // Har holda localga saqlab, app ga o'tamiz
+  // Always save locally and navigate to app
+  const localUser = buildLocalUser({
+    user_id:   tgUser.id,
+    name:      fullName,
+    username:  tgUser.username || '',
+    first_name: tgUser.first_name,
+    last_name:  tgUser.last_name || '',
+    level:     state.level,
+    avatarUrl: state.avatarUrl,  // full URL or base64 — stored locally
+    avatar_url: dbAvatarUrl,     // URL only — synced to DB
+  });
+
   saveLocal(localUser);
   window.location.href = APP_URL;
 }
 
+/**
+ * Build a complete local user object.
+ * FIX: saves BOTH userId and user_id so app.html can read either.
+ */
+function buildLocalUser(data) {
+  const id = data.user_id || data.userId;
+  return {
+    // FIX: both field names present for compatibility
+    userId:    id,
+    user_id:   id,
+
+    name:        data.name || [data.first_name, data.last_name].filter(Boolean).join(' '),
+    username:    data.username    || '',
+    first_name:  data.first_name  || '',
+    last_name:   data.last_name   || '',
+    level:       data.level       || 'beginner',
+    avatarUrl:   data.avatarUrl   || data.avatar_url || '',
+    avatar_url:  data.avatar_url  || data.avatarUrl  || '',
+
+    xp: 0, streak: 0,
+    learnedWords: [], wordErrors: {}, customWords: [],
+    unitProgress: { beginner:0, intermediate:0, advanced:0 },
+    currentUnit:  { beginner:1, intermediate:1, advanced:1 },
+    lastBook: 1, lastUnit: 1,
+    isPremium: false, premiumExpiry: 0,
+    lastLogin:  new Date().toDateString(),
+    createdAt:  Date.now(),
+    lastSyncedAt: Date.now(),
+  };
+}
+
 function saveLocal(user) {
   const j = JSON.stringify(user);
-  try { localStorage.setItem('ep_user', j); } catch(e){}
-  try { sessionStorage.setItem('ep_user', j); } catch(e){}
+  try { localStorage.setItem('ep_user', j); } catch(e) {}
+  // Also save under user-specific key for multi-account support
+  try { localStorage.setItem(`ep_user_${user.userId}`, j); } catch(e) {}
+  try { sessionStorage.setItem('ep_user', j); } catch(e) {}
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
