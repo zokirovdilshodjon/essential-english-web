@@ -984,6 +984,9 @@ async function sbFetchUser(userId) {
 
 async function syncToSupabase(user) {
   if (!user || !user.userId) return;
+  // Invalidate leaderboard cache so next view shows fresh XP
+  _lbCache     = null;
+  _lbCacheTime = 0;
   try {
     await fetch(`${SUPABASE_URL}/rest/v1/users`, {
       method: 'POST',
@@ -994,7 +997,7 @@ async function syncToSupabase(user) {
         'Prefer':        'resolution=merge-duplicates',
       },
       body: JSON.stringify({
-        user_id:      user.userId,
+        user_id:      String(user.userId),
         first_name:   user.name,
         avatar_url:   user.avatarUrl || user.avatar_url || '',
         level:        user.level,
@@ -1004,7 +1007,9 @@ async function syncToSupabase(user) {
         last_active:  new Date().toISOString(),
       }),
     });
-  } catch(e) {}
+  } catch(e) {
+    console.warn('syncToSupabase:', e.message);
+  }
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1128,27 +1133,7 @@ let U = null;
 let cardIdx = 0, cardFlipped = false;
 let currentUnitWords = [];
 
-// ══════════════════════════════════════════════════════════
-// LEADERBOARD — Supabase dan REAL foydalanuvchilar
-// FAKE_LB ni o'chiring, shu funksiyalarni ishlating
-// ══════════════════════════════════════════════════════════
-let LB_CACHE = null; // Cache — har safar so'rov ketmasin
-
-async function fetchRealLeaderboard() {
-  if (LB_CACHE) return LB_CACHE;
-  try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp,total_points&order=xp.desc&limit=50`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    LB_CACHE = data;
-    return data;
-  } catch(e) {
-    return [];
-  }
-}
+// fetchRealLeaderboard and fetchOnlinePlayers defined below
 
 // Leaderboard render — container elementni ID bilan bering
 async function renderLeaderboard(containerId, myUserId) {
@@ -1216,7 +1201,7 @@ async function fetchOnlinePlayers() {
     return [];
   }
 }
-
+</script>
 <div id="app">
   <!-- TOPBAR -->
   <div>
@@ -2743,63 +2728,145 @@ function getMyXpForPeriod(period){
   return U.xpLog.filter(e=>e.ts >= cut).reduce((s,e)=>s+e.xp, 0);
 }
 
-function buildLeaderboard(){
-  // Fake LB uchun davr XP ni proporsional hisob
-  const COEF = {today:0.008, week:0.05, month:0.22, alltime:1};
+// ── Real leaderboard cache ──────────────────────────────────────────────
+let _lbCache = null, _lbCacheTime = 0;
+const LB_CACHE_TTL = 60000;
+
+async function fetchRealLeaderboard() {
+  const now = Date.now();
+  if (_lbCache && now - _lbCacheTime < LB_CACHE_TTL) return _lbCache;
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp,total_points&order=xp.desc&limit=50`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    _lbCache = Array.isArray(data) ? data : [];
+    _lbCacheTime = now;
+    return _lbCache;
+  } catch(e) {
+    console.warn('fetchRealLeaderboard:', e.message);
+    return _lbCache || [];
+  }
+}
+
+function _lbUserName(u) {
+  return ([u.first_name||'', u.last_name||''].join(' ').trim()) || u.username || 'Foydalanuvchi';
+}
+
+async function buildLeaderboard() {
   const LABELS = {today:'📅 Bugun', week:'📆 Hafta', month:'🗓 Oy', alltime:'🏆 Barcha'};
   const UNITS  = {today:'bugun',   week:'hafta',    month:'oy',     alltime:'XP'};
+  const PERIOD_FRAC = {today:0.008, week:0.05, month:0.22, alltime:1};
 
-  ['lb-main','lb-modal'].forEach(containerId=>{
-    const container = document.getElementById(containerId); if(!container) return;
+  const users = await fetchRealLeaderboard();
+  const myId  = String(U?.userId || '');
+
+  ['lb-main','lb-modal'].forEach(containerId => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
     container.innerHTML = '';
 
-    // Davr tablar
+    // Period tab buttons
     const tabs = document.createElement('div');
     tabs.style = 'display:flex;gap:5px;margin-bottom:10px';
-    ['today','week','month','alltime'].forEach(p=>{
+    ['today','week','month','alltime'].forEach(p => {
+      const on  = _lbPeriod === p;
       const btn = document.createElement('button');
-      const on = _lbPeriod === p;
-      btn.style = `flex:1;padding:5px 2px;border-radius:20px;font-size:10px;font-weight:800;`+
-                  `font-family:'Nunito',sans-serif;cursor:pointer;`+
-                  `border:1.5px solid ${on?'var(--accent)':'var(--border)'};`+
-                  `background:${on?'rgba(124,90,246,.15)':'var(--s2)'};`+
+      btn.style = `flex:1;padding:5px 2px;border-radius:20px;font-size:10px;font-weight:800;` +
+                  `font-family:'Nunito',sans-serif;cursor:pointer;` +
+                  `border:1.5px solid ${on?'var(--accent)':'var(--border)'};` +
+                  `background:${on?'rgba(124,90,246,.15)':'var(--s2)'};` +
                   `color:${on?'var(--al)':'var(--muted)'}`;
       btn.textContent = LABELS[p];
-      btn.onclick = ()=>{ _lbPeriod=p; buildLeaderboard(); };
+      btn.onclick = () => { _lbPeriod = p; buildLeaderboard(); };
       tabs.appendChild(btn);
     });
     container.appendChild(tabs);
 
-    // XP hisoblash
-    const coef   = COEF[_lbPeriod];
-    const myXP   = _lbPeriod==='alltime' ? (U.xp||0) : getMyXpForPeriod(_lbPeriod);
-    const myEntry = {name:U.name, xp:myXP, isMe:true, av:U.avatarUrl||U.avatarEmoji||'🤖'};
-    const others  = FAKE_LB.map(x=>({
-      ...x,
-      xp: _lbPeriod==='alltime' ? x.xp : Math.round(x.xp * coef),
-      isMe: false
-    }));
-    const lb = [...others, myEntry].sort((a,b)=>b.xp-a.xp);
+    // Build list from real DB users
+    const frac = PERIOD_FRAC[_lbPeriod] || 1;
+    const list_data = users.map(u => {
+      const isMe = String(u.user_id) === myId;
+      const rawXP = u.xp || u.total_points || 0;
+      let xp = _lbPeriod === 'alltime' ? rawXP : Math.round(rawXP * frac);
+      if (isMe && _lbPeriod !== 'alltime') xp = getMyXpForPeriod(_lbPeriod);
+      return {
+        name:   isMe ? (U.name || _lbUserName(u)) : _lbUserName(u),
+        xp,
+        avatar: u.avatar_url || '',
+        userId: String(u.user_id),
+        isMe,
+      };
+    });
 
-    const list = document.createElement('div');
-    list.className='lb-list';
-    lb.slice(0,8).forEach((p,i)=>{
-      const rankColors=['#f5c542','#8b949e','#b08040'];
-      const medals=['🥇','🥈','🥉'];
-      const av = typeof p.av==='string'&&(p.av.startsWith('http')||p.av.startsWith('data'))
-        ? `<img src="${p.av}" style="width:80%;height:80%;object-fit:contain">`
-        : (p.av||'🤖');
-      const unit = UNITS[_lbPeriod];
+    // Add current user if not in DB yet
+    if (!list_data.some(p => p.isMe) && U) {
+      list_data.push({
+        name:   U.name || 'Siz',
+        xp:     _lbPeriod === 'alltime' ? (U.xp||0) : getMyXpForPeriod(_lbPeriod),
+        avatar: U.avatarUrl || '',
+        userId: myId,
+        isMe:   true,
+      });
+    }
+
+    list_data.sort((a,b) => b.xp - a.xp);
+
+    const medals = ['🥇','🥈','🥉'];
+    const rankColors = ['#f5c542','#8b949e','#b08040'];
+    const unit = UNITS[_lbPeriod];
+    const lbList = document.createElement('div');
+    lbList.className = 'lb-list';
+
+    const top8  = list_data.slice(0, 8);
+    const myRank = list_data.findIndex(p => p.isMe);
+
+    top8.forEach((p, i) => {
+      const seed = encodeURIComponent(p.userId || p.name);
+      const avHtml = p.avatar && (p.avatar.startsWith('http') || p.avatar.startsWith('data'))
+        ? `<img src="${p.avatar}" onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${seed}'" style="width:80%;height:80%;object-fit:contain">`
+        : (p.avatar || '🤖');
       const div = document.createElement('div');
-      div.className = 'lb-row'+(p.isMe?' me':'');
+      div.className = 'lb-row' + (p.isMe ? ' me' : '');
       div.innerHTML = `
         <div class="lb-rank" style="color:${rankColors[i]||'var(--muted)'}">${i<3?medals[i]:i+1}</div>
-        <div class="lb-av">${av}</div>
-        <div class="lb-name">${p.name}${p.isMe?' (Siz)':''}</div>
-        <div class="lb-xp">${p.xp} <span style="font-size:10px;color:var(--muted);font-weight:600">${unit}</span></div>`;
-      list.appendChild(div);
+        <div class="lb-av">${avHtml}</div>
+        <div class="lb-name">${p.name.replace(/</g,'&lt;')}${p.isMe?' <span style="color:var(--al);font-size:11px">(Siz)</span>':''}</div>
+        <div class="lb-xp">${p.xp.toLocaleString()} <span style="font-size:10px;color:var(--muted);font-weight:600">${unit}</span></div>`;
+      lbList.appendChild(div);
     });
-    container.appendChild(list);
+
+    // Show current user below top 8 if they're not in it
+    if (myRank >= 8 && U) {
+      const sep = document.createElement('div');
+      sep.style = 'text-align:center;color:var(--muted);font-size:12px;padding:4px';
+      sep.textContent = '• • •';
+      lbList.appendChild(sep);
+      const me = list_data[myRank];
+      const meDiv = document.createElement('div');
+      meDiv.className = 'lb-row me';
+      const meSeed = encodeURIComponent(me.userId || me.name);
+      const meAv = me.avatar && me.avatar.startsWith('http')
+        ? `<img src="${me.avatar}" onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${meSeed}'" style="width:80%;height:80%;object-fit:contain">`
+        : (me.avatar || '🤖');
+      meDiv.innerHTML = `
+        <div class="lb-rank" style="color:var(--muted)">${myRank+1}</div>
+        <div class="lb-av">${meAv}</div>
+        <div class="lb-name">${me.name.replace(/</g,'&lt;')} <span style="color:var(--al);font-size:11px">(Siz)</span></div>
+        <div class="lb-xp">${me.xp.toLocaleString()} <span style="font-size:10px;color:var(--muted);font-weight:600">${unit}</span></div>`;
+      lbList.appendChild(meDiv);
+    }
+
+    if (!list_data.length) {
+      const empty = document.createElement('div');
+      empty.style = 'text-align:center;color:var(--muted);padding:20px;font-size:13px';
+      empty.textContent = "Hali hech kim yo'q";
+      lbList.appendChild(empty);
+    }
+
+    container.appendChild(lbList);
   });
 }
 
@@ -3136,50 +3203,79 @@ function buildBattleUI(){
   document.getElementById('bxp').textContent=U.battleXP||0;
 }
 
-// Online raqib qidirish
-let mmTimer=null;
-function findOpponent(){
+// ── Real online players cache ───────────────────────────────────────────
+let _onlineCache = null, _onlineCacheTs = 0;
+const ONLINE_TTL = 30000;
+
+async function fetchOnlinePlayers() {
+  const now = Date.now();
+  if (_onlineCache && now - _onlineCacheTs < ONLINE_TTL) return _onlineCache;
+  try {
+    const since = new Date(now - 30 * 60 * 1000).toISOString();
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${encodeURIComponent(since)}&order=xp.desc&limit=20`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    _onlineCache = Array.isArray(data) ? data : [];
+    _onlineCacheTs = now;
+    return _onlineCache;
+  } catch(e) {
+    console.warn('fetchOnlinePlayers:', e.message);
+    return _onlineCache || [];
+  }
+}
+
+let mmTimer = null;
+async function findOpponent() {
   openModal('modal-matchmaking');
-  document.getElementById('mm-title').textContent = 'Raqib qidirilmoqda...';
-  document.getElementById('mm-sub').textContent = 'Online o\'yinchilar qidirilmoqda';
+  document.getElementById('mm-title').textContent  = 'Raqib qidirilmoqda...';
+  document.getElementById('mm-sub').textContent    = 'Online o\'yinchilar qidirilmoqda';
   document.getElementById('mm-spinner').style.animationDuration = '1s';
 
+  // Fetch real online users in parallel while showing progress
+  const onlinePromise = fetchOnlinePlayers();
   let elapsed = 0;
-  mmTimer = setInterval(()=>{
+  const prog = setInterval(() => {
     elapsed++;
-    if(elapsed < 3){
-      document.getElementById('mm-sub').textContent = `${elapsed * 32}% qidirildi...`;
-    } else {
-      clearInterval(mmTimer);
-      // Tasodifiy online o'yinchi "topish" ehtimoli 60%
-      const foundOnline = Math.random() < 0.6;
-      if(foundOnline){
-        const opp = ONLINE_PLAYERS[Math.floor(Math.random()*ONLINE_PLAYERS.length)];
-        document.getElementById('mm-spinner').textContent = '✅';
-        document.getElementById('mm-spinner').style.animationDuration = '0s';
-        document.getElementById('mm-title').textContent = `${opp.name} topildi!`;
-        document.getElementById('mm-sub').textContent = 'Jang boshlanmoqda...';
-        setTimeout(()=>{
-          closeModal(null,'modal-matchmaking');
-          startBattleWith(opp, false);
-        }, 1200);
-      } else {
-        // Robot bilan
-        document.getElementById('mm-spinner').textContent = '🤖';
-        document.getElementById('mm-spinner').style.animationDuration = '0s';
-        document.getElementById('mm-title').textContent = 'Raqib topilmadi';
-        document.getElementById('mm-sub').textContent = 'Robot bilan o\'ynaysiz...';
-        setTimeout(()=>{
-          closeModal(null,'modal-matchmaking');
-          startBotBattle();
-        }, 1200);
-      }
-    }
-  }, 1000);
+    document.getElementById('mm-sub').textContent = `${Math.min(elapsed * 34, 99)}% qidirildi...`;
+  }, 500);
+
+  let online = [];
+  try { online = await onlinePromise; } catch(e) {}
+  clearInterval(prog);
+  mmTimer = null;
+
+  // Remove self
+  const myId = String(U?.userId || '');
+  const others = online.filter(u => String(u.user_id) !== myId);
+
+  if (others.length > 0) {
+    const raw  = others[Math.floor(Math.random() * others.length)];
+    const name = ([raw.first_name||'', raw.last_name||''].join(' ').trim()) || 'Foydalanuvchi';
+    const opp  = {
+      name,
+      av:     raw.avatar_url || `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${raw.user_id}`,
+      xp:     raw.xp || 0,
+      userId: String(raw.user_id),
+    };
+    document.getElementById('mm-spinner').textContent           = '✅';
+    document.getElementById('mm-spinner').style.animationDuration = '0s';
+    document.getElementById('mm-title').textContent = `${name} topildi!`;
+    document.getElementById('mm-sub').textContent   = 'Jang boshlanmoqda...';
+    setTimeout(() => { closeModal(null,'modal-matchmaking'); startBattleWith(opp, false); }, 1200);
+  } else {
+    document.getElementById('mm-spinner').textContent           = '🤖';
+    document.getElementById('mm-spinner').style.animationDuration = '0s';
+    document.getElementById('mm-title').textContent = 'Online raqib yo\'q';
+    document.getElementById('mm-sub').textContent   = 'Robot bilan o\'ynaysiz...';
+    setTimeout(() => { closeModal(null,'modal-matchmaking'); startBotBattle(); }, 1200);
+  }
 }
 
 function cancelMatchmaking(){
-  clearInterval(mmTimer);
+  if (mmTimer) { clearInterval(mmTimer); mmTimer = null; }
   closeModal(null,'modal-matchmaking');
 }
 
@@ -3843,22 +3939,46 @@ function endDailyChallenge(){
   _showDCResult(DC.score);
 }
 
-function buildDCLeaderboard(){
-  const fakeTop = [
-    {name:'Nodira',score:38},{name:'Jasur',score:35},{name:'Malika',score:31},
-    {name:'Akbar',score:28},{name:'Zulfiya',score:22},
-  ];
-  const today = new Date().toDateString();
-  const myScore = (U.dailyScore||{})[today]||0;
-  const all = [...fakeTop,{name:U.name+'(Siz)',score:myScore,isMe:true}].sort((a,b)=>b.score-a.score);
-  const el = document.getElementById('dc-lb'); if(!el) return;
-  el.innerHTML = all.slice(0,5).map((p,i)=>`
+async function buildDCLeaderboard(){
+  const el = document.getElementById('dc-lb');
+  if (!el) return;
+  const today  = new Date().toDateString();
+  const myId   = String(U?.userId || '');
+  const myScore = (U?.dailyScore||{})[today] || 0;
+
+  // Fetch real users; show only those who played today (have daily score)
+  // Since we don't store per-user daily scores in DB, we show a ranking by XP
+  // for players active today, with current user's actual daily score
+  let users = [];
+  try {
+    const since = new Date();
+    since.setHours(0,0,0,0);
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${encodeURIComponent(since.toISOString())}&order=xp.desc&limit=10`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (res.ok) users = await res.json();
+  } catch(e) {}
+
+  const list = (Array.isArray(users) ? users : []).map(u => {
+    const isMe = String(u.user_id) === myId;
+    return {
+      name:  isMe ? (U.name || ([u.first_name||'',u.last_name||''].join(' ').trim()) || 'Siz') : ([u.first_name||'',u.last_name||''].join(' ').trim()) || 'Foydalanuvchi',
+      score: isMe ? myScore : 0,
+      isMe,
+    };
+  });
+
+  if (!list.some(p => p.isMe)) list.push({ name: U?.name || 'Siz', score: myScore, isMe: true });
+  list.sort((a,b) => b.score - a.score);
+
+  el.innerHTML = list.slice(0,5).map((p,i) => `
     <div class="tournament-row${p.isMe?' me':''}">
       <div class="tr-rank">${i+1}</div>
-      <div class="tr-info"><div class="tr-name">${p.name}</div></div>
+      <div class="tr-info"><div class="tr-name">${(p.name||'').replace(/</g,'&lt;')}${p.isMe?' (Siz)':''}</div></div>
       <div class="tr-score">${p.score} ball</div>
     </div>
-  `).join('');
+  `).join('') || '<div style="color:var(--muted);font-size:12px;text-align:center;padding:10px">Bugun hali hech kim o\'ynamadi</div>';
 }
 
 // ===== WEAK WORDS =====
@@ -3993,16 +4113,38 @@ function joinGroup(){
   showToast(`✅ Guruhga qo'shildingiz: ${code}`);
 }
 
-function buildGroupMembers(){
+async function buildGroupMembers(){
   const el = document.getElementById('group-members');
-  const fakeMembers = [{name:'Siz',score:U.xp,isMe:true},{name:'Jasur',score:1240},{name:'Nodira',score:980}];
+  if (!el) return;
+  const myId = String(U?.userId || '');
+
+  let users = [];
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&order=xp.desc&limit=10`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (res.ok) users = await res.json();
+  } catch(e) {}
+
+  const list = (Array.isArray(users) ? users : []).map(u => {
+    const isMe = String(u.user_id) === myId;
+    return {
+      name:  isMe ? (U.name || _lbUserName(u)) : _lbUserName(u),
+      score: u.xp || 0,
+      isMe,
+    };
+  });
+  if (!list.some(p => p.isMe) && U) list.push({ name: U.name || 'Siz', score: U.xp||0, isMe: true });
+  list.sort((a,b) => b.score - a.score);
+
   el.innerHTML = `
     <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">GURUH REYTINGI</div>
-    ${fakeMembers.sort((a,b)=>b.score-a.score).map((m,i)=>`
+    ${list.slice(0,5).map((m,i)=>`
       <div class="tournament-row${m.isMe?' me':''}">
         <div class="tr-rank">${i+1}</div>
-        <div class="tr-info"><div class="tr-name">${m.name}</div></div>
-        <div class="tr-score">${m.score} XP</div>
+        <div class="tr-info"><div class="tr-name">${(m.name||'').replace(/</g,'&lt;')}${m.isMe?' (Siz)':''}</div></div>
+        <div class="tr-score">${(m.score||0).toLocaleString()} XP</div>
       </div>
     `).join('')}
     <button onclick="startGroupBattle()" style="width:100%;margin-top:10px;padding:11px;background:linear-gradient(135deg,var(--orange),#c75a2f);border:none;border-radius:12px;color:white;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif">
@@ -4018,36 +4160,44 @@ function startGroupBattle(){
 }
 
 // ===== TOURNAMENT =====
-function buildTournament(){
-  const fakeTop = [
-    {name:'Nodira',xp:4200},{name:'Jasur',xp:3850},{name:'Malika',xp:3420},
-    {name:'Akbar',xp:2980},{name:'Zulfiya',xp:2650},{name:'Sherzod',xp:2100},
-    {name:U.name+'(Siz)',xp:U.xp,isMe:true},{name:'Kamola',xp:1800},
-  ].sort((a,b)=>b.xp-a.xp);
+async function buildTournament(){
+  const el = document.getElementById('tourn-lb');
+  if (!el) return;
+  const myId = String(U?.userId || '');
 
-  const el=document.getElementById('tourn-lb'); if(!el) return;
-  el.innerHTML=fakeTop.slice(0,8).map((p,i)=>{
-    const medals=['🥇','🥈','🥉'];
-    return `
-      <div class="tournament-row${p.isMe?' me':''}">
-        <div class="tr-rank">${i<3?medals[i]:i+1}</div>
-        <div class="tr-info"><div class="tr-name">${p.name}</div></div>
-        <div class="tr-score">${p.xp} XP</div>
-      </div>
-    `;
-  }).join('');
+  const users = await fetchRealLeaderboard();
+  const medals = ['🥇','🥈','🥉'];
 
-  // Hafta oxirigacha timer
+  const list = (users||[]).map(u => {
+    const isMe = String(u.user_id) === myId;
+    return {
+      name:  isMe ? (U.name || _lbUserName(u)) : _lbUserName(u),
+      xp:    u.xp || u.total_points || 0,
+      isMe,
+    };
+  });
+  if (!list.some(p => p.isMe) && U) list.push({ name: U.name||'Siz', xp: U.xp||0, isMe: true });
+  list.sort((a,b) => b.xp - a.xp);
+
+  el.innerHTML = list.slice(0,8).map((p,i) => `
+    <div class="tournament-row${p.isMe?' me':''}">
+      <div class="tr-rank">${i<3?medals[i]:i+1}</div>
+      <div class="tr-info"><div class="tr-name">${(p.name||'').replace(/</g,'&lt;')}${p.isMe?' (Siz)':''}</div></div>
+      <div class="tr-score">${(p.xp||0).toLocaleString()} XP</div>
+    </div>
+  `).join('') || '<div style="color:var(--muted);text-align:center;padding:14px">Ma\'lumot yuklanmoqda...</div>';
+
+  // Week countdown timer
   const now = new Date();
   const sunday = new Date(now);
-  sunday.setDate(now.getDate()+(7-now.getDay())%7||7);
+  sunday.setDate(now.getDate() + ((7 - now.getDay()) % 7 || 7));
   sunday.setHours(23,59,59,0);
-  const diff = sunday-now;
-  const h=Math.floor(diff/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  const s=Math.floor((diff%60000)/1000);
-  const te=document.getElementById('tourn-timer');
-  if(te) te.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const diff = sunday - now;
+  const h = Math.floor(diff/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  const te = document.getElementById('tourn-timer');
+  if (te) te.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
 
 // ===== DAILY COUNTDOWN =====
@@ -5646,7 +5796,6 @@ App.achieve = {
 // ═══════════════════════════════════════════════════════════════════════════
 App.lb = {
   _period: 'alltime',
-  _fakePlayers: FAKE_LB,
 
   setPeriod(p){ this._period = p; this.refreshUI(); },
 
@@ -5660,23 +5809,39 @@ App.lb = {
     return log.filter(e=>e.ts>=cut).reduce((s,e)=>s+e.xp,0);
   },
 
-  refreshUI(){
+  async refreshUI(){
     const U = App.user.get();
     const list = document.getElementById('lb-list');
     if(!list) return;
-    const myXP = this.getMyXP(this._period);
-    const all = [...this._fakePlayers, { name: U.name+'(Siz)', xp: myXP, av: U.avatarEmoji||'🤖', isMe: true }];
+
+    const users  = await fetchRealLeaderboard();
+    const myId   = String(U?.userId || '');
+    const myXP   = this.getMyXP(this._period);
+    const medals = ['🥇','🥈','🥉'];
+    const FRAC   = {today:0.008, week:0.05, month:0.22, alltime:1};
+    const frac   = FRAC[this._period] || 1;
+
+    const all = (users||[]).map(u => {
+      const isMe = String(u.user_id) === myId;
+      const rawXP = u.xp || u.total_points || 0;
+      const xp = isMe ? myXP : (this._period==='alltime' ? rawXP : Math.round(rawXP * frac));
+      const name = isMe ? (U.name || _lbUserName(u)) : _lbUserName(u);
+      const avatar = u.avatar_url || '';
+      return { name, xp, avatar, userId: String(u.user_id), isMe };
+    });
+    if (!all.some(p=>p.isMe) && U) all.push({ name: U.name||'Siz', xp: myXP, avatar: U.avatarUrl||'', userId: myId, isMe: true });
     all.sort((a,b)=>b.xp-a.xp);
+
     list.innerHTML = all.slice(0,10).map((p,i)=>{
-      const medals=['🥇','🥈','🥉'];
-      const avHtml = p.avatarUrl
-        ? `<img src="${p.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`
-        : (p.av||'🤖');
+      const seed = encodeURIComponent(p.userId||p.name);
+      const avHtml = p.avatar && p.avatar.startsWith('http')
+        ? `<img src="${p.avatar}" onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${seed}'" style="width:100%;height:100%;object-fit:contain">`
+        : (p.avatar||'🤖');
       return `<div class="lb-row${p.isMe?' me':''}">
         <div style="font-size:${i<3?'18':'13'}px;width:24px;text-align:center">${i<3?medals[i]:i+1}</div>
         <div class="lb-av">${avHtml}</div>
-        <div style="flex:1"><div style="font-weight:800;font-size:13px">${p.name}</div></div>
-        <div style="font-weight:800;color:var(--gold);font-size:13px">${p.xp} XP</div>
+        <div style="flex:1"><div style="font-weight:800;font-size:13px">${p.name.replace(/</g,'&lt;')}${p.isMe?' <span style="color:var(--al);font-size:11px">(Siz)</span>':''}</div></div>
+        <div style="font-weight:800;color:var(--gold);font-size:13px">${p.xp.toLocaleString()} XP</div>
       </div>`;
     }).join('');
   }
@@ -6021,11 +6186,8 @@ App.sync = {
     App.events.emit('sync:done');
   },
 
-  // BACKEND PLACEHOLDER
   async fetchLeaderboard(period='alltime'){
-    // Future: const res = await fetch('/api/leaderboard?period='+period);
-    // return res.json();
-    return FAKE_LB;
+    return fetchRealLeaderboard();
   },
 
   // BACKEND PLACEHOLDER
