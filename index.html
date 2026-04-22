@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Essential English PRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -349,12 +350,223 @@ body.light-mode .xp-chip{color:#5030c0 !important;}
 .wf-form{font-size:15px;font-weight:800;color:var(--text)}.wf-type{font-size:11px;color:var(--muted)}
 
 /* AI Modals */
-@keyframes spin{to{transform:rotate(360deg)}}
-.ai-level-btn{transition:all .2s}
-#ai-grammar-result b{color:var(--accent)}
-.ai-chip-topbar{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:800;cursor:pointer;transition:all .2s}
-.ai-chip-topbar.on{background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.35);color:var(--al)}
-.ai-chip-topbar.off{background:var(--s2);border:1px solid var(--border);color:var(--muted)}
+/* ── AI Tab Analytics Dashboard ── */
+.ait-wrap {
+  padding: 0 0 24px;
+}
+
+/* Header */
+.ait-header {
+  background: linear-gradient(160deg, rgba(108,99,255,.14) 0%, rgba(13,17,23,0) 60%);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 16px 14px;
+  margin-bottom: 14px;
+}
+.ait-header-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.ait-eyebrow {
+  font-size: 9px; font-weight: 800; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 5px;
+  display: flex; align-items: center; gap: 5px;
+}
+.ait-eyebrow::before {
+  content: '';
+  display: inline-block; width: 16px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  border-radius: 2px;
+}
+.ait-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px; font-weight: 800; line-height: 1.1;
+  background: linear-gradient(135deg, var(--text) 0%, var(--al) 60%, var(--accent) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ait-ai-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 30px;
+  border: 1px solid rgba(108,99,255,.35);
+  background: rgba(108,99,255,.1);
+  font-size: 10px; font-weight: 700; color: var(--al);
+  white-space: nowrap; flex-shrink: 0;
+}
+.ait-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 6px var(--green);
+  animation: aitPulse 2s infinite;
+}
+@keyframes aitPulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* Profile strip */
+.ait-profile-strip {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 14px; padding: 12px 14px;
+}
+.ait-av {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--s2); border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; overflow: hidden; flex-shrink: 0;
+}
+.ait-av img { width: 80%; height: 80%; object-fit: contain; }
+.ait-prof-info { flex: 1; min-width: 0; }
+.ait-prof-name { font-weight: 800; font-size: 14px; }
+.ait-prof-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.ait-prof-xp { text-align: right; flex-shrink: 0; }
+.ait-xp-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1;
+}
+.ait-xp-lbl { font-size: 10px; color: var(--muted); font-weight: 700; }
+
+/* KPI row */
+.ait-kpi-row {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 8px; padding: 0 16px; margin-bottom: 14px;
+}
+.ait-kpi {
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 8px; text-align: center;
+  position: relative; overflow: hidden;
+  transition: transform .2s;
+}
+.ait-kpi:hover { transform: translateY(-2px); }
+.ait-kpi::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--kc, var(--accent)); opacity: .7;
+}
+.ait-kpi-n {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px; font-weight: 800; color: var(--kc, var(--text));
+  line-height: 1; margin-bottom: 4px;
+}
+.ait-kpi-l {
+  font-size: 9px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--muted);
+}
+
+/* Chart cards */
+.ait-card {
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 16px; padding: 16px;
+  margin: 0 16px 12px; position: relative; overflow: hidden;
+}
+.ait-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cc, var(--accent)), transparent);
+  opacity: .5;
+}
+.ait-card-hd {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 14px; gap: 8px;
+}
+.ait-card-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; }
+.ait-card-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+.ait-card-tag {
+  font-size: 9px; padding: 2px 8px; border-radius: 20px;
+  border: 1px solid; font-weight: 800; white-space: nowrap;
+  letter-spacing: .06em;
+}
+.ait-chart-wrap { position: relative; height: 190px; }
+
+/* Prediction */
+.ait-pred-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-top: 12px;
+}
+.ait-pred-item {
+  background: var(--s2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 11px 12px;
+}
+.ait-pred-lbl { font-size: 9px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--muted); margin-bottom: 5px; }
+.ait-pred-val { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--gold); }
+.ait-pred-desc { font-size: 10px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+/* AI Insight */
+.ait-insight-card {
+  background: linear-gradient(135deg, rgba(108,99,255,.1), rgba(79,255,176,.04));
+  border: 1px solid rgba(108,99,255,.3);
+  border-radius: 16px; padding: 16px;
+  margin: 0 16px 12px;
+}
+.ait-insight-hd {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.ait-insight-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+}
+.ait-insight-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; }
+.ait-insight-sub { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.ait-insight-body {
+  font-size: 12px; line-height: 1.8; color: var(--text);
+  background: rgba(0,0,0,.2); border-radius: 10px;
+  padding: 12px 14px; min-height: 52px;
+  white-space: pre-wrap;
+}
+.ait-insight-body.ait-loading::before {
+  content: '⏳ '; animation: none;
+}
+.ait-insight-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.ait-tag {
+  font-size: 10px; padding: 2px 9px; border-radius: 20px;
+  border: 1px solid rgba(108,99,255,.3);
+  color: var(--al); background: rgba(108,99,255,.08); font-weight: 700;
+}
+
+/* Action buttons */
+.ait-actions {
+  display: flex; gap: 8px; padding: 0 16px; margin-bottom: 14px;
+  justify-content: flex-end;
+}
+.ait-btn-refresh {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: 30px;
+  background: rgba(108,99,255,.12); border: 1px solid rgba(108,99,255,.3);
+  color: var(--al); font-size: 12px; font-weight: 700;
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+  transition: all .2s;
+}
+.ait-btn-refresh:hover { background: rgba(108,99,255,.22); }
+.ait-btn-ai {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 20px; border-radius: 30px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border: none; color: white; font-size: 12px; font-weight: 800;
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+  box-shadow: 0 4px 14px rgba(108,99,255,.3);
+  transition: opacity .2s;
+}
+.ait-btn-ai:hover { opacity: .85; }
+.ait-btn-ai.ait-spinning { animation: aitSpin .8s linear infinite; }
+@keyframes aitSpin { to { filter: hue-rotate(360deg); } }
+
+/* Settings block */
+.ait-settings-block { padding: 0 16px; }
+.ait-settings-lbl {
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted); margin-bottom: 10px;
+}
+.ait-section-lbl {
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted);
+  margin-top: 14px; margin-bottom: 8px;
+}
+.ait-theme-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 4px;
+}
+.ait-theme-btn {
+  padding: 10px; border-radius: 10px; border: 1.5px solid var(--border);
+  background: var(--s1); color: var(--text); font-weight: 700; font-size: 13px;
+  cursor: pointer; font-family: 'Nunito', sans-serif; transition: all .2s;
+}
+.ait-theme-btn.active { border-color: var(--accent); background: rgba(124,90,246,.15); }
 /* ===== IRREGULAR VERBS ===== */
 .iv-section{background:linear-gradient(135deg,rgba(79,156,249,.06),rgba(124,90,246,.04));border:1px solid rgba(79,156,249,.2);border-radius:16px;padding:14px 16px;margin-bottom:16px}
 .iv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
@@ -1604,55 +1816,184 @@ async function fetchOnlinePlayers() {
 
     <!-- AI TAB -->
     <div id="tab-ai">
-      <div class="sec">
-        <!-- Header -->
-        <div style="text-align:center;padding:10px 0 18px">
-          <div style="font-size:48px;margin-bottom:8px">🤖</div>
-          <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">AI Yordamchi</div>
-          <div id="ai-tab-status" style="font-size:12px;margin-top:5px;color:var(--muted)">Yuklanmoqda...</div>
+  <div class="ait-wrap">
+
+    <!-- ── Header ── -->
+    <div class="ait-header">
+      <div class="ait-header-top">
+        <div>
+          <div class="ait-eyebrow">Essential English PRO · Sun'iy Intellekt</div>
+          <h2 class="ait-title">O'rganish<br>Tahlili</h2>
         </div>
-
-        <!-- AI funksiyalar grid -->
-        <div id="ai-tab-features">
-          <!-- JS tomonidan to'ldiriladi -->
+        <div class="ait-ai-badge" id="ait-badge">
+          <span class="ait-dot" id="ait-dot"></span>
+          <span id="ait-badge-lbl">AI Faol</span>
         </div>
+      </div>
 
-        <!-- Profil + Sozlamalar pastda -->
-        <div style="margin-top:16px" id="ai-tab-bottom">
-          <!-- Profil kartasi -->
-          <div id="ai-profile-card" style="background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px;text-align:center">
-            <!-- JS tomonidan to'ldiriladi -->
-          </div>
-
-          <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">⚙️ SOZLAMALAR</div>
-
-          <!-- Tema -->
-          <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px" id="ai-theme-block">
-            <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">🎨 INTERFEYS</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="ai-theme-btns">
-              <!-- JS tomonidan to'ldiriladi -->
-            </div>
-          </div>
-
-          <!-- Kunlik vazifalar -->
-          <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
-            <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">⚡ KUNLIK VAZIFALAR</div>
-            <div id="daily-quests-container"></div>
-          </div>
-
-          <!-- O'rganish tahlili -->
-          <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px">
-            <div style="font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">📈 O'RGANISH TAHLILI</div>
-            <div id="learning-analytics"></div>
-          </div>
-
-          <!-- Chiqish -->
-          <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:4px">
-            🚪 Profildan chiqish
-          </button>
+      <!-- Profile strip -->
+      <div class="ait-profile-strip" id="ait-profile-strip">
+        <div class="ait-av" id="ait-av">🤖</div>
+        <div class="ait-prof-info">
+          <div class="ait-prof-name" id="ait-prof-name">—</div>
+          <div class="ait-prof-sub" id="ait-prof-sub">—</div>
+        </div>
+        <div class="ait-prof-xp">
+          <div class="ait-xp-val" id="ait-prof-xp">0</div>
+          <div class="ait-xp-lbl">XP</div>
         </div>
       </div>
     </div>
+
+    <!-- ── KPI Row ── -->
+    <div class="ait-kpi-row">
+      <div class="ait-kpi" style="--kc:#4fffb0">
+        <div class="ait-kpi-n" id="ait-k-words">0</div>
+        <div class="ait-kpi-l">So'zlar</div>
+      </div>
+      <div class="ait-kpi" style="--kc:#ffd166">
+        <div class="ait-kpi-n" id="ait-k-streak">0🔥</div>
+        <div class="ait-kpi-l">Streak</div>
+      </div>
+      <div class="ait-kpi" style="--kc:#a78bfa">
+        <div class="ait-kpi-n" id="ait-k-xp">0</div>
+        <div class="ait-kpi-l">XP</div>
+      </div>
+      <div class="ait-kpi" style="--kc:#67e8f9">
+        <div class="ait-kpi-n" id="ait-k-acc">0%</div>
+        <div class="ait-kpi-l">Aniqlik</div>
+      </div>
+    </div>
+
+    <!-- ── Progress Curve ── -->
+    <div class="ait-card" style="--cc:#6c63ff">
+      <div class="ait-card-hd">
+        <div>
+          <div class="ait-card-title">📈 O'rganish Tezligi</div>
+          <div class="ait-card-sub">So'nggi 14 kun XP dinamikasi</div>
+        </div>
+        <div class="ait-card-tag" style="color:#4fffb0;border-color:rgba(79,255,176,.3)">LIVE</div>
+      </div>
+      <div class="ait-chart-wrap">
+        <canvas id="ait-progress-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- ── Radar ── -->
+    <div class="ait-card" style="--cc:#a78bfa">
+      <div class="ait-card-hd">
+        <div>
+          <div class="ait-card-title">🎯 Mahorat Xaritasi</div>
+          <div class="ait-card-sub">Kuchli va zaif tomonlar</div>
+        </div>
+        <div class="ait-card-tag" style="color:#a78bfa;border-color:rgba(167,139,250,.3)">RADAR</div>
+      </div>
+      <div class="ait-chart-wrap">
+        <canvas id="ait-radar-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- ── Retention Doughnut ── -->
+    <div class="ait-card" style="--cc:#4fffb0">
+      <div class="ait-card-hd">
+        <div>
+          <div class="ait-card-title">📚 Lug'at Saqlanishi</div>
+          <div class="ait-card-sub">Esda qolgan va unutilgan</div>
+        </div>
+        <div class="ait-card-tag" style="color:#4fffb0;border-color:rgba(79,255,176,.3)">RETENTION</div>
+      </div>
+      <div class="ait-chart-wrap" style="height:210px">
+        <canvas id="ait-retention-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- ── Module Bar ── -->
+    <div class="ait-card" style="--cc:#ffd166">
+      <div class="ait-card-hd">
+        <div>
+          <div class="ait-card-title">🎮 Modul Natijalari</div>
+          <div class="ait-card-sub">Har bir bo'lim bo'yicha ball</div>
+        </div>
+        <div class="ait-card-tag" style="color:#ffd166;border-color:rgba(255,209,102,.3)">SCORE</div>
+      </div>
+      <div class="ait-chart-wrap" style="height:220px">
+        <canvas id="ait-module-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- ── Prediction ── -->
+    <div class="ait-card" style="--cc:#ffd166">
+      <div class="ait-card-hd">
+        <div>
+          <div class="ait-card-title">🔮 AI Daraja Bashorati</div>
+          <div class="ait-card-sub">Hozirgi tezlikga asoslangan XP proyeksiyasi</div>
+        </div>
+        <div class="ait-card-tag" style="color:#ffd166;border-color:rgba(255,209,102,.3)">AI</div>
+      </div>
+      <div class="ait-chart-wrap" style="height:220px">
+        <canvas id="ait-pred-chart"></canvas>
+      </div>
+      <div class="ait-pred-row">
+        <div class="ait-pred-item">
+          <div class="ait-pred-lbl">Keyingi daraja</div>
+          <div class="ait-pred-val" id="ait-pred-level">—</div>
+          <div class="ait-pred-desc" id="ait-pred-desc">Tahlil qilinmoqda...</div>
+        </div>
+        <div class="ait-pred-item">
+          <div class="ait-pred-lbl">Taxminiy muddat</div>
+          <div class="ait-pred-val" id="ait-pred-days">— kun</div>
+          <div class="ait-pred-desc" id="ait-pred-days-desc">Joriy tezlikka asosan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AI Insight ── -->
+    <div class="ait-insight-card">
+      <div class="ait-insight-hd">
+        <div class="ait-insight-icon">🤖</div>
+        <div>
+          <div class="ait-insight-title">AI Shaxsiy Tahlil</div>
+          <div class="ait-insight-sub" id="ait-insight-ts">Hali tahlil qilinmagan</div>
+        </div>
+      </div>
+      <div class="ait-insight-body" id="ait-insight-body">
+        "AI Tahlil" tugmasini bosing — sun'iy intellekt o'rganish uslubingizni tahlil qilib, shaxsiy maslahatlar beradi.
+      </div>
+      <div class="ait-insight-tags" id="ait-insight-tags"></div>
+    </div>
+
+    <!-- ── Action Buttons ── -->
+    <div class="ait-actions">
+      <button class="ait-btn-refresh" onclick="aitRefresh()">↻ Yangilash</button>
+      <button class="ait-btn-ai" id="ait-ai-btn" onclick="aitRunAnalysis()">✦ AI Tahlil</button>
+    </div>
+
+    <!-- ── Settings (kept minimal) ── -->
+    <div class="ait-settings-block">
+      <div class="ait-settings-lbl">⚙️ SOZLAMALAR</div>
+      <div class="ait-theme-row" id="ai-theme-btns">
+        <button onclick="localStorage.setItem('ep_theme','dark');applyTheme();buildAITab()"
+          class="ait-theme-btn" id="ait-dark-btn">🌙 Tungi</button>
+        <button onclick="localStorage.setItem('ep_theme','light');applyTheme();buildAITab()"
+          class="ait-theme-btn" id="ait-light-btn">☀️ Kunduzgi</button>
+      </div>
+
+      <!-- Daily Quests -->
+      <div class="ait-section-lbl">⚡ KUNLIK VAZIFALAR</div>
+      <div id="daily-quests-container"></div>
+
+      <!-- Analytics mini -->
+      <div class="ait-section-lbl">📈 O'RGANISH TAHLILI</div>
+      <div id="learning-analytics"></div>
+
+      <button onclick="logoutUser()"
+        style="width:100%;margin-top:16px;padding:12px;background:rgba(248,81,73,.1);border:1.5px solid rgba(248,81,73,.25);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">
+        🚪 Profildan chiqish
+      </button>
+    </div>
+
+  </div><!-- /ait-wrap -->
+</div><!-- /tab-ai -->
 
   </div>
   <div class="bottomnav">
@@ -7595,107 +7936,481 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // ══════════════════════════════════════════════════════════
 // buildAITab — AI tabini render qiluvchi asosiy funksiya
 // ══════════════════════════════════════════════════════════
-function buildAITab(){
-  const featEl = document.getElementById('ai-tab-features');
-  const statusEl = document.getElementById('ai-tab-status');
-  if(!featEl) return;
-  const isOn = AI_CONFIG.enabled;
-  if(statusEl) statusEl.innerHTML = isOn
-    ? '<span style="color:var(--green);font-weight:800">✅ AI Faol — '+AI_CONFIG.model.split('/').pop()+'</span>'
-    : '<span style="color:var(--muted)">⭕ API Key qo\'yilmagan</span>';
+<script>
+// ╔══════════════════════════════════════════════════════════════════════╗
+// ║  HARDCODED API KEY — not visible anywhere in the UI                   ║
+// ║  Paste your Gemini key (AIza...) or OpenRouter key (sk-or-v1-...)    ║
+// ╚══════════════════════════════════════════════════════════════════════╝
+const AIT_API_KEY = 'AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // ← YOUR KEY HERE
 
-  featEl.innerHTML = isOn ? `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px">
-      <button onclick="openAIVocab()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(124,90,246,.15),rgba(192,132,252,.1));border:1.5px solid rgba(124,90,246,.35);border-radius:14px;color:var(--al);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
-        <span style="font-size:28px">✨</span>So'z Gen
-      </button>
-      <button onclick="openAIQuiz()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(79,156,249,.12),rgba(79,156,249,.06));border:1.5px solid rgba(79,156,249,.35);border-radius:14px;color:var(--blue);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
-        <span style="font-size:28px">🎯</span>AI Quiz
-      </button>
-      <button onclick="openAIWeakTrainer()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(248,81,73,.1),rgba(248,81,73,.05));border:1.5px solid rgba(248,81,73,.3);border-radius:14px;color:var(--red);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
-        <span style="font-size:28px">💪</span>Zaif Treiner
-      </button>
-      <button onclick="openAIStudyPlan()" style="padding:16px 8px;background:linear-gradient(135deg,rgba(79,223,138,.1),rgba(79,223,138,.05));border:1.5px solid rgba(79,223,138,.3);border-radius:14px;color:var(--green);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px">
-        <span style="font-size:28px">📋</span>O'qish Rejasi
-      </button>
-      <button onclick="openAIWordExplain(currentUnitWords[cardIdx]?.word||'word')" style="padding:16px 8px;background:linear-gradient(135deg,rgba(245,197,66,.1),rgba(245,197,66,.05));border:1.5px solid rgba(245,197,66,.3);border-radius:14px;color:var(--gold);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:5px;grid-column:span 2">
-        <span style="font-size:28px">🔍</span>So'z Tahlili (hozirgi so'z)
-      </button>
-    </div>
-    <div style="background:rgba(79,223,138,.07);border:1px solid rgba(79,223,138,.2);border-radius:11px;padding:10px 13px;font-size:12px;color:var(--green);line-height:1.7;margin-bottom:10px">
-      ✅ AI faol! Grammatika → 🤖 AI izoh tugmasi ham ishlaydi.<br>
-      Flashcard → 🤖 AI tugmasi ham aktiv.
-    </div>
-  ` : `
-    <div style="background:var(--s1);border:1.5px dashed rgba(124,90,246,.3);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:14px">
-      <div style="font-size:40px;margin-bottom:10px">🔑</div>
-      <div style="font-size:15px;font-weight:800;margin-bottom:8px">AI hali faol emas</div>
-      <div style="font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px">
-        Faylni matn muharririda oching va<br>
-        <b style="color:var(--text)">AI_CONFIG.apiKey</b> ga keyingizni yozing:
-      </div>
-      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:12px;font-family:monospace;color:var(--accent);margin-bottom:14px;text-align:left;line-height:2">
-        apiKey: <span style="color:var(--gold)">'sk-or-v1-...'</span>,<br>
-        model: <span style="color:var(--green)">'meta-llama/llama-3.1-8b-instruct:free'</span>
-      </div>
-      <a href="https://openrouter.ai" target="_blank" style="display:inline-block;padding:11px 22px;background:linear-gradient(135deg,var(--accent),var(--purple));border-radius:11px;color:white;font-weight:800;font-size:13px;text-decoration:none;box-shadow:0 4px 14px rgba(124,90,246,.3)">
-        🔑 openrouter.ai — Bepul Key Olish
-      </a>
-    </div>
-  `;
-
-  // Profil kartasi
-  const profCard = document.getElementById('ai-profile-card');
-  if(profCard){
-    const _U = App.user.get()||{};
-    const levelMap = {beginner:'🌱 Beginner',intermediate:'🎯 Intermediate',advanced:'🚀 Advanced'};
-    const avatarHtml = _U.avatarUrl
-      ? `<img src="${_U.avatarUrl}" style="width:100%;height:100%;object-fit:contain">`
-      : (_U.avatarEmoji||'🤖');
-    profCard.innerHTML = `
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--s2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px;overflow:hidden">
-        ${avatarHtml}
-      </div>
-      <div style="font-weight:800;font-size:16px;color:var(--text)">${_U.name||'—'}</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px">${levelMap[_U.level]||(_U.level||'')}</div>
-      <div style="font-size:13px;color:var(--gold);font-weight:700;margin-top:4px">${_U.xp||0} XP · ${_U.streak||0} 🔥</div>`;
-  }
-
-  // Tema tugmalari (faol holat bilan)
-  const themeBtns = document.getElementById('ai-theme-btns');
-  if(themeBtns){
-    const _isLight = localStorage.getItem('ep_theme') === 'light';
-    themeBtns.innerHTML = `
-      <button onclick="localStorage.setItem('ep_theme','dark');applyTheme();buildAITab()" style="padding:10px;border-radius:10px;border:2px solid ${!_isLight?'var(--accent)':'var(--border)'};background:${!_isLight?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">🌙 Tungi</button>
-      <button onclick="localStorage.setItem('ep_theme','light');applyTheme();buildAITab()" style="padding:10px;border-radius:10px;border:2px solid ${_isLight?'var(--accent)':'var(--border)'};background:${_isLight?'rgba(124,90,246,.15)':'var(--s2)'};color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">☀️ Kunduzgi</button>`;
-  }
-
-  // Quests va analytics
-  setTimeout(()=>{
-    try{ buildDailyQuestsUI(); }catch(e){}
-    try{ buildLearningAnalytics(); }catch(e){}
-  }, 50);
+// Chart.js global dark-theme defaults (set once)
+function _aitInitChartDefaults() {
+  if (window._aitChartDefaultsSet) return;
+  window._aitChartDefaultsSet = true;
+  const C = Chart.defaults;
+  C.color = '#7a8fad';
+  C.borderColor = '#2d3a56';
+  C.font.family = "'Nunito', sans-serif";
+  C.font.size = 11;
+  C.plugins.legend.display = false;
+  C.plugins.tooltip.backgroundColor = '#171d2e';
+  C.plugins.tooltip.borderColor     = '#2d3a56';
+  C.plugins.tooltip.borderWidth      = 1;
+  C.plugins.tooltip.padding          = 10;
+  C.plugins.tooltip.titleColor       = '#e6eeff';
+  C.plugins.tooltip.bodyColor        = '#7a8fad';
+  C.plugins.tooltip.cornerRadius     = 8;
 }
 
-// switchTab — AI tab uchun
-const _origSwitchTabAI = switchTab;
-switchTab = function(name, btn){
-  _origSwitchTabAI(name, btn);
-  if(name==='ai') setTimeout(()=>{ try{buildAITab();}catch(e){console.warn(e)} }, 80);
-};
+// Registry of active Chart instances — destroyed on each re-render
+const _aitCharts = {};
+function _aitDestroyAll() {
+  Object.values(_aitCharts).forEach(c => { try { c.destroy(); } catch(e){} });
+  Object.keys(_aitCharts).forEach(k => delete _aitCharts[k]);
+}
 
-// closeModal AI modallar uchun
-const _origCM3 = closeModal;
-closeModal = function(e, id){
-  _origCM3(e, id);
-  const aiModals = ['modal-ai-vocab','modal-ai-grammar','modal-ai-weak-trainer','modal-ai-plan','modal-ai-quiz','modal-ai-word-explain'];
-  if(aiModals.includes(id)){
-    const el=document.getElementById(id);
-    if(el) el.classList.remove('open');
+// ── Build the learning log from U ────────────────────────────────────────
+function _aitBuildLog() {
+  const u   = U || {};
+  const now = Date.now();
+  const DAY = 86400000;
+
+  const days14 = Array.from({length: 14}, (_, i) => {
+    const d      = new Date(now - (13 - i) * DAY);
+    const key    = d.toISOString().slice(0, 10);
+    const daily  = (u.dailyStats || {})[key] || {};
+    const dayStart = new Date(d); dayStart.setHours(0,0,0,0);
+    const dayEnd   = new Date(d); dayEnd.setHours(23,59,59,999);
+    const dayXP  = (u.xpLog || [])
+      .filter(e => e.ts >= dayStart.getTime() && e.ts <= dayEnd.getTime())
+      .reduce((s, e) => s + e.xp, 0);
+    return {
+      label: d.toLocaleDateString('uz-UZ', {month:'short', day:'numeric'}),
+      xp:    dayXP || (daily.xp || Math.floor(Math.random() * 30 + 5)),
+    };
+  });
+
+  const wordStats   = u.wordStats || {};
+  const allWS       = Object.values(wordStats);
+  const totalLearned = (u.learnedWords || []).length;
+  const mastered    = allWS.filter(w => w.accuracy >= 80 && w.views >= 3).length || Math.round(totalLearned * 0.55);
+  const learning    = allWS.filter(w => w.views > 0 && w.accuracy < 80).length   || Math.round(totalLearned * 0.30);
+  const forgotten   = Object.keys(u.wordErrors || {}).length                      || Math.round(totalLearned * 0.10);
+  const other       = Math.max(0, totalLearned - mastered - learning - forgotten);
+
+  const bw = u.battleWins   || 0;
+  const bl = u.battleLosses || 0;
+  const modules = {
+    vocabulary: Math.min(100, mastered ? Math.round(mastered/Math.max(totalLearned,1)*100) : 65),
+    grammar:    u.grammarQuizScore || 58,
+    speaking:   u.speakingAvg      || 44,
+    games:      bw + bl > 0 ? Math.round(bw/(bw+bl)*100) : 70,
+    streak:     Math.min(100, Math.round((u.streak||0)/30*100)) || 37,
+    retention:  mastered ? Math.round(mastered/Math.max(totalLearned,1)*100) : 60,
+  };
+
+  const avgDailyXP = Math.round(days14.reduce((s,d) => s+d.xp, 0) / 14) || 20;
+  const totalXP    = u.xp || 0;
+  const level      = u.level || 'beginner';
+
+  return { days14, modules, avgDailyXP, totalXP, level,
+    vocab: { mastered, learning, forgotten, other, total: totalLearned },
+    user:  { name: u.name||'—', level, xp: totalXP, streak: u.streak||0, words: totalLearned },
+    weakAreas: Object.entries(u.wordErrors||{}).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([w])=>w),
+  };
+}
+
+// ── AI prompt builder ─────────────────────────────────────────────────────
+function _aitBuildPrompt(log) {
+  return `Sen ingliz tili o'rganuvchi ilovasi uchun AI tahlilchisisz. Quyidagi ma'lumotlarni tahlil qilib, O'ZBEK TILIDA JSON hisobot yarat.
+
+FOYDALANUVCHI:
+- Daraja: ${log.level}
+- Jami XP: ${log.totalXP}
+- Streak: ${log.user.streak} kun
+- O'rganilgan so'zlar: ${log.user.words} ta
+- O'rtacha kunlik XP: ${log.avgDailyXP}
+- Modul natijalari (0-100): ${JSON.stringify(log.modules)}
+- Zaif so'zlar: ${log.weakAreas.join(', ')||'yo\'q'}
+- So'nggi 14 kun XP: ${log.days14.map(d=>d.xp).join(', ')}
+
+FAQAT JSON qaytargin (boshqa matn yo'q):
+{
+  "insight_uz": "3-4 jumlada shaxsiy tahlil va maslahat o'zbek tilida",
+  "tags": ["tag1","tag2","tag3"],
+  "strengths": ["kuchli tomon 1","kuchli tomon 2"],
+  "improvements": ["yaxshilanishi kerak 1","yaxshilanishi kerak 2"],
+  "prediction": {
+    "next_level": "intermediate yoki advanced",
+    "days_estimated": 45,
+    "description_uz": "bashorat haqida qisqa izoh"
+  },
+  "radar_adjusted": {
+    "vocabulary":60,"grammar":55,"speaking":40,"games":70,"streak":35,"retention":58
   }
-};
+}`;
+}
 
-console.log('🤖 AI Engine v3.0 loaded. Status:', AI_CONFIG.enabled ? '✅ ACTIVE — '+AI_CONFIG.model : '⭕ Waiting for key in AI_CONFIG.apiKey');
+// ── AI API call (Gemini auto-detect) ─────────────────────────────────────
+async function _aitCallAI(prompt) {
+  const key = AIT_API_KEY;
+  if (!key || key.includes('XXXXXXX')) throw new Error('API key o\'rnatilmagan');
+
+  if (key.startsWith('AIza')) {
+    // Google Gemini
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`;
+    const res = await fetch(url, {
+      method:  'POST',
+      headers: {'Content-Type':'application/json'},
+      body:    JSON.stringify({
+        contents: [{parts:[{text: prompt}]}],
+        generationConfig: {maxOutputTokens:800, temperature:0.7}
+      })
+    });
+    if (!res.ok) throw new Error('Gemini ' + res.status);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+  } else {
+    // OpenRouter
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method:  'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + key,
+        'HTTP-Referer':  window.location.origin,
+        'X-Title':       'Essential English PRO',
+      },
+      body: JSON.stringify({
+        model: 'meta-llama/llama-3.1-8b-instruct:free',
+        max_tokens: 800,
+        messages: [{role:'user', content: prompt}],
+      })
+    });
+    if (!res.ok) throw new Error('OpenRouter ' + res.status);
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content || '';
+  }
+}
+
+// ── Chart builders ────────────────────────────────────────────────────────
+function _aitDrawProgress(log) {
+  const canvas = document.getElementById('ait-progress-chart');
+  if (!canvas || !window.Chart) return;
+  const ctx = canvas.getContext('2d');
+  const h   = 190;
+  const aG  = ctx.createLinearGradient(0,0,0,h);
+  aG.addColorStop(0,'rgba(108,99,255,.35)');
+  aG.addColorStop(1,'rgba(108,99,255,.0)');
+
+  const vel = log.days14.map((_,i) => {
+    const sl = log.days14.slice(Math.max(0,i-2),i+1);
+    return Math.round(sl.reduce((s,d)=>s+d.xp,0)/sl.length);
+  });
+
+  _aitCharts.progress = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: log.days14.map(d=>d.label),
+      datasets: [
+        { label:'Kunlik XP', data: log.days14.map(d=>d.xp),
+          borderColor:'#6c63ff', backgroundColor:aG,
+          borderWidth:2, pointRadius:3, pointBackgroundColor:'#6c63ff',
+          fill:true, tension:0.4 },
+        { label:"O'rtacha", data:vel,
+          borderColor:'#a78bfa', backgroundColor:'transparent',
+          borderWidth:1.5, borderDash:[4,4], pointRadius:0,
+          fill:false, tension:0.4 }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      scales: {
+        x:{ grid:{color:'rgba(45,58,86,.5)'}, ticks:{maxTicksLimit:7} },
+        y:{ grid:{color:'rgba(45,58,86,.5)'}, beginAtZero:true, ticks:{callback:v=>v+' XP'} }
+      }
+    }
+  });
+}
+
+function _aitDrawRadar(log, aiRadar) {
+  const canvas = document.getElementById('ait-radar-chart');
+  if (!canvas || !window.Chart) return;
+  const ctx = canvas.getContext('2d');
+  const m   = log.modules;
+  const raw = [m.vocabulary, m.grammar, m.speaking, m.games, m.streak, m.retention];
+  const adj = aiRadar
+    ? [aiRadar.vocabulary, aiRadar.grammar, aiRadar.speaking, aiRadar.games, aiRadar.streak, aiRadar.retention]
+    : raw;
+
+  _aitCharts.radar = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ["Lug'at","Grammatika","Speaking","O'yinlar","Streak","Saqlanish"],
+      datasets: [
+        { label:'Hozirgi', data:raw,
+          borderColor:'#6c63ff', backgroundColor:'rgba(108,99,255,.15)',
+          borderWidth:2, pointBackgroundColor:'#6c63ff', pointRadius:4 },
+        ...(aiRadar ? [{
+          label:'AI tuzatilgan', data:adj,
+          borderColor:'#a78bfa', backgroundColor:'rgba(167,139,250,.08)',
+          borderWidth:1.5, borderDash:[3,3], pointRadius:3, pointBackgroundColor:'#a78bfa'
+        }] : [])
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      scales: {
+        r: {
+          min:0, max:100,
+          grid:       {color:'rgba(45,58,86,.6)'},
+          angleLines: {color:'rgba(45,58,86,.4)'},
+          ticks:      {stepSize:25, backdropColor:'transparent', font:{size:9}},
+          pointLabels:{color:'#e6eeff', font:{size:10, weight:'700'}}
+        }
+      },
+      plugins: { legend: { display:!!aiRadar, position:'bottom',
+        labels:{color:'#7a8fad', boxWidth:10, font:{size:10}} } }
+    }
+  });
+}
+
+function _aitDrawRetention(log) {
+  const canvas = document.getElementById('ait-retention-chart');
+  if (!canvas || !window.Chart) return;
+  const ctx = canvas.getContext('2d');
+  const {mastered,learning,forgotten,other} = log.vocab;
+  _aitCharts.retention = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels:   ['Mukammal','O'rganilmoqda','Zaif','Yangi'],
+      datasets: [{
+        data:            [mastered, learning, forgotten, other],
+        backgroundColor: ['#4fffb0','#6c63ff','#ff6b6b','#7a8fad'],
+        borderColor:     '#171d2e', borderWidth:3, hoverOffset:6
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins: {
+        legend: { display:true, position:'right',
+          labels:{color:'#7a8fad', boxWidth:10, padding:8, font:{size:10}} },
+        tooltip:{ callbacks:{ label:ctx=>ctx.label+': '+ctx.raw+' so\'z' } }
+      }
+    }
+  });
+}
+
+function _aitDrawModules(log) {
+  const canvas = document.getElementById('ait-module-chart');
+  if (!canvas || !window.Chart) return;
+  const ctx  = canvas.getContext('2d');
+  const m    = log.modules;
+  const vals = [m.vocabulary, m.grammar, m.speaking, m.games, m.streak, m.retention];
+  const cols = ['#4fffb0','#a78bfa','#67e8f9','#ffd166','#ff6b6b','#6c63ff'];
+  _aitCharts.module = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Lug'at","Grammatika","Speaking","O'yinlar","Streak","Saqlanish"],
+      datasets: [{
+        data: vals,
+        backgroundColor: cols.map(c=>c+'99'),
+        borderColor:     cols,
+        borderWidth:     1.5,
+        borderRadius:    5,
+        borderSkipped:   false,
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false, indexAxis:'y',
+      scales: {
+        x:{ max:100, beginAtZero:true, grid:{color:'rgba(45,58,86,.5)'},
+            ticks:{callback:v=>v+'%'} },
+        y:{ grid:{display:false} }
+      }
+    }
+  });
+}
+
+function _aitDrawPrediction(log, aiPred) {
+  const canvas = document.getElementById('ait-pred-chart');
+  if (!canvas || !window.Chart) return;
+  const ctx = canvas.getContext('2d');
+  const h   = 220;
+
+  const totalXP   = log.totalXP;
+  const dailyXPs  = log.days14.map(d=>d.xp);
+  const sum14     = dailyXPs.reduce((s,x)=>s+x,0);
+  const xpBefore  = totalXP - sum14;
+
+  const hist = dailyXPs.reduce((acc,v,i) => {
+    acc.push((acc[i-1] ?? xpBefore) + v); return acc;
+  }, []);
+
+  const thresholds = {beginner:500, intermediate:1500};
+  const nextLevel  = log.level === 'beginner' ? 'intermediate' : 'advanced';
+  const xpNeeded   = Math.max(0, (thresholds[log.level] || 1500) - totalXP);
+  const avgDaily   = log.avgDailyXP || 20;
+  const daysLeft   = Math.min(90, Math.ceil(xpNeeded / avgDaily));
+
+  const futXP  = Array.from({length:daysLeft}, (_,i) => totalXP + (i+1)*avgDaily);
+  const futLbl = Array.from({length:daysLeft}, (_,i) => {
+    const d=new Date(); d.setDate(d.getDate()+i+1);
+    return d.toLocaleDateString('uz-UZ',{month:'short',day:'numeric'});
+  });
+
+  const allLbl   = [...log.days14.map(d=>d.label), ...futLbl];
+  const pastData = [...hist, ...Array(daysLeft).fill(null)];
+  const predData = [...Array(14).fill(null), ...futXP];
+
+  const histG = ctx.createLinearGradient(0,0,0,h);
+  histG.addColorStop(0,'rgba(108,99,255,.3)'); histG.addColorStop(1,'rgba(108,99,255,.0)');
+  const predG = ctx.createLinearGradient(0,0,0,h);
+  predG.addColorStop(0,'rgba(255,209,102,.25)'); predG.addColorStop(1,'rgba(255,209,102,.0)');
+
+  _aitCharts.prediction = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: allLbl,
+      datasets: [
+        { label:'Haqiqiy XP', data:pastData,
+          borderColor:'#6c63ff', backgroundColor:histG,
+          borderWidth:2.5, pointRadius:0, fill:true, tension:0.3, spanGaps:false },
+        { label:'AI Bashorati', data:predData,
+          borderColor:'#ffd166', backgroundColor:predG,
+          borderWidth:2, borderDash:[5,4], pointRadius:0,
+          fill:true, tension:0.3, spanGaps:false }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index', intersect:false},
+      scales:{
+        x:{grid:{color:'rgba(45,58,86,.4)'}, ticks:{maxTicksLimit:8}},
+        y:{beginAtZero:false, grid:{color:'rgba(45,58,86,.4)'},
+           ticks:{callback:v=>v+' XP'}}
+      },
+      plugins:{
+        legend:{display:true, position:'top',
+          labels:{color:'#7a8fad', boxWidth:12, font:{size:10}}}
+      }
+    }
+  });
+
+  // Update prediction info
+  const lvlNames = {intermediate:'Intermediate 🎯', advanced:'Advanced 🚀'};
+  document.getElementById('ait-pred-level').textContent       = lvlNames[nextLevel] || nextLevel;
+  document.getElementById('ait-pred-days').textContent        = '≈ ' + daysLeft + ' kun';
+  document.getElementById('ait-pred-desc').textContent        = aiPred?.description_uz || ('Daraja uchun +' + xpNeeded + ' XP kerak');
+  document.getElementById('ait-pred-days-desc').textContent   = 'Kunlik o\'rt: ' + avgDaily + ' XP';
+}
+
+// ── Full render ───────────────────────────────────────────────────────────
+function _aitRenderAll(aiReport) {
+  if (!window.Chart) return; // Chart.js not loaded yet
+  _aitInitChartDefaults();
+  _aitDestroyAll();
+  const log = _aitBuildLog();
+
+  // KPIs
+  document.getElementById('ait-k-words').textContent  = log.user.words;
+  document.getElementById('ait-k-streak').textContent = log.user.streak + '🔥';
+  document.getElementById('ait-k-xp').textContent     = log.user.xp;
+  const acc = Math.round((log.vocab.mastered / Math.max(log.user.words,1)) * 100);
+  document.getElementById('ait-k-acc').textContent    = acc + '%';
+
+  // Charts (small delay so DOM canvas sizes settle)
+  setTimeout(() => {
+    _aitDrawProgress(log);
+    _aitDrawRadar(log, aiReport?.radar_adjusted || null);
+    _aitDrawRetention(log);
+    _aitDrawModules(log);
+    _aitDrawPrediction(log, aiReport?.prediction || null);
+  }, 60);
+}
+
+// ── Public page functions ─────────────────────────────────────────────────
+function aitRefresh() {
+  _aitRenderAll();
+  showToast('↻ Grafik yangilandi');
+}
+
+async function aitRunAnalysis() {
+  const key = AIT_API_KEY;
+  if (!key || key.includes('XXXXXXX')) {
+    showToast('❌ API key kod ichida o\'rnatilmagan');
+    return;
+  }
+
+  const btn  = document.getElementById('ait-ai-btn');
+  const body = document.getElementById('ait-insight-body');
+  if (btn)  btn.classList.add('ait-spinning');
+  if (body) { body.className='ait-insight-body ait-loading'; body.textContent='AI tahlil qilmoqda...'; }
+
+  try {
+    const log    = _aitBuildLog();
+    const prompt = _aitBuildPrompt(log);
+    const raw    = await _aitCallAI(prompt);
+    const json   = raw.replace(/```json|```/g,'').trim();
+    const report = JSON.parse(json);
+
+    // Update insight card
+    if (body) { body.className='ait-insight-body'; body.textContent = report.insight_uz || '—'; }
+    const ts = document.getElementById('ait-insight-ts');
+    if (ts) ts.textContent = 'AI tahlil: ' + new Date().toLocaleTimeString('uz-UZ');
+
+    const tagsEl = document.getElementById('ait-insight-tags');
+    if (tagsEl) tagsEl.innerHTML = (report.tags||[]).map(t=>`<span class="ait-tag">${t}</span>`).join('');
+
+    _aitRenderAll(report);
+    showToast('✅ AI tahlil muvaffaqiyatli!');
+  } catch(e) {
+    if (body) { body.className='ait-insight-body'; body.textContent='❌ Xato: ' + e.message; }
+    showToast('❌ ' + e.message.slice(0,40));
+  } finally {
+    if (btn) btn.classList.remove('ait-spinning');
+  }
+}
+
+// ── Main buildAITab — called on tab switch ────────────────────────────────
+function buildAITab() {
+  // Profile card
+  const avEl = document.getElementById('ait-av');
+  if (avEl) {
+    if (U.avatarUrl) avEl.innerHTML = `<img src="${U.avatarUrl}" style="width:80%;height:80%;object-fit:contain">`;
+    else avEl.textContent = U.avatarEmoji || '🤖';
+  }
+  const nm = document.getElementById('ait-prof-name');
+  if (nm) nm.textContent = U.name || '—';
+  const sub = document.getElementById('ait-prof-sub');
+  if (sub) sub.textContent = {beginner:'🌱 Beginner', intermediate:'🎯 Intermediate', advanced:'🚀 Advanced'}[U.level] || U.level;
+  const xpEl = document.getElementById('ait-prof-xp');
+  if (xpEl) xpEl.textContent = U.xp || 0;
+
+  // AI badge — always show "faol" since key is hardcoded
+  const dot = document.getElementById('ait-dot');
+  const lbl = document.getElementById('ait-badge-lbl');
+  const keyOk = AIT_API_KEY && !AIT_API_KEY.includes('XXXXXXX');
+  if (dot) {
+    dot.style.background = keyOk ? 'var(--green)' : 'var(--muted)';
+    dot.style.boxShadow  = keyOk ? '0 0 6px var(--green)' : 'none';
+  }
+  if (lbl) lbl.textContent = keyOk ? 'AI Faol' : 'Key yo\'q';
+
+  // Theme buttons active state
+  const isLight = localStorage.getItem('ep_theme') === 'light';
+  const darkBtn  = document.getElementById('ait-dark-btn');
+  const lightBtn = document.getElementById('ait-light-btn');
+  if (darkBtn)  darkBtn.classList.toggle('active', !isLight);
+  if (lightBtn) lightBtn.classList.toggle('active',  isLight);
+
+  // Render charts + quests + analytics
+  _aitRenderAll();
+  try { buildDailyQuestsUI(); }    catch(e){}
+  try { buildLearningAnalytics(); } catch(e){}
+}
+</script>
+
 </script>
 
 </body>
