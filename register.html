@@ -11,15 +11,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0d1117;--s1:#161b27;--s2:#1c2438;
-  --border:#2a3550;--text:#e8f0fe;--muted:#7a8fad;
-  --accent:#7c5af6;--al:#a07cf8;
-  --g:#4fdf8a;--b:#4f9cf9;--p:#c084fc;
-}
 html,body{height:100%;min-height:100%}
 body{
-  background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;
+  background:#0d1117;color:#e8f0fe;font-family:'Nunito',sans-serif;
   min-height:100vh;display:flex;align-items:center;justify-content:center;
   padding:16px;
   background-image:
@@ -33,97 +27,76 @@ body::before{
   background-size:36px 36px;
 }
 #loading-screen{
-  position:fixed;inset:0;background:var(--bg);
+  position:fixed;inset:0;background:#0d1117;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   z-index:999;gap:16px;
+
 }
 .loader-icon{font-size:52px;animation:pulse 1.2s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
-.loader-txt{font-family:'Syne',sans-serif;font-size:13px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.loader-txt{font-family:'Syne',sans-serif;font-size:13px;color:#7a8fad;letter-spacing:.12em;text-transform:uppercase}
 #error-screen{
-  position:fixed;inset:0;background:var(--bg);
+  position:fixed;inset:0;background:#0d1117;
   display:none;flex-direction:column;align-items:center;justify-content:center;
   z-index:998;gap:14px;text-align:center;padding:32px;
 }
 .err-icon{font-size:56px}
 .err-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800}
-.err-desc{font-size:14px;color:var(--muted);max-width:280px;line-height:1.7}
+.err-desc{font-size:14px;color:#7a8fad;max-width:280px;line-height:1.7}
 .err-btn{
   margin-top:8px;padding:13px 30px;border-radius:14px;border:none;
-  background:linear-gradient(135deg,var(--accent),#5b3fd4);
+  background:linear-gradient(135deg,#7c5af6,#5b3fd4);
   color:white;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;
 }
 .outer{
-  width:100%;max-width:960px;background:var(--s1);
-  border:1px solid var(--border);border-radius:28px;
+  width:100%;max-width:420px;background:#161b27;
+  border:1px solid #2a3550;border-radius:28px;
   box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(124,90,246,.08) inset;
-  display:none;grid-template-columns:260px 1fr;
-  min-height:540px;overflow:hidden;
+  display:none;flex-direction:column;align-items:center;
+  padding:34px 28px 26px;
   animation:rise .55s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.left{
-  background:rgba(10,14,24,.6);border-right:1px solid var(--border);
-  padding:28px 22px;display:flex;flex-direction:column;align-items:center;
-}
-.logo-row{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:28px}
-.logo-icon{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#5b3fd4);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 14px rgba(124,90,246,.4)}
-.logo-txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
-.av-ring-wrap{position:relative;width:150px;height:150px;margin-bottom:16px}
-.av-ring-svg{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);animation:spin 6s linear infinite}
+.logo-row{display:flex;align-items:center;gap:9px;margin-bottom:26px}
+.logo-icon{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#7c5af6,#5b3fd4);display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 4px 14px rgba(124,90,246,.4)}
+.logo-txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.09em;color:#7a8fad;text-transform:uppercase}
+
+.av-ring-wrap{position:relative;width:110px;height:110px;margin-bottom:14px}
+.av-ring-svg{position:absolute;inset:-7px;width:calc(100% + 14px);height:calc(100% + 14px);animation:spin 6s linear infinite}
+
 @keyframes spin{to{transform:rotate(360deg)}}
 .av-circle{
-  width:150px;height:150px;border-radius:50%;background:var(--s2);border:2px solid var(--border);
+  width:110px;height:110px;border-radius:50%;background:#1c2438;border:2px solid #2a3550;
   overflow:hidden;display:flex;align-items:center;justify-content:center;
-  font-size:64px;position:relative;z-index:1;cursor:pointer;transition:border-color .2s;
+  font-size:46px;position:relative;z-index:1;
 }
-.av-circle:hover{border-color:var(--accent)}
-.av-circle img{width:80%;height:80%;object-fit:contain;display:none}
-.av-upload-badge{
-  position:absolute;bottom:5px;right:5px;z-index:2;width:36px;height:36px;border-radius:50%;
-  background:var(--accent);border:3px solid var(--s1);display:flex;align-items:center;justify-content:center;
-  font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(124,90,246,.5);transition:transform .2s;
-}
-.av-upload-badge:hover{transform:scale(1.1)}
+.av-circle img{width:100%;height:100%;object-fit:cover;display:none}
 
-/* FIX: wrap name+handle so they stack vertically in mobile flex row */
-.prev-info{display:flex;flex-direction:column;gap:2px}
-.prev-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;text-align:center;margin-bottom:3px}
-.prev-tg{font-size:12px;color:var(--muted);margin-bottom:10px}
-.tg-verified{display:flex;align-items:center;gap:6px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:7px 12px;margin-bottom:16px}
+.prev-name{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;text-align:center;margin-bottom:4px}
+.prev-tg{font-size:12px;color:#7a8fad;margin-bottom:14px;text-align:center}
+.tg-verified{display:flex;align-items:center;gap:6px;background:rgba(79,223,138,.08);border:1px solid rgba(79,223,138,.2);border-radius:10px;padding:7px 12px;margin-bottom:22px}
 .tg-v-icon{font-size:14px}
-.tg-v-txt{font-size:11px;color:var(--g);font-weight:700}
-.divider{width:100%;height:1px;background:var(--border);margin-bottom:14px}
-.left-hint{font-size:11px;color:var(--muted);text-align:center;line-height:1.6}
-.right{padding:30px 30px 26px;display:flex;flex-direction:column}
-.right h1{font-family:'Syne',sans-serif;font-size:27px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.right>p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
-.lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.opt-badge{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(124,90,246,.15);border:1px solid rgba(124,90,246,.2);color:var(--al);padding:2px 7px;border-radius:8px}
-.av-sec{margin-bottom:18px}
-.tabs{display:flex;gap:6px;margin-bottom:10px}
-.tab{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;background:var(--s2);border:1.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
-.tab:hover{border-color:var(--al)}
-.tab.active{background:rgba(124,90,246,.15);border-color:var(--accent);color:white}
-.av-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;max-height:155px;overflow-y:auto;padding:2px}
-.av-grid::-webkit-scrollbar{width:4px}
-.av-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-.av-item{aspect-ratio:1;background:var(--s2);border:1.5px solid var(--border);border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;overflow:hidden}
-.av-item:hover{border-color:var(--al);transform:scale(1.06)}
-.av-item.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,90,246,.22);background:rgba(124,90,246,.1)}
-.av-item img{width:34px;height:34px}
-.level-row{display:flex;gap:8px;margin-bottom:22px;margin-top:4px}
-.lv{flex:1;padding:11px 6px;border-radius:13px;border:1.5px solid var(--border);background:var(--s2);cursor:pointer;transition:all .18s;text-align:center}
-.lv-em{font-size:20px;display:block;margin-bottom:4px}
-.lv-name{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:var(--muted)}
-.lv-hint{font-size:9px;color:var(--muted);line-height:1.3}
-.lv.sel-b{border-color:var(--g);background:rgba(79,223,138,.07)}.lv.sel-b .lv-name{color:var(--g)}
-.lv.sel-i{border-color:var(--b);background:rgba(79,156,249,.07)}.lv.sel-i .lv-name{color:var(--b)}
-.lv.sel-a{border-color:var(--p);background:rgba(192,132,252,.07)}.lv.sel-a .lv-name{color:var(--p)}
+.tg-v-txt{font-size:11px;color:#4fdf8a;font-weight:700}
+
+.right{width:100%;display:flex;flex-direction:column}
+.right h1{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px;text-align:center}
+.right>p{font-size:13px;color:#7a8fad;margin-bottom:20px;line-height:1.5;text-align:center}
+.lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7a8fad;margin-bottom:8px;display:flex;align-items:center;gap:6px;justify-content:center}
+
+.level-row{display:flex;gap:8px;margin-bottom:22px;margin-top:4px;width:100%}
+.lv{flex:1;padding:13px 6px;border-radius:13px;border:1.5px solid #2a3550;background:#1c2438;cursor:pointer;transition:all .18s;text-align:center}
+.lv-em{font-size:22px;display:block;margin-bottom:4px}
+.lv-name{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;color:#7a8fad}
+.lv-hint{font-size:9px;color:#7a8fad;line-height:1.3}
+.lv.sel-b{border-color:#4fdf8a;background:rgba(79,223,138,.07)}.lv.sel-b .lv-name{color:#4fdf8a}
+.lv.sel-i{border-color:#4f9cf9;background:rgba(79,156,249,.07)}.lv.sel-i .lv-name{color:#4f9cf9}
+.lv.sel-a{border-color:#c084fc;background:rgba(192,132,252,.07)}.lv.sel-a .lv-name{color:#c084fc}
+
 .submit{
-  width:100%;padding:15px;border:none;border-radius:13px;margin-top:auto;
-  background:linear-gradient(135deg,var(--accent) 0%,#5b3fd4 100%);
+  width:100%;padding:15px;border:none;border-radius:13px;margin-top:6px;
+  background:linear-gradient(135deg,#7c5af6 0%,#5b3fd4 100%);
   color:white;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;
+
   cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s;
   box-shadow:0 8px 28px rgba(124,90,246,.35);position:relative;overflow:hidden;
 }
@@ -131,22 +104,6 @@ body::before{
 .submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,90,246,.45)}
 .submit:active:not(:disabled){transform:scale(.98)}
 .submit:disabled{opacity:.55;cursor:not-allowed}
-@media(max-width:640px){
-  body{padding:0;align-items:flex-end}
-  .outer{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-width:100%;min-height:auto}
-  .left{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;padding:14px 18px;gap:14px;align-items:center}
-  .logo-row,.divider,.left-hint,.tg-verified{display:none}
-  .av-ring-wrap{width:70px;height:70px;margin-bottom:0;flex-shrink:0}
-  .av-circle{width:70px;height:70px;font-size:30px}
-  .av-upload-badge{width:22px;height:22px;font-size:10px;bottom:0;right:0;border-width:2px}
-  /* FIX: on mobile, prev-info stacks vertically next to the avatar */
-  .prev-info{flex:1;min-width:0}
-  .prev-name{font-size:15px;margin-bottom:2px;text-align:left}
-  .prev-tg{margin-bottom:0;text-align:left}
-  .right{padding:18px 16px 22px}
-  .right h1{font-size:20px}
-  .av-grid{grid-template-columns:repeat(5,1fr);max-height:130px}
-}
 </style>
 </head>
 <body>
@@ -169,58 +126,43 @@ body::before{
 </div>
 
 <div class="outer" id="main-outer">
-  <div class="left">
-    <div class="logo-row">
-      <div class="logo-icon">🧠</div>
-      <span class="logo-txt">Essential English</span>
+  <div class="logo-row">
+    <div class="logo-icon">🧠</div>
+    <span class="logo-txt">Essential English</span>
+
+  </div>
+
+  <div class="av-ring-wrap">
+    <svg class="av-ring-svg" viewBox="0 0 124 124">
+      <defs>
+        <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7c5af6"/>
+          <stop offset="50%" stop-color="#c084fc"/>
+          <stop offset="100%" stop-color="#4f9cf9"/>
+        </linearGradient>
+      </defs>
+      <circle cx="62" cy="62" r="58" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="240 128"/>
+    </svg>
+    <div class="av-circle" id="av-circle-btn">
+      <img id="av-img" src="" alt="">
+      <span id="av-emoji">🤖</span>
     </div>
-    <div class="av-ring-wrap">
-      <svg class="av-ring-svg" viewBox="0 0 166 166">
-        <defs>
-          <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7c5af6"/>
-            <stop offset="50%" stop-color="#c084fc"/>
-            <stop offset="100%" stop-color="#4f9cf9"/>
-          </linearGradient>
-        </defs>
-        <circle cx="83" cy="83" r="79" stroke="url(#rg)" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="320 170"/>
-      </svg>
-      <div class="av-circle" id="av-circle-btn">
-        <img id="av-img" src="" alt="">
-        <span id="av-emoji">🤖</span>
-      </div>
-      <label class="av-upload-badge" for="file-up" title="Rasm yuklash">📷</label>
-      <input type="file" id="file-up" accept="image/*" style="display:none">
-    </div>
-    <!-- FIX: wrapped in .prev-info so they stack vertically on mobile -->
-    <div class="prev-info">
-      <div class="prev-name" id="prev-name">...</div>
-      <div class="prev-tg" id="prev-tg"></div>
-    </div>
-    <div class="tg-verified">
-      <span class="tg-v-icon">✅</span>
-      <span class="tg-v-txt">Telegram orqali tasdiqlangan</span>
-    </div>
-    <div class="divider"></div>
-    <div class="left-hint">Ismingiz Telegram<br>hisobingizdan olinadi 🔒</div>
+  </div>
+
+  <div class="prev-name" id="prev-name">...</div>
+  <div class="prev-tg" id="prev-tg"></div>
+  <div class="tg-verified">
+    <span class="tg-v-icon">✅</span>
+    <span class="tg-v-txt">Telegram orqali tasdiqlangan</span>
   </div>
 
   <div class="right">
-    <h1>Profilni sozlash</h1>
-    <p>Telegramdagi ismingiz avtomatik qo'yildi. Avatar va darajani tanlang (ixtiyoriy).</p>
+    <h1>Darajangizni tanlang</h1>
+    <p>Ism va rasm Telegram profilingizdan avtomatik olindi.</p>
 
-    <div class="av-sec">
-      <div class="lbl">Avatar tanlash <span class="opt-badge">ixtiyoriy</span></div>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab('bots',this)">🤖 Robotlar</button>
-        <button class="tab" onclick="switchTab('avatars',this)">👤 Avatarlar</button>
-        <button class="tab" onclick="switchTab('animals',this)">🐱 Hayvonlar</button>
-      </div>
-      <div class="av-grid" id="av-grid"></div>
-    </div>
-
-    <div class="lbl">Darajangiz <span class="opt-badge">ixtiyoriy</span></div>
+    <div class="lbl">Daraja</div>
     <div class="level-row">
+
       <div class="lv sel-b" data-lv="beginner" onclick="pickLevel(this)">
         <span class="lv-em">🌱</span>
         <span class="lv-name">Beginner</span>
@@ -250,85 +192,27 @@ body::before{
 // ══════════════════════════════════════════════════════════════════════
 const SUPABASE_URL      = 'https://zgaavmiimhxawicineco.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYWF2bWlpbWh4YXdpY2luZWNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc3MzAsImV4cCI6MjA4ODQxMzczMH0.DdEBB_xV03AZFlU_c5q97mO34KXgNf3_lMIh3XYswgE';
-const APP_URL           = 'app.html';
+const APP_URL           = 'index.html';
 
 const { createClient } = supabase;
+
 const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let tgUser  = null;
-// FIX: track whether user uploaded a custom file (base64) separately
-let state   = { avatarUrl: '', avatarIsFile: false, level: 'beginner' };
-let selItem = null;
-
-// ── AVATAR ──
-const SEEDS = {
-  bots:    ['Mimi','Robo','Nano','Dots','Gigi','Zuzu','Bibi','Lolo','A1','B2','C3','D4','E5','F6','G7','H8'],
-  avatars: ['Alex','Jordan','Morgan','Casey','Riley','Avery','Quinn','Blake','Drew','Sage','Reese','Skyler'],
-  animals: ['Felix','Luna','Shadow','Tiger','Simba','Oreo','Mochi','Sushi','Boba','Coco','Pepper','Maple'],
-};
-const STYLES = { bots:'bottts-neutral', avatars:'adventurer-neutral', animals:'thumbs' };
-
-function buildGrid(tab) {
-  const grid = document.getElementById('av-grid');
-  grid.innerHTML = '';
-  selItem = null;
-  SEEDS[tab].forEach(seed => {
-    const url = `https://api.dicebear.com/7.x/${STYLES[tab]}/svg?seed=${seed}`;
-    const el  = document.createElement('div');
-    el.className = 'av-item';
-    el.innerHTML = `<img src="${url}" loading="lazy">`;
-    el.onclick = () => {
-      if (selItem) selItem.classList.remove('sel');
-      el.classList.add('sel');
-      selItem = el;
-      state.avatarUrl    = url;
-      state.avatarIsFile = false;   // it's a URL, safe to store in DB
-      showAvatar(url);
-    };
-    grid.appendChild(el);
-  });
-}
-
-function switchTab(tab, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  buildGrid(tab);
-}
-
-function showAvatar(url) {
-  const img = document.getElementById('av-img');
-  img.src = url;
-  img.style.display = 'block';
-  document.getElementById('av-emoji').style.display = 'none';
-}
-
-// FIX: file upload — mark as file so we don't push base64 to Supabase
-document.getElementById('file-up').addEventListener('change', e => {
-  const f = e.target.files[0];
-  if (!f) return;
-  if (f.size > 2 * 1024 * 1024) {
-    alert('Rasm 2MB dan kichik bo\'lishi kerak');
-    e.target.value = '';
-    return;
-  }
-  const r = new FileReader();
-  r.onload = ev => {
-    state.avatarUrl    = ev.target.result; // base64 — only stored locally
-    state.avatarIsFile = true;             // skip pushing this to Supabase
-    showAvatar(ev.target.result);
-    if (selItem) { selItem.classList.remove('sel'); selItem = null; }
-  };
-  r.readAsDataURL(f);
-});
-
-document.getElementById('av-circle-btn').onclick = () => {
-  document.getElementById('file-up').click();
-};
+let tgUser = null;
+let state  = { level: 'beginner' };
 
 function pickLevel(el) {
   document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
   state.level = el.dataset.lv;
   el.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
+}
+
+function showAvatar(url) {
+  if (!url) return;
+  const img = document.getElementById('av-img');
+  img.src = url;
+  img.style.display = 'block';
+  document.getElementById('av-emoji').style.display = 'none';
 }
 
 // ── TELEGRAM INIT ──
@@ -344,9 +228,10 @@ async function initApp() {
 
   tgUser = tg?.initDataUnsafe?.user ?? null;
 
+
   // Localhost test mode
   if (!tgUser && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
-    tgUser = { id: 999999999, first_name: 'Test', last_name: 'Dev', username: 'testdev' };
+    tgUser = { id: 999999999, first_name: 'Test', last_name: 'Dev', username: 'testdev', photo_url: '' };
   }
 
   if (!tgUser) {
@@ -356,10 +241,14 @@ async function initApp() {
   }
 
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+  // Telegram profil rasmi — faqat shu ishlatiladi, boshqa avatar variantlari yo'q
+  const tgPhoto  = tgUser.photo_url || '';
+
   document.getElementById('prev-name').textContent = fullName;
   document.getElementById('prev-tg').textContent   = tgUser.username ? `@${tgUser.username}` : `ID: ${tgUser.id}`;
+  showAvatar(tgPhoto);
 
-  // Check Supabase for existing profile
+  // Supabase'dan profil mavjudligini tekshirish
   try {
     const { data: existing } = await db
       .from('users')
@@ -367,34 +256,36 @@ async function initApp() {
       .eq('user_id', tgUser.id)
       .maybeSingle();
 
-    // Profile complete — go straight to app
-    if (existing?.level && existing?.avatar_url) {
+    // Profil allaqachon to'liq bo'lsa — birdaniga index.html ga o'tamiz,
+    // register ekranini umuman ko'rsatmaymiz
+    if (existing?.level) {
       saveLocal(buildLocalUser({
-        ...existing,
-        name:      fullName,
-        avatarUrl: existing.avatar_url,
-        // FIX: ensure both field names are present
-        userId:    existing.user_id,
-        user_id:   existing.user_id,
+        user_id:    tgUser.id,
+
+        name:       fullName,
+        username:   tgUser.username || '',
+        first_name: tgUser.first_name,
+        last_name:  tgUser.last_name || '',
+        level:      existing.level,
+        avatarUrl:  tgPhoto || existing.avatar_url || '',
       }));
+
+      // Rasm o'zgargan bo'lishi mumkin — fon rejimida DB ni yangilaymiz
+      if (tgPhoto && tgPhoto !== existing.avatar_url) {
+        db.from('users').update({ avatar_url: tgPhoto, last_active: new Date().toISOString() })
+          .eq('user_id', tgUser.id).then(()=>{}).catch(()=>{});
+      }
+
       window.location.replace(APP_URL);
       return;
-    }
-
-    // Restore saved level if exists
-    if (existing?.level) {
-      state.level = existing.level;
-      document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
-      const lvEl = document.querySelector(`[data-lv="${state.level}"]`);
-      if (lvEl) lvEl.classList.add({ beginner:'sel-b', intermediate:'sel-i', advanced:'sel-a' }[state.level]);
     }
   } catch(e) {
     console.warn('Supabase check:', e.message);
   }
 
+  // Birinchi marta kirgan foydalanuvchi — faqat daraja tanlash ekrani
   document.getElementById('loading-screen').style.display = 'none';
-  document.getElementById('main-outer').style.display     = 'grid';
-  buildGrid('bots');
+  document.getElementById('main-outer').style.display     = 'flex';
 }
 
 // ── SAVE PROFILE ──
@@ -403,20 +294,12 @@ async function saveProfile() {
 
   const btn = document.getElementById('submit-btn');
   btn.disabled    = true;
+
   btn.textContent = '⏳ Saqlanmoqda...';
 
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
+  const tgPhoto  = tgUser.photo_url || '';
 
-  // Default avatar if none selected
-  if (!state.avatarUrl) {
-    state.avatarUrl    = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(tgUser.first_name)}`;
-    state.avatarIsFile = false;
-  }
-
-  // FIX: only store URL-based avatars in Supabase, not base64 blobs
-  const dbAvatarUrl = state.avatarIsFile ? '' : state.avatarUrl;
-
-  // Supabase upsert — fail gracefully
   try {
     const { error } = await db.from('users').upsert({
       user_id:     tgUser.id,
@@ -424,7 +307,7 @@ async function saveProfile() {
       first_name:  tgUser.first_name,
       last_name:   tgUser.last_name   || null,
       level:       state.level,
-      avatar_url:  dbAvatarUrl,
+      avatar_url:  tgPhoto,
       last_active: new Date().toISOString(),
     }, { onConflict: 'user_id' });
 
@@ -433,40 +316,38 @@ async function saveProfile() {
     console.error('Supabase error:', err);
   }
 
-  // Always save locally and navigate to app
   const localUser = buildLocalUser({
-    user_id:   tgUser.id,
-    name:      fullName,
-    username:  tgUser.username || '',
+    user_id:    tgUser.id,
+    name:       fullName,
+    username:   tgUser.username || '',
     first_name: tgUser.first_name,
     last_name:  tgUser.last_name || '',
-    level:     state.level,
-    avatarUrl: state.avatarUrl,  // full URL or base64 — stored locally
-    avatar_url: dbAvatarUrl,     // URL only — synced to DB
+    level:      state.level,
+    avatarUrl:  tgPhoto,
   });
 
   saveLocal(localUser);
+
   window.location.href = APP_URL;
 }
 
 /**
- * Build a complete local user object.
- * FIX: saves BOTH userId and user_id so app.html can read either.
+ * To'liq lokal user obyektini yasaydi.
+ * userId va user_id ikkalasi ham saqlanadi (index.html moslashuvi uchun).
  */
 function buildLocalUser(data) {
   const id = data.user_id || data.userId;
   return {
-    // FIX: both field names present for compatibility
-    userId:    id,
-    user_id:   id,
+    userId:  id,
+    user_id: id,
 
     name:        data.name || [data.first_name, data.last_name].filter(Boolean).join(' '),
     username:    data.username    || '',
     first_name:  data.first_name  || '',
     last_name:   data.last_name   || '',
     level:       data.level       || 'beginner',
-    avatarUrl:   data.avatarUrl   || data.avatar_url || '',
-    avatar_url:  data.avatar_url  || data.avatarUrl  || '',
+    avatarUrl:   data.avatarUrl   || '',
+    avatar_url:  data.avatarUrl   || '',
 
     xp: 0, streak: 0,
     learnedWords: [], wordErrors: {}, customWords: [],
@@ -480,10 +361,10 @@ function buildLocalUser(data) {
   };
 }
 
+
 function saveLocal(user) {
   const j = JSON.stringify(user);
   try { localStorage.setItem('ep_user', j); } catch(e) {}
-  // Also save under user-specific key for multi-account support
   try { localStorage.setItem(`ep_user_${user.userId}`, j); } catch(e) {}
   try { sessionStorage.setItem('ep_user', j); } catch(e) {}
 }
