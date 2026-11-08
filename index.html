@@ -219,6 +219,21 @@ body.light-mode .xp-chip{color:#5030c0 !important;}
 .toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:12px;font-weight:700;z-index:500;white-space:nowrap;animation:tIn .3s ease,tOut .3s 2.2s forwards;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 @keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes tOut{to{opacity:0}}
+.ielts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ielts-card{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px 12px;text-align:center;cursor:pointer;transition:all .2s}
+.ielts-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.ielts-ic{font-size:30px;margin-bottom:6px}
+.ielts-t{font-size:14px;font-weight:800}
+.ielts-d{font-size:11px;color:var(--muted);margin-top:3px}
+.ielts-cnt{display:inline-block;margin-top:6px;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;background:rgba(124,90,246,.12);color:var(--al)}
+#frame-view{display:none;position:fixed;top:0;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;z-index:260;background:var(--bg);flex-direction:column}
+#frame-view.open{display:flex}
+.fv-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top));background:var(--s1);border-bottom:1px solid var(--border)}
+.fv-back{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--s2);color:var(--text);font-size:16px;cursor:pointer}
+.fv-title{font-weight:800;font-size:14px}
+#fv-iframe{flex:1;width:100%;border:0;background:var(--bg)}
+.iq-q{background:var(--s2);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.iq-passage{background:var(--s2);border-radius:12px;padding:14px;font-size:14px;line-height:1.7;white-space:pre-wrap;margin-bottom:12px;max-height:45vh;overflow-y:auto}
 .xp-pop{position:fixed;top:70px;right:14px;z-index:400;background:var(--gold);color:#080d14;padding:7px 14px;border-radius:20px;font-weight:800;font-size:13px;animation:xpIn .6s cubic-bezier(.34,1.56,.64,1) both,tOut .4s 1.6s forwards;pointer-events:none;}
 @keyframes xpIn{from{opacity:0;transform:translateY(16px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
 /* BATTLE MATCHMAKING */
@@ -1535,6 +1550,15 @@ async function fetchOnlinePlayers() {
         </div>
       </div>
 
+      <!-- LUG'AT VOSITALARI -->
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-title">🧰 Lug'at vositalari</div></div>
+        <div class="games-grid" style="grid-template-columns:repeat(2,1fr)">
+          <div class="game-card" onclick="openFrame('synonyms.html','Synonyms Trainer')"><div class="g-icon">🔁</div><div class="g-name">Synonyms</div><div class="g-desc">Sinonimlar trenajyori</div></div>
+          <div class="game-card" onclick="openFrame('phrase_quest.html','PhraseQuest')"><div class="g-icon">💬</div><div class="g-name">PhraseQuest</div><div class="g-desc">A1–C2 iboralar</div></div>
+        </div>
+      </div>
+
       <!-- GAMES shortcut -->
       <div class="sec">
         <div class="sec-hd">
@@ -1659,6 +1683,12 @@ async function fetchOnlinePlayers() {
           </div>
         </div>
 
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px">📚 LUG'AT VA IBORALAR</div>
+        <div class="games-grid" style="margin-bottom:18px">
+          <div class="game-card" onclick="openFrame('synonyms.html','Synonyms Trainer')"><div class="g-icon">🔁</div><div class="g-name">Synonyms</div><div class="g-desc">Flashcard + quiz</div></div>
+          <div class="game-card" onclick="openFrame('phrase_quest.html','PhraseQuest')"><div class="g-icon">💬</div><div class="g-name">PhraseQuest</div><div class="g-desc">A1–C2 iboralar</div></div>
+        </div>
+
         <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">BEPUL (+1 XP/to'g'ri javob)</div>
         <div class="games-grid" style="margin-bottom:18px">
           <div class="game-card" onclick="openModal('modal-match')">
@@ -1720,6 +1750,20 @@ async function fetchOnlinePlayers() {
           <div class="dc-timer" id="dc-countdown">--:--:--</div>
           <div class="dc-rank" id="dc-rank-preview">Bugun: 0 ball</div>
           <button onclick="openPremiumGame('daily')" style="width:100%;margin-top:10px;padding:10px;background:linear-gradient(135deg,var(--blue),var(--accent));border:none;border-radius:10px;color:white;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">Ishtirok etish →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- IELTS TAB -->
+    <div id="tab-ielts">
+      <div class="sec">
+        <div class="sec-title" style="margin-bottom:4px">🎓 IELTS</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">4 ta bo'lim bo'yicha tayyorlaning</div>
+        <div id="ielts-grid" class="ielts-grid"></div>
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:18px 0 8px">QO'SHIMCHA</div>
+        <div class="ielts-grid">
+          <div class="ielts-card" onclick="openFrame('phrase_quest.html','PhraseQuest')"><div class="ielts-ic">💬</div><div class="ielts-t">PhraseQuest</div><div class="ielts-d">IELTS uchun iboralar</div></div>
+          <div class="ielts-card" onclick="openFrame('synonyms.html','Synonyms Trainer')"><div class="ielts-ic">🔁</div><div class="ielts-t">Synonyms</div><div class="ielts-d">Sinonimlar</div></div>
         </div>
       </div>
     </div>
@@ -1999,9 +2043,9 @@ async function fetchOnlinePlayers() {
   <div class="bottomnav">
     <button class="nav-b active" onclick="switchTab('home',this)"><span class="nav-b-icon">🏠</span><span class="nav-b-label">Bosh</span></button>
     <button class="nav-b" onclick="switchTab('games',this)"><span class="nav-b-icon">🎮</span><span class="nav-b-label">O'yinlar</span></button>
-    <button class="nav-b" onclick="switchTab('progress',this)"><span class="nav-b-icon">📊</span><span class="nav-b-label">Progress</span></button>
+    <button class="nav-b" onclick="switchTab('ielts',this)"><span class="nav-b-icon">🎓</span><span class="nav-b-label">IELTS</span></button>
     <button class="nav-b" onclick="switchTab('battle',this)"><span class="nav-b-icon">⚔️</span><span class="nav-b-label">Jang</span></button>
-    <button class="nav-b" onclick="switchTab('premium',this)"><span class="nav-b-icon">💎</span><span class="nav-b-label">Premium</span></button>
+    <button class="nav-b" onclick="switchTab('progress',this)"><span class="nav-b-icon">📊</span><span class="nav-b-label">Progress</span></button>
     <button class="nav-b" onclick="switchTab('ai',this)"><span class="nav-b-icon">🤖</span><span class="nav-b-label">AI</span></button>
   </div>
 </div>
@@ -3635,18 +3679,57 @@ function cancelMatchmaking(){
   closeModal(null,'modal-matchmaking');
 }
 
-function startBotBattle(){
-  const bot = {name:'AI Bot 🤖', av:'🤖', xp: U.xp + Math.floor(Math.random()*500-250)};
-  startBattleWith(bot, true);
+function startBotBattle(){ openBotSetup(); }
+
+function openBotSetup(){
+  const bs=document.getElementById('bot-book');
+  if(bs && !bs.options.length){
+    for(let b=1;b<=6;b++){ const o=document.createElement('option'); o.value=b; o.textContent='Kitob '+b+' ('+({beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'}[BOOK_LEVEL[b]])+')'; bs.appendChild(o); }
+  }
+  if(bs) bs.value=curBook;
+  const bu=document.getElementById('bot-unit'); if(bu) bu.value=curUnitNum;
+  const bl=document.getElementById('bot-level'); if(bl && !bl.dataset.set){ bl.value='medium'; bl.dataset.set='1'; }
+  document.getElementById('bot-setup-err').textContent='';
+  openModal('modal-bot-setup');
 }
 
-function startBattleWith(opp, isBot){
-  const words = getAllWordsForGames();
+async function confirmBotBattle(){
+  const book=parseInt(document.getElementById('bot-book').value)||1;
+  const unit=parseInt(document.getElementById('bot-unit').value)||1;
+  const diff=document.getElementById('bot-level').value;
+  const err=document.getElementById('bot-setup-err');
+  err.textContent='⏳ Yuklanmoqda...';
+  const words=await fetchUnitWords(book,unit);
+  if(!words||words.length<4){ err.textContent='❌ Bu unit topilmadi yoki so\'zlar yetarli emas'; return; }
+  err.textContent='';
+  closeModal(null,'modal-bot-setup');
+  const bot={name:'AI Bot 🤖', av:'🤖', xp:0, diff:diff, label:'Kitob '+book+' · Unit '+unit};
+  startBattleWith(bot, true, words);
+}
+
+function scheduleBotAnswer(){
+  clearTimeout(BT.botTimer);
+  if(!BT || !BT.isBot || BT.time<=0) return;
+  const d=BT.opp&&BT.opp.diff||'medium';
+  const cfg={easy:[7000,11000,0.5],medium:[5000,9000,0.7],hard:[4000,7000,0.85]}[d]||[5000,9000,0.7];
+  const delay=cfg[0]+Math.random()*(cfg[1]-cfg[0]);
+  BT.botTimer=setTimeout(()=>{
+    if(!BT.isBot || BT.time<=0) return;
+    if(Math.random()<cfg[2]){
+      BT.oppScore++;
+      const o=document.getElementById('bg-opp'); if(o) o.textContent=BT.oppScore;
+    }
+    scheduleBotAnswer();
+  }, delay);
+}
+
+function startBattleWith(opp, isBot, customPool){
+  const words = (customPool && customPool.length>=3) ? customPool : getAllWordsForGames();
   if(words.length < 3){ showToast('Kamida 3 ta so\'z kerak!'); return; }
   const shuffled = shuffle([...words]);
   BT={timer:null,myScore:0,oppScore:0,myXP:0,
       time:60,answered:false,
-      isBot:isBot,opp:opp,botTick:0,
+      isBot:isBot,opp:opp,botTick:0,botTimer:null,
       pool:shuffled,poolIdx:0};
   document.getElementById('bg-my').textContent=0;
   document.getElementById('bg-opp').textContent=0;
@@ -3654,11 +3737,12 @@ function startBattleWith(opp, isBot){
   document.getElementById('bh-opp-name').textContent = opp.name;
   document.getElementById('bh-opp-av').innerHTML = typeof opp.av==='string'&&(opp.av.startsWith('http')||opp.av.startsWith('data'))
     ? `<img src="${opp.av}" style="width:80%;height:80%;object-fit:contain">` : opp.av;
-  document.getElementById('bg-opp-badge').textContent = isBot ? '🤖 Bot' : '🟢 Online';
+  document.getElementById('bg-opp-badge').textContent = isBot ? ('🤖 Bot'+(opp.label?' · '+opp.label:'')) : '🟢 Online';
 
   buildBattleQ();
   openModal('modal-bg');
   clearInterval(BT.timer);
+  if(isBot) scheduleBotAnswer();
   BT.timer=setInterval(()=>{
     BT.time--;
     const tc = document.getElementById('bg-time');
@@ -3667,16 +3751,8 @@ function startBattleWith(opp, isBot){
     else if(BT.time<=20) tc.style.color='var(--gold)';
     else tc.style.color='var(--text)';
 
-    // Bot: har 3 sekundda 1 ball
-    if(isBot){
-      BT.botTick=(BT.botTick||0)+1;
-      if(BT.botTick%3===0){
-        BT.oppScore++;
-        document.getElementById('bg-opp').textContent=BT.oppScore;
-        document.getElementById('bg-res').textContent='🤖 ✅';
-        setTimeout(()=>{ const r=document.getElementById('bg-res'); if(r&&r.textContent==='🤖 ✅') r.textContent=''; },500);
-      }
-    } else {
+    // Bot javoblari scheduleBotAnswer() orqali (5-9 soniya oraliqda)
+    if(!isBot){
       if(Math.random()<0.04){ BT.oppScore++; document.getElementById('bg-opp').textContent=BT.oppScore; }
     }
     if(BT.time<=0){ clearInterval(BT.timer); endBattle(); }
@@ -3725,6 +3801,7 @@ function buildBattleQ(){
 }
 
 function endBattle(){
+  clearTimeout(BT.botTimer);
   const won  = BT.myScore > BT.oppScore;
   const draw = BT.myScore === BT.oppScore;
   let bonusXP = 0;
@@ -3897,7 +3974,7 @@ function closeModal(e,id){
   if(id==='modal-match'){ clearInterval(MS.timer); MS.tval=0; }
   if(id==='modal-anagram'){ clearInterval(AS.timer); AS.tval=0; }
   if(id==='modal-quiz'){ clearInterval(QS.timer); QS.tval=0; }
-  if(id==='modal-bg') clearInterval(BT.timer);
+  if(id==='modal-bg'){ clearInterval(BT.timer); clearTimeout(BT.botTimer); }
   if(id==='modal-matchmaking') clearInterval(mmTimer);
   if(id==='modal-daily') clearInterval(DC.timer);
 }
@@ -4106,7 +4183,7 @@ function openPremiumGame(type){
 
 function switchTabByName(name){
   const btn = document.querySelector(`.nav-b[onclick*="'${name}'"]`);
-  if(btn) switchTab(name, btn);
+  switchTab(name, btn||null);
 }
 
 // ===== SURVIVAL MODE =====
@@ -4582,6 +4659,7 @@ function switchTab(name,btn){
   const tabEl = document.getElementById('tab-'+name);
   if(tabEl) tabEl.classList.add('active');
   if(btn) btn.classList.add('active');
+  if(name==='ielts'){ try{buildIeltsTab();}catch(e){console.warn(e);} }
   if(name==='progress'){buildLeaderboard();buildRecentWords();updateStats();}
   if(name==='battle'){buildBattleUI();}
   if(name==='games'){
@@ -5802,9 +5880,11 @@ App.user = {
     return this._data;
   },
 
-  get(){ return this._data; },
+  // Asosiy ilovadagi global U obyekti bilan ishlaydi (avval null qaytarar edi)
+  get(){ return (typeof U!=='undefined' && U) ? U : this._data; },
 
   save(){
+    if(typeof saveUser==='function' && typeof U!=='undefined' && U){ saveUser(); return; }
     if(!this._data) return;
     const s = JSON.stringify(this._data);
     localStorage.setItem('ep_user', s);
@@ -5813,7 +5893,7 @@ App.user = {
   },
 
   update(patch){
-    Object.assign(this._data, patch);
+    Object.assign(this.get(), patch);
     this.save();
     App.events.emit('user:updated', patch);
   },
@@ -5821,7 +5901,7 @@ App.user = {
   addXP(n){ addXP(n); },  // delegates to global addXP
 
   updateStreak(){
-    const d = this._data;
+    const d = this.get();
     const today = new Date().toISOString().slice(0,10);
     if(!d.lastStreakDate){
       d.lastStreakDate = today; d.streak = 1;
@@ -5957,7 +6037,6 @@ App.progress = {
     if(this._combo >= 3){
       const bonus = Math.floor(this._combo / 3);
       if(bonus > 0){
-        showToast('🔥 COMBO x' + this._combo + '! +' + bonus + ' bonus XP!');
         const U2 = App.user.get();
         U2.xp = (U2.xp||0) + bonus;
         App.user.save();
@@ -6682,7 +6761,7 @@ App.events.on('combo:updated', (combo)=>{
   if(!el){
     el = document.createElement('div');
     el.id = 'combo-indicator';
-    el.style.cssText = 'position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:500;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:6px 18px;border-radius:20px;font-weight:800;font-size:13px;box-shadow:0 4px 15px rgba(245,197,66,.4);animation:comboIn .3s cubic-bezier(.34,1.56,.64,1)';
+    el.style.cssText = 'position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:600;pointer-events:none;white-space:nowrap;background:linear-gradient(135deg,var(--gold),var(--orange));color:#080d14;padding:6px 18px;border-radius:20px;font-weight:800;font-size:13px;box-shadow:0 4px 15px rgba(245,197,66,.4);animation:comboIn .3s cubic-bezier(.34,1.56,.64,1)';
     document.body.appendChild(el);
     // Animatsiya style qo'shish
     if(!document.getElementById('combo-anim-style')){
@@ -6692,7 +6771,7 @@ App.events.on('combo:updated', (combo)=>{
       document.head.appendChild(s);
     }
   }
-  el.textContent = '🔥 COMBO x' + combo + '! +1 bonus XP!';
+  el.textContent = '🔥 COMBO x' + combo + '! +' + Math.floor(combo/3) + ' bonus XP';
   clearTimeout(el._t);
   el._t = setTimeout(()=>el.remove(), 3000);
 });
@@ -7384,6 +7463,7 @@ App.init = function(){
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <button onclick="closeModal(null,'modal-profile-menu');switchTabByName('progress')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span>📊</span> Statistika ko'rish</button>
+        <button onclick="closeModal(null,'modal-profile-menu');switchTabByName('premium')" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px;border-color:rgba(245,197,66,.4)"><span>💎</span> Premium</button>
         <button onclick="closeModal(null,'modal-profile-menu');openWeakQuiz()" class="btn-s" style="text-align:left;display:flex;align-items:center;gap:10px"><span>⚠️</span> Zaif so'zlar quizi</button>
         <button onclick="logoutUser()" style="width:100%;padding:12px;background:rgba(248,81,73,.12);border:1.5px solid rgba(248,81,73,.3);border-radius:12px;color:var(--red);font-weight:700;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif">🚪 Profildan chiqish</button>
       </div>
@@ -7562,12 +7642,12 @@ async function runAIVocabGen(){
   
   btn.textContent = '⏳ AI yaratmoqda...';
   btn.disabled = true;
-  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI so'z yaratmoqda...</div>';
+  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI so\'z yaratmoqda...</div>';
   
   try{
     const data = await App.ai.generateVocabulary(_aiVocabLevel, topic);
     if(!data || !data.words){ 
-      result.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">AI javob qayta ishlashda xato. Qayta urinib ko'ring.</div>';
+      result.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">AI javob qayta ishlashda xato. Qayta urinib ko\'ring.</div>';
       return;
     }
     
@@ -7595,7 +7675,7 @@ async function runAIVocabGen(){
   } catch(e){
     result.innerHTML=`<div style="color:var(--red);text-align:center;padding:14px">Xato: ${e.message}</div>`;
   } finally {
-    btn.textContent = '✨ AI So'z Yaratish';
+    btn.textContent = '✨ AI So\'z Yaratish';
     btn.disabled = false;
   }
 }
@@ -7636,7 +7716,7 @@ async function openAIWeakTrainer(){
   if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
   const errors = U.wordErrors||{};
   const weakWords = Object.keys(errors).sort((a,b)=>errors[b]-errors[a]).slice(0,8);
-  if(weakWords.length < 2){ showToast('Kamida 2 ta xato so'z kerak!'); return; }
+  if(weakWords.length < 2){ showToast('Kamida 2 ta xato so\'z kerak!'); return; }
   
   document.getElementById('modal-ai-weak-trainer').classList.add('open');
   document.getElementById('ait-loading').style.display='block';
@@ -7648,7 +7728,7 @@ async function openAIWeakTrainer(){
   try{
     const data = await App.ai.generateWeakWordExercises(weakWords);
     if(!data||!data.exercises||!data.exercises.length){
-      document.getElementById('ait-loading').innerHTML='<div style="color:var(--red);text-align:center">AI mashq yaratishda xato. Qayta urinib ko'ring.</div>';
+      document.getElementById('ait-loading').innerHTML='<div style="color:var(--red);text-align:center">AI mashq yaratishda xato. Qayta urinib ko\'ring.</div>';
       return;
     }
     AIT.exercises = data.exercises;
@@ -7729,7 +7809,7 @@ async function loadAIStudyPlan(){
   el.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)"><div style="font-size:40px;margin-bottom:12px">🤖</div><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:10px auto"></div></div>';
   try{
     const plan = await App.ai.getStudyPlan(U);
-    if(!plan){ el.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">Xato yuz berdi. Qayta urinib ko'ring.</div>'; return; }
+    if(!plan){ el.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">Xato yuz berdi. Qayta urinib ko\'ring.</div>'; return; }
     el.innerHTML=`
       <div style="background:rgba(124,90,246,.08);border:1px solid rgba(124,90,246,.2);border-radius:13px;padding:14px;line-height:1.9;white-space:pre-wrap;font-size:13px">${plan}</div>
       <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:12px;color:var(--muted)">
@@ -7747,7 +7827,7 @@ let AIQ = { questions:[], idx:0, score:0, wrong:0 };
 async function openAIQuiz(){
   if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
   const words = getAllWordsForGames();
-  if(words.length < 4){ showToast('Kamida 4 ta so'z kerak!'); return; }
+  if(words.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
   
   document.getElementById('modal-ai-quiz').classList.add('open');
   document.getElementById('aiq-loading').style.display='block';
@@ -7815,7 +7895,7 @@ function buildAIQuizQuestion(){
         expEl.textContent='🤖 ' + q.explanation;
         expEl.style.display='block';
       }
-      document.getElementById('aiq-res').textContent = isRight ? '✅ To'g'ri!' : '❌ Noto'g'ri';
+      document.getElementById('aiq-res').textContent = isRight ? '✅ To\'g\'ri!' : '❌ Noto\'g\'ri';
       AIQ.idx++;
       setTimeout(buildAIQuizQuestion, 1400);
     };
@@ -7827,7 +7907,7 @@ function buildAIQuizQuestion(){
 async function openAIWordExplain(word){
   if(!AI_CONFIG.enabled){
     // AI yoq bo'lsa - oddiy tarjimani ko'rsat
-    showToast('AI yoqilmagan - oddiy ma'lumot ko'rsatilmoqda');
+    showToast('AI yoqilmagan - oddiy ma\'lumot ko\'rsatilmoqda');
     return;
   }
   document.getElementById('ai-explain-word-title').textContent = word;
@@ -7869,7 +7949,7 @@ function addAIButtonToFlashcard(){
   aiBtn.id = 'fc-ai-btn';
   aiBtn.style.cssText = 'display:flex;align-items:center;gap:5px;padding:7px 12px;background:rgba(124,90,246,.1);border:1px solid rgba(124,90,246,.25);border-radius:20px;font-size:12px;font-weight:700;color:var(--al);cursor:pointer;transition:all .2s';
   aiBtn.innerHTML = '🤖 AI';
-  aiBtn.title = 'AI bilan chuqur o'rgan';
+  aiBtn.title = 'AI bilan chuqur o\'rgan';
   aiBtn.onmouseenter = ()=>aiBtn.style.background='rgba(124,90,246,.2)';
   aiBtn.onmouseleave = ()=>aiBtn.style.background='rgba(124,90,246,.1)';
   aiBtn.onclick = ()=>{
@@ -7894,8 +7974,8 @@ if(_origOpenGrammarFromLevel){
       if(!AI_CONFIG.enabled) return;
       const aiBtn = document.createElement('button');
       aiBtn.className='ai-gr-explain-btn';
-      aiBtn.style.cssText='width:100%;padding:11px;background:linear-gradient(135deg,rgba(192,132,252,.15),rgba(124,90,246,.1));border:1px solid rgba(192,132,252,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:10px';
-      aiBtn.innerHTML='🤖 AI bilan tushuntirish so'rash';
+      aiBtn.style.cssText='width:100%;padding:11px;background:linear-gradient(135deg,rgba(192,132,252,.15),rgba(124,90,246,.1));border:1px solid rgba(192,132,252,.3);border-radius:11px;color:var(--al);font-weight:700;font-size:13px;cursor:pointer;font-family:Nunito,sans-serif;margin-top:10px';
+      aiBtn.innerHTML='🤖 AI bilan tushuntirish so\'rash';
       aiBtn.onclick=()=>openAIGrammarExplain(topic, level);
       grBody.appendChild(aiBtn);
     }, 300);
@@ -7936,7 +8016,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // ══════════════════════════════════════════════════════════
 // buildAITab — AI tabini render qiluvchi asosiy funksiya
 // ══════════════════════════════════════════════════════════
-<script>
 // ╔══════════════════════════════════════════════════════════════════════╗
 // ║  HARDCODED API KEY — not visible anywhere in the UI                   ║
 // ║  Paste your Gemini key (AIza...) or OpenRouter key (sk-or-v1-...)    ║
@@ -8183,7 +8262,7 @@ function _aitDrawRetention(log) {
   _aitCharts.retention = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels:   ['Mukammal','O'rganilmoqda','Zaif','Yangi'],
+      labels:   ['Mukammal',"O'rganilmoqda",'Zaif','Yangi'],
       datasets: [{
         data:            [mastered, learning, forgotten, other],
         backgroundColor: ['#4fffb0','#6c63ff','#ff6b6b','#7a8fad'],
@@ -8411,7 +8490,135 @@ function buildAITab() {
 }
 </script>
 
-</script>
 
+
+<!-- ===== FRAME VIEW (Synonyms, PhraseQuest, IELTS Writing) ===== -->
+<div id="frame-view">
+  <div class="fv-bar"><button class="fv-back" onclick="closeFrame()">←</button><span class="fv-title" id="fv-title">—</span></div>
+  <iframe id="fv-iframe" title="content" allow="microphone; autoplay"></iframe>
+</div>
+
+<!-- ===== BOT SETUP ===== -->
+<div class="overlay" id="modal-bot-setup" onclick="closeModal(event,'modal-bot-setup')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-bot-setup')">✕</div>
+    <div class="sb">
+      <div class="st">🤖 Robot bilan jang</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">So'zlar tanlangan kitob va unitdan olinadi</div>
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">KITOB</div>
+      <select id="bot-book" class="sinp"></select>
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">UNIT RAQAMI</div>
+      <input id="bot-unit" type="number" min="1" max="30" value="1" class="sinp">
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">ROBOT DARAJASI</div>
+      <select id="bot-level" class="sinp">
+        <option value="easy">😊 Oson (sekin, ko'p xato)</option>
+        <option value="medium" selected>🙂 O'rtacha</option>
+        <option value="hard">😎 Qiyin (tez va aniq)</option>
+      </select>
+      <div id="bot-setup-err" style="min-height:18px;font-size:12px;color:var(--red);text-align:center;margin-bottom:8px"></div>
+      <button class="btn-p" onclick="confirmBotBattle()">⚔️ Boshlash</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== IELTS SECTION VIEWER ===== -->
+<div class="overlay" id="modal-ielts" onclick="closeModal(event,'modal-ielts')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-ielts')">✕</div>
+    <div class="sb"><div class="st" id="ielts-title">IELTS</div><div id="ielts-body"></div></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ FRAME (iframe) VIEW ═══════════════
+function openFrame(url,title){
+  const fv=document.getElementById('frame-view'), fr=document.getElementById('fv-iframe');
+  document.getElementById('fv-title').textContent=title||'';
+  if(fr.getAttribute('data-url')!==url){ fr.setAttribute('data-url',url); fr.src=url; }
+  else syncFrameTheme();
+  fv.classList.add('open');
+}
+function closeFrame(){ document.getElementById('frame-view').classList.remove('open'); }
+function syncFrameTheme(){
+  try{
+    const d=document.getElementById('fv-iframe').contentDocument.documentElement;
+    d.setAttribute('data-theme', document.body.classList.contains('light-mode')?'light':'dark');
+  }catch(e){}
+}
+document.getElementById('fv-iframe').addEventListener('load',syncFrameTheme);
+window.addEventListener('message',e=>{
+  if(e.origin!==location.origin) return;
+  const d=e.data;
+  if(d && d.ep==='xp' && d.n>0 && d.n<=5){ try{addXP(d.n);}catch(x){} }
+});
+
+// ═══════════════ IELTS ═══════════════
+const IELTS_SECTIONS=[
+  {k:'reading',  ic:'📖', t:'Reading',   d:'Matn va savollar'},
+  {k:'listening',ic:'🎧', t:'Listening', d:'Audio va savollar'},
+  {k:'writing',  ic:'✍️', t:'Writing',   d:'Task 1 & 2, namunalar'},
+  {k:'speaking', ic:'🎤', t:'Speaking',  d:'Part 1, 2, 3 savollari'},
+];
+function buildIeltsTab(){
+  const g=document.getElementById('ielts-grid'); if(!g) return;
+  g.innerHTML=IELTS_SECTIONS.map(s=>`<div class="ielts-card" onclick="openIelts('${s.k}')"><div class="ielts-ic">${s.ic}</div><div class="ielts-t">${s.t}</div><div class="ielts-d">${s.d}</div></div>`).join('');
+}
+function openIelts(k){
+  if(k==='writing'){ openFrame('ielts/writing.html','IELTS Writing'); return; }
+  openIeltsList(k);
+}
+async function openIeltsList(k){
+  const sec=IELTS_SECTIONS.find(x=>x.k===k);
+  document.getElementById('ielts-title').textContent=sec.ic+' IELTS '+sec.t;
+  const body=document.getElementById('ielts-body');
+  body.innerHTML='<div style="text-align:center;color:var(--muted);padding:20px">⏳ Yuklanmoqda...</div>';
+  openModal('modal-ielts');
+  let items=[];
+  try{
+    const r=await fetch('ielts/'+k+'/index.json'); if(r.ok){ const j=await r.json(); items=j.items||[]; }
+  }catch(e){}
+  if(!items.length){
+    body.innerHTML='<div style="text-align:center;padding:26px 10px"><div style="font-size:42px;margin-bottom:8px">🛠️</div><div style="font-weight:800;margin-bottom:4px">Tez orada</div><div style="font-size:12px;color:var(--muted)">Bu bo\'lim uchun materiallar hali qo\'shilmagan</div></div>';
+    return;
+  }
+  body.innerHTML=items.map((it,i)=>`<div class="gr-item" onclick="openIeltsItem('${k}',${i})" style="margin-bottom:8px"><div class="gr-ico">${sec.ic}</div><div class="gr-txt"><div class="gr-title">${(it.title||'').replace(/</g,'&lt;')}</div><div class="gr-sub">${(it.level||'')}</div></div><span style="color:var(--muted);font-size:18px">›</span></div>`).join('');
+  window._ieltsItems={k,items};
+}
+async function openIeltsItem(k,i){
+  const it=window._ieltsItems.items[i];
+  const body=document.getElementById('ielts-body');
+  body.innerHTML='<div style="text-align:center;color:var(--muted);padding:20px">⏳</div>';
+  let d=null;
+  try{ const r=await fetch('ielts/'+k+'/'+it.file); d=await r.json(); }catch(e){}
+  if(!d){ body.innerHTML='<div style="color:var(--red);text-align:center;padding:16px">Faylni yuklab bo\'lmadi</div>'; return; }
+  renderIeltsItem(k,d);
+}
+function renderIeltsItem(k,d){
+  const body=document.getElementById('ielts-body'); const esc=t=>String(t||'').replace(/</g,'&lt;');
+  let h=`<div style="font-weight:800;margin-bottom:10px">${esc(d.title)}</div>`;
+  if(d.audio) h+=`<audio controls style="width:100%;margin-bottom:12px" src="${esc(d.audio)}"></audio>`;
+  if(d.passage) h+=`<div class="iq-passage">${esc(d.passage)}</div>`;
+  if(d.parts){
+    h+=d.parts.map(p=>`<div style="font-size:11px;font-weight:800;color:var(--muted);margin:10px 0 6px">${esc(p.name)}</div>`+(p.prompts||[]).map(q=>`<div class="iq-q">${esc(q)}</div>`).join('')).join('');
+    h+='<div style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">🎤 Savollarga ovoz chiqarib javob bering. AI baholash tez orada.</div>';
+  }
+  if(d.questions){
+    h+=d.questions.map((q,qi)=>`<div class="iq-q"><div style="font-weight:700;margin-bottom:8px">${qi+1}. ${esc(q.q)}</div>`+(q.options||[]).map((o,oi)=>`<button class="qopt" data-q="${qi}" data-o="${oi}" onclick="ieltsAnswer(this)">${esc(o)}</button>`).join('')+`<div id="iq-ex-${qi}" style="font-size:11px;color:var(--muted);display:none;margin-top:4px">${esc(q.explain)}</div></div>`).join('');
+    h+='<div id="iq-score" style="text-align:center;font-weight:800;margin-top:6px"></div>';
+  }
+  body.innerHTML=h; window._ieltsCur={d,score:0,done:0};
+}
+function ieltsAnswer(btn){
+  const c=window._ieltsCur, qi=+btn.dataset.q, oi=+btn.dataset.o, q=c.d.questions[qi];
+  const sibs=btn.parentElement.querySelectorAll('.qopt'); if(btn.parentElement.dataset.done) return; btn.parentElement.dataset.done=1;
+  sibs.forEach(b=>b.onclick=null);
+  if(oi===q.answer){ btn.classList.add('correct'); c.score++; try{addXP(1);}catch(e){} }
+  else { btn.classList.add('wrong'); if(sibs[q.answer]) sibs[q.answer].classList.add('correct'); }
+  const ex=document.getElementById('iq-ex-'+qi); if(ex&&ex.textContent) ex.style.display='block';
+  c.done++; if(c.done===c.d.questions.length) document.getElementById('iq-score').textContent='Natija: '+c.score+' / '+c.d.questions.length;
+}
+// manifest shortcuts: ?tab=games
+window.addEventListener('load',()=>{ setTimeout(()=>{ const t=new URLSearchParams(location.search).get('tab'); if(t&&document.getElementById('tab-'+t)) switchTabByName(t); },600); });
+</script>
 </body>
 </html>
