@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Synonyms Trainer</title>
+<style>
+:root{--bg:#faf8f4;--fg:#1d1b18;--mut:#6b665e;--card:#fff;--bd:#e3ded4;--ac:#2f6fed;--ok:#1f9d55;--no:#d64545;--tag:#eaf0ff;--tagf:#1d4ab8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181b;--fg:#ecebe8;--mut:#9a978f;--card:#222428;--bd:#34373d;--ac:#6b9bff;--tag:#26324f;--tagf:#b9ceff;--ok:#4cc58a;--no:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#17181b;--fg:#ecebe8;--mut:#9a978f;--card:#222428;--bd:#34373d;--ac:#6b9bff;--tag:#26324f;--tagf:#b9ceff;--ok:#4cc58a;--no:#ff7b7b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 Georgia,"Times New Roman",serif}
+main{max-width:640px;margin:0 auto;padding:16px}h1{font-size:1.5rem;margin:8px 0 2px}p.sub{color:var(--mut);margin:0 0 12px;font:14px system-ui,sans-serif}
+nav{display:flex;gap:6px;margin-bottom:14px}nav button,.btn{font:600 14px system-ui,sans-serif;border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:9px 14px;border-radius:10px;cursor:pointer}
+nav button{flex:1}nav .on,.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}
+input[type=text]{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);font:16px system-ui,sans-serif}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin:8px 0}
+.u{color:var(--mut);font:italic 14px Georgia,serif;margin-left:6px}.t{display:inline-block;background:var(--tag);color:var(--tagf);font:13px system-ui,sans-serif;padding:2px 9px;border-radius:99px;margin:4px 4px 0 0}
+i.n{font:700 10px system-ui,sans-serif;background:#f4b400;color:#222;border-radius:4px;padding:1px 5px;margin-left:6px;font-style:normal}
+.fc{min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;padding:24px}
+.fc .w{font-size:2rem;font-weight:700}.row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}.row .btn{flex:1}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;font-size:16px}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card))}.opt.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 18%,var(--card))}
+.meta{color:var(--mut);font:13px system-ui,sans-serif;margin:6px 0}label{font:14px system-ui,sans-serif;color:var(--mut)}
+</style></head><body><main>
+<h1>Synonyms Trainer</h1><p class="sub">Learn, flip, and quiz yourself. English synonyms with Uzbek meanings.</p>
+<nav><button data-t="learn" class="on">Browse</button><button data-t="cards">Flashcards</button><button data-t="quiz">Quiz</button></nav>
+<div id="app"></div></main>
+<script>
+// "+" = word added to the original list
+const D=`abandon|tashlab ketmoq|desert,forsake,leave
+abbreviate|qisqartirmoq|shorten,condense
+about|haqida, borasida|concerning,regarding,relating to,on
+advantage|afzallik|merit,benefit,upside,plus,pros
+aim|maqsad|goal,target,objective,purpose,intention
+almost|deyarli|nearly,practically,virtually
+also|bundan tashqari, yana|furthermore,moreover,besides,additionally
+amateur|ishqiboz|beginner,novice
+annoying|ranjitadigan|irritating
+approximately|taxminan|roughly,around,about,more or less
+artificial|sun’iy|fake,synthetic
+because of|sababli|owing to,due to,thanks to,on account of
+behaviour|hulq|conduct
+big|katta|large,huge,enormous,vast,massive,gigantic
+boring|zerikarli|dull,tedious,monotonous,humdrum
+but|ammo|however,yet,nevertheless,nonetheless
+calm|tinch|peaceful,tranquil,serene,quiet
+careful|ehtiyotkor|prudent,cautious
+cheap|arzon|inexpensive,affordable,low-cost
+clever|aqlli|smart,intelligent,brilliant,ingenious
+close|yopmoq|shut,fasten
+clothes|kiyim|attire,clothing,garment,apparel
+confess|tan olmoq|admit,acknowledge
+constantly|doimiy ravishda|continually,endlessly,perpetually,always
+courageous|mard, qo‘rqmas|brave,fearless,bold,valiant
+crime|jinoyat|offence,illegal act
+danger|xavf, hatar|hazard,risk,menace,threat,peril
+dangerous|xavfli|hazardous,risky,perilous,treacherous
+deep|chuqur|profound,thorough,in-depth
+dense|zich|thick,compressed,heavy
+difficult|qiyin|hard,complex,arduous,challenging,intricate
+difficulty|qiyinchilik|hardship
+diligent|harakatchan|assiduous,conscientious,painstaking
+diminish|kamaytirmoq|lessen,curtail,decrease
+disadvantage|kamchilik|drawback,downside,shortcoming,weakness
+effect|ta’sir|result,consequence,outcome,impact
+eternal|abadiy|perpetual,everlasting
+evident|ko‘rinib turgan|apparent,obvious,clear
+expensive|qimmat|costly,overpriced
+famous|mashhur|well-known,renowned,celebrated,famed
+fat|semiz|obese,overweight,plump,stout
+fate|taqdir|destiny
+few|kam|limited,a small number of
+forgive|kechirmoq|pardon,excuse,absolve
+freedom|erkinlik|independence,liberty
+frightening|qo‘rqinchli|scary,terrifying,horrible,fearsome
+generous|saxiy|big-hearted,giving,selfless
+gloomy|qayg‘uli|dull,dismal,depressing
+good|yaxshi|fine,nice,positive
+happy|baxtli|glad,cheerful,delighted,joyful,pleased
+harmful|zararli|detrimental,adverse,deleterious
+hungry|och|starving,ravenous,famished
+ill|kasal|sick,unwell,ailing,unhealthy
+immediately|darhol|at once,instantly,promptly,forthwith
+important|muhim|significant,essential,crucial,vital,critical
+infectious|yuqumli|contagious,catching
+innocent|aybsiz|guiltless,blameless
+lack|kamchilik|shortage,scarcity,deficiency,dearth
+loyal|sodiq|faithful,devoted,staunch
+mainly|asosan|chiefly,primarily,principally,predominantly
+many|ko‘p|plenty of,numerous,countless,a multitude of
+mistake|xato|error,fault
+modern|zamonaviy|contemporary,up-to-date,present-day
+new|yangi|novel,brand new,fresh,pristine
+noticeable|sezilarli|conspicuous,remarkable,striking,prominent
+obvious|aniq, ravshan|clear,evident,apparent,plain
+often|tez-tez|frequently,oftentimes
+old|qari|aged,elderly,senile
+poor|kambag‘al|penniless,impoverished,indigent
+rubbish|axlat|garbage,trash,waste,litter
+rude|qo‘pol|impolite,discourteous,insolent,uncouth
+simple|oddiy|ordinary,plain,common,average
+stupid|axmoq|foolish,silly,dumb,imbecile
+strange|g‘alati|odd,weird,bizarre,peculiar
+teacher|o‘qituvchi|educator,instructor,pedagogue
+therefore|shuning uchun|thus,hence,so
+wonderful|ajoyib|splendid,excellent,fabulous,magnificent
+young|yosh|juvenile,youthful,adolescent
+to begin|boshlamoq|start,commence,initiate
+to buy|sotib olmoq|purchase,obtain
+to choose|tanlamoq|select,pick,opt for
+to create|yaratmoq|produce,generate,make
+to dislike|yoqtirmaslik|hate,detest,loathe,despise
+to finish|tugatmoq|complete,conclude,finalize
+to help|yordam bermoq|assist,aid
+to ignore|e’tibor bermaslik|neglect,overlook,disregard
+to like|yoqtirmoq|enjoy,adore,be fond of
+to remember|eslamoq|recall,recollect
+to repair|tuzatmoq|mend,fix,patch
+to show|namoyish etmoq|demonstrate,exhibit,display
+to stop|to‘xtamoq|cease,halt,discontinue
++angry|jahldor|furious,irate,mad,enraged
++beautiful|go‘zal|gorgeous,lovely,stunning,attractive
++enough|yetarli|sufficient,adequate,ample
++fast|tez|quick,rapid,swift,speedy
++rich|boy|wealthy,affluent,prosperous
++sad|xafa|unhappy,sorrowful,miserable,downcast
++scared|qo‘rqqan|afraid,frightened,terrified
++tired|charchagan|exhausted,weary,fatigued
++tiny|juda kichik|minute,minuscule,petite,small
++to need|muhtoj bo‘lmoq|require,want
++to say|aytmoq|state,declare,claim
++to think|o‘ylamoq|consider,ponder,reckon`.split("\n").map(l=>{const a=l.split("|");return{n:a[0][0]=="+",w:a[0].replace("+",""),u:a[1],s:a[2].split(",")}});
+const app=document.getElementById("app"),sh=a=>[...a].sort(()=>Math.random()-.5),pick=a=>a[Math.floor(Math.random()*a.length)];
+let tab="learn",deck=[],i=0,flip=false,known=new Set(),score=0,qn=0,qmode="syn",cur=null,done=false,q="",nw=false;
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x==b));if(tab=="cards"){deck=sh(D);i=0;flip=false}if(tab=="quiz"){score=0;qn=0;nextQ()}render()});
+const tags=e=>e.s.map(x=>`<span class="t">${x}</span>`).join("");
+function render(){
+ if(tab=="learn"){app.innerHTML=`<input type="text" id="s" placeholder="Search a word or meaning…" value="${q}"><div class="meta"><label><input type="checkbox" id="nw" ${nw?"checked":""}> Show only words I added</label> · <span id="cnt"></span></div><div id="list"></div>`;
+  s.oninput=e=>{q=e.target.value;list_()};document.getElementById("nw").onchange=e=>{nw=e.target.checked;list_()};list_()}
+ else if(tab=="cards"){
+  if(i>=deck.length){app.innerHTML=`<div class="c fc"><div class="w">Deck finished</div><p>You marked ${known.size} of ${D.length} words as known.</p><button class="btn p" id="again">Shuffle & restart</button></div>`;again.onclick=()=>{deck=sh(D);i=0;flip=false;render()};return}
+  const e=deck[i];app.innerHTML=`<div class="meta">Card ${i+1} / ${deck.length} · Known: ${known.size}</div><div class="c fc" id="fc">${flip?`<div class="u" style="font-size:1.2rem;margin:0">${e.u}</div><div>${tags(e)}</div>`:`<div class="w">${e.w}</div><div class="meta">Tap to reveal synonyms</div>`}</div><div class="row"><button class="btn" id="l">Still learning</button><button class="btn p" id="k">I know it</button></div>`;
+  fc.onclick=()=>{flip=!flip;render()};const nx=()=>{i++;flip=false;render()};l.onclick=()=>{known.delete(e.w);nx()};k.onclick=()=>{known.add(e.w);nx()}}
+ else{
+  app.innerHTML=`<div class="row" style="margin:0 0 8px"><button class="btn ${qmode=="syn"?"p":""}" id="m1">Find the synonym</button><button class="btn ${qmode=="uz"?"p":""}" id="m2">Uzbek → English</button></div><div class="meta">Score: ${score} / ${qn}</div><div class="c"><b>${cur.p}</b></div><div id="o">${cur.o.map((x,k)=>`<button class="btn opt" data-k="${k}">${x}</button>`).join("")}</div><div id="fb"></div>`;
+  m1.onclick=()=>{qmode="syn";score=qn=0;nextQ();render()};m2.onclick=()=>{qmode="uz";score=qn=0;nextQ();render()};
+  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(done)return;done=true;qn++;const r=cur.o[b.dataset.k]==cur.a;if(r){score++;try{parent.postMessage({ep:'xp',n:1},location.origin)}catch(e){}}
+   document.querySelectorAll(".opt").forEach(x=>{if(cur.o[x.dataset.k]==cur.a)x.classList.add("ok");else if(x==b)x.classList.add("no")});
+   fb.innerHTML=`<div class="c">${r?"Correct!":"Not quite."} <b>${cur.e.w}</b> <span class="u">${cur.e.u}</span><div>${tags(cur.e)}</div></div><button class="btn p" id="nx">Next question</button>`;nx.onclick=()=>{nextQ();render()}})}
+}
+function list_(){const t=q.toLowerCase(),r=D.filter(e=>(!nw||e.n)&&(e.w+e.u+e.s.join()).toLowerCase().includes(t));
+ document.getElementById("cnt").textContent=r.length+" words";
+ document.getElementById("list").innerHTML=r.map(e=>`<div class="c"><b>${e.w}</b>${e.n?"<i class='n'>NEW</i>":""}<span class="u">${e.u}</span><div>${tags(e)}</div></div>`).join("")}
+function nextQ(){done=false;const e=pick(D);let a,p,pool;
+ if(qmode=="syn"){a=pick(e.s);p=`Which word is a synonym of “${e.w}”?`;pool=D.filter(x=>x!=e).flatMap(x=>x.s).filter(x=>!e.s.includes(x))}
+ else{a=e.w;p=`Which English word means “${e.u}”?`;pool=D.filter(x=>x!=e).map(x=>x.w)}
+ cur={e,a,p,o:sh([a,...sh([...new Set(pool)]).slice(0,3)])}}
+render();
+</script></body></html>
