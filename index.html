@@ -1197,54 +1197,82 @@ function getTelegramUser() {
 async function sbFetchUser(userId) {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?user_id=eq.${userId}&select=user_id,first_name,last_name,username,level,avatar_url,xp,streak,total_points`,
+      `${SUPABASE_URL}/rest/v1/users?user_id=eq.${userId}&select=user_id,first_name,last_name,username,level,avatar_url,xp,streak,total_points,is_premium,premium_expiry,progress`,
       { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
     );
-    if (!res.ok) return null;
+    if (!res.ok) return false;          // xato: bazaga ulanib bo'lmadi
     const data = await res.json();
-    return data && data.length > 0 ? data[0] : null;
-  } catch(e) { return null; }
+    return data && data.length > 0 ? data[0] : null;   // null = foydalanuvchi bazada yo'q
+  } catch(e) { return false; }
 }
 
-async function syncToSupabase(user) {
-  // Support both field names: userId (app) and user_id (registration)
-  const uid = user && (user.userId || user.user_id);
+// ── Bulutga saqlash (users.progress JSONB) ─────────────────────────────
+let _cloudReady = false;   // baza muvaffaqiyatli o'qilgandan keyingina yozamiz
+let _dbXp = 0;             // bazadagi XP — hech qachon kamaytirmaymiz
+let _syncTimer = null, _syncUser = null;
+const PROG_EXCLUDE = ['userId','user_id','name','username','first_name','last_name','avatarUrl','avatar_url',
+  'xp','total_points','streak','level','isPremium','premiumExpiry','premiumPlan','premiumActivated','lastSyncedAt'];
+
+function buildProgress(u){
+  const p = {};
+  for (const k in u) { if (!PROG_EXCLUDE.includes(k)) p[k] = u[k]; }
+  if (Array.isArray(p.learnedWords))
+    p.learnedWords = p.learnedWords.map(w => ({word:w.word, translation:w.translation, part_of_speech:w.part_of_speech}));
+  if (Array.isArray(p.xpLog) && p.xpLog.length > 300) p.xpLog = p.xpLog.slice(-300);
+  p._v = 1;
+  return p;
+}
+
+function syncToSupabase(user) {
+  _lbCache = null; _lbCacheTime = 0;
+  _syncUser = user;
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(() => flushSync(false), 1500);
+  return Promise.resolve();
+}
+
+async function flushSync(isUnload) {
+  clearTimeout(_syncTimer);
+  const user = _syncUser; _syncUser = null;
+  if (!user || !_cloudReady) return;
+  const uid = user.userId || user.user_id;
   if (!uid) return;
-  // Invalidate leaderboard cache so next view shows fresh XP
-  _lbCache     = null;
-  _lbCacheTime = 0;
-  // Never store base64 image data in DB — only store URL strings
   const avatarUrl  = user.avatarUrl || user.avatar_url || '';
   const safeAvatar = avatarUrl.startsWith('data:') ? '' : avatarUrl;
-  // Split full name into first/last name for DB columns
   const nameParts = (user.name || '').trim().split(' ');
-  const firstName = nameParts[0] || '';
-  const lastName  = nameParts.slice(1).join(' ') || null;
+  const xp = Math.max(user.xp || 0, _dbXp);
+  const body = JSON.stringify({
+    user_id:      String(uid),
+    first_name:   nameParts[0] || '',
+    last_name:    nameParts.slice(1).join(' ') || null,
+    avatar_url:   safeAvatar,
+    level:        user.level,
+    xp:           xp,
+    streak:       user.streak || 0,
+    total_points: xp,
+    last_active:  new Date().toISOString(),
+    progress:     buildProgress(user),
+  });
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/users`, {
       method: 'POST',
+      keepalive: !!isUnload && body.length < 60000,
       headers: {
         'Content-Type':  'application/json',
         'apikey':         SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Prefer':        'resolution=merge-duplicates',
       },
-      body: JSON.stringify({
-        user_id:      String(uid),
-        first_name:   firstName,
-        last_name:    lastName,
-        avatar_url:   safeAvatar,
-        level:        user.level,
-        xp:           user.xp || 0,
-        streak:       user.streak || 0,
-        total_points: user.xp || 0,
-        last_active:  new Date().toISOString(),
-      }),
+      body,
     });
+    if (!res.ok) { console.warn('Supabase sync xatosi:', res.status, await res.text().catch(()=>'')); window._lastSyncError = res.status; }
+    else { _dbXp = xp; window._lastSyncError = null; }
   } catch(e) {
     console.warn('syncToSupabase:', e.message);
   }
 }
+window.addEventListener('pagehide', () => flushSync(true));
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushSync(true); });
 
 // ══════════════════════════════════════════════════════════
 // loadUser — Telegram ismini to'g'ri oladi
@@ -1288,6 +1316,7 @@ async function loadUser() {
 
   if (tgUserId) {
     const dbUser = await sbFetchUser(tgUserId);
+    _cloudReady = (dbUser !== false);   // false bo'lsa bazaga YOZMAYMIZ (ma'lumot buzilmasligi uchun)
     if (dbUser) {
       // DB dan to'liq ism: first_name + last_name
       const dbName = ([dbUser.first_name||'', dbUser.last_name||''].join(' ').trim())
@@ -1332,6 +1361,33 @@ async function loadUser() {
           lastSyncedAt: Date.now(),
         };
       }
+      // ── users.progress (JSONB) dan to'liq progressni tiklash ──
+      const prog = (dbUser.progress && typeof dbUser.progress === 'object') ? dbUser.progress : {};
+      const localNewer = (localUser._savedAt || 0) > (prog._savedAt || 0);
+      const unionKeys = ['learnedWords','ivLearned','doneUnitKeys'];
+      const before = {};
+      unionKeys.forEach(k => before[k] = Array.isArray(localUser[k]) ? localUser[k] : []);
+      if (!localNewer) {
+        for (const k in prog) { if (!unionKeys.includes(k) && k !== '_v') localUser[k] = prog[k]; }
+      }
+      unionKeys.forEach(k => {
+        const a = before[k], b = Array.isArray(prog[k]) ? prog[k] : [];
+        const seen = new Set(), out = [];
+        [...b, ...a].forEach(x => { const key = (x && x.word) || x; if (!seen.has(key)) { seen.add(key); out.push(x); } });
+        localUser[k] = out;
+      });
+      // XP: bot (total_points) va ilova (xp) ballari birlashtiriladi, hech qachon kamaymaydi
+      localUser.xp = Math.max(dbUser.xp || 0, dbUser.total_points || 0, localUser.xp || 0);
+      localUser.level = dbUser.level || localUser.level;
+      _dbXp = Math.max(dbUser.xp || 0, dbUser.total_points || 0);
+      // Premium faqat bazadan (mijoz o'zgartira olmaydi)
+      let exp = 0;
+      if (dbUser.premium_expiry) {
+        const t = String(dbUser.premium_expiry);
+        exp = new Date(/Z|[+-]\d\d:?\d\d$/.test(t) ? t : t + 'Z').getTime();
+      } else if (dbUser.is_premium) exp = Date.now() + 3650*86400000;
+      localUser.premiumExpiry = exp;
+      localUser.isPremium = !!dbUser.is_premium && exp > Date.now();
       const json = JSON.stringify(localUser);
       localStorage.setItem(storageKey, json);
       localStorage.setItem('ep_user', json);
@@ -2641,6 +2697,7 @@ function saveUser(){
   const uid = U.userId || U.user_id || null;
   if (uid && !U.userId) U.userId = uid; // normalize field name
   const storageKey = getStorageKey(uid);
+  U._savedAt = Date.now();
   const json = JSON.stringify(U);
   localStorage.setItem(storageKey, json);
   localStorage.setItem('ep_user', json);
