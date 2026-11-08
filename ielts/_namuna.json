@@ -1,0 +1,17 @@
+{
+  "title": "Namuna: Reading test",
+  "passage": "Matn shu yerga yoziladi.\n\nIkkinchi paragraf.",
+  "questions": [
+    {
+      "q": "Savol matni?",
+      "options": [
+        "A variant",
+        "B variant",
+        "C variant",
+        "D variant"
+      ],
+      "answer": 0,
+      "explain": "Izoh (ixtiyoriy)"
+    }
+  ]
+}
