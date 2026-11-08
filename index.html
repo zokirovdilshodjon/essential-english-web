@@ -1249,7 +1249,6 @@ async function flushSync(isUnload) {
     level:        user.level,
     xp:           xp,
     streak:       user.streak || 0,
-    total_points: xp,
     last_active:  new Date().toISOString(),
     progress:     buildProgress(user),
   });
@@ -1265,8 +1264,12 @@ async function flushSync(isUnload) {
       },
       body,
     });
-    if (!res.ok) { console.warn('Supabase sync xatosi:', res.status, await res.text().catch(()=>'')); window._lastSyncError = res.status; }
-    else { _dbXp = xp; window._lastSyncError = null; }
+    if (!res.ok) {
+      const txt = await res.text().catch(()=>'');
+      console.warn('Supabase sync xatosi:', res.status, txt);
+      window._lastSyncError = res.status + ' ' + txt.slice(0,120);
+      if (!window._syncErrShown) { window._syncErrShown = true; try{ showToast('⚠️ Saqlashda xato: ' + res.status); }catch(e){} }
+    } else { _dbXp = xp; window._lastSyncError = null; window._lastSyncOk = Date.now(); }
   } catch(e) {
     console.warn('syncToSupabase:', e.message);
   }
@@ -1326,7 +1329,6 @@ async function loadUser() {
         // LocalUser ni DB bilan yangilash
         localUser.xp           = dbUser.xp           ?? localUser.xp    ?? 0;
         localUser.streak       = dbUser.streak        ?? localUser.streak ?? 1;
-        localUser.total_points = dbUser.total_points  ?? localUser.total_points ?? 0;
         localUser.userId       = dbUser.user_id;
         localUser.name         = dbName;          // ✅ ismni DB dan yangilash
         localUser.avatarUrl    = dbUser.avatar_url || localUser.avatarUrl;
@@ -1341,7 +1343,6 @@ async function loadUser() {
           avatar_url:   dbUser.avatar_url || '',
           xp:           dbUser.xp    || 0,
           streak:       dbUser.streak || 1,
-          total_points: dbUser.total_points || 0,
           learnedWords: [],
           wordErrors:   {},
           customWords:  [],
@@ -1376,10 +1377,10 @@ async function loadUser() {
         [...b, ...a].forEach(x => { const key = (x && x.word) || x; if (!seen.has(key)) { seen.add(key); out.push(x); } });
         localUser[k] = out;
       });
-      // XP: bot (total_points) va ilova (xp) ballari birlashtiriladi, hech qachon kamaymaydi
-      localUser.xp = Math.max(dbUser.xp || 0, dbUser.total_points || 0, localUser.xp || 0);
+      // Ilova XP'i faqat users.xp ustunida (bot ballari total_points'da, alohida). Hech qachon kamaymaydi
+      localUser.xp = Math.max(dbUser.xp || 0, localUser.xp || 0);
       localUser.level = dbUser.level || localUser.level;
-      _dbXp = Math.max(dbUser.xp || 0, dbUser.total_points || 0);
+      _dbXp = dbUser.xp || 0;
       // Premium faqat bazadan (mijoz o'zgartira olmaydi)
       let exp = 0;
       if (dbUser.premium_expiry) {
@@ -1450,7 +1451,7 @@ async function renderLeaderboard(containerId, myUserId) {
     const rank   = idx + 1;
     const isMe   = String(u.user_id) === String(myId);
     const name   = ([u.first_name||'', u.last_name||''].join(' ').trim()) || 'Foydalanuvchi';
-    const xp     = u.xp || u.total_points || 0;
+    const xp     = u.xp || 0;
     const avatar = u.avatar_url || `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${u.user_id}`;
     const badge  = rank <= 3 ? medals[rank-1] : rank;
     const meStyle = isMe ? 'border:2px solid #7c5af6;background:rgba(124,90,246,.08);' : '';
@@ -3247,7 +3248,7 @@ async function buildLeaderboard() {
     const frac = PERIOD_FRAC[_lbPeriod] || 1;
     const list_data = users.map(u => {
       const isMe = String(u.user_id) === myId;
-      const rawXP = u.xp || u.total_points || 0;
+      const rawXP = u.xp || 0;
       let xp = _lbPeriod === 'alltime' ? rawXP : Math.round(rawXP * frac);
       if (isMe && _lbPeriod !== 'alltime') xp = getMyXpForPeriod(_lbPeriod);
       return {
@@ -4017,6 +4018,13 @@ function openModal(id){
     const pmL=document.getElementById('pm-level');if(pmL)pmL.textContent={beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'}[U.level]||'—';
     const pmX=document.getElementById('pm-xp');if(pmX)pmX.textContent=(U.xp||0)+' XP';
     updatePMtheme();
+    const pmS=document.getElementById('pm-sync');
+    if(pmS){
+      if(!_cloudReady) pmS.innerHTML='☁️ <span style="color:var(--red)">Bazaga ulanmagan — saqlanmayapti</span>';
+      else if(window._lastSyncError) pmS.innerHTML='☁️ <span style="color:var(--red)">Xato: '+String(window._lastSyncError).replace(/</g,'&lt;')+'</span>';
+      else if(window._lastSyncOk) pmS.innerHTML='☁️ <span style="color:var(--green)">Saqlandi '+new Date(window._lastSyncOk).toLocaleTimeString('uz-UZ')+'</span>';
+      else pmS.innerHTML='☁️ Hali saqlash bo\'lmadi';
+    }
   }
   // YANGI O'YINLAR
   if(id==='modal-speaking') try{initSpeaking();}catch(e){}
@@ -4662,7 +4670,7 @@ async function buildTournament(){
     const isMe = String(u.user_id) === myId;
     return {
       name:  isMe ? (U.name || _lbUserName(u)) : _lbUserName(u),
-      xp:    u.xp || u.total_points || 0,
+      xp:    u.xp || 0,
       isMe,
     };
   });
@@ -6315,7 +6323,7 @@ App.lb = {
 
     const all = (users||[]).map(u => {
       const isMe = String(u.user_id) === myId;
-      const rawXP = u.xp || u.total_points || 0;
+      const rawXP = u.xp || 0;
       const xp = isMe ? myXP : (this._period==='alltime' ? rawXP : Math.round(rawXP * frac));
       const name = isMe ? (U.name || _lbUserName(u)) : _lbUserName(u);
       const avatar = u.avatar_url || '';
@@ -7509,6 +7517,7 @@ App.init = function(){
         <div style="font-size:17px;font-weight:800" id="pm-name">—</div>
         <div style="font-size:12px;color:var(--muted);margin-top:2px" id="pm-level">—</div>
         <div style="font-size:13px;color:var(--gold);margin-top:4px;font-weight:700" id="pm-xp">0 XP</div>
+        <div style="font-size:11px;margin-top:6px;color:var(--muted)" id="pm-sync">☁️ —</div>
       </div>
       <!-- Tema -->
       <div style="background:var(--s2);border-radius:13px;padding:13px;margin-bottom:10px">
