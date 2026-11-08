@@ -259,7 +259,11 @@ async function initApp() {
     // Profil allaqachon to'liq bo'lsa — birdaniga index.html ga o'tamiz,
     // register ekranini umuman ko'rsatmaymiz
     if (existing?.level) {
-      saveLocal(buildLocalUser({
+      // Mahalliy ma'lumot allaqachon bo'lsa — NOLGA TUSHIRIB YUBORMAYMIZ
+      // (index.html bazadagi progressni o'zi tiklaydi)
+      let hasLocal = false;
+      try { const raw = localStorage.getItem('ep_user_' + tgUser.id); hasLocal = !!(raw && JSON.parse(raw).level); } catch(e) {}
+      if (!hasLocal) saveLocal(buildLocalUser({
         user_id:    tgUser.id,
 
         name:       fullName,
