@@ -200,6 +200,19 @@ const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let tgUser = null;
 let state  = { level: 'beginner' };
+const API_URL = SUPABASE_URL + '/functions/v1/app-api';
+async function apiCall(action, payload) {
+  const initData = window.Telegram?.WebApp?.initData || '';
+  if (!initData) return { ok:false, status:0 };
+  try {
+    const res = await fetch(API_URL, {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'apikey':SUPABASE_ANON_KEY, 'Authorization':'Bearer '+SUPABASE_ANON_KEY },
+      body: JSON.stringify(Object.assign({ action, initData }, payload || {})),
+    });
+    return { ok:res.ok, status:res.status, data: await res.json().catch(()=>null) };
+  } catch(e) { return { ok:false, status:0 }; }
+}
 
 function pickLevel(el) {
   document.querySelectorAll('.lv').forEach(b => b.className = 'lv');
@@ -250,11 +263,13 @@ async function initApp() {
 
   // Supabase'dan profil mavjudligini tekshirish
   try {
-    const { data: existing } = await db
-      .from('users')
-      .select('user_id, level, avatar_url')
-      .eq('user_id', tgUser.id)
-      .maybeSingle();
+    let existing = null, viaApi = false;
+    const me = await apiCall('me');
+    if (me.ok && me.data) { existing = me.data.user; viaApi = true; }
+    else {
+      const q = await db.from('users').select('user_id, level, avatar_url').eq('user_id', tgUser.id).maybeSingle();
+      existing = q.data;
+    }
 
     // Profil allaqachon to'liq bo'lsa — birdaniga index.html ga o'tamiz,
     // register ekranini umuman ko'rsatmaymiz
@@ -276,7 +291,8 @@ async function initApp() {
 
       // Rasm o'zgargan bo'lishi mumkin — fon rejimida DB ni yangilaymiz
       if (tgPhoto && tgPhoto !== existing.avatar_url) {
-        db.from('users').update({ avatar_url: tgPhoto, last_active: new Date().toISOString() })
+        if (viaApi) apiCall('register', {});
+        else db.from('users').update({ avatar_url: tgPhoto, last_active: new Date().toISOString() })
           .eq('user_id', tgUser.id).then(()=>{}).catch(()=>{});
       }
 
@@ -304,8 +320,9 @@ async function saveProfile() {
   const fullName = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ');
   const tgPhoto  = tgUser.photo_url || '';
 
+  const viaApiSave = await apiCall('register', { level: state.level });
   try {
-    const { error } = await db.from('users').upsert({
+    if (!viaApiSave.ok) { const { error } = await db.from('users').upsert({
       user_id:     tgUser.id,
       username:    tgUser.username    || null,
       first_name:  tgUser.first_name,
@@ -315,7 +332,7 @@ async function saveProfile() {
       last_active: new Date().toISOString(),
     }, { onConflict: 'user_id' });
 
-    if (error) console.error('Supabase upsert error:', error);
+    if (error) console.error('Supabase upsert error:', error); }
   } catch(err) {
     console.error('Supabase error:', err);
   }
