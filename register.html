@@ -200,9 +200,28 @@ const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let tgUser = null;
 let state  = { level: 'beginner' };
+
+// Telegram initData'ni bir necha yo'l bilan olish (SDK, URL hash, sessionStorage, zaxira nusxa)
+function getInitData() {
+  let v = '';
+  try { v = (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) || ''; } catch(e) {}
+  if (!v) { try { const h = new URLSearchParams((location.hash || '').replace(/^#/, '')); v = h.get('tgWebAppData') || ''; } catch(e) {} }
+  if (!v) { try { const p = JSON.parse(sessionStorage.getItem('__telegram__initParams') || 'null'); if (p && p.tgWebAppData) v = p.tgWebAppData; } catch(e) {} }
+  if (v) {
+    try { sessionStorage.setItem('ep_init', v); localStorage.setItem('ep_init', JSON.stringify({ v, t: Date.now() })); } catch(e) {}
+    return v;
+  }
+  try { v = sessionStorage.getItem('ep_init') || ''; } catch(e) {}
+  if (!v) { try { const o = JSON.parse(localStorage.getItem('ep_init') || 'null'); if (o && o.v && Date.now() - o.t < 48*3600*1000) v = o.v; } catch(e) {} }
+  if (!v) {
+    let ss = false; try { ss = !!sessionStorage.getItem('__telegram__initParams'); } catch(e) {}
+    window._initDbg = 'sdk=' + (window.Telegram && window.Telegram.WebApp ? 1 : 0) + ' hash=' + ((location.hash||'').includes('tgWebAppData') ? 1 : 0) + ' ss=' + (ss ? 1 : 0);
+  }
+  return v;
+}
 const API_URL = SUPABASE_URL + '/functions/v1/app-api';
 async function apiCall(action, payload) {
-  const initData = window.Telegram?.WebApp?.initData || '';
+  const initData = getInitData();
   if (!initData) return { ok:false, status:0 };
   try {
     const res = await fetch(API_URL, {
@@ -240,6 +259,7 @@ async function initApp() {
   }
 
   tgUser = tg?.initDataUnsafe?.user ?? null;
+  getInitData();   // index.html uchun nusxa saqlanadi
 
 
   // Localhost test mode
