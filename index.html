@@ -1195,7 +1195,46 @@ function getTelegramUser() {
   return null;
 }
 
+// ── Xavfsiz API (Supabase Edge Function: app-api) ──────────────────────
+const API_URL = SUPABASE_URL + '/functions/v1/app-api';
+let _useApi = false;     // funksiya ishlasa true; aks holda eski (to'g'ridan-to'g'ri) yo'l
+async function apiCall(action, payload, opts) {
+  const initData = (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) || '';
+  if (!initData) return { ok:false, status:0, reason:'noinit' };
+  try {
+    const body = JSON.stringify(Object.assign({ action, initData }, payload || {}));
+    const res = await fetch(API_URL, {
+      method:'POST',
+      keepalive: !!(opts && opts.keepalive) && body.length < 60000,
+      headers:{ 'Content-Type':'application/json', 'apikey':SUPABASE_ANON_KEY, 'Authorization':'Bearer '+SUPABASE_ANON_KEY },
+      body,
+    });
+    const data = await res.json().catch(() => null);
+    return { ok:res.ok, status:res.status, data };
+  } catch(e) { return { ok:false, status:0, reason:'network' }; }
+}
+async function usersList(action, extra, legacyQuery) {
+  if (_useApi) {
+    const r = await apiCall(action, extra);
+    if (r.ok && r.data && Array.isArray(r.data.users)) return r.data.users;
+  }
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/users?${legacyQuery}`,
+    { headers:{ 'apikey':SUPABASE_ANON_KEY, 'Authorization':`Bearer ${SUPABASE_ANON_KEY}` } });
+  if (!res.ok) throw new Error(res.status);
+  const d = await res.json();
+  return Array.isArray(d) ? d : [];
+}
+
 async function sbFetchUser(userId) {
+  const r = await apiCall('me');
+  window._apiStatus = r.ok ? 'ok' : (r.status + ' ' + ((r.data && r.data.error) || r.reason || ''));
+  if (r.ok && r.data) { _useApi = true; return r.data.user || null; }
+  if (r.status === 403) return false;          // bloklangan
+  _useApi = false;
+  return sbFetchUserLegacy(userId);
+}
+
+async function sbFetchUserLegacy(userId) {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/users?user_id=eq.${userId}&select=user_id,first_name,last_name,username,level,avatar_url,xp,streak,total_points,is_premium,premium_expiry,progress`,
@@ -1253,6 +1292,15 @@ async function flushSync(isUnload) {
     last_active:  new Date().toISOString(),
     progress:     buildProgress(user),
   });
+  if (_useApi) {
+    const r = await apiCall('save', { xp, streak: user.streak || 0, level: user.level, progress: buildProgress(user) }, { keepalive: !!isUnload });
+    if (r.ok && r.data) { _dbXp = r.data.xp || _dbXp; window._lastSyncError = null; window._lastSyncOk = Date.now(); }
+    else {
+      window._lastSyncError = r.status + ' ' + ((r.data && r.data.error) || r.reason || '');
+      if (!window._syncErrShown) { window._syncErrShown = true; try{ showToast('⚠️ Saqlashda xato: ' + r.status); }catch(e){} }
+    }
+    return;
+  }
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/users`, {
       method: 'POST',
@@ -3198,12 +3246,7 @@ async function fetchRealLeaderboard() {
   const now = Date.now();
   if (_lbCache && now - _lbCacheTime < LB_CACHE_TTL) return _lbCache;
   try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp,total_points&order=xp.desc&limit=50`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
+    const data = await usersList('leaderboard', {}, 'select=user_id,first_name,last_name,avatar_url,xp&order=xp.desc&limit=50');
     _lbCache = Array.isArray(data) ? data : [];
     _lbCacheTime = now;
     return _lbCache;
@@ -3673,12 +3716,7 @@ async function fetchOnlinePlayers() {
   if (_onlineCache && now - _onlineCacheTs < ONLINE_TTL) return _onlineCache;
   try {
     const since = new Date(now - 30 * 60 * 1000).toISOString();
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${encodeURIComponent(since)}&order=xp.desc&limit=20`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
+    const data = await usersList('online', { minutes: 30 }, `select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${encodeURIComponent(since)}&order=xp.desc&limit=20`);
     _onlineCache = Array.isArray(data) ? data : [];
     _onlineCacheTs = now;
     return _onlineCache;
@@ -4027,6 +4065,7 @@ function openModal(id){
       else if(window._lastSyncError) pmS.innerHTML='☁️ <span style="color:var(--red)">Xato: '+String(window._lastSyncError).replace(/</g,'&lt;')+'</span>';
       else if(window._lastSyncOk) pmS.innerHTML='☁️ <span style="color:var(--green)">Saqlandi '+new Date(window._lastSyncOk).toLocaleTimeString('uz-UZ')+'</span>';
       else pmS.innerHTML='☁️ Hali saqlash bo\'lmadi';
+      pmS.innerHTML += _useApi ? ' · <span style="color:var(--green)">🔐 xavfsiz rejim</span>' : ' · <span style="color:var(--gold)">⚠️ eski rejim ('+(window._apiStatus||'?')+')</span>';
     }
   }
   // YANGI O'YINLAR
@@ -4454,11 +4493,8 @@ async function buildDCLeaderboard(){
   try {
     const since = new Date();
     since.setHours(0,0,0,0);
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${encodeURIComponent(since.toISOString())}&order=xp.desc&limit=10`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (res.ok) users = await res.json();
+    const mins = Math.max(1, Math.ceil((Date.now() - since.getTime()) / 60000));
+    users = (await usersList('online', { minutes: mins }, `select=user_id,first_name,last_name,avatar_url,xp&last_active=gte.${encodeURIComponent(since.toISOString())}&order=xp.desc&limit=10`)).slice(0,10);
   } catch(e) {}
 
   const list = (Array.isArray(users) ? users : []).map(u => {
@@ -4621,11 +4657,7 @@ async function buildGroupMembers(){
 
   let users = [];
   try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?select=user_id,first_name,last_name,avatar_url,xp&order=xp.desc&limit=10`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (res.ok) users = await res.json();
+    users = (await usersList('leaderboard', {}, 'select=user_id,first_name,last_name,avatar_url,xp&order=xp.desc&limit=10')).slice(0,10);
   } catch(e) {}
 
   const list = (Array.isArray(users) ? users : []).map(u => {
