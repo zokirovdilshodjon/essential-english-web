@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Essential English PRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1317,8 +1318,10 @@ async function loadUser() {
     localUser = null;
   }
 
-  if (tgUserId) {
-    const dbUser = await sbFetchUser(tgUserId);
+  // Telegram SDK ishlamasa ham, mahalliy profildagi ID bilan bazaga ulanamiz
+  const effId = tgUserId || (localUser && (localUser.userId || localUser.user_id)) || null;
+  if (effId) {
+    const dbUser = await sbFetchUser(effId);
     _cloudReady = (dbUser !== false);   // false bo'lsa bazaga YOZMAYMIZ (ma'lumot buzilmasligi uchun)
     if (dbUser) {
       // DB dan to'liq ism: first_name + last_name
