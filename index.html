@@ -1246,7 +1246,7 @@ async function usersList(action, extra, legacyQuery) {
 
 async function sbFetchUser(userId) {
   const r = await apiCall('me');
-  window._apiStatus = r.ok ? 'ok' : (r.status + ' ' + ((r.data && r.data.error) || r.reason || ''));
+  window._apiStatus = r.ok ? 'ok' : (r.status + ' ' + ((r.data && r.data.error) || r.reason || '') + ((r.data && r.data.reason) ? ':' + r.data.reason : ''));
   if (r.ok && r.data) { _useApi = true; return r.data.user || null; }
   if (r.status === 403) return false;          // bloklangan
   _useApi = false;
