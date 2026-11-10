@@ -2369,6 +2369,7 @@ async function fetchOnlinePlayers() {
         <div style="font-size:16px;font-weight:800;margin-bottom:6px" id="mm-title">Raqib qidirilmoqda...</div>
         <div style="font-size:12px;color:var(--muted)" id="mm-sub">Online o'yinchilar qidirilmoqda</div>
       </div>
+      <div id="mm-extra" style="margin-bottom:8px"></div>
       <button class="btn-s" onclick="cancelMatchmaking()">✕ Bekor qilish</button>
     </div>
   </div>
@@ -3748,7 +3749,7 @@ async function fetchOnlinePlayers() {
 }
 
 let mmTimer = null;
-async function findOpponent() {
+async function findOpponentLegacy() {
   openModal('modal-matchmaking');
   document.getElementById('mm-title').textContent  = 'Raqib qidirilmoqda...';
   document.getElementById('mm-sub').textContent    = 'Online o\'yinchilar qidirilmoqda';
@@ -3795,6 +3796,7 @@ async function findOpponent() {
 }
 
 function cancelMatchmaking(){
+  try{ pvpCancelSearch(); }catch(e){}
   if (mmTimer) { clearInterval(mmTimer); mmTimer = null; }
   closeModal(null,'modal-matchmaking');
 }
@@ -4102,7 +4104,7 @@ function closeModal(e,id){
   if(id==='modal-match'){ clearInterval(MS.timer); MS.tval=0; }
   if(id==='modal-anagram'){ clearInterval(AS.timer); AS.tval=0; }
   if(id==='modal-quiz'){ clearInterval(QS.timer); QS.tval=0; }
-  if(id==='modal-bg'){ clearInterval(BT.timer); clearTimeout(BT.botTimer); }
+  if(id==='modal-bg'){ clearInterval(BT.timer); clearTimeout(BT.botTimer); try{ pvpStop(); }catch(e){} }
   if(id==='modal-matchmaking') clearInterval(mmTimer);
   if(id==='modal-daily') clearInterval(DC.timer);
 }
@@ -6156,7 +6158,7 @@ App.progress = {
     clearTimeout(this._comboTimer);
     this._comboTimer = setTimeout(()=>{ this._combo = 0; }, 5000);
     if(this._combo >= 3){
-      const bonus = Math.floor(this._combo / 3);
+      const bonus = Math.min(2, Math.floor(this._combo / 3));   // combo bonusi har javobga ko'pi bilan +2
       if(bonus > 0){
         const U2 = App.user.get();
         U2.xp = (U2.xp||0) + bonus;
@@ -6892,7 +6894,7 @@ App.events.on('combo:updated', (combo)=>{
       document.head.appendChild(s);
     }
   }
-  el.textContent = '🔥 COMBO x' + combo + '! +' + Math.floor(combo/3) + ' bonus XP';
+  el.textContent = '🔥 COMBO x' + combo + '! +' + Math.min(2, Math.floor(combo/3)) + ' bonus XP';
   clearTimeout(el._t);
   el._t = setTimeout(()=>el.remove(), 3000);
 });
@@ -8620,6 +8622,18 @@ function buildAITab() {
   <iframe id="fv-iframe" title="content" allow="microphone; autoplay"></iframe>
 </div>
 
+<!-- ===== PVP: DARAJA TANLASH ===== -->
+<div class="overlay" id="modal-pvp-level" onclick="closeModal(event,'modal-pvp-level')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-pvp-level')">✕</div>
+    <div class="sb">
+      <div class="st">⚔️ Online jang</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Darajangizni tanlang — o'sha darajadagi haqiqiy o'yinchi bilan juftlashasiz. So'zlar tegishli kitoblardan tasodifiy olinadi.</div>
+      <div id="pvp-levels" style="display:flex;flex-direction:column;gap:9px"></div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== BOT SETUP ===== -->
 <div class="overlay" id="modal-bot-setup" onclick="closeModal(event,'modal-bot-setup')">
   <div class="sheet"><div class="sh"></div>
@@ -8739,6 +8753,179 @@ function ieltsAnswer(btn){
   const ex=document.getElementById('iq-ex-'+qi); if(ex&&ex.textContent) ex.style.display='block';
   c.done++; if(c.done===c.d.questions.length) document.getElementById('iq-score').textContent='Natija: '+c.score+' / '+c.d.questions.length;
 }
+
+// ═══════════════ ONLINE JANG (PvP) — server orqali ═══════════════
+let PV = null;
+const PVP_LEVELS = [
+  {k:'beginner',     ic:'🌱', t:'Beginner',     d:'1–2 kitob'},
+  {k:'intermediate', ic:'🔥', t:'Intermediate', d:'3–4 kitob'},
+  {k:'advanced',     ic:'⚡', t:'Advanced',     d:'5–6 kitob'},
+];
+function findOpponent(){
+  if(!_useApi){ showToast('Online jang faqat Telegram ichida (xavfsiz rejimda) ishlaydi'); openBotSetup(); return; }
+  const box=document.getElementById('pvp-levels');
+  box.innerHTML=PVP_LEVELS.map(l=>`<div class="gr-item" onclick="pvpFind('${l.k}')" style="${(U.level||'beginner')===l.k?'border-color:var(--accent);background:rgba(124,90,246,.08)':''}"><div class="gr-ico">${l.ic}</div><div class="gr-txt"><div class="gr-title">${l.t}</div><div class="gr-sub">${l.d}${(U.level||'beginner')===l.k?' · sizning darajangiz':''}</div></div><span style="color:var(--muted);font-size:18px">›</span></div>`).join('');
+  openModal('modal-pvp-level');
+}
+function pvpMM(icon,title,sub,extra){
+  document.getElementById('mm-spinner').textContent=icon;
+  document.getElementById('mm-spinner').style.animationDuration = icon==='🔍' ? '1s' : '0s';
+  document.getElementById('mm-title').textContent=title;
+  document.getElementById('mm-sub').textContent=sub||'';
+  document.getElementById('mm-extra').innerHTML=extra||'';
+}
+async function pvpFind(level){
+  closeModal(null,'modal-pvp-level');
+  pvpStop();
+  PV={level,matchId:null,cancelled:false};
+  openModal('modal-matchmaking');
+  pvpMM('🔍','Raqib qidirilmoqda...',(PVP_LEVELS.find(l=>l.k===level)||{}).t+' darajasi');
+  const me=PV;
+  const r=await apiCall('pvp_join',{level});
+  if(PV!==me||me.cancelled) return;
+  if(!r.ok||!r.data){
+    const why = r.status===503 ? 'Savollar yuklanmadi. Keyinroq urinib ko\'ring.' : 'Server bilan aloqa yo\'q ('+(r.status||'tarmoq')+').';
+    pvpMM('⚠️','Xatolik',why,'<button class="btn-p" onclick="closeModal(null,\'modal-matchmaking\');startBotBattle()">🤖 Robot bilan o\'ynash</button>');
+    return;
+  }
+  me.matchId=r.data.matchId;
+  if(r.data.status==='active'){ pvpMatched(r.data); return; }
+  me.t0=Date.now();
+  me.search=setInterval(async()=>{
+    if(PV!==me||me.cancelled) return clearInterval(me.search);
+    const el=Math.round((Date.now()-me.t0)/1000);
+    document.getElementById('mm-sub').textContent=el+' soniya...';
+    const s=await apiCall('pvp_state',{matchId:me.matchId});
+    if(PV!==me||me.cancelled) return;
+    if(s.ok&&s.data){
+      if(s.data.status==='active'){ clearInterval(me.search); pvpMatched(s.data); }
+      else if(s.data.status==='cancelled'||el>=40){ clearInterval(me.search); pvpNoOpponent(); }
+    } else if(el>=40){ clearInterval(me.search); pvpNoOpponent(); }
+  },1200);
+}
+function pvpNoOpponent(){
+  if(PV&&PV.matchId) apiCall('pvp_cancel',{matchId:PV.matchId});
+  pvpMM('😕','Raqib topilmadi','Hozir bu darajada online o\'yinchi yo\'q',
+    '<button class="btn-p" onclick="closeModal(null,\'modal-matchmaking\');startBotBattle()">🤖 Robot bilan o\'ynash</button>');
+}
+function pvpCancelSearch(){
+  if(PV&&PV.search) clearInterval(PV.search);
+  if(PV&&PV.matchId&&!PV.started){ apiCall('pvp_cancel',{matchId:PV.matchId}); PV.cancelled=true; }
+}
+function pvpStop(){
+  if(!PV) return;
+  clearInterval(PV.search); clearInterval(PV.tick); clearInterval(PV.poll);
+  PV.cancelled=true; PV=null;
+}
+function pvpMatched(d){
+  const me=PV; if(!me) return;
+  clearInterval(me.search);
+  closeModal(null,'modal-matchmaking');
+  Object.assign(me,{started:true,offset:d.now-Date.now(),qs:d.qs||[],total:d.total,idx:0,my:0,opp:0,
+    startMs:Date.parse(d.starts_at),endMs:Date.parse(d.ends_at),answered:false,finishing:false,shown:false,oppInfo:d.opp});
+  document.getElementById('bh-opp-name').textContent=d.opp.name||'Raqib';
+  const av=d.opp.avatar;
+  document.getElementById('bh-opp-av').innerHTML = av&&av.startsWith('http') ? `<img src="${av}" style="width:80%;height:80%;object-fit:contain" onerror="this.remove()">` : '👤';
+  document.getElementById('bg-my').textContent=0; document.getElementById('bg-opp').textContent=0;
+  document.getElementById('bg-opp-badge').textContent='🟢 Online · '+((PVP_LEVELS.find(l=>l.k===d.level)||{}).t||'');
+  document.getElementById('bg-res').textContent=''; document.getElementById('bg-opts').innerHTML='';
+  const tc=document.getElementById('bg-time'); tc.style.color='var(--text)';
+  openModal('modal-bg');
+  me.tick=setInterval(pvpTick,250);
+  me.poll=setInterval(pvpPoll,1200);
+  pvpTick();
+}
+function pvpNow(){ return Date.now()+(PV?PV.offset:0); }
+function pvpTick(){
+  const me=PV; if(!me||me.finishing) return;
+  const now=pvpNow();
+  if(now<me.startMs){
+    document.getElementById('bg-word').textContent=Math.max(1,Math.ceil((me.startMs-now)/1000));
+    document.getElementById('bg-res').textContent='Tayyor bo\'ling!';
+    document.getElementById('bg-time').textContent=Math.round((me.endMs-me.startMs)/1000);
+    return;
+  }
+  if(!me.shown){ me.shown=true; document.getElementById('bg-res').textContent=''; pvpShowQ(); }
+  const rem=Math.max(0,Math.ceil((me.endMs-now)/1000));
+  const tc=document.getElementById('bg-time'); tc.textContent=rem;
+  tc.style.color = rem<=10?'var(--red)':rem<=20?'var(--gold)':'var(--text)';
+  if(rem<=0) pvpFinish();
+}
+function pvpShowQ(){
+  const me=PV; if(!me||me.finishing) return;
+  const opts=document.getElementById('bg-opts');
+  if(me.idx>=me.total){
+    document.getElementById('bg-word').textContent='✅';
+    opts.innerHTML=''; document.getElementById('bg-res').textContent='Hammasi tugadi. Raqib yakunlashini kutyapmiz...';
+    return;
+  }
+  const q=me.qs[me.idx];
+  document.getElementById('bg-word').textContent=q.w;
+  document.getElementById('bg-res').textContent=(me.idx+1)+' / '+me.total;
+  opts.innerHTML='';
+  q.o.forEach((t,k)=>{
+    const el=document.createElement('div'); el.className='gopt'; el.textContent=t;
+    el.onclick=()=>pvpAnswer(k,el,0);
+    opts.appendChild(el);
+  });
+}
+async function pvpAnswer(k,el,tries){
+  const me=PV; if(!me||me.answered||me.finishing) return;
+  me.answered=true;
+  const all=[...document.querySelectorAll('#bg-opts .gopt')]; all.forEach(o=>o.style.pointerEvents='none');
+  const r=await apiCall('pvp_answer',{matchId:me.matchId,i:me.idx,choice:k});
+  if(PV!==me) return;
+  if(!r.ok||!r.data){
+    const err=r.data&&r.data.error;
+    if(err==='too_fast'&&tries<3){ me.answered=false; setTimeout(()=>pvpAnswer(k,el,tries+1),450); return; }
+    if(err==='out_of_time'||err==='not_active'){ pvpFinish(); return; }
+    if(err==='out_of_order'){ me.idx=(r.data.expected!=null?r.data.expected:me.idx); me.answered=false; pvpShowQ(); return; }
+    showToast('⚠️ Javob yuborilmadi'); me.answered=false; all.forEach(o=>o.style.pointerEvents=''); return;
+  }
+  const d=r.data;
+  if(d.correct){ el.classList.add('correct'); try{addXP(1);}catch(e){} }
+  else { el.classList.add('wrong'); if(all[d.answer]) all[d.answer].classList.add('correct'); }
+  me.my=d.me_score; me.opp=d.opp_score;
+  document.getElementById('bg-my').textContent=me.my; document.getElementById('bg-opp').textContent=me.opp;
+  setTimeout(()=>{ if(PV!==me) return; me.idx++; me.answered=false; pvpShowQ(); },650);
+}
+async function pvpPoll(){
+  const me=PV; if(!me||me.finishing) return;
+  const s=await apiCall('pvp_state',{matchId:me.matchId});
+  if(PV!==me||!s.ok||!s.data) return;
+  const d=s.data;
+  document.getElementById('bg-opp').textContent=d.opp.score;
+  document.getElementById('bg-my').textContent=d.me.score;
+  if(d.status==='finished') pvpFinish(d);
+}
+async function pvpFinish(d){
+  const me=PV; if(!me||me.finishing) return;
+  me.finishing=true; clearInterval(me.tick); clearInterval(me.poll);
+  document.getElementById('bg-res').textContent='⏳ Natija hisoblanmoqda...';
+  for(let i=0;i<6&&!(d&&d.status==='finished');i++){
+    const s=await apiCall('pvp_state',{matchId:me.matchId});
+    if(PV!==me) return;
+    if(s.ok&&s.data) d=s.data;
+    if(d&&d.status==='finished') break;
+    await new Promise(r=>setTimeout(r,800));
+  }
+  if(PV!==me) return;
+  const result=d&&d.result||'lose', reward=d&&d.reward||0;
+  document.getElementById('bg-my').textContent=d?d.me.score:me.my;
+  document.getElementById('bg-opp').textContent=d?d.opp.score:me.opp;
+  if(reward>0) try{ addXP(reward); U.battleXP=(U.battleXP||0)+reward; }catch(e){}
+  if(result==='win') U.battleWins=(U.battleWins||0)+1; else if(result==='lose') U.battleLosses=(U.battleLosses||0)+1;
+  try{ saveUser(); }catch(e){}
+  const txt={win:'🏆 G\'ALABA!',lose:'😞 Mag\'lubiyat',draw:'🤝 DURANG'}[result];
+  document.getElementById('bg-word').textContent=txt;
+  document.getElementById('bg-res').textContent=(reward?`+${reward} XP · `:'')+`Hisob ${d?d.me.score:me.my} : ${d?d.opp.score:me.opp}`;
+  document.getElementById('bg-opts').innerHTML='<button class="btn-p" style="grid-column:1/-1" onclick="closeModal(null,\'modal-bg\');buildBattleUI();buildLeaderboard()">← Qaytish</button>'+
+    '<button class="btn-s" style="grid-column:1/-1" onclick="closeModal(null,\'modal-bg\');findOpponent()">🔁 Yana o\'ynash</button>';
+  document.getElementById('bh-me-s').textContent=d?d.me.score:me.my;
+  document.getElementById('bh-opp-s').textContent=d?d.opp.score:me.opp;
+  me.cancelled=true;
+}
+
 // manifest shortcuts: ?tab=games
 window.addEventListener('load',()=>{ setTimeout(()=>{ const t=new URLSearchParams(location.search).get('tab'); if(t&&document.getElementById('tab-'+t)) switchTabByName(t); },600); });
 </script>
