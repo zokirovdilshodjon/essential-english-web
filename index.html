@@ -220,6 +220,21 @@ body.light-mode .xp-chip{color:#5030c0 !important;}
 .toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:12px;font-weight:700;z-index:500;white-space:nowrap;animation:tIn .3s ease,tOut .3s 2.2s forwards;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 @keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes tOut{to{opacity:0}}
+.comp-card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:13px 14px;margin-bottom:9px;cursor:pointer;transition:all .2s}
+.comp-card:hover{border-color:var(--accent)}
+.comp-card.ended{opacity:.85}
+.comp-top{display:flex;align-items:center;gap:10px}
+.comp-ic{width:38px;height:38px;border-radius:11px;background:rgba(245,197,66,.12);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.comp-t{font-size:13px;font-weight:800}
+.comp-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.comp-chip{margin-left:auto;font-size:10px;font-weight:800;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.comp-chip.active{background:rgba(79,223,138,.14);color:var(--green)}
+.comp-chip.ended{background:rgba(122,143,173,.16);color:var(--muted)}
+.comp-chip.upcoming{background:rgba(79,156,249,.14);color:var(--blue)}
+.comp-prize{font-size:11px;color:var(--gold);font-weight:700;margin-top:7px}
+.comp-me{font-size:12px;margin-top:7px;padding:6px 10px;background:rgba(124,90,246,.08);border-radius:9px}
+.comp-row{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;margin-bottom:5px;background:var(--s2)}
+.comp-row.me{border:1.5px solid var(--accent);background:rgba(124,90,246,.1)}
 .ielts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ielts-card{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px 12px;text-align:center;cursor:pointer;transition:all .2s}
 .ielts-card:hover{transform:translateY(-2px);border-color:var(--accent)}
@@ -1789,6 +1804,8 @@ async function fetchOnlinePlayers() {
           <div class="stat"><div class="stat-n" style="color:var(--red)" id="bl">0</div><div class="stat-l">Mag'lubiyat</div></div>
           <div class="stat"><div class="stat-n" style="color:var(--gold)" id="bxp">0</div><div class="stat-l">XP</div></div>
         </div>
+        <div class="sec-title" style="margin:18px 0 10px">🏆 Musobaqalar</div>
+        <div id="comp-list"><div style="color:var(--muted);font-size:12px;text-align:center;padding:14px">⏳ Yuklanmoqda...</div></div>
       </div>
     </div>
 
@@ -4784,7 +4801,7 @@ function switchTab(name,btn){
   if(btn) btn.classList.add('active');
   if(name==='ielts'){ try{buildIeltsTab();}catch(e){console.warn(e);} }
   if(name==='progress'){buildLeaderboard();buildRecentWords();updateStats();}
-  if(name==='battle'){buildBattleUI();}
+  if(name==='battle'){buildBattleUI(); try{buildCompList();}catch(e){}}
   if(name==='games'){
     const gl=document.getElementById('game-unit-label2');
     if(gl) gl.textContent=`Kitob ${curBook} · Unit ${curUnitNum}`;
@@ -8622,6 +8639,14 @@ function buildAITab() {
   <iframe id="fv-iframe" title="content" allow="microphone; autoplay"></iframe>
 </div>
 
+<!-- ===== MUSOBAQA REYTINGI ===== -->
+<div class="overlay" id="modal-comp" onclick="closeModal(event,'modal-comp')">
+  <div class="sheet"><div class="sh"></div>
+    <div class="sc" onclick="closeModal(null,'modal-comp')">✕</div>
+    <div class="sb"><div class="st" id="comp-title">Musobaqa</div><div id="comp-body"></div></div>
+  </div>
+</div>
+
 <!-- ===== PVP: DARAJA TANLASH ===== -->
 <div class="overlay" id="modal-pvp-level" onclick="closeModal(event,'modal-pvp-level')">
   <div class="sheet"><div class="sh"></div>
@@ -8924,6 +8949,67 @@ async function pvpFinish(d){
   document.getElementById('bh-me-s').textContent=d?d.me.score:me.my;
   document.getElementById('bh-opp-s').textContent=d?d.opp.score:me.opp;
   me.cancelled=true;
+}
+
+
+// ═══════════════ MUSOBAQALAR ═══════════════
+let _compCache = null, _compCacheT = 0;
+const COMP_UNIT = { xp:'XP', pvp_wins:'g\'alaba' };
+const COMP_ICON = { xp:'⭐', pvp_wins:'⚔️' };
+const compEsc = t => String(t==null?'':t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function compLeft(iso){
+  const ms = Date.parse(iso) - Date.now();
+  if (ms <= 0) return 'tugadi';
+  const d = Math.floor(ms/86400000), h = Math.floor(ms%86400000/3600000), m = Math.floor(ms%3600000/60000);
+  return d>0 ? d+' kun '+h+' soat' : h>0 ? h+' soat '+m+' daqiqa' : m+' daqiqa';
+}
+function compAvatar(a){
+  return a && a.startsWith('http') ? `<img src="${compEsc(a)}" style="width:100%;height:100%;object-fit:cover" onerror="this.remove()">` : '👤';
+}
+async function buildCompList(force){
+  const box = document.getElementById('comp-list'); if(!box) return;
+  if(!_useApi){ box.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:14px">Musobaqalar faqat Telegram ichida (xavfsiz rejimda) ko\'rinadi</div>'; return; }
+  let list = _compCache;
+  if(force || !list || Date.now()-_compCacheT > 60000){
+    const r = await apiCall('comp_list');
+    if(!r.ok || !r.data){ box.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:14px">Hozir yuklab bo\'lmadi</div>'; return; }
+    if(r.data.not_installed){ box.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:14px">Musobaqalar tez orada ishga tushadi</div>'; return; }
+    list = _compCache = r.data.competitions || []; _compCacheT = Date.now();
+  }
+  if(!list.length){ box.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:14px">Hozircha musobaqa yo\'q</div>'; return; }
+  const order = { active:0, upcoming:1, ended:2 };
+  const sorted = [...list].sort((a,b)=> order[a.status]-order[b.status]);
+  box.innerHTML = sorted.map(c=>{
+    const unit = COMP_UNIT[c.kind]||'';
+    const chip = {active:'Faol', ended:'Tugagan', upcoming:'Tez orada'}[c.status];
+    const sub = c.status==='active' ? '⏳ '+compLeft(c.ends_at)+' qoldi' : c.status==='upcoming' ? 'Boshlanishi: '+new Date(c.starts_at).toLocaleDateString('uz-UZ') : (c.winner ? '🏅 G\'olib: '+compEsc(c.winner.name)+' · '+c.winner.score+' '+unit : 'Tugagan');
+    const me = c.me ? `<div class="comp-me">Sizning o'rningiz: <b>${c.me.rank}</b> · ${c.me.score} ${unit}</div>` : (c.status==='active' ? `<div class="comp-me" style="color:var(--muted)">Siz hali ishtirok etmadingiz</div>` : '');
+    const prize = c.prize ? `<div class="comp-prize">🎁 ${compEsc(c.prize)}</div>` : '';
+    return `<div class="comp-card ${c.status}" onclick="openComp('${compEsc(c.id)}')"><div class="comp-top"><div class="comp-ic">${COMP_ICON[c.kind]||'🏆'}</div><div><div class="comp-t">${compEsc(c.title)}</div><div class="comp-sub">${sub}</div></div><span class="comp-chip ${c.status}">${chip}</span></div>${prize}${c.status==='ended'?'':me}</div>`;
+  }).join('');
+}
+async function openComp(id){
+  document.getElementById('comp-title').textContent = '🏆 Musobaqa';
+  const body = document.getElementById('comp-body');
+  body.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px">⏳ Yuklanmoqda...</div>';
+  openModal('modal-comp');
+  const r = await apiCall('comp_board', { id });
+  if(!r.ok || !r.data || !r.data.comp){ body.innerHTML = '<div style="text-align:center;color:var(--red);padding:20px">Yuklab bo\'lmadi</div>'; return; }
+  const c = r.data.comp, unit = COMP_UNIT[c.kind]||'';
+  document.getElementById('comp-title').textContent = (COMP_ICON[c.kind]||'🏆')+' '+c.title;
+  const chip = {active:'Faol', ended:'Tugagan', upcoming:'Tez orada'}[c.status];
+  let h = `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span class="comp-chip ${c.status}">${chip}</span><span style="font-size:12px;color:var(--muted)">${c.status==='active'?'⏳ '+compLeft(c.ends_at)+' qoldi':new Date(c.starts_at).toLocaleDateString('uz-UZ')+' – '+new Date(c.ends_at).toLocaleDateString('uz-UZ')}</span></div>`;
+  if(c.prize) h += `<div class="comp-prize" style="margin:0 0 10px">🎁 ${compEsc(c.prize)}</div>`;
+  if(c.kind==='xp') h += `<div style="font-size:11px;color:var(--muted);margin-bottom:10px">Faqat shu davrda yig'ilgan XP hisoblanadi (kuniga ko'pi bilan 1000).</div>`;
+  if(c.kind==='pvp_wins') h += `<div style="font-size:11px;color:var(--muted);margin-bottom:10px">Online jangda g'alabalar soni hisoblanadi (raqib kamida 5 savolga javob bergan bo'lishi kerak).</div>`;
+  const medals = ['🥇','🥈','🥉'];
+  const rows = r.data.board || [];
+  if(!rows.length) h += '<div style="text-align:center;color:var(--muted);padding:18px">Hali natija yo\'q. Birinchi bo\'ling! 🚀</div>';
+  h += rows.map(u=>`<div class="comp-row${r.data.me&&u.user_id===r.data.me.user_id?' me':''}"><div style="width:26px;text-align:center;font-weight:800">${u.rank<=3?medals[u.rank-1]:u.rank}</div><div class="lb-av">${compAvatar(u.avatar)}</div><div style="flex:1;font-size:13px;font-weight:700">${compEsc(u.name)}</div><div style="font-weight:800;color:var(--gold);font-size:13px">${u.score} <span style="font-size:10px;color:var(--muted)">${unit}</span></div></div>`).join('');
+  const me = r.data.me;
+  if(me && me.rank>20) h += `<div style="text-align:center;color:var(--muted);font-size:12px;padding:4px">• • •</div><div class="comp-row me"><div style="width:26px;text-align:center;font-weight:800">${me.rank}</div><div style="flex:1;font-size:13px;font-weight:700">${compEsc(me.name)} (Siz)</div><div style="font-weight:800;color:var(--gold);font-size:13px">${me.score}</div></div>`;
+  else if(!me && c.status==='active') h += '<div class="comp-me" style="margin-top:8px;text-align:center;color:var(--muted)">Siz hali ro\'yxatda yo\'qsiz. O\'ynang va XP yig\'ing!</div>';
+  body.innerHTML = h;
 }
 
 // manifest shortcuts: ?tab=games
