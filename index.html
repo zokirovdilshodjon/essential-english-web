@@ -2763,14 +2763,38 @@ function updateStats(){
   buildLeaderboard();
   updateProgress();
 }
+// ── XP kunlik hisobi (Toshkent sanasi bo'yicha, serverdagi musobaqa/reyting bilan bir xil) ──
+function tzDayKey(ts){ return new Date(ts + 5*3600000).toISOString().slice(0,10); }
+function ensureXpDaily(){
+  if(!U.xpDaily){
+    U.xpDaily = {};
+    (U.xpLog||[]).forEach(e=>{ const k=tzDayKey(e.ts); U.xpDaily[k]=(U.xpDaily[k]||0)+(e.xp||0); });   // eski ma'lumotdan ko'chirish
+  }
+}
+function logXpDaily(n){
+  if(!U || !(n>0)) return;
+  _pbCache = {};
+  ensureXpDaily();
+  const k=tzDayKey(Date.now());
+  U.xpDaily[k]=(U.xpDaily[k]||0)+n;
+  const keys=Object.keys(U.xpDaily).sort();
+  if(keys.length>62) keys.slice(0,keys.length-62).forEach(x=>delete U.xpDaily[x]);
+}
+function xpLastDays(n){
+  ensureXpDaily();
+  const names=['Ya','Du','Se','Ch','Pa','Ju','Sh'];   // getUTCDay(): 0=yakshanba
+  const out=[];
+  for(let i=n-1;i>=0;i--){
+    const ts=Date.now()-i*86400000, k=tzDayKey(ts);
+    out.push({key:k, label:names[new Date(k+'T00:00:00Z').getUTCDay()], xp:U.xpDaily[k]||0});
+  }
+  return out;
+}
 function addXP(n){
   const boosted = U.xpBoostExpiry && U.xpBoostExpiry > Date.now();
   const actual = boosted ? n*2 : n;
   U.xp = (U.xp||0) + actual;
-  if(!U.xpLog) U.xpLog=[];
-  U.xpLog.push({ts: Date.now(), xp: actual});
-  const cutoff30 = Date.now() - 30*24*60*60*1000;
-  if(U.xpLog.length > 500) U.xpLog = U.xpLog.filter(e=>e.ts > cutoff30);
+  logXpDaily(actual);
   showXP('+'+actual+' XP'+(boosted?' ⚡2×':''));
   saveUser();
   const xpEl=document.getElementById('tb-xp'); if(xpEl) xpEl.textContent = U.xp+' XP';
@@ -3260,21 +3284,19 @@ function answerGr(idx,ans,el){
 // Reyting davri holati
 let _lbPeriod = 'alltime';
 
-// Foydalanuvchining xpLog dan davr XP sini hisoblash
+// Foydalanuvchining kunlik XP jadvalidan davr XP sini hisoblash (hafta = dushanbadan, oy = kalendar oy)
 function getMyXpForPeriod(period){
-  const now = Date.now();
-  const DAY = 86400000;
-  // Bugungi kun boshi (00:00:00)
-  const todayStart = new Date(); todayStart.setHours(0,0,0,0);
-  const cutoffs = {
-    today:   todayStart.getTime(),
-    week:    now - 7*DAY,
-    month:   now - 30*DAY,
-    alltime: 0
-  };
-  const cut = cutoffs[period] || 0;
-  if(!U.xpLog || !U.xpLog.length) return 0;
-  return U.xpLog.filter(e=>e.ts >= cut).reduce((s,e)=>s+e.xp, 0);
+  ensureXpDaily();
+  const today=tzDayKey(Date.now());
+  const sum=(pred)=>Object.entries(U.xpDaily).reduce((t,[k,v])=>pred(k)?t+v:t,0);
+  if(period==='today') return U.xpDaily[today]||0;
+  if(period==='week'){
+    const d=new Date(today+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()-((d.getUTCDay()+6)%7));
+    const mon=d.toISOString().slice(0,10);
+    return sum(k=>k>=mon && k<=today);
+  }
+  if(period==='month') return sum(k=>k.slice(0,7)===today.slice(0,7));
+  return U.xp||0;
 }
 
 // ── Real leaderboard cache ──────────────────────────────────────────────
@@ -3299,12 +3321,21 @@ function _lbUserName(u) {
   return ([u.first_name||'', u.last_name||''].join(' ').trim()) || u.username || 'Foydalanuvchi';
 }
 
+let _pbCache = {};
+async function fetchPeriodBoard(period){
+  if(!_useApi) return null;
+  const c=_pbCache[period];
+  if(c && Date.now()-c.t<45000) return c.v;
+  const r = await apiCall('lb_period',{period});
+  const v = (r.ok && r.data && !r.data.not_installed) ? r.data : null;
+  _pbCache[period]={t:Date.now(),v};
+  return v;
+}
 async function buildLeaderboard() {
   const LABELS = {today:'📅 Bugun', week:'📆 Hafta', month:'🗓 Oy', alltime:'🏆 Barcha'};
-  const UNITS  = {today:'bugun',   week:'hafta',    month:'oy',     alltime:'XP'};
-  const PERIOD_FRAC = {today:0.008, week:0.05, month:0.22, alltime:1};
-
+  const UNITS  = {today:'XP', week:'XP', month:'XP', alltime:'XP'};
   const users = await fetchRealLeaderboard();
+  const pb = _lbPeriod === 'alltime' ? null : await fetchPeriodBoard(_lbPeriod);
   const myId  = String(U?.userId || '');
 
   ['lb-main','lb-modal'].forEach(containerId => {
@@ -3329,31 +3360,19 @@ async function buildLeaderboard() {
     });
     container.appendChild(tabs);
 
-    // Build list from real DB users
-    const frac = PERIOD_FRAC[_lbPeriod] || 1;
-    const list_data = users.map(u => {
-      const isMe = String(u.user_id) === myId;
-      const rawXP = u.xp || 0;
-      let xp = _lbPeriod === 'alltime' ? rawXP : Math.round(rawXP * frac);
-      if (isMe && _lbPeriod !== 'alltime') xp = getMyXpForPeriod(_lbPeriod);
-      return {
-        name:   isMe ? (U.name || _lbUserName(u)) : _lbUserName(u),
-        xp,
-        avatar: u.avatar_url || '',
-        userId: String(u.user_id),
-        isMe,
-      };
-    });
-
-    // Add current user if not in DB yet
-    if (!list_data.some(p => p.isMe) && U) {
-      list_data.push({
-        name:   U.name || 'Siz',
-        xp:     _lbPeriod === 'alltime' ? (U.xp||0) : getMyXpForPeriod(_lbPeriod),
-        avatar: U.avatarUrl || '',
-        userId: myId,
-        isMe:   true,
+    // Ro'yxat: "Barcha" — users.xp; bugun/hafta/oy — serverdagi kunlik XP (xp_daily)
+    let list_data;
+    if (_lbPeriod === 'alltime') {
+      list_data = users.map(u => {
+        const isMe = String(u.user_id) === myId;
+        return { name: isMe ? (U.name || _lbUserName(u)) : _lbUserName(u), xp: u.xp || 0, avatar: u.avatar_url || '', userId: String(u.user_id), isMe };
       });
+      if (!list_data.some(p => p.isMe) && U) list_data.push({ name: U.name || 'Siz', xp: U.xp||0, avatar: U.avatarUrl || '', userId: myId, isMe: true });
+    } else if (pb) {
+      list_data = pb.users.map(u => ({ name: u.name, xp: u.score, avatar: u.avatar || '', userId: String(u.user_id), isMe: String(u.user_id) === myId }));
+      if (!list_data.some(p => p.isMe) && U) list_data.push({ name: U.name || 'Siz', xp: pb.me ? pb.me.score : getMyXpForPeriod(_lbPeriod), rank: pb.me ? pb.me.rank : null, avatar: U.avatarUrl || '', userId: myId, isMe: true });
+    } else {
+      list_data = [{ name: U.name || 'Siz', xp: getMyXpForPeriod(_lbPeriod), avatar: U.avatarUrl || '', userId: myId, isMe: true }];
     }
 
     list_data.sort((a,b) => b.xp - a.xp);
@@ -3396,7 +3415,7 @@ async function buildLeaderboard() {
         ? `<img src="${me.avatar}" onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${meSeed}'" style="width:80%;height:80%;object-fit:contain">`
         : (me.avatar || '🤖');
       meDiv.innerHTML = `
-        <div class="lb-rank" style="color:var(--muted)">${myRank+1}</div>
+        <div class="lb-rank" style="color:var(--muted)">${me.rank||(myRank+1)}</div>
         <div class="lb-av">${meAv}</div>
         <div class="lb-name">${me.name.replace(/</g,'&lt;')} <span style="color:var(--al);font-size:11px">(Siz)</span></div>
         <div class="lb-xp">${me.xp.toLocaleString()} <span style="font-size:10px;color:var(--muted);font-weight:600">${unit}</span></div>`;
@@ -5028,12 +5047,12 @@ function buildDetailedStats(){
   // XP chart
   const chart = document.getElementById('xp-chart');
   if(chart){
-    const xpHistory = U.xpHistory || [0,0,0,0,0,0,0];
+    const days7 = xpLastDays(7);
+    const xpHistory = days7.map(d=>d.xp);
     const maxXP = Math.max(...xpHistory,1);
-    const dayNames = ['Du','Se','Ch','Pa','Ju','Sh','Ya'];
-    chart.innerHTML = xpHistory.map((v,i)=>{
-      const h = Math.round((v/maxXP)*60)+4;
-      return `<div class="xp-bar" style="height:${h}px" title="${v} XP"><span class="xp-bar-label">${dayNames[i]}</span></div>`;
+    chart.innerHTML = days7.map(d=>{
+      const h = Math.round((d.xp/maxXP)*60)+4;
+      return `<div class="xp-bar" style="height:${h}px" title="${d.xp} XP"><span class="xp-bar-label">${d.label}</span></div>`;
     }).join('');
   }
   // Tahlil
@@ -5052,7 +5071,7 @@ function buildDetailedStats(){
         <div style="font-size:24px">${weakCount>5?'⚠️':'✅'}</div>
       </div>
       <div style="background:var(--s2);border-radius:11px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center">
-        <div><div style="font-size:12px;color:var(--muted)">O'rtacha kunlik XP</div><div style="font-size:16px;font-weight:800;color:var(--purple)">${Math.round((U.xp||0)/Math.max(U.streak||1,1))}</div></div>
+        <div><div style="font-size:12px;color:var(--muted)">O'rtacha kunlik XP</div><div style="font-size:16px;font-weight:800;color:var(--purple)">${Math.round(xpLastDays(7).reduce((t,d)=>t+d.xp,0)/7)}</div></div>
         <div style="font-size:24px">📈</div>
       </div>`;
   }
@@ -6178,7 +6197,7 @@ App.progress = {
       const bonus = Math.min(2, Math.floor(this._combo / 3));   // combo bonusi har javobga ko'pi bilan +2
       if(bonus > 0){
         const U2 = App.user.get();
-        U2.xp = (U2.xp||0) + bonus;
+        U2.xp = (U2.xp||0) + bonus; try{ logXpDaily(bonus); }catch(e){}
         App.user.save();
       }
     }
@@ -6231,7 +6250,7 @@ App.progress = {
         setTimeout(()=>{
           showToast(q.icon + ' Quest: ' + q.title + ' +' + q.xp + ' XP!');
           const U2 = App.user.get();
-          U2.xp = (U2.xp||0) + q.xp;
+          U2.xp = (U2.xp||0) + q.xp; try{ logXpDaily(q.xp); }catch(e){}
           App.user.save();
         }, 800);
         App.events.emit('quest:completed', q);
@@ -7767,7 +7786,7 @@ function aiVocabSetLevel(level, btn){
 
 async function openAIVocab(){
   if(!AI_CONFIG.enabled){
-    showToast('❌ AI yoqilmagan! AI_CONFIG.apiKey ni kiriting');
+    aiGate();
     return;
   }
   document.getElementById('ai-vocab-result').innerHTML='';
@@ -7775,51 +7794,43 @@ async function openAIVocab(){
   document.getElementById('modal-ai-vocab').classList.add('open');
 }
 
+let _aiVocabWords = [];
 async function runAIVocabGen(){
-  if(!AI_CONFIG.enabled){ showToast('AI yoqilmagan!'); return; }
+  if(!AI_CONFIG.enabled){ aiGate(); return; }
   const topic = document.getElementById('ai-vocab-topic').value.trim();
   const btn = document.getElementById('ai-vocab-btn');
   const result = document.getElementById('ai-vocab-result');
-  
-  btn.textContent = '⏳ AI yaratmoqda...';
-  btn.disabled = true;
-  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI so\'z yaratmoqda...</div>';
-  
+  btn.textContent = '⏳ AI yaratmoqda...'; btn.disabled = true;
+  result.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)">AI so\'z yaratmoqda...</div>';
   try{
     const data = await App.ai.generateVocabulary(_aiVocabLevel, topic);
-    if(!data || !data.words){ 
-      result.innerHTML='<div style="color:var(--red);text-align:center;padding:14px">AI javob qayta ishlashda xato. Qayta urinib ko\'ring.</div>';
-      return;
-    }
-    
-    result.innerHTML = `
-      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:10px;text-transform:uppercase">✨ AI TAVSIYA ETGAN SO'ZLAR</div>
-      ${data.words.map(w=>`
+    _aiVocabWords = (data && data.words) || [];
+    result.innerHTML = '<div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:10px;text-transform:uppercase">✨ AI TAVSIYA ETGAN SO\'ZLAR</div>' +
+      _aiVocabWords.map((w,i)=>`
         <div style="background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:8px">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
             <div style="display:flex;align-items:center;gap:8px">
-              <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--blue)">${w.word}</span>
-              <span style="font-size:10px;background:rgba(124,90,246,.12);color:var(--al);padding:2px 7px;border-radius:20px;font-weight:700">${w.part_of_speech||''}</span>
+              <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--blue)">${compEsc(w.word)}</span>
+              <span style="font-size:10px;background:rgba(124,90,246,.12);color:var(--al);padding:2px 7px;border-radius:20px;font-weight:700">${compEsc(w.part_of_speech)}</span>
             </div>
             <div style="display:flex;gap:5px">
-              <button onclick="speakText('${w.word.replace(/'/g,"\'")}');event.stopPropagation()" style="width:28px;height:28px;border-radius:50%;background:rgba(79,223,138,.1);border:1px solid rgba(79,223,138,.2);cursor:pointer;font-size:13px">🔊</button>
-              <button onclick="addAIWordToCustom('${w.word.replace(/'/g,"\'")}','${(w.translation||'').replace(/'/g,"\'")}','${(w.definition||'').replace(/'/g,"\'")}','${(w.example||'').replace(/'/g,"\'")}');event.stopPropagation()" style="width:28px;height:28px;border-radius:50%;background:rgba(79,156,249,.1);border:1px solid rgba(79,156,249,.2);cursor:pointer;font-size:13px">➕</button>
+              <button onclick="aiVocabSpeak(${i})" style="width:28px;height:28px;border-radius:50%;background:rgba(79,223,138,.1);border:1px solid rgba(79,223,138,.2);cursor:pointer;font-size:13px">🔊</button>
+              <button onclick="aiVocabAdd(${i})" style="width:28px;height:28px;border-radius:50%;background:rgba(79,156,249,.1);border:1px solid rgba(79,156,249,.2);cursor:pointer;font-size:13px">➕</button>
             </div>
           </div>
-          <div style="font-size:13px;color:var(--purple);font-weight:700;margin-bottom:3px">${w.translation||''}</div>
-          <div style="font-size:11px;color:var(--muted);margin-bottom:4px">${w.definition||''}</div>
-          <div style="font-size:11px;color:rgba(192,132,252,.8);font-style:italic">"${w.example||''}"</div>
-        </div>
-      `).join('')}
-      <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">➕ tugmasi bilan shaxsiy so'zlaringizga qo'shing</div>
-    `;
+          <div style="font-size:13px;color:var(--purple);font-weight:700;margin-bottom:3px">${compEsc(w.translation)}</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:4px">${compEsc(w.definition)}</div>
+          <div style="font-size:11px;color:rgba(192,132,252,.8);font-style:italic">"${compEsc(w.example)}"</div>
+        </div>`).join('') +
+      '<div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">➕ tugmasi bilan shaxsiy so\'zlaringizga qo\'shing</div>';
   } catch(e){
-    result.innerHTML=`<div style="color:var(--red);text-align:center;padding:14px">Xato: ${e.message}</div>`;
+    result.innerHTML = `<div style="color:var(--red);text-align:center;padding:14px">${compEsc(e.message)}</div>`;
   } finally {
-    btn.textContent = '✨ AI So\'z Yaratish';
-    btn.disabled = false;
+    btn.textContent = '✨ AI So\'z Yaratish'; btn.disabled = false;
   }
 }
+function aiVocabSpeak(i){ const w=_aiVocabWords[i]; if(w) speakText(w.word); }
+function aiVocabAdd(i){ const w=_aiVocabWords[i]; if(w) addAIWordToCustom(w.word,w.translation,w.definition,w.example); }
 
 function addAIWordToCustom(word, trans, def, ex){
   if(!U.customWords) U.customWords=[];
@@ -7831,7 +7842,7 @@ function addAIWordToCustom(word, trans, def, ex){
 
 // ── AI Grammar Explain ─────────────────────────────────────────────────────
 async function openAIGrammarExplain(topic, level){
-  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  if(!AI_CONFIG.enabled){ aiGate(); return; }
   document.getElementById('ai-grammar-topic-display').textContent = '📖 ' + topic;
   document.getElementById('ai-grammar-result').innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--purple);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px"></div>AI tushuntirmoqda...</div>';
   document.getElementById('modal-ai-grammar').classList.add('open');
@@ -7854,7 +7865,7 @@ async function openAIGrammarExplain(topic, level){
 let AIT = { exercises:[], idx:0, score:0, wrong:0 };
 
 async function openAIWeakTrainer(){
-  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  if(!AI_CONFIG.enabled){ aiGate(); return; }
   const errors = U.wordErrors||{};
   const weakWords = Object.keys(errors).sort((a,b)=>errors[b]-errors[a]).slice(0,8);
   if(weakWords.length < 2){ showToast('Kamida 2 ta xato so\'z kerak!'); return; }
@@ -7940,7 +7951,7 @@ function nextAIWeakExercise(){
 
 // ── AI Study Plan ────────────────────────────────────────────────────────
 async function openAIStudyPlan(){
-  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  if(!AI_CONFIG.enabled){ aiGate(); return; }
   document.getElementById('modal-ai-plan').classList.add('open');
   await loadAIStudyPlan();
 }
@@ -7966,7 +7977,7 @@ async function refreshAIStudyPlan(){ await loadAIStudyPlan(); }
 let AIQ = { questions:[], idx:0, score:0, wrong:0 };
 
 async function openAIQuiz(){
-  if(!AI_CONFIG.enabled){ showToast('❌ AI yoqilmagan!'); return; }
+  if(!AI_CONFIG.enabled){ aiGate(); return; }
   const words = getAllWordsForGames();
   if(words.length < 4){ showToast('Kamida 4 ta so\'z kerak!'); return; }
   
@@ -8046,39 +8057,25 @@ function buildAIQuizQuestion(){
 
 // ── AI Word Deep Explain ───────────────────────────────────────────────────
 async function openAIWordExplain(word){
-  if(!AI_CONFIG.enabled){
-    // AI yoq bo'lsa - oddiy tarjimani ko'rsat
-    showToast('AI yoqilmagan - oddiy ma\'lumot ko\'rsatilmoqda');
-    return;
-  }
+  if(!AI_CONFIG.enabled){ aiGate(); return; }
   document.getElementById('ai-explain-word-title').textContent = word;
-  document.getElementById('ai-explain-content').innerHTML='<div style="text-align:center;padding:20px;color:var(--muted)"><div style="width:36px;height:36px;border:3px solid var(--blue);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto"></div></div>';
-  document.getElementById('ai-explain-sentences').innerHTML='';
+  const content = document.getElementById('ai-explain-content'), sents = document.getElementById('ai-explain-sentences');
+  content.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted)">⏳ AI tahlil qilmoqda...</div>';
+  sents.innerHTML = '';
   document.getElementById('modal-ai-word-explain').classList.add('open');
-  
   try{
-    const [explain, sentences] = await Promise.all([
-      App.ai.deepExplainWord(word),
-      App.ai.createSentences(word, U.level||'intermediate')
-    ]);
-    
-    document.getElementById('ai-explain-content').innerHTML = explain
-      ? `<div style="background:rgba(79,156,249,.06);border:1px solid rgba(79,156,249,.15);border-radius:12px;padding:13px;white-space:pre-wrap">${explain}</div>`
-      : '<div style="color:var(--muted)">Tushuntirish topilmadi.</div>';
-    
-    if(sentences && sentences.sentences){
-      document.getElementById('ai-explain-sentences').innerHTML=`
-        <div style="font-size:11px;font-weight:800;color:var(--muted);margin:12px 0 8px;text-transform:uppercase">📝 MISOL GAPLAR</div>
-        ${sentences.sentences.map(s=>`
-          <div style="background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:10px 13px;margin-bottom:7px">
-            <div style="font-size:13px;color:var(--text);font-style:italic;margin-bottom:4px">"${s.english}"</div>
-            <div style="font-size:12px;color:var(--purple)">${s.uzbek}</div>
-            ${s.explanation?`<div style="font-size:11px;color:var(--muted);margin-top:4px">💡 ${s.explanation}</div>`:''}
-          </div>
-        `).join('')}`;
+    const r = await aiCall('word_explain', { word });
+    const d = r.data;
+    content.innerHTML = `<div style="background:rgba(79,156,249,.06);border:1px solid rgba(79,156,249,.15);border-radius:12px;padding:13px;white-space:pre-wrap">${compEsc(d.explain)}</div>`;
+    if(d.sentences && d.sentences.length){
+      sents.innerHTML = '<div style="font-size:11px;font-weight:800;color:var(--muted);margin:12px 0 8px;text-transform:uppercase">📝 MISOL GAPLAR</div>' +
+        d.sentences.map(x=>`<div style="background:var(--s1);border:1px solid var(--border);border-radius:11px;padding:10px 13px;margin-bottom:7px">
+          <div style="font-size:13px;color:var(--text);font-style:italic;margin-bottom:4px">"${compEsc(x.english)}"</div>
+          <div style="font-size:12px;color:var(--purple)">${compEsc(x.uzbek)}</div>
+          ${x.explanation?`<div style="font-size:11px;color:var(--muted);margin-top:4px">💡 ${compEsc(x.explanation)}</div>`:''}</div>`).join('');
     }
   } catch(e){
-    document.getElementById('ai-explain-content').innerHTML=`<div style="color:var(--red)">Xato: ${e.message}</div>`;
+    content.innerHTML = `<div style="color:var(--red)">${compEsc(e.message)}</div>`;
   }
 }
 
@@ -8135,7 +8132,7 @@ function injectAIGamesSection(){
 
 // ── Speaking ga AI tip ─────────────────────────────────────────────────────
 App.events.on('speaking:analyzed', async ({word, heard, score})=>{
-  if(!AI_CONFIG.enabled) return;
+  return;   // kunlik AI limitini tejash uchun avtomatik chaqirilmaydi
   const tipEl = document.getElementById('sp-ai-tip');
   if(!tipEl) return;
   tipEl.style.display='block';
@@ -8161,7 +8158,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // ║  HARDCODED API KEY — not visible anywhere in the UI                   ║
 // ║  Paste your Gemini key (AIza...) or OpenRouter key (sk-or-v1-...)    ║
 // ╚══════════════════════════════════════════════════════════════════════╝
-const AIT_API_KEY = 'AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // ← YOUR KEY HERE
+const AIT_API_KEY = '';   // AI endi server orqali ishlaydi — kalit brauzerda saqlanmaydi
 
 // Chart.js global dark-theme defaults (set once)
 function _aitInitChartDefaults() {
@@ -8195,20 +8192,11 @@ function _aitBuildLog() {
   const now = Date.now();
   const DAY = 86400000;
 
-  const days14 = Array.from({length: 14}, (_, i) => {
-    const d      = new Date(now - (13 - i) * DAY);
-    const key    = d.toISOString().slice(0, 10);
-    const daily  = (u.dailyStats || {})[key] || {};
-    const dayStart = new Date(d); dayStart.setHours(0,0,0,0);
-    const dayEnd   = new Date(d); dayEnd.setHours(23,59,59,999);
-    const dayXP  = (u.xpLog || [])
-      .filter(e => e.ts >= dayStart.getTime() && e.ts <= dayEnd.getTime())
-      .reduce((s, e) => s + e.xp, 0);
-    return {
-      label: d.toLocaleDateString('uz-UZ', {month:'short', day:'numeric'}),
-      xp:    dayXP || (daily.xp || Math.floor(Math.random() * 30 + 5)),
-    };
-  });
+  const _d14 = xpLastDays(14);
+  const days14 = _d14.map(d => ({
+    label: new Date(d.key + 'T00:00:00Z').toLocaleDateString('uz-UZ', {month:'short', day:'numeric', timeZone:'UTC'}),
+    xp: d.xp,
+  }));
 
   const wordStats   = u.wordStats || {};
   const allWS       = Object.values(wordStats);
@@ -8556,37 +8544,25 @@ function aitRefresh() {
 }
 
 async function aitRunAnalysis() {
-  const key = AIT_API_KEY;
-  if (!key || key.includes('XXXXXXX')) {
-    showToast('❌ API key kod ichida o\'rnatilmagan');
-    return;
-  }
-
+  if (!AI_CONFIG.enabled) { aiGate(); return; }
   const btn  = document.getElementById('ait-ai-btn');
   const body = document.getElementById('ait-insight-body');
   if (btn)  btn.classList.add('ait-spinning');
   if (body) { body.className='ait-insight-body ait-loading'; body.textContent='AI tahlil qilmoqda...'; }
-
   try {
-    const log    = _aitBuildLog();
-    const prompt = _aitBuildPrompt(log);
-    const raw    = await _aitCallAI(prompt);
-    const json   = raw.replace(/```json|```/g,'').trim();
-    const report = JSON.parse(json);
-
-    // Update insight card
+    const log = _aitBuildLog();
+    const r = await aiCall('analysis', { days: log.days14.map(d=>d.xp), modules: log.modules, words: log.user.words, weak: log.weakAreas });
+    const report = r.data;
     if (body) { body.className='ait-insight-body'; body.textContent = report.insight_uz || '—'; }
     const ts = document.getElementById('ait-insight-ts');
     if (ts) ts.textContent = 'AI tahlil: ' + new Date().toLocaleTimeString('uz-UZ');
-
     const tagsEl = document.getElementById('ait-insight-tags');
-    if (tagsEl) tagsEl.innerHTML = (report.tags||[]).map(t=>`<span class="ait-tag">${t}</span>`).join('');
-
+    if (tagsEl) tagsEl.innerHTML = (report.tags||[]).map(t=>`<span class="ait-tag">${compEsc(t)}</span>`).join('');
     _aitRenderAll(report);
-    showToast('✅ AI tahlil muvaffaqiyatli!');
+    showToast('✅ AI tahlil tayyor' + (r.remaining!=null ? ' · bugun yana ' + r.remaining + ' ta' : ''));
   } catch(e) {
-    if (body) { body.className='ait-insight-body'; body.textContent='❌ Xato: ' + e.message; }
-    showToast('❌ ' + e.message.slice(0,40));
+    if (body) { body.className='ait-insight-body'; body.textContent='❌ ' + e.message; }
+    showToast('❌ ' + e.message.slice(0,60));
   } finally {
     if (btn) btn.classList.remove('ait-spinning');
   }
@@ -8610,12 +8586,12 @@ function buildAITab() {
   // AI badge — always show "faol" since key is hardcoded
   const dot = document.getElementById('ait-dot');
   const lbl = document.getElementById('ait-badge-lbl');
-  const keyOk = AIT_API_KEY && !AIT_API_KEY.includes('XXXXXXX');
+  const keyOk = !!AI_CONFIG.enabled;
   if (dot) {
     dot.style.background = keyOk ? 'var(--green)' : 'var(--muted)';
     dot.style.boxShadow  = keyOk ? '0 0 6px var(--green)' : 'none';
   }
-  if (lbl) lbl.textContent = keyOk ? 'AI Faol' : 'Key yo\'q';
+  if (lbl) lbl.textContent = keyOk ? ('AI Faol' + (window._aiInfo ? ' · ' + window._aiInfo.remaining + '/' + window._aiInfo.limit : '')) : (_useApi ? 'Premium kerak' : 'Ulanmagan');
 
   // Theme buttons active state
   const isLight = localStorage.getItem('ep_theme') === 'light';
@@ -9011,6 +8987,67 @@ async function openComp(id){
   else if(!me && c.status==='active') h += '<div class="comp-me" style="margin-top:8px;text-align:center;color:var(--muted)">Siz hali ro\'yxatda yo\'qsiz. O\'ynang va XP yig\'ing!</div>';
   body.innerHTML = h;
 }
+
+
+// ═══════════════ AI — server orqali (Gemini), faqat Premium ═══════════════
+function isRealPremium(){ return !!(U && U.isPremium && U.premiumExpiry > Date.now()); }
+Object.defineProperty(AI_CONFIG, 'enabled', { configurable:true, get(){ return !!(_useApi && isRealPremium()); }, set(v){} });
+window._aiInfo = null;
+function aiGate(){
+  if(!_useApi){ showToast('AI faqat Telegram ichida (xavfsiz rejimda) ishlaydi'); return; }
+  showToast('💎 AI faqat Premium foydalanuvchilar uchun');
+  setTimeout(()=>switchTabByName('premium'), 700);
+}
+const AI_ERR = {
+  premium_required:'AI faqat Premium foydalanuvchilar uchun',
+  limit_reached:'Bugungi AI limiti tugadi. Ertaga qayta urinib ko\'ring',
+  ai_busy:'AI band, birozdan keyin urinib ko\'ring',
+  ai_unavailable:'AI hozir mavjud emas',
+  bad_output:'AI javobi noto\'g\'ri chiqdi, qayta urinib ko\'ring',
+  not_installed:'AI hali sozlanmagan',
+  bad_params:'So\'rov noto\'g\'ri',
+  ai_blocked:'So\'rov AI tomonidan rad etildi',
+};
+function aiUpdateBadges(){
+  const lbl=document.getElementById('ait-badge-lbl');
+  if(lbl && AI_CONFIG.enabled) lbl.textContent='AI Faol' + (window._aiInfo ? ' · '+window._aiInfo.remaining+'/'+window._aiInfo.limit : '');
+}
+async function aiCall(kind, params){
+  if(!_useApi) throw new Error('AI faqat Telegram ichida ishlaydi');
+  const r = await apiCall('ai', { kind, params });
+  if(r.ok && r.data && r.data.ok){
+    window._aiInfo = { limit:r.data.limit, remaining:r.data.remaining };
+    try{ aiUpdateBadges(); }catch(e){}
+    return r.data;
+  }
+  const code = r.data && r.data.error;
+  if(code==='limit_reached') window._aiInfo = { limit:r.data.limit, remaining:0 };
+  throw new Error(AI_ERR[code] || ('AI xatosi ('+(r.status||'tarmoq')+')'));
+}
+async function aiRefreshStatus(){
+  if(!_useApi || !isRealPremium()) { try{ aiUpdateBadges(); }catch(e){} return; }
+  const r = await apiCall('ai_status');
+  if(r.ok && r.data){ window._aiInfo = { limit:r.data.limit, remaining:r.data.remaining }; try{ aiUpdateBadges(); }catch(e){} }
+}
+Object.assign(App.ai, {
+  async isEnabled(){ return AI_CONFIG.enabled; },
+  loadSavedConfig(){},
+  async generateVocabulary(level, topic){ return (await aiCall('vocab', { level, topic })).data; },
+  async createSentences(word){ const d=(await aiCall('word_explain', { word })).data; return { sentences: d.sentences }; },
+  async explainGrammarDetail(topic, level){ return compEsc((await aiCall('grammar', { topic, level })).data.text); },
+  async generateWeakWordExercises(words){
+    const d=(await aiCall('weak', { words })).data;
+    return { exercises: d.exercises.map(e=>({ ...e, sentence: compEsc(e.sentence) })) };
+  },
+  async deepExplainWord(word){ return compEsc((await aiCall('word_explain', { word })).data.explain); },
+  async generateQuiz(words){ return (await aiCall('quiz', { words: words.map(w=>w.word||w) })).data; },
+  async getStudyPlan(u){ return compEsc((await aiCall('plan', { learned:(u.learnedWords||[]).length, weak:Object.keys(u.wordErrors||{}).slice(0,8) })).data.text); },
+  async getPronunciationTip(word, heard, score){ return compEsc((await aiCall('tip', { word, heard, score })).data.tip); },
+});
+function onFlashcardAI(){ const w=currentUnitWords[cardIdx]; if(w) openAIWordExplain(w.word); else showToast('Avval so\'z tanlang'); }
+window.addEventListener('load',()=>{ const b=document.getElementById('fc-ai-btn'); if(b) b.style.display='flex'; });
+const _origBuildAITab = buildAITab;
+buildAITab = function(){ _origBuildAITab(); try{ aiRefreshStatus(); }catch(e){} };
 
 // manifest shortcuts: ?tab=games
 window.addEventListener('load',()=>{ setTimeout(()=>{ const t=new URLSearchParams(location.search).get('tab'); if(t&&document.getElementById('tab-'+t)) switchTabByName(t); },600); });
