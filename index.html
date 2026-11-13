@@ -6,7 +6,6 @@
 <title>Essential English PRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -708,6 +707,7 @@ async function fetchUnitWords(bookNum, unitNum) {
     const words = Array.isArray(data) ? data : (data.words || []);
     console.log('✅ So\'zlar yuklandi:', words.length, 'ta —', url);
     WORDS_CACHE[cacheKey] = words;
+    try{ enrichLearned(words); }catch(e){}
     return words;
   } catch(e) {
     console.error('💥 Fetch xatosi:', url, e.message);
@@ -717,24 +717,29 @@ async function fetchUnitWords(bookNum, unitNum) {
 }
 
 // Bir kitobdagi mavjud unitlarni aniqlash — ketma-ket tekshiradi
+let _booksManifest;   // books.json: {"1":30,"2":30,...} yoki null
+async function loadBooksManifest(){
+  if(_booksManifest !== undefined) return _booksManifest;
+  try{ const r = await fetch('books.json'); _booksManifest = r.ok ? await r.json() : null; }catch(e){ _booksManifest = null; }
+  return _booksManifest;
+}
 async function detectUnitsInBook(bookNum) {
   const cacheKey = `book${bookNum}_units`;
   if(WORDS_CACHE[cacheKey] && WORDS_CACHE[cacheKey].length > 0) return WORDS_CACHE[cacheKey];
-
-  const found = [];
-  // 1 dan 30 gacha ketma-ket, topilmasa to'xtaymiz (3 ta ketma-ket yo'q bo'lsa)
-  let misses = 0;
-  for(let n = 1; n <= 30; n++){
-    const words = await fetchUnitWords(bookNum, n);
-    if(words !== null && words.length > 0){
-      found.push(n);
-      misses = 0;
-    } else {
-      misses++;
-      if(misses >= 3 && found.length > 0) break; // 3 ta yo'q bo'lsa to'xtaymiz
-    }
-  }
+  // 1) books.json bo'lsa — bitta kichik fayl yetadi
+  const man = await loadBooksManifest();
+  const n = man ? Number(man[bookNum] || man['book'+bookNum]) : 0;
+  if(n > 0){ const arr = Array.from({length:n}, (_,i)=>i+1); WORDS_CACHE[cacheKey] = arr; return arr; }
+  // 2) oldingi natija (7 kun)
+  try{
+    const c = JSON.parse(localStorage.getItem('ep_units_'+bookNum) || 'null');
+    if(c && c.u && c.u.length && Date.now() - c.t < 7*86400000){ WORDS_CACHE[cacheKey] = c.u; return c.u; }
+  }catch(e){}
+  // 3) zaxira: 30 tasini parallel tekshiramiz (avvalgidek ketma-ket emas)
+  const res = await Promise.all(Array.from({length:30}, (_,i)=>fetchUnitWords(bookNum, i+1)));
+  const found = res.map((w,i)=>(w && w.length) ? i+1 : 0).filter(Boolean);
   WORDS_CACHE[cacheKey] = found;
+  try{ localStorage.setItem('ep_units_'+bookNum, JSON.stringify({t:Date.now(), u:found})); }catch(e){}
   return found;
 }
 
@@ -1287,13 +1292,28 @@ let _syncTimer = null, _syncUser = null;
 const PROG_EXCLUDE = ['userId','user_id','name','username','first_name','last_name','avatarUrl','avatar_url',
   'xp','total_points','streak','level','isPremium','premiumExpiry','premiumPlan','premiumActivated','lastSyncedAt'];
 
+// Eski/ortiqcha ma'lumotni tozalash va yengillashtirish (ilova sekinlashmasligi uchun)
+function pruneUserObj(u){
+  if(!u) return;
+  const dk = ts => new Date(ts + 5*3600000).toISOString().slice(0,10);
+  if(!u.xpDaily){ u.xpDaily = {}; (u.xpLog||[]).forEach(e=>{ const k=dk(e.ts); u.xpDaily[k]=(u.xpDaily[k]||0)+(e.xp||0); }); }
+  delete u.xpLog; delete u.progressLog;
+  if(Array.isArray(u.learnedWords)) u.learnedWords = u.learnedWords.map(w => typeof w === 'string' ? {word:w, translation:'', part_of_speech:''} : {word:w.word, translation:w.translation||'', part_of_speech:w.part_of_speech||''});
+  const day = n => dk(Date.now() - n*86400000);
+  const tail = k => { const m = String(k).match(/(\d{4}-\d{2}-\d{2})$/); return m ? m[1] : null; };
+  if(u.dailyStats) Object.keys(u.dailyStats).forEach(k=>{ if(k < day(60)) delete u.dailyStats[k]; });
+  if(u.completedQuests) Object.keys(u.completedQuests).forEach(k=>{ const t=tail(k); if(t && t < day(30)) delete u.completedQuests[k]; });
+  if(u.gamePlays) Object.keys(u.gamePlays).forEach(k=>{ const t=tail(k); if(t && t < day(7)) delete u.gamePlays[k]; });
+  if(u.wordStats){ const cut = Date.now() - 120*86400000; Object.keys(u.wordStats).forEach(w=>{ const x=u.wordStats[w]; if(!(x.mistakes>0 || x.views>1) || (x.lastSeen||0) < cut) delete u.wordStats[w]; }); }
+}
+
 function buildProgress(u){
   const p = {};
   for (const k in u) { if (!PROG_EXCLUDE.includes(k)) p[k] = u[k]; }
-  if (Array.isArray(p.learnedWords))
-    p.learnedWords = p.learnedWords.map(w => ({word:w.word, translation:w.translation, part_of_speech:w.part_of_speech}));
-  if (Array.isArray(p.xpLog) && p.xpLog.length > 300) p.xpLog = p.xpLog.slice(-300);
-  p._v = 1;
+  if (Array.isArray(p.learnedWords)) p.learnedWords = p.learnedWords.map(w => (w && w.word) || w);   // faqat so'z (tarjima unit faylidan olinadi)
+  delete p.xpLog;                                                                                     // kunlik XP (xpDaily) bor
+  if (p.wordStats) { const ws = {}; for (const w in p.wordStats) { const x = p.wordStats[w]; if (x && (x.mistakes > 0 || x.views > 1)) ws[w] = x; } p.wordStats = ws; }
+  p._v = 2;
   return p;
 }
 
@@ -1328,7 +1348,13 @@ async function flushSync(isUnload) {
   });
   if (_useApi) {
     const r = await apiCall('save', { xp, streak: user.streak || 0, level: user.level, progress: buildProgress(user) }, { keepalive: !!isUnload });
-    if (r.ok && r.data) { _dbXp = r.data.xp || _dbXp; window._lastSyncError = null; window._lastSyncOk = Date.now(); }
+    if (r.ok && r.data) {
+      _dbXp = r.data.xp || _dbXp; window._lastSyncError = null; window._lastSyncOk = Date.now();
+      if (r.data.progress_saved === false) {
+        window._lastSyncError = 'progress juda katta (saqlanmadi)';
+        if (!window._progErrShown) { window._progErrShown = true; try{ showToast('⚠️ Ma\'lumot hajmi katta: to\'liq saqlanmayapti'); }catch(e){} }
+      }
+    }
     else {
       window._lastSyncError = r.status + ' ' + ((r.data && r.data.error) || r.reason || '');
       if (!window._syncErrShown) { window._syncErrShown = true; try{ showToast('⚠️ Saqlashda xato: ' + r.status); }catch(e){} }
@@ -1459,9 +1485,9 @@ async function loadUser() {
         for (const k in prog) { if (!unionKeys.includes(k) && k !== '_v') localUser[k] = prog[k]; }
       }
       unionKeys.forEach(k => {
-        const a = before[k], b = Array.isArray(prog[k]) ? prog[k] : [];
+        const a = before[k], b = (Array.isArray(prog[k]) ? prog[k] : []).map(x => (k === 'learnedWords' && typeof x === 'string') ? {word:x, translation:'', part_of_speech:''} : x);
         const seen = new Set(), out = [];
-        [...b, ...a].forEach(x => { const key = (x && x.word) || x; if (!seen.has(key)) { seen.add(key); out.push(x); } });
+        (k === 'learnedWords' ? [...a, ...b] : [...b, ...a]).forEach(x => { const key = (x && x.word) || x; if (!seen.has(key)) { seen.add(key); out.push(x); } });
         localUser[k] = out;
       });
       // Ilova XP'i faqat users.xp ustunida (bot ballari total_points'da, alohida). Hech qachon kamaymaydi
@@ -1503,6 +1529,7 @@ async function loadUser() {
     }
   }
 
+  try { pruneUserObj(localUser); } catch(e) {}
   localUser.lastLogin = new Date().toDateString();
   const json = JSON.stringify(localUser);
   localStorage.setItem(storageKey, json);
@@ -2679,47 +2706,64 @@ function speakWord(){
 
 // ===== AUDIO / SPEECH =====
 // Telegram va mobil brauzerlar uchun ishonchli audio
+const _audioOk = {};          // so'z -> avval ishlagan manba (qayta bosilganda tezroq)
+let _curAudio = null, _audioSeq = 0;
+function _cleanSpeech(text){ return String(text||'').trim().replace(/[^A-Za-z'’\- ]/g,'').replace(/\s+/g,' ').slice(0,80); }
+// Audio'ni bosish voqeasi ichida SINXRON ishga tushirish kerak (iPhone/Telegram aks holda ovozni bloklaydi)
+function _playUrl(url, onFail, key){
+  const a = new Audio(); a.preload = 'auto'; a.src = url; a.volume = 1;
+  _curAudio = a;
+  let failed = false;
+  const fail = () => { if(failed) return; failed = true; if(onFail) onFail(); };
+  a.addEventListener('error', fail, {once:true});
+  if(key) a.addEventListener('playing', () => { _audioOk[key] = url; }, {once:true});
+  const p = a.play();
+  if(p && p.catch) p.catch(fail);
+}
+async function _dictAudioUrl(word){
+  try{
+    const r = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+    if(!r.ok) return null;
+    const data = await r.json();
+    const urls = [];
+    (data||[]).forEach(e => (e.phonetics||[]).forEach(p => { if(p.audio && /^https?:/.test(p.audio)) urls.push(p.audio); }));
+    // Faqat amerikacha yoki neytral yozuv; britaniya (-uk) va avstraliya (-au) olinmaydi
+    return urls.find(u => /-us\./i.test(u)) || urls.find(u => !/-(uk|au)\./i.test(u)) || null;
+  }catch(e){ return null; }
+}
 function speakText(text){
-  if(!text) return;
-  const word = text.trim().split(/\s+/)[0].toLowerCase().replace(/[^a-z']/g,'');
-  if(!word) return;
-
-  // 1. Dictionary API — haqiqiy audio fayl (eng to'g'ri talaffuz)
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`)
-    .then(r=>r.ok?r.json():Promise.reject())
-    .then(data=>{
-      const phonetics = data[0]?.phonetics||[];
-      const audioUrl = phonetics.find(p=>p.audio&&p.audio.startsWith('http'))?.audio
-        || phonetics.find(p=>p.audio)?.audio;
-      if(audioUrl){
-        const a = new Audio(audioUrl);
-        a.volume=1;
-        a.play().catch(()=>wsSpeakFallback(text));
-      } else {
-        wsSpeakFallback(text);
-      }
-    })
-    .catch(()=>wsSpeakFallback(text));
+  const t = _cleanSpeech(text);
+  if(!t) return;
+  const seq = ++_audioSeq, key = t.toLowerCase();
+  try{ speechSynthesis.cancel(); }catch(e){}
+  if(_curAudio){ try{ _curAudio.pause(); }catch(e){} _curAudio = null; }
+  // 3-bosqich: qurilmaning inglizcha ovozi (faqat inglizcha ovoz bo'lsa; aks holda noto'g'ri talaffuz bo'lib qoladi)
+  const stage3 = () => { if(seq !== _audioSeq) return; if(!wsSpeakFallback(t)) showToast('🔇 Audio hozir mavjud emas'); };
+  // 2-bosqich: lug'at yozuvi (bitta so'z uchun)
+  const stage2 = async () => {
+    if(seq !== _audioSeq) return;
+    if(key.includes(' ')) return stage3();
+    const url = await _dictAudioUrl(key);
+    if(seq !== _audioSeq) return;
+    if(!url) return stage3();
+    _playUrl(url, stage3, key);
+  };
+  // 1-bosqich: Google TTS (amerikacha, bir xil sifat) — sinxron
+  const cached = _audioOk[key];
+  _playUrl(cached || `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${encodeURIComponent(t)}`, cached ? stage2 : stage2, key);
 }
 
-// Web Speech API — fallback
+// Web Speech API — faqat inglizcha ovoz topilsa ishlaydi
 function wsSpeakFallback(text){
-  if(!('speechSynthesis' in window)) return;
+  if(!('speechSynthesis' in window)) return false;
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(x => x.lang === 'en-US') || voices.find(x => /^en/i.test(x.lang));
+  if(!v) return false;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang='en-US'; u.rate=0.82; u.pitch=1; u.volume=1;
-  const doSpeak = ()=>{
-    const voices = speechSynthesis.getVoices();
-    const v = voices.find(v=>v.name==='Google US English')
-      ||voices.find(v=>v.lang==='en-US'&&!v.localService)
-      ||voices.find(v=>v.lang==='en-US')
-      ||voices.find(v=>v.lang.startsWith('en'));
-    if(v) u.voice=v;
-    u.onerror=()=>{};
-    speechSynthesis.speak(u);
-  };
-  if(speechSynthesis.getVoices().length>0) doSpeak();
-  else { speechSynthesis.onvoiceschanged=()=>{speechSynthesis.onvoiceschanged=null;doSpeak();}; setTimeout(doSpeak,400); }
+  u.voice = v; u.lang = v.lang; u.rate = 0.85; u.pitch = 1; u.volume = 1;
+  speechSynthesis.speak(u);
+  return true;
 }
 
 // Dictionary API audio (so'zlar uchun ishonchli)
@@ -2734,12 +2778,11 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 function learnWord(w){
   if(!U.learnedWords.find(x=>x.word===w.word)){
-    U.learnedWords.push(w);
+    U.learnedWords.push({word:w.word, translation:w.translation, part_of_speech:w.part_of_speech});
     addXP(1);
     saveUser();
     updateStats();
     // Module hooks
-    try{App.learning.updateWordResult(w.word,true);}catch(e){}
     try{App.progress.trackDailyAction('words',1);}catch(e){}
     try{App.events.emit('word:learned',w);}catch(e){}
   }
@@ -3438,7 +3481,7 @@ function buildRecentWords(){
   if(!U.learnedWords.length){el.innerHTML='<div style="color:var(--muted);font-size:13px">Hali so\'z o\'rganilmagan.</div>';return;}
   el.innerHTML='';
   U.learnedWords.slice(-5).reverse().forEach(w=>{
-    el.innerHTML+=`<div class="wl-item"><div><div class="wl-w">${w.word}</div><div class="wl-t">${w.translation}</div></div><div class="wl-p">${w.part_of_speech}</div></div>`;
+    el.innerHTML+=`<div class="wl-item"><div><div class="wl-w">${w.word}</div><div class="wl-t">${w.translation || wordTranslation(w.word)}</div></div><div class="wl-p">${w.part_of_speech || ''}</div></div>`;
   });
 }
 
@@ -6091,6 +6134,13 @@ App.learning = {
   // Per-word tracking schema:
   // { accuracy, mistakes, lastSeen, nextReview, difficulty, views }
 
+  // Faqat o'qish: yozuv yaratmaydi (avval tartiblash paytida har bir so'z uchun bo'sh yozuv yaratilib, ma'lumot hajmi oshib ketardi)
+  peekWordData(word){
+    const U = App.user.get();
+    const x = U && U.wordStats ? U.wordStats[word] : null;
+    return x || { accuracy: 0, mistakes: 0, lastSeen: 0, nextReview: 0, difficulty: 0.3, views: 0, streak: 0 };
+  },
+
   getWordData(word){
     const U = App.user.get();
     if(!U.wordStats) U.wordStats = {};
@@ -6145,8 +6195,8 @@ App.learning = {
   getDueWords(pool){
     const now = Date.now();
     return pool.sort((a, b) => {
-      const da = this.getWordData(a.word);
-      const db = this.getWordData(b.word);
+      const da = this.peekWordData(a.word);
+      const db = this.peekWordData(b.word);
       // Due words first, then by difficulty desc
       const aDue = da.nextReview <= now ? 1 : 0;
       const bDue = db.nextReview <= now ? 1 : 0;
@@ -6901,7 +6951,7 @@ function buildLearningAnalytics(){
 function checkSpacedReview(){
   const pool = getAllWordsForGames();
   const due = App.learning.getDueWords(pool).filter(w=>{
-    const d = App.learning.getWordData(w.word);
+    const d = App.learning.peekWordData(w.word);
     return d.nextReview > 0 && d.nextReview <= Date.now();
   });
   if(due.length >= 5){
@@ -8515,7 +8565,7 @@ function _aitDrawPrediction(log, aiPred) {
 
 // ── Full render ───────────────────────────────────────────────────────────
 function _aitRenderAll(aiReport) {
-  if (!window.Chart) return; // Chart.js not loaded yet
+  if (!window.Chart) { loadChartJs().then(() => _aitRenderAll(aiReport)).catch(() => {}); return; }
   _aitInitChartDefaults();
   _aitDestroyAll();
   const log = _aitBuildLog();
@@ -9048,6 +9098,53 @@ function onFlashcardAI(){ const w=currentUnitWords[cardIdx]; if(w) openAIWordExp
 window.addEventListener('load',()=>{ const b=document.getElementById('fc-ai-btn'); if(b) b.style.display='flex'; });
 const _origBuildAITab = buildAITab;
 buildAITab = function(){ _origBuildAITab(); try{ aiRefreshStatus(); }catch(e){} };
+
+
+// ═══════════════ TEZLIK / TARIX ═══════════════
+let _chartPromise = null;
+function loadChartJs(){
+  if(window.Chart) return Promise.resolve();
+  if(_chartPromise) return _chartPromise;
+  _chartPromise = new Promise((res, rej) => {
+    const sc = document.createElement('script');
+    sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';
+    sc.onload = () => res();
+    sc.onerror = () => { _chartPromise = null; rej(new Error('chart')); };
+    document.head.appendChild(sc);
+  });
+  return _chartPromise;
+}
+function wordTranslation(word){
+  for(const k in WORDS_CACHE){
+    const arr = WORDS_CACHE[k];
+    if(Array.isArray(arr) && arr.length && arr[0] && arr[0].word !== undefined){
+      const f = arr.find(w => w.word === word);
+      if(f) return f.translation || '';
+    }
+  }
+  return '';
+}
+function enrichLearned(words){
+  if(typeof U === 'undefined' || !U || !Array.isArray(U.learnedWords) || !words || !words.length) return;
+  const m = new Map(words.map(w => [w.word, w]));
+  for(const x of U.learnedWords){
+    if(!x.translation){ const w = m.get(x.word); if(w){ x.translation = w.translation || ''; x.part_of_speech = w.part_of_speech || x.part_of_speech || ''; } }
+  }
+}
+// Avvalgi kunlar XP tarixini serverga bir marta yuborish (hafta/oy reytingi to'g'ri chiqishi uchun)
+async function xpBackfillOnce(){
+  if(!_useApi || !U || U.xpBackfilled) return;
+  ensureXpDaily();
+  const days = {};
+  Object.entries(U.xpDaily || {}).forEach(([k, v]) => { if(v > 0) days[k] = Math.min(1000, v); });
+  if(Object.keys(days).length){
+    if(!window._lastSyncOk){ syncToSupabase(U); await flushSync(false); }   // avval joriy XP serverga yetib borsin
+    const r = await apiCall('xp_backfill', { days });
+    if(!(r.ok && r.data && r.data.ok)) return;          // keyingi safar qayta urinamiz
+  }
+  U.xpBackfilled = true; saveUser(); _pbCache = {};
+}
+window.addEventListener('load', () => setTimeout(() => { xpBackfillOnce().catch(()=>{}); }, 4000));
 
 // manifest shortcuts: ?tab=games
 window.addEventListener('load',()=>{ setTimeout(()=>{ const t=new URLSearchParams(location.search).get('tab'); if(t&&document.getElementById('tab-'+t)) switchTabByName(t); },600); });
