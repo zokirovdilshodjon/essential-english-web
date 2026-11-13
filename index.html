@@ -4141,14 +4141,10 @@ function openModal(id){
     const prices={monthly:'5,000 so\'m','3month':'10,000 so\'m'};
     document.getElementById('pay-plan-label').textContent = selectedPlan==='monthly'?'Oylik':'3 Oylik';
     document.getElementById('pay-plan-price').textContent = prices[selectedPlan]||'5,000 so\'m';
-    selectedCardType = null;
-    document.getElementById('pay-form').style.display='none';
+    document.getElementById('pay-form').style.display='block';
     document.getElementById('pay-loading').style.display='none';
     document.getElementById('pay-error').textContent='';
-    document.getElementById('pay-uzcard').style.borderColor='var(--border)';
-    document.getElementById('pay-uzcard').style.background='var(--s2)';
-    document.getElementById('pay-humo').style.borderColor='var(--border)';
-    document.getElementById('pay-humo').style.background='var(--s2)';
+    const btn=document.getElementById('pay-btn'); if(btn){ btn.disabled=false; btn.textContent="💳 To'lovga o'tish"; }
   }
   if(id==='modal-weak'){ buildWeakWords(); }
   if(id==='modal-profile-menu'){
@@ -4203,120 +4199,37 @@ function selectPlan(plan){
   if(priceEl) priceEl.textContent = prices[plan] || "5,000 so'm";
 }
 
-// ===== KARTA TO'LOV TIZIMI =====
-// ⚠️ TO'LOV SERVER: Bu yerda faqat UI. Haqiqiy to'lov uchun:
-// 1. Payme: https://payme.uz/merchant
-// 2. Click: https://merchant.click.uz
-// Quyidagi MERCHANT_ID va URL larni o'zingiznikiga almashtiring:
-const PAYMENT_CONFIG = {
-  // === O'ZGARTIRING: ===
-  uzcard_merchant_id: 'YOUR_UZCARD_MERCHANT_ID',
-  humo_merchant_id:   'YOUR_HUMO_MERCHANT_ID',
-  payme_merchant_id:  'YOUR_PAYME_MERCHANT_ID',
-  // ====================
-  test_mode: true, // Haqiqiy to'lovda false qiling
-};
-
-let selectedCardType = null;
-
-function selectCard(type){
-  selectedCardType = type;
-  // UI yangilash
-  document.getElementById('pay-uzcard').style.borderColor = type==='uzcard' ? '#00a3e0':'var(--border)';
-  document.getElementById('pay-uzcard').style.background = type==='uzcard' ? 'rgba(0,163,224,.1)':'var(--s2)';
-  document.getElementById('pay-humo').style.borderColor = type==='humo' ? '#00c853':'var(--border)';
-  document.getElementById('pay-humo').style.background = type==='humo' ? 'rgba(0,200,83,.1)':'var(--s2)';
-  document.getElementById('pay-form').style.display = 'block';
-  document.getElementById('pay-card-num').focus();
-}
-
-function formatCardNum(input){
-  let v = input.value.replace(/\D/g,'').slice(0,16);
-  input.value = v.replace(/(.{4})/g,'$1 ').trim();
-}
-
-function formatCardExp(input){
-  let v = input.value.replace(/\D/g,'').slice(0,4);
-  if(v.length>=3) v = v.slice(0,2)+'/'+v.slice(2);
-  input.value = v;
-}
-
-function validateCard(){
-  const num = document.getElementById('pay-card-num').value.replace(/\s/g,'');
-  const exp = document.getElementById('pay-card-exp').value;
-  const cvv = document.getElementById('pay-card-cvv').value;
-  const name = document.getElementById('pay-card-name').value.trim();
-  const errEl = document.getElementById('pay-error');
-
-  if(num.length < 16){ errEl.textContent='❌ Karta raqami to\'liq emas'; return false; }
-  if(!/^\d{2}\/\d{2}$/.test(exp)){ errEl.textContent='❌ Muddatni to\'g\'ri kiriting (MM/YY)'; return false; }
-  const [mm,yy] = exp.split('/').map(Number);
-  const now = new Date();
-  if(mm<1||mm>12||yy+2000<now.getFullYear()||(yy+2000===now.getFullYear()&&mm<now.getMonth()+1)){
-    errEl.textContent='❌ Karta muddati o\'tgan'; return false;
-  }
-  if(cvv.length < 3){ errEl.textContent='❌ CVV noto\'g\'ri'; return false; }
-  if(name.length < 3){ errEl.textContent='❌ Karta egasining ismini kiriting'; return false; }
-  errEl.textContent='';
-  return true;
-}
+// ===== CLICK TO'LOV TIZIMI (SHOP API, backend orqali) =====
+// Karta raqami/CVV endi bu yerda SO'RALMAYDI — foydalanuvchi Click'ning
+// o'z xavfsiz sahifasiga o'tadi va kartasini o'sha yerda kiritadi.
+// Haqiqiy integratsiya app-api Supabase Edge Function ichida ('create_payment'
+// action) va alohida 'click-webhook' funksiyasida amalga oshiriladi.
+let _payPollTimer = null, _payPollTries = 0;
 
 function processPayment(){
-  if(!selectedCardType){ showToast('Karta turini tanlang!'); return; }
-  if(!validateCard()) return;
-
   const btn = document.getElementById('pay-btn');
   btn.disabled = true;
-  btn.textContent = '⏳ Kutilmoqda...';
+  btn.textContent = '⏳ Havola tayyorlanmoqda...';
+  document.getElementById('pay-error').textContent = '';
 
-  if(PAYMENT_CONFIG.test_mode){
-    // TEST MODE — server yo'q, demo faollashtirish
-    showPayLoading();
-    setTimeout(()=>{
-      hidePayLoading();
-      closeModal(null,'modal-payment');
-      activatePremiumDemo();
-      showToast('✅ Test to\'lov muvaffaqiyatli!');
-      btn.disabled=false; btn.textContent='💳 To\'lovni Tasdiqlash';
-    }, 2000);
-  } else {
-    // HAQIQIY TO'LOV — serverga so'rov yuborish
-    // Bu qatorni o'zingizning backend URL ingizga almashtiring:
-    const apiUrl = 'https://YOUR_BACKEND/api/payment';
-    const amount = selectedPlan==='monthly'?500000:1000000; // tiyin
-    fetch(apiUrl, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        card: document.getElementById('pay-card-num').value.replace(/\s/g,''),
-        exp: document.getElementById('pay-card-exp').value,
-        cvv: document.getElementById('pay-card-cvv').value,
-        name: document.getElementById('pay-card-name').value,
-        card_type: selectedCardType,
-        amount: amount,
-        plan: selectedPlan,
-        merchant_id: selectedCardType==='uzcard'
-          ? PAYMENT_CONFIG.uzcard_merchant_id
-          : PAYMENT_CONFIG.humo_merchant_id,
-      })
-    })
-    .then(r=>r.json())
-    .then(data=>{
-      hidePayLoading();
-      if(data.success){
-        closeModal(null,'modal-payment');
-        activatePremiumDemo();
-        showToast('✅ To\'lov muvaffaqiyatli!');
+  apiCall('create_payment', { plan: selectedPlan }).then(r=>{
+    btn.disabled = false;
+    btn.textContent = "💳 To'lovga o'tish";
+    if(r.ok && r.data && r.data.ok && r.data.pay_url){
+      showPayLoading();
+      // Click'ning o'z (hosted) to'lov sahifasini ochamiz — karta ma'lumotlari
+      // faqat shu yerda, Click tomonida kiritiladi, bizning serverimizga tushmaydi.
+      if(window.Telegram && Telegram.WebApp && Telegram.WebApp.openLink){
+        Telegram.WebApp.openLink(r.data.pay_url);
       } else {
-        document.getElementById('pay-error').textContent = '❌ '+(data.message||'To\'lov xatosi');
+        window.open(r.data.pay_url, '_blank');
       }
-    })
-    .catch(()=>{
-      hidePayLoading();
-      document.getElementById('pay-error').textContent = '❌ Server bilan bog\'lanishda xato';
-    })
-    .finally(()=>{ btn.disabled=false; btn.textContent='💳 To\'lovni Tasdiqlash'; });
-  }
+      startPaymentPolling(r.data.order_id);
+    } else {
+      const err = (r.data && r.data.error) || 'network';
+      document.getElementById('pay-error').textContent = '❌ To\'lov havolasini olib bo\'lmadi ('+err+')';
+    }
+  });
 }
 
 function showPayLoading(){
@@ -4325,13 +4238,38 @@ function showPayLoading(){
   let dots=0;
   window._payLoadInterval = setInterval(()=>{
     dots=(dots+1)%4;
-    document.getElementById('pay-loading-text').textContent='To\'lov amalga oshirilmoqda'+'...'.slice(0,dots+1);
+    document.getElementById('pay-loading-text').textContent='Click sahifasida to\'lovni kuting'+'...'.slice(0,dots+1);
   },500);
 }
 function hidePayLoading(){
   clearInterval(window._payLoadInterval);
   document.getElementById('pay-loading').style.display='none';
   document.getElementById('pay-form').style.display='block';
+}
+
+// Click webhook orqa fonda (Complete) kelganini kutib, is_premium holatini
+// bir necha soniyada bir tekshirib turamiz (foydalanuvchi Click'dan qaytgach).
+function startPaymentPolling(orderId){
+  clearInterval(_payPollTimer);
+  _payPollTries = 0;
+  _payPollTimer = setInterval(async ()=>{
+    _payPollTries++;
+    const r = await apiCall('me');
+    if(r.ok && r.data && r.data.user){
+      const u = r.data.user;
+      if(u.is_premium && (!u.premium_expiry || u.premium_expiry > Date.now())){
+        clearInterval(_payPollTimer);
+        hidePayLoading();
+        closeModal(null,'modal-payment');
+        U.isPremium = true;
+        U.premiumExpiry = u.premium_expiry || (Date.now()+3650*86400000);
+        saveUser();
+        showToast('✅ Premium faollashtirildi!');
+        try{ initPremiumFeatures(); }catch(e){}
+      }
+    }
+    if(_payPollTries > 40){ clearInterval(_payPollTimer); } // ~2 daqiqadan keyin to'xtaydi
+  }, 3000);
 }
 
 function buyPremium(){ openModal('modal-payment'); }
@@ -7259,55 +7197,28 @@ App.init = function(){
         <div style="font-size:18px;font-weight:800;color:var(--text)" id="pay-plan-price">—</div>
       </div>
 
-      <!-- Karta turi tanlash -->
-      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">KARTA TURINI TANLANG</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
-        <div id="pay-uzcard" onclick="selectCard('uzcard')" style="background:var(--s2);border:2px solid var(--border);border-radius:13px;padding:12px;text-align:center;cursor:pointer;transition:all .2s">
-          <div style="font-size:28px;margin-bottom:4px">🟦</div>
-          <div style="font-size:13px;font-weight:800;color:#00a3e0">Uzcard</div>
-          <div style="font-size:10px;color:var(--muted)">8600 •••• •••• ••••</div>
-        </div>
-        <div id="pay-humo" onclick="selectCard('humo')" style="background:var(--s2);border:2px solid var(--border);border-radius:13px;padding:12px;text-align:center;cursor:pointer;transition:all .2s">
-          <div style="font-size:28px;margin-bottom:4px">🟩</div>
-          <div style="font-size:13px;font-weight:800;color:#00c853">Humo</div>
-          <div style="font-size:10px;color:var(--muted)">9860 •••• •••• ••••</div>
-        </div>
+      <!-- To'lov usuli -->
+      <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">TO'LOV TIZIMI</div>
+      <div style="background:var(--s2);border:2px solid var(--border);border-radius:13px;padding:14px;text-align:center;margin-bottom:14px">
+        <div style="font-size:28px;margin-bottom:4px">🟢</div>
+        <div style="font-size:13px;font-weight:800;color:var(--text)">Click</div>
+        <div style="font-size:10px;color:var(--muted)">Uzcard, Humo va boshqa kartalar</div>
       </div>
 
-      <!-- Karta ma'lumotlari -->
-      <div id="pay-form" style="display:none">
-        <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:8px">KARTA RAQAMI</div>
-        <input id="pay-card-num" class="custom-inp" placeholder="•••• •••• •••• ••••" maxlength="19"
-          oninput="formatCardNum(this)" inputmode="numeric" style="font-size:18px;font-family:'Syne',sans-serif;letter-spacing:.08em">
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div>
-            <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">AMAL QILISH MUDDATI</div>
-            <input id="pay-card-exp" class="custom-inp" placeholder="MM/YY" maxlength="5"
-              oninput="formatCardExp(this)" inputmode="numeric">
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">CVV</div>
-            <input id="pay-card-cvv" class="custom-inp" placeholder="•••" maxlength="3" inputmode="numeric" type="password">
-          </div>
-        </div>
-
-        <div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">KARTA EGASI</div>
-        <input id="pay-card-name" class="custom-inp" placeholder="FULL NAME" style="text-transform:uppercase">
-
+      <div id="pay-form">
         <div id="pay-error" style="color:var(--red);font-size:12px;min-height:18px;margin-bottom:8px;text-align:center"></div>
 
         <button onclick="processPayment()" id="pay-btn"
           style="width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--orange));border:none;border-radius:13px;color:#080d14;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer">
-          💳 To'lovni Tasdiqlash
+          💳 To'lovga o'tish
         </button>
-        <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px">🔒 Ma'lumotlaringiz xavfsiz</div>
+        <div style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px">🔒 Karta ma'lumotlari faqat Click sahifasida kiritiladi</div>
       </div>
 
       <!-- To'lov jarayoni -->
       <div id="pay-loading" style="display:none;text-align:center;padding:20px 0">
         <div style="font-size:40px;margin-bottom:12px" id="pay-loading-icon">⏳</div>
-        <div style="font-size:14px;font-weight:800" id="pay-loading-text">To'lov amalga oshirilmoqda...</div>
+        <div style="font-size:14px;font-weight:800" id="pay-loading-text">Click sahifasida to'lovni kuting...</div>
       </div>
     </div>
   </div>
